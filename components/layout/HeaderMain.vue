@@ -15,27 +15,9 @@
 </template>
 
 <script setup>
+  import { useAppStore } from '/store/app';
 
-  const items = [
-    {
-      label: 'Квартиры',
-      to: '/flats'
-    },
-    {
-      label: 'Коттеджи',
-      to: '/houses'
-    },
-    {
-      label: 'Таунхаусы',
-      to: '/tauns'
-    },
-    {
-      label: 'Ипотека',
-      to: '/credit'
-    },
-    {
-      label: 'О компании',
-      to: '/about'
-    },
-  ];
+  const appStore = useAppStore();
+
+  const items = computed(() => appStore.headerMenu);
 </script>

@@ -1,0 +1,34 @@
+@font-face {
+  font-family: 'freeset';
+  src: url('../fonts/freeset/FreeSetC.woff2') format('woff2'),
+  url('../fonts/freeset/FreeSetC.woff') format('woff');
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: 'freeset';
+  src: url('../fonts/freeset/FreeSetBoldC.woff2') format('woff2'),
+  url('../fonts/freeset/FreeSetBoldC.woff') format('woff');
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: 'freeset-demi';
+  src: url('../fonts/freeset/FreeSetDemiC.woff2') format('woff2'),
+  url('../fonts/freeset/FreeSetDemiC.woff') format('woff');
+  font-weight: 400;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  font-size: 100%;
+}
+
+body {
+  font-family: 'freeset';
+  font-weight: 400;
+  font-size: 1rem;
+}
