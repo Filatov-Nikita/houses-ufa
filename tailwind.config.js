@@ -47,7 +47,7 @@ module.exports = {
       dark: "#2D2D2D",
       gray: "#F7F8F8",
 
-      text00: "#2D2D2",
+      text00: "#2D2D2D",
       text01: "#4F4F4F",
       text02: "#9F9F9F",
 
