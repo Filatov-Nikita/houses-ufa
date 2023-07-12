@@ -2,12 +2,13 @@
 module.exports = {
   prefix: 'tw-',
   content: [
-    './components/**/*.{js,vue,ts}',
-    './layouts/**/*.vue',
-    './pages/**/*.vue',
-    './plugins/**/*.{js,ts}',
-    './nuxt.config.{js,ts}',
-    './app.vue',
+    "./store/**/*.ts",
+    "./components/**/*.{js,vue,ts}",
+    "./layouts/**/*.vue",
+    "./pages/**/*.vue",
+    "./plugins/**/*.{js,ts}",
+    "./nuxt.config.{js,ts}",
+    "./app.vue",
   ],
   theme: {
     extend: {
@@ -46,14 +47,16 @@ module.exports = {
 
       white: '#ffffff',
       error: '#F13F36',
+      'negative': '#F13F36',
       warning: '#FEBF22',
       dark: '#2D2D2D',
       gray: '#F7F8F8',
-
+      'gray-600': '#9F9F9F',
+      'dark': '#2D2D2D',
       text00: '#2D2D2D',
       text01: '#4F4F4F',
       text02: '#9F9F9F',
-
+      
       border00: '#E6E6E6',
 
       base00: '#F7F8F8',
@@ -65,9 +68,10 @@ module.exports = {
       icon01: '#181818',
     },
     screens: {
-      m: '375px',
-      l: '1024px',
-      d: '1440px',
+      'md': '768px',
+      'lg': '1024px',
+      'xl': '1440px',
+      '2xl': '1920px',
     },
   },
   plugins: [],
