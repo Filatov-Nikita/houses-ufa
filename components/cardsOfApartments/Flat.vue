@@ -86,12 +86,8 @@
           <span class="tw-text-primary">15 659 ₽ / мес</span>
         </p>
         <div class="tw-grid tw-gap-2 lg:tw-gap-4">
-          <button class="tw-h-14 tw-w-full tw-bg-primary tw-text-white">
-            Забронировать
-          </button>
-          <button class="tw-h-14 tw-w-full tw-bg-secondary tw-text-white">
-            Получить консультацию
-          </button>
+          <BaseButton>Забронировать</BaseButton>
+          <BaseButton theme="secondary">Получить консультацию</BaseButton>
         </div>
       </div>
     </div>
