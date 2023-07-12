@@ -1,8 +1,6 @@
 <template>
-  <div>
-    <h1>1</h1>
-    <div class="test">2</div>
-    <BaseButton>test</BaseButton>
+  <div class="tw-max-w-[1360px] tw-mx-auto">
+    <CardsOfApartmentsFlat />
   </div>
 </template>
 
