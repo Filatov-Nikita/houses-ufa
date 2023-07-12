@@ -22,9 +22,9 @@ module.exports = {
         body_l: ['1.125rem', '1.75rem'], //18, 28
         body_m: ['1rem', '1.5rem'], // 16, 24
         body_m2: ['1rem', '1.75rem'], // 16, 28
-        body_s: ['rem', '1.5rem'], // 14, 24
-        body_s2: ['rem', '1.25rem'], // 14, 20
-        body_xs: ['rem', '1rem'], // 12, 16
+        body_s: ['0.875rem', '1.5rem'], // 14, 24
+        body_s2: ['0.875rem', '1.25rem'], // 14, 20
+        body_xs: ['0.75rem', '1rem'], // 12, 16
       },
       spacing: {
         5.5: '1.406rem',
