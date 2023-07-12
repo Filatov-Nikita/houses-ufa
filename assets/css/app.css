@@ -23,12 +23,48 @@
 @tailwind components;
 @tailwind utilities;
 
-html {
-  font-size: 100%;
+@layer base {
+  html {
+    font-size: 100%;
+  }
+
+  body {
+    font-family: 'freeset';
+    font-weight: 400;
+    font-size: 1rem;
+  }
 }
 
-body {
-  font-family: 'freeset';
-  font-weight: 400;
-  font-size: 1rem;
+@layer components {
+  .wrapper {
+    padding: 0 16px;
+  }
+
+  @screen md {
+    .wrapper {
+      max-width: 768px;
+      margin: 0 auto;
+    }
+  }
+
+  @screen lg {
+    .wrapper {
+      max-width: 1024px;
+      padding: 0 24px;
+    }
+  }
+
+  @screen xl {
+    .wrapper {
+      max-width: 1440px;
+      padding: 0 40px;
+    }
+  }
+
+  @screen 2xl {
+    .wrapper {
+      max-width: 1920px;
+      padding: 0 80px;
+    }
+  }
 }
