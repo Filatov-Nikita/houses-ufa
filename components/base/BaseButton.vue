@@ -5,59 +5,76 @@
 </template>
 
 <script setup lang="ts">
-  interface Theme {
-    bgColor: string,
-    hover: string,
-    press: string,
-    textColor: string,
-    disabled: string,
-    rounded: string
-  }
-
-  interface Size {
-    fontSize: 'tw-text-base',
-    lineHeight: 'tw-text-base',
-  }
+  import type { Theme, Size } from './types/base-button/theme';
+  import { useConfigStore } from '@/store/config';
 
   interface Props {
-    theme: string | Theme,
-    size: string | Size
+    theme?: string | Theme,
+    size?: string,
+    fullWidth?: boolean
   }
 
   const props = withDefaults(defineProps<Props>(), {
-    theme: 'primary'
+    theme: 'primary',
+    size: 'default',
+    fullWidth: false,
   });
 
-  const defaultThemes: Record<string, Theme> = {
-    primary: {
-      bgColor: 'tw-bg-primary',
-      hover: 'hover:bg-primary-hover',
-      press: 'active:bg-primary-press',
-      textColor: 'tw-text-white',
-      disabled: 'disabled:tw-opacity-50',
-      rounded: 'tw-rounded-sm',
-    },
-    secondary: {
-      bgColor: 'tw-bg-secondary',
-      hover: 'hover:bg-secondary-hover',
-      press: 'active:bg-secondary-press',
-      textColor: 'tw-text-dark',
-      disabled: 'disabled:tw-opacity-50',
-      rounded: 'tw-rounded-sm',
+  const configStore = useConfigStore();
+
+  const defaultTheme: Theme = {
+    bgColor: 'tw-bg-primary',
+    hover: 'hover:tw-bg-primary-hover',
+    press: 'active:tw-bg-primary-press',
+    textColor: 'tw-text-white',
+    disabled: 'disabled:tw-opacity-50',
+    rounded: 'tw-rounded-lg',
+    sizes: {
+      default: {
+        textSize: 'tw-text-base',
+        lineHeight: 'tw-leading-none',
+        padding: 'tw-px-8 tw-py-4'
+      }
     }
   };
 
+  const themes = computed<Record<string, Theme>>(() => {
+    return configStore.buttonThemes;
+  });
+
   const currentTheme = computed<Theme>(() => {
-    let theme = defaultThemes['primary'];
+    let theme = defaultTheme;
     if(typeof props.theme === 'string') {
-      if(props.theme in defaultThemes) theme = defaultThemes[props.theme]
+      if(props.theme in themes.value) theme = themes.value[props.theme]
     };
     return theme;
   });
 
+  const currentSize = computed<Size>(() => {
+    const sizes = currentTheme.value.sizes;
+    if(props.size in sizes) return sizes[props.size];
+    return defaultTheme.sizes.default;
+  });
+
   const rootClasses = computed(() => {
-    const { bgColor, hover, press, disabled, textColor, rounded } = currentTheme.value;
-    return `${bgColor} ${hover} ${press} ${disabled} ${textColor} ${rounded}`;
+    const {
+      bgColor, hover, press, disabled, textColor, rounded,
+    } = currentTheme.value;
+
+    const { textSize, lineHeight, padding } = currentSize.value;
+
+    return [
+      bgColor,
+      hover,
+      press,
+      disabled,
+      textColor,
+      rounded,
+      padding,
+      lineHeight,
+      textSize,
+      { 'tw-w-full tw-block': props.fullWidth },
+    ];
   });
 </script>
 <style scoped>
