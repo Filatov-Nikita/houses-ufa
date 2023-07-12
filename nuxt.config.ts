@@ -4,6 +4,7 @@ export default defineNuxtConfig({
   modules: [
     '@pinia/nuxt',
   ],
+  plugins: ['~/plugins/vee-validate.ts'],
   css: ['~/assets/css/app.css'],
   postcss: {
     plugins: {
