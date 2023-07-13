@@ -29,6 +29,10 @@ module.exports = {
       spacing: {
         5.5: '1.406rem',
       },
+      transitionProperty: {
+        height: 'height',
+        fill: 'fill',
+      },
     },
     fontFamily: {
       freeset: 'freeset',
