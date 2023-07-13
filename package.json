@@ -23,6 +23,8 @@
   "dependencies": {
     "@pinia/nuxt": "^0.4.11",
     "pinia": "^2.1.4",
+    "sass": "^1.63.6",
+    "sass-loader": "^13.3.2",
     "vee-validate": "^4.10.6"
   }
 }
