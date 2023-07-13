@@ -15,6 +15,8 @@
 
 <script setup lang="ts">
   import { useField } from 'vee-validate';
+  import { useConfigStore } from '@/store/config';
+  import type { Theme } from './types/base-input/theme';
 
   interface Props {
     name: string,
@@ -24,36 +26,74 @@
     modelValue?: any,
     placeholder?: string,
     type?: string,
-    disabled?: boolean
+    disabled?: boolean,
+    theme?: string | Theme,
   }
 
   const props = withDefaults(defineProps<Props>(), {
+    theme: 'gray',
     type: 'text',
     disabled: false
   });
 
-  const emit = defineEmits(['update:modelValue']);
+  const configStore = useConfigStore();
+
+  const themes = computed<Record<string, Theme>>(() => {
+    return configStore.inputThemes;
+  });
+
+  const defaultTheme: Theme = {
+    default: 'input',
+    bgColor: 'tw-bg-white',
+    hover: 'hover:tw-bg-base01',
+    borderColor: 'tw-border-white',
+    textColor: 'tw-text-text02',
+    focus: {
+      bgColor: 'focus:tw-bg-base01',
+      textColor: 'focus:tw-text-text02',
+    },
+    filled: {
+      bgColor: 'tw-bg-white',
+      textColor: 'tw-text-text02',
+    },
+    error: {
+      borderColor: 'tw-border-error'
+    }
+  };
+
+  const currentTheme = computed<Theme>(() => {
+    let theme = defaultTheme;
+    if(typeof props.theme === 'string') {
+      if(props.theme in themes.value) theme = themes.value[props.theme]
+    };
+
+    return theme;
+  });
 
   const { value, errorMessage } = useField(props.name, props.rules, {
     label: props.label,
-    initialValue: props.modelValue,
+    syncVModel: true
   });
 
   const inputClasses = computed(() => {
+    let classes = [];
+    if(!value.value) {
+      classes.push(currentTheme.value.bgColor);
+      classes.push(currentTheme.value.textColor);
+      classes.push(currentTheme.value.focus.bgColor);
+      classes.push(currentTheme.value.focus.textColor);
+    } else {
+      classes.push(currentTheme.value.filled.bgColor || currentTheme.value.bgColor);
+      classes.push(currentTheme.value.filled.textColor || currentTheme.value.textColor);
+    }
+
     return [
-      'input',
-      'tw-block',
-      'tw-w-full',
-      'tw-bg-gray',
-      'tw-rounded-lg',
-      'tw-py-3',
-      'tw-px-4',
-      'tw-h-[56px]',
-      'tw-text-base',
-      'tw-border tw-border-solid',
+      currentTheme.value.default,
+      currentTheme.value.hover,
+      classes.join(' '),
       {
-        'tw-text-gray-600': !errorMessage.value,
-        'tw-text-negative': errorMessage.value,
+        [ currentTheme.value.borderColor ]: !errorMessage.value,
+        [ currentTheme.value.error.borderColor ]: errorMessage.value,
       }
     ]
   });
@@ -69,8 +109,8 @@
       'tw-leading-none',
       'tw-bottom-1',
       {
-        'tw-text-negative': errorMessage.value,
-        'tw-text-gray-600': !errorMessage.value,
+        'tw-text-error': errorMessage.value,
+        'tw-text-text02': !errorMessage.value,
       }
     ];
   });
@@ -78,21 +118,11 @@
   const labelClasses = [
     'tw-block',
     'tw-w-full',
-    'tw-text-gray-600',
+    'tw-text-text02',
     'tw-text-sm',
     'tw-leading-none',
     'tw-mb-2',
-  ]
-
-  watch(() => props.modelValue, (newVal) => {
-    if(newVal !== value.value) {
-      value.value = newVal;
-    }
-  });
-
-  watch(value, (newVal) => {
-    emit('update:modelValue', newVal);
-  });
+  ];
 </script>
 <style scoped>
 .base-input {
@@ -106,9 +136,10 @@
 
 .input {
   outline: none;
+  @apply tw-block tw-w-full tw-rounded-lg tw-py-3 tw-px-4 tw-h-[56px] tw-text-base tw-border tw-border-solid tw-transition tw-duration-200;
 }
 
 .input::placeholder {
-  @apply tw-text-gray-600;
+  @apply tw-text-text02;
 }
 </style>
