@@ -77,6 +77,9 @@ module.exports = {
       xl: '1440px',
       '2xl': '1920px',
     },
+    letterSpacing: {
+      875: '0.00875rem',
+    },
     keyframes: {
       slideInLeft: {
         '0%': { transform: 'translateX(-100%)' },
