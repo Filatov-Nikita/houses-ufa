@@ -73,6 +73,41 @@ module.exports = {
       xl: '1440px',
       '2xl': '1920px',
     },
+    keyframes: {
+      slideInLeft: {
+        '0%': { transform: 'translateX(-100%)' },
+        '100%': { transform: 'translateX(0%)' },
+      },
+      slideOutLeft: {
+        '0%': { transform: 'translateX(-0%)' },
+        '100%': { transform: 'translateX(-100%)' },
+      },
+      slideInRight: {
+        '0%': { transform: 'translateX(100%)' },
+        '100%': { transform: 'translateX(0%)' },
+      },
+      slideOutRight: {
+        '0%': { transform: 'translateX(0%)' },
+        '100%': { transform: 'translateX(100%)' },
+      },
+      fadeIn: {
+        '0%': { opacity: 0 },
+        '100%': { opacity: 1 },
+      },
+      fadeOut: {
+        '0%': { opacity: 1 },
+        '100%': { opacity: 0 },
+      },
+    },
+    animation: {
+      slideInLeft: 'slideInLeft 1s ease-in-out',
+      slideOutLeft: 'slideOutLeft 1s ease-in-out',
+      slideInRight: 'slideInRight 1s ease-in-out',
+      slideOutRight: 'slideOutRight 1s ease-in-out',
+
+      fadeIn: 'fadeIn 1s ease-in-out',
+      fadeOut: 'fadeOut 1s ease-in-out',
+    },
   },
   plugins: [],
 }

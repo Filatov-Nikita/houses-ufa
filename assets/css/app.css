@@ -73,3 +73,9 @@
     }
   }
 }
+
+@layer utilities {
+  .transition-base {
+    @apply tw-duration-500 tw-ease-in-out;
+  }
+}
