@@ -32,6 +32,9 @@ module.exports = {
       transitionProperty: {
         height: 'height',
         fill: 'fill',
+        top: 'top',
+        left: 'left',
+        width: 'width',
       },
     },
     fontFamily: {
