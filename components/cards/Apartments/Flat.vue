@@ -4,7 +4,11 @@
   >
     <div class="tw-flex tw-items-center tw-justify-between">
       <a class="back">
-        <img src="/assets/images/icons/arrow_left.svg" width="24" height="24" />
+        <img
+          src="/assets/images/icons/arrow_line_left.svg"
+          width="24"
+          height="24"
+        />
         <span> Вернуться назад </span>
       </a>
       <div>

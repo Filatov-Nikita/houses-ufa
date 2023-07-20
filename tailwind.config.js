@@ -118,6 +118,9 @@ module.exports = {
       fadeIn: 'fadeIn 1s ease-in-out',
       fadeOut: 'fadeOut 1s ease-in-out',
     },
+    boxShadow: {
+      shadow01: '0px 5px 16px 0px rgba(0, 0, 0, 0.07)',
+    },
   },
   plugins: [],
 }
