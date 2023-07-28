@@ -110,15 +110,17 @@ module.exports = {
       },
     },
     animation: {
-      slideInLeft: 'slideInLeft 1s ease-in-out',
-      slideOutLeft: 'slideOutLeft 1s ease-in-out',
-      slideInRight: 'slideInRight 1s ease-in-out',
-      slideOutRight: 'slideOutRight 1s ease-in-out',
+      slideInLeft: 'slideInLeft .1s ease-in-out',
+      slideOutLeft: 'slideOutLeft .1s ease-in-out',
+      slideInRight: 'slideInRight .1s ease-in-out',
+      slideOutRight: 'slideOutRight .1s ease-in-out',
 
-      fadeIn: 'fadeIn 1s ease-in-out',
-      fadeOut: 'fadeOut 1s ease-in-out',
+      fadeIn: 'fadeIn 10s ease-in-out',
+      fadeOut: 'fadeOut 10s ease-in-out',
     },
     boxShadow: {
+      shadow00:
+        '0px 5px 16px 0px rgba(0, 0, 0, 0.07), 0px 1px 3px 1px rgba(0, 0, 0, 0.15)',
       shadow01: '0px 5px 16px 0px rgba(0, 0, 0, 0.07)',
     },
   },
