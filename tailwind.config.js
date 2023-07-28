@@ -123,6 +123,28 @@ module.exports = {
         '0px 5px 16px 0px rgba(0, 0, 0, 0.07), 0px 1px 3px 1px rgba(0, 0, 0, 0.15)',
       shadow01: '0px 5px 16px 0px rgba(0, 0, 0, 0.07)',
     },
+    container: {
+      DEFAULT: '100%',
+      center: true,
+
+      padding: {
+        DEFAULT: '16px',
+        lg: '24px',
+        xl: '40px',
+      },
+    },
   },
-  plugins: [],
+  plugins: [
+    function ({ addComponents }) {
+      addComponents({
+        // ".container": {
+        //   maxWidth: "100%",
+        //   width: "100%",
+        //   padding: "0 15px",
+        //   marginRight: "auto",
+        //   marginLeft: "auto",
+        // },
+      })
+    },
+  ],
 }

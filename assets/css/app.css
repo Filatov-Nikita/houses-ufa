@@ -117,6 +117,14 @@
     @apply tw-text-body_xs tw-text-white tw-absolute tw-z-10 tw-bottom-4 lg:tw-bottom-6 tw-left-4 lg:tw-right-10;
     opacity: 0.8500000238418579;
   }
+
+  .burger {
+    @apply tw-bg-base00 tw-p-2 tw-w-12 tw-h-12;
+    @apply tw-rounded-lg tw-overflow-hidden tw-cursor-pointer;
+    background: theme('colors.base00') url(/assets/images/icons/burger.svg)
+      no-repeat center;
+    background-size: 32px 32px;
+  }
 }
 
 @layer utilities {
