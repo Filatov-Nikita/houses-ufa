@@ -125,6 +125,17 @@
       no-repeat center;
     background-size: 32px 32px;
   }
+
+  .accordion__body {
+    @apply tw-grid tw-grid-rows-[0fr] tw-overflow-hidden;
+    @apply tw-transition-all tw-duration-100;
+  }
+  .accordion__body-content {
+    @apply tw-min-h-0;
+  }
+  .accordion__body.active {
+    grid-template-rows: 1fr;
+  }
 }
 
 @layer utilities {
