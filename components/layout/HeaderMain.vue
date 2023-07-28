@@ -85,7 +85,7 @@
 </template>
 
 <script setup>
-import { useAppStore } from '/store/app'
+import { useAppStore } from '~/stores/app'
 
 const appStore = useAppStore()
 
