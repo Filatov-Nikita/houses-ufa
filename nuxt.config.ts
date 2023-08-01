@@ -12,6 +12,7 @@ export default defineNuxtConfig({
   swiper: {
     modules: ['navigation', 'pagination'],
   },
+  plugins: ['~/plugins/vee-validate.ts'],
   css: ['~/assets/css/app.css'],
   postcss: {
     plugins: {
