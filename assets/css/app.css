@@ -136,10 +136,45 @@
   .accordion__body.active {
     grid-template-rows: 1fr;
   }
+  .swiper-pagination {
+    @apply tw-flex !tw-w-fit tw-items-center tw-gap-1;
+  }
+  .swiper-pagination .dot {
+    @apply tw-rounded-full tw-w-2 tw-h-2 tw-bg-border00;
+  }
+  .swiper-pagination .dot-active {
+    @apply tw-rounded-full tw-w-2 tw-h-2 tw-bg-white;
+  }
+  .swiper-pagination .dot-bullet.dot-bullet-active-main {
+    @apply tw-rounded-full tw-w-2 tw-h-2 tw-bg-border00;
+  }
+  .swiper-pagination .dot-bullet-active.dot-bullet-active-main {
+    @apply tw-rounded-full tw-w-2 tw-h-2 tw-bg-primary;
+  }
+  .swiper-pagination .dot-bullet.dot-bullet-active-prev,
+  .swiper-pagination .dot-bullet.dot-bullet-active-next {
+    @apply tw-rounded-full tw-w-1.5 tw-h-1.5 tw-bg-border00;
+  }
+  .swiper-next,
+  .swiper-prev {
+  }
+  .swiper-next {
+  }
+  .swiper-prev {
+  }
 }
 
 @layer utilities {
   .transition-base {
     @apply tw-duration-500 tw-ease-in-out;
+  }
+  .section {
+    @apply tw-mb-12 lg:tw-mb-[56px] xl:tw-mb-24;
+  }
+  .section__top {
+    @apply tw-mb-6 xl:tw-mb-8;
+  }
+  .section__title {
+    @apply tw-text-h5 lg:tw-text-h4;
   }
 }
