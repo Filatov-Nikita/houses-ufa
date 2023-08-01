@@ -1,15 +1,15 @@
 <template>
   <div class="card">
     <div
-      class="tw-relative tw-rounded-2xl tw-overflow-hidden tw-mb-4 tw-bg-base01 tw-grid tw-place-content-center"
+      class="tw-relative tw-rounded-2xl tw-overflow-hidden tw-bg-base01 tw-grid tw-place-content-center"
     >
       <img
-        v-if="src"
-        :src="src"
+        v-if="img"
+        :src="img"
         :alt="alt"
         :width="width"
         :height="374"
-        class="tw-absolute tw-w-full tw-h-full tw-object-cover"
+        class="img tw-absolute tw-w-full tw-h-full tw-object-cover"
       />
       <img
         v-else
@@ -59,7 +59,7 @@
 </template>
 <script setup lang="ts">
 const complexProps = defineProps<{
-  src: string
+  img: string
   alt?: string
   width?: number
   height?: number
@@ -74,11 +74,18 @@ const complexProps = defineProps<{
 .card {
   display: grid;
   grid-template-rows: 374px auto;
+  .img {
+    @apply tw-transition-transform transition-base;
+  }
   .button-link {
     @apply tw-opacity-0;
     @apply tw-transition-opacity transition-base;
   }
+
   @media (hover: hover) {
+    .img:hover {
+      transform: scale(1.1);
+    }
     &:hover .button-link {
       @apply tw-opacity-100;
     }
@@ -87,6 +94,9 @@ const complexProps = defineProps<{
   @media (hover: none) {
     &:active .button-link {
       @apply tw-opacity-100;
+    }
+    &:active .img {
+      transform: scale(1.1);
     }
   }
 }

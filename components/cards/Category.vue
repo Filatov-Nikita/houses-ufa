@@ -4,27 +4,30 @@
       <h4 class="title">{{ title }}</h4>
       <p class="text">{{ text }}</p>
     </div>
-    <div class="card__bg" :style="{ '--bg-card': 'url(' + src + ')' }"></div>
-    <BaseSquareIcon class="card__link">
-      <img
-        src="/assets/images/icons/arrow_line_right-green.svg"
-        width="32"
-        height="32"
-      />
-    </BaseSquareIcon>
+    <div class="card__bg" :style="{ '--bg-card': 'url(' + img + ')' }"></div>
+    <NuxtLink class="card__link" :to="to">
+      <BaseSquareIcon>
+        <img
+          src="/assets/images/icons/arrow_line_right-green.svg"
+          width="32"
+          height="32"
+        />
+      </BaseSquareIcon>
+    </NuxtLink>
   </div>
 </template>
 <script setup lang="ts">
 const categoryProps = defineProps<{
   title: string
   text: string
-  src: string
+  img: string
+  to: string
 }>()
 </script>
 <style lang="scss" scoped>
 .card {
   @apply tw-bg-primary tw-relative tw-overflow-hidden tw-p-10 tw-rounded-2xl;
-  width: 350px;
+  width: 100%;
   height: 650px;
   &__content {
     @apply tw-text-white tw-grid tw-gap-4 tw-relative tw-z-10;
