@@ -58,8 +58,8 @@
             >
               <span> Расположение </span>
               <svg
-                class="tw-w-6 tw-h-6 lg:tw-w-8 lg:tw-h-8 tw-transform tw-rotate-180 tw-transition-all tw-duration-100"
-                :class="{ 'tw-rotate-0': openLocation }"
+                class="tw-w-6 tw-h-6 lg:tw-w-8 lg:tw-h-8 tw-transition-all tw-duration-100 tw-select-none"
+                :class="[openLocation ? 'tw-rotate-0' : 'tw-rotate-180']"
                 width="32"
                 height="32"
                 viewBox="0 0 32 32"
