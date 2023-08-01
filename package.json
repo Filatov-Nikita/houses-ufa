@@ -10,8 +10,8 @@
   },
   "devDependencies": {
     "@nuxt/devtools": "latest",
-    "@nuxt/image": "^1.0.0-rc.1",
     "@types/node": "^18.16.19",
+    "@yandex/ymaps3-types": "^0.0.12",
     "autoprefixer": "^10.4.14",
     "nuxt": "^3.6.2",
     "postcss": "^8.4.25",
@@ -23,6 +23,7 @@
   },
   "dependencies": {
     "@pinia/nuxt": "^0.4.11",
+    "nuxt-swiper": "^1.2.0",
     "pinia": "^2.1.4",
     "sass": "^1.63.6",
     "sass-loader": "^13.3.2",

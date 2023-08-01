@@ -2,13 +2,13 @@
 module.exports = {
   prefix: 'tw-',
   content: [
-    "./store/**/*.ts",
-    "./components/**/*.{js,vue,ts}",
-    "./layouts/**/*.vue",
-    "./pages/**/*.vue",
-    "./plugins/**/*.{js,ts}",
-    "./nuxt.config.{js,ts}",
-    "./app.vue",
+    './store/**/*.ts',
+    './components/**/*.{js,vue,ts}',
+    './layouts/**/*.vue',
+    './pages/**/*.vue',
+    './plugins/**/*.{js,ts}',
+    './nuxt.config.{js,ts}',
+    './app.vue',
   ],
   theme: {
     extend: {
@@ -29,6 +29,13 @@ module.exports = {
       spacing: {
         5.5: '1.406rem',
       },
+      transitionProperty: {
+        height: 'height',
+        fill: 'fill',
+        top: 'top',
+        left: 'left',
+        width: 'width',
+      },
     },
     fontFamily: {
       freeset: 'freeset',
@@ -47,16 +54,16 @@ module.exports = {
 
       white: '#ffffff',
       error: '#F13F36',
-      'negative': '#F13F36',
+      negative: '#F13F36',
       warning: '#FEBF22',
       dark: '#2D2D2D',
       gray: '#F7F8F8',
       'gray-600': '#9F9F9F',
-      'dark': '#2D2D2D',
+      dark: '#2D2D2D',
       text00: '#2D2D2D',
       text01: '#4F4F4F',
       text02: '#9F9F9F',
-      
+
       border00: '#E6E6E6',
 
       base00: '#F7F8F8',
@@ -68,11 +75,76 @@ module.exports = {
       icon01: '#181818',
     },
     screens: {
-      'md': '768px',
-      'lg': '1024px',
-      'xl': '1440px',
+      md: '768px',
+      lg: '1024px',
+      xl: '1440px',
       '2xl': '1920px',
     },
+    letterSpacing: {
+      875: '0.00875rem',
+    },
+    keyframes: {
+      slideInLeft: {
+        '0%': { transform: 'translateX(-100%)' },
+        '100%': { transform: 'translateX(0%)' },
+      },
+      slideOutLeft: {
+        '0%': { transform: 'translateX(-0%)' },
+        '100%': { transform: 'translateX(-100%)' },
+      },
+      slideInRight: {
+        '0%': { transform: 'translateX(100%)' },
+        '100%': { transform: 'translateX(0%)' },
+      },
+      slideOutRight: {
+        '0%': { transform: 'translateX(0%)' },
+        '100%': { transform: 'translateX(100%)' },
+      },
+      fadeIn: {
+        '0%': { opacity: 0 },
+        '100%': { opacity: 1 },
+      },
+      fadeOut: {
+        '0%': { opacity: 1 },
+        '100%': { opacity: 0 },
+      },
+    },
+    animation: {
+      slideInLeft: 'slideInLeft .1s ease-in-out',
+      slideOutLeft: 'slideOutLeft .1s ease-in-out',
+      slideInRight: 'slideInRight .1s ease-in-out',
+      slideOutRight: 'slideOutRight .1s ease-in-out',
+
+      fadeIn: 'fadeIn 10s ease-in-out',
+      fadeOut: 'fadeOut 10s ease-in-out',
+    },
+    boxShadow: {
+      shadow00:
+        '0px 5px 16px 0px rgba(0, 0, 0, 0.07), 0px 1px 3px 1px rgba(0, 0, 0, 0.15)',
+      shadow01: '0px 5px 16px 0px rgba(0, 0, 0, 0.07)',
+    },
+    container: {
+      DEFAULT: '100%',
+      center: true,
+
+      padding: {
+        DEFAULT: '16px',
+        lg: '24px',
+        xl: '40px',
+      },
+    },
   },
-  plugins: [],
+  plugins: [
+    function ({ addComponents }) {
+      addComponents({
+        // ".container": {
+        //   maxWidth: "100%",
+        //   width: "100%",
+        //   padding: "0 15px",
+        //   marginRight: "auto",
+        //   marginLeft: "auto",
+        // },
+      })
+    },
+  ],
 }
