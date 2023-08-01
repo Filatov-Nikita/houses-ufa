@@ -6,7 +6,7 @@
 
 <script setup lang="ts">
   import type { Theme, Size } from './types/base-button/theme';
-  import { useConfigStore } from '@/store/config';
+  import { useConfigStore } from '@/stores/config';
 
   interface Props {
     theme?: string | Theme,
