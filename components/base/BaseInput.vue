@@ -15,7 +15,7 @@
 
 <script setup lang="ts">
   import { useField } from 'vee-validate';
-  import { useConfigStore } from '@/store/config';
+  import { useConfigStore } from '@/stores/config';
   import type { Theme } from './types/base-input/theme';
 
   interface Props {
