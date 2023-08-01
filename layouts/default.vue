@@ -1,7 +1,7 @@
 <template>
   <div>
     <HeaderMain />
-    <main class="tw-bg-white">
+    <main>
       <slot />
     </main>
     <FooterMain />

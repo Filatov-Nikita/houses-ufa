@@ -1,5 +1,5 @@
 <template>
-  <header class="header">
+  <header class="header tw-my-4">
     <div class="tw-container">
       <div class="header__wrapper">
         <div class="header__left">
