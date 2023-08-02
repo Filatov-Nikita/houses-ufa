@@ -1,82 +1,94 @@
 <template>
-  <button :class="rootClasses">
+  <component
+    :is="tag.name"
+    v-bind="tag.props"
+    :disabled="disabled"
+    class="base-button"
+    :class="[ `base-button--${theme}`, { 'base-button--disabled': disabled } ]"
+  >
     <slot />
-  </button>
+  </component>
 </template>
 
 <script setup lang="ts">
-  import type { Theme, Size } from './types/base-button/theme';
-  import { useConfigStore } from '@/stores/config';
+  import { RouteLocationRaw } from 'vue-router';
 
   interface Props {
-    theme?: string | Theme,
-    size?: string,
-    fullWidth?: boolean
+    theme?: 'green' | 'gray',
+    disabled?: boolean,
+    to?: RouteLocationRaw,
+    type?: string
   }
 
   const props = withDefaults(defineProps<Props>(), {
-    theme: 'primary',
-    size: 'default',
-    fullWidth: false,
+    theme: 'green',
+    disabled: false,
   });
 
-  const configStore = useConfigStore();
-
-  const defaultTheme: Theme = {
-    bgColor: 'tw-bg-primary',
-    hover: 'hover:tw-bg-primary-hover',
-    press: 'active:tw-bg-primary-press',
-    textColor: 'tw-text-white',
-    disabled: 'disabled:tw-opacity-50',
-    rounded: 'tw-rounded-lg',
-    sizes: {
-      default: {
-        textSize: 'tw-text-base',
-        lineHeight: 'tw-leading-none',
-        padding: 'tw-px-8 tw-py-4'
-      }
+  const isExternalLink = computed(() => {
+    if(typeof props.to === 'string') {
+      return /^https?:\/\//.test(props.to);
     }
-  };
 
-  const themes = computed<Record<string, Theme>>(() => {
-    return configStore.buttonThemes;
+    return false;
   });
 
-  const currentTheme = computed<Theme>(() => {
-    let theme = defaultTheme;
-    if(typeof props.theme === 'string') {
-      if(props.theme in themes.value) theme = themes.value[props.theme]
-    };
-    return theme;
-  });
-
-  const currentSize = computed<Size>(() => {
-    const sizes = currentTheme.value.sizes;
-    if(props.size in sizes) return sizes[props.size];
-    return defaultTheme.sizes.default;
-  });
-
-  const rootClasses = computed(() => {
-    const {
-      bgColor, hover, press, disabled, textColor, rounded,
-    } = currentTheme.value;
-
-    const { textSize, lineHeight, padding } = currentSize.value;
-
-    return [
-      bgColor,
-      hover,
-      press,
-      disabled,
-      textColor,
-      rounded,
-      padding,
-      lineHeight,
-      textSize,
-      { 'tw-w-full tw-block': props.fullWidth },
-    ];
+  const tag = computed(() => {
+    if(isExternalLink.value) {
+      return {
+        name: 'a',
+        props: { href: props.to }
+      }
+    } else if(props.to) {
+      return {
+        name: 'router-link',
+        props: {
+          to: props.to
+        }
+      }
+    } else {
+      return { name: 'button', props: { type: props.type ?? 'submit' } };
+    }
   });
 </script>
-<style scoped>
+<style scoped lang="scss">
+  .base-button {
+    display: inline-block;
+    padding: 17px 24px;
+    border-radius: 8px;
+    transition: background-color 200ms;
+    text-align: center;
 
+    &--disabled {
+      opacity: 0.5;
+    }
+
+    &--green {
+      @apply tw-bg-primary tw-text-white;
+
+      &:not([disabled]) {
+        &:hover {
+          @apply tw-bg-primary-hover;
+        }
+
+        &:active {
+          @apply tw-bg-primary-press;
+        }
+      }
+    }
+
+    &--gray {
+      @apply tw-bg-secondary tw-text-text00;
+
+      &:not([disabled]) {
+        &:hover {
+          @apply tw-bg-secondary-hover;
+        }
+
+        &:active {
+          @apply tw-bg-secondary-press;
+        }
+      }
+    }
+  }
 </style>
