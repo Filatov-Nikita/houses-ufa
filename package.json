@@ -23,6 +23,7 @@
   },
   "dependencies": {
     "@pinia/nuxt": "^0.4.11",
+    "animate.css": "^4.1.1",
     "nuxt-swiper": "^1.2.0",
     "pinia": "^2.1.4",
     "sass": "^1.63.6",
