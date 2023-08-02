@@ -1,4 +1,5 @@
 @import './fonts.css';
+@import 'animate.css';
 
 @tailwind base;
 @tailwind components;
@@ -11,10 +12,14 @@
 
   body {
     @apply tw-text-body_m tw-text-text00;
-    background: theme('colors.secondary');
+    background-color: theme('colors.secondary');
     font-family: 'freeset';
     font-weight: 400;
     font-size: 1rem;
+  }
+
+  input:focus {
+    outline: none;
   }
 }
 
@@ -154,5 +159,9 @@
   }
   .section__title {
     @apply tw-text-h5 lg:tw-text-h4;
+  }
+
+  .anim-300ms {
+    --animate-duration: 300ms;
   }
 }
