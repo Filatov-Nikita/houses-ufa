@@ -39,6 +39,7 @@ module.exports = {
     },
     fontFamily: {
       freeset: 'freeset',
+      freesetdemi: "freeset-demi"
     },
     colors: {
       'primary': '#4FBA78',
@@ -80,6 +81,7 @@ module.exports = {
     },
     letterSpacing: {
       875: '0.00875rem',
+      3: "0.03rem",
     },
     keyframes: {
       slideInLeft: {
