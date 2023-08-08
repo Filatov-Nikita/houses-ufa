@@ -61,6 +61,7 @@ module.exports = {
       text00: '#2D2D2D',
       text01: '#4F4F4F',
       text02: '#9F9F9F',
+      text03: '#C0C0C0',
 
       border00: '#E6E6E6',
 
