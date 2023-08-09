@@ -28,6 +28,7 @@
     "pinia": "^2.1.4",
     "sass": "^1.63.6",
     "sass-loader": "^13.3.2",
-    "vee-validate": "^4.10.6"
+    "vee-validate": "^4.10.6",
+    "vite-plugin-svg-icons": "^2.0.1"
   }
 }
