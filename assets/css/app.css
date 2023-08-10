@@ -164,4 +164,12 @@
   .anim-300ms {
     --animate-duration: 300ms;
   }
+
+  .anim-200ms {
+    --animate-duration: 200ms;
+  }
+
+  .anim-100ms {
+    --animate-duration: 100ms;
+  }
 }
