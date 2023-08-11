@@ -2,6 +2,7 @@
   <Teleport to="body">
     <div v-if="!leaved" class="base-modal">
       <transition
+        appear
         enter-active-class="animate__animated anim-300ms animate__zoomIn"
         leave-active-class="animate__animated anim-300ms animate__zoomOut"
         @after-leave="leaved = true"
@@ -10,7 +11,7 @@
           <slot v-bind="{ hide }" />
         </div>
       </transition>
-      <div v-show="modelValue" class="overlay" @click="hide"></div>
+      <div v-if="!leaved" class="overlay" @click="hide"></div>
     </div>
   </Teleport>
 </template>
@@ -26,7 +27,7 @@
     modelValue: true,
   });
 
-  const leaved = ref(false);
+  const leaved = ref(!props.modelValue);
 
   onMounted(() => {
     if(props.modelValue) {
@@ -65,6 +66,10 @@
   watch(() => props.modelValue,  (newVal) => {
     if(newVal) scrollOff();
     else scrollOn();
+  });
+
+  watch(() => props.modelValue,  (newVal) => {
+    if(newVal) leaved.value = false;
   });
 </script>
 
