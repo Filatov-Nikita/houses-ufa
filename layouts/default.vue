@@ -1,10 +1,10 @@
 <template>
   <div>
     <HeaderMain />
-    <main>
+    <main class="tw-flex tw-flex-col tw-gap-12 lg:tw-gap-20 xl:tw-gap-24">
       <slot />
     </main>
-    <FooterMain />
+    <FooterMain class="tw-mt-12 lg:tw-mt-20 xl:tw-mt-24" />
   </div>
 </template>
 

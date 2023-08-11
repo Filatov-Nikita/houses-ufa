@@ -179,7 +179,10 @@
       <div class="section__top">
         <h2 class="section__title">География наших комплексов</h2>
       </div>
-      <MapComplex />
+      <ClientOnly>
+
+        <MapComplex />
+      </ClientOnly>
     </div>
   </section>
   <section class="section">
@@ -359,11 +362,14 @@
 </template>
 
 <script setup lang="ts">
+
+
 useHead({
   script: [
     {
-      src: 'https://api-maps.yandex.ru/2.1/?apikey=ce866f84-33d0-4ab2-861e-3009442a93d1&lang=ru_RU&coordorder=longlat',
+      src: 'https://api-maps.yandex.ru/2.1/?apikey=ce866f84-33d0-4ab2-861e-3009442a93d1&coordorder=longlat&lang=ru_RU',
       type: 'text/javascript',
+      
     },
   ],
 })
