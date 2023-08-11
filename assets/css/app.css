@@ -160,6 +160,10 @@
     @apply tw-text-h5 lg:tw-text-h4;
   }
 
+  .anim-500ms {
+    --animate-duration: 500ms;
+  }
+
   .anim-300ms {
     --animate-duration: 300ms;
   }
