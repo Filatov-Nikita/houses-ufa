@@ -4,7 +4,7 @@
       <div>
         <slot name="title"></slot>
       </div>
-      <div class="icon">
+      <div class="icon" :class="iconsClass">
         <slot name="icon">
           <svg
             width="24"
@@ -32,6 +32,7 @@
 <script setup lang="ts">
 const accordionProps = defineProps<{
   headerClass?: string
+  iconsClass?: string
 }>()
 const open = ref(false)
 </script>
@@ -41,8 +42,10 @@ const open = ref(false)
   &__head {
     @apply tw-flex tw-items-center tw-justify-between;
     .icon {
-      @apply tw-transition-all tw-delay-100;
-      #{$this}.active & {
+      & > svg {
+        @apply tw-transition-all tw-delay-100;
+      }
+      #{$this}.active & > svg {
         transform: rotate(180deg);
       }
     }

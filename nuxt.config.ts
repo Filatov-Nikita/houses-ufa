@@ -5,11 +5,11 @@ import path from 'path';
 export default defineNuxtConfig({
   devtools: { enabled: true },
   modules: ['@pinia/nuxt', 'nuxt-swiper'],
-  components: [
-    '~/components/base',
-    '~/components/base/BaseSelect/displays',
-    '~/components/base/BaseSelect/dropdowns',
-  ],
+  // components: [
+  //   '~/components/base',
+  //   '~/components/base/BaseSelect/displays',
+  //   '~/components/base/BaseSelect/dropdowns',
+  // ],
   pinia: {
     autoImports: [
       // automatically imports `defineStore`

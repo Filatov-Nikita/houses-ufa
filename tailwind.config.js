@@ -39,15 +39,16 @@ module.exports = {
     },
     fontFamily: {
       freeset: 'freeset',
+      freesetdemi: 'freeset-demi',
     },
     colors: {
-      'primary': '#4FBA78',
+      primary: '#4FBA78',
       'primary-hover': '#6AD091',
       'primary-press': '#5BAF7B',
-      'primary01': '#DFFDE9',
+      primary01: '#DFFDE9',
       'primary01-hover': '#EDFFF3',
       'primary01-press': '#D7F5E1',
-      'secondary': '#F0F0F0',
+      secondary: '#F0F0F0',
       'secondary-hover': '#E5E5E5',
       'secondary-press': '#EFEFEF',
       white: '#ffffff',
@@ -81,6 +82,7 @@ module.exports = {
     },
     letterSpacing: {
       875: '0.00875rem',
+      3: '0.03rem',
     },
     keyframes: {
       slideInLeft: {

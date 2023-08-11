@@ -1,4 +1,5 @@
 <template>
+  
   <section class="tw-mb-4">
     <div class="tw-container">
       <Swiper
@@ -86,7 +87,7 @@
           <h2 class="section__title">Спецпредложения</h2>
         </div>
         <div>
-          <div class="tw-flex tw-justify-between tw-mb-6 lg:tw-mb-8">
+          <!-- <div class="tw-flex tw-justify-between tw-mb-6 lg:tw-mb-8">
             <div>
               <h5 class="tw-text-body_s2 tw-text-text02 tw-mb-2">
                 Комнатность
@@ -103,7 +104,7 @@
               <BaseButton theme="secondary">Коттеджи</BaseButton>
               <BaseButton theme="secondary">Таунхаусы</BaseButton>
             </div>
-          </div>
+          </div> -->
           <Swiper
             :modules="[SwiperPagination, SwiperNavigation]"
             :slides-per-view="1"
@@ -178,7 +179,10 @@
       <div class="section__top">
         <h2 class="section__title">География наших комплексов</h2>
       </div>
-      <MapComplex />
+      <ClientOnly>
+
+        <MapComplex />
+      </ClientOnly>
     </div>
   </section>
   <section class="section">
@@ -200,6 +204,126 @@
       </div>
     </div>
   </section>
+
+  <section class="section">
+    <div class="tw-container">
+      <div class="section__top tw-flex tw-justify-between tw-items-center">
+        <h2 class="section__title">Варианты покупки объектов недвижимости</h2>
+        <div class=" tw-hidden lg:tw-block ">
+
+          <NuxtLink to="/" class="tw-flex tw-gap-2">
+            <span class="tw-text-primary"> Все ипотечные предложения </span>
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M20.7806 12.531L14.0306 19.281C13.8899 19.4218 13.699 19.5008 13.5 19.5008C13.301 19.5008 13.1101 19.4218 12.9694 19.281C12.8286 19.1403 12.7496 18.9494 12.7496 18.7504C12.7496 18.5514 12.8286 18.3605 12.9694 18.2198L18.4397 12.7504H3.75C3.55109 12.7504 3.36032 12.6714 3.21967 12.5307C3.07902 12.3901 3 12.1993 3 12.0004C3 11.8015 3.07902 11.6107 3.21967 11.4701C3.36032 11.3294 3.55109 11.2504 3.75 11.2504H18.4397L12.9694 5.78104C12.8286 5.64031 12.7496 5.44944 12.7496 5.25042C12.7496 5.05139 12.8286 4.86052 12.9694 4.71979C13.1101 4.57906 13.301 4.5 13.5 4.5C13.699 4.5 13.8899 4.57906 14.0306 4.71979L20.7806 11.4698C20.8504 11.5394 20.9057 11.6222 20.9434 11.7132C20.9812 11.8043 21.0006 11.9019 21.0006 12.0004C21.0006 12.099 20.9812 12.1966 20.9434 12.2876C20.9057 12.3787 20.8504 12.4614 20.7806 12.531Z"
+                fill="#4FBA78"
+              />
+            </svg>
+          </NuxtLink>
+        </div>
+      </div>
+      <div class=" tw-grid lg:tw-grid-cols-2 tw-gap-5">
+        <CardsIpoteka title="Льготная" procent="от 3%" :icons="['/assets/images/icons/ipoteka/smile.svg','/assets/images/icons/ipoteka/smile.svg','/assets/images/icons/ipoteka/smile.svg']" >
+          <img src="/assets/images/img/ipoteka/family.png" alt="" class=" tw-absolute tw-top-[50px] -tw-right-[65px] tw-w-[521px] tw-h-[521px] tw-object-cover" />
+        </CardsIpoteka>
+        <CardsIpoteka title="Льготная" procent="от 3%" :icons="['/assets/images/icons/ipoteka/smile.svg','/assets/images/icons/ipoteka/smile.svg','/assets/images/icons/ipoteka/smile.svg']">
+          <img src="/assets/images/img/ipoteka/family.png" alt="" class=" tw-absolute tw-top-[50px] -tw-right-[65px] tw-w-[521px] tw-h-[521px] tw-object-cover" />
+        </CardsIpoteka>
+      </div>
+      <div class=" lg:tw-hidden tw-mt-9">
+
+        <NuxtLink to="/" class=" tw-flex tw-gap-2">
+            <span class="tw-text-primary"> Все ипотечные предложения </span>
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M20.7806 12.531L14.0306 19.281C13.8899 19.4218 13.699 19.5008 13.5 19.5008C13.301 19.5008 13.1101 19.4218 12.9694 19.281C12.8286 19.1403 12.7496 18.9494 12.7496 18.7504C12.7496 18.5514 12.8286 18.3605 12.9694 18.2198L18.4397 12.7504H3.75C3.55109 12.7504 3.36032 12.6714 3.21967 12.5307C3.07902 12.3901 3 12.1993 3 12.0004C3 11.8015 3.07902 11.6107 3.21967 11.4701C3.36032 11.3294 3.55109 11.2504 3.75 11.2504H18.4397L12.9694 5.78104C12.8286 5.64031 12.7496 5.44944 12.7496 5.25042C12.7496 5.05139 12.8286 4.86052 12.9694 4.71979C13.1101 4.57906 13.301 4.5 13.5 4.5C13.699 4.5 13.8899 4.57906 14.0306 4.71979L20.7806 11.4698C20.8504 11.5394 20.9057 11.6222 20.9434 11.7132C20.9812 11.8043 21.0006 11.9019 21.0006 12.0004C21.0006 12.099 20.9812 12.1966 20.9434 12.2876C20.9057 12.3787 20.8504 12.4614 20.7806 12.531Z"
+                fill="#4FBA78"
+              />
+            </svg>
+          </NuxtLink>
+      </div>
+    </div>
+  </section>
+
+  <section class=" section">
+    <div class=" tw-container">
+      <div class="section__top">
+        <h2 class="section__title">Познакомимся поближе</h2>
+      </div>
+      <div class=" tw-grid tw-gap-4 lg:tw-grid-cols-2 xl:tw-grid-cols-4 tw-mb-4 lg:tw-mb-5">
+        <div class=" tw-rounded-2xl tw-bg-white tw-p-6 tw-grid tw-gap-12">
+          <div>
+            <h3 class=" tw-text-primary tw-text-h2 -tw-tracking-3 tw-font-freesetdemi">
+              №1
+            </h3>
+            <h4 class=" tw-text-primary tw-text-h5">
+              девелопер
+            </h4>
+          </div>
+          <p class=" tw-text-text02">в загородном строительстве</p>
+        </div>
+
+        <div class=" tw-rounded-2xl tw-bg-white tw-p-6 tw-grid tw-gap-12">
+          <div>
+            <h3 class=" tw-text-primary tw-text-h2 -tw-tracking-3 tw-font-freesetdemi">
+              14
+            </h3>
+            <h4 class=" tw-text-primary tw-text-h5">
+              комплексов
+            </h4>
+          </div>
+          <p class=" tw-text-text02">построено и еще строится</p>
+        </div>
+
+        <div class=" tw-rounded-2xl tw-bg-white tw-p-6 tw-grid tw-gap-12">
+          <div>
+            <h3 class=" tw-text-primary tw-text-h2 -tw-tracking-3 tw-font-freesetdemi">
+              2001
+            </h3>
+            <h4 class=" tw-text-primary tw-text-h5">
+              год —
+            </h4>
+          </div>
+          <p class=" tw-text-text02">год основания компании</p>
+        </div>
+
+        <div class=" tw-rounded-2xl tw-bg-white tw-p-6 tw-grid tw-gap-12">
+          <div>
+            <h3 class=" tw-text-primary tw-text-h2 -tw-tracking-3 tw-font-freesetdemi">
+              1.5
+            </h3>
+            <h4 class=" tw-text-primary tw-text-h5">
+              млн м2
+            </h4>
+          </div>
+          <p class=" tw-text-text02">введено в эксплуатацию</p>
+        </div>
+      </div>
+      <div class=" tw-bg-secondary tw-p-6 tw-rounded-2xl tw-h-[227px] lg:tw-h-auto tw-grid tw-content-between lg:tw-flex lg:tw-justify-between">
+        <div class=" tw-flex tw-gap-6">
+          <button class=" tw-rounded-lg tw-w-12 tw-h-12 tw-bg-primary tw-grid tw-place-content-center">
+            <img src="/assets/images/icons/play.svg" alt="play">
+          </button>
+          <p>Смотреть ролик <br> о компании</p>
+        </div>
+        <img src="/assets/images/icons/logo-green.svg" alt="logo" class=" tw-w-[157px]">
+      </div>
+
+    </div>
+  </section>
+
   <section class="section">
     <div class="tw-container">
       <div class="section__top tw-flex tw-justify-between">
@@ -225,14 +349,27 @@
       </div>
     </div>
   </section>
+  <section class="section">
+    <div class=" tw-container">
+      <div class=" tw-rounded-3xl tw-py-6 tw-px-4 lg:tw-px-6 xl:tw-p-10 tw-bg-white tw-grid tw-gap-6">
+        <p>Наша компания являемся ведущими экспертами в сфере недвижимости и предлагаем широкий спектр услуг, связанных с покупкой, продажей и арендой недвижимости. Независимо от того, ищете ли вы идеальный дом, коммерческое помещение или инвестиционную возможность, наша команда профессионалов готова помочь вам реализовать ваши цели.</p>
+        <p>
+          Мы гордимся нашей обширной базой данных, которая включает в себя самые актуальные и привлекательные предложения на рынке недвижимости. Наша команда постоянно обновляет информацию, чтобы вы всегда были в курсе последних предложений. Мы также предоставляем детальные описания и фотографии каждого объекта, чтобы помочь вам принять информированное решение.
+        </p>
+      </div>
+    </div>
+  </section>
 </template>
 
 <script setup lang="ts">
+
+
 useHead({
   script: [
     {
-      src: 'https://api-maps.yandex.ru/2.1/?apikey=ce866f84-33d0-4ab2-861e-3009442a93d1&lang=ru_RU&coordorder=longlat',
+      src: 'https://api-maps.yandex.ru/2.1/?apikey=ce866f84-33d0-4ab2-861e-3009442a93d1&coordorder=longlat&lang=ru_RU',
       type: 'text/javascript',
+      
     },
   ],
 })

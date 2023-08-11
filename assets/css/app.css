@@ -12,10 +12,9 @@
 
   body {
     @apply tw-text-body_m tw-text-text00;
-    background-color: theme('colors.secondary');
+    background: theme('colors.base00');
     font-family: 'freeset';
     font-weight: 400;
-    font-size: 1rem;
   }
 
   input:focus {
