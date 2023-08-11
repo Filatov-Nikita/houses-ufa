@@ -71,3 +71,5 @@ https://laravel.ru/posts/351
 
 git cherry-pick это-динный-хэш-скопированный-из-github
 После я выложил ветку на GitHub с помощью git push origin master. Готово! И наконец закрыл pull request вручную, указав ссылку на коммит.
+
+класс [section__first] для первой секции

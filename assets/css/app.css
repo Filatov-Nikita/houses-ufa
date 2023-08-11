@@ -15,7 +15,6 @@
     background: theme('colors.base00');
     font-family: 'freeset';
     font-weight: 400;
-    font-size: 1rem;
   }
 
   input:focus {
