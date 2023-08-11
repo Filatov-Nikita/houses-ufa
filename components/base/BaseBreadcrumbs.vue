@@ -1,6 +1,10 @@
 <template>
   <div class="base-breadcrumbs">
-    {{ pathStr }}
+    <template v-for="(item, i) in items">
+      <span v-if="!item.to">{{ item.label }}</span>
+      <NuxtLink v-else :to="item.to">{{ item.label }}</NuxtLink>
+      <span v-if="i !== items.length - 1"> / </span>
+    </template>
   </div>
 </template>
 
@@ -10,7 +14,6 @@
   const breadStore = useBreadcrumbsStore();
 
   const items = computed(() => breadStore.items);
-  const pathStr = computed(() => items.value.map(item => item.label).join(' / '));
 </script>
 
 <style scoped lang="scss">

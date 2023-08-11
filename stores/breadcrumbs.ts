@@ -1,5 +1,8 @@
+import { RouteLocationRaw } from 'vue-router';
+
 interface Item {
-  label: string
+  label: string,
+  to?: RouteLocationRaw
 }
 
 interface State {
