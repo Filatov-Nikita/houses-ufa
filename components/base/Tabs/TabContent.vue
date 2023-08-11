@@ -26,8 +26,6 @@ export default defineComponent({
     const newSlots = () => {
       if(slotDefault === undefined) return undefined;
       const elements = slotDefault();
-      console.log(elements);
-
       const filterdElements = elements
         .filter((el) => el.props?.name === this.modelValue);
 
