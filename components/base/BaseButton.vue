@@ -4,7 +4,7 @@
     v-bind="tag.props"
     :disabled="disabled"
     class="base-button"
-    :class="[ `base-button--${theme}`, { 'base-button--disabled': disabled } ]"
+    :class="[ `base-button--${theme}`, paddingClasses, { 'base-button--disabled': disabled } ]"
   >
     <slot />
   </component>
@@ -14,15 +14,17 @@
   import { RouteLocationRaw } from 'vue-router';
 
   interface Props {
-    theme?: 'green' | 'gray',
+    theme?: 'green' | 'gray' | 'white',
     disabled?: boolean,
     to?: RouteLocationRaw,
-    type?: string
+    type?: string,
+    paddingClasses?: string
   }
 
   const props = withDefaults(defineProps<Props>(), {
     theme: 'green',
     disabled: false,
+    paddingClasses: 'tw-px-6 tw-py-4'
   });
 
   const isExternalLink = computed(() => {
@@ -54,7 +56,6 @@
 <style scoped lang="scss">
   .base-button {
     display: inline-block;
-    padding: 17px 24px;
     border-radius: 8px;
     transition: background-color 200ms;
     text-align: center;
@@ -89,6 +90,10 @@
           @apply tw-bg-secondary-press;
         }
       }
+    }
+
+    &--white {
+      @apply tw-bg-white tw-text-text00;
     }
   }
 </style>
