@@ -25,6 +25,7 @@ export default defineNuxtConfig({
     '~/directives/click-outside.ts',
     '~/plugins/pretty-amount.ts',
     '~/plugins/icons-sprite.ts',
+    '~/plugins/loaders.ts',
   ],
   css: ['~/assets/css/app.css'],
   postcss: {
