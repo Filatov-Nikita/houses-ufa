@@ -3,7 +3,7 @@
     <div class="tw-container">
       <div class="header__wrapper">
         <div class="header__left">
-          <div class="burger tw-hidden lg:tw-block"></div>
+          <div class="burger tw-hidden lg:tw-block" @click="showedNav = !showedNav"></div>
           <div class="tw-flex tw-items-center tw-gap-8">
             <a href="#" class="logo">
               <img
@@ -32,7 +32,7 @@
           </nav>
         </div>
         <div class="header__right">
-          <div class="burger lg:tw-hidden"></div>
+          <div class="burger lg:tw-hidden" @click="showedNav = !showedNav"></div>
           <div class="tw-hidden lg:tw-flex lg:tw-gap-8 tw-items-center">
             <div class="tw-grid tw-gap-1">
               <div class="tw-text-body_m">+7 (347) 225-00-73</div>
@@ -82,14 +82,18 @@
       </div>
     </div>
   </header>
+  <NavMenu :showed="showedNav" />
 </template>
 
 <script setup>
+import NavMenu from '@/components/layout/NavMenu.vue';
 import { useAppStore } from '~/stores/app'
 
 const appStore = useAppStore()
 
-const items = computed(() => appStore.headerMenu)
+const items = computed(() => appStore.headerMenu);
+
+const showedNav = ref(false);
 </script>
 <style lang="scss" scoped>
 .header {
