@@ -38,6 +38,7 @@
 
 <style scoped lang="scss">
   .tabs-group-item {
+    white-space: nowrap;
     user-select: none;
     display: inline-block;
     border-radius: 8px;
