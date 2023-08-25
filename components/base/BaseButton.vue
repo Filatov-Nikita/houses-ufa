@@ -14,7 +14,7 @@
   import { RouteLocationRaw } from 'vue-router';
 
   interface Props {
-    theme?: 'green' | 'gray' | 'white',
+    theme?: 'green' | 'gray' | 'white' | 'transparent',
     disabled?: boolean,
     to?: RouteLocationRaw,
     type?: string,
@@ -94,6 +94,10 @@
 
     &--white {
       @apply tw-bg-white tw-text-text00;
+    }
+    &--transparent {
+      @apply tw-text-text00;
+      background: transparent;
     }
   }
 </style>
