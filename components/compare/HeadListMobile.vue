@@ -290,7 +290,7 @@ watchEffect(() => {
     }
   }
   &__fixed {
-    @apply tw-fixed tw-top-4 tw-left-4  tw-right-4;
+    @apply tw-fixed tw-top-4 tw-left-4  tw-right-4 tw-z-10;
     @apply tw-rounded-lg tw-p-4 tw-bg-white tw-shadow-shadow00;
     @apply tw-grid tw-grid-cols-2 tw-gap-4;
   }

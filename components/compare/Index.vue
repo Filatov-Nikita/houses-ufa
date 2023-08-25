@@ -1,6 +1,8 @@
 <template>
-  <div>
-    <div class="compare lg:tw-mx-[88px]">
+  <div
+    class="tw-bg-white tw-rounded-2xl tw-pt-5 tw-px-4 tw-pb-4 xl:tw-pt-7 xl:tw-pb-6"
+  >
+    <div class="compare lg:tw-mx-[80px]">
       <div
         class="tw-flex tw-justify-center lg:tw-justify-start tw-items-center tw-gap-4 tw-mb-4 lg:tw-mb-6"
       >
@@ -128,7 +130,7 @@
         <div class="requests tw-mt-5">
           <BaseButton
             v-for="item in generalValuesKeys.id"
-            theme="secondary"
+            theme="gray"
             class="tw-text-body_s2 -tw-tracking-875 lg:tw-text-body_m"
             >Оставить заявку</BaseButton
           >
@@ -422,6 +424,9 @@ onUnmounted(() => {
     @apply tw-inline-block;
 
     @screen lg {
+      width: calc(33% - 1.25rem);
+    }
+    @screen xl {
       width: calc(25% - 1.25rem);
     }
   }
