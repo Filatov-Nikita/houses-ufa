@@ -64,6 +64,19 @@
       </div>
     </div>
   </section>
+  <section>
+    <div class="tw-container">
+      <div class="section__top">
+        <h2 class="section__title">Ипотека</h2>
+      </div>
+      <CardsIpotekaForm />
+    </div>
+  </section>
+  <section>
+    <div class="tw-container">
+      <FormCard1 />
+    </div>
+  </section>
 </template>
 <script setup lang="ts">
 const ipotekaList = [

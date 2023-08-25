@@ -45,6 +45,7 @@
             :name="item.name"
             :perсent="item.percent"
             :monthly-payment="item.monthlyPayment"
+            :program="item.program"
           />
         </NuxtLink>
       </div>
@@ -95,29 +96,33 @@ const listBank = [
     to: '/',
     logo: '/assets/images/icons/bank/sber.svg',
     name: 'ПАО Сбербанк',
-    percent: '5.8%',
-    monthlyPayment: '15 659 ',
+    percent: '5.8',
+    monthlyPayment: '15659',
+    program: 'Социальная',
   },
   {
     to: '/',
     logo: '/assets/images/icons/bank/vtb.svg',
     name: 'Банк ВТБ (ПАО)',
-    percent: '5.8%',
-    monthlyPayment: '15 659 ',
+    percent: '5.8',
+    monthlyPayment: '15659',
+    program: 'Социальная',
   },
   {
     to: '/',
     logo: '/assets/images/icons/bank/uralsib.svg',
     name: 'Ураслиб',
-    percent: '5.8%',
-    monthlyPayment: '15 659 ',
+    percent: '5.8',
+    monthlyPayment: '15659',
+    program: 'Социальная',
   },
   {
     to: '/',
     logo: '/assets/images/icons/bank/alfa.svg',
     name: 'АО «Альфа-Банк»',
-    percent: '5.8%',
-    monthlyPayment: '15 659 ',
+    percent: '5.8',
+    monthlyPayment: '15659',
+    program: 'Социальная',
   },
 ]
 </script>
