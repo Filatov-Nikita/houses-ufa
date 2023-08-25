@@ -127,7 +127,7 @@ module.exports = {
     container: {
       DEFAULT: '100%',
       center: true,
-
+      
       padding: {
         DEFAULT: '16px',
         lg: '24px',
@@ -138,13 +138,13 @@ module.exports = {
   plugins: [
     function ({ addComponents }) {
       addComponents({
-        // ".container": {
-        //   maxWidth: "100%",
-        //   width: "100%",
+        ".container": {
+          maxWidth: "100%",
+          width: "100%",
         //   padding: "0 15px",
         //   marginRight: "auto",
         //   marginLeft: "auto",
-        // },
+        },
       })
     },
   ],

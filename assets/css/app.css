@@ -4,7 +4,14 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
+:root {
+  --swiper-pagination-color: theme(colors.primary);
+  --swiper-pagination-bullet-inactive-color: theme(colors.white);
+  --swiper-pagination-bullet-inactive-opacity: 0.9;
+}
+.swiper-pagination-bullet-active-next-next {
+  opacity: 0.6 !important;
+}
 @layer base {
   html {
     font-size: 100%;
@@ -56,7 +63,7 @@
   }
 
   .plan {
-    @apply tw-relative;
+    @apply tw-relative tw-rounded-2xl tw-overflow-hidden;
   }
   .plan__wrapper {
     @apply tw-h-screen lg:tw-h-full tw-relative tw-w-full tw-overflow-auto;
@@ -118,6 +125,8 @@
   .accordion__body.active {
     grid-template-rows: 1fr;
   }
+
+  /*
   .swiper-pagination {
     @apply tw-flex !tw-w-fit tw-items-center tw-gap-1;
   }
@@ -136,6 +145,28 @@
   .swiper-pagination .dot-bullet.dot-bullet-active-prev,
   .swiper-pagination .dot-bullet.dot-bullet-active-next {
     @apply tw-rounded-full tw-w-1.5 tw-h-1.5 tw-bg-border00;
+  }*/
+
+  .swiper-paginate {
+    display: flex;
+    justify-content: center;
+    gap: 6px;
+  }
+  .swiper-paginate .line {
+    @apply tw-bg-border00;
+    display: inline-block;
+    border-radius: 1px;
+    max-width: 16px;
+    height: 4px;
+    width: 100%;
+  }
+  .swiper-paginate .line-active {
+    @apply tw-bg-primary;
+    display: inline-block;
+    border-radius: 1px;
+    max-width: 16px;
+    height: 4px;
+    width: 100%;
   }
   .swiper-next,
   .swiper-prev {
