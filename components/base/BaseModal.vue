@@ -69,7 +69,6 @@ const emit = defineEmits<{
 }>()
 
 function hide() {
-  console.log('hi')
   emit('update:modelValue', false)
 }
 
