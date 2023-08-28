@@ -35,7 +35,11 @@
     </button>
   </div>
 
-  <div class="products-slider__fixed" v-if="isVisibleCompareAbsolute">
+  <div
+    class="products-slider__fixed"
+    ref="visibleEL"
+    v-show="isVisibleCompareAbsolute"
+  >
     <div class="tw-container">
       <div
         class="tw-relative mx-[88px] tw-rounded-2xl tw-py-4 tw-px-[68px] tw-bg-white tw-shadow-shadow00"
@@ -110,10 +114,13 @@ import {
 } from './models'
 const headListProps = defineProps<{
   values: Array<apartmentGeneralDescriptionT | cottageGeneralDescriptionT>
+  parentEl: HTMLElement
 }>()
 const headListEmits = defineEmits(['updateGeneralValue'])
 const { values } = toRefs(headListProps)
-const { compare, isVisibleCompareAbsolute } = useVisibleCompareCard()
+const { compare, isVisibleCompareAbsolute, visibleEL } = useVisibleCompareCard(
+  headListProps.parentEl
+)
 const headValues = computed(() => {
   return values.value.map(
     (item): decriptionHeadApartment & { payment_month: number } => {

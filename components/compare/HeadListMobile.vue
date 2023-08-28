@@ -83,7 +83,11 @@
       </div>
     </div>
   </div>
-  <div class="products-slider__fixed" v-if="isVisibleCompareAbsolute">
+  <div
+    class="products-slider__fixed"
+    ref="visibleEL"
+    v-show="isVisibleCompareAbsolute"
+  >
     <div v-if="currentFirstItem" class="tw-overflow-x-hidden">
       <div>{{ currentFirstItem?.price }} ₽</div>
       <div>
@@ -158,11 +162,13 @@
 import { decriptionHeadApartment } from './models'
 const headListMobProps = defineProps<{
   values: decriptionHeadApartment[]
+  parentEl: HTMLElement
 }>()
 const headListMobEmits = defineEmits(['updateGeneralValue'])
 const { values } = toRefs(headListMobProps)
-
-const { compare, isVisibleCompareAbsolute } = useVisibleCompareCard()
+const { compare, isVisibleCompareAbsolute, visibleEL } = useVisibleCompareCard(
+  headListMobProps.parentEl
+)
 
 const keyFirst = computed(() => {
   let idx
@@ -262,6 +268,8 @@ const nextLast = () => {
 }
 
 onMounted(() => {
+  console.log(visibleEL.value)
+
   if (values.value.length > 0) {
     currentFirstItem.value = values.value[0]
     currentLastItem.value = values.value.find(

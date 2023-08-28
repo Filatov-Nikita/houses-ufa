@@ -112,7 +112,7 @@ const entrance = ref({ label: '2', value: '2' })
 const letter = ref({ label: '1', value: '1' })
 const program = ref({ label: 'Все', value: '1' })
 const selectBankList = ref([])
-const modalBankList = ref(true)
+const modalBankList = ref(false)
 const listBank = [
   {
     to: '/',

@@ -1,6 +1,7 @@
 <template>
   <div
     class="tw-bg-white tw-rounded-2xl tw-pt-5 tw-px-4 tw-pb-4 xl:tw-pt-7 xl:tw-pb-6"
+    ref="compareParent"
   >
     <div class="compare lg:tw-mx-[80px]">
       <div
@@ -14,15 +15,17 @@
           >Убрать одинаковые параметры</span
         >
       </div>
-      <div class="compare__head lg:tw-mb-6">
+      <div class="compare__head lg:tw-mb-6" v-if="compareParent">
         <CompareHeadListMobile
           v-if="widthWindow < 1024"
           :values="data"
+          :parent-el="compareParent"
           @update-general-value="getGeneralValue"
         />
         <CompareHeadList
           v-else
           :values="data"
+          :parent-el="compareParent"
           @update-general-value="getGeneralValue"
         />
       </div>
@@ -145,6 +148,7 @@ import {
   apartmentGeneralDescriptionT,
   cottageGeneralDescriptionT,
 } from './models'
+const compareParent = ref<HTMLElement>()
 const openLocation = ref(false)
 const isDuplicateOpt = ref(false)
 const data: Array<apartmentGeneralDescriptionT | cottageGeneralDescriptionT> = [
