@@ -283,7 +283,15 @@
         </NuxtLink>
       </div>
       <div class="tw-grid tw-gap-4 lg:tw-grid-cols-2 xl:tw-grid-cols-3">
-        <CardsItemNews v-for="n in 4" />
+        <CardsItemNews
+          v-for="n in 4"
+          v-bind="{
+            title: 'Test',
+            date: '12.05.23',
+            to: '/',
+            is_favorite: true,
+          }"
+        />
       </div>
     </div>
   </section>
