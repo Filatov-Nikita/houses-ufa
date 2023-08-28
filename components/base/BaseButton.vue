@@ -24,7 +24,8 @@
   const props = withDefaults(defineProps<Props>(), {
     theme: 'green',
     disabled: false,
-    paddingClasses: 'tw-px-6 tw-py-4'
+    paddingClasses: 'tw-px-6 tw-py-4',
+    type:'button'
   });
 
   const isExternalLink = computed(() => {

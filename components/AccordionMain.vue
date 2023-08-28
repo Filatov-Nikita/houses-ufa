@@ -42,6 +42,7 @@ const open = ref(false)
   &__head {
     @apply tw-flex tw-items-center tw-justify-between;
     .icon {
+      @apply tw-shrink-0;
       & > svg {
         @apply tw-transition-all tw-delay-100;
       }
