@@ -142,7 +142,7 @@ const isFixed = ref(true)
 const options = {
   root: null,
   rootMargin: '0px',
-  threshold: 1.0,
+  threshold: [0, 1],
 }
 
 const openPopupSections = ref(false)
@@ -203,15 +203,16 @@ const tabs = [
     title: 'Владельцам',
   },
 ]
-
 onMounted(() => {
   tab.value = tabs[0].name
   if (scrollArea.value) {
-    var observer = new IntersectionObserver((entries, observer) => {
-      if (entries[0].isIntersecting) {
-        isFixed.value = false
-      } else {
-        isFixed.value = true
+    let observer = new IntersectionObserver((entries, observer) => {
+      if (entries[0].boundingClientRect.top > 0) {
+        if (entries[0].isIntersecting) {
+          isFixed.value = false
+        } else {
+          isFixed.value = true
+        }
       }
     }, options)
     observer.observe(scrollArea.value)
