@@ -84,6 +84,71 @@
       <CardsHistory />
     </div>
   </section>
+  <section>
+    <div class="tw-container">
+      <div class="section__top">
+        <h2 class="section__title">Команда</h2>
+      </div>
+      <CardsTeam />
+    </div>
+  </section>
+  <section>
+    <div class="tw-container">
+      <div
+        class="tw-pt-6 tw-px-4  tw-h-[480px] lg:tw-h-auto lg:tw-p-6 xl:tw-p-12 tw-bg-base01 tw-rounded-2xl tw-overflow-hidden tw-relative tw-grid  tw-gap-[85px]"
+      >
+        <div class="lg:tw-w-[622px]"> 
+          <h2 class="tw-text-h5 lg:tw-text-h4 tw-mb-8">
+            Мы постоянно в поиске профессионалов своего дела
+          </h2>
+          <BaseButton class="tw-w-full lg:tw-w-[177px]">
+            <div class="tw-flex tw-justify-between">
+              <span> Вакансии </span>
+              <BaseIcon class="tw-w-6 tw-h-6" name="target" />
+            </div>
+          </BaseButton>
+        </div>
+        <div class="tw-absolute tw-w-[483px] tw-h-[320px] tw-object-cover tw-bottom-0 lg:-tw-right-28 lg:tw-top-1/2 lg:tw-transform tw-translate-y-[130px] -tw-translate-x-7 lg:-tw-translate-y-1/2">
+
+          <img
+            src="/assets/images/img/vacancies.png"
+            alt=""
+            
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+  <section>
+    <div class=" tw-container">
+      <div class=" tw-py-6 tw-px-4 lg:tw-p-6 xl:tw-p-12 tw-rounded-2xl tw-bg-base01">
+        <h2 class="tw-text-h5 lg:tw-text-h4 tw-mb-2  ">
+          Остались вопросы? <br class="lg:tw-hidden"> Напишите нам
+        </h2>
+        <p class=" tw-text-text02 tw-mb-6 lg:tw-mb-8">
+          Оставьте свои контактные данные, ваш вопрос и мы свяжемся с вами
+        </p>
+        <form >
+          <div class=" tw-grid lg:tw-grid-cols-3 tw-gap-6 lg:tw-gap-5 tw-mb-6 xl:tw-mb-8">
+
+            <BaseInput name="name" label="Имя" placeholder="Иван" theme="white"/>
+            <BaseInput name="name" label="Телефон" placeholder="+7 (XXX) XXX XX XX" theme="white"/>
+            <BaseInput name="name" label="E-mail" placeholder="mail@mail.ru" theme="white"/>
+            <BaseInput name="name" label="Вопрос" placeholder="Я бы хотел (-а) узнать..." theme="white" class=" lg:tw-col-span-3"/>
+          </div>
+          <BaseButton theme="white" class=" tw-w-full lg:tw-w-auto !tw-text-text02 tw-mb-4">
+            Отправить
+          </BaseButton>
+          <p class=" tw-text-text02 tw-text-body_xs lg:tw-text-body_m">
+            Нажимая кнопку, вы соглашаетесь 
+            <a href="#" class=" tw-text-primary">
+              с условиями обработки персональных данных
+            </a>
+          </p>
+        </form>
+      </div>
+    </div>
+  </section>
 </template>
 <script lang="ts" setup>
 const buildObjectList = [

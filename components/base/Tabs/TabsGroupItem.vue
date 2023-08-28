@@ -1,10 +1,11 @@
 <template>
   <button
     class="tabs-group-item"
-    :class="{
+    :class="[{
       'tabs-group-item--active': isActive,
       'tabs-group-item--disabled': disabled,
-    }"
+    }, `tabs-group-item--${theme}`
+    ]"
     :disabled="disabled"
     @click="onClick"
   >
@@ -18,10 +19,12 @@
   interface Props {
     name: string,
     disabled?: boolean,
+    theme: "white" | "gray"
   }
 
   const props = withDefaults(defineProps<Props>(), {
     disabled: false,
+    theme: "white"
   });
 
   const setValue = inject(setValueKey);
@@ -38,15 +41,28 @@
 
 <style scoped lang="scss">
   .tabs-group-item {
+    white-space: nowrap;
     user-select: none;
     display: inline-block;
     border-radius: 8px;
     padding: 13px 24px;
     transition: background-color 300ms;
-    @apply tw-text-base tw-text-text00 tw-bg-white;
-
-    &:hover {
-      @apply tw-bg-secondary-hover tw-text-text00;
+    @apply tw-text-base tw-text-text00 ;
+    &--white {
+      @apply tw-bg-white;
+    }
+    &--gray {
+      @apply tw-bg-base00;
+    }
+    @media (hover: hover){
+      &:hover {
+        @apply tw-bg-secondary-hover tw-text-text00;
+      }
+    }
+    @media (hover: none) {
+      &:active {
+        @apply tw-bg-secondary-hover tw-text-text00;
+      }
     }
 
     &:active {

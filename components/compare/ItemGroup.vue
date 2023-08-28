@@ -58,7 +58,13 @@ const itemGroupProps = withDefaults(
     @apply tw-grid tw-grid-cols-2 tw-gap-4 lg:tw-flex lg:tw-flex-wrap tw-overflow-hidden lg:tw-gap-5 lg:tw-justify-between tw-text-body_m;
 
     .item {
-      width: calc(25% - 1.5rem);
+      @screen lg {
+        width: calc(33% - 1.25rem);
+      }
+      @screen xl {
+        width: calc(25% - 1.25rem);
+      }
+      width: calc(25% - 1.25rem);
 
       .finishing {
         @apply tw-bg-base00 tw-flex tw-items-center tw-gap-2 tw-px-2 tw-py-0.5 tw-rounded-lg tw-w-fit tw-text-body_s;

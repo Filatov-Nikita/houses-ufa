@@ -23,6 +23,7 @@ export default defineNuxtConfig({
   plugins: [
     '~/plugins/vee-validate.ts',
     '~/directives/click-outside.ts',
+    '~/directives/pretty.ts',
     '~/plugins/pretty-amount.ts',
     '~/plugins/icons-sprite.ts',
     '~/plugins/loaders.ts',

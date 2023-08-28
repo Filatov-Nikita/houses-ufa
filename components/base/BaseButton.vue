@@ -14,7 +14,7 @@
   import { RouteLocationRaw } from 'vue-router';
 
   interface Props {
-    theme?: 'green' | 'gray' | 'white',
+    theme?: 'green' | 'gray' | 'white' | 'transparent',
     disabled?: boolean,
     to?: RouteLocationRaw,
     type?: string,
@@ -24,7 +24,8 @@
   const props = withDefaults(defineProps<Props>(), {
     theme: 'green',
     disabled: false,
-    paddingClasses: 'tw-px-6 tw-py-4'
+    paddingClasses: 'tw-px-6 tw-py-4',
+    type:'button'
   });
 
   const isExternalLink = computed(() => {
@@ -94,6 +95,10 @@
 
     &--white {
       @apply tw-bg-white tw-text-text00;
+    }
+    &--transparent {
+      @apply tw-text-text00;
+      background: transparent;
     }
   }
 </style>

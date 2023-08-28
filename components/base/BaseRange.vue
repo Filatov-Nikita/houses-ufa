@@ -2,7 +2,7 @@
   <div class="base-range-block">
     <label v-if="label" class="base-range-block__label">{{ label }}</label>
     <div class="control-block">
-      <div class="control-block__inputs">
+      <div class="control-block__inputs" :class="[`control-block__inputs--${theme}`]">
         <div class="control-block__inp-area" :style="{ '--basis': inputWitdh }">
           <span class="control-block__label">от</span>
           <input
@@ -24,6 +24,7 @@
           <input
             ref="input2Ref"
             class="control-block__input"
+            :class="[`control-block__input--${theme}`]"
             type="text"
             :value="val2"
             :placeholder="max.toString()"
@@ -61,7 +62,8 @@
     modelValue?: ModelValue,
     insertLabel?: string,
     label?: string,
-    step?: number
+    step?: number,
+    theme?: "white" | "gray"
   }
 
   const props = withDefaults(defineProps<Props>(), {
@@ -71,6 +73,7 @@
     name1: 'from',
     name2: 'to',
     modelValue: null,
+    theme: 'gray'
   });
 
   const controlsRef = ref<HTMLElement | null>(null);
@@ -351,8 +354,13 @@
       padding: 17px 16px 15px;
       border-width: 1px;
       border-style: solid;
-      @apply tw-bg-base00 tw-flex tw-gap-2 tw-items-center tw-border-base00;
-
+      @apply  tw-flex tw-gap-2 tw-items-center ;
+      &--gray {
+        @apply tw-bg-base00 tw-border tw-border-base00;
+      }
+      &--white {
+        @apply tw-bg-white tw-border-white;
+      }
       &--error {
         @apply tw-border-error;
       }
@@ -371,8 +379,13 @@
     &__input {
       min-height: 24px;
       padding-left: 24px;
-      @apply tw-block tw-w-full tw-bg-base00 tw-text-text00 tw-text-base;
-
+      @apply tw-block tw-w-full  tw-text-text00 tw-text-base;
+      &--gray {
+        @apply tw-bg-base00;
+      }
+      &--white {
+        @apply tw-bg-white;
+      }
       &::-webkit-outer-spin-button, &::-webkit-inner-spin-button {
         -webkit-appearance: none;
       }
@@ -384,7 +397,11 @@
 
     &__label {
       position: absolute;
+      /*
       top: 2px;
+      */
+      top: 50%;
+      transform: translateY(-50%);
       left: 0px;
       @apply tw-text-text02 tw-text-base;
     }
