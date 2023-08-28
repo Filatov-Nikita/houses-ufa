@@ -49,74 +49,98 @@
           </BaseButton>
         </div>
       </div>
-
-      <tamplate v-if="tab === 'apartments'">
-        <div
-          v-if="favoriteList.length === 0"
-          class="tw-bg-white tw-rounded-2xl tw-grid tw-place-items-center tw-text-center tw-gap-4 tw-px-4 tw-py-6 lg:tw-p-6"
-        >
-          <div class="tw-p-4 tw-bg-base00 tw-rounded-lg tw-w-fit tw-mb-4">
-            <BaseIcon name="building" class="tw-w-8 tw-h-8" />
-          </div>
-          <h3 class="tw-text-h6">
-            Вы ещё не добавили ни одной квартиры в избранное
-          </h3>
-          <p class="tw-max-w-[566px] tw-text-body_s tw-text-text02">
-            Избранное — это отличный способ отслеживать интересующие вас объекты
-            недвижимости и сохранять их для последующего просмотра или сравнения
-          </p>
-          <BaseButton class="tw-w-full lg:tw-w-auto">
-            Перейти к квартирам
-          </BaseButton>
-        </div>
-        <template v-else>
+      <template v-if="!openComparision">
+        <tamplate v-if="tab === 'apartments'">
           <div
-            class="tw-grid tw-gap-4 lg:tw-gap-5 lg:tw-grid-cols-3 xl:tw-grid-cols-4"
-            v-if="!openComparision"
+            v-if="favoriteList.length === 0"
+            class="tw-bg-white tw-rounded-2xl tw-grid tw-place-items-center tw-text-center tw-gap-4 tw-px-4 tw-py-6 lg:tw-p-6"
           >
-            <CardsApartment v-for="item in favoriteList" v-bind="item" />
+            <div class="tw-p-4 tw-bg-base00 tw-rounded-lg tw-w-fit tw-mb-4">
+              <BaseIcon name="building" class="tw-w-8 tw-h-8" />
+            </div>
+            <h3 class="tw-text-h6">
+              Вы ещё не добавили ни одной квартиры в избранное
+            </h3>
+            <p class="tw-max-w-[566px] tw-text-body_s tw-text-text02">
+              Избранное — это отличный способ отслеживать интересующие вас
+              объекты недвижимости и сохранять их для последующего просмотра или
+              сравнения
+            </p>
+            <BaseButton class="tw-w-full lg:tw-w-auto">
+              Перейти к квартирам
+            </BaseButton>
           </div>
-          <div v-else>
-            <Compare />
+          <template v-else>
+            <div
+              class="tw-grid tw-gap-4 lg:tw-gap-5 lg:tw-grid-cols-3 xl:tw-grid-cols-4"
+            >
+              <CardsApartment v-for="item in favoriteList" v-bind="item" />
+            </div>
+          </template>
+        </tamplate>
+        <tamplate v-if="tab === 'cottages'">
+          <div
+            class="tw-bg-white tw-rounded-2xl tw-grid tw-place-items-center tw-text-center tw-gap-4 tw-px-4 tw-py-6 lg:tw-p-6"
+          >
+            <div class="tw-p-4 tw-bg-base00 tw-rounded-lg tw-w-fit tw-mb-4">
+              <BaseIcon name="house" class="tw-w-8 tw-h-8" />
+            </div>
+            <h3 class="tw-text-h6">
+              Вы ещё не добавили ни одного дома в избранное
+            </h3>
+            <p class="tw-max-w-[566px] tw-text-body_s tw-text-text02">
+              Избранное — это отличный способ отслеживать интересующие вас
+              объекты недвижимости и сохранять их для последующего просмотра или
+              сравнения
+            </p>
+            <BaseButton class="tw-w-full lg:tw-w-auto">
+              Перейти к домам
+            </BaseButton>
           </div>
-        </template>
-      </tamplate>
-      <tamplate v-if="tab === 'cottages'">
-        <div
-          class="tw-bg-white tw-rounded-2xl tw-grid tw-place-items-center tw-text-center tw-gap-4 tw-px-4 tw-py-6 lg:tw-p-6"
-        >
-          <div class="tw-p-4 tw-bg-base00 tw-rounded-lg tw-w-fit tw-mb-4">
-            <BaseIcon name="house" class="tw-w-8 tw-h-8" />
-          </div>
-          <h3 class="tw-text-h6">
-            Вы ещё не добавили ни одного дома в избранное
-          </h3>
-          <p class="tw-max-w-[566px] tw-text-body_s tw-text-text02">
-            Избранное — это отличный способ отслеживать интересующие вас объекты
-            недвижимости и сохранять их для последующего просмотра или сравнения
-          </p>
-          <BaseButton class="tw-w-full lg:tw-w-auto">
-            Перейти к домам
-          </BaseButton>
-        </div>
-      </tamplate>
-      <!-- <BaseTabsTabContentItem name="pantries"> </BaseTabsTabContentItem>
-        <BaseTabsTabContentItem name="autocracy"> </BaseTabsTabContentItem> -->
-    </div>
-    <ModalsSlot v-model="openM" title="Сортировать по">
-      <div class="tw-grid tw-gap-6">
-        <BaseInput
-          name="name"
-          label="Имя"
-          placeholder="Иван"
-          class="lg:tw-col-span-2"
-        />
+        </tamplate>
+      </template>
+      <div v-else>
+        <Compare />
       </div>
-    </ModalsSlot>
+    </div>
+  </section>
+  <section v-if="openComparision">
+    <div class="tw-container">
+      <div class="tw-grid tw-gap-6 lg:tw-gap-5 lg:tw-grid-cols-2">
+        <div
+          class="tw-bg-white tw-rounded-2xl tw-py-6 tw-px-4 tw-grid tw-gap-6 xl:tw-gap-12 tw-content-between"
+        >
+          <div>
+            <h2 class="section__title tw-mb-4">
+              Хотите сохранить свое избранное?
+            </h2>
+            <p class="tw-text-text02 tw-text-body_m">
+              Чтобы сохранить список избранного и получите доступ к другим
+              сервисам
+            </p>
+          </div>
+          <BaseButton> Личный кабинет</BaseButton>
+        </div>
+        <div
+          class="tw-bg-white tw-rounded-2xl tw-py-6 tw-px-4 tw-grid tw-gap-6 xl:tw-gap-12 tw-content-between"
+        >
+          <div>
+            <h2 class="section__title tw-mb-4">Сформируйте брошюру</h2>
+            <p class="tw-text-text02 tw-text-body_m">
+              Брошюра с вашим избранным доступна для скачивания или отправки по
+              электронной почте
+            </p>
+          </div>
+          <div class="tw-grid tw-gap-2 lg:tw-grid-cols-2 lg:tw-gap-5">
+            <BaseButton theme="gray">Скачать</BaseButton>
+            <BaseButton theme="gray">Отправить</BaseButton>
+          </div>
+        </div>
+      </div>
+    </div>
   </section>
 </template>
 <script lang="ts" setup>
-const openM = ref(true)
 const tab = ref('')
 const tabs = [
   {
