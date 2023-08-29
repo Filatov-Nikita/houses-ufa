@@ -56,7 +56,7 @@
   interface Props {
     min?: number,
     max: number,
-    inputWitdh: string,
+    inputWitdh?: string,
     name1?: string,
     name2?: string,
     modelValue?: ModelValue,

@@ -161,7 +161,7 @@ export default function mapsInit() {
         .add('click', function (e) {
           const $inner_el = $(marker_html)
           opt.click(e, $inner_el)
-          // console.log(e.get('target'));
+          
         })
         .add('mouseenter', function (e) {
           const $inner_el = $(marker_html)

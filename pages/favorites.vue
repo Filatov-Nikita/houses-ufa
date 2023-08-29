@@ -50,7 +50,7 @@
         </div>
       </div>
       <template v-if="!openComparision">
-        <tamplate v-if="tab === 'apartments'">
+        <template v-if="tab === 'apartments'">
           <div
             v-if="favoriteList.length === 0"
             class="tw-bg-white tw-rounded-2xl tw-grid tw-place-items-center tw-text-center tw-gap-4 tw-px-4 tw-py-6 lg:tw-p-6"
@@ -77,8 +77,8 @@
               <CardsApartment v-for="item in favoriteList" v-bind="item" />
             </div>
           </template>
-        </tamplate>
-        <tamplate v-if="tab === 'cottages'">
+        </template>
+        <template v-if="tab === 'cottages'">
           <div
             class="tw-bg-white tw-rounded-2xl tw-grid tw-place-items-center tw-text-center tw-gap-4 tw-px-4 tw-py-6 lg:tw-p-6"
           >
@@ -97,7 +97,7 @@
               Перейти к домам
             </BaseButton>
           </div>
-        </tamplate>
+        </template>
       </template>
       <div v-else>
         <Compare />

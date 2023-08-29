@@ -19,7 +19,7 @@
   interface Props {
     name: string,
     disabled?: boolean,
-    theme: "white" | "gray"
+    theme?: "white" | "gray"
   }
 
   const props = withDefaults(defineProps<Props>(), {

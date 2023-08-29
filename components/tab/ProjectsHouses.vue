@@ -50,7 +50,7 @@ const tabs = [
 ]
 onMounted(() => {
   tab.value = tabs[0].name
-  console.log(tab)
+  
 })
 </script>
 <style lang="scss" scoped></style>

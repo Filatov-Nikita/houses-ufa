@@ -39,7 +39,7 @@ const propsIpoteka = withDefaults(
     title: string
     text?: string
     procent: string
-    isImages: boolean
+    isImages?: boolean
     to: string
     img: string
   }>(),

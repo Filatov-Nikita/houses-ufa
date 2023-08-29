@@ -6,6 +6,7 @@
       :class="{
         'base-modal__full-mob': isFullMob,
       }"
+      v-bind="$attrs"
     >
       <transition
         appear
@@ -27,7 +28,9 @@ interface Props {
   modelValue?: boolean
   isFullMob?: boolean
 }
-
+defineOptions({
+  inheritAttrs: false,
+})
 const disallowScrollClass = 'tw-overflow-hidden'
 
 const props = withDefaults(defineProps<Props>(), {
@@ -51,7 +54,6 @@ const updateWindow = () => {
 }
 onMounted(() => {
   if (props.modelValue) {
-    console.log(props.modelValue)
 
     scrollOff()
     updateWindow()

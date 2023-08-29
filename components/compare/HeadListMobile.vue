@@ -268,7 +268,7 @@ const nextLast = () => {
 }
 
 onMounted(() => {
-  console.log(visibleEL.value)
+  
 
   if (values.value.length > 0) {
     currentFirstItem.value = values.value[0]
