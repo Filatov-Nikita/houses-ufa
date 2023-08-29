@@ -410,7 +410,7 @@ watch(typeMark, (val) => {
             this.getData().geoObject.events.add(
               'mouseenter',
               function (e) {
-                console.log(e)
+                
 
                 this.isActive = true
                 this.rebuild()
@@ -448,7 +448,7 @@ watch(fullscreenMap, (val) => {
     map.container.getParentElement().style.height = window.screen.height + 'px'
     map.container.fitToViewport()
   } else {
-    console.log(sizeMap)
+    
 
     map.container.getParentElement().style.height = sizeMap[1] + 'px'
     map.container.fitToViewport()

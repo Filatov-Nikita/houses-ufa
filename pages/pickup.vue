@@ -43,6 +43,17 @@
             :drop-down-props="{ options: [{ label: 'test 1', value: '1' }] }"
             v-model="objectOpt"
           />
+          <div>
+            <div class="tw-text-text02 tw-text-body_s2 -tw-tracking-875">
+              Комнатность
+            </div>
+            <div class="tw-flex tw-gap-2">
+              <BaseButton theme="gray"> С </BaseButton>
+              <BaseButton theme="gray"> 1 </BaseButton>
+              <BaseButton theme="gray"> 2 </BaseButton>
+              <BaseButton theme="gray"> 3+ </BaseButton>
+            </div>
+          </div>
           <BaseRange
             v-bind="{
               min: 29,
@@ -65,7 +76,7 @@
             }"
             v-model="squarePlot"
           />
-          <div>
+          <div class="tw-w-[384px]">
             <div class="tab-mini">
               <button
                 v-for="item in typeSortedOptions"
@@ -122,6 +133,74 @@
       </div>
     </div>
   </section>
+  <section>
+    <div class="tw-container">
+      <div class="section__top">
+        <h3 class="tw-text-body_l">Найдено 869 предложений</h3>
+      </div>
+      <div
+        class="tw-grid tw-gap-4 lg:tw-gap-5 lg:tw-grid-cols-3 xl:tw-grid-cols-4"
+      >
+        <CardsApartment v-for="item in favoriteList" v-bind="item" />
+      </div>
+      <BaseButton theme="white" class="tw-w-full tw-mt-6 xl:tw-mt-8">
+        Показать ещё 8 из 128
+      </BaseButton>
+    </div>
+  </section>
+  <section>
+    <div class="tw-container">
+      <div class="section__top">
+        <h2 class="section__title">Как купить</h2>
+      </div>
+      <div class="tw-grid tw-gap-4 lg:tw-gap-5 lg:tw-grid-cols-3">
+        <div
+          class="tw-bg-white tw-rounded-2xl tw-p-5 tw-grid xl:tw-flex tw-gap-6"
+        >
+          <div class="tw-bg-base00 tw-p-2 tw-rounded-lg tw-w-fit tw-h-fit">
+            <BaseIcon name="wallet" class="tw-w-8 tw-h-8 tw-text-primary" />
+          </div>
+          <div>
+            <h4 class="tw-text-h6 tw-mb-4">Получить предложение</h4>
+            <p class="tw-text-body_m">
+              Условия покупки и специальные предложения.
+            </p>
+          </div>
+        </div>
+        <div
+          class="tw-bg-white tw-rounded-2xl tw-p-5 tw-grid xl:tw-flex tw-gap-6"
+        >
+          <div class="tw-bg-base00 tw-p-2 tw-rounded-lg tw-w-fit tw-h-fit">
+            <BaseIcon name="read" class="tw-w-8 tw-h-8 tw-text-primary" />
+          </div>
+          <div>
+            <h4 class="tw-text-h6 tw-mb-4">Купить онлайн</h4>
+            <p class="tw-text-body_m">
+              Условия покупки и специальные предложения.
+            </p>
+          </div>
+        </div>
+        <div
+          class="tw-bg-white tw-rounded-2xl tw-p-5 tw-grid xl:tw-flex tw-gap-6"
+        >
+          <div class="tw-bg-base00 tw-p-2 tw-rounded-lg tw-w-fit tw-h-fit">
+            <BaseIcon name="rub" class="tw-w-8 tw-h-8 tw-text-primary" />
+          </div>
+          <div>
+            <h4 class="tw-text-h6 tw-mb-4">Взять ипотеку</h4>
+            <p class="tw-text-body_m">
+              Условия покупки и специальные предложения.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section>
+    <div class="tw-container">
+      <FormCard1 />
+    </div>
+  </section>
 </template>
 <script lang="ts" setup>
 interface Option {
@@ -168,7 +247,72 @@ const typeSortedOptions = [
   },
 ] as Sorted[]
 const sorted = ref<ModelValue>()
-
+const favoriteList = [
+  {
+    title: 'title',
+    square: 1,
+    place: 'ЖК «Михайловка Green Place», с. Михайловка',
+    price: 1234,
+    storey: 1,
+    letter: 2,
+    monthPayment: 10000,
+    initialFee: 100000,
+    src: ['/assets/images/img/test.png', '/assets/images/img/test.png'],
+  },
+  {
+    title: 'title',
+    square: 2,
+    place: 'ЖК «Михайловка Green Place», с. Михайловка',
+    price: 1234,
+    storey: 1,
+    letter: 2,
+    monthPayment: 10000,
+    initialFee: 100000,
+    src: ['/assets/images/img/test.png', '/assets/images/img/test.png'],
+  },
+  {
+    title: 'title',
+    square: 3,
+    place: 'ЖК «Михайловка Green Place», с. Михайловка',
+    price: 1234,
+    storey: 1,
+    letter: 2,
+    src: ['/assets/images/img/test.png', '/assets/images/img/test.png'],
+  },
+  {
+    title: 'title',
+    square: 4,
+    place: 'ЖК «Михайловка Green Place», с. Михайловка',
+    price: 1234,
+    storey: 1,
+    letter: 2,
+    monthPayment: 10000,
+    initialFee: 100000,
+    src: ['/assets/images/img/test.png', '/assets/images/img/test.png'],
+  },
+  {
+    title: 'title',
+    square: 5,
+    place: 'ЖК «Михайловка Green Place», с. Михайловка',
+    price: 1234,
+    storey: 1,
+    letter: 2,
+    monthPayment: 10000,
+    initialFee: 100000,
+    src: ['/assets/images/img/test.png', '/assets/images/img/test.png'],
+  },
+  {
+    title: 'title',
+    square: 6,
+    place: 'ЖК «Михайловка Green Place», с. Михайловка',
+    price: 1234,
+    storey: 1,
+    letter: 2,
+    monthPayment: 10000,
+    initialFee: 100000,
+    src: ['/assets/images/img/test.png', '/assets/images/img/test.png'],
+  },
+]
 onMounted(() => {
   typeApartmentOpt.value = typeApartmentOptions[0]
   objectOpt.value = objectOptions[0]

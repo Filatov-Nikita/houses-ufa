@@ -38,21 +38,19 @@
 const swiper = useSwiper()
 onMounted(() => {
   if (swiper.value) {
-    console.log(swiper.value.isBeginning)
-    console.log(swiper.value.isEnd)
-    console.log(swiper.value.navigation)
+    
     swiper.value.on('reachBeginning', function () {
-      console.log('his')
+      
       // var swjsPrev = document.querySelector('.productMainSlider.vertuo .swiper-button-prev');
       // swjsPrev.style.display = 'none';
     })
     swiper.value.on('reachEnd', function () {
-      console.log('hi')
+      
       // var swjsNext = document.querySelector('.productMainSlider.vertuo .swiper-button-next');
       // swjsNext.style.display = 'none';
     })
   }
 })
 
-console.log(swiper)
+
 </script>

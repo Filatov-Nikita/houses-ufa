@@ -143,7 +143,7 @@ const activeIndex = ref(0)
 const swiper = ref<Swiper>()
 const onSwiper = (s: Swiper) => {
   swiper.value = s
-  // console.log(swiper.value.slideNext())
+  
   activeIndex.value = s.activeIndex
 }
 const onSlideChange = (s: Swiper) => {

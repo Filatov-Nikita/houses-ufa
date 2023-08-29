@@ -182,7 +182,7 @@ onMounted(() => {
                   function (e) {
                     itemCardOpen.value = marks[i]
                     cardOpen.value = true
-                    console.log(i)
+                    
                   },
                   this
                 )
@@ -216,7 +216,7 @@ watch(fullscreenMap, (val) => {
     map.container.getParentElement().style.height = window.screen.height + 'px'
     map.container.fitToViewport()
   } else {
-    console.log(sizeMap)
+    
 
     map.container.getParentElement().style.height = sizeMap[1] + 'px'
     map.container.fitToViewport()
