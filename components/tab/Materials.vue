@@ -164,7 +164,6 @@ const openPopup = (title: string, text: string) => {
 }
 onMounted(() => {
   tab.value = teamTabs[0].name
-  
 })
 </script>
 <style lang="scss" scoped></style>

@@ -56,6 +56,7 @@ module.exports = {
       negative: '#F13F36',
       warning: '#FEBF22',
       dark: '#2D2D2D',
+      black: '#000000',
       gray: '#F7F8F8',
       'gray-600': '#9F9F9F',
       dark: '#2D2D2D',
@@ -127,7 +128,7 @@ module.exports = {
     container: {
       DEFAULT: '100%',
       center: true,
-      
+
       padding: {
         DEFAULT: '16px',
         lg: '24px',
@@ -138,12 +139,12 @@ module.exports = {
   plugins: [
     function ({ addComponents }) {
       addComponents({
-        ".container": {
-          maxWidth: "100%",
-          width: "100%",
-        //   padding: "0 15px",
-        //   marginRight: "auto",
-        //   marginLeft: "auto",
+        '.container': {
+          maxWidth: '100%',
+          width: '100%',
+          //   padding: "0 15px",
+          //   marginRight: "auto",
+          //   marginLeft: "auto",
         },
       })
     },
