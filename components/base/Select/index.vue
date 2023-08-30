@@ -35,8 +35,8 @@
 
 <script setup lang="ts">
   import { useField } from 'vee-validate';
-  import DefaultDropdown from '@/components/base/BaseSelect/dropdowns/DefaultDropdown.vue';
-  import DefaultDisplay from '@/components/base/BaseSelect/displays/DefaultDisplay.vue';
+  import DefaultDropdown from './dropdowns/DefaultDropdown.vue';
+  import DefaultDisplay from './displays/DefaultDisplay.vue';
 
   interface Props {
     label: string,
