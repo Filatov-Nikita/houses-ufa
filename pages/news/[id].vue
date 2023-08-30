@@ -9,10 +9,10 @@
           class="tw-mb-6 lg:tw-mb-4"
         />
         <div
-          class="tw-flex tw-justify-between tw-items-center tw-mb-6 lg:tw-mb-10"
+          class="tw-grid tw-gap-4 lg:tw-flex tw-justify-between tw-items-center tw-mb-6 lg:tw-mb-10"
         >
           <h2 class="section__title">День Победы встретили вместе</h2>
-          <BaseButton theme="gray">
+          <BaseButton theme="gray" class="tw-w-fit">
             <div
               class="tw-text-text02 tw-text-body_m tw-flex tw-gap-2 tw-items-center"
             >
@@ -20,9 +20,14 @@
             </div>
           </BaseButton>
         </div>
-        <div>
-          <div>31.03.2023</div>
-          <button>Поделиться</button>
+        <div class="tw-flex tw-justify-between tw-items-center">
+          <div class="tw-text-text02 lg:tw-text-body_l">31.03.2023</div>
+          <button class="tw-flex tw-items-center tw-gap-4">
+            <div class="tw-p-2 tw-rounded-lg tw-bg-[#F4F4F4]">
+              <BaseIcon name="share" class="tw-w-4 tw-h-4 tw-text-primary" />
+            </div>
+            <span class="tw-text-black"> Поделиться </span>
+          </button>
         </div>
       </div>
     </div>
