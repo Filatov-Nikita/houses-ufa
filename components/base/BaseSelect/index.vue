@@ -1,5 +1,5 @@
 <template>
-  <div class="tw-relative" :class="{ 'tw-opacity-50': disabled }" v-click-outside="toggle">
+  <div class="tw-relative" :class="{ 'tw-opacity-50': disabled }" v-click-outside="close">
     <div class="base-select-block" @click="toggle">
       <label class="base-select-block__label">{{ label }}</label>
       <div class="base-select-block__input" :class="[ `base-select-block__input--${theme}`, { 'base-select-block__input--error': errorMessage } ]">
@@ -70,6 +70,10 @@
   function toggle() {
     if(props.disabled) return;
     showed.value = !showed.value;
+  }
+
+  function close() {
+    showed.value = false;
   }
 </script>
 
