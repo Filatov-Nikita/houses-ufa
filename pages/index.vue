@@ -108,7 +108,7 @@
       <TabObjects />
     </div>
   </section>
-
+  <SectionWatchOffers/>
   <section>
     <div class="tw-container">
       <div class="section__top tw-flex tw-justify-between tw-items-center">

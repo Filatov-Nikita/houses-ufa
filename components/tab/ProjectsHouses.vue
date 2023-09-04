@@ -33,7 +33,7 @@
   </div>
 </template>
 <script lang="ts" setup>
-const tab = ref('')
+const tab = ref('all')
 const tabs = [
   {
     name: 'all',
@@ -48,9 +48,5 @@ const tabs = [
     title: 'Дома',
   },
 ]
-onMounted(() => {
-  tab.value = tabs[0].name
-  
-})
 </script>
 <style lang="scss" scoped></style>

@@ -176,7 +176,7 @@
       <div class="section__top">
         <h2 class="section__title">Генплан коттеджного посёлка {Название}</h2>
       </div>
-      <GenplanCottages />
+      <GenplanCottage />
     </div>
   </section>
   <section>

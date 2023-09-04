@@ -20,6 +20,7 @@
           <BaseTabsGroupItem
             v-for="item in tabs"
             :name="item.name"
+            :key="item.name"
             theme="gray"
           >
             {{ item.title }}
@@ -28,7 +29,7 @@
       </div>
     </div>
     <BaseTabsTabContent v-model="tab">
-      <BaseTabsTabContentItem name="apartments">
+      <BaseTabsTabContentItem name="apartments" key="apartments">
         <Swiper
           :modules="[SwiperPagination, SwiperNavigation]"
           :slides-per-view="1"
@@ -105,6 +106,10 @@
           ></div>
         </Swiper>
       </BaseTabsTabContentItem>
+      <BaseTabsTabContentItem name="cottages" key="cottages">
+      </BaseTabsTabContentItem>
+      <BaseTabsTabContentItem name="townhouses" key="townhouses">
+      </BaseTabsTabContentItem>
     </BaseTabsTabContent>
   </div>
 </template>
@@ -132,7 +137,7 @@ const roomList = [
   },
 ] as Room[]
 const room = ref<Room>()
-const tab = ref('')
+const tab = ref('apartments')
 const tabs = [
   {
     name: 'apartments',
@@ -147,6 +152,6 @@ const tabs = [
     title: 'Таунхаусы',
   },
 ]
-onMounted(() => ((tab.value = tabs[0].name), (room.value = roomList[0])))
+onMounted(() => (room.value = roomList[0]))
 </script>
 <style lang="scss" scoped></style>

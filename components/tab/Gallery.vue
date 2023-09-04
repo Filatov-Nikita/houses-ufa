@@ -1,11 +1,13 @@
 <template>
-  <BaseTabsGroup v-model="tab" class="tw-mb-6 lg:tw-mb-8">
-    <BaseTabsGroupItem v-for="item in tabs" :name="item.name">
-      {{ item.title }}
-    </BaseTabsGroupItem>
-  </BaseTabsGroup>
+  <div class="tw-overflow-auto tw-mb-6 xl:tw-mb-8">
+    <BaseTabsGroup v-model="tab">
+      <BaseTabsGroupItem v-for="item in tabs" :name="item.name">
+        {{ item.title }}
+      </BaseTabsGroupItem>
+    </BaseTabsGroup>
+  </div>
   <BaseTabsTabContent v-model="tab">
-    <BaseTabsTabContentItem name="yard">
+    <BaseTabsTabContentItem name="yard" key="yard">
       <div
         class="tw-rounded-2xl tw-overflow-hidden tw-h-[412px] lg:tw-h-[560px]"
       >
@@ -73,11 +75,14 @@
         </Swiper>
       </div>
     </BaseTabsTabContentItem>
-    <BaseTabsTabContentItem name="apartments"></BaseTabsTabContentItem>
+    <BaseTabsTabContentItem
+      name="apartments"
+      key="apartments"
+    ></BaseTabsTabContentItem>
   </BaseTabsTabContent>
 </template>
 <script lang="ts" setup>
-const tab = ref('')
+const tab = ref('yard')
 const tabs = [
   {
     name: 'yard',
@@ -88,6 +93,5 @@ const tabs = [
     title: 'Квартиры',
   },
 ]
-onMounted(() => (tab.value = tabs[0].name))
 </script>
 <style lang="scss" scoped></style>

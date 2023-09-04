@@ -18,12 +18,12 @@
           label="Телефон"
           placeholder="+7 (XXX) XXX XX XX"
         />
-        <BaseBaseSelect
+        <BaseSelect
           label="Когда позвонить"
           name="test"
           :drop-down-props="{ options: [{ label: 'test 1', value: '1' }] }"
         />
-        <BaseBaseSelect
+        <BaseSelect
           label="Во сколько позвонить"
           name="test2"
           :drop-down-props="{ options: [{ label: 'test 1', value: '1' }] }"

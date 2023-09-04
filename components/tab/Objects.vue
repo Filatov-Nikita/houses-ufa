@@ -1,12 +1,14 @@
 <template>
   <div>
-    <BaseTabsGroup v-model="tab" class="tw-mb-6 xl:tw-mb-8">
-      <BaseTabsGroupItem v-for="item in tabs" :name="item.name">
-        {{ item.title }}
-      </BaseTabsGroupItem>
-    </BaseTabsGroup>
+    <div class="tw-overflow-auto tw-mb-6 xl:tw-mb-8">
+      <BaseTabsGroup v-model="tab" class="">
+        <BaseTabsGroupItem v-for="item in tabs" :name="item.name">
+          {{ item.title }}
+        </BaseTabsGroupItem>
+      </BaseTabsGroup>
+    </div>
     <BaseTabsTabContent v-model="tab">
-      <BaseTabsTabContentItem name="all">
+      <BaseTabsTabContentItem name="all" key="all">
         <div class="complex-list">
           <CardsResidentialComplex
             class="item"
@@ -18,12 +20,25 @@
             :place="item.place"
             :status="item.status"
           />
-        </div> </BaseTabsTabContentItem
-    ></BaseTabsTabContent>
+        </div>
+      </BaseTabsTabContentItem>
+      <BaseTabsTabContentItem
+        name="apartmentsUfa"
+        key="apartmentsUfa"
+      ></BaseTabsTabContentItem>
+      <BaseTabsTabContentItem
+        name="apartmentsUfaDistrict"
+        key="apartmentsUfaDistrict"
+      ></BaseTabsTabContentItem>
+      <BaseTabsTabContentItem
+        name="cottagesTownhouses"
+        key="cottagesTownhouses"
+      ></BaseTabsTabContentItem>
+    </BaseTabsTabContent>
   </div>
 </template>
 <script lang="ts" setup>
-const tab = ref('')
+const tab = ref('all')
 const tabs = [
   {
     name: 'all',
@@ -34,7 +49,7 @@ const tabs = [
     title: 'Квартиры в Уфе',
   },
   {
-    name: 'ApartmentsUfaDistrict',
+    name: 'apartmentsUfaDistrict',
     title: 'Квартиры в Уфимском районе',
   },
   {
@@ -100,7 +115,6 @@ const residentialComplexs = [
     status: 'Последние участки',
   },
 ]
-onMounted(() => (tab.value = tabs[0].name))
 </script>
 <style lang="scss" scoped>
 .complex-list {

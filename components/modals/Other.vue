@@ -1,18 +1,30 @@
 <template>
-  <BaseModal v-model="popup" v-slot="{ hide }" :is-full-mob="isFull">
+  <BaseModal
+    v-model="popup"
+    v-slot="{ hide }"
+    :is-full-mob="isFullMob"
+    :forMob="forMob"
+  >
     <BaseModalCard
-      :is-full-mob="isFull"
+      :is-full-mob="isFullMob"
+      :is-full="isFull"
       class="tw-h-auto"
-      v-bind="({ hide }, $attrs)"
+      v-bind="$attrs"
     >
       <div
-        class="tw-grid tw-gap-4 lg:tw-gap-8 tw-h-full tw-grid-rows-[auto_1fr]"
-        :style="{ paddingBottom: offset + 'px' }"
+        class="tw-grid tw-gap-4 tw-grid-rows-[1fr,auto] lg:tw-gap-8 tw-h-full lg:tw-grid-rows-none"
       >
         <div
-          class="tw-p-4 lg:tw-p-0 tw-rounded-2xl lg:tw-rounded-none tw-bg-white tw-self-start tw-grid tw-overflow-hidden tw-h-full"
+          class="tw-h-full"
+          :class="[
+            isFullMob
+              ? 'tw-p-4 lg:tw-p-0 tw-bg-white tw-rounded-2xl lg:tw-rounded-none tw-overflow-hidden'
+              : '',
+          ]"
         >
-          <div class="tw-relative">
+          <div
+            class="tw-self-start tw-grid tw-overflow-hidden tw-relative tw-h-full lg:tw-grid-rows-[auto_1fr]"
+          >
             <div class="tw-absolute tw-right-0 tw-top-0">
               <div class="tw-hidden lg:tw-block">
                 <BaseButton
@@ -25,7 +37,7 @@
                   <BaseIcon name="close" class="tw-w-6 tw-h-6" />
                 </BaseButton>
               </div>
-              <div class="lg:tw-hidden">
+              <div class="lg:tw-hidden" v-if="closeBtnMob">
                 <BaseButton
                   type="button"
                   @click="() => hide()"
@@ -37,16 +49,21 @@
                 </BaseButton>
               </div>
             </div>
-          </div>
-          <div class="tw-mb-6 lg:tw-mb-8">
-            <h4
-              class="tw-text-h6 lg:tw-text-h4 tw-min-h-[32px] tw-grid tw-place-content-center lg:tw-block"
+
+            <div class="tw-mb-6 lg:tw-mb-8">
+              <h4
+                class="tw-text-h6 lg:tw-text-h4 tw-min-h-[32px] lg:tw-block"
+                :class="[titlePos]"
+              >
+                {{ title }}
+              </h4>
+            </div>
+            <div
+              class="tw-overflow-auto"
+              :style="{ paddingBottom: offset + 'px' }"
             >
-              {{ title }}
-            </h4>
-          </div>
-          <div class="tw-overflow-auto">
-            <slot />
+              <slot />
+            </div>
           </div>
         </div>
         <div
@@ -56,6 +73,7 @@
         >
           <slot name="action" />
         </div>
+        <slot name="action-second" />
       </div>
     </BaseModalCard>
   </BaseModal>
@@ -66,6 +84,10 @@ interface Props {
   title: string
   height?: string
   isFull?: boolean
+  isFullMob?: boolean
+  closeBtnMob?: boolean
+  titlePos?: string
+  forMob?: boolean
 }
 defineOptions({
   inheritAttrs: false,
@@ -77,6 +99,10 @@ const props = withDefaults(defineProps<Props>(), {
   modelValue: false,
   height: 'auto',
   isFull: false,
+  isFullMob: false,
+  closeBtnMob: true,
+  titlePos: 'tw-text-center',
+  forMob: false,
 })
 const slots = useSlots()
 const isActionSlot = computed(() => slots.hasOwnProperty('action'))

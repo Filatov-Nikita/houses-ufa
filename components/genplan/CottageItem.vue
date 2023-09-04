@@ -1,17 +1,6 @@
 <template>
   <div class="plan" ref="plan">
     <div class="plan__wrapper">
-      <div>
-        <BaseButton class="tw-flex tw-items-center">
-          <img
-            src="/assets/images/icons/arrow_left.svg"
-            alt=""
-            width="24"
-            height="24"
-          />
-          <span class="tw-text-body_m"> Назад </span>
-        </BaseButton>
-      </div>
       <img
         class="plan__img"
         src="/assets/images/img/map/plan-cottages-item.png"
@@ -455,48 +444,65 @@
           stroke-width="2"
         />
       </svg>
+      <BaseButton
+        theme="gray"
+        class="tw-absolute tw-top-4 tw-left-4 lg:tw-left-6 lg:tw-top-6"
+        @click="() => $emit('closePlan')"
+      >
+        <div class="tw-flex tw-items-center tw-gap-4">
+          <BaseIcon name="back" class="tw-w-6 tw-h-6" />
+          <span class="tw-text-body_m"> Назад </span>
+        </div>
+      </BaseButton>
+      <div
+        class="tw-absolute tw-top-4 tw-right-4 lg:tw-top-6 lg:tw-right-6 tw-px-6 tw-backdrop-blur-sm tw-py-4 tw-text-white tw-bg-text01/40 tw-rounded-lg"
+      >
+        Очередь 4
+      </div>
       <p class="plan__message">
         Визуализация проекта предварительная, возможны изменения
       </p>
     </div>
-    <transition name="bounce" type="animation">
-      <div class="card" :style="cardCoords" ref="card" v-if="cardOpen">
-        <div class="card__content">
-          <div class="tw-flex tw-justify-between tw-items-center">
-            <div class="card__image">
-              <img
-                class=""
-                src="/assets/images/img/country_real_estate.png"
-                alt=""
-              />
-            </div>
-            <div class="status">Новый</div>
+    <div class="card" :style="cardCoords" ref="card" v-if="cardOpen">
+      <div class="card__content">
+        <div class="tw-flex tw-justify-between tw-items-center">
+          <div class="card__image">
+            <img
+              class=""
+              src="/assets/images/img/country_real_estate.png"
+              alt=""
+            />
+          </div>
+          <div class="status">Новый</div>
+        </div>
+        <div>
+          <h6 class="title">Участок №XX</h6>
+          <p class="text">с домом {Название проекта}</p>
+        </div>
+        <div class="tw-flex tw-justify-between">
+          <div>
+            <h5 class="tw-text-h5 tw-text-primary tw-mb-1">20 сот.</h5>
+            <p class="text">площадь участка</p>
           </div>
           <div>
-            <h6 class="title">Участок №XX</h6>
-            <p class="text">с домом {Название проекта}</p>
+            <h5 class="tw-text-h5 tw-text-primary tw-mb-1">120 м²</h5>
+            <p class="text">площадь дома</p>
           </div>
-          <div class="tw-flex tw-justify-between">
-            <div>
-              <h5 class="tw-text-h5 tw-text-primary tw-mb-1">20 сот.</h5>
-              <p class="text">площадь участка</p>
-            </div>
-            <div>
-              <h5 class="tw-text-h5 tw-text-primary tw-mb-1">120 м²</h5>
-              <p class="text">площадь дома</p>
-            </div>
-          </div>
-        </div>
-        <div class="card__btns">
-          <BaseButton class="tw-grow"> Подробнее </BaseButton>
-          <button @click="closeCard">
-            <BaseSquareIcon>
-              <img src="/assets/images/icons/close.svg" alt="" />
-            </BaseSquareIcon>
-          </button>
         </div>
       </div>
-    </transition>
+      <div class="card__btns">
+        <BaseButton class="tw-grow"> Подробнее </BaseButton>
+        <button @click="closeCard">
+          <BaseSquareIcon>
+            <img src="/assets/images/icons/close.svg" alt="" />
+          </BaseSquareIcon>
+        </button>
+      </div>
+      <BaseButton theme="gray" class="tw-grow"> Закрыть </BaseButton>
+    </div>
+    <ModalsCottage v-model="cardOpenModal" />
+    <!-- <transition name="bounce" type="animation">
+    </transition> -->
   </div>
 </template>
 <script setup lang="ts">
@@ -509,7 +515,11 @@ const {
   leaveHouse,
   clickHouse,
   closeCard,
+  cardOpenModal,
 } = useSetPositionPlanCard()
+const emit = defineEmits<{
+  (event: 'closePlan'): void
+}>()
 </script>
 <style lang="scss" scoped>
 .card {

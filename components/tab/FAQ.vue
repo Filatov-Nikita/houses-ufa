@@ -50,7 +50,7 @@
     </div>
     <div>
       <BaseTabsTabContent v-model="tab">
-        <BaseTabsTabContentItem name="sellers">
+        <BaseTabsTabContentItem name="sellers" key="sellers">
           <div class="section__top">
             <h2 class="section__title">{{ sectionSeller?.name }}</h2>
           </div>
@@ -77,7 +77,7 @@
             </AccordionMain>
           </div>
         </BaseTabsTabContentItem>
-        <BaseTabsTabContentItem name="owners">
+        <BaseTabsTabContentItem name="owners" key="owner">
           <div class="section__top">
             <h2 class="section__title">{{ sectionOwner?.name }}</h2>
           </div>
@@ -119,6 +119,7 @@
   <ModalsOther
     title="Выберите раздел"
     :is-full="true"
+    :forMob="true"
     v-model="openPopupSections"
   >
     <div class="tw-grid tw-gap-2">
@@ -192,7 +193,7 @@ const sectionsOwnerList = [
 ] as Option[]
 const sectionSeller = ref<Option>()
 const sectionOwner = ref<Option>()
-const tab = ref('')
+const tab = ref('sellers')
 const tabs = [
   {
     name: 'sellers',
@@ -203,8 +204,8 @@ const tabs = [
     title: 'Владельцам',
   },
 ]
+
 onMounted(() => {
-  tab.value = tabs[0].name
   if (scrollArea.value) {
     let observer = new IntersectionObserver((entries, observer) => {
       if (entries[0].boundingClientRect.top > 0) {

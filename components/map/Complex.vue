@@ -10,7 +10,7 @@
     <template v-else>
       <button
         @click="fullscreenMap = true"
-        style="z-index: 10001"
+        
         class="btn-to-fullscreen"
       >
         <span> Смотреть на карте </span>
@@ -28,35 +28,8 @@
         </svg>
       </button>
     </template>
-    <transition name="fade" type="animation">
-      <div class="card" ref="card" v-if="cardOpen">
-        <div class="card__content">
-          <div class="card__image">
-            <img
-              class=""
-              src="/assets/images/img/country_real_estate.png"
-              alt=""
-            />
-          </div>
-          <div>
-            <div>
-              {{ itemCardOpen.title }}
-            </div>
-            <div>
-              {{ itemCardOpen.title }}
-            </div>
-          </div>
-        </div>
-        <div class="card__btns">
-          <BaseButton class="tw-grow"> Подробнее </BaseButton>
-          <button @click="cardOpen = false">
-            <BaseSquareIcon>
-              <img src="/assets/images/icons/close.svg" alt="" />
-            </BaseSquareIcon>
-          </button>
-        </div>
-      </div>
-    </transition>
+    
+    <ModalsComplex v-model="cardOpen"/>
   </div>
 </template>
 <script setup lang="ts">
@@ -68,45 +41,33 @@ let sizeMap = [] as number[]
 const marks = [
   {
     coords: [56.00933, 54.719426],
-    href: '/assets/images/icons/marks/bank.svg',
-    title: 'Супермаркет "Пятерочка"',
-    type: 'bank',
+    href: '/assets/images/img/country_real_estate.png',
+    title: 'Михайловка Green Place',
+    text: 'с. Михайловка',
   },
   {
     coords: [56.008651, 54.720201],
-    href: '/assets/images/icons/marks/basket.svg',
-    title: 'Супермаркет "Пятерочка"',
-    type: 'basket',
+    href: '/assets/images/img/country_real_estate.png',
+    title: 'Михайловка Green Place',
+    text: 'с. Михайловка',
   },
   {
     coords: [56.016617, 54.721629],
-    href: '/assets/images/icons/marks/park.svg',
-    title: 'Супермаркет "Пятерочка"',
-    type: 'park',
+    href: '/assets/images/img/country_real_estate.png',
+    title: 'Михайловка Green Place',
+    text: 'с. Михайловка',
   },
   {
     coords: [56.012493, 54.716517],
-    href: '/assets/images/icons/marks/health.svg',
-    title: 'Продукты',
-    type: 'health',
+    href: '/assets/images/img/country_real_estate.png',
+    title: 'Михайловка Green Place',
+    text: 'с. Михайловка',
   },
   {
     coords: [56.003305, 54.716656],
-    href: '/assets/images/icons/marks/education.svg',
-    title: 'Супермаркет "Магнит"',
-    type: 'education',
-  },
-  {
-    coords: [55.992771, 54.713326],
-    href: '/assets/images/icons/marks/park.svg',
-    title: 'Супермаркет "Магнит"',
-    type: 'park',
-  },
-  {
-    coords: [56.000967, 54.720685],
-    href: '/assets/images/icons/marks/basket.svg',
-    title: 'Ашан',
-    type: 'basket',
+    href: '/assets/images/img/country_real_estate.png',
+    title: 'Михайловка Green Place',
+    text: 'с. Михайловка',
   },
 ]
 let map
@@ -120,8 +81,8 @@ onMounted(() => {
       map = new ymaps.Map(
         'map-complex',
         {
-          center: [56.01607131, 54.7286735],
-          zoom: 12,
+          center: [56.01448981, 54.71835837],
+          zoom: 16,
           controls: [],
         },
         {
@@ -131,18 +92,26 @@ onMounted(() => {
       let geoObjects = []
       marks.forEach((item, i) => {
         var animatedLayout = ymaps.templateLayoutFactory.createClass(
-          `<div class="square_layout"><img src=${item.href} width="32" height="32"><span class="square_layout-text">${item.title}</span></div>`,
+          `<div class="complex-layout">
+            <div class="complex-layout__img">
+            <img src=${item.href} width="56" height="56">
+            </div>
+            <div class="complex-layout__content">
+              <span class="complex-layout__title">${item.title}</span>
+              <span class="complex-layout__text">${item.text}</span>
+            </div>
+            </div>`,
           {
             build: function () {
               animatedLayout.superclass.build.call(this)
               var element =
                 this.getParentElement().getElementsByClassName(
-                  'square_layout'
+                  'complex-layout'
                 )[0]
               var smallShape = {
                 type: 'Circle',
-                coordinates: [0, 0],
-                radius: 32,
+                coordinates: [25, 25],
+                radius: 56,
               }
               this.getData().options.set('shape', smallShape)
               if (this.isActive) {
@@ -182,7 +151,6 @@ onMounted(() => {
                   function (e) {
                     itemCardOpen.value = marks[i]
                     cardOpen.value = true
-                    
                   },
                   this
                 )
@@ -216,16 +184,10 @@ watch(fullscreenMap, (val) => {
     map.container.getParentElement().style.height = window.screen.height + 'px'
     map.container.fitToViewport()
   } else {
-    
-
     map.container.getParentElement().style.height = sizeMap[1] + 'px'
     map.container.fitToViewport()
   }
 })
-
-// definePageMeta({
-//   layout: 'default'
-// });
 </script>
 <style>
 /* Квадратный макет метки */
@@ -255,30 +217,42 @@ watch(fullscreenMap, (val) => {
   display: none;
   padding: 12px 8px;
 }
-.square_layout {
+.complex-layout {
   display: flex;
   border-radius: 12px;
   position: absolute;
-  left: -23px;
-  top: -23px;
+  gap: 18px;
   width: max-content;
   /* width: 32px;
   height: 32px; */
-  border: 2px solid white;
   background-color: white;
   align-items: center;
+}
+.complex-layout__img {
   gap: 6px;
+  border: 2px solid theme('colors.primary');
+  border-radius: 12px;
+  overflow: hidden;
 }
-.square_layout > img {
-  align-self: baseline;
+.complex-layout__img > img {
+  width: 56px;
+  height: 56px;
+  object-fit: cover;
 }
-.square_layout.active .square_layout-text {
-  display: block;
+.complex-layout.active {
+  padding: 8px;
 }
-.square_layout-text {
-  @apply tw-text-body_xs;
+.complex-layout__content {
   display: none;
-  padding: 12px 8px;
+}
+.complex-layout.active .complex-layout__content {
+  display: grid;
+}
+.complex-layout__text {
+  @apply tw-text-text02;
+}
+.complex-layout__title {
+  @apply tw-text-body_l tw-mb-1;
 }
 </style>
 <style lang="scss" scoped>

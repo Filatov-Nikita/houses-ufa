@@ -8,6 +8,7 @@
           <input
             ref="input1Ref"
             class="control-block__input"
+            :class="[`control-block__input--${theme}`]"
             type="text"
             :value="val1"
             :placeholder="min.toString()"
