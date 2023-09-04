@@ -410,8 +410,6 @@ watch(typeMark, (val) => {
             this.getData().geoObject.events.add(
               'mouseenter',
               function (e) {
-                
-
                 this.isActive = true
                 this.rebuild()
               },
@@ -446,11 +444,11 @@ watch(typeMark, (val) => {
 watch(fullscreenMap, (val) => {
   if (val) {
     map.container.getParentElement().style.height = window.screen.height + 'px'
+    map.container.getParentElement().style.width = window.screen.width + 'px'
     map.container.fitToViewport()
   } else {
-    
-
     map.container.getParentElement().style.height = sizeMap[1] + 'px'
+    map.container.getParentElement().style.width = sizeMap[0] + 'px'
     map.container.fitToViewport()
   }
 })
@@ -515,7 +513,7 @@ watch(fullscreenMap, (val) => {
 </style>
 <style lang="scss" scoped>
 .map {
-  @apply tw-w-full tw-h-[560px] lg:tw-h-[600px] tw-rounded-2xl tw-overflow-hidden  tw-relative;
+  @apply tw-w-full tw-h-[560px] lg:tw-h-[600px] tw-rounded-2xl tw-overflow-hidden  tw-relative tw-z-10;
   &.fullscreen {
     @apply tw-fixed tw-top-0 tw-left-0 tw-w-screen tw-h-screen;
   }

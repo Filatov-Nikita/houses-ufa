@@ -1,11 +1,13 @@
 <template>
   <section class="head-section tw-flex tw-flex-col">
-    <div class="tw-container tw-h-full">
+    <div class="tw-container">
       <BaseBanner actionLabel="Оставить заявку" theme="white" class="tw-mb-3">
         <p>
           Оставить заявку. Оставьте свои контактные данные и мы свяжемся с вами
         </p>
       </BaseBanner>
+    </div>
+    <div class="tw-container tw-h-full">
       <div class="head-section__wrapper">
         <div>
           <BreadCrumbs
@@ -51,13 +53,17 @@
   </section>
   <section>
     <div class="tw-container">
-      <h2 class="section__title">Генплан жилого комплекса {Название ЖК}</h2>
+      <div class="section__top">
+        <h2 class="section__title">Генплан жилого комплекса {Название ЖК}</h2>
+      </div>
       <GenplanZhk />
     </div>
   </section>
   <section>
     <div class="tw-container">
-      <h2 class="section__title">Расположение и инфраструктура</h2>
+      <div class="section__top">
+        <h2 class="section__title">Расположение и инфраструктура</h2>
+      </div>
       <MapCategory />
     </div>
   </section>
@@ -138,14 +144,9 @@
   <section>
     <div class="tw-container">
       <div class="section__top">
-        <h2 class="section__title">Типы планировок в {Название ЖК}</h2>
+        <h2 class="section__title">Ход строительства</h2>
       </div>
       <TabContructionProgress />
-    </div>
-  </section>
-  <section>
-    <div class="tw-container">
-      <h2 class="section__title">Ход строительства</h2>
     </div>
   </section>
   <section>
