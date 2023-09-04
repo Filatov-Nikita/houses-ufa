@@ -8,7 +8,7 @@
       </BaseTabsGroup>
     </div>
     <BaseTabsTabContent v-model="tab">
-      <BaseTabsTabContentItem name="roof">
+      <BaseTabsTabContentItem name="roof" key="roof">
         <div
           class="tw-rounded-2xl tw-overflow-hidden tw-h-[412px] lg:tw-h-[560px]"
         >
@@ -18,8 +18,7 @@
             :pagination="{
               type: 'bullets',
               el: '.swiper-pagination',
-              bulletActiveClass: 'dot-active',
-              bulletClass: 'dot',
+              dynamicBullets: true,
             }"
             :navigation="{
               nextEl: '.swiper-next',
@@ -108,12 +107,13 @@
                 />
               </svg>
             </button>
+            <div class="swiper-pagination !tw-left-auto !-tw-right-4"></div>
           </Swiper>
         </div>
       </BaseTabsTabContentItem>
     </BaseTabsTabContent>
   </div>
-  <BaseModal v-model="popup" v-slot="{ hide }" class="lg:tw-hidden">
+  <BaseModal v-model="popup" v-slot="{ hide }" :forMob="true">
     <BaseModalCard v-bind="{ hide }">
       <div class="tw-grid">
         <h5 class="tw-text-h6 tw-mb-4">
@@ -131,7 +131,7 @@
   </BaseModal>
 </template>
 <script lang="ts" setup>
-const tab = ref('')
+const tab = ref('roof')
 const teamTabs = [
   {
     name: 'roof',
@@ -162,8 +162,5 @@ const openPopup = (title: string, text: string) => {
   }
   popup.value = true
 }
-onMounted(() => {
-  tab.value = teamTabs[0].name
-})
 </script>
 <style lang="scss" scoped></style>

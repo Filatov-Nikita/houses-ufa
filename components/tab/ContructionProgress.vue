@@ -1,25 +1,29 @@
 <template>
   <div>
-    <BaseTabsGroup v-model="tab" class="tw-mb-6 lg:tw-mb-8">
-      <BaseTabsGroupItem v-for="item in tabs" :name="item.name">
-        {{ item.title }}
-      </BaseTabsGroupItem>
-    </BaseTabsGroup>
-    <BaseTabsTabContent v-model="tab">
+    <div class="tw-overflow-auto tw-mb-6 xl:tw-mb-8">
+      <BaseTabsGroup v-model="tab">
+        <BaseTabsGroupItem v-for="item in tabs" :name="item.name">
+          {{ item.title }}
+        </BaseTabsGroupItem>
+      </BaseTabsGroup>
+    </div>
+    <BaseTabsTabContent v-model="tab" class="-tw-mx-4 lg:tw-mx-0">
       <BaseTabsTabContentItem name="photos" key="photos" class="tw-relative">
         <Swiper
           :modules="[SwiperPagination, SwiperNavigation]"
-          :slides-per-view="1.3"
-          :space-between="20"
+          :slides-per-view="1.12"
+          :space-between="12"
           :centeredSlides="true"
           @swiper="onSwiper"
           :breakpoints="{
             '1024': {
               slidesPerView: 3,
+              spaceBetween: 20,
               centeredSlides: false,
             },
             '1440': {
               slidesPerView: 4,
+              spaceBetween: 20,
               centeredSlides: false,
             },
           }"
@@ -34,8 +38,8 @@
             prevEl: '.swiper-prev',
           }"
         >
-          <SwiperSlide v-for="n in 10">
-            <div class="card">
+          <SwiperSlide v-for="n in 10" @click="openPhotos = true">
+            <div class="card tw-cursor-pointer">
               <img
                 src="/assets/images/img/country_real_estate.png"
                 alt=""
@@ -54,13 +58,13 @@
 
         <button
           @click="swiper?.slidePrev()"
-          class="tw-absolute -tw-left-4 tw-top-1/2 tw-z-10 tw-transform -tw-translate-y-1/2 tw-rounded-lg tw-h-12 tw-w-12 tw-bg-text01/40 tw-backdrop-blur-sm tw-grid tw-place-content-center"
+          class="tw-absolute tw-left-4 lg:-tw-left-4 tw-top-1/2 tw-z-10 tw-transform -tw-translate-y-1/2 tw-rounded-lg tw-h-12 tw-w-12 tw-bg-text01/40 tw-backdrop-blur-sm tw-grid tw-place-content-center"
         >
           <BaseIcon name="back" class="tw-w-6 tw-h-6 tw-text-white" />
         </button>
         <button
           @click="swiper?.slideNext()"
-          class="tw-absolute -tw-right-4 tw-top-1/2 tw-z-10 tw-transform -tw-translate-y-1/2 tw-rounded-lg tw-h-12 tw-w-12 tw-bg-text01/40 tw-backdrop-blur-sm tw-grid tw-place-content-center"
+          class="tw-absolute tw-right-4 lg:-tw-right-4 tw-top-1/2 tw-z-10 tw-transform -tw-translate-y-1/2 tw-rounded-lg tw-h-12 tw-w-12 tw-bg-text01/40 tw-backdrop-blur-sm tw-grid tw-place-content-center"
         >
           <BaseIcon name="forward" class="tw-w-6 tw-h-6 tw-text-white" />
         </button>
@@ -93,8 +97,8 @@
             prevEl: '.swiper-prev',
           }"
         >
-          <SwiperSlide v-for="n in 10">
-            <div class="card card-camera">
+          <SwiperSlide v-for="n in 10" @click="openVideo = true">
+            <div class="card card-camera tw-cursor-pointer">
               <img
                 src="/assets/images/img/country_real_estate.png"
                 alt=""
@@ -131,9 +135,13 @@
       </BaseTabsTabContentItem>
     </BaseTabsTabContent>
   </div>
+  <ModalsPhotos v-model="openPhotos" />
+  <ModalsVideo v-model="openVideo" />
 </template>
 <script lang="ts" setup>
 import type { Swiper } from 'swiper'
+const openPhotos = ref(false)
+const openVideo = ref(false)
 const activeIndex = ref(0)
 const swiper = ref<Swiper>()
 const onSwiper = (s: Swiper) => {
@@ -143,7 +151,7 @@ const swiperCamera = ref<Swiper>()
 const onSwiperCamera = (s: Swiper) => {
   swiperCamera.value = s
 }
-const tab = ref('')
+const tab = ref('photos')
 const tabs = [
   {
     name: 'photos',
@@ -154,7 +162,6 @@ const tabs = [
     title: 'Онлайн-камеры',
   },
 ]
-onMounted(() => (tab.value = tabs[0].name))
 </script>
 <style lang="scss" scoped>
 .card {

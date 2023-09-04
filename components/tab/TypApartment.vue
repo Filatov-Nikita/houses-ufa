@@ -1,11 +1,13 @@
 <template>
-  <BaseTabsGroup v-model="tab" class="tw-mb-6 lg:tw-mb-8">
-    <BaseTabsGroupItem v-for="item in tabs" :name="item.name">
-      {{ item.title }}
-    </BaseTabsGroupItem>
-  </BaseTabsGroup>
+  <div class="tw-overflow-auto tw-mb-6 xl:tw-mb-8">
+    <BaseTabsGroup v-model="tab">
+      <BaseTabsGroupItem v-for="item in tabs" :name="item.name">
+        {{ item.title }}
+      </BaseTabsGroupItem>
+    </BaseTabsGroup>
+  </div>
   <BaseTabsTabContent v-model="tab">
-    <BaseTabsTabContentItem name="all">
+    <BaseTabsTabContentItem name="all" key="all">
       <div
         class="tw-grid lg:tw-grid-cols-3 xl:tw-grid-cols-4 tw-gap-4 lg:tw-gap-5"
       >
@@ -19,7 +21,7 @@
           }"
         >
           <NuxtLink to="/">
-            <BaseButton class="tw-w-full tw-mt-6">
+            <BaseButton theme="gray" class="tw-w-full tw-mt-6">
               Показать 34 планировки
             </BaseButton>
           </NuxtLink>
@@ -32,7 +34,7 @@
   </BaseTabsTabContent>
 </template>
 <script lang="ts" setup>
-const tab = ref('')
+const tab = ref('all')
 const tabs = [
   {
     name: 'all',
@@ -51,6 +53,5 @@ const tabs = [
     title: '3-комнатные',
   },
 ]
-onMounted(() => (tab.value = tabs[0].name))
 </script>
 <style lang="scss" scoped></style>
