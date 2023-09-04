@@ -31,13 +31,13 @@
           </BaseButton>
         </div>
         <form class="tw-hidden lg:tw-block">
-          <BaseBaseSelect
+          <BaseSelect
             label="Тип недвижимости"
             name="typeApartment"
             :drop-down-props="{ options: [{ label: 'test 1', value: '1' }] }"
             v-model="typeApartmentOpt"
           />
-          <BaseBaseSelect
+          <BaseSelect
             label="Объекты"
             name="object"
             :drop-down-props="{ options: [{ label: 'test 1', value: '1' }] }"
@@ -111,19 +111,19 @@
             }"
             v-model="storey"
           />
-          <BaseBaseSelect
+          <BaseSelect
             label="Статус"
             name="status"
             :drop-down-props="{ options: [{ label: 'test 1', value: '1' }] }"
             v-model="statusOpt"
           />
-          <BaseBaseSelect
+          <BaseSelect
             label="Акция"
             name="action"
             :drop-down-props="{ options: [{ label: 'test 1', value: '1' }] }"
             v-model="actionOpt"
           />
-          <BaseBaseSelect
+          <BaseSelect
             label="Вид отделки"
             name="typeFinishing"
             :drop-down-props="{ options: [{ label: 'test 1', value: '1' }] }"

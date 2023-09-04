@@ -1,14 +1,17 @@
 export default function () {
   const plan = ref<HTMLElement>()
   const cardOpen = ref(false)
+  const cardOpenModal = ref(false)
   const card = ref<HTMLElement>()
   const cardCoords = ref({})
-  const changeHouse = (evt: MouseEvent) => {
+  const changeHouse = (evt: MouseEvent, id: number) => {
     if (window.innerWidth >= 1024) {
       const targetEl = evt?.currentTarget as HTMLElement | null
+
       if (targetEl) {
         targetEl.classList.add('active')
         const miniCard = targetEl.querySelector('.card-mini')
+
         cardOpen.value = true
         if (miniCard) {
           setTimeout(() => {
@@ -46,7 +49,7 @@ export default function () {
   const leaveHouse = (evt: MouseEvent) => {
     if (window.innerWidth >= 1024) {
       cardOpen.value = false
-
+      console.log('leave')
       const targetEl = evt?.currentTarget as HTMLElement | null
       if (targetEl) {
         targetEl.classList.remove('active')
@@ -54,10 +57,9 @@ export default function () {
     }
   }
 
-  const clickHouse = () => {
+  const clickHouse = (id: number) => {
     if (window.innerWidth < 1024) {
-      cardOpen.value = true
-      window.addEventListener('click', windowClick)
+      cardOpenModal.value = true
     }
   }
   const windowClick = (evt: MouseEvent) => {
@@ -95,5 +97,6 @@ export default function () {
     leaveHouse,
     clickHouse,
     closeCard,
+    cardOpenModal,
   }
 }

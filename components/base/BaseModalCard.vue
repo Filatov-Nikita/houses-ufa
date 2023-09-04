@@ -11,7 +11,6 @@
 <script lang="ts" setup>
 const props = withDefaults(
   defineProps<{
-    hide: Function
     isFull?: boolean
     isFullMob?: boolean
   }>(),

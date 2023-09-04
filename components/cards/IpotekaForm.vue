@@ -1,27 +1,27 @@
 <template>
   <div class="card-ipoteka">
     <form class="tw-grid tw-gap-8 tw-content-start">
-      <BaseBaseSelect
+      <BaseSelect
         label="Жилой комплекс"
         name="test"
         :drop-down-props="{ options: [{ label: 'test 1', value: '1' }] }"
         v-model="zhk"
       />
       <div class="tw-grid tw-grid-cols-2 tw-gap-5">
-        <BaseBaseSelect
+        <BaseSelect
           label="Подъезд"
           name="test"
           :drop-down-props="{ options: [{ label: 'test 1', value: '1' }] }"
           v-model="entrance"
         />
-        <BaseBaseSelect
+        <BaseSelect
           label="Литер"
           name="test"
           :drop-down-props="{ options: [{ label: 'test 1', value: '1' }] }"
           v-model="letter"
         />
       </div>
-      <BaseBaseSelect
+      <BaseSelect
         label="Программа"
         name="test"
         :drop-down-props="{ options: [{ label: 'test 1', value: '1' }] }"
@@ -63,11 +63,11 @@
           :program="item.program"
         />
       </BaseCheckboxSlot>
-
       <ModalsOther
         v-model="modalBankList"
         title="Выберите банк"
-        :isFull="true"
+        :isFullMob="true"
+        :forMob="true"
         class="!tw-h-[90vh]"
       >
         <template #default>

@@ -37,7 +37,7 @@ const props = defineProps<Props>()
 </script>
 <style lang="scss" scoped>
 .card {
-  @apply tw-bg-white tw-rounded-2xl  tw-relative;
+  @apply tw-bg-white tw-rounded-2xl  tw-relative tw-overflow-hidden;
   &__wrapper {
     @apply tw-absolute tw-w-full tw-h-full tw-overflow-hidden;
     &::before {

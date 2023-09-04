@@ -1,7 +1,7 @@
 <template>
   <Teleport to="body">
     <div
-      v-if="!leaved"
+      v-if="!leaved && disabledModal"
       class="base-modal"
       :class="{
         'base-modal__full-mob': isFullMob,
@@ -14,7 +14,7 @@
         :leave-active-class="animate[1]"
         @after-leave="leaved = true"
       >
-        <div class="base-modal__wrap" v-if="modelValue">
+        <div class="base-modal__wrap" v-if="modelValue ">
           <slot v-bind="{ hide }" />
         </div>
       </transition>
@@ -27,6 +27,7 @@
 interface Props {
   modelValue?: boolean
   isFullMob?: boolean
+  forMob?: boolean
 }
 defineOptions({
   inheritAttrs: false,
@@ -36,11 +37,13 @@ const disallowScrollClass = 'tw-overflow-hidden'
 const props = withDefaults(defineProps<Props>(), {
   modelValue: true,
   isFullMob: false,
+  forMob: false
 })
 
 const leaved = ref(!props.modelValue)
 const animate = ref(['', ''])
 const updateWindow = () => {
+  width.value =  window.screen.width
   if (window.screen.width < 1024)
     animate.value = [
       'animate__animated anim-300ms animate__fadeInUp',
@@ -52,9 +55,16 @@ const updateWindow = () => {
       'animate__animated anim-300ms animate__zoomOut',
     ]
 }
+const width = ref(0)
+const disabledModal = computed(()=>{
+  if(props.forMob && width.value >= 1024){ 
+    hide();
+    return false
+  }
+  return true
+})
 onMounted(() => {
   if (props.modelValue) {
-
     scrollOff()
     updateWindow()
     window.addEventListener('resize', updateWindow)

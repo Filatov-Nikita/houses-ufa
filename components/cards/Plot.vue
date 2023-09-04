@@ -109,6 +109,7 @@
       </div>
     </div>
   </div>
+  <ModalsCottageCard v-model="openCard" />
 </template>
 
 <script setup lang="ts">
@@ -127,6 +128,7 @@ const onSlideChange = (s: Swiper) => {
 const slideTo = (index: number) => {
   swiper.value?.slideTo(index)
 }
+const openCard = ref(true)
 </script>
 <style scoped>
 .btn {
