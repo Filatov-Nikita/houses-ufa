@@ -14,51 +14,11 @@
   </SectionFirst>
   <section>
     <div class="tw-container">
-      <div class="section__top"></div>
-      <div
-        class="tw-grid tw-gap-4 lg:tw-gap-5 lg:tw-grid-cols-2 xl:tw-grid-cols-3"
-      >
-        <CardsItemNews
-          v-for="item in newsList"
-          :to="item.to"
-          :title="item.title"
-          :date="item.date"
-          :is_favorite="item.is_favorite"
-        />
-      </div>
+      <News />
     </div>
   </section>
 </template>
 <script lang="ts" setup>
-const newsList = [
-  {
-    to: '/',
-    title:
-      'Mkset: «Таунхаус против квартиры. Что комфортнее для семьи с детьми?»',
-    date: '12.05.23',
-    is_favorite: true,
-  },
-  {
-    to: '/',
-    title:
-      'Mkset: «Таунхаус против квартиры. Что комфортнее для семьи с детьми?»',
-    date: '12.05.23',
-    is_favorite: false,
-  },
-  {
-    to: '/',
-    title:
-      'Mkset: «Таунхаус против квартиры. Что комфортнее для семьи с детьми?»',
-    date: '12.05.23',
-    is_favorite: false,
-  },
-  {
-    to: '/',
-    title:
-      'Mkset: «Таунхаус против квартиры. Что комфортнее для семьи с детьми?»',
-    date: '12.05.23',
-    is_favorite: false,
-  },
-]
+import { News } from '~/other-modules/news'
 </script>
 <style lang="scss" scoped></style>
