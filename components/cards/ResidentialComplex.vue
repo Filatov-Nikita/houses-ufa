@@ -11,13 +11,7 @@
         :height="374"
         class="img tw-absolute tw-w-full tw-h-full tw-object-cover"
       />
-      <img
-        v-else
-        src="/assets/images/icons/house.svg"
-        :alt="alt"
-        :width="64"
-        :height="64"
-      />
+      <BaseIcon v-else name="home" class=" tw-w-16 tw-h-16"/>
       <div class="tw-absolute tw-left-4 tw-top-4 tw-grid tw-gap-1">
         <h4 class="tw-text-h4 tw-text-white">{{ title }}</h4>
         <p class="tw-text-body_l tw-text-white">

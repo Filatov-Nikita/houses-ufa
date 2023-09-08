@@ -127,7 +127,7 @@
         class="tw-relative tw-rounded-2xl tw-overflow-hidden tw-px-3 tw-py-8 tw-bg-base00 tw-grid tw-place-content-center tw-h-[311px] lg:tw-h-full lg:tw-w-[537px] xl:tw-w-[745px]"
       >
         <img
-          src="/assets/images/img/Планировка квартиры.png"
+          src="/assets/images/img/plan-apartment.png"
           class="tw-object-contain tw-absolute tw-h-full tw-w-full"
         />
       </div>

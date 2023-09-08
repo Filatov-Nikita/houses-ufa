@@ -11,13 +11,7 @@
         :height="374"
         class="tw-absolute tw-w-full tw-h-full tw-object-cover"
       />
-      <img
-        v-else
-        src="/assets/images/icons/house.svg"
-        :alt="alt"
-        :width="64"
-        :height="64"
-      />
+      <BaseIcon v-else name="home" class=" tw-w-16 tw-h-16"/>
       <div
         v-if="status"
         class="tw-absolute tw-right-4 tw-top-4 tw-backdrop-blur-sm tw-rounded-lg tw-py-[5px] tw-px-[11px] tw-text-white tw-text-body_s -tw-tracking-875"

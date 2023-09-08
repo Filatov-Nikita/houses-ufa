@@ -55,7 +55,7 @@
         >
           <img
             format="avif,webp"
-            src="/assets/images/img/Планировка квартиры.png"
+            src="/assets/images/img/plan-apartment.png"
             class="tw-object-contain"
           />
         </div>
