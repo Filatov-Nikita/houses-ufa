@@ -7,7 +7,7 @@
           <span class="control-block__label">от</span>
           <input
             ref="input1Ref"
-            class="control-block__input"
+            class="control-block__input control-block__input--space-before"
             :class="[`control-block__input--${theme}`]"
             type="text"
             :value="val1"
@@ -24,7 +24,7 @@
           <span class="control-block__label">до</span>
           <input
             ref="input2Ref"
-            class="control-block__input"
+            class="control-block__input control-block__input--space-before"
             :class="[`control-block__input--${theme}`]"
             type="text"
             :value="val2"
@@ -51,6 +51,9 @@
 
 <script setup lang="ts">
   import { useField } from 'vee-validate';
+  import { useMovable } from './composables';
+  import { prettyValue, cutNotNumeric, minmax, getNumbersAfterDot, isLeftEdge, isRightEdge, getXFromEl } from './helpers';
+
   type NumOrNull = number | null;
   type ModelValue = [NumOrNull, NumOrNull] | null;
 
@@ -58,8 +61,7 @@
     min?: number,
     max: number,
     inputWitdh?: string,
-    name1?: string,
-    name2?: string,
+    name: string,
     modelValue?: ModelValue,
     insertLabel?: string,
     label?: string,
@@ -71,8 +73,6 @@
     inputWitdh: '100%',
     min: 0,
     step: 1,
-    name1: 'from',
-    name2: 'to',
     modelValue: null,
     theme: 'gray'
   });
@@ -81,7 +81,7 @@
   const input1Ref = ref<HTMLInputElement | null>(null);
   const input2Ref = ref<HTMLInputElement | null>(null);
 
-  const { value, handleChange } = useField(props.name1, undefined, {
+  const { value, handleChange } = useField(props.name, undefined, {
     initialValue: props.modelValue,
     syncVModel: true
   });
@@ -127,21 +127,10 @@
     return props.insertLabel ? `${pretty} ${props.insertLabel}` : pretty;
   }
 
-  function prettyValue(val: number) {
-    const [num, num2 = ''] = val.toString().split('.');
-    const parts = num.match(/\d{1,3}(?=(\d{3})*$)/g);
-    return [parts!.join(' '), num2].filter(val => !!val).join(',');
-  }
-
   function onChangeFrom(e: Event) {
     const value = (e.target as HTMLInputElement).value;
     const newVal = value === '' ? null : +cutNotNumeric(value);
     setFrom(newVal);
-  }
-
-  function cutNotNumeric(str: string) {
-    const newStr = str.replace(/[^\d.-]+/g, '');;
-    return newStr;
   }
 
   function onChangeTo(e: Event) {
@@ -162,10 +151,6 @@
     setHandPosInPx(value.value?.[0] ?? props.min, hands[0], 0);
     setHandPosInPx(value.value?.[1] ?? props.max, hands[1], hands[1].offsetWidth);
   };
-
-  function minmax(val: number, min: number, max: number): number {
-    return Math.max(min, Math.min(val, max));
-  }
 
   function setFrom(val: NumOrNull) {
     let newVal: ModelValue;
@@ -216,11 +201,6 @@
     return +(val).toFixed(getNumbersAfterDot(props.step));
   }
 
-  function getNumbersAfterDot(num: number): number {
-    const [ _, right = '' ] = num.toString().split('.');
-    return right.length;
-  }
-
   function getPrevNext(handRef: HTMLElement, childNodes: NodeListOf<ChildNode>) {
     const nodes = Array.from(childNodes);
     let next: any;
@@ -238,16 +218,6 @@
     });
 
     return { next, prev };
-  }
-
-  function isLeftEdge(x: number, block: HTMLElement, handRef: HTMLElement) {
-    const blockStart = block.getBoundingClientRect().x;
-    return  x < blockStart;
-  }
-
-  function isRightEdge(x: number, block: HTMLElement, handRef: HTMLElement) {
-    const blockStart = block.getBoundingClientRect().x;
-    return x + handRef.offsetWidth > blockStart + block.offsetWidth;
   }
 
   function onMove(e: { x: number }, handRef: HTMLElement): void {
@@ -287,182 +257,7 @@
     handRef.style.transform = `translateX(${x}px)`;
   }
 
-  function getXFromEl(relative: HTMLElement, target: HTMLElement | number) {
-    const { x: x1 } = relative.getBoundingClientRect();
-    if(typeof target === 'number') {
-      return target - x1;
-    } else {
-      const { x: x2 } = target.getBoundingClientRect();
-      return x2 - x1;
-    }
-  }
-
-  function onMousedown(e: MouseEvent) {
-    document.body.classList.add('tw-select-none');
-    const newWindow = window as any;
-    const target = e.target as HTMLElement;
-    newWindow._onMove = (e: MouseEvent) => onMove({ x: e.x }, target);
-    window.addEventListener('mousemove', newWindow._onMove);
-    window.addEventListener('mouseup', onMouseUp);
-  }
-
-  function onTouchdown(e: TouchEvent) {
-    e.preventDefault();
-    const newWindow = window as any;
-    const target = e.target as HTMLElement;
-    newWindow._onTouchmove = (e: TouchEvent) => {
-      e.preventDefault();
-      onMove({ x: e.touches[0].clientX}, target);
-    }
-    window.addEventListener('touchmove', newWindow._onTouchmove);
-    window.addEventListener('touchend', onTouchend);
-  }
-
-  function onTouchend(e: TouchEvent) {
-    const newWindow = window as any;
-    window.removeEventListener('touchmove', newWindow._onTouchmove);
-    window.removeEventListener('touchend', onTouchend);
-    delete newWindow._onTouchmove;
-  }
-
-  function onMouseUp() {
-    document.body.classList.remove('tw-select-none');
-    const newWindow = window as any;
-    window.removeEventListener('mousemove', newWindow._onMove);
-    window.removeEventListener('mouseup', onMouseUp);
-    delete newWindow._onMove;
-  }
+  const { onMousedown, onTouchdown } = useMovable(onMove);
 </script>
 
-<style scoped lang="scss">
-  .base-range-block {
-    &__label {
-      letter-spacing: -0.14px;
-      @apply tw-text-text02 tw-text-sm tw-font-normal tw-block tw-mb-2;
-    }
-
-    &__error-msg {
-      @apply tw-mt-2 tw-text-error tw-text-xs tw-font-normal;
-    }
-  }
-
-  .control-block {
-    padding-bottom: 8px;
-    position: relative;
-
-    &__inputs {
-      border-radius: 8px;
-      padding: 17px 16px 15px;
-      border-width: 1px;
-      border-style: solid;
-      @apply  tw-flex tw-gap-2 tw-items-center ;
-      &--gray {
-        @apply tw-bg-base00 tw-border tw-border-base00;
-      }
-      &--white {
-        @apply tw-bg-white tw-border-white;
-      }
-      &--error {
-        @apply tw-border-error;
-      }
-    }
-
-    &__divider {
-      flex-grow: 1;
-      text-align: center;
-    }
-
-    &__inp-area {
-      flex-basis: var(--basis);
-      @apply tw-relative;
-    }
-
-    &__input {
-      min-height: 24px;
-      padding-left: 24px;
-      @apply tw-block tw-w-full  tw-text-text00 tw-text-base;
-      &--gray {
-        @apply tw-bg-base00;
-      }
-      &--white {
-        @apply tw-bg-white;
-      }
-      &::-webkit-outer-spin-button, &::-webkit-inner-spin-button {
-        -webkit-appearance: none;
-      }
-
-      &::placeholder {
-        @apply tw-text-text02 tw-text-base;
-      }
-    }
-
-    &__label {
-      position: absolute;
-      /*
-      top: 2px;
-      */
-      top: 50%;
-      transform: translateY(-50%);
-      left: 0px;
-      @apply tw-text-text02 tw-text-base;
-    }
-
-    &__controls {
-      position: absolute;
-      bottom: 0;
-      left: 16px;
-      z-index: 100;
-      width: calc(100% - 32px);
-      height: 16px;
-      overflow: hidden;
-
-      &::before {
-        content: "";
-        display: block;
-        position: absolute;
-        left: 0;
-        top: 6px;
-        width: 100%;
-        height: 2px;
-        z-index: 10;
-        @apply tw-bg-primary;
-      }
-    }
-
-    &__hand {
-      touch-action: none;
-      position: absolute;
-      cursor: pointer;
-      top: 0;
-      left: 0px;
-      width: 16px;
-      height: 16px;
-      border-width: 6px;
-      z-index: 100;
-      @apply tw-bg-white tw-border-primary tw-rounded-full tw-border-solid;
-
-      &::before {
-        content: "";
-        position: absolute;
-        width: 100vw;
-        height: 2px;
-        top: 0px;
-        z-index: -1;
-        @apply tw-bg-base00;
-      }
-
-      &--left {
-        &::before {
-          left: -6px;
-          transform: translateX(-100%);
-        }
-      }
-
-      &--right {
-        &::before {
-          left: 10px;
-        }
-      }
-    }
-  }
-</style>
+<style lang="scss" src="./scss/index.scss"></style>

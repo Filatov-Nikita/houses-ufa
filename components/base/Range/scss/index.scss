@@ -1,0 +1,134 @@
+.base-range-block {
+  &__label {
+    letter-spacing: -0.14px;
+    @apply tw-text-text02 tw-text-sm tw-font-normal tw-block tw-mb-2;
+  }
+
+  &__error-msg {
+    @apply tw-mt-2 tw-text-error tw-text-xs tw-font-normal;
+  }
+}
+
+.control-block {
+  padding-bottom: 8px;
+  position: relative;
+
+  &__inputs {
+    border-radius: 8px;
+    padding: 17px 16px 15px;
+    border-width: 1px;
+    border-style: solid;
+    @apply  tw-flex tw-gap-2 tw-items-center ;
+    &--gray {
+      @apply tw-bg-base00 tw-border tw-border-base00;
+    }
+    &--white {
+      @apply tw-bg-white tw-border-white;
+    }
+    &--error {
+      @apply tw-border-error;
+    }
+  }
+
+  &__divider {
+    flex-grow: 1;
+    text-align: center;
+  }
+
+  &__inp-area {
+    flex-basis: 100%;
+    @apply tw-relative;
+  }
+
+  &__input {
+    min-height: 24px;
+    @apply tw-block tw-w-full  tw-text-text00 tw-text-base;
+
+    &--space-before {
+      padding-left: 24px;
+    }
+
+    &--gray {
+      @apply tw-bg-base00;
+    }
+    &--white {
+      @apply tw-bg-white;
+    }
+    &::-webkit-outer-spin-button, &::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+    }
+
+    &::placeholder {
+      @apply tw-text-text02 tw-text-base;
+    }
+  }
+
+  &__label {
+    position: absolute;
+    /*
+    top: 2px;
+    */
+    top: 50%;
+    transform: translateY(-50%);
+    left: 0px;
+    @apply tw-text-text02 tw-text-base;
+  }
+
+  &__controls {
+    position: absolute;
+    bottom: 0;
+    left: 16px;
+    z-index: 100;
+    width: calc(100% - 32px);
+    height: 16px;
+    overflow: hidden;
+
+    &::before {
+      content: "";
+      display: block;
+      position: absolute;
+      left: 0;
+      top: 6px;
+      width: 100%;
+      height: 2px;
+      z-index: 10;
+      @apply tw-bg-primary;
+    }
+  }
+
+  &__hand {
+    touch-action: none;
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0px;
+    width: 16px;
+    height: 16px;
+    border-width: 6px;
+    z-index: 100;
+    @apply tw-bg-white tw-border-primary tw-rounded-full tw-border-solid;
+
+    &::before {
+      content: "";
+      position: absolute;
+      width: 100vw;
+      height: 2px;
+      top: 0px;
+      z-index: -1;
+      @apply tw-bg-base00;
+    }
+
+    &--left {
+      &::before {
+        left: -6px;
+        transform: translateX(-100%);
+      }
+    }
+
+    &--right {
+      &::before {
+        left: 10px;
+      }
+    }
+  }
+}
