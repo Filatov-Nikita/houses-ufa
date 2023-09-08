@@ -88,7 +88,7 @@
                 ]"
                 @click="slideTo(index)"
               >
-                <img src="/assets/images/img/Планировка квартиры.png" alt="" />
+                <img src="/assets/images/img/plan-apartment.png" alt="" />
               </button>
               <span class="tw-text-center tw-text-body_s">
                 Этаж {{ index + 1 }}</span
@@ -107,7 +107,7 @@
               >
                 <img
                   format="avif,webp"
-                  src="/assets/images/img/Планировка квартиры.png"
+                  src="/assets/images/img/plan-apartment.png"
                   class="tw-object-contain tw-absolute tw-h-full tw-w-full"
                 />
               </div>

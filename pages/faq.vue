@@ -17,9 +17,11 @@
   </SectionFirst>
   <section>
     <div class="tw-container">
-      <TabFAQ />
+      <Faq />
     </div>
   </section>
 </template>
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+import { Faq } from '~/other-modules/faq'
+</script>
 <style lang="scss" scoped></style>

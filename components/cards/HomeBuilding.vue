@@ -91,7 +91,7 @@
                   @click="slideTo(index)"
                 >
                   <img
-                    src="/assets/images/img/Планировка квартиры.png"
+                    src="/assets/images/img/plan-apartment.png"
                     alt=""
                   />
                 </button>
@@ -112,7 +112,7 @@
                 >
                   <img
                     format="avif,webp"
-                    src="/assets/images/img/Планировка квартиры.png"
+                    src="/assets/images/img/plan-apartment.png"
                     class="tw-object-contain tw-absolute tw-h-full tw-w-full"
                   />
                 </div>
@@ -256,7 +256,7 @@
                   @click="slideTo(index)"
                 >
                   <img
-                    src="/assets/images/img/Планировка квартиры.png"
+                    src="/assets/images/img/plan-apartment.png"
                     alt=""
                   />
                 </button>
@@ -277,7 +277,7 @@
                 >
                   <img
                     format="avif,webp"
-                    src="/assets/images/img/Планировка квартиры.png"
+                    src="/assets/images/img/plan-apartment.png"
                     class="tw-object-contain tw-absolute tw-h-full tw-w-full"
                   />
                 </div>
