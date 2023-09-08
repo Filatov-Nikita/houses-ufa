@@ -107,7 +107,7 @@
 <script lang="ts" setup>
 import FaqList from './list.vue'
 
-import { useFaqStore } from '../stores'
+import { useFaqStore } from '../store'
 import { storeToRefs } from 'pinia'
 
 interface Section {

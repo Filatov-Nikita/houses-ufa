@@ -35,6 +35,7 @@ export default defineNuxtConfig({
     '~/plugins/pretty-amount.ts',
     '~/plugins/icons-sprite.ts',
     '~/plugins/loaders.ts',
+    '~/plugins/format-time.ts',
     '~/plugins/notify.ts',
   ],
   css: ['~/assets/css/app.css'],
