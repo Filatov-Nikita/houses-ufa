@@ -1,10 +1,18 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 import { createSvgIconsPlugin } from 'vite-plugin-svg-icons';
 import path from 'path';
+import { existsSync, readFileSync } from "node:fs";
 
 export default defineNuxtConfig({
   devtools: { enabled: true },
   modules: ['@pinia/nuxt', 'nuxt-swiper'],
+  runtimeConfig: {
+    public: {
+      baseURL: 'http://31.129.104.95/api/lobby/'
+    }
+  },
+  
+  
   // components: [
   //   '~/components/base',
   //   '~/components/base/BaseSelect/displays',
@@ -45,6 +53,18 @@ export default defineNuxtConfig({
         inject: 'body-last',
         customDomId: '__svg__icons__dom__',
       }),
-    ]
+    ],
+    // vue: {
+    //   script: {
+    //     fs: {
+    //       fileExists(file: string) {
+    //         return existsSync(file);
+    //       },
+    //       readFile(file: string) {
+    //         return readFileSync(file, "utf-8");
+    //       },
+    //     },
+    //   },
+    // },
   }
 })
