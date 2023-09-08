@@ -1,9 +1,6 @@
 <template>
   <div class="tw-grid tw-gap-2">
     <FaqItem v-for="i in qnas" v-bind="i" />
-    <!-- {{ data }} -->
-    sdsd
-    {{ name }}
   </div>
 </template>
 <script lang="ts" setup>
