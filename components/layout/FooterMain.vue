@@ -15,7 +15,7 @@
                 <div class="tw-grid tw-gap-6 tw-my-5">
                   <NuxtLink
                     v-for="item in navList[itemComparison.key_obj]"
-                    to="/"
+                    :to="item.to"
                     class="tw-text-text02 tw-text-body_m"
                   >
                     {{ item.label }}
@@ -30,7 +30,7 @@
               <div class="tw-grid tw-gap-6">
                 <NuxtLink
                   v-for="item in navList[itemComparison.key_obj]"
-                  to="/"
+                  :to="item.to"
                   class="tw-text-text02"
                 >
                   {{ item.label }}</NuxtLink

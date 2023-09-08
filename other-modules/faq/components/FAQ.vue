@@ -1,4 +1,5 @@
 <template>
+  <FaqList/>
   <div
     class="lg:tw-grid lg:tw-grid-cols-[394px_1fr] xl:tw-grid-cols-[440px_1fr]"
   >
@@ -134,6 +135,7 @@
   </ModalsOther>
 </template>
 <script lang="ts" setup>
+import {FaqList} from "~/other-modules/faq"
 interface Option {
   id: number
   name: string

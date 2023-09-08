@@ -150,7 +150,7 @@ function getFooterMenu() {
       },
       {
         label: 'Вопросы и ответы',
-        to: '/',
+        to: '/faq',
       },
     ],
     contacts: [
@@ -247,7 +247,7 @@ function getNavSectionLinks() {
         },
         {
           label: 'Вопросы и ответы',
-          to: '/',
+          to: '/faq',
         },
       ],
     },
