@@ -22,7 +22,6 @@ export const useFaqStore = defineStore('faqStore', () => {
     const { data } = await useDataFetch('faq/sections', {
       baseURL: config.public.baseURL,
     })
-    console.log(data.value)
     sections.value = data.value.data as Section[]
   }
   const getList = async (id: number) => {
