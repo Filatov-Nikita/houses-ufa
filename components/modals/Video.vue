@@ -23,7 +23,7 @@
         >
           <img
             format="avif,webp"
-            src="/assets/images/img/country_real_estate.png"
+            src="/images/img/country_real_estate.png"
             class="tw-object-cover tw-absolute tw-h-full tw-w-full"
           />
         </div>

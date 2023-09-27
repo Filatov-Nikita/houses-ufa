@@ -226,21 +226,21 @@
 const marks = [
   {
     id: 1,
-    img: '/assets/images/img/country_real_estate.png',
+    img: '/images/img/country_real_estate.png',
     title: 'ОП ЖК «Гудвилл Парк» 1',
     address: 'с. Шмидтово, ул. Ромашковая, д. 10',
     coords: [54.739426, 56.098933],
   },
   {
     id: 3,
-    img: '/assets/images/img/country_real_estate.png',
+    img: '/images/img/country_real_estate.png',
     title: 'ОП ЖК «Гудвилл Парк» 2',
     address: 'с. Шмидтово, ул. Ромашковая, д. 10',
     coords: [54.730201, 56.028651],
   },
   {
     id: 3,
-    img: '/assets/images/img/country_real_estate.png',
+    img: '/images/img/country_real_estate.png',
     title: 'ОП ЖК «Гудвилл Парк» 3',
     address: 'с. Шмидтово, ул. Ромашковая, д. 10',
     coords: [54.721629, 56.016617],

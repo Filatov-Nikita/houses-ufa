@@ -3,7 +3,7 @@
     <div class="plan__wrapper">
       <img
         class="plan__img"
-        src="/assets/images/img/map/plan-cottages-item.png"
+        src="/images/img/map/plan-cottages-item.png"
         alt=""
       />
       <svg
@@ -469,7 +469,7 @@
           <div class="card__image">
             <img
               class=""
-              src="/assets/images/img/country_real_estate.png"
+              src="/images/img/country_real_estate.png"
               alt=""
             />
           </div>
@@ -494,7 +494,7 @@
         <BaseButton class="tw-grow"> Подробнее </BaseButton>
         <button @click="closeCard">
           <BaseSquareIcon>
-            <img src="/assets/images/icons/close.svg" alt="" />
+            <img src="/images/icons/close.svg" alt="" />
           </BaseSquareIcon>
         </button>
       </div>

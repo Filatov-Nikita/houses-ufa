@@ -20,7 +20,7 @@
           v-for="team in managementList"
         >
           <div
-            class="tw-rounded-2xl tw-overflow-hidden tw-w-[144px] tw-h-[144px] lg:tw-w-[80px] lg:tw-h-[80px]"
+            class="tw-rounded-2xl tw-overflow-hidden tw-w-[144px] tw-h-[144px] lg:tw-w-[80px] lg:tw-h-[80px] tw-shrink-0"
           >
             <img :src="team.photo" alt="" />
           </div>
@@ -75,20 +75,20 @@ const teamTabs = [
 
 const managementList = [
   {
-    photo: '/assets/images/team-test.jpg',
+    photo: '/images/team-test.jpg',
     fio: 'Вечков Евгений Борисович',
     status: 'Генеральный директор УК «Жилой Квартал»',
     phone: '+7 (999) 999-99-99',
   },
   {
-    photo: '/assets/images/team-test.jpg',
+    photo: '/images/team-test.jpg',
     fio: 'Шаймарданова Эльвира Саматовна',
     status:
       'Зам. ген. директора по развитию и правовым вопросам УК «Жилой Квартал»',
     phone: '+7 (999) 999-99-99',
   },
   {
-    photo: '/assets/images/team-test.jpg',
+    photo: '/images/team-test.jpg',
     fio: 'Вечков Евгений Борисович',
     status: 'Генеральный директор УК «Жилой Квартал»',
     phone: '+7 (999) 999-99-99',

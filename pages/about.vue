@@ -111,7 +111,7 @@
         <div class="tw-absolute tw-w-[483px] tw-h-[320px] tw-object-cover tw-bottom-0 lg:-tw-right-28 lg:tw-top-1/2 lg:tw-transform tw-translate-y-[130px] -tw-translate-x-7 lg:-tw-translate-y-1/2">
 
           <img
-            src="/assets/images/img/vacancies.png"
+            src="/images/img/vacancies.png"
             alt=""
             
           />
@@ -154,7 +154,7 @@
 const buildObjectList = [
   {
     to: '/',
-    img: '/assets/images/img/country_real_estate.png',
+    img: '/images/img/country_real_estate.png',
     name: 'Малина',
     subtitle: 'Квартиры в Михайловке',
     status: 'Сдан',
@@ -163,7 +163,7 @@ const buildObjectList = [
   },
   {
     to: '/',
-    img: '/assets/images/img/country_real_estate.png',
+    img: '/images/img/country_real_estate.png',
     name: 'Малина',
     subtitle: 'Квартиры в Михайловке',
     status: 'Сдан',
@@ -173,7 +173,7 @@ const buildObjectList = [
 
   {
     to: '/',
-    img: '/assets/images/img/country_real_estate.png',
+    img: '/images/img/country_real_estate.png',
     name: 'Малина',
     subtitle: 'Квартиры в Михайловке',
     status: 'Сдан',
@@ -188,7 +188,7 @@ const buildObjectList = [
   &__wrapper {
     background:
       linear-gradient(46deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.25) 100%),
-      url(./assets/images/img/about.png) 50% / cover no-repeat;
+      url(/images/img/about.png) 50% / cover no-repeat;
     @apply tw-grid tw-content-between tw-h-full tw-py-8 tw-px-4 lg:tw-px-10 lg:tw-py-10 xl:tw-py-16 tw-rounded-2xl tw-overflow-hidden tw-text-white;
     .content {
     }

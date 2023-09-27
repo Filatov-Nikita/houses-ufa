@@ -4,15 +4,11 @@
 
     <template v-if="fullscreenMap">
       <button class="close" @click="fullscreenMap = false">
-        <img src="/assets/images/icons/close.svg" width="24" height="24" />
+        <img src="/images/icons/close.svg" width="24" height="24" />
       </button>
     </template>
     <template v-else>
-      <button
-        @click="fullscreenMap = true"
-        
-        class="btn-to-fullscreen"
-      >
+      <button @click="fullscreenMap = true" class="btn-to-fullscreen">
         <span> Смотреть на карте </span>
         <svg
           width="24"
@@ -28,8 +24,8 @@
         </svg>
       </button>
     </template>
-    
-    <ModalsComplex v-model="cardOpen"/>
+
+    <ModalsComplex v-model="cardOpen" />
   </div>
 </template>
 <script setup lang="ts">
@@ -41,31 +37,31 @@ let sizeMap = [] as number[]
 const marks = [
   {
     coords: [56.00933, 54.719426],
-    href: '/assets/images/img/country_real_estate.png',
+    href: '/images/img/country_real_estate.png',
     title: 'Михайловка Green Place',
     text: 'с. Михайловка',
   },
   {
     coords: [56.008651, 54.720201],
-    href: '/assets/images/img/country_real_estate.png',
+    href: '/images/img/country_real_estate.png',
     title: 'Михайловка Green Place',
     text: 'с. Михайловка',
   },
   {
     coords: [56.016617, 54.721629],
-    href: '/assets/images/img/country_real_estate.png',
+    href: '/images/img/country_real_estate.png',
     title: 'Михайловка Green Place',
     text: 'с. Михайловка',
   },
   {
     coords: [56.012493, 54.716517],
-    href: '/assets/images/img/country_real_estate.png',
+    href: '/images/img/country_real_estate.png',
     title: 'Михайловка Green Place',
     text: 'с. Михайловка',
   },
   {
     coords: [56.003305, 54.716656],
-    href: '/assets/images/img/country_real_estate.png',
+    href: '/images/img/country_real_estate.png',
     title: 'Михайловка Green Place',
     text: 'с. Михайловка',
   },
@@ -182,6 +178,7 @@ watch(cardOpen, (val) => {
 watch(fullscreenMap, (val) => {
   if (val) {
     map.container.getParentElement().style.height = window.screen.height + 'px'
+    map.container.getParentElement().style.width = window.screen.width + 'px'
     map.container.fitToViewport()
   } else {
     map.container.getParentElement().style.height = sizeMap[1] + 'px'
@@ -260,6 +257,7 @@ watch(fullscreenMap, (val) => {
   @apply tw-w-full tw-h-[560px] lg:tw-h-[600px] tw-rounded-2xl tw-overflow-hidden  tw-relative;
   &.fullscreen {
     @apply tw-fixed tw-top-0 tw-left-0 tw-w-screen tw-h-screen;
+    z-index: 100;
   }
   #map-complex {
     @apply tw-h-full tw-w-full;

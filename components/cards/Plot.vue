@@ -5,7 +5,7 @@
     <div class="tw-flex tw-items-center tw-justify-between">
       <a class="back">
         <img
-          src="/assets/images/icons/arrow_line_left.svg"
+          src="/images/icons/arrow_line_left.svg"
           width="24"
           height="24"
         />
@@ -51,7 +51,7 @@
             >
               <img
                 format="avif,webp"
-                src="/assets/images/img/country_real_estate.png"
+                src="/images/img/country_real_estate.png"
                 class="tw-object-cover tw-absolute tw-h-full tw-w-full"
               />
             </div>

@@ -3,7 +3,7 @@
     <div class="plan__wrapper">
       <img
         class="plan__img"
-        src="/assets/images/img/map/plan-cottages.png"
+        src="/images/img/map/plan-cottages.png"
         alt=""
       />
       <svg

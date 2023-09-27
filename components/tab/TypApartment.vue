@@ -17,7 +17,7 @@
             title: 'Брайтон Плюс',
             type: 'Коттедж',
             square: '409.52',
-            src: ['/assets/images/img/test.png', '/assets/images/img/test.png'],
+            src: ['/images/img/test.png', '/images/img/test.png'],
           }"
         >
           <NuxtLink to="/">

@@ -18,7 +18,7 @@
           @click="prevFirst"
         >
           <img
-            src="/assets/images/icons/arrow_left.svg"
+            src="/images/icons/arrow_left.svg"
             alt=""
             width="16"
             height="16"
@@ -32,7 +32,7 @@
           @click="nextFirst"
         >
           <img
-            src="/assets/images/icons/arrow_left.svg"
+            src="/images/icons/arrow_left.svg"
             alt=""
             width="16"
             height="16"
@@ -59,7 +59,7 @@
           @click="prevLast"
         >
           <img
-            src="/assets/images/icons/arrow_left.svg"
+            src="/images/icons/arrow_left.svg"
             alt=""
             width="16"
             height="16"
@@ -73,7 +73,7 @@
           @click="nextLast"
         >
           <img
-            src="/assets/images/icons/arrow_left.svg"
+            src="/images/icons/arrow_left.svg"
             alt=""
             width="16"
             height="16"
@@ -99,7 +99,7 @@
           @click="prevFirst"
         >
           <img
-            src="/assets/images/icons/arrow_left.svg"
+            src="/images/icons/arrow_left.svg"
             alt=""
             width="16"
             height="16"
@@ -113,7 +113,7 @@
           @click="nextFirst"
         >
           <img
-            src="/assets/images/icons/arrow_left.svg"
+            src="/images/icons/arrow_left.svg"
             alt=""
             width="16"
             height="16"
@@ -133,7 +133,7 @@
           @click="prevLast"
         >
           <img
-            src="/assets/images/icons/arrow_left.svg"
+            src="/images/icons/arrow_left.svg"
             alt=""
             width="16"
             height="16"
@@ -147,7 +147,7 @@
           @click="nextLast"
         >
           <img
-            src="/assets/images/icons/arrow_left.svg"
+            src="/images/icons/arrow_left.svg"
             alt=""
             width="16"
             height="16"

@@ -27,14 +27,14 @@
         >
           <SwiperSlide class="tw-relative tw-h-full tw-w-full">
             <img
-              src="/assets/images/img/country_real_estate.png"
+              src="/images/img/country_real_estate.png"
               alt=""
               class="tw-object-cover tw-h-full tw-absolute tw-w-full"
             />
           </SwiperSlide>
           <SwiperSlide class="tw-relative tw-h-full tw-w-full">
             <img
-              src="/assets/images/img/country_real_estate.png"
+              src="/images/img/country_real_estate.png"
               alt=""
               class="tw-object-cover tw-h-full tw-absolute tw-w-full"
             />

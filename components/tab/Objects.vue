@@ -59,7 +59,7 @@ const tabs = [
 ]
 const residentialComplexs = [
   {
-    img: '/assets/images/img/country_real_estate.png',
+    img: 'images/img/country_real_estate.png',
     title: 'Сапфир',
     typeApartment: 'квартиры',
     price: '3 258 542',
@@ -67,7 +67,7 @@ const residentialComplexs = [
     status: 'Последние участки',
   },
   {
-    img: '/assets/images/img/country_real_estate.png',
+    img: 'images/img/country_real_estate.png',
     title: 'Сапфир',
     typeApartment: 'квартиры',
     price: '3 258 542',
@@ -75,7 +75,7 @@ const residentialComplexs = [
     status: 'Последние участки',
   },
   {
-    img: '/assets/images/img/country_real_estate.png',
+    img: 'images/img/country_real_estate.png',
     title: 'Сапфир',
     typeApartment: 'квартиры',
     price: '3 258 542',
@@ -83,7 +83,7 @@ const residentialComplexs = [
     status: 'Последние участки',
   },
   {
-    img: '/assets/images/img/country_real_estate.png',
+    img: 'images/img/country_real_estate.png',
     title: 'Сапфир',
     typeApartment: 'квартиры',
     price: '3 258 542',
@@ -91,7 +91,7 @@ const residentialComplexs = [
     status: 'Последние участки',
   },
   {
-    img: '/assets/images/img/country_real_estate.png',
+    img: 'images/img/country_real_estate.png',
     title: 'Сапфир',
     typeApartment: 'квартиры',
     price: '3 258 542',
@@ -99,7 +99,7 @@ const residentialComplexs = [
     status: 'Последние участки',
   },
   {
-    img: '/assets/images/img/country_real_estate.png',
+    img: 'images/img/country_real_estate.png',
     title: 'Сапфир',
     typeApartment: 'квартиры',
     price: '3 258 542',
@@ -107,7 +107,7 @@ const residentialComplexs = [
     status: 'Последние участки',
   },
   {
-    img: '/assets/images/img/country_real_estate.png',
+    img: 'images/img/country_real_estate.png',
     title: 'Сапфир',
     typeApartment: 'квартиры',
     price: '3 258 542',

@@ -4,11 +4,16 @@
       <h4 class="title">{{ title }}</h4>
       <p class="text">{{ text }}</p>
     </div>
-    <div class="card__bg" :style="{ '--bg-card': 'url(' + img + ')' }"></div>
+    <div
+      class="card__bg"
+      :style="{
+        '--bg-card': 'url(images/img/country_real_estate.png)',
+      }"
+    ></div>
     <NuxtLink class="card__link" :to="to">
       <BaseSquareIcon>
         <img
-          src="/assets/images/icons/arrow_line_right-green.svg"
+          src="~assets/images/icons/arrow_line_right-green.svg"
           width="32"
           height="32"
         />

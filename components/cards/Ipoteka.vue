@@ -28,7 +28,7 @@ const propsIpoteka = defineProps<{
   @apply tw-bg-base01;
   &::before {
     content: "";
-    background: url(./assets/images/icons/ipoteka-bg.svg) center no-repeat;
+    background: url(/images/icons/ipoteka-bg.svg) center no-repeat;
     background-size: contain;
     position: absolute;
     top: 0;

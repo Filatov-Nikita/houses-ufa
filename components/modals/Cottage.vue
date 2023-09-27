@@ -7,7 +7,7 @@
         >
           <img
             class="tw-absolute tw-w-full tw-h-full tw-object-cover"
-            src="/assets/images/img/country_real_estate.png"
+            src="/images/img/country_real_estate.png"
             alt=""
           />
         </div>

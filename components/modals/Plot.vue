@@ -41,7 +41,7 @@
                 >
                   <img
                     format="avif,webp"
-                    src="/assets/images/img/country_real_estate.png"
+                    src="/images/img/country_real_estate.png"
                     class="tw-object-cover tw-absolute tw-h-full tw-w-full"
                   />
                 </div>
@@ -65,7 +65,7 @@
                   @click="slideTo(index)"
                 >
                   <img
-                    src="/assets/images/img/plan-apartment.png"
+                    src="/images/img/plan-apartment.png"
                     alt=""
                   />
                 </button>
@@ -86,7 +86,7 @@
                 >
                   <img
                     format="avif,webp"
-                    src="/assets/images/img/plan-apartment.png"
+                    src="/images/img/plan-apartment.png"
                     class="tw-object-contain tw-absolute tw-h-full tw-w-full"
                   />
                 </div>

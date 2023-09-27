@@ -11,7 +11,7 @@
         :height="374"
         class="img tw-absolute tw-w-full tw-h-full tw-object-cover"
       />
-      <BaseIcon v-else name="home" class=" tw-w-16 tw-h-16"/>
+      <BaseIcon v-else name="home" class="tw-w-16 tw-h-16" />
       <div class="tw-absolute tw-left-4 tw-top-4 tw-grid tw-gap-1">
         <h4 class="tw-text-h4 tw-text-white">{{ title }}</h4>
         <p class="tw-text-body_l tw-text-white">
@@ -31,7 +31,7 @@
           class="tw-backdrop-blur-sm tw-rounded-lg tw-py-[5px] tw-px-[11px] tw-text-white tw-bg-text01/40 tw-text-body_s -tw-tracking-875 tw-flex tw-items-center tw-gap-3"
         >
           <img
-            src="/assets/images/icons/geo.svg"
+            src="~assets/images/icons/geo.svg"
             alt="location"
             width="24"
             height="24"
@@ -42,7 +42,7 @@
       <button class="tw-absolute tw-left-4 tw-bottom-4 button-link">
         <BaseSquareIcon>
           <img
-            src="/assets/images/icons/arrow_line_right-green.svg"
+            src="/images/icons/arrow_line_right-green.svg"
             width="24"
             height="24"
           />

@@ -9,7 +9,7 @@
     <template #text> Описание </template>
     <template #icon>
       <img
-        src="/assets/images/icons/first-section/heart.svg"
+        src="/images/icons/first-section/heart.svg"
         alt=""
         class="tw-absolute tw-w-[84px] tw-h-[84px] tw-bottom-0 -tw-right-2 lg:tw-w-[234px] lg:tw-h-[234px] lg:-tw-bottom-10 lg:tw-right-10"
       />
@@ -171,7 +171,7 @@ const favoriteList = [
     letter: 2,
     monthPayment: 10000,
     initialFee: 100000,
-    src: ['/assets/images/img/test.png', '/assets/images/img/test.png'],
+    src: ['/images/img/test.png', '/images/img/test.png'],
   },
   {
     title: 'title',
@@ -182,7 +182,7 @@ const favoriteList = [
     letter: 2,
     monthPayment: 10000,
     initialFee: 100000,
-    src: ['/assets/images/img/test.png', '/assets/images/img/test.png'],
+    src: ['/images/img/test.png', '/images/img/test.png'],
   },
   {
     title: 'title',
@@ -191,7 +191,7 @@ const favoriteList = [
     price: 1234,
     storey: 1,
     letter: 2,
-    src: ['/assets/images/img/test.png', '/assets/images/img/test.png'],
+    src: ['/images/img/test.png', '/images/img/test.png'],
   },
   {
     title: 'title',
@@ -202,7 +202,7 @@ const favoriteList = [
     letter: 2,
     monthPayment: 10000,
     initialFee: 100000,
-    src: ['/assets/images/img/test.png', '/assets/images/img/test.png'],
+    src: ['/images/img/test.png', '/images/img/test.png'],
   },
   {
     title: 'title',
@@ -213,7 +213,7 @@ const favoriteList = [
     letter: 2,
     monthPayment: 10000,
     initialFee: 100000,
-    src: ['/assets/images/img/test.png', '/assets/images/img/test.png'],
+    src: ['/images/img/test.png', '/images/img/test.png'],
   },
   {
     title: 'title',
@@ -224,7 +224,7 @@ const favoriteList = [
     letter: 2,
     monthPayment: 10000,
     initialFee: 100000,
-    src: ['/assets/images/img/test.png', '/assets/images/img/test.png'],
+    src: ['/images/img/test.png', '/images/img/test.png'],
   },
 ]
 onMounted(() => {

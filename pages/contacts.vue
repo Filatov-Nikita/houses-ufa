@@ -6,7 +6,7 @@
     <template #text> Описание </template>
     <template #icon>
       <img
-        src="/assets/images/icons/first-section/location.svg"
+        src="/images/icons/first-section/location.svg"
         alt=""
         class="tw-absolute tw-w-[84px] tw-h-[84px] tw-bottom-0 -tw-right-2 lg:tw-w-[234px] lg:tw-h-[234px] lg:-tw-bottom-10 lg:tw-right-10"
       />

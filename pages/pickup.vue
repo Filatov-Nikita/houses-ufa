@@ -257,7 +257,7 @@ const favoriteList = [
     letter: 2,
     monthPayment: 10000,
     initialFee: 100000,
-    src: ['/assets/images/img/test.png', '/assets/images/img/test.png'],
+    src: ['/images/img/test.png', '/images/img/test.png'],
   },
   {
     title: 'title',
@@ -268,7 +268,7 @@ const favoriteList = [
     letter: 2,
     monthPayment: 10000,
     initialFee: 100000,
-    src: ['/assets/images/img/test.png', '/assets/images/img/test.png'],
+    src: ['/images/img/test.png', '/images/img/test.png'],
   },
   {
     title: 'title',
@@ -277,7 +277,7 @@ const favoriteList = [
     price: 1234,
     storey: 1,
     letter: 2,
-    src: ['/assets/images/img/test.png', '/assets/images/img/test.png'],
+    src: ['/images/img/test.png', '/images/img/test.png'],
   },
   {
     title: 'title',
@@ -288,7 +288,7 @@ const favoriteList = [
     letter: 2,
     monthPayment: 10000,
     initialFee: 100000,
-    src: ['/assets/images/img/test.png', '/assets/images/img/test.png'],
+    src: ['/images/img/test.png', '/images/img/test.png'],
   },
   {
     title: 'title',
@@ -299,7 +299,7 @@ const favoriteList = [
     letter: 2,
     monthPayment: 10000,
     initialFee: 100000,
-    src: ['/assets/images/img/test.png', '/assets/images/img/test.png'],
+    src: ['/images/img/test.png', '/images/img/test.png'],
   },
   {
     title: 'title',
@@ -310,7 +310,7 @@ const favoriteList = [
     letter: 2,
     monthPayment: 10000,
     initialFee: 100000,
-    src: ['/assets/images/img/test.png', '/assets/images/img/test.png'],
+    src: ['/images/img/test.png', '/images/img/test.png'],
   },
 ]
 onMounted(() => {

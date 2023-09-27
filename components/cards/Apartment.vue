@@ -62,7 +62,7 @@
       class="tw-relative tw-bg-base00 tw-text-icon tw-rounded-2xl tw-overflow-hidden tw-w-full tw-max-w-[311px] tw-h-[311px] lg:tw-max-w-[264px] lg:tw-h-[264px] xl:tw-max-w-[277px] xl:tw-h-[277px] tw-mx-auto"
     >
       <!-- <img
-          src="/assets/images/img/test.png"
+          src="/images/img/test.png"
           alt=""
           
         /> -->

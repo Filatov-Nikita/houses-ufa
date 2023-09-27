@@ -38,7 +38,7 @@
             </button>
 
             <img
-              src="/assets/images/img/country_real_estate.png"
+              src="/images/img/country_real_estate.png"
               alt=""
               class="tw-object-cover tw-absolute tw-top-1/2 tw-left-1/2 tw-transform -tw-translate-x-1/2 -tw-translate-y-1/2 tw-w-full tw-h-full"
             />

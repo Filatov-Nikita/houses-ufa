@@ -7,7 +7,7 @@
           :class="{ active: typeMark === 'all' }"
         >
           <div class="type">
-            <img src="/assets/images/icons/marks/all.svg" alt="все" />
+            <img src="/images/icons/marks/all.svg" alt="все" />
             <span>Все категории</span>
           </div>
           <div class="count">{{ marks.length }}</div>
@@ -21,7 +21,7 @@
           <div class="type">
             <img
               :src="
-                '/assets/images/icons/marks/' +
+                '/images/icons/marks/' +
                 Object.keys(markType)[0] +
                 '.svg'
               "
@@ -39,7 +39,7 @@
 
     <template v-if="fullscreenMap">
       <button class="close" @click="fullscreenMap = false">
-        <img src="/assets/images/icons/close.svg" width="24" height="24" />
+        <img src="/images/icons/close.svg" width="24" height="24" />
       </button>
       <div class="control-panel-mobile">
         <div>
@@ -48,7 +48,7 @@
             :class="{ active: typeMark === 'all' }"
           >
             <div class="type">
-              <img src="/assets/images/icons/marks/all.svg" alt="все" />
+              <img src="/images/icons/marks/all.svg" alt="все" />
               <span>Все категории</span>
             </div>
             <div class="count">{{ marks.length }}</div>
@@ -62,7 +62,7 @@
             <div class="type">
               <img
                 :src="
-                  '/assets/images/icons/marks/' +
+                  '/images/icons/marks/' +
                   Object.keys(markType)[0] +
                   '.svg'
                 "
@@ -107,43 +107,43 @@ const typeMark = ref('all')
 const marks = [
   {
     coords: [56.00933, 54.719426],
-    href: '/assets/images/icons/marks/bank.svg',
+    href: '/images/icons/marks/bank.svg',
     title: 'Супермаркет "Пятерочка"',
     type: 'bank',
   },
   {
     coords: [56.008651, 54.720201],
-    href: '/assets/images/icons/marks/basket.svg',
+    href: '/images/icons/marks/basket.svg',
     title: 'Супермаркет "Пятерочка"',
     type: 'basket',
   },
   {
     coords: [56.016617, 54.721629],
-    href: '/assets/images/icons/marks/park.svg',
+    href: '/images/icons/marks/park.svg',
     title: 'Супермаркет "Пятерочка"',
     type: 'park',
   },
   {
     coords: [56.012493, 54.716517],
-    href: '/assets/images/icons/marks/health.svg',
+    href: '/images/icons/marks/health.svg',
     title: 'Продукты',
     type: 'health',
   },
   {
     coords: [56.003305, 54.716656],
-    href: '/assets/images/icons/marks/education.svg',
+    href: '/images/icons/marks/education.svg',
     title: 'Супермаркет "Магнит"',
     type: 'education',
   },
   {
     coords: [55.992771, 54.713326],
-    href: '/assets/images/icons/marks/park.svg',
+    href: '/images/icons/marks/park.svg',
     title: 'Супермаркет "Магнит"',
     type: 'park',
   },
   {
     coords: [56.000967, 54.720685],
-    href: '/assets/images/icons/marks/basket.svg',
+    href: '/images/icons/marks/basket.svg',
     title: 'Ашан',
     type: 'basket',
   },
@@ -201,7 +201,7 @@ onMounted(() => {
         }
       )
       var animatedLayoutMain = ymaps.templateLayoutFactory.createClass(
-        `<div class="square_main-layout"><img src="/assets/images/img/country_real_estate.png" width="64" height="64"><span class="square_main-layout-text">Главный офис</span></div>`,
+        `<div class="square_main-layout"><img src="/images/img/country_real_estate.png" width="64" height="64"><span class="square_main-layout-text">Главный офис</span></div>`,
         {
           build: function () {
             animatedLayoutMain.superclass.build.call(this)

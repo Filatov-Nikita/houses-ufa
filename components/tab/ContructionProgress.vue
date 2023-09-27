@@ -41,7 +41,7 @@
           <SwiperSlide v-for="n in 10" @click="openPhotos = true">
             <div class="card tw-cursor-pointer">
               <img
-                src="/assets/images/img/country_real_estate.png"
+                src="/images/img/country_real_estate.png"
                 alt=""
                 class=""
               />
@@ -100,7 +100,7 @@
           <SwiperSlide v-for="n in 10" @click="openVideo = true">
             <div class="card card-camera tw-cursor-pointer">
               <img
-                src="/assets/images/img/country_real_estate.png"
+                src="/images/img/country_real_estate.png"
                 alt=""
                 class=""
               />

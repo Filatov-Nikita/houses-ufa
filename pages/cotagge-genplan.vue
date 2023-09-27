@@ -134,7 +134,7 @@
                   class="tw-shrink-0 tw-w-12 tw-h-12 tw-relative tw-rounded-full tw-overflow-hidden"
                 >
                   <img
-                    src="/assets/images/monument.png"
+                    src="/images/monument.png"
                     alt=""
                     class="tw-absolute tw-w-full tw-h-full tw-top-0 tw-left-0"
                   />
@@ -154,7 +154,7 @@
                   class="tw-shrink-0 tw-w-12 tw-h-12 tw-relative tw-rounded-full tw-overflow-hidden"
                 >
                   <img
-                    src="/assets/images/monument.png"
+                    src="/images/monument.png"
                     alt=""
                     class="tw-absolute tw-w-full tw-h-full tw-top-0 tw-left-0"
                   />
@@ -295,7 +295,7 @@ const floorHome = ref<ModelValue>([1, 4])
   &__wrapper {
     background:
       linear-gradient(46deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.25) 100%),
-      url(./assets/images/img/about.png) 50% / cover no-repeat;
+      url(/images/img/about.png) 50% / cover no-repeat;
     @apply tw-grid tw-content-between tw-h-full tw-py-8 tw-px-4 lg:tw-px-10 lg:tw-py-10 xl:tw-py-16 tw-rounded-2xl tw-overflow-hidden tw-text-white;
   }
   @screen xl {

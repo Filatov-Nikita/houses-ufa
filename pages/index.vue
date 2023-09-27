@@ -108,7 +108,7 @@
       <TabObjects />
     </div>
   </section>
-  <SectionWatchOffers/>
+  <SectionWatchOffers />
   <section>
     <div class="tw-container">
       <div class="section__top tw-flex tw-justify-between tw-items-center">
@@ -136,13 +136,13 @@
           title="Льготная"
           procent="от 3%"
           :icons="[
-            '/assets/images/icons/ipoteka/smile.svg',
-            '/assets/images/icons/ipoteka/smile.svg',
-            '/assets/images/icons/ipoteka/smile.svg',
+            '~assets/images/icons/ipoteka/smile.svg',
+            '~assets/images/icons/ipoteka/smile.svg',
+            '~assets/images/icons/ipoteka/smile.svg',
           ]"
         >
           <img
-            src="/assets/images/img/ipoteka/family.png"
+            src="~assets/images/img/ipoteka/family.png"
             alt=""
             class="tw-absolute tw-top-[50px] -tw-right-[65px] tw-w-[521px] tw-h-[521px] tw-object-cover"
           />
@@ -151,13 +151,13 @@
           title="Льготная"
           procent="от 3%"
           :icons="[
-            '/assets/images/icons/ipoteka/smile.svg',
-            '/assets/images/icons/ipoteka/smile.svg',
-            '/assets/images/icons/ipoteka/smile.svg',
+            '~assets/images/icons/ipoteka/smile.svg',
+            '~assets/images/icons/ipoteka/smile.svg',
+            '~assets/images/icons/ipoteka/smile.svg',
           ]"
         >
           <img
-            src="/assets/images/img/ipoteka/family.png"
+            src="~assets/images/img/ipoteka/family.png"
             alt=""
             class="tw-absolute tw-top-[50px] -tw-right-[65px] tw-w-[521px] tw-h-[521px] tw-object-cover"
           />
@@ -246,7 +246,7 @@
           <button
             class="tw-rounded-lg tw-w-12 tw-h-12 tw-bg-primary tw-grid tw-place-content-center"
           >
-            <img src="/assets/images/icons/play.svg" alt="play" />
+            <img src="~assets/images/icons/play.svg" alt="play" />
           </button>
           <p>
             Смотреть ролик <br />
@@ -254,7 +254,7 @@
           </p>
         </div>
         <img
-          src="/assets/images/icons/logo-green.svg"
+          src="~assets/images/icons/logo-green.svg"
           alt="logo"
           class="tw-w-[157px]"
         />
@@ -333,19 +333,19 @@ const categoryList = [
   {
     title: 'Квартиры в Уфе',
     text: 'Подстрочник в 2/3 строки',
-    img: '/assets/images/img/country_real_estate.png',
+    img: 'assets/images/img/country_real_estate.png',
     to: '/',
   },
   {
     title: 'Квартиры в Уфимском районе',
     text: 'Подстрочник в 2/3 строки',
-    img: '/assets/images/img/country_real_estate.png',
+    img: '/images/img/country_real_estate.png',
     to: '/',
   },
   {
     title: 'Коттеджи и таунхаусы',
     text: 'Подстрочник в 2/3 строки',
-    img: '/assets/images/img/country_real_estate.png',
+    img: '/images/img/country_real_estate.png',
     to: '/',
   },
 ]

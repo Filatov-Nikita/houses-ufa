@@ -9,7 +9,7 @@
     <template #text> Коттеджи и таунхаусы </template>
     <template #icon>
       <img
-        src="/assets/images/icons/first-section/home.svg"
+        src="/images/icons/first-section/home.svg"
         alt=""
         class="tw-absolute tw-w-[84px] tw-h-[84px] tw-bottom-0 -tw-right-2 lg:tw-w-[234px] lg:tw-h-[234px] lg:-tw-bottom-10 lg:tw-right-10"
       />
@@ -56,7 +56,7 @@
 const listCountry = [
   {
     to: '/',
-    img: '/assets/images/img/country_real_estate.png',
+    img: '/images/img/country_real_estate.png',
     title: 'Малина',
     place: 'с. Михайловка',
     destance: '22 км от города',
@@ -65,7 +65,7 @@ const listCountry = [
   },
   {
     to: '/',
-    img: '/assets/images/img/country_real_estate.png',
+    img: '/images/img/country_real_estate.png',
     title: 'Малина',
     place: 'с. Михайловка',
     destance: '22 км от города',
@@ -74,7 +74,7 @@ const listCountry = [
   },
   {
     to: '/',
-    img: '/assets/images/img/country_real_estate.png',
+    img: '/images/img/country_real_estate.png',
     title: 'Зубово Life Garden',
     place: 'с. Михайловка',
     destance: '22 км от города',
@@ -83,7 +83,7 @@ const listCountry = [
   },
   {
     to: '/',
-    img: '/assets/images/img/country_real_estate.png',
+    img: '/images/img/country_real_estate.png',
     title: 'Михайловка Green 2',
     place: 'с. Михайловка',
     destance: '22 км от города',
@@ -94,7 +94,7 @@ const listCountry = [
 const listBank = [
   {
     to: '/',
-    logo: '/assets/images/icons/bank/sber.svg',
+    logo: '/images/icons/bank/sber.svg',
     name: 'ПАО Сбербанк',
     percent: '5.8',
     monthlyPayment: '15659',
@@ -102,7 +102,7 @@ const listBank = [
   },
   {
     to: '/',
-    logo: '/assets/images/icons/bank/vtb.svg',
+    logo: '/images/icons/bank/vtb.svg',
     name: 'Банк ВТБ (ПАО)',
     percent: '5.8',
     monthlyPayment: '15659',
@@ -110,7 +110,7 @@ const listBank = [
   },
   {
     to: '/',
-    logo: '/assets/images/icons/bank/uralsib.svg',
+    logo: '/images/icons/bank/uralsib.svg',
     name: 'Ураслиб',
     percent: '5.8',
     monthlyPayment: '15659',
@@ -118,7 +118,7 @@ const listBank = [
   },
   {
     to: '/',
-    logo: '/assets/images/icons/bank/alfa.svg',
+    logo: '/images/icons/bank/alfa.svg',
     name: 'АО «Альфа-Банк»',
     percent: '5.8',
     monthlyPayment: '15659',

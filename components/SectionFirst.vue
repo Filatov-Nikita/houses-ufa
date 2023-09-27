@@ -28,7 +28,7 @@ const propsSection = defineProps<{
     @apply tw-relative;
     &::before {
       content: '';
-      background: url(./assets/images/icons/first-section-bg-mob.svg) right
+      background: url(/images/icons/first-section-bg-mob.svg) right
         no-repeat;
       background-size: contain;
       position: absolute;
@@ -40,7 +40,7 @@ const propsSection = defineProps<{
       transition: transform 0.3s ease;
 
       @screen lg {
-        background: url(./assets/images/icons/first-section-bg.svg) right
+        background: url(/images/icons/first-section-bg.svg) right
           no-repeat;
         height: 300px;
         width: 100%;

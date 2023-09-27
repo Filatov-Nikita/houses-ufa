@@ -59,7 +59,7 @@
         content: '';
         top: 0;
         left: 0px;
-        background: url(./assets/images/icons/poligon.svg) left center / contain
+        background: url(/images/icons/poligon.svg) left center / contain
           no-repeat;
         height: 100%;
         width: 619px;
@@ -77,7 +77,7 @@
         left: 48px;
         width: 404px;
         height: 200px;
-        background: url(./assets/images/icons/group-icons-1.svg) left center /
+        background: url(/images/icons/group-icons-1.svg) left center /
           contain no-repeat;
       }
     }

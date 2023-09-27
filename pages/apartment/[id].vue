@@ -171,7 +171,7 @@ useHead({
   &__wrapper {
     background:
       linear-gradient(46deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.25) 100%),
-      url(./assets/images/img/about.png) 50% / cover no-repeat;
+      url(/images/img/about.png) 50% / cover no-repeat;
     @apply tw-grid tw-content-between tw-h-full tw-py-8 tw-px-4 lg:tw-px-10 lg:tw-py-10 xl:tw-py-16 tw-rounded-2xl tw-overflow-hidden tw-text-white;
   }
   @screen xl {

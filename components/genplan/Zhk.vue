@@ -1,7 +1,7 @@
 <template>
   <div class="plan" ref="plan">
     <div class="plan__wrapper">
-      <img class="plan__img" src="/assets/images/img/map/plan-zhk.png" alt="" />
+      <img class="plan__img" src="/images/img/map/plan-zhk.png" alt="" />
       <svg
         class="plan__svg"
         width="1360"
@@ -374,7 +374,7 @@
         <BaseButton class="tw-grow"> Перейти к квартирам </BaseButton>
         <button @click="closeCard">
           <BaseSquareIcon>
-            <img src="/assets/images/icons/close.svg" alt="" />
+            <img src="/images/icons/close.svg" alt="" />
           </BaseSquareIcon>
         </button>
       </div>

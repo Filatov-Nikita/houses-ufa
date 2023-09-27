@@ -46,7 +46,7 @@ const props = defineProps<Props>()
         content: '';
         top: 0;
         left: 0px;
-        background: url(./assets/images/icons/poligon.svg) left center / contain
+        background: url(/images/icons/poligon.svg) left center / contain
           no-repeat;
         height: 100%;
         width: 619px;
@@ -64,7 +64,7 @@ const props = defineProps<Props>()
         left: 48px;
         width: 434px;
         height: 260px;
-        background: url(./assets/images/icons/group-icons-2.svg) left center /
+        background: url(/images/icons/group-icons-2.svg) left center /
           contain no-repeat;
       }
     }

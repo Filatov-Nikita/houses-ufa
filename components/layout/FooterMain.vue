@@ -40,13 +40,13 @@
           </div>
         </div>
         <NuxtLink to="/" class="logo area-B xl:tw-hidden">
-          <img width="115" height="44" src="/assets/images/logo.svg" alt="" />
+          <img width="115" height="44" src="~assets/images/logo.svg" alt="" />
         </NuxtLink>
         <div
           class="tw-grid tw-gap-6 lg:tw-flex lg:tw-justify-between lg:tw-items-center xl:tw-grid xl:tw-items-start xl:tw-gap-0 xl:tw-content-start area-C"
         >
           <NuxtLink to="/" class="logo tw-hidden xl:tw-block xl:tw-mb-16">
-            <img width="115" height="44" src="/assets/images/logo.svg" alt="" />
+            <img width="115" height="44" src="~assets/images/logo.svg" alt="" />
           </NuxtLink>
           <div
             class="tw-grid tw-gap-6 lg:tw-flex lg:tw-gap-5 xl:tw-grid xl:tw-gap-10 xl:tw-mb-12"

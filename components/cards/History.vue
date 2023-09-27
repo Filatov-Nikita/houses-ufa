@@ -118,25 +118,25 @@ const list = [
     year: '1996',
     title: 'title',
     description: 'text',
-    img: '/assets/images/img/country_real_estate.png',
+    img: '/images/img/country_real_estate.png',
   },
   {
     year: '1997',
     title: 'title',
     description: 'text',
-    img: '/assets/images/img/country_real_estate.png',
+    img: '/images/img/country_real_estate.png',
   },
   {
     year: '1998',
     title: 'title',
     description: 'text',
-    img: '/assets/images/img/country_real_estate.png',
+    img: '/images/img/country_real_estate.png',
   },
   {
     year: '1999',
     title: 'title',
     description: 'text',
-    img: '/assets/images/img/country_real_estate.png',
+    img: '/images/img/country_real_estate.png',
   },
 ]
 const activeIndex = ref(0)

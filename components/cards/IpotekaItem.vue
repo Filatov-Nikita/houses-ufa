@@ -56,7 +56,7 @@ const propsIpoteka = withDefaults(
   transition: background-color 0.3s ease;
   &-flag::before {
     content: '';
-    background: url(./assets/images/icons/ipoteka-bg.svg) center no-repeat;
+    background: url(/images/icons/ipoteka-bg.svg) center no-repeat;
     background-size: contain;
     position: absolute;
     bottom: -130px;

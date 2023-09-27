@@ -76,7 +76,7 @@
             </p>
           </div>
           <div class="tw-rounded-2xl tw-overflow-hidden">
-            <img src="/assets/images/img/country_real_estate.png" alt="" />
+            <img src="/images/img/country_real_estate.png" alt="" />
           </div>
         </div>
       </div>

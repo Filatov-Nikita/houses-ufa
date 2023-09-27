@@ -15,7 +15,7 @@
       @click="prev"
     >
       <img
-        src="/assets/images/icons/arrow_left.svg"
+        src="/images/icons/arrow_left.svg"
         alt=""
         width="24"
         height="24"
@@ -26,7 +26,7 @@
       @click="next"
     >
       <img
-        src="/assets/images/icons/arrow_left.svg"
+        src="/images/icons/arrow_left.svg"
         alt=""
         width="24"
         height="24"
@@ -84,7 +84,7 @@
           @click="prev"
         >
           <img
-            src="/assets/images/icons/arrow_left.svg"
+            src="/images/icons/arrow_left.svg"
             alt=""
             width="24"
             height="24"
@@ -95,7 +95,7 @@
           @click="next"
         >
           <img
-            src="/assets/images/icons/arrow_left.svg"
+            src="/images/icons/arrow_left.svg"
             alt=""
             width="24"
             height="24"
