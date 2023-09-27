@@ -157,7 +157,7 @@ function getFooterMenu() {
     contacts: [
       {
         label: 'Офисы',
-        to: '/',
+        to: '/about',
       },
       {
         label: 'Сервисные службы',
@@ -185,6 +185,62 @@ function getContacts() {
 
 function getNavSectionLinks() {
   return {
+    static: {
+      label: "Статика",
+      items: [
+        {
+          label: "Faq",
+          to:'/faq'
+
+        },
+        {
+          label: "О компании",
+          to:'/about'
+
+        },
+        {
+          label: "Контакты",
+          to:'/contacts'
+
+        },
+        {
+          label: "Генплан коттеджов",
+          to:'/cotagge-genplan'
+
+        },
+        {
+          label: "Загородная недвижимость",
+          to:'/country-estate'
+
+        },
+        {
+          label: "Избранное",
+          to:'/favorites'
+
+        },
+        {
+          label: "Ипотека",
+          to:'/ipoteka'
+
+        },
+        {
+          label: "Подборщик",
+          to:'/pickup'
+
+        },
+        {
+          label: "Пресс центр",
+          to:'/press-centr'
+
+        },
+        {
+          label: "Карточка жилого комплекса",
+          to:'/apartment/1'
+
+        },
+
+      ]
+    },
     flats: {
       label: 'Квартиры',
       items: [],

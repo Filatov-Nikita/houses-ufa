@@ -95,6 +95,7 @@
   });
 
   const order = [
+    'static',
     'buyers',
     'flats',
     'houses',
