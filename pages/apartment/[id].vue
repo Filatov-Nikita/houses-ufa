@@ -1,7 +1,7 @@
 <template>
   <section class="head-section tw-flex tw-flex-col">
     <div class="tw-container">
-      <BaseBanner actionLabel="Оставить заявку" theme="white" class="tw-mb-3">
+      <BaseBanner actionLabel="Оставить заявку" theme="colored" class="tw-mb-3">
         <p>
           Оставить заявку. Оставьте свои контактные данные и мы свяжемся с вами
         </p>
