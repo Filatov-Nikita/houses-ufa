@@ -324,7 +324,7 @@
 useHead({
   script: [
     {
-      src: 'https://api-maps.yandex.ru/2.1/?apikey=ce866f84-33d0-4ab2-861e-3009442a93d1&coordorder=longlat&lang=ru_RU',
+      src: 'https://api-maps.yandex.ru/2.1/?apikey=62425c4f-4dfc-4f52-a01f-bc1e23d27b7d&coordorder=longlat&lang=ru_RU',
       type: 'text/javascript',
     },
   ],

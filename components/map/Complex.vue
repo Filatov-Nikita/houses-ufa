@@ -70,6 +70,8 @@ let map
 
 onMounted(() => {
   if (ymaps) {
+    console.log(ymaps);
+    
     ymaps.ready(init)
     function init() {
       // Создание карты.

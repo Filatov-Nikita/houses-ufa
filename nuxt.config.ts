@@ -1,10 +1,21 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 import { createSvgIconsPlugin } from 'vite-plugin-svg-icons';
 import path from 'path';
-import { existsSync, readFileSync } from "node:fs";
+
 
 export default defineNuxtConfig({
-  devtools: { enabled: true },
+  ssr: false,
+  app: {
+
+    head: {
+      script: [
+        {
+          src: "https://api-maps.yandex.ru/2.1/?apikey=62425c4f-4dfc-4f52-a01f-bc1e23d27b7d&coordorder=longlat&lang=ru_RU",
+        },
+      ],
+    },
+  },
+  // devtools: { enabled: true },
   modules: ['@pinia/nuxt', 'nuxt-swiper'],
   runtimeConfig: {
     public: {

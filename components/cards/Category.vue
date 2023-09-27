@@ -7,7 +7,7 @@
     <div
       class="card__bg"
       :style="{
-        '--bg-card': 'url(images/img/country_real_estate.png)',
+        '--bg-card': 'url(/images/img/country_real_estate.png)',
       }"
     ></div>
     <NuxtLink class="card__link" :to="to">
