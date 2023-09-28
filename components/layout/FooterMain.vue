@@ -69,13 +69,24 @@
             </div>
           </div>
 
-          <p class="tw-text-text02 tw-text-body_xs lg:tw-w-[241px]">
-            Отправляя любую форму на сайте, вы соглашаетесь с политикой
-            конфиденциальности данного сайта
-          </p>
+          <div>
+            <p class="tw-text-text02 tw-text-body_xs lg:tw-w-[241px]">
+              Отправляя любую форму на сайте, вы соглашаетесь с политикой
+              конфиденциальности данного сайта
+            </p>
+          </div>
+        </div>
+        <div class="tw-flex tw-gap-[6px] area-soc xl:tw-mt-10">
+          <a
+            class="tw-w-10 tw-h-10 tw-text-center tw-leading-[40px]"
+            v-for="(link, name) in contacts.socialLinks"
+            :href="link"
+          >
+            <BaseIcon class="tw-w-6 tw-h-6 tw-inline-block" :name="`soc-${name}`" />
+          </a>
         </div>
         <div
-          class="tw-text-text02 tw-grid tw-gap-4 lg:tw-flex lg:tw-justify-between area-D"
+          class="tw-text-text02 tw-grid tw-gap-4 lg:tw-flex lg:tw-justify-between area-D xl:tw-pt-10"
         >
           <div>©️ 2023 Жилой Квартал | Все права защищены</div>
           <div>Сайт построили — Yes Idea</div>
@@ -149,12 +160,16 @@ function showCallback() {
         grid-area: D;
       }
 
-      grid-template-areas: 'B' 'A' 'C' 'D';
+      .area-soc {
+        grid-area: soc;
+      }
+
+      grid-template-areas: 'B' 'A' 'C' 'soc' 'D';
     }
     @screen xl {
       @apply tw-grid-cols-4 tw-gap-0;
 
-      grid-template-areas: 'C A A A' 'C A A A' 'D D D D';
+      grid-template-areas: 'C A A A' 'C A A A' 'soc soc soc soc' 'D D D D';
     }
   }
 }

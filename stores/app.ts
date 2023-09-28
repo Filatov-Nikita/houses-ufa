@@ -188,11 +188,12 @@ function getContacts() {
     },
     phone: '+7 (347) 225-00-84',
     socialLinks: {
-      whatsapp: 'https://vk.com/zhiloikvartal',
-      telegram: 'https://vk.com/zhiloikvartal',
-      viber: 'https://vk.com/zhiloikvartal',
+      // whatsapp: '',
+      // telegram: 'https://vk.com/zhiloikvartal',
+      // viber: 'https://vk.com/zhiloikvartal',
       vk: 'https://vk.com/zhiloikvartal',
-      ok: 'https://vk.com/zhiloikvartal',
+      ok: 'https://ok.ru/group/52485575540911',
+      // youtube: 'https://www.youtube.com/channel/UCO0Id0I_Ez4mXUp7Iz5dWSg'
     },
   }
 }
