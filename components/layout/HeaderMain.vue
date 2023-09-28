@@ -100,6 +100,7 @@ import NavMenu from '@/components/layout/NavMenu.vue'
 import { useAppStore } from '~/stores/app'
 
 const appStore = useAppStore();
+const route = useRoute();
 
 const items = computed(() => appStore.headerMenu);
 const headerPhone = computed(() => appStore.headerPhone);
@@ -110,6 +111,10 @@ const showedNav = ref(false);
 function showCallback() {
   appStore.showedCallback = true;
 }
+
+watch(() => route.path, () => {
+  showedNav.value = false;
+});
 </script>
 <style lang="scss" scoped>
 .header {
