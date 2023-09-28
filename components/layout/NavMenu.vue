@@ -109,6 +109,12 @@
       return navLinks.value[name];
     });
   });
+
+  watch(() => props.showed, (val) => {
+    if(val) {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  });
 </script>
 
 <style scoped lang="scss">
