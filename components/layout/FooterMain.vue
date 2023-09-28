@@ -2,6 +2,7 @@
   <footer class="footer">
     <div class="tw-container">
       <div class="footer__wrapper">
+        <FormSubscribe class="area-form xl:tw-mb-20" />
         <div class="area-A">
           <div class="tw-grid lg:tw-hidden">
             <AccordionMain
@@ -164,12 +165,16 @@ function showCallback() {
         grid-area: soc;
       }
 
-      grid-template-areas: 'B' 'A' 'C' 'soc' 'D';
+      .area-form {
+        grid-area: form;
+      }
+
+      grid-template-areas: 'form' 'B' 'A' 'C' 'soc' 'D';
     }
     @screen xl {
       @apply tw-grid-cols-4 tw-gap-0;
 
-      grid-template-areas: 'C A A A' 'C A A A' 'soc soc soc soc' 'D D D D';
+      grid-template-areas: 'form form form form' 'C A A A' 'C A A A' 'soc soc soc soc' 'D D D D';
     }
   }
 }
