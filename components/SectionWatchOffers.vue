@@ -80,7 +80,9 @@
               }"
             />
           </div>
-          <div>Спецпредложение</div>
+          <div>
+            <BaseCheckbox v-model="spec" name="spec" :unchecked-value="false" :checked-value="true" label="Спецпредложение" />
+          </div>
         </div>
       </template>
       <template #action-second>
@@ -93,5 +95,6 @@
 const typeApartment = ref('');
 const costFrom = ref(null);
 const openParametrs = ref(false)
+const spec = ref(false)
 </script>
 <style lang="scss" scoped></style>
