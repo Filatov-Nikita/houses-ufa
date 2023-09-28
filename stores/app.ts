@@ -18,6 +18,7 @@ export const useAppStore = defineStore('appStore', {
     footerMenu: getFooterMenu(),
     socialList: getSocialList(),
     banner: getBanner() as NavBanner | null,
+    showedCallback: false
   }),
   getters: {
     cleanedHeadPhone: (state) => cleanPhone(state.headerPhone),

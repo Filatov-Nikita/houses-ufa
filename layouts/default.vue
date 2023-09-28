@@ -5,10 +5,20 @@
       <slot />
     </main>
     <FooterMain class="tw-mt-12 lg:tw-mt-20 xl:tw-mt-24" />
+    <ModalCallback :model-value="showedCallback" @update:model-value="updateCallback"/>
   </div>
 </template>
 
 <script setup lang="ts">
 import HeaderMain from '../components/layout/HeaderMain.vue'
 import FooterMain from '../components/layout/FooterMain.vue'
+import ModalCallback from '../components/modals/Form.vue'
+import { useAppStore } from '@/stores/app';
+
+const appStore = useAppStore();
+const showedCallback = computed(() => appStore.showedCallback);
+
+function updateCallback(val: boolean) {
+  appStore.showedCallback = val;
+}
 </script>

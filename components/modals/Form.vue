@@ -1,5 +1,10 @@
 <template>
-  <BaseModal v-model="popup" v-slot="{ hide }" :is-full-mob="true">
+  <BaseModal
+    :model-value="modelValue"
+    v-slot="{ hide }"
+    :is-full-mob="true"
+    @update:model-value="$emit('update:modelValue', $event)"
+  >
     <BaseModalCard
       v-bind="{ hide }"
       :is-full-mob="true"
@@ -16,7 +21,7 @@
               <div class="tw-hidden lg:tw-block">
                 <BaseButton
                   type="button"
-                  @click="() => hide()"
+                  @click="hide"
                   theme="gray"
                   padding-classes=" tw-p-3"
                   class=""
@@ -27,7 +32,7 @@
               <div class="lg:tw-hidden">
                 <BaseButton
                   type="button"
-                  @click="() => hide()"
+                  @click="hide"
                   theme="transparent"
                   padding-classes=" tw-p-0"
                   class=""
@@ -98,20 +103,13 @@
 interface Props {
   modelValue?: boolean
 }
+
+withDefaults(defineProps<Props>(), {
+  modelValue: false,
+});
+
 const emit = defineEmits<{
   (event: 'update:modelValue', val: boolean): void
-}>()
-const props = withDefaults(defineProps<Props>(), {
-  modelValue: false,
-})
-const { modelValue } = toRefs(props)
-const popup = ref(false)
-onMounted(() => (popup.value = modelValue.value))
-watch(popup, (val) => {
-  emit('update:modelValue', val)
-})
-watch(modelValue, (val) => {
-  popup.value = modelValue.value
-})
+}>();
 </script>
 <style lang="scss" scoped></style>

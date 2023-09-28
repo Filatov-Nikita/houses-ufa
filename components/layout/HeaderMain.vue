@@ -47,6 +47,7 @@
               </div>
               <button
                 class="tw-text-primary tw-text-body_s2 -tw-tracking-875 tw-text-left"
+                @click="showCallback"
               >
                 Заказать звонок
               </button>
@@ -104,7 +105,11 @@ const items = computed(() => appStore.headerMenu);
 const headerPhone = computed(() => appStore.headerPhone);
 const cleanedHeadPhone = computed(() => appStore.cleanedHeadPhone);
 
-const showedNav = ref(false)
+const showedNav = ref(false);
+
+function showCallback() {
+  appStore.showedCallback = true;
+}
 </script>
 <style lang="scss" scoped>
 .header {

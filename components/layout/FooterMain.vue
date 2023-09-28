@@ -63,7 +63,7 @@
               <a :href="'tel:' + cleanedContPhone" class="tw-text-h6">{{
                 contacts.phone
               }}</a>
-              <button class="tw-text-primary tw-text-left tw-text-body_m">
+              <button class="tw-text-primary tw-text-left tw-text-body_m" @click="showCallback">
                 Заказать звонок
               </button>
             </div>
@@ -124,6 +124,10 @@ const listComparison = [
 const navList = computed(() => appStore.footerMenu);
 const contacts = computed(() => appStore.contacts);
 const cleanedContPhone = computed(() => appStore.cleanedContPhone);
+
+function showCallback() {
+  appStore.showedCallback = true;
+}
 </script>
 <style lang="scss" scoped>
 .footer {
