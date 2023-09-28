@@ -2,21 +2,23 @@
   <section>
     <div class="tw-container">
       <form
-        class="tw-grid tw-gap-6 lg:tw-grid-cols-6 xl:tw-flex xl:tw-items-end"
+        class="tw-grid tw-gap-6 lg:tw-grid-cols-6 xl:tw-flex xl:tw-items-start"
       >
-        <BaseInput
-          name="typeApartment"
-          v-model="typeApartment"
+        <BaseSelect
+          class="xl:tw-basis-[322px]"
+          theme="white"
           label="Выберите тип недвижимости"
-          placeholder="Выберите тип недвижимости"
-          class="lg:tw-col-span-2 xl:tw-grow"
+          name="typeAparment"
+          :drop-down-props="{ options: [{ label: 'test 1', value: '1' }] }"
+          v-model="typeApartment"
         />
-        <BaseInput
-          name="typeApartment"
-          v-model="typeApartment"
-          label="Выберите тип недвижимости"
-          placeholder="Выберите тип недвижимости"
+        <BaseRangeSingle
+          theme="white"
+          name="costFrom"
+          v-model="costFrom"
+          label="Стоимость от"
           class="lg:tw-col-span-2 xl:tw-grow"
+          :max="10000000"
         />
         <div class="lg:tw-col-span-2">
           <div class="tw-text-text02 tw-text-body_s2 -tw-tracking-875 tw-mb-2">
@@ -29,11 +31,11 @@
         </div>
         <BaseButton
           theme="white"
-          class="lg:tw-col-span-3"
+          class="lg:tw-col-span-3 xl:tw-self-end xl:tw-mb-[10px]"
           @click="openParametrs = true"
           >Дополнительные фильтры</BaseButton
         >
-        <BaseButton class="lg:tw-col-span-3">Показать предложения</BaseButton>
+        <BaseButton class="lg:tw-col-span-3 xl:tw-self-end xl:tw-mb-[10px]">Показать предложения</BaseButton>
       </form>
     </div>
     <ModalsOther
@@ -88,7 +90,8 @@
   </section>
 </template>
 <script lang="ts" setup>
-const typeApartment = ref('')
+const typeApartment = ref('');
+const costFrom = ref(null);
 const openParametrs = ref(false)
 </script>
 <style lang="scss" scoped></style>
