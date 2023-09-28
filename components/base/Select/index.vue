@@ -130,10 +130,10 @@
 
   .base-dropdown-block {
     min-width: 100%;
-    height: 350px;
+    max-height: 350px;
     box-shadow: 0px 5px 16px 0px rgba(0, 0, 0, 0.07);
     border-radius: 8px 8px 8px 8px;
-    z-index: 100;
+    z-index: 9000;
     top: calc(100% + 8px);
     padding: 8px;
     overflow-y: scroll;
