@@ -112,7 +112,7 @@ function showCallback() {
   appStore.showedCallback = true;
 }
 
-watch(() => route.path, () => {
+watch([() => route.path, () => route.hash], () => {
   showedNav.value = false;
 });
 </script>
