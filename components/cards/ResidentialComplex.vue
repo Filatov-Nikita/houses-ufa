@@ -1,5 +1,5 @@
 <template>
-  <div class="card">
+  <NuxtLink to="/" class="card">
     <div
       class="tw-relative tw-rounded-2xl tw-overflow-hidden tw-bg-base01 tw-grid tw-place-content-center"
     >
@@ -49,7 +49,7 @@
         </BaseSquareIcon>
       </button>
     </div>
-  </div>
+  </NuxtLink>
 </template>
 <script setup lang="ts">
 const complexProps = defineProps<{

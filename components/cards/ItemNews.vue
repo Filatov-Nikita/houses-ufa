@@ -1,5 +1,5 @@
 <template>
-  <div class="card">
+  <NuxtLink :to="to" class="card">
     <div>
       <div class="date tw-mb-4">{{ date }}</div>
       <h4 class="tw-text-h6 lg:tw-text-h5 tw-line-clamp-3">
@@ -7,10 +7,8 @@
       </h4>
     </div>
     <div class="tw-flex tw-justify-between tw-items-center">
-      <NuxtLink :to="to" class="tw-text-text02 hover:tw-text-primary link"
-        >Подробнее</NuxtLink
-      >
-      <BaseButton padding-classes="tw-p-2" theme="transparent">
+      <div  class="tw-text-text02 hover:tw-text-primary link">Подробнее</div>
+      <BaseButton padding-classes="tw-p-2" theme="transparent" @click.self="1">
         <div class="tw-flex tw-items-center tw-gap-4">
           <div class="tw-text-base tw-text-text00 tw-leading-none tw-mt-[3px]">1</div>
           <BaseIcon
@@ -22,7 +20,7 @@
         </div>
       </BaseButton>
     </div>
-  </div>
+  </NuxtLink>
 </template>
 <script lang="ts" setup>
 interface Props {
