@@ -88,26 +88,26 @@
 import { useAppStore } from '~/stores/app'
 const appStore = useAppStore();
 const listComparison = [
-  {
-    title: 'Покупателям',
-    key_obj: 'bayers',
-  },
-  {
-    title: 'Квартиры',
-    key_obj: 'apartments',
-  },
-  {
-    title: 'Коттеджи',
-    key_obj: 'cottages',
-  },
-  {
-    title: 'Коммерческая',
-    key_obj: 'commercial',
-  },
-  {
-    title: 'Владельцам',
-    key_obj: 'owners',
-  },
+  // {
+  //   title: 'Покупателям',
+  //   key_obj: 'bayers',
+  // },
+  // {
+  //   title: 'Квартиры',
+  //   key_obj: 'apartments',
+  // },
+  // {
+  //   title: 'Коттеджи',
+  //   key_obj: 'cottages',
+  // },
+  // {
+  //   title: 'Коммерческая',
+  //   key_obj: 'commercial',
+  // },
+  // {
+  //   title: 'Владельцам',
+  //   key_obj: 'owners',
+  // },
   {
     title: 'О компании',
     key_obj: 'about_company',

@@ -79,12 +79,12 @@
       </div>
     </div>
   </section>
-  <section>
+  <section id="hist">
     <div class="tw-container">
       <CardsHistory />
     </div>
   </section>
-  <section>
+  <section id="team">
     <div class="tw-container">
       <div class="section__top">
         <h2 class="section__title">Команда</h2>
@@ -92,12 +92,12 @@
       <CardsTeam />
     </div>
   </section>
-  <section>
+  <section id="work">
     <div class="tw-container">
       <div
         class="tw-pt-6 tw-px-4  tw-h-[480px] lg:tw-h-auto lg:tw-p-6 xl:tw-p-12 tw-bg-base01 tw-rounded-2xl tw-overflow-hidden tw-relative tw-grid  tw-gap-[85px]"
       >
-        <div class="lg:tw-w-[622px]"> 
+        <div class="lg:tw-w-[622px]">
           <h2 class="tw-text-h5 lg:tw-text-h4 tw-mb-8">
             Мы постоянно в поиске профессионалов своего дела
           </h2>
@@ -113,13 +113,13 @@
           <img
             src="/images/img/vacancies.png"
             alt=""
-            
+
           />
         </div>
       </div>
     </div>
   </section>
-  <section>
+  <section id="callback">
     <div class=" tw-container">
       <div class=" tw-py-6 tw-px-4 lg:tw-p-6 xl:tw-p-12 tw-rounded-2xl tw-bg-base01">
         <h2 class="tw-text-h5 lg:tw-text-h4 tw-mb-2  ">
@@ -140,7 +140,7 @@
             Отправить
           </BaseButton>
           <p class=" tw-text-text02 tw-text-body_xs lg:tw-text-body_m">
-            Нажимая кнопку, вы соглашаетесь 
+            Нажимая кнопку, вы соглашаетесь
             <a href="#" class=" tw-text-primary">
               с условиями обработки персональных данных
             </a>

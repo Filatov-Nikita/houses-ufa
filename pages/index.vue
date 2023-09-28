@@ -114,7 +114,7 @@
       <div class="section__top tw-flex tw-justify-between tw-items-center">
         <h2 class="section__title">Варианты покупки объектов недвижимости</h2>
         <div class="tw-hidden lg:tw-block">
-          <NuxtLink to="/" class="tw-flex tw-gap-2">
+          <NuxtLink to="/ipoteka" class="tw-flex tw-gap-2">
             <span class="tw-text-primary"> Все ипотечные предложения </span>
             <svg
               width="24"
@@ -164,7 +164,7 @@
         </CardsIpoteka>
       </div>
       <div class="lg:tw-hidden tw-mt-9">
-        <NuxtLink to="/" class="tw-flex tw-gap-2">
+        <NuxtLink to="/ipoteka" class="tw-flex tw-gap-2">
           <span class="tw-text-primary"> Все ипотечные предложения </span>
           <svg
             width="24"
@@ -266,7 +266,7 @@
     <div class="tw-container">
       <div class="section__top tw-flex tw-justify-between">
         <h2 class="section__title">Новости</h2>
-        <NuxtLink to="/" class="tw-flex tw-gap-2">
+        <NuxtLink to="/press-centr" class="tw-flex tw-gap-2">
           <span class="tw-text-primary"> Все новости </span>
           <svg
             width="24"

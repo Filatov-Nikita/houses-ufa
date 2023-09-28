@@ -62,88 +62,88 @@ function getHeaderMenu() {
 }
 function getFooterMenu() {
   return {
-    bayers: [
-      {
-        label: 'Акции',
-        to: '/flats',
-      },
-      {
-        label: 'Спецпреложения',
-        to: '/houses',
-      },
-      {
-        label: 'Программа лояльности',
-        to: '/tauns',
-      },
-      {
-        label: 'Способы покупки',
-        to: '/credit',
-      },
-      {
-        label: 'Школа покупателя',
-        to: '/about',
-      },
-    ],
-    apartments: [
-      {
-        label: 'Михайловка Green Place',
-        to: '/flats',
-      },
-      {
-        label: 'Зубово Life Garden',
-        to: '/houses',
-      },
-    ],
-    cottages: [
-      {
-        label: 'Михайловка Green 2',
-        to: '/',
-      },
-      {
-        label: 'Зубово Life 3',
-        to: '/',
-      },
-      {
-        label: 'Гудвилл Парк',
-        to: '/',
-      },
-    ],
-    commercial: [
-      {
-        label: 'Михайловка',
-        to: '/',
-      },
-      {
-        label: 'Зубово',
-        to: '/',
-      },
-      {
-        label: 'Гудвилл Парк',
-        to: '/',
-      },
-    ],
-    owners: [
-      {
-        label: 'Личный кабинет',
-        to: '/',
-      },
-    ],
+    // bayers: [
+      // {
+      //   label: 'Акции',
+      //   to: '/flats',
+      // },
+      // {
+      //   label: 'Спецпреложения',
+      //   to: '/houses',
+      // },
+      // {
+      //   label: 'Программа лояльности',
+      //   to: '/tauns',
+      // },
+      // {
+      //   label: 'Способы покупки',
+      //   to: '/credit',
+      // },
+      // {
+      //   label: 'Школа покупателя',
+      //   to: '/about',
+      // },
+    // ],
+    // apartments: [
+    //   {
+    //     label: 'Михайловка Green Place',
+    //     to: '/flats',
+    //   },
+    //   {
+    //     label: 'Зубово Life Garden',
+    //     to: '/houses',
+    //   },
+    // ],
+    // cottages: [
+    //   {
+    //     label: 'Михайловка Green 2',
+    //     to: '/',
+    //   },
+    //   {
+    //     label: 'Зубово Life 3',
+    //     to: '/',
+    //   },
+    //   {
+    //     label: 'Гудвилл Парк',
+    //     to: '/',
+    //   },
+    // ],
+    // commercial: [
+    //   {
+    //     label: 'Михайловка',
+    //     to: '/',
+    //   },
+    //   {
+    //     label: 'Зубово',
+    //     to: '/',
+    //   },
+    //   {
+    //     label: 'Гудвилл Парк',
+    //     to: '/',
+    //   },
+    // ],
+    // owners: [
+    //   {
+    //     label: 'Личный кабинет',
+    //     to: '/',
+    //   },
+    // ],
     about_company: [
       {
         label: 'История компании',
-        to: '/',
+        to: '/about#hist',
       },
       {
         label: 'Команда',
-        to: '/',
+        to: '/about#team',
       },
-      {
-        label: 'Награды',
-        to: '/',
-      },
+      // {
+      //   label: 'Награды',
+      //   to: '/',
+      // },
       {
         label: 'Работа в компании',
-        to: '/',
+        to: '/about#work',
       },
     ],
     press_center: [
@@ -153,11 +153,7 @@ function getFooterMenu() {
       },
       {
         label: 'СМИ о нас',
-        to: '/',
-      },
-      {
-        label: 'Написать нам',
-        to: '/',
+        to: '/press-centr',
       },
       {
         label: 'Вопросы и ответы',
@@ -166,13 +162,21 @@ function getFooterMenu() {
     ],
     contacts: [
       {
-        label: 'Офисы',
-        to: '/about',
+        label: 'Контакты',
+        to: '/contacts',
       },
       {
-        label: 'Сервисные службы',
-        to: '/',
+        label: 'Написать нам',
+        to: '/about#callback',
       },
+      // {
+      //   label: 'Офисы',
+      //   to: '/about',
+      // },
+      // {
+      //   label: 'Сервисные службы',
+      //   to: '/',
+      // },
     ],
   }
 }
@@ -195,105 +199,105 @@ function getContacts() {
 
 function getNavSectionLinks() {
   return {
-    static: {
-      label: "Статика",
-      items: [
-        {
-          label: "Faq",
-          to:'/faq'
+    // static: {
+    //   label: "Статика",
+    //   items: [
+    //     {
+    //       label: "Faq",
+    //       to:'/faq'
 
-        },
-        {
-          label: "О компании",
-          to:'/about'
+    //     },
+    //     {
+    //       label: "О компании",
+    //       to:'/about'
 
-        },
-        {
-          label: "Контакты",
-          to:'/contacts'
+    //     },
+    //     {
+    //       label: "Контакты",
+    //       to:'/contacts'
 
-        },
-        {
-          label: "Генплан коттеджов",
-          to:'/cotagge-genplan'
+    //     },
+    //     {
+    //       label: "Генплан коттеджов",
+    //       to:'/cotagge-genplan'
 
-        },
-        {
-          label: "Загородная недвижимость",
-          to:'/country-estate'
+    //     },
+    //     {
+    //       label: "Загородная недвижимость",
+    //       to:'/country-estate'
 
-        },
-        {
-          label: "Избранное",
-          to:'/favorites'
+    //     },
+    //     {
+    //       label: "Избранное",
+    //       to:'/favorites'
 
-        },
-        {
-          label: "Ипотека",
-          to:'/ipoteka'
+    //     },
+    //     {
+    //       label: "Ипотека",
+    //       to:'/ipoteka'
 
-        },
-        {
-          label: "Подборщик",
-          to:'/pickup'
+    //     },
+    //     {
+    //       label: "Подборщик",
+    //       to:'/pickup'
 
-        },
-        {
-          label: "Пресс центр",
-          to:'/press-centr'
+    //     },
+    //     {
+    //       label: "Пресс центр",
+    //       to:'/press-centr'
 
-        },
-        {
-          label: "Карточка жилого комплекса",
-          to:'/apartment/1'
+    //     },
+    //     {
+    //       label: "Карточка жилого комплекса",
+    //       to:'/apartment/1'
 
-        },
+    //     },
 
-      ]
-    },
-    flats: {
-      label: 'Квартиры',
-      items: [],
-    },
-    houses: {
-      label: 'Коттеджи',
-      items: [],
-    },
-    commerc: {
-      label: '',
-      items: [],
-    },
-    buyers: {
-      label: 'Покупателям',
-      items: [],
-    },
-    owners: {
-      label: 'Владельцам',
-      items: [
-        {
-          label: 'Личный кабинет',
-          to: '/',
-        },
-      ],
-    },
+    //   ]
+    // },
+    // flats: {
+    //   label: 'Квартиры',
+    //   items: [],
+    // },
+    // houses: {
+    //   label: 'Коттеджи',
+    //   items: [],
+    // },
+    // commerc: {
+    //   label: '',
+    //   items: [],
+    // },
+    // buyers: {
+    //   label: 'Покупателям',
+    //   items: [],
+    // },
+    // owners: {
+    //   label: 'Владельцам',
+    //   items: [
+    //     {
+    //       label: 'Личный кабинет',
+    //       to: '/',
+    //     },
+    //   ],
+    // },
     about: {
       label: 'О компании',
       items: [
         {
           label: 'История компании',
-          to: '/',
+          to: '/about#hist',
         },
         {
           label: 'Команда',
-          to: '/',
+          to: '/about#team',
         },
-        {
-          label: 'Награды',
-          to: '/',
-        },
+        // {
+        //   label: 'Награды',
+        //   to: '/',
+        // },
         {
           label: 'Работа в компании',
-          to: '/',
+          to: '/about#work',
         },
       ],
     },
@@ -306,11 +310,7 @@ function getNavSectionLinks() {
         },
         {
           label: 'СМИ о нас',
-          to: '/',
-        },
-        {
-          label: 'Написать нам',
-          to: '/',
+          to: '/press-centr',
         },
         {
           label: 'Вопросы и ответы',
@@ -322,13 +322,21 @@ function getNavSectionLinks() {
       label: 'Контакты',
       items: [
         {
-          label: 'Офисы',
-          to: '/',
+          label: 'Контакты',
+          to: '/contacts',
         },
         {
-          label: 'Сервисные службы',
-          to: '/',
+          label: 'Написать нам',
+          to: '/about#callback',
         },
+        // {
+        //   label: 'Офисы',
+        //   to: '/',
+        // },
+        // {
+        //   label: 'Сервисные службы',
+        //   to: '/',
+        // },
       ],
     },
   }

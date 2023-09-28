@@ -95,10 +95,10 @@
   });
 
   const order = [
-    'static',
-    'buyers',
-    'flats',
-    'houses',
+    // 'static',
+    // 'buyers',
+    // 'flats',
+    // 'houses',
     'about',
     'pressCenter',
     'contacts'
