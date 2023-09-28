@@ -357,6 +357,6 @@ const categoryList = [
 //   layout: 'default'
 // });
 
-const showedVideo = ref(true);
+const showedVideo = ref(false);
 </script>
 <style lang="scss" scoped></style>
