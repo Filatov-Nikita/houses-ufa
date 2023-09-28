@@ -11,12 +11,15 @@
         >Подробнее</NuxtLink
       >
       <BaseButton padding-classes="tw-p-2" theme="transparent">
-        <BaseIcon
-          v-if="is_favorite"
-          name="heart_bg"
-          class="tw-text-primary tw-w-6 tw-h-6"
-        />
-        <BaseIcon v-else name="heart" class="tw-w-6 tw-h-6" />
+        <div class="tw-flex tw-items-center tw-gap-4">
+          <div class="tw-text-base tw-text-text00 tw-leading-none tw-mt-[3px]">1</div>
+          <BaseIcon
+            v-if="is_favorite"
+            name="heart_bg"
+            class="tw-text-primary tw-w-6 tw-h-6"
+          />
+          <BaseIcon v-else name="heart" class="tw-w-6 tw-h-6" />
+        </div>
       </BaseButton>
     </div>
   </div>
