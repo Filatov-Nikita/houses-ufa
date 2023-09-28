@@ -42,7 +42,9 @@
           ></div>
           <div class="tw-hidden lg:tw-flex lg:tw-gap-8 tw-items-center">
             <div class="tw-grid tw-gap-1">
-              <div class="tw-text-body_m">+7 (347) 225-00-73</div>
+              <div class="tw-text-body_m">
+                <a :href="`tel:${cleanedHeadPhone}`">{{ headerPhone }}</a>
+              </div>
               <button
                 class="tw-text-primary tw-text-body_s2 -tw-tracking-875 tw-text-left"
               >
@@ -96,9 +98,11 @@
 import NavMenu from '@/components/layout/NavMenu.vue'
 import { useAppStore } from '~/stores/app'
 
-const appStore = useAppStore()
+const appStore = useAppStore();
 
-const items = computed(() => appStore.headerMenu)
+const items = computed(() => appStore.headerMenu);
+const headerPhone = computed(() => appStore.headerPhone);
+const cleanedHeadPhone = computed(() => appStore.cleanedHeadPhone);
 
 const showedNav = ref(false)
 </script>

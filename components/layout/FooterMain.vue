@@ -60,7 +60,7 @@
               </p>
             </div>
             <div class="tw-grid tw-gap-2">
-              <a :href="'tel:' + contacts.phone" class="tw-text-h6">{{
+              <a :href="'tel:' + cleanedContPhone" class="tw-text-h6">{{
                 contacts.phone
               }}</a>
               <button class="tw-text-primary tw-text-left tw-text-body_m">
@@ -86,7 +86,7 @@
 </template>
 <script setup lang="ts">
 import { useAppStore } from '~/stores/app'
-const appStore = useAppStore()
+const appStore = useAppStore();
 const listComparison = [
   {
     title: 'Покупателям',
@@ -121,8 +121,9 @@ const listComparison = [
     key_obj: 'contacts',
   },
 ]
-const navList = computed(() => appStore.footerMenu)
-const contacts = computed(() => appStore.contacts)
+const navList = computed(() => appStore.footerMenu);
+const contacts = computed(() => appStore.contacts);
+const cleanedContPhone = computed(() => appStore.cleanedContPhone);
 </script>
 <style lang="scss" scoped>
 .footer {

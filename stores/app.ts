@@ -5,8 +5,13 @@ interface NavBanner {
   readMoreHref: string
 }
 
+function cleanPhone(phone: string): string {
+  return '+' + phone.replace(/\D/g, '');
+}
+
 export const useAppStore = defineStore('appStore', {
   state: () => ({
+    headerPhone: '+7 (347) 225-00-73',
     headerMenu: getHeaderMenu(),
     navSectionLinks: getNavSectionLinks(),
     contacts: getContacts(),
@@ -14,6 +19,10 @@ export const useAppStore = defineStore('appStore', {
     socialList: getSocialList(),
     banner: getBanner() as NavBanner | null,
   }),
+  getters: {
+    cleanedHeadPhone: (state) => cleanPhone(state.headerPhone),
+    cleanedContPhone: (state) => cleanPhone(state.contacts.phone),
+  },
 })
 
 function getBanner(): NavBanner {
