@@ -242,17 +242,18 @@
       <div
         class="tw-bg-secondary tw-p-6 tw-rounded-2xl tw-h-[227px] lg:tw-h-auto tw-grid tw-content-between lg:tw-flex lg:tw-justify-between"
       >
-        <div class="tw-flex tw-gap-6">
-          <button
+        <button class="tw-flex tw-gap-6" @click="showedVideo = true">
+          <div
             class="tw-rounded-lg tw-w-12 tw-h-12 tw-bg-primary tw-grid tw-place-content-center"
           >
             <img src="~assets/images/icons/play.svg" alt="play" />
-          </button>
-          <p>
+          </div>
+          <p class="tw-text-left">
             Смотреть ролик <br />
             о компании
           </p>
-        </div>
+          <VideoAbout v-model="showedVideo"/>
+        </button>
         <img
           src="~assets/images/icons/logo-green.svg"
           alt="logo"
@@ -321,6 +322,8 @@
 </template>
 
 <script setup lang="ts">
+import VideoAbout from '@/components/modals/VideoAbout.vue';
+
 useHead({
   script: [
     {
@@ -353,5 +356,7 @@ const categoryList = [
 // definePageMeta({
 //   layout: 'default'
 // });
+
+const showedVideo = ref(true);
 </script>
 <style lang="scss" scoped></style>
