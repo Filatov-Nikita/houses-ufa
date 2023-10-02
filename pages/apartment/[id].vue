@@ -15,9 +15,9 @@
             class="!tw-text-white tw-mb-4"
           />
           <h2 class="section__title title tw-mb-4 lg:tw-mb-2">
-            Название Жилого Комплекса
+            {{ complex?.name }}
           </h2>
-          <h3>Локация</h3>
+          <h3>{{ complex?.location }}</h3>
         </div>
         <div class="content">
           <BaseButton theme="white" class="tw-mb-4"
@@ -30,17 +30,26 @@
       </div>
     </div>
   </section>
-  <section>
+  <section v-if="complex?.about">
     <div class="tw-container">
       <CardsAbout
         v-bind="{
           to: '/',
           title: 'О жилом комплексе',
-          text: 'Жилой комплекс «Малина» — это место, где природа и город объединились, чтобы создать целый мир удобства в условиях природы. Расположение за чертой города не ограничит вас от активной жизни. Рядом с комплексом собрана вся инфраструктура: детский сад, школа, магазины и общественные остановки, поэтому жизнь на природе станет не только приятной, но и комфортной.',
+          text: complex.about.description,
           indicators: [
-            { title: '200', subtitle: 'домовладений' },
-            { title: '15 км', subtitle: 'от города' },
-            { title: '250 мест', subtitle: 'детский сад' },
+            {
+              title: complex.about.feature_1_title,
+              subtitle: complex.about.feature_1_value,
+            },
+            {
+              title: complex.about.feature_2_title,
+              subtitle: complex.about.feature_2_value,
+            },
+            {
+              title: complex.about.feature_3_title,
+              subtitle: complex.about.feature_3_value,
+            },
           ],
         }"
       />
@@ -156,6 +165,30 @@
   </section>
 </template>
 <script lang="ts" setup>
+interface Complex {
+  id: number
+  location: string
+  marketing_tag: null | string
+  name: string
+  about: {
+    id: number
+    description: string
+    feature_1_title: string
+    feature_1_value: string
+    feature_2_title: string
+    feature_2_value: string
+    feature_3_title: string
+    feature_3_value: string
+  }
+  seo: {
+    id: number
+    meta_description: string | null
+    meta_keywords: string | null
+    meta_title: string | null
+    text_description: string | null
+    text_title: string | null
+  }
+}
 useHead({
   script: [
     {
@@ -164,6 +197,17 @@ useHead({
     },
   ],
 })
+const config = useRuntimeConfig()
+const route = useRoute()
+const complex = ref<Complex>()
+const getComplex = async () => {
+  const { data } = await useDataFetch(`estate/complexes/${route.params.id}`, {
+    baseURL: config.public.baseURL,
+  })
+
+  complex.value = data.value.data as Complex
+}
+getComplex()
 </script>
 <style lang="scss" scoped>
 .head-section {

@@ -4,7 +4,7 @@
       leave-active-class="animate__animated anim-300ms animate__fadeOut"
       enter-active-class="animate__animated anim-300ms animate__fadeIn"
     >
-      <div v-show="showed" class="nav-menu">
+    <div v-show="showed" class="nav-menu">
         <div class="tw-container">
           <div class="nav-menu__inner">
 
@@ -21,9 +21,9 @@
                 <template #content>
                   <div class="tw-space-y-6 tw-py-5">
                     <NuxtLink
-                      v-for="item in section.items"
-                      :to="item.to"
-                      class="tw-w-full tw-block tw-text-base tw-text-text02"
+                    v-for="item in section.items"
+                    :to="item.to"
+                    class="tw-w-full tw-block tw-text-base tw-text-text02"
                     >
                       {{ item.label }}
                     </NuxtLink>
@@ -71,14 +71,14 @@
 <script setup lang="ts">
   import { useAppStore } from '@/stores/app';
   import { useScrollToggle } from '@/composables/useScrollToggle';
-
+  import { storeToRefs } from 'pinia'
   interface Props {
     showed?: boolean,
     headerSelector?: string,
   }
 
   const appStore = useAppStore();
-
+  
   const navLinks = computed(() => {
     return appStore.navSectionLinks;
   });
@@ -94,10 +94,12 @@
     return appStore.banner;
   });
 
+  
+
   const order = [
     // 'static',
     // 'buyers',
-    // 'flats',
+    'flats',
     // 'houses',
     'about',
     'pressCenter',

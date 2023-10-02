@@ -6,7 +6,7 @@ interface NavBanner {
 }
 
 function cleanPhone(phone: string): string {
-  return '+' + phone.replace(/\D/g, '');
+  return '+' + phone.replace(/\D/g, '')
 }
 
 export const useAppStore = defineStore('appStore', {
@@ -18,11 +18,29 @@ export const useAppStore = defineStore('appStore', {
     footerMenu: getFooterMenu(),
     socialList: getSocialList(),
     banner: getBanner() as NavBanner | null,
-    showedCallback: false
+    showedCallback: false,
   }),
   getters: {
     cleanedHeadPhone: (state) => cleanPhone(state.headerPhone),
     cleanedContPhone: (state) => cleanPhone(state.contacts.phone),
+  },
+  actions: {
+    async getZhkList() {
+      const config = useRuntimeConfig()
+      const { data } = await useDataFetch('/estate/complexes', {
+        baseURL: config.public.baseURL,
+      })
+      const complexes = (data.value.data as { id: number; name: string }[]).map(
+        (item) => {
+          return {
+            label: item.name,
+            to: '/apartment/' + item.id,
+          }
+        }
+      )
+      this.navSectionLinks.flats.items = complexes
+      this.footerMenu.apartments = complexes
+    },
   },
 })
 
@@ -63,37 +81,28 @@ function getHeaderMenu() {
 function getFooterMenu() {
   return {
     // bayers: [
-      // {
-      //   label: 'Акции',
-      //   to: '/flats',
-      // },
-      // {
-      //   label: 'Спецпреложения',
-      //   to: '/houses',
-      // },
-      // {
-      //   label: 'Программа лояльности',
-      //   to: '/tauns',
-      // },
-      // {
-      //   label: 'Способы покупки',
-      //   to: '/credit',
-      // },
-      // {
-      //   label: 'Школа покупателя',
-      //   to: '/about',
-      // },
+    // {
+    //   label: 'Акции',
+    //   to: '/flats',
+    // },
+    // {
+    //   label: 'Спецпреложения',
+    //   to: '/houses',
+    // },
+    // {
+    //   label: 'Программа лояльности',
+    //   to: '/tauns',
+    // },
+    // {
+    //   label: 'Способы покупки',
+    //   to: '/credit',
+    // },
+    // {
+    //   label: 'Школа покупателя',
+    //   to: '/about',
+    // },
     // ],
-    // apartments: [
-    //   {
-    //     label: 'Михайловка Green Place',
-    //     to: '/flats',
-    //   },
-    //   {
-    //     label: 'Зубово Life Garden',
-    //     to: '/houses',
-    //   },
-    // ],
+    apartments: [],
     // cottages: [
     //   {
     //     label: 'Михайловка Green 2',
@@ -200,66 +209,10 @@ function getContacts() {
 
 function getNavSectionLinks() {
   return {
-    // static: {
-    //   label: "Статика",
-    //   items: [
-    //     {
-    //       label: "Faq",
-    //       to:'/faq'
-
-    //     },
-    //     {
-    //       label: "О компании",
-    //       to:'/about'
-
-    //     },
-    //     {
-    //       label: "Контакты",
-    //       to:'/contacts'
-
-    //     },
-    //     {
-    //       label: "Генплан коттеджов",
-    //       to:'/cotagge-genplan'
-
-    //     },
-    //     {
-    //       label: "Загородная недвижимость",
-    //       to:'/country-estate'
-
-    //     },
-    //     {
-    //       label: "Избранное",
-    //       to:'/favorites'
-
-    //     },
-    //     {
-    //       label: "Ипотека",
-    //       to:'/ipoteka'
-
-    //     },
-    //     {
-    //       label: "Подборщик",
-    //       to:'/pickup'
-
-    //     },
-    //     {
-    //       label: "Пресс центр",
-    //       to:'/press-centr'
-
-    //     },
-    //     {
-    //       label: "Карточка жилого комплекса",
-    //       to:'/apartment/1'
-
-    //     },
-
-    //   ]
-    // },
-    // flats: {
-    //   label: 'Квартиры',
-    //   items: [],
-    // },
+    flats: {
+      label: 'Квартиры',
+      items: [] as { label: string; to: string }[],
+    },
     // houses: {
     //   label: 'Коттеджи',
     //   items: [],

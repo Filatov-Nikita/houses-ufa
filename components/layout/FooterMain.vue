@@ -64,7 +64,10 @@
               <a :href="'tel:' + cleanedContPhone" class="tw-text-h6">{{
                 contacts.phone
               }}</a>
-              <button class="tw-text-primary tw-text-left tw-text-body_m" @click="showCallback">
+              <button
+                class="tw-text-primary tw-text-left tw-text-body_m"
+                @click="showCallback"
+              >
                 Заказать звонок
               </button>
             </div>
@@ -83,7 +86,10 @@
             v-for="(link, name) in contacts.socialLinks"
             :href="link"
           >
-            <BaseIcon class="tw-w-6 tw-h-6 tw-inline-block" :name="`soc-${name}`" />
+            <BaseIcon
+              class="tw-w-6 tw-h-6 tw-inline-block"
+              :name="`soc-${name}`"
+            />
           </a>
         </div>
         <div
@@ -98,16 +104,16 @@
 </template>
 <script setup lang="ts">
 import { useAppStore } from '~/stores/app'
-const appStore = useAppStore();
+const appStore = useAppStore()
 const listComparison = [
   // {
   //   title: 'Покупателям',
   //   key_obj: 'bayers',
   // },
-  // {
-  //   title: 'Квартиры',
-  //   key_obj: 'apartments',
-  // },
+  {
+    title: 'Квартиры',
+    key_obj: 'apartments',
+  },
   // {
   //   title: 'Коттеджи',
   //   key_obj: 'cottages',
@@ -133,12 +139,12 @@ const listComparison = [
     key_obj: 'contacts',
   },
 ]
-const navList = computed(() => appStore.footerMenu);
-const contacts = computed(() => appStore.contacts);
-const cleanedContPhone = computed(() => appStore.cleanedContPhone);
+const navList = computed(() => appStore.footerMenu)
+const contacts = computed(() => appStore.contacts)
+const cleanedContPhone = computed(() => appStore.cleanedContPhone)
 
 function showCallback() {
-  appStore.showedCallback = true;
+  appStore.showedCallback = true
 }
 </script>
 <style lang="scss" scoped>
