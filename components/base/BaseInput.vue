@@ -44,6 +44,7 @@
 
   const { value, errorMessage } = useField(props.name, props.rules, {
     label: props.label,
+    validateOnValueUpdate: false,
     syncVModel: true
   });
 
