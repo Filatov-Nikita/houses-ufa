@@ -2,10 +2,10 @@ import type { UseFetchOptions } from 'nuxt/app'
 import { defu } from 'defu'
 
 export function useDataFetch<T>(url: string, options: UseFetchOptions<T> = {}) {
-  const config = useRuntimeConfig()
+  const config = useRuntimeConfig();
 
   const defaults: UseFetchOptions<T> = {
-    baseURL: config.app.baseUrl ?? '',
+    baseURL: config.public.baseURL ?? '',
     // cache request
     key: url,
 
