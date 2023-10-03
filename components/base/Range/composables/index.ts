@@ -1,4 +1,7 @@
-export const useMovable = (onMove: (e: { x: number }, target: HTMLElement) => void) => {
+export const useMovable = (
+  onMove: (e: { x: number }, target: HTMLElement) => void,
+  afterManipulate: () => void = () => {}
+) => {
   function onMousedown(e: MouseEvent) {
     document.body.classList.add('tw-select-none');
     const newWindow = window as any;
@@ -21,6 +24,7 @@ export const useMovable = (onMove: (e: { x: number }, target: HTMLElement) => vo
   }
 
   function onTouchend(e: TouchEvent) {
+    afterManipulate();
     const newWindow = window as any;
     window.removeEventListener('touchmove', newWindow._onTouchmove);
     window.removeEventListener('touchend', onTouchend);
@@ -28,6 +32,7 @@ export const useMovable = (onMove: (e: { x: number }, target: HTMLElement) => vo
   }
 
   function onMouseUp() {
+    afterManipulate();
     document.body.classList.remove('tw-select-none');
     const newWindow = window as any;
     window.removeEventListener('mousemove', newWindow._onMove);

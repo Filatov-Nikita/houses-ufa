@@ -77,6 +77,12 @@
     theme: 'gray'
   });
 
+  const emit = defineEmits<{
+    (event: 'afterManipulate', val: ModelValue): void,
+    (event: 'change', val: ModelValue): void,
+    (event: 'update:modelValue', val: ModelValue): void,
+  }>();
+
   const controlsRef = ref<HTMLElement | null>(null);
   const input1Ref = ref<HTMLInputElement | null>(null);
   const input2Ref = ref<HTMLInputElement | null>(null);
@@ -127,16 +133,22 @@
     return props.insertLabel ? `${pretty} ${props.insertLabel}` : pretty;
   }
 
+  function change(): void {
+    emit('change', value.value);
+  }
+
   function onChangeFrom(e: Event) {
     const value = (e.target as HTMLInputElement).value;
     const newVal = value === '' ? null : +cutNotNumeric(value);
     setFrom(newVal);
+    change();
   }
 
   function onChangeTo(e: Event) {
     const value = (e.target as HTMLInputElement).value;
     const newVal = value === '' ? null : +cutNotNumeric(value);
     setTo(newVal);
+    change();
   }
 
   function setHandPosInPx(val: number, hand: HTMLElement, offset: number): void {
@@ -257,7 +269,11 @@
     handRef.style.transform = `translateX(${x}px)`;
   }
 
-  const { onMousedown, onTouchdown } = useMovable(onMove);
+  function afterManipulate() {
+    emit('afterManipulate', value.value);
+  }
+
+  const { onMousedown, onTouchdown } = useMovable(onMove, afterManipulate);
 </script>
 
 <style lang="scss" src="./scss/index.scss"></style>
