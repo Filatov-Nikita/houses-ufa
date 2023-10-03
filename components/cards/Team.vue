@@ -16,7 +16,7 @@
         class="tw-grid lg:tw-grid-cols-2 xl:tw-grid-cols-3 tw-gap-4 lg:tw-gap-5s"
       >
         <div
-          class="tw-py-5 tw-px-4 tw-bg-white tw-rounded-2xl tw-overflow-hidden tw-grid tw-gap-6 lg:tw-flex lg:tw-gap-10"
+          class="tw-py-5 tw-px-4 lg:tw-px-6 tw-bg-white tw-rounded-2xl tw-overflow-hidden tw-grid tw-gap-6 lg:tw-flex lg:tw-gap-10"
           v-for="team in managementList"
         >
           <div

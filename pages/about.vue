@@ -7,7 +7,7 @@
           class="!tw-text-white"
         />
         <div class="content">
-          <h2 class="section__title title">Жилой Квартал</h2>
+          <h2 class="section__title title tw-font-semibold">Жилой Квартал</h2>
           <p class="text-top">— признанный бренд в Республике Башкортостан</p>
           <p class="text-bottom">
             с 22-летней историей и сложившейся репутацией надежного партнера
@@ -21,7 +21,7 @@
       <div
         class="tw-grid tw-gap-4 lg:tw-grid-cols-2 xl:tw-grid-cols-4 tw-mb-4 lg:tw-mb-5"
       >
-        <div class="tw-rounded-2xl tw-bg-white tw-p-6 tw-grid tw-gap-12">
+        <div class="tw-rounded-2xl tw-bg-white tw-p-6 lg:tw-p-10 tw-grid tw-gap-12">
           <div>
             <h3
               class="tw-text-primary tw-text-h2 -tw-tracking-3 tw-font-freesetdemi"
@@ -33,7 +33,7 @@
           <p class="tw-text-text02">в загородном строительстве</p>
         </div>
 
-        <div class="tw-rounded-2xl tw-bg-white tw-p-6 tw-grid tw-gap-12">
+        <div class="tw-rounded-2xl tw-bg-white tw-p-6 lg:tw-p-10  tw-grid tw-gap-12">
           <div>
             <h3
               class="tw-text-primary tw-text-h2 -tw-tracking-3 tw-font-freesetdemi"
@@ -45,7 +45,7 @@
           <p class="tw-text-text02">построено и еще строится</p>
         </div>
 
-        <div class="tw-rounded-2xl tw-bg-white tw-p-6 tw-grid tw-gap-12">
+        <div class="tw-rounded-2xl tw-bg-white tw-p-6 lg:tw-p-10  tw-grid tw-gap-12">
           <div>
             <h3
               class="tw-text-primary tw-text-h2 -tw-tracking-3 tw-font-freesetdemi"
@@ -57,14 +57,14 @@
           <p class="tw-text-text02">год основания компании</p>
         </div>
 
-        <div class="tw-rounded-2xl tw-bg-white tw-p-6 tw-grid tw-gap-12">
+        <div class="tw-rounded-2xl tw-bg-white tw-p-6 lg:tw-p-10  tw-grid tw-gap-12">
           <div>
             <h3
               class="tw-text-primary tw-text-h2 -tw-tracking-3 tw-font-freesetdemi"
             >
               1.5
             </h3>
-            <h4 class="tw-text-primary tw-text-h5">млн м2</h4>
+            <h4 class="tw-text-primary tw-text-h5">млн м²</h4>
           </div>
           <p class="tw-text-text02">введено в эксплуатацию</p>
         </div>

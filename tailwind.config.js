@@ -49,8 +49,8 @@ module.exports = {
       'primary01-hover': '#EDFFF3',
       'primary01-press': '#D7F5E1',
       secondary: '#F0F0F0',
-      'secondary-hover': '#E5E5E5',
-      'secondary-press': '#EFEFEF',
+      'secondary-hover': '#EEEEEE',
+      'secondary-press': '#E4E4E4',
       white: '#ffffff',
       error: '#F13F36',
       negative: '#F13F36',
@@ -140,8 +140,9 @@ module.exports = {
     function ({ addComponents }) {
       addComponents({
         '.container': {
-          maxWidth: '100%',
+          maxWidth: '1440px',
           width: '100%',
+
           //   padding: "0 15px",
           //   marginRight: "auto",
           //   marginLeft: "auto",

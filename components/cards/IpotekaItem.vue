@@ -51,7 +51,7 @@ const propsIpoteka = withDefaults(
 <style lang="scss" scoped>
 .card {
   @apply tw-h-[560px] lg:tw-h-[440px] xl:tw-h-[440px] tw-rounded-2xl tw-overflow-hidden tw-relative;
-  @apply tw-px-4 tw-py-6 lg:tw-p-10 tw-grid tw-content-between;
+  @apply tw-px-4 tw-py-6 lg:tw-p-10 xl:tw-p-16 tw-grid tw-content-between;
   @apply tw-bg-base01;
   transition: background-color 0.3s ease;
   &-flag::before {
@@ -80,17 +80,17 @@ const propsIpoteka = withDefaults(
     transition: opacity 0.3s ease;
   }
   .content {
-    @apply lg:tw-w-[432px] xl:tw-w-[720px] tw-relative;
+    @apply lg:tw-max-w-[432px] xl:tw-max-w-[720px] tw-relative;
   }
   .title {
     @apply tw-text-h5 lg:tw-text-h4;
   }
   .text {
-    @apply xl:tw-max-w-[682px];
+    @apply xl:tw-max-w-[682px] tw-text-body_m2;
   }
   .procent {
     @apply tw-rounded-lg tw-grid tw-place-content-center tw-p-2 lg:tw-py-3 lg:tw-px-[18px] tw-bg-primary lg:tw-bg-base02 tw-w-fit;
-    @apply tw-font-freesetdemi tw-text-body_l lg:tw-text-h6 tw-text-white;
+    @apply tw-font-freesetdemi tw-text-body_l lg:tw-text-h6 tw-text-white tw-font-semibold;
     transition: background-color 0.3s ease;
   }
   .img {

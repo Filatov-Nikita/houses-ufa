@@ -6,7 +6,10 @@
           <div
             class="burger tw-hidden lg:tw-block"
             @click="showedNav = !showedNav"
-          ></div>
+          >
+          <BaseIcon v-if="showedNav" name="close" class=" tw-w-8 tw-h-8"/>
+          <BaseIcon v-else  name="burger" class=" tw-w-8 tw-h-8"/>
+        </div>
           <div class="tw-flex tw-items-center tw-gap-8">
             <NuxtLink to="/" class="logo">
               <img
@@ -39,7 +42,10 @@
           <div
             class="burger lg:tw-hidden"
             @click="showedNav = !showedNav"
-          ></div>
+          >
+          <BaseIcon v-if="showedNav" name="close" class=" tw-w-8 tw-h-8"/>
+          <BaseIcon v-else  name="burger" class=" tw-w-8 tw-h-8"/>
+        </div>
           <div class="tw-hidden lg:tw-flex lg:tw-gap-8 tw-items-center">
             <div class="tw-grid tw-gap-1">
               <div class="tw-text-body_m">

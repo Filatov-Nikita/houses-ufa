@@ -9,32 +9,35 @@
         @updateSingleIdx="updateSingleIdx"
       />
       <div
-        class="tw-bg-white tw-rounded-2xl tw-overflow-hidden tw-p-4 tw-absolute tw-z-10 tw-top-10 tw-left-10 tw-w-[375px]"
+        class="tw-bg-white tw-rounded-2xl tw-overflow-hidden tw-p-4 tw-absolute tw-z-10 tw-top-10 tw-left-10 tw-w-[375px] tw-shadow-shadow01"
       >
-        <div
-          class="tw-flex tw-gap-4 tw-py-3 tw-items-center"
-          v-show="singleOfficeIdx === null"
-          v-for="(item, index) in marks"
-          @click="singleOfficeIdx = index"
-        >
+        <template v-for="(item, index) in marks">
           <div
-            :key="item.id"
-            class="tw-w-10 tw-h-10 tw-rounded-lg tw-relative tw-overflow-hidden"
+            class="tw-flex tw-gap-4 tw-py-3 tw-items-center"
+            v-show="singleOfficeIdx === null"
+            
+            @click="singleOfficeIdx = index"
           >
-            <img
-              :src="item.img"
-              alt=""
-              class="tw-absolute tw-w-full tw-h-full tw-object-cover"
-            />
+            <div
+              :key="item.id"
+              class="tw-w-10 tw-h-10 tw-rounded-lg tw-relative tw-overflow-hidden"
+            >
+              <img
+                :src="item.img"
+                alt=""
+                class="tw-absolute tw-w-full tw-h-full tw-object-cover"
+              />
+            </div>
+            <div>
+              <h4 class="tw-text-body_m tw-mb-1">{{ item.title }}</h4>
+              <p class="tw-text-text01 tw-text-body_s2 -tw-tracking-875">
+                {{ item.address }}
+              </p>
+            </div>
+            <BaseIcon name="forward" class="tw-w-6 tw-h-6 tw-text-icon" />
           </div>
-          <div>
-            <h4 class="tw-text-body_m tw-mb-1">{{ item.title }}</h4>
-            <p class="tw-text-text01 tw-text-body_s2 -tw-tracking-875">
-              {{ item.address }}
-            </p>
-          </div>
-          <BaseIcon name="forward" class="tw-w-6 tw-h-6 tw-text-icon" />
-        </div>
+          <div v-if="index !== marks.length -1 && marks.length > 1" class=" tw-border-b tw-border-border00"></div>
+        </template>
         <div
           v-show="Number.isInteger(singleOfficeIdx) && singleOfficeIdx !== null"
           class="tw-p-4 tw-grid tw-gap-4"
@@ -76,13 +79,19 @@
           <p>
             Выберите точку на карте или введите адрес для построения маршрута
           </p>
-          <BaseInput
-            name="nameStreet"
-            label=""
-            placeholder="Введите название улицы"
-            v-model="nameStreet"
-            id="suggest"
-          />
+          <div class=" tw-relative">
+
+            <BaseInput
+              name="nameStreet"
+              label=""
+              placeholder="Введите название улицы"
+              v-model="nameStreet"
+              id="suggest"
+              input-class="!tw-pr-12"
+              
+            />
+            <BaseIcon name="paper" class=" tw-w-6 tw-h-6 tw-text-icon tw-absolute tw-right-4 tw-top-1/2 -tw-translate-y-1/2 tw-mt-1"/>
+          </div>
           <div class="tw-grid tw-gap-2">
             <a href="tel:+7 374 264-48-55" class="tw-text-h6"
               >+7 374 264-48-55</a
@@ -104,29 +113,35 @@
   </div>
   <div class="lg:tw-hidden">
     <div class="tw-grid tw-gap-2 tw-bg-white tw-rounded-2xl tw-p-4">
-      <div
-        class="tw-flex tw-gap-4 tw-py-3 tw-items-center"
-        v-for="(item, index) in marks"
-        @click="() => ((openMap = true), (singleOfficeIdx = index))"
-      >
+      <template v-for="(item, index) in marks">
+
         <div
-          :key="item.id"
-          class="tw-w-10 tw-h-10 tw-rounded-lg tw-relative tw-overflow-hidden"
+          class="tw-flex tw-gap-4 tw-py-3 tw-items-center"
+          
+          @click="() => ((openMap = true), (singleOfficeIdx = index))"
         >
-          <img
-            :src="item.img"
-            alt=""
-            class="tw-absolute tw-w-full tw-h-full tw-object-cover"
-          />
+          <div
+            :key="item.id"
+            class="tw-w-10 tw-h-10 tw-rounded-lg tw-relative tw-overflow-hidden"
+          >
+            <img
+              :src="item.img"
+              alt=""
+              class="tw-absolute tw-w-full tw-h-full tw-object-cover"
+            />
+          </div>
+          <div>
+            <h4 class="tw-text-body_m tw-mb-1">{{ item.title }}</h4>
+            <p class="tw-text-text01 tw-text-body_s2 -tw-tracking-875">
+              {{ item.address }}
+            </p>
+          </div>
+          <BaseIcon name="forward" class="tw-w-6 tw-h-6 tw-text-icon" />
         </div>
-        <div>
-          <h4 class="tw-text-body_m tw-mb-1">{{ item.title }}</h4>
-          <p class="tw-text-text01 tw-text-body_s2 -tw-tracking-875">
-            {{ item.address }}
-          </p>
+        
+        <div v-if="index !== marks.length -1" class=" tw-border-b tw-border-border00">
         </div>
-        <BaseIcon name="forward" class="tw-w-6 tw-h-6 tw-text-icon" />
-      </div>
+      </template>
     </div>
   </div>
   <BaseModal v-model="openMap" :isFullMob="true" :forMob="true">
@@ -273,6 +288,7 @@ const widgetToggle = ref()
   height: 32px; */
   background-color: white;
   align-items: center;
+  @apply tw-shadow-shadow01;
 }
 .contact-layout__img {
   gap: 6px;

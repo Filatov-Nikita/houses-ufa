@@ -54,7 +54,7 @@
             class="tw-bg-primary tw-w-0 tw-h-[2px] tw-transition-width tw-duration-150 tw-ease-in"
             ref="line"
           ></div>
-          <div class="tw-bg-secondary tw-w-full tw-h-[2px]"></div>
+          <div class="tw-bg-secondary tw-w-full tw-h-[1px]"></div>
         </div>
         <div class="tw-relative tw-flex tw-gap-10">
           <button

@@ -13,7 +13,7 @@
       />
       <BaseIcon v-else name="home" class="tw-w-16 tw-h-16" />
       <div class="tw-absolute tw-left-4 tw-top-4 tw-grid tw-gap-1">
-        <h4 class="tw-text-h4 tw-text-white">{{ title }}</h4>
+        <h4 class="tw-text-h5 tw-text-white tw-font-semibold">{{ title }}</h4>
         <p class="tw-text-body_l tw-text-white">
           <span>{{ typeApartment }}</span>
           <span> от {{ price }} ₽</span>
@@ -22,7 +22,7 @@
       <div class="tw-absolute tw-right-4 tw-bottom-4 tw-grid tw-gap-3">
         <div
           v-if="status"
-          class="tw-backdrop-blur-sm tw-rounded-lg tw-py-[5px] tw-px-[11px] tw-text-white tw-bg-text01/40 tw-text-body_s -tw-tracking-875"
+          class="tw-backdrop-blur-sm tw-rounded-lg tw-py-[5px] tw-px-[11px] tw-text-white tw-bg-text01/40 "
         >
           {{ status }}
         </div>

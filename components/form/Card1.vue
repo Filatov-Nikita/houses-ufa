@@ -52,7 +52,7 @@
 .form {
   @apply tw-bg-white tw-rounded-2xl  tw-relative;
   &__wrapper {
-    @apply tw-absolute tw-w-full tw-h-full tw-overflow-hidden;
+    @apply tw-absolute tw-w-full tw-h-full tw-overflow-hidden tw-rounded-2xl;
     &::before {
       @screen lg {
         @apply tw-absolute;

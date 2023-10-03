@@ -1,6 +1,6 @@
 <template>
-  <section class="tw-mb-4">
-    <div class="tw-container">
+  <section >
+    <div class="tw-container tw-mb-4">
       <Swiper
         :modules="[SwiperPagination, SwiperNavigation]"
         :slides-per-view="1"
@@ -76,8 +76,6 @@
     <!-- <CompareContent /> -->
     <!-- <MapCategory />
     <MapComplex /> -->
-  </section>
-  <section>
     <div class="tw-container">
       <div
         class="tw-rounded-2xl tw-py-6 tw-px-4 lg:tw-px-6 xl:tw-p-10 tw-bg-white"
@@ -85,10 +83,12 @@
         <div class="section__top">
           <h2 class="section__title">Спецпредложения</h2>
         </div>
-
+  
         <TabSpecialOffers />
       </div>
     </div>
+  </section>
+  <section>
   </section>
   <section>
     <div class="tw-container">

@@ -14,7 +14,7 @@
   import { RouteLocationRaw } from 'vue-router';
 
   interface Props {
-    theme?: 'green' | 'gray' | 'white' | 'transparent',
+    theme?: 'green' | 'gray' | 'white' | 'transparent' | 'gray-light',
     disabled?: boolean,
     to?: RouteLocationRaw,
     type?: string,
@@ -81,6 +81,19 @@
 
     &--gray {
       @apply tw-bg-secondary tw-text-text00;
+
+      &:not([disabled]) {
+        &:hover {
+          @apply tw-bg-secondary-hover;
+        }
+
+        &:active {
+          @apply tw-bg-secondary-press;
+        }
+      }
+    }
+    &--gray-light {
+      @apply tw-bg-base00 tw-text-text00;
 
       &:not([disabled]) {
         &:hover {

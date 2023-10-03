@@ -1,17 +1,17 @@
 @font-face {
   font-family: 'freeset';
   src:
-    url('../fonts/freeset/FreeSetC.woff2') format('woff2'),
-    url('../fonts/freeset/FreeSetC.woff') format('woff');
+    url('../fonts/freeset/freeset_book.woff2') format('woff2'),
+    url('../fonts/freeset/freeset_book.woff') format('woff');
   font-weight: 400;
 }
 
 @font-face {
   font-family: 'freeset';
   src:
-    url('../fonts/freeset/FreeSetBoldC.woff2') format('woff2'),
-    url('../fonts/freeset/FreeSetBoldC.woff') format('woff');
-  font-weight: 700;
+    url('../fonts/freeset/freeset_book.woff2') format('woff2'),
+    url('../fonts/freeset/freeset_book.woff') format('woff');
+  font-weight: 600;
 }
 
 @font-face {

@@ -43,7 +43,7 @@ const bankProps = defineProps<{
   @apply tw-rounded-2xl tw-p-6 tw-grid tw-gap-8 tw-bg-white tw-border tw-border-border00 tw-text-left;
 }
 .card-bank__logo {
-  @apply tw-rounded-lg tw-p-3 tw-grid tw-place-content-center tw-bg-secondary tw-w-12 tw-h-12;
+  @apply tw-rounded-lg tw-p-3 tw-grid tw-place-content-center tw-bg-[#F5F5F5] tw-w-12 tw-h-12;
 }
 .card-bank.active {
   @apply tw-bg-primary01;
@@ -60,10 +60,10 @@ const bankProps = defineProps<{
   }
 }
 @media (hover: none) {
-  .card-bank {
+  .card-bank:active {
     @apply active:tw-bg-secondary;
   }
-  .card-bank .card-bank__logo {
+  .card-bank:active .card-bank__logo {
     @apply tw-bg-white;
   }
 }

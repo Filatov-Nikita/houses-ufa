@@ -45,7 +45,7 @@
     user-select: none;
     display: inline-block;
     border-radius: 8px;
-    padding: 13px 24px;
+    padding: 12px 24px;
     transition: background-color 300ms;
     @apply tw-text-base tw-text-text00 ;
     &--white {

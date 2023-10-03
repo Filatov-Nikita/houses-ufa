@@ -53,7 +53,7 @@
 <style scoped lang="scss">
 .base-checkbox {
   user-select: none;
-  padding-bottom: 24px;
+  // padding-bottom: 24px;
   display: inline-block;
   cursor: pointer;
   position: relative;

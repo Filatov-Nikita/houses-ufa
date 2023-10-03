@@ -38,7 +38,7 @@
     &__option {
       padding: 8px 16px;
       transition: background-color 300ms;
-      @apply tw-text-text00 tw-text-base tw-font-normal tw-cursor-pointer;
+      @apply tw-text-text00 tw-text-base tw-font-normal tw-cursor-pointer tw-rounded-lg;
 
       &--active, &:hover {
         @apply tw-bg-base00;

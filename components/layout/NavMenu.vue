@@ -185,17 +185,11 @@
     }
 
     &__title {
-      @apply tw-text-2xl tw-mb-4;
+      @apply tw-text-2xl lg:tw-text-h5 tw-mb-4;
 
-      @screen lg {
-        font-size: 32px;
-        line-height: 40px;
-      }
     }
 
-    &__subtitle {
-      @apply tw-text-base;
-    }
+    
 
     &__img {
       border-radius: 16px;

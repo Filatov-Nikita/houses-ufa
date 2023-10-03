@@ -31,9 +31,9 @@ const categoryProps = defineProps<{
 </script>
 <style lang="scss" scoped>
 .card {
-  @apply tw-bg-primary tw-relative tw-overflow-hidden tw-p-10 tw-rounded-2xl;
+  @apply tw-bg-primary tw-relative tw-overflow-hidden tw-p-6 lg:tw-p-10 tw-rounded-2xl;
   width: 100%;
-  height: 650px;
+  height: 540px;
   &__content {
     @apply tw-text-white tw-grid tw-gap-4 tw-relative tw-z-10;
     .title {
@@ -64,7 +64,7 @@ const categoryProps = defineProps<{
     }
   }
   &__link {
-    @apply tw-absolute tw-bottom-10 tw-left-10 tw-opacity-0;
+    @apply tw-absolute tw-bottom-6 tw-left-6 lg:tw-bottom-10 lg:tw-left-10 tw-opacity-0;
     transition: opacity 300ms ease-in-out 0.3s;
   }
   &:hover &__bg {

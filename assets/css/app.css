@@ -6,9 +6,14 @@
 @tailwind utilities;
 :root {
   --swiper-pagination-color: theme(colors.primary);
-  --swiper-pagination-bullet-inactive-color: theme(colors.white);
+  --swiper-pagination-bullet-inactive-color: theme(colors.border00);
   --swiper-pagination-bullet-inactive-opacity: 0.9;
 }
+.swiper-pagination-bullet-active-next-next {
+  opacity: 0.6 !important;
+}
+
+
 .swiper-pagination-bullet-active-next-next {
   opacity: 0.6 !important;
 }
@@ -110,9 +115,7 @@
   .burger {
     @apply tw-bg-base00 tw-p-2 tw-w-12 tw-h-12;
     @apply tw-rounded-lg tw-overflow-hidden tw-cursor-pointer;
-    background: theme('colors.base00') url(/assets/images/icons/burger.svg)
-      no-repeat center;
-    background-size: 32px 32px;
+    
   }
 
   .accordion__body {
@@ -188,7 +191,7 @@
     @apply tw-mb-6 xl:tw-mb-8;
   }
   .section__title {
-    @apply tw-text-h5 lg:tw-text-h4;
+    @apply tw-text-h5 lg:tw-text-h2;
   }
 
   .anim-500ms {

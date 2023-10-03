@@ -3,7 +3,7 @@
     <label class="base-input__label" :for="name">{{ label }}</label>
     <input
       class="base-input__input"
-      :class="[ `base-input__input--${theme}`, { 'base-input__input--error': errorMessage } ]"
+      :class="[ `base-input__input--${theme}`, { 'base-input__input--error': errorMessage }, inputClass ]"
       :id="name"
       :placeholder="placeholder"
       :type="type"
@@ -34,6 +34,7 @@
     type?: string,
     disabled?: boolean,
     theme?: 'white' | 'gray',
+    inputClass?:  string
   }
 
   const props = withDefaults(defineProps<Props>(), {

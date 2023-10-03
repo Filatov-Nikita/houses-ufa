@@ -15,7 +15,7 @@
         </div>
       </div>
       <div>
-        <BaseButton padding-classes="tw-p-2" theme="gray">
+        <BaseButton padding-classes="tw-p-2" theme="white">
           <BaseIcon name="dots_three_vertical" class="tw-w-6 tw-h-6" />
         </BaseButton>
       </div>
@@ -47,7 +47,7 @@
     </Swiper>
     <div
       v-else
-      class="tw-relative tw-bg-base00 tw-text-icon tw-rounded-2xl tw-overflow-hidden tw-w-full tw-max-w-[311px] tw-h-[311px] lg:tw-max-w-[264px] lg:tw-h-[264px] xl:tw-max-w-[277px] xl:tw-h-[277px] tw-mx-auto"
+      class="tw-relative tw-bg-white tw-text-icon tw-rounded-2xl tw-overflow-hidden tw-w-full tw-max-w-[311px] tw-h-[311px] lg:tw-max-w-[264px] lg:tw-h-[264px] xl:tw-max-w-[277px] xl:tw-h-[277px] tw-mx-auto"
     >
       <BaseIcon
         name="house"

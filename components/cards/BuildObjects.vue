@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="tw-flex tw-justify-between tw-mb-6">
-      <p class="tw-max-w-[900px]">
+      <p class=" tw-text-text02 tw-max-w-[900px]">
         {{ list[activeIndex].description }}
       </p>
       <div class="tw-hidden lg:tw-flex tw-gap-4">

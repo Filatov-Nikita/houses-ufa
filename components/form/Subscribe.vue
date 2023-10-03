@@ -89,7 +89,7 @@ import {  useForm } from 'vee-validate';
     justify-content: space-between;
     column-gap: 16px;
     row-gap: 24px;
-    @apply tw-bg-base00;
+    @apply tw-bg-base00 lg:tw-grid lg:tw-grid-cols-2;
 
     &__text {
       font-size: 20px;
@@ -101,9 +101,7 @@ import {  useForm } from 'vee-validate';
     }
 
     &__form {
-      display: flex;
-      // flex-wrap: wrap;
-      column-gap: 16px;
+      @apply tw-gap-4 tw-grid lg:tw-grid-cols-[421px_auto];
     }
 
     &__input {
@@ -111,7 +109,7 @@ import {  useForm } from 'vee-validate';
     }
 
     &__btn {
-      padding-top: 16px;
+      // padding-top: 16px;
       flex-basis: 100%;
     }
   }
@@ -124,9 +122,7 @@ import {  useForm } from 'vee-validate';
         @apply tw-text-2xl;
       }
 
-      &__right {
-        flex-basis: 500px;
-      }
+      
 
       &__btn {
         padding-top: 8px;

@@ -50,10 +50,10 @@
               </div>
             </div>
 
-            <div class="tw-mb-6 lg:tw-mb-8">
+            <div :class="offsetTop">
               <h4
                 class="tw-text-h6 lg:tw-text-h4 tw-min-h-[32px] lg:tw-block"
-                :class="[titlePos]"
+                :class="[titlePos,titleClass]"
               >
                 {{ title }}
               </h4>
@@ -88,6 +88,8 @@ interface Props {
   closeBtnMob?: boolean
   titlePos?: string
   forMob?: boolean
+  offsetTop?: string
+  titleClass?:string
 }
 defineOptions({
   inheritAttrs: false,
@@ -103,6 +105,7 @@ const props = withDefaults(defineProps<Props>(), {
   closeBtnMob: true,
   titlePos: 'tw-text-center',
   forMob: false,
+  offsetTop: "tw-mb-6 lg:tw-mb-8"
 })
 const slots = useSlots()
 const isActionSlot = computed(() => slots.hasOwnProperty('action'))

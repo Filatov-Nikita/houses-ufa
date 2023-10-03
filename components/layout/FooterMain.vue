@@ -10,7 +10,7 @@
               v-for="itemComparison in listComparison"
             >
               <template #title>
-                <h3 class="tw-text-body_m">{{ itemComparison.title }}</h3>
+                <h3 class="tw-text-body_m ">{{ itemComparison.title }}</h3>
               </template>
               <template #content>
                 <div class="tw-grid tw-gap-6 tw-my-5">
@@ -27,7 +27,7 @@
           </div>
           <div class="tw-hidden lg:tw-grid tw-grid-cols-4 tw-gap-16">
             <div v-for="itemComparison in listComparison">
-              <h3 class="tw-text-body_m tw-mb-6">{{ itemComparison.title }}</h3>
+              <h3 class="tw-text-body_m lg:tw-text-h6 tw-mb-6 ">{{ itemComparison.title }}</h3>
               <div class="tw-grid tw-gap-6">
                 <NuxtLink
                   v-for="item in navList[itemComparison.key_obj]"
@@ -93,7 +93,7 @@
           </a>
         </div>
         <div
-          class="tw-text-text02 tw-grid tw-gap-4 lg:tw-flex lg:tw-justify-between area-D xl:tw-pt-10"
+          class="tw-text-text02 tw-grid tw-gap-4 lg:tw-flex lg:tw-justify-between area-D xl:tw-pt-20"
         >
           <div>©️ 2023 Жилой Квартал | Все права защищены</div>
           <div>Сайт построили — Yes Idea</div>

@@ -8,7 +8,7 @@
         <div class="tw-inline-flex tw-gap-2">
           <BaseButton
             v-for="item in roomList"
-            :theme="room && item.id === room.id ? 'green' : 'gray'"
+            :theme="room && item.id === room.id ? 'green' : 'gray-light'"
             @click="room = item"
           >
             {{ item.name }}
@@ -45,11 +45,8 @@
           }"
           :pagination="{
             type: 'bullets',
-            dynamicBullets: true,
-            dynamicMainBullets: 3,
             el: '.swiper-pagination',
-            bulletActiveClass: 'dot-bullet-active',
-            bulletClass: 'dot-bullet',
+            dynamicBullets: true,
           }"
           :navigation="{
             nextEl: '.swiper-next',
@@ -102,7 +99,7 @@
             </svg>
           </button>
           <div
-            class="swiper-pagination !tw-static !tw-justify-center !tw-flex !tw-w-auto !tw-mt-9 !tw-translate-x-0"
+            class="swiper-pagination swiper-pagination_gray !tw-static !tw-mt-9 !tw-translate-x-0  tw-mx-auto"
           ></div>
         </Swiper>
       </BaseTabsTabContentItem>

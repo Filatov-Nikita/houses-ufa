@@ -43,7 +43,9 @@
       :isFullMob="true"
       v-model="openParametrs"
       titlePos="tw-text-left"
-      class="!tw-h-screen lg:!tw-h-auto"
+      class="!tw-h-screen lg:!tw-h-auto !tw-max-w-[463px]"
+      offset-top="tw-mb-6 lg:tw-mb-[42px]"
+      title-class=" lg:tw-text-h6"
     >
       <template #default>
         <div class="tw-grid tw-gap-6 lg:tw-gap-8">
