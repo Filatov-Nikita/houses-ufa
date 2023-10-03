@@ -1,5 +1,5 @@
 <template>
-  <div class="tabs-group">
+  <div class="tabs-group" :class="[`tabs-group--${theme}`]">
     <slot />
   </div>
 </template>
@@ -11,10 +11,12 @@
 
   interface Props {
     modelValue?: StrOrNull,
+    theme?: string
   };
 
   const props = withDefaults(defineProps<Props>(), {
-    modelValue: null
+    modelValue: null,
+    theme: 'white',
   });
 
   const current = toRef(props, 'modelValue');
@@ -36,5 +38,13 @@
     padding: 8px;
     border-radius: 8px;
     @apply tw-bg-white tw-inline-flex tw-gap-3;
+
+    &--white {
+      @apply tw-bg-white;
+    }
+
+    &--gray {
+      @apply tw-bg-base00;
+    }
   }
 </style>
