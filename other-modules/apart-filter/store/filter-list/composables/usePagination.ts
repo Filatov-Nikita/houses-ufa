@@ -1,25 +1,25 @@
 import type { Meta } from './useFlats';
 
-function usePagination<T extends Ref<{ meta: Meta } | null>>(data: T, page: Ref<number>, pagLen = 3) {
-  const isLast = computed<boolean>(() => data.value?.meta.current_page === data.value?.meta.last_page);
-  const isFirst = computed<boolean>(() => data.value?.meta.current_page === 1);
+function usePagination(meta: Ref<Meta | null>, page: Ref<number>, pagLen = 3) {
+  const isLast = computed<boolean>(() => meta.value?.current_page === meta.value?.last_page);
+  const isFirst = computed<boolean>(() => meta.value?.current_page === 1);
 
   const prevPage = computed<number | null>(() => {
-    if(isFirst.value || !data.value) return null;
-    return data.value.meta.current_page - 1;
+    if(isFirst.value || !meta.value) return null;
+    return meta.value.current_page - 1;
   });
 
   const nextPage = computed<number | null>(() => {
-    if(isLast.value || !data.value) return null;
-    return data.value.meta.current_page + 1;
+    if(isLast.value || !meta.value) return null;
+    return meta.value.current_page + 1;
   });
 
   const pagesList = computed<number[]>(() => {
-    if(!data.value) return [];
+    if(!meta.value) return [];
 
     const pages: number[] = [];
 
-    for(let i = 1; i <= data.value?.meta.last_page; i++) {
+    for(let i = 1; i <= meta.value.last_page; i++) {
       pages.push(i);
     }
 
@@ -27,13 +27,13 @@ function usePagination<T extends Ref<{ meta: Meta } | null>>(data: T, page: Ref<
   });
 
   const currentSection = computed<number[]>(() => {
-    if(!data.value) return [];
+    if(!meta.value) return [];
 
     if(pagesList.value.length < pagLen) return pagesList.value;
 
-    let startIndex = data.value?.meta.current_page > 1
-    ? data.value?.meta.current_page - 2
-    : data.value?.meta.current_page - 1;
+    let startIndex = meta.value.current_page > 1
+    ? meta.value.current_page - 2
+    : meta.value.current_page - 1;
 
     let endIndex = startIndex + pagLen;
     let slice = pagesList.value.slice(startIndex, endIndex);
@@ -47,32 +47,32 @@ function usePagination<T extends Ref<{ meta: Meta } | null>>(data: T, page: Ref<
   });
 
   const lastSec = computed<number[]>(() => {
-    if(!data.value) return [];
+    if(!meta.value) return [];
     return pagesList.value.slice(pagLen * -1);
   });
 
   const firstSec = computed<number[]>(() => {
-    if(!data.value) return [];
+    if(!meta.value) return [];
     return pagesList.value.slice(0, pagLen);
   });
 
   const showEnd = computed<boolean>(() => {
-    if(!data.value) return false;
+    if(!meta.value) return false;
     return currentSection.value.join('') !== lastSec.value.join('');
   });
 
   const showStart = computed<boolean>(() => {
-    if(!data.value) return false;
+    if(!meta.value) return false;
     return currentSection.value.join('') !== firstSec.value.join('');
   });
 
   const showEndDots = computed<boolean>(() => {
-    if(!data.value) return false;
-    return currentSection.value[currentSection.value.length - 1] !== data.value?.meta.last_page - 1;
+    if(!meta.value) return false;
+    return currentSection.value[currentSection.value.length - 1] !== meta.value.last_page - 1;
   });
 
   const showStartDots = computed<boolean>(() => {
-    if(!data.value) return false;
+    if(!meta.value) return false;
     return currentSection.value[0] !== 2;
   });
 
@@ -85,8 +85,8 @@ function usePagination<T extends Ref<{ meta: Meta } | null>>(data: T, page: Ref<
   }
 
   function setPage(pageNumber: number): void {
-    if(!data.value) return;
-    if(pageNumber > data.value.meta.last_page || pageNumber < 1) return;
+    if(!meta.value) return;
+    if(pageNumber > meta.value.last_page || pageNumber < 1) return;
     page.value = pageNumber;
   }
 

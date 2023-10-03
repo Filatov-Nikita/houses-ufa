@@ -16,7 +16,9 @@ function useFlatsList(queryFilter: ComputedRef<QueryFilter>) {
     watch: false
   });
 
-  const pagination = usePagination(flats, page);
+  const meta = computed(() => flats.value?.meta ?? null);
+
+  const pagination = usePagination(meta, page);
 
   watch(queryFilter, () => {
     pagination.setPage(1);
