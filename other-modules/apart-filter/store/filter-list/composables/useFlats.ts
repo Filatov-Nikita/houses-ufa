@@ -2,15 +2,20 @@ import { ComputedRef } from 'vue';
 import { useDataFetch } from '@/composables/useDataFetch';
 import { QueryFilter } from './useParams';
 import { usePagination } from './usePagination';
+import { useComplexOne } from '@/stores/pages/complex-one';
 
 function useFlatsList(queryFilter: ComputedRef<QueryFilter>) {
+  const complexOne = useComplexOne();
+
   const page = ref(1);
 
   const query = computed(() => {
     return Object.assign({ page: page.value }, queryFilter.value);
   });
 
-  const { data: flats, pending: loadingFlats, error, execute: all } = useDataFetch<FlatsResponse>('estate/complexes/2/flats-index', {
+  const getAllUrl = computed(() => `estate/complexes/${complexOne.complexId}/flats-index`);
+
+  const { data: flats, pending: loadingFlats, error, execute: all } = useDataFetch<FlatsResponse>(getAllUrl, {
     query,
     immediate: false,
     watch: false
@@ -24,7 +29,7 @@ function useFlatsList(queryFilter: ComputedRef<QueryFilter>) {
     pagination.setPage(1);
   });
 
-  watch([ page, queryFilter ], () => {
+  watch([ page, queryFilter, getAllUrl ], () => {
     all();
   });
 
