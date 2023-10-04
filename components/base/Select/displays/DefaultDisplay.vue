@@ -1,5 +1,5 @@
 <template>
-  <div class="tw-text-base tw-text-text01">
+  <div class="tw-text-base tw-text-text01 tw-truncate">
     {{ getLabel(value) }}
   </div>
 </template>

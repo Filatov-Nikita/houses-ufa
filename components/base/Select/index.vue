@@ -3,7 +3,7 @@
     <div class="base-select-block" @click="toggle">
       <label class="base-select-block__label">{{ label }}</label>
       <div class="base-select-block__input" :class="[ `base-select-block__input--${theme}`, { 'base-select-block__input--error': errorMessage } ]">
-        <div class="tw-grow">
+        <div class="tw-grow tw-min-w-0">
           <component :is="displayComp" v-bind="displayProps" :toggle="toggle" :value="value" :handleChange="handleChange" />
         </div>
         <div class="base-select-block__icon" :class="{ 'base-select-block__icon--up': showed }">
@@ -114,7 +114,7 @@
     }
 
     &__icon {
-      width: 24px;
+      min-width: 24px;
       height: 24px;
       transition: transform 300ms;
 
