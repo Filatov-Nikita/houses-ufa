@@ -1,7 +1,7 @@
 <template>
   <section>
     <div class="tw-container">
-      
+
       <CardsFlat />
     </div>
   </section>
