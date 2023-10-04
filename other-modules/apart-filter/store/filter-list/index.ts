@@ -3,7 +3,7 @@ import { useFlatParams } from './composables/useParams';
 import { useFlatsList } from './composables/useFlats';
 
 const useFilterList = defineStore('filterList', () => {
-  const { queryFilter, filterParams, clearParams } = useFlatParams();
+  const { queryFilter, filterParams, clearParams, housesList, entrancesHouseList } = useFlatParams();
   const { all, flats, loadingFlats, pagination } = useFlatsList(queryFilter);
 
   return {
@@ -11,9 +11,11 @@ const useFilterList = defineStore('filterList', () => {
     queryFilter,
     flats,
     loadingFlats,
+    pagination,
+    housesList,
+    entrancesHouseList,
     clearParams,
     all,
-    pagination
   }
 });
 

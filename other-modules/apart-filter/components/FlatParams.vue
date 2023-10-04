@@ -7,16 +7,19 @@
           theme="white"
           label="Литер"
           name="liter"
-          v-bind="selectProps([1, 2])"
-          v-model="filterParams.house_id"
+          v-bind="selectProps(housesOpts)"
+          :modelValue="currentHouse"
+          @update:modelValue="updateHouse"
         />
         <BaseSelect
           class="flat-params__grid-item"
           theme="white"
           label="Подъезд"
           name="section"
-          v-bind="selectProps([1, 2])"
-          v-model="filterParams.entrance_id"
+          :disabled="currentHouse === null"
+          v-bind="selectProps(entrancesOpts)"
+          :modelValue="currentEntrance"
+          @update:modelValue="updateEntrance"
         />
         <BaseRange
           class="flat-params__grid-item"
@@ -98,12 +101,25 @@
 
 <script setup lang="ts">
   import { useFilterList } from '../store/filter-list';
+  import type { House, Entrance } from '@/stores/pages/complex-one';
   import PriceType from './PriceType.vue';
   import { Form } from 'vee-validate';
 
   type NumOrNull = number | null;
 
-  const { filterParams, clearParams } = useFilterList();
+  const filterList = useFilterList();
+  const { filterParams, clearParams } = filterList;
+
+  const housesOpts = computed(() => filterList.housesList ?? []);
+  const entrancesOpts = computed(() => filterList.entrancesHouseList ?? []);
+
+  const currentHouse = computed(() => {
+    return housesOpts.value.find(house => house.id === filterParams.house_id) ?? null;
+  });
+
+  const currentEntrance = computed(() => {
+    return entrancesOpts.value.find(entr => entr.id === filterParams.entrance_id) ?? null;
+  });
 
   const roomsBtns = [
     { label: 'Студия', value: 'number_of_rooms_studio' },
@@ -150,6 +166,14 @@
     }
   });
 
+  function updateHouse(val: House) {
+    filterParams.house_id = val.id;
+  }
+
+  function updateEntrance(val: Entrance) {
+    filterParams.entrance_id = val.id;
+  }
+
   function updateSquare(val: [NumOrNull, NumOrNull] | null) {
     filterParams.area_total_min = val?.[0] ?? null;
     filterParams.area_total_max = val?.[1] ?? null;
@@ -180,15 +204,15 @@
     }
   }
 
-  function selectProps(options: number[]) {
+  function selectProps<T extends { name: string, id: number }>(options: T[]) {
     return {
       'drop-down-props': {
-        getLabel: (opt: any) => opt,
-        isActive: (opt: any, v: any) => opt === v,
+        getLabel: (opt: T) => opt.name,
+        isActive: (opt: T, v: T | null) => opt.id === v?.id,
         options,
       },
       'display-props': {
-        getLabel: (v: any) => v || 'не выбрано',
+        getLabel: (v: T | null) => v?.name || 'не выбрано',
       }
     };
   }

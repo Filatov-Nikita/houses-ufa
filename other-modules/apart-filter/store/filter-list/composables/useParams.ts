@@ -1,7 +1,24 @@
 import { reactive, computed } from 'vue';
+import { useComplexOne } from '@/stores/pages/complex-one';
 
 function useFlatParams() {
   const filterParams: FilterParams = reactive(init());
+  const complexOne =  useComplexOne();
+
+  const housesList = computed(() => complexOne.houses?.data ?? null);
+  const currentHouse = computed(() => {
+    if(!housesList.value || !filterParams.house_id) return null;
+    const house = housesList.value.find((house) => house.id === filterParams.house_id);
+    return house ?? null;
+  });
+
+  watch(() => filterParams.house_id, () => {
+    filterParams.entrance_id = null;
+  });
+
+  const entrancesHouseList = computed(() => {
+    return currentHouse.value?.entrances ?? null;
+  });
 
   function clearParams(): void {
     Object.assign(filterParams, init());
@@ -17,6 +34,8 @@ function useFlatParams() {
   return {
     filterParams,
     queryFilter,
+    housesList,
+    entrancesHouseList,
     clearParams
   }
 }
