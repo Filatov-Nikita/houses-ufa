@@ -69,39 +69,50 @@
       @apply tw-bg-primary tw-text-white;
 
       &:not([disabled]) {
-        &:hover {
-          @apply tw-bg-primary-hover;
+        @media (hover: hover){
+          &:hover {
+            @apply tw-bg-primary-hover;
+          }
         }
-
-        &:active {
-          @apply tw-bg-primary-press;
+        @media (hover: none) {
+          &:active {
+            @apply tw-bg-primary-press;
+          }
         }
       }
+      
     }
 
     &--gray {
       @apply tw-bg-secondary tw-text-text00;
 
       &:not([disabled]) {
-        &:hover {
-          @apply tw-bg-secondary-hover;
+        @media (hover: hover){
+          &:hover {
+            @apply tw-bg-secondary-hover;
+          }
+        }
+        @media (hover: none) {
+          &:active {
+            @apply tw-bg-secondary-press;
+          }
         }
 
-        &:active {
-          @apply tw-bg-secondary-press;
-        }
       }
     }
     &--gray-light {
       @apply tw-bg-base00 tw-text-text00;
 
       &:not([disabled]) {
-        &:hover {
-          @apply tw-bg-secondary-hover;
+        @media (hover: hover){
+          &:hover {
+            @apply tw-bg-secondary-hover;
+          }
         }
-
-        &:active {
-          @apply tw-bg-secondary-press;
+        @media (hover: none) {
+          &:active {
+            @apply tw-bg-secondary-press;
+          }
         }
       }
     }

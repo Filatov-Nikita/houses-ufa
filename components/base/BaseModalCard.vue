@@ -29,7 +29,7 @@ const props = withDefaults(
   max-width: 1960px;
   &__full-mob {
     @media screen and (max-width: 1023px) {
-      @apply tw-rounded-t-2xl tw-rounded-b-none tw-bg-base00 tw-px-4 tw-py-6 tw-pb-0;
+      @apply tw-rounded-none tw-bg-base00 tw-px-4 tw-py-6 tw-pb-0;
     }
   }
   &__full {

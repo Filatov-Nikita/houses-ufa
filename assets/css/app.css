@@ -13,9 +13,15 @@
   opacity: 0.6 !important;
 }
 
-
 .swiper-pagination-bullet-active-next-next {
   opacity: 0.6 !important;
+}
+
+.swiper-pagination.swiper-pagination_lighten .swiper-pagination-bullet-active {
+  opacity: 0.6 !important;
+}
+.swiper-pagination.swiper-pagination_lighten .swiper-pagination-bullet {
+  background-color: #ffffff;
 }
 @layer base {
   html {
@@ -115,7 +121,6 @@
   .burger {
     @apply tw-bg-base00 tw-p-2 tw-w-12 tw-h-12;
     @apply tw-rounded-lg tw-overflow-hidden tw-cursor-pointer;
-    
   }
 
   .accordion__body {

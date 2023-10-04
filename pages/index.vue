@@ -1,5 +1,5 @@
 <template>
-  <section >
+  <section>
     <div class="tw-container tw-mb-4">
       <Swiper
         :modules="[SwiperPagination, SwiperNavigation]"
@@ -17,8 +17,6 @@
         :pagination="{
           type: 'bullets',
           el: '.swiper-pagination',
-          bulletActiveClass: 'dot-active',
-          bulletClass: 'dot',
         }"
         :navigation="{
           nextEl: '.swiper-next',
@@ -66,8 +64,11 @@
             />
           </svg>
         </div>
-        <div
+        <!-- <div
           class="swiper-pagination tw-absolute !tw-bottom-6 !tw-left-auto tw-z-10 tw-right-6"
+        ></div> -->
+        <div
+          class="swiper-pagination swiper-pagination_lighten tw-flex tw-justify-end tw-px-5 tw-pb-4"
         ></div>
       </Swiper>
     </div>
@@ -83,13 +84,12 @@
         <div class="section__top">
           <h2 class="section__title">Спецпредложения</h2>
         </div>
-  
+
         <TabSpecialOffers />
       </div>
     </div>
   </section>
-  <section>
-  </section>
+  <section></section>
   <section>
     <div class="tw-container">
       <div class="section__top">
@@ -116,18 +116,7 @@
         <div class="tw-hidden lg:tw-block">
           <NuxtLink to="/ipoteka" class="tw-flex tw-gap-2">
             <span class="tw-text-primary"> Все ипотечные предложения </span>
-            <svg
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M20.7806 12.531L14.0306 19.281C13.8899 19.4218 13.699 19.5008 13.5 19.5008C13.301 19.5008 13.1101 19.4218 12.9694 19.281C12.8286 19.1403 12.7496 18.9494 12.7496 18.7504C12.7496 18.5514 12.8286 18.3605 12.9694 18.2198L18.4397 12.7504H3.75C3.55109 12.7504 3.36032 12.6714 3.21967 12.5307C3.07902 12.3901 3 12.1993 3 12.0004C3 11.8015 3.07902 11.6107 3.21967 11.4701C3.36032 11.3294 3.55109 11.2504 3.75 11.2504H18.4397L12.9694 5.78104C12.8286 5.64031 12.7496 5.44944 12.7496 5.25042C12.7496 5.05139 12.8286 4.86052 12.9694 4.71979C13.1101 4.57906 13.301 4.5 13.5 4.5C13.699 4.5 13.8899 4.57906 14.0306 4.71979L20.7806 11.4698C20.8504 11.5394 20.9057 11.6222 20.9434 11.7132C20.9812 11.8043 21.0006 11.9019 21.0006 12.0004C21.0006 12.099 20.9812 12.1966 20.9434 12.2876C20.9057 12.3787 20.8504 12.4614 20.7806 12.531Z"
-                fill="#4FBA78"
-              />
-            </svg>
+            <BaseIcon name="forward-line" class="tw-text-primary tw-w-6 tw-h-6"/>
           </NuxtLink>
         </div>
       </div>
@@ -164,20 +153,9 @@
         </CardsIpoteka>
       </div>
       <div class="lg:tw-hidden tw-mt-9">
-        <NuxtLink to="/ipoteka" class="tw-flex tw-gap-2">
+        <NuxtLink to="/ipoteka" class="tw-flex tw-justify-between tw-gap-2">
           <span class="tw-text-primary"> Все ипотечные предложения </span>
-          <svg
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M20.7806 12.531L14.0306 19.281C13.8899 19.4218 13.699 19.5008 13.5 19.5008C13.301 19.5008 13.1101 19.4218 12.9694 19.281C12.8286 19.1403 12.7496 18.9494 12.7496 18.7504C12.7496 18.5514 12.8286 18.3605 12.9694 18.2198L18.4397 12.7504H3.75C3.55109 12.7504 3.36032 12.6714 3.21967 12.5307C3.07902 12.3901 3 12.1993 3 12.0004C3 11.8015 3.07902 11.6107 3.21967 11.4701C3.36032 11.3294 3.55109 11.2504 3.75 11.2504H18.4397L12.9694 5.78104C12.8286 5.64031 12.7496 5.44944 12.7496 5.25042C12.7496 5.05139 12.8286 4.86052 12.9694 4.71979C13.1101 4.57906 13.301 4.5 13.5 4.5C13.699 4.5 13.8899 4.57906 14.0306 4.71979L20.7806 11.4698C20.8504 11.5394 20.9057 11.6222 20.9434 11.7132C20.9812 11.8043 21.0006 11.9019 21.0006 12.0004C21.0006 12.099 20.9812 12.1966 20.9434 12.2876C20.9057 12.3787 20.8504 12.4614 20.7806 12.531Z"
-              fill="#4FBA78"
-            />
-          </svg>
+          <BaseIcon name="forward-line" class="tw-text-primary tw-w-6 tw-h-6"/>
         </NuxtLink>
       </div>
     </div>
@@ -252,10 +230,10 @@
             Смотреть ролик <br />
             о компании
           </p>
-          <VideoAbout v-model="showedVideo"/>
+          <VideoAbout v-model="showedVideo" />
         </button>
         <img
-          src="~assets/images/icons/logo-green.svg"
+          src="~assets/images/icons/logo.svg"
           alt="logo"
           class="tw-w-[157px]"
         />
@@ -267,20 +245,9 @@
     <div class="tw-container">
       <div class="section__top tw-flex tw-justify-between">
         <h2 class="section__title">Новости</h2>
-        <NuxtLink to="/press-centr" class="tw-flex tw-gap-2">
+        <NuxtLink to="/press-centr" class=" tw-hidden lg:tw-flex tw-gap-2">
           <span class="tw-text-primary"> Все новости </span>
-          <svg
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M20.7806 12.531L14.0306 19.281C13.8899 19.4218 13.699 19.5008 13.5 19.5008C13.301 19.5008 13.1101 19.4218 12.9694 19.281C12.8286 19.1403 12.7496 18.9494 12.7496 18.7504C12.7496 18.5514 12.8286 18.3605 12.9694 18.2198L18.4397 12.7504H3.75C3.55109 12.7504 3.36032 12.6714 3.21967 12.5307C3.07902 12.3901 3 12.1993 3 12.0004C3 11.8015 3.07902 11.6107 3.21967 11.4701C3.36032 11.3294 3.55109 11.2504 3.75 11.2504H18.4397L12.9694 5.78104C12.8286 5.64031 12.7496 5.44944 12.7496 5.25042C12.7496 5.05139 12.8286 4.86052 12.9694 4.71979C13.1101 4.57906 13.301 4.5 13.5 4.5C13.699 4.5 13.8899 4.57906 14.0306 4.71979L20.7806 11.4698C20.8504 11.5394 20.9057 11.6222 20.9434 11.7132C20.9812 11.8043 21.0006 11.9019 21.0006 12.0004C21.0006 12.099 20.9812 12.1966 20.9434 12.2876C20.9057 12.3787 20.8504 12.4614 20.7806 12.531Z"
-              fill="#4FBA78"
-            />
-          </svg>
+          <BaseIcon name="forward-line" class="tw-text-primary tw-w-6 tw-h-6"/>
         </NuxtLink>
       </div>
       <div class="tw-grid tw-gap-4 lg:tw-grid-cols-2 xl:tw-grid-cols-3">
@@ -294,6 +261,10 @@
           }"
         />
       </div>
+      <NuxtLink to="/press-centr" class="  tw-flex lg:tw-hidden tw-justify-between tw-mt-4 tw-gap-2">
+          <span class="tw-text-primary"> Все новости </span>
+          <BaseIcon name="forward-line" class="tw-text-primary tw-w-6 tw-h-6"/>
+        </NuxtLink>
     </div>
   </section>
   <section>
@@ -322,7 +293,7 @@
 </template>
 
 <script setup lang="ts">
-import VideoAbout from '@/components/modals/VideoAbout.vue';
+import VideoAbout from '@/components/modals/VideoAbout.vue'
 
 useHead({
   script: [
@@ -357,6 +328,6 @@ const categoryList = [
 //   layout: 'default'
 // });
 
-const showedVideo = ref(false);
+const showedVideo = ref(false)
 </script>
 <style lang="scss" scoped></style>

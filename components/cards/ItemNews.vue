@@ -33,7 +33,7 @@ const newsProps = defineProps<Props>()
 </script>
 <style lang="scss" scoped>
 .card {
-  @apply tw-rounded-3xl tw-py-12 tw-px-10 tw-bg-white tw-grid tw-gap-16;
+  @apply tw-rounded-3xl tw-px-4 tw-py-6 lg:tw-px-6  xl:tw-py-12 xl:tw-px-10 tw-bg-white tw-grid tw-gap-16;
   .date {
     @apply tw-text-text02;
   }

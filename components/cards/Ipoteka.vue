@@ -2,9 +2,9 @@
   <!-- карточка ипотеки -->
   <div class="card">
     <slot/>
-    <img :src="icons[0]" alt="" class="card-icon1" >
+    <!-- <img :src="icons[0]" alt="" class="card-icon1" >
     <img :src="icons[1]" alt="" class="card-icon2" >
-    <img :src="icons[2]" alt="" class="card-icon3" >
+    <img :src="icons[2]" alt="" class="card-icon3" > -->
     <div class=" tw-relative"> 
       <h4 class="title">{{ title }}</h4>
     </div>
@@ -55,7 +55,7 @@ const propsIpoteka = defineProps<{
   
 
   .title {
-    @apply tw-text-h4;
+    @apply tw-text-h5 xl:tw-text-h4;
   }
   .text {
     @apply tw-hidden lg:tw-block;
@@ -67,7 +67,11 @@ const propsIpoteka = defineProps<{
   }
   &:hover {
     &::before {
-      transform: translateX(40%)
+      transform: translateX(75%);
+      @screen lg {
+
+        transform: translateX(40%);
+      }
     }
     
 

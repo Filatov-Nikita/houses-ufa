@@ -80,7 +80,7 @@ const pros = withDefaults(defineProps<Props>(), {
 </script>
 <style lang="scss" scoped>
 .card {
-  @apply tw-bg-base00 tw-rounded-2xl tw-overflow-hidden tw-p-6;
+  @apply tw-bg-base00 tw-rounded-2xl tw-overflow-hidden tw-p-4 tw-py-6 lg:tw-p-6;
   .btn {
     @apply tw-bg-white tw-grid tw-place-content-center tw-w-10 tw-h-10 tw-rounded-lg;
   }

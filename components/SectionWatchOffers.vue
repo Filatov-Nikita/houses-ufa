@@ -43,14 +43,15 @@
       :isFullMob="true"
       v-model="openParametrs"
       titlePos="tw-text-left"
-      class="!tw-h-screen lg:!tw-h-auto !tw-max-w-[463px]"
+      class="!tw-h-screen lg:!tw-h-auto !tw-max-w-[463px] "
       offset-top="tw-mb-6 lg:tw-mb-[42px]"
       title-class=" lg:tw-text-h6"
+      class-other="tw-pb-20"
     >
       <template #default>
         <div class="tw-grid tw-gap-6 lg:tw-gap-8">
           <div>
-            <div class="tw-text-text02">Комнатность</div>
+            <div class="tw-text-text02 tw-text-body_s2 -tw-tracking-3 tw-mb-2">Комнатность</div>
             <div class="tw-grid tw-grid-cols-4 tw-gap-2">
               <BaseButton>
                 <span class="lg:tw-hidden">С</span>
@@ -87,9 +88,12 @@
           </div>
         </div>
       </template>
+      
       <template #action-second>
-        <BaseButton> Применить</BaseButton>
-      </template>
+          <div class=" tw-bg-white -tw-mx-4 tw-px-4 tw-py-3 tw-fixed tw-w-full tw-bottom-0 lg:tw-static lg:tw-mx-0 lg:tw-p-0 ">
+          <BaseButton class=" tw-w-full"> Применить</BaseButton>
+        </div>
+        </template>
     </ModalsOther>
   </section>
 </template>

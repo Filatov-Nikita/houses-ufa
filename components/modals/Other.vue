@@ -13,6 +13,7 @@
     >
       <div
         class="tw-grid tw-gap-4 tw-grid-rows-[1fr,auto] lg:tw-gap-8 tw-h-full lg:tw-grid-rows-none"
+        :class="classOther"
       >
         <div
           class="tw-h-full"
@@ -23,7 +24,7 @@
           ]"
         >
           <div
-            class="tw-self-start tw-grid tw-overflow-hidden tw-relative tw-h-full lg:tw-grid-rows-[auto_1fr]"
+            class="tw-self-start tw-grid tw-overflow-hidden tw-relative tw-h-full lg:tw-grid-rows-[auto_1fr] tw-content-start"
           >
             <div class="tw-absolute tw-right-0 tw-top-0">
               <div class="tw-hidden lg:tw-block">
@@ -90,6 +91,7 @@ interface Props {
   forMob?: boolean
   offsetTop?: string
   titleClass?:string
+  classOther?: string
 }
 defineOptions({
   inheritAttrs: false,

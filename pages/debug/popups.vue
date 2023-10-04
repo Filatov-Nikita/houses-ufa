@@ -151,7 +151,7 @@
     <template #default>
       <div class="tw-grid tw-gap-6 lg:tw-gap-8">
         <div>
-          <div class="tw-text-text02">Комнатность</div>
+          <div class="tw-text-text02 tw-text-body_s2 -tw-tracking-3 tw-mb-2">Комнатность</div>
           <div class="tw-grid tw-grid-cols-4 tw-gap-2">
             <BaseButton>
               <span class="lg:tw-hidden">С</span>
