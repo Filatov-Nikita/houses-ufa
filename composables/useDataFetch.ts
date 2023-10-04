@@ -1,13 +1,13 @@
 import type { UseFetchOptions } from 'nuxt/app'
 import { defu } from 'defu'
 
-export function useDataFetch<T>(url: string, options: UseFetchOptions<T> = {}) {
+export function useDataFetch<T>(url: string | Ref<string>, options: UseFetchOptions<T> = {}) {
   const config = useRuntimeConfig();
 
   const defaults: UseFetchOptions<T> = {
     baseURL: config.public.baseURL ?? '',
     // cache request
-    key: url,
+    key: unref(url),
 
     onResponse(_ctx) {
       // _ctx.response._data = new myBusinessResponse(_ctx.response._data)
