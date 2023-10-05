@@ -1,20 +1,25 @@
 import { defineStore } from 'pinia';
-import { useFlatParams } from './composables/useParams';
+import { useFlatParams } from '../filter-flats-params';
 import { useFlatsList } from './composables/useFlats';
 
 const useFilterList = defineStore('filterList', () => {
-  const { queryFilter, filterParams, clearParams, housesList, entrancesHouseList } = useFlatParams();
+  const params = useFlatParams();
+
+  const queryFilter = computed(() => params.queryFilter);
+  const housesList = computed(() => params.housesList);
+  const entrancesHouseList = computed(() => params.entrancesHouseList);
+
   const { all, flats, loadingFlats, pagination } = useFlatsList(queryFilter);
 
   return {
-    filterParams,
+    filterParams: params.filterParams,
     queryFilter,
     flats,
     loadingFlats,
     pagination,
     housesList,
     entrancesHouseList,
-    clearParams,
+    clearParams: params.clearParams,
     all,
   }
 });
