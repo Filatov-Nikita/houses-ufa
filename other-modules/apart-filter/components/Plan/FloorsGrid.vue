@@ -37,6 +37,13 @@
   const floorsList = computed(() => props.grid.floors);
 </script>
 
+<style lang="scss">
+  .plan {
+    &__item {
+      flex-grow: 1;
+    }
+  }
+</style>
 <style scoped lang="scss">
   .floors-grid {
     &__section {
@@ -71,10 +78,6 @@
       & + & {
         margin-top: 6px;
       }
-    }
-
-    &__item {
-      flex-grow: 1;
     }
   }
 </style>
