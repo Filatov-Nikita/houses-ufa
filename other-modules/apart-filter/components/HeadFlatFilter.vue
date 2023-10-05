@@ -17,14 +17,15 @@
           label=""
           name="sort"
           v-bind="selectProps(sortOptions)"
+          :disabled="disabledSort"
           :modelValue="currentSort"
           @update:modelValue="updateSort"
         />
       </div>
     </div>
-    <BaseTabsTabContent v-model="listView">
+    <BaseTabsTabContent v-bind="animTabs" v-model="listView" keepAlive>
       <BaseTabsTabContentItem name="plan" key="plan">
-        1
+        <FloorsList :grid="plan" :loading="loadingPlan" />
       </BaseTabsTabContentItem>
       <BaseTabsTabContentItem name="list" key="list">
         <FlatList :flats="flats" :loading="loadingFlats" />
@@ -35,14 +36,25 @@
 
 <script setup lang="ts">
   import { useFilterList } from '../store/filter-list';
+  import { useFilterPlan } from '../store/filter-plan';
   import FlatList from './FlatList.vue';
+  import FloorsList from './Plan/FloorsList.vue';
   import { ref, computed } from 'vue';
 
+  const animTabs = {
+    leaveClasses: '',
+    enterClasses: '',
+  }
+
   const filterListStore = useFilterList();
+  const filterPlanStore = useFilterPlan();
   const loadingFlats = computed(() => filterListStore.loadingFlats);
   const flats = computed(() => filterListStore.flats);
+  const plan = computed(() => filterPlanStore.grid);
+  const loadingPlan = computed(() => filterPlanStore.loadingGrid);
 
   const listView = ref('list');
+  const disabledSort = computed(() => listView.value === 'plan');
   const sortOptions = [
     { label: 'Сначала дешевле', order_by_direction: 'asc', order_by_field: 'price_total' },
     { label: 'Сначала дороже', order_by_direction: 'desc', order_by_field: 'price_total' },
@@ -104,7 +116,6 @@
     column-gap: 30px;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 32px;
   }
 
   &__count {
