@@ -23,6 +23,7 @@
 
     &__right {
       flex-basis: 500px;
+      min-width: 0px;
       flex-grow: 1;
     }
   }

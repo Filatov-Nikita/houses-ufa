@@ -1,7 +1,7 @@
 <template>
   <BaseWait :waiting="loading">
     <template #loader>
-      <div class="tw-space-y-8">
+      <div class="tw-space-y-8 tw-py-8">
         <BaseSkeleton
           class="tw-w-full tw-min-h-[150px] tw-rounded-2xl"
           v-for="_i in 3"
