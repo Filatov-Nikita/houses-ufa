@@ -9,7 +9,7 @@
           {{ tabLabels[1] }}
         </BaseTabsGroupItem>
       </BaseTabsGroup>
-      <BaseTabsTabContent v-model="currentTab">
+      <BaseTabsTabContent leave-classes="" enter-classes="" v-model="currentTab">
         <BaseTabsTabContentItem name="flats" key="flats">
           <FlatFilter />
         </BaseTabsTabContentItem>
