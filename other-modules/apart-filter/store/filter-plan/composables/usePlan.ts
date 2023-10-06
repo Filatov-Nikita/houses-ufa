@@ -1,16 +1,25 @@
 import { useComplexOne } from '@/stores/pages/complex-one';
+import { useFilterHead } from '../../filter-head';
 import { useDataFetch } from '@/composables/useDataFetch';
-import { QueryFilter } from '../../filter-flats-params/composables/useParams';
+import type { QueryFilter } from '../../filter-flats-params/composables/useParams';
 import { ComputedRef } from 'vue';
 
 function usePlan(queryFilter: ComputedRef<QueryFilter>) {
   const complexOne = useComplexOne();
+  const filterHead = useFilterHead();
 
   const getAllUrl = computed(() => `estate/complexes/${complexOne.complexId}/flats-grid`);
 
   const { data: grid, pending: loadingGrid, error, execute: showGrid } = useDataFetch<GridResponse>(getAllUrl, {
     query: queryFilter,
     immediate: false,
+    watch: false,
+  });
+
+  watch([queryFilter, getAllUrl], () => {
+    if(filterHead.currentFlatFilter === 'plan') {
+      showGrid();
+    }
   });
 
   return {

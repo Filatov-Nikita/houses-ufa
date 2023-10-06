@@ -1,11 +1,13 @@
 import { ComputedRef } from 'vue';
 import { useDataFetch } from '@/composables/useDataFetch';
-import { QueryFilter } from './useParams';
+import type { QueryFilter } from '../../filter-flats-params/composables/useParams';
 import { usePagination } from './usePagination';
 import { useComplexOne } from '@/stores/pages/complex-one';
+import { useFilterHead } from '../../filter-head';
 
 function useFlatsList(queryFilter: ComputedRef<QueryFilter>) {
   const complexOne = useComplexOne();
+  const filterHead = useFilterHead();
 
   const page = ref(1);
 
@@ -30,7 +32,9 @@ function useFlatsList(queryFilter: ComputedRef<QueryFilter>) {
   });
 
   watch([ page, queryFilter, getAllUrl ], () => {
-    all();
+    if(filterHead.currentFlatFilter === 'list') {
+      all();
+    }
   });
 
   return {

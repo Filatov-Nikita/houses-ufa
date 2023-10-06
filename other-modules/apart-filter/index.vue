@@ -1,7 +1,7 @@
 <template>
   <div class="apart-filter">
     <div class="tab-zone">
-      <BaseTabsGroup class="tab-zone__groups" v-model="currentTab">
+      <BaseTabsGroup class="tab-zone__groups" v-model="currentTabFilter">
         <BaseTabsGroupItem class="tab-zone__item" theme="white" name="flats">
           {{ tabLabels[0] }}
         </BaseTabsGroupItem>
@@ -9,7 +9,7 @@
           {{ tabLabels[1] }}
         </BaseTabsGroupItem>
       </BaseTabsGroup>
-      <BaseTabsTabContent leave-classes="" enter-classes="" v-model="currentTab">
+      <BaseTabsTabContent leave-classes="" enter-classes="" v-model="currentTabFilter">
         <BaseTabsTabContentItem name="flats" key="flats">
           <FlatFilter />
         </BaseTabsTabContentItem>
@@ -23,9 +23,13 @@
 
 <script setup lang="ts">
   import FlatFilter from './components/FlatFilter.vue';
+  import { useFilterHead } from './store/filter-head';
+
+  const filterHeadStore = useFilterHead();
+
+  const currentTabFilter = toRef(filterHeadStore, 'currentTabFilter');
 
   const tabLabels = ['Квартиры', 'Машиноместо и кладовые'];
-  const currentTab = ref('flats');
 </script>
 <style scoped lang="scss">
   .tab-zone {

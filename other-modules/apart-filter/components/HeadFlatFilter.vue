@@ -37,9 +37,10 @@
 <script setup lang="ts">
   import { useFilterList } from '../store/filter-list';
   import { useFilterPlan } from '../store/filter-plan';
+  import { useFilterHead } from '../store/filter-head';
   import FlatList from './FlatList.vue';
   import FloorsList from './Plan/FloorsList.vue';
-  import { ref, computed } from 'vue';
+  import { computed } from 'vue';
 
   const animTabs = {
     leaveClasses: '',
@@ -48,12 +49,13 @@
 
   const filterListStore = useFilterList();
   const filterPlanStore = useFilterPlan();
+  const filterHeadStore = useFilterHead();
   const loadingFlats = computed(() => filterListStore.loadingFlats);
   const flats = computed(() => filterListStore.flats);
   const plan = computed(() => filterPlanStore.grid);
   const loadingPlan = computed(() => filterPlanStore.loadingGrid);
 
-  const listView = ref('list');
+  const listView = toRef(filterHeadStore, 'currentFlatFilter');
   const disabledSort = computed(() => listView.value === 'plan');
   const sortOptions = [
     { label: 'Сначала дешевле', order_by_direction: 'asc', order_by_field: 'price_total' },

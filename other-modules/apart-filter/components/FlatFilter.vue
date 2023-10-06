@@ -15,10 +15,18 @@
   import HeadFlatFilter from './HeadFlatFilter.vue';
   import { useFilterList } from '../store/filter-list';
   import { useFilterPlan } from '../store/filter-plan';
+  import { useFilterHead } from '../store/filter-head';
 
-  const { all } = useFilterList();
+  const { all: showList } = useFilterList();
   const { showGrid } = useFilterPlan();
+  const filterHeadStore = useFilterHead();
 
-  all();
-  showGrid();
+  const current = computed(() => filterHeadStore.currentFlatFilter);
+
+  watch(current, (val) => {
+    switch(val) {
+      case 'list': showList(); break;
+      case 'plan': showGrid(); break;
+    }
+  }, { immediate: true });
 </script>
