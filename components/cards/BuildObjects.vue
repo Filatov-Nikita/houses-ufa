@@ -41,7 +41,6 @@
         </button>
       </div>
     </div>
-
     <Swiper
       :modules="[SwiperPagination, SwiperNavigation]"
       @swiper="onSwiper"
@@ -54,13 +53,11 @@
         },
       }"
       :pagination="{
-        type: 'bullets',
-        el: '.swiper-pagination',
-        bulletActiveClass: 'dot-active',
-        bulletClass: 'dot',
-      }"
+            type: 'bullets',
+            el: '.swiper-pagination',
+            dynamicBullets: true,
+          }"
     >
-      <!-- <SwiperBaseContols /> -->
       <SwiperSlide v-for="(item, idx) in list" :key="idx">
         <NuxtLink
           :to="item.to"
@@ -86,8 +83,12 @@
           </div>
         </NuxtLink>
       </SwiperSlide>
-      <SwiperSlide> </SwiperSlide>
+      <SwiperSlide class=" tw-hidden lg:tw-block"> </SwiperSlide>
+      <div
+            class="swiper-pagination swiper-pagination_gray !tw-static !tw-mt-3 !tw-translate-x-0  tw-mx-auto"
+          ></div>
     </Swiper>
+  
   </div>
 </template>
 <script lang="ts" setup>

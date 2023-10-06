@@ -150,7 +150,7 @@ function showCallback() {
 <style lang="scss" scoped>
 .footer {
   &__wrapper {
-    @apply tw-bg-white tw-p-6;
+    @apply tw-bg-white tw-pt-6 tw-pb-8 tw-px-4 lg:tw-p-6;
     @apply tw-rounded-2xl tw-overflow-hidden;
     @apply tw-grid tw-gap-12;
     @screen lg {
