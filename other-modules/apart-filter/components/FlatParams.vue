@@ -55,6 +55,7 @@
           :max="priceMinMax.max"
           name='price'
           label=''
+          :insertLabel="priceMinMax.insertLabel"
           :step="priceMinMax.step"
           :modelValue="price"
           @change="updatePrice"
@@ -148,13 +149,14 @@
     return [min, max];
   });
 
-  const priceMinMax = computed<{ min: number, max: number, step: number, mult: number }>(() => {
+  const priceMinMax = computed<{ min: number, max: number, step: number, mult: number, insertLabel: string }>(() => {
     if(filterParams.price_type === 'mortgage_monthly_payment') {
       return {
         min: 1000,
         max: 500000,
         step: 1,
         mult: 1,
+        insertLabel: '₽',
       }
     }
 
@@ -163,6 +165,7 @@
       max: 20,
       step: 0.1,
       mult: 1000 * 1000,
+      insertLabel: 'млн ₽',
     }
   });
 
