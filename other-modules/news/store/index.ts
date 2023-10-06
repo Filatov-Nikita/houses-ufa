@@ -25,7 +25,7 @@ export const useNewsStore = defineStore('newsStore', () => {
   const countShowTiding = ref(0)
   const countShowMassMedia = ref(0)
   const getArticles = async (type: 'tiding' | 'mass_media') => {
-    const { data } = await useDataFetch('articles', {
+    const { data } = await useDataFetch('press-center/articles', {
       baseURL: config.public.baseURL,
       query: {
         type,
