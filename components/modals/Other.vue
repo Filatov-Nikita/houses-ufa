@@ -51,10 +51,15 @@
               </div>
             </div>
 
+            <slot name="left-content"/>
+            <div class="tw-absolute tw-left-0 tw-top-0">
+              
+            </div>
+
             <div :class="offsetTop">
               <h4
                 class="tw-text-h6 lg:tw-text-h4 tw-min-h-[32px] lg:tw-block"
-                :class="[titlePos,titleClass]"
+                :class="[titlePos, titleClass]"
               >
                 {{ title }}
               </h4>
@@ -90,7 +95,7 @@ interface Props {
   titlePos?: string
   forMob?: boolean
   offsetTop?: string
-  titleClass?:string
+  titleClass?: string
   classOther?: string
 }
 defineOptions({
@@ -107,7 +112,7 @@ const props = withDefaults(defineProps<Props>(), {
   closeBtnMob: true,
   titlePos: 'tw-text-center',
   forMob: false,
-  offsetTop: "tw-mb-6 lg:tw-mb-8"
+  offsetTop: 'tw-mb-6 lg:tw-mb-8',
 })
 const slots = useSlots()
 const isActionSlot = computed(() => slots.hasOwnProperty('action'))

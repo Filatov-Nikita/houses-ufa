@@ -1,7 +1,7 @@
 <template>
   <section>
     <div class="tw-container tw-h-full">
-      <div class="tw-bg-white tw-px-4 tw-py-6 tw-rounded-2xl">
+      <div class="tw-bg-white tw-px-4 tw-py-6 xl:tw-p-10 tw-rounded-2xl">
         <BreadCrumbs
           :history-list="[{ to: '/', name: 'Главная' }, { name: 'Подборщик' }]"
           class="tw-mb-6"
@@ -10,83 +10,56 @@
           class="tw-flex tw-justify-between tw-items-center tw-mb-6 lg:tw-mb-10"
         >
           <h2 class="section__title">Подобрать жильё</h2>
-          <BaseButton theme="transparent" @click="clear">
-            <div
-              class="tw-text-text02 tw-text-body_m tw-flex tw-gap-2 tw-items-center"
-            >
-              <span> Очистить фильтр </span>
-              <BaseIcon class="tw-w-6 tw-h-6" name="close" />
-            </div>
-          </BaseButton>
+          <div class="tw-hidden lg:tw-block">
+            <BaseButton theme="transparent" @click="clear">
+              <div
+                class="tw-text-text02 tw-text-body_m tw-flex tw-gap-2 tw-items-center"
+              >
+                <span> Очистить фильтр </span>
+                <BaseIcon class="tw-w-6 tw-h-6" name="close" />
+              </div>
+            </BaseButton>
+          </div>
         </div>
         <div class="tw-flex tw-gap-2 lg:tw-hidden">
-          <BaseButton theme="gray" class="tw-grow">
+          <BaseButton theme="gray" class="tw-grow" @click="openPickap = true">
             <div class="tw-flex tw-gap-4 tw-justify-center">
               <span> Фильтр </span>
               <BaseIcon class="tw-w-6 tw-h-6 tw-text-primary" name="filtr" />
             </div>
           </BaseButton>
-          <BaseButton theme="gray" class="tw-shrink-0">
+          <BaseButton
+            theme="gray"
+            class="tw-shrink-0"
+            @click="openSorted = true"
+          >
             <BaseIcon class="tw-w-6 tw-h-6 tw-text-primary" name="sorted" />
           </BaseButton>
         </div>
         <form class="tw-hidden lg:tw-block">
-          <BaseSelect
-            label="Тип недвижимости"
-            name="typeApartment"
-            :drop-down-props="{ options: [{ label: 'test 1', value: '1' }] }"
-            v-model="typeApartmentOpt"
-          />
-          <BaseSelect
-            label="Объекты"
-            name="object"
-            :drop-down-props="{ options: [{ label: 'test 1', value: '1' }] }"
-            v-model="objectOpt"
-          />
-          <div>
-            <div class="tw-text-text02 tw-text-body_s2 -tw-tracking-875">
-              Комнатность
-            </div>
-            <div class="tw-flex tw-gap-2">
-              <BaseButton theme="gray"> С </BaseButton>
-              <BaseButton theme="gray"> 1 </BaseButton>
-              <BaseButton theme="gray"> 2 </BaseButton>
-              <BaseButton theme="gray"> 3+ </BaseButton>
-            </div>
-          </div>
-          <BaseRange
-            v-bind="{
-              min: 29,
-              max: 250,
-              name1: 'sqaure-to',
-              name2: 'square-from',
-              label: 'Площадь объекта, м²',
-              theme: 'white',
-            }"
-            v-model="square"
-          />
-          <BaseRange
-            v-bind="{
-              min: 29,
-              max: 250,
-              name1: 'sqaure-to',
-              name2: 'square-from',
-              label: 'Площадь участка, сот',
-              theme: 'white',
-            }"
-            v-model="squarePlot"
-          />
-          <div class="tw-w-[384px]">
-            <div class="tab-mini">
-              <button
-                v-for="item in typeSortedOptions"
-                :class="{ active: item.id === typeSorted?.id }"
-                @click="typeSorted = item"
-                type="button"
-              >
-                <span class="">{{ item.value }}</span>
-                <BaseIcon name="info" class="tw-w-4 tw-h-4" />
-              </button>
+          <div class="pickup-grid">
+            <BaseSelect
+              label="Тип недвижимости"
+              name="typeApartment"
+              :drop-down-props="{ options: [{ label: 'test 1', value: '1' }] }"
+              v-model="typeApartmentOpt"
+            />
+            <BaseSelect
+              label="Объекты"
+              name="object"
+              :drop-down-props="{ options: [{ label: 'test 1', value: '1' }] }"
+              v-model="objectOpt"
+            />
+            <div>
+              <div class="tw-text-text02 tw-text-body_s2 -tw-tracking-875">
+                Комнатность
+              </div>
+              <div class="tw-flex tw-gap-2">
+                <BaseButton theme="gray"> С </BaseButton>
+                <BaseButton theme="gray"> 1 </BaseButton>
+                <BaseButton theme="gray"> 2 </BaseButton>
+                <BaseButton theme="gray"> 3+ </BaseButton>
+              </div>
             </div>
             <BaseRange
               v-bind="{
@@ -94,11 +67,163 @@
                 max: 250,
                 name1: 'sqaure-to',
                 name2: 'square-from',
-                label: '',
+                label: 'Площадь объекта, м²',
                 theme: 'white',
               }"
-              v-model="sorted"
+              v-model="square"
             />
+            <BaseRange
+              v-bind="{
+                min: 29,
+                max: 250,
+                name1: 'sqaure-to',
+                name2: 'square-from',
+                label: 'Площадь участка, сот',
+                theme: 'white',
+              }"
+              v-model="squarePlot"
+            />
+            <div>
+              <div class="tab-mini">
+                <button
+                  v-for="item in typeSortedOptions"
+                  :class="{ active: item.id === typeSorted?.id }"
+                  @click="typeSorted = item"
+                  type="button"
+                >
+                  <span class="">{{ item.value }}</span>
+                  <BaseIcon name="info" class="tw-w-4 tw-h-4" />
+                </button>
+              </div>
+              <BaseRange
+                v-bind="{
+                  min: 29,
+                  max: 250,
+                  name1: 'sqaure-to',
+                  name2: 'square-from',
+                  label: '',
+                  theme: 'white',
+                }"
+                v-model="sorted"
+              />
+            </div>
+            <BaseRange
+              v-bind="{
+                min: 29,
+                max: 250,
+                name1: 'sqaure-to',
+                name2: 'square-from',
+                label: 'Этажность',
+                theme: 'white',
+              }"
+              v-model="storey"
+            />
+            <BaseSelect
+              label="Статус"
+              name="status"
+              :drop-down-props="{ options: [{ label: 'test 1', value: '1' }] }"
+              v-model="statusOpt"
+            />
+            <BaseSelect
+              label="Акция"
+              name="action"
+              :drop-down-props="{ options: [{ label: 'test 1', value: '1' }] }"
+              v-model="actionOpt"
+            />
+            <BaseSelect
+              label="Вид отделки"
+              name="typeFinishing"
+              :drop-down-props="{ options: [{ label: 'test 1', value: '1' }] }"
+              v-model="finishingOpt"
+            />
+          </div>
+          <BaseButton class="tw-w-full tw-mt-6"> Показать </BaseButton>
+        </form>
+      </div>
+    </div>
+    <ModalsOther title="Сортировать по" :isFullMob="true" v-model="openSorted">
+      <div class="tw-grid tw-gap-2">
+        <BaseButton
+          v-for="item in sectionsSortedList"
+          theme="gray"
+          class="active"
+        >
+          {{ item.name }}
+        </BaseButton>
+      </div>
+      <template #action-second>
+        <BaseButton @click="openSorted = false"> Применить </BaseButton>
+      </template>
+    </ModalsOther>
+    <ModalsOther
+      title="Фильтр"
+      :for-mob="true"
+      :isFullMob="true"
+      v-model="openPickap"
+    >
+      <template #left-content>
+        <div class="tw-absolute tw-left-0 tw-top-1 tw-text-primary">
+
+          Очистить
+        </div>
+      </template>
+      <form class="tw-grid tw-gap-4">
+        <BaseSelect
+          label="Тип недвижимости"
+          name="typeApartment"
+          :drop-down-props="{ options: [{ label: 'test 1', value: '1' }] }"
+          v-model="typeApartmentOpt"
+        />
+        <BaseSelect
+          label="Объекты"
+          name="object"
+          :drop-down-props="{ options: [{ label: 'test 1', value: '1' }] }"
+          v-model="objectOpt"
+        />
+        <div>
+          <div class="tw-text-text02 tw-text-body_s2 -tw-tracking-875">
+            Комнатность
+          </div>
+          <div class="tw-flex tw-gap-2">
+            <BaseButton theme="gray"> С </BaseButton>
+            <BaseButton theme="gray"> 1 </BaseButton>
+            <BaseButton theme="gray"> 2 </BaseButton>
+            <BaseButton theme="gray"> 3+ </BaseButton>
+          </div>
+        </div>
+        <BaseRange
+          v-bind="{
+            min: 29,
+            max: 250,
+            name1: 'sqaure-to',
+            name2: 'square-from',
+            label: 'Площадь объекта, м²',
+            theme: 'white',
+          }"
+          v-model="square"
+        />
+        <BaseRange
+          v-bind="{
+            min: 29,
+            max: 250,
+            name1: 'sqaure-to',
+            name2: 'square-from',
+            label: 'Площадь участка, сот',
+            theme: 'white',
+          }"
+          v-model="squarePlot"
+        />
+        <div>
+          <div class="tab-mini">
+            <button
+              v-for="item in typeSortedOptions"
+              :class="{ active: item.id === typeSorted?.id }"
+              @click="typeSorted = item"
+              type="button"
+            >
+              <span class="">{{ item.value }}</span>
+              <BaseIcon name="info" class="tw-w-4 tw-h-4" />
+            </button>
           </div>
           <BaseRange
             v-bind="{
@@ -106,32 +231,46 @@
               max: 250,
               name1: 'sqaure-to',
               name2: 'square-from',
-              label: 'Этажность',
+              label: '',
               theme: 'white',
             }"
-            v-model="storey"
+            v-model="sorted"
           />
-          <BaseSelect
-            label="Статус"
-            name="status"
-            :drop-down-props="{ options: [{ label: 'test 1', value: '1' }] }"
-            v-model="statusOpt"
-          />
-          <BaseSelect
-            label="Акция"
-            name="action"
-            :drop-down-props="{ options: [{ label: 'test 1', value: '1' }] }"
-            v-model="actionOpt"
-          />
-          <BaseSelect
-            label="Вид отделки"
-            name="typeFinishing"
-            :drop-down-props="{ options: [{ label: 'test 1', value: '1' }] }"
-            v-model="finishingOpt"
-          />
-        </form>
-      </div>
-    </div>
+        </div>
+        <BaseRange
+          v-bind="{
+            min: 29,
+            max: 250,
+            name1: 'sqaure-to',
+            name2: 'square-from',
+            label: 'Этажность',
+            theme: 'white',
+          }"
+          v-model="storey"
+        />
+        <BaseSelect
+          label="Статус"
+          name="status"
+          :drop-down-props="{ options: [{ label: 'test 1', value: '1' }] }"
+          v-model="statusOpt"
+        />
+        <BaseSelect
+          label="Акция"
+          name="action"
+          :drop-down-props="{ options: [{ label: 'test 1', value: '1' }] }"
+          v-model="actionOpt"
+        />
+        <BaseSelect
+          label="Вид отделки"
+          name="typeFinishing"
+          :drop-down-props="{ options: [{ label: 'test 1', value: '1' }] }"
+          v-model="finishingOpt"
+        />
+      </form>
+      <template #action-second>
+        <BaseButton @click="openPickap = false"> Показать </BaseButton>
+      </template>
+    </ModalsOther>
   </section>
   <section>
     <div class="tw-container">
@@ -313,6 +452,37 @@ const favoriteList = [
     src: ['/images/img/test.png', '/images/img/test.png'],
   },
 ]
+
+//Сортировка
+const openSorted = ref(false)
+const sectionsSortedList = [
+  {
+    id: 1,
+    name: 'Сначала дешевле',
+  },
+  {
+    id: 2,
+    name: 'Сначала дороже',
+  },
+  {
+    id: 3,
+    name: 'Сначала с большей площадью',
+  },
+  {
+    id: 4,
+    name: 'Сначала с меньшей площадью',
+  },
+  {
+    id: 5,
+    name: 'Сначала с большим еж. платежом',
+  },
+  {
+    id: 6,
+    name: 'Сначала с меньшим еж. платежом',
+  },
+]
+
+const openPickap = ref(false)
 onMounted(() => {
   typeApartmentOpt.value = typeApartmentOptions[0]
   objectOpt.value = objectOptions[0]
@@ -324,6 +494,58 @@ onMounted(() => {
 })
 </script>
 <style lang="scss" scoped>
+.pickup-grid {
+  display: grid;
+  gap: 32px 24px;
+
+  & > * {
+    align-self: end;
+  }
+  & > :nth-child(1) {
+    grid-area: A;
+  }
+  & > :nth-child(2) {
+    grid-area: B;
+  }
+  & > :nth-child(3) {
+    grid-area: C;
+  }
+  & > :nth-child(4) {
+    grid-area: D;
+  }
+  & > :nth-child(5) {
+    grid-area: E;
+  }
+  & > :nth-child(6) {
+    grid-area: F;
+  }
+  & > :nth-child(7) {
+    grid-area: G;
+  }
+  & > :nth-child(8) {
+    grid-area: H;
+  }
+  & > :nth-child(9) {
+    grid-area: L;
+  }
+  & > :nth-child(10) {
+    grid-area: M;
+  }
+
+  @screen lg {
+    grid-template-columns: repeat(24, 1fr);
+    grid-template-areas:
+      'A A A A A A A A  A B B B B B B B  B B C C C C C C'
+      'D D D D D D D D  E E E E E E E E  F F F F F F F F'
+      'G G G G G G H H  H H H H L L L L  L L M M M M M M';
+  }
+  @screen xl {
+    grid-template-columns: repeat(25, 1fr);
+    grid-template-areas:
+      'A A A A A  B B B B B  C C C C C  D D D D D  E E E E E'
+      'F F F F F  F F F G G  G G G H H  H H L L L  L M M M M';
+  }
+}
 .tab-mini {
   @apply tw-bg-base00 tw-p-2 tw-inline-flex tw-rounded-md tw-gap-2;
   button {
