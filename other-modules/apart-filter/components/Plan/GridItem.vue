@@ -7,7 +7,7 @@
     v-bind="$attrs"
     @click="toggleCard"
   >
-    <span v-if="status === 'for_sale'">{{ flat.number_of_rooms }}</span>
+    <span v-if="status === 'for_sale'">{{ label }}</span>
     <div v-else-if="iconName" class="grid-item__icon">
       <BaseIcon class="tw-w-full tw-h-full" color="tw-fill-base02" :name="iconName" />
     </div>
@@ -55,6 +55,11 @@
     }
   });
 
+  const label = computed(() => {
+    const { layout, number_of_rooms: count } = props.flat;
+    return layout === 'studio' && count === 1 ? 'С' : count;
+  });
+
   const showedCard = ref(false);
   const cardCoords = reactive({ x: 0, y: 0 });
   const itemRef = ref<HTMLElement | null>(null);
@@ -89,6 +94,7 @@
     border-radius: 8px;
     height: 48px;
     min-width: 48px;
+    width: 48px;
     padding: 13px 16px 11px 16px;
     font-size: 16px;
     line-height: 24px;

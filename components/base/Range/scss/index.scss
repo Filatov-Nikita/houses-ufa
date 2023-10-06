@@ -36,7 +36,7 @@
   }
 
   &__inp-area {
-    flex-basis: 100%;
+    flex-basis: var(--basis);
     @apply tw-relative;
   }
 

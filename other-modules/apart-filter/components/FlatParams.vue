@@ -28,6 +28,7 @@
           :max="120"
           name='square'
           label='Площадь, м2'
+          input-witdh="55px"
           :modelValue="square"
           @change="updateSquare"
           @after-manipulate="updateSquare"
@@ -39,6 +40,7 @@
           :max="30"
           name='storey'
           label='Этаж'
+          input-witdh="50px"
           :modelValue="storey"
           @change="updateStorey"
           @after-manipulate="updateStorey"
@@ -53,6 +55,7 @@
           theme="white"
           :min="priceMinMax.min"
           :max="priceMinMax.max"
+          :inputWitdh="priceMinMax.inputWitdh"
           name='price'
           label=''
           :insertLabel="priceMinMax.insertLabel"
@@ -149,7 +152,7 @@
     return [min, max];
   });
 
-  const priceMinMax = computed<{ min: number, max: number, step: number, mult: number, insertLabel: string }>(() => {
+  const priceMinMax = computed(() => {
     if(filterParams.price_type === 'mortgage_monthly_payment') {
       return {
         min: 1000,
@@ -157,6 +160,7 @@
         step: 1,
         mult: 1,
         insertLabel: '₽',
+        inputWitdh: '100px'
       }
     }
 
@@ -166,6 +170,7 @@
       step: 0.1,
       mult: 1000 * 1000,
       insertLabel: 'млн ₽',
+      inputWitdh: '110px'
     }
   });
 

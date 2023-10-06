@@ -8,13 +8,13 @@
       <div class="flat-statuses__icon">
         <BaseIcon class="tw-w-4 tw-h-4" color="tw-fill-base02" name="lock" />
       </div>
-      <span>бронь</span>
+      <span>продано</span>
     </div>
     <div class="flat-statuses__status">
       <div class="flat-statuses__icon">
         <BaseIcon class="tw-w-4 tw-h-4" color="tw-fill-base02" name="clock" />
       </div>
-      <span>продано</span>
+      <span>бронь</span>
     </div>
   </div>
 </template>
