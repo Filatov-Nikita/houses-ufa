@@ -19,6 +19,7 @@
             :price="item.price"
             :place="item.place"
             :status="item.status"
+            :to="item.to"
           />
         </div>
       </BaseTabsTabContentItem>
@@ -65,54 +66,61 @@ const residentialComplexs = [
     price: '3 258 542',
     place: 'с. Михайловка',
     status: 'Последние участки',
+    to: '/complex/3',
   },
   {
-    img: 'images/img/country_real_estate.png',
-    title: 'Сапфир',
+    img: 'images/home/objects/1.jpg',
+    title: 'Гудвилл Парк',
     typeApartment: 'квартиры',
     price: '3 258 542',
     place: 'с. Михайловка',
     status: 'Последние участки',
+    to: '/',
   },
   {
-    img: 'images/img/country_real_estate.png',
-    title: 'Сапфир',
+    img: 'images/home/objects/2.jpg',
+    title: 'Зубово Life Garden',
+    typeApartment: 'квартиры',
+    price: '3 258 542',
+    place: 'с. Зубово',
+    status: 'Последние участки',
+    to: '/complex/4',
+  },
+  {
+    img: 'images/home/objects/3.jpg',
+    title: 'Михайловка Green 2',
     typeApartment: 'квартиры',
     price: '3 258 542',
     place: 'с. Михайловка',
     status: 'Последние участки',
+    to: '/',
   },
   {
-    img: 'images/img/country_real_estate.png',
-    title: 'Сапфир',
+    img: 'images/home/objects/4.png',
+    title: 'Зубово Life 3',
+    typeApartment: 'квартиры',
+    price: '3 258 542',
+    place: 'с. Зубово',
+    status: 'Последние участки',
+    to: '/',
+  },
+  {
+    img: 'images/home/objects/5.jpg',
+    title: 'Михайловка Green Place',
+    typeApartment: 'квартиры',
+    price: '3 258 542',
+    place: 'с. Шмидтово',
+    status: 'Последние участки',
+    to: '/complex/2',
+  },
+  {
+    img: 'images/home/objects/6.jpg',
+    title: 'Созвездие Цефей',
     typeApartment: 'квартиры',
     price: '3 258 542',
     place: 'с. Михайловка',
     status: 'Последние участки',
-  },
-  {
-    img: 'images/img/country_real_estate.png',
-    title: 'Сапфир',
-    typeApartment: 'квартиры',
-    price: '3 258 542',
-    place: 'с. Михайловка',
-    status: 'Последние участки',
-  },
-  {
-    img: 'images/img/country_real_estate.png',
-    title: 'Сапфир',
-    typeApartment: 'квартиры',
-    price: '3 258 542',
-    place: 'с. Михайловка',
-    status: 'Последние участки',
-  },
-  {
-    img: 'images/img/country_real_estate.png',
-    title: 'Сапфир',
-    typeApartment: 'квартиры',
-    price: '3 258 542',
-    place: 'с. Михайловка',
-    status: 'Последние участки',
+    to: '/',
   },
 ]
 </script>

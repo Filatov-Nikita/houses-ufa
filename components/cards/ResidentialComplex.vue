@@ -1,5 +1,5 @@
 <template>
-  <NuxtLink to="/" class="card">
+  <NuxtLink :to="to" class="card">
     <div
       class="tw-relative tw-rounded-2xl tw-overflow-hidden tw-bg-base01 tw-grid tw-place-content-center"
     >
@@ -61,7 +61,8 @@ const complexProps = defineProps<{
   typeApartment: string
   price: string
   place: string
-  status: string
+  status: string,
+  to: string
 }>()
 </script>
 <style lang="scss" scoped>

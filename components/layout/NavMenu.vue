@@ -78,7 +78,7 @@
   }
 
   const appStore = useAppStore();
-  
+
   const navLinks = computed(() => {
     return appStore.navSectionLinks;
   });
@@ -94,10 +94,10 @@
     return appStore.banner;
   });
 
-  
+
 
   const order = [
-    // 'static',
+    'static',
     // 'buyers',
     'flats',
     // 'houses',
@@ -189,7 +189,7 @@
 
     }
 
-    
+
 
     &__img {
       border-radius: 16px;

@@ -34,7 +34,7 @@ export const useAppStore = defineStore('appStore', {
         (item) => {
           return {
             label: item.name,
-            to: '/apartment/' + item.id,
+            to: '/complex/' + item.id,
           }
         }
       )
@@ -209,6 +209,35 @@ function getContacts() {
 
 function getNavSectionLinks() {
   return {
+    static: {
+      label: "Статика",
+      items: [
+        {
+          label: "Генплан коттеджей",
+          to:'/cotagge-genplan'
+        },
+        {
+          label: "Загородная недвижимость",
+          to:'/country-estate'
+        },
+        {
+          label: "Избранное",
+          to:'/favorites'
+        },
+        {
+          label: "Подборщик",
+          to:'/pickup'
+        },
+        {
+          label: "Участок",
+          to:'/plot/1'
+        },
+        {
+          label: "Карточка квартиры",
+          to:'/apartment/1'
+        },
+      ]
+    },
     flats: {
       label: 'Квартиры',
       items: [] as { label: string; to: string }[],
