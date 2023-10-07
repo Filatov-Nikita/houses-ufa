@@ -1,7 +1,7 @@
 <template>
   <div class="head-filter">
     <div class="head-filter__controls">
-      <div class="head-filter__count">Найдено {{ planCountLabel }}</div>
+      <FindedCount class="head-filter__count" :total="total" :cases="cases" />
       <div class="head-filter__btns">
         <BaseTabsGroup theme="gray" v-model="listView">
           <BaseTabsGroupItem theme="gray" name="plan">
@@ -40,6 +40,7 @@
   import { useFilterHead } from '../store/filter-head';
   import FlatList from './FlatList.vue';
   import FloorsList from './Plan/FloorsList.vue';
+  import FindedCount from './FindedCount.vue';
   import { computed } from 'vue';
 
   const animTabs = {
@@ -64,19 +65,10 @@
     { label: 'Сначала с меньшей площадью', order_by_direction: 'asc', order_by_field: 'area_total' },
   ];
 
-  function plural(val: number, single: string, plur: string, plur2: string): string {
-    val = Math.abs(val);
-    if(val % 10 === 0) return plur2;
-    if(val % 100 > 10 && val % 100 < 20) return plur2;
-    if(val % 10 === 1) return single;
-    if(val % 10 > 1 && val % 10 < 5) return plur;
-    return plur2;
-  }
+  const cases: [string, string, string] = [ 'планировка', 'планировки', 'планировок' ];
 
-  const planCountLabel = computed(() => {
-    if(typeof flats.value?.meta.total !== 'number') return '-';
-    const planLabel = plural(flats.value.meta.total, 'планировка', 'планировки', 'планировок');
-    return `${flats.value.meta.total} ${planLabel}`;
+  const total = computed(() => {
+    return flats.value?.meta.total ?? null;
   });
 
   const currentSort = computed(() => {
