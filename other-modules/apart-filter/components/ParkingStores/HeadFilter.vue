@@ -31,7 +31,11 @@
           placeName="Кладовка"
           :loading="loadingStores"
           :items="storeData"
-        />
+        >
+          <template #pagination>
+            <StoresPagination />
+          </template>
+        </PlacesList>
       </BaseTabsTabContentItem>
       <BaseTabsTabContentItem name="parking" key="parking">
         <PlacesList
@@ -56,6 +60,7 @@
   import { useComplexOne } from '@/stores/pages/complex-one';
   import PlacesList from './PlacesList.vue';
   import ParkingPagination from './ParkingPagination.vue';
+  import StoresPagination from './StoresPagination.vue';
   import FindedCount from '../FindedCount.vue';
   import { computed } from 'vue';
 

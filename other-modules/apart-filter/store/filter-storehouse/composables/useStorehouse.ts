@@ -2,21 +2,36 @@ import { useComplexOne } from '@/stores/pages/complex-one';
 import { useFilterHead } from '../../filter-head';
 import { useDataFetch } from '@/composables/useDataFetch';
 import type { QueryFilter } from '../../filter-flats-params/composables/useParams';
+import { usePagination } from '../../composables/usePagination';
 import { ComputedRef } from 'vue';
 
 function useStorehouse(queryFilter: ComputedRef<QueryFilter>) {
   const complexOne = useComplexOne();
   const filterHead = useFilterHead();
 
+  const page = ref(1);
+
+  const query = computed(() => {
+    return Object.assign({ page: page.value }, queryFilter.value);
+  });
+
   const getAllUrl = computed(() => `estate/complexes/${complexOne.complexId}/pantries`);
 
   const { data: storeshouses, pending: loadingStores, error, execute: showStores } = useDataFetch<StorehouseResponse>(getAllUrl, {
-    query: queryFilter,
+    query,
     immediate: false,
     watch: false,
   });
 
-  watch([queryFilter, getAllUrl], () => {
+  const meta = computed(() => storeshouses.value?.meta ?? null);
+
+  const pagination = usePagination(meta, page);
+
+  watch(queryFilter, () => {
+    pagination.setPage(1);
+  });
+
+  watch([ page, queryFilter, getAllUrl ], () => {
     if(filterHead.currentParkStoreFilter === 'stores') {
       showStores();
     }
@@ -26,6 +41,8 @@ function useStorehouse(queryFilter: ComputedRef<QueryFilter>) {
     storeshouses,
     loadingStores,
     showStores,
+    page,
+    pagination,
   }
 }
 
