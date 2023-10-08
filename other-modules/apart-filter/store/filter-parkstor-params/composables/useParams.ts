@@ -7,6 +7,10 @@ function useParkStoreParams() {
   const complexOne = useComplexOne();
   const filterHead = useFilterHead();
 
+  watch(() => filterHead.currentParkStoreFilter, () => {
+    filterParams.storehouse_id = null;
+  });
+
   const housesList = computed(() => complexOne.houses?.data ?? []);
   const levelsList = computed(() => {
     if(filterHead.currentParkStoreFilter === 'parking') {
