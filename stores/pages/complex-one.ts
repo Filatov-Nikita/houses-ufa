@@ -15,7 +15,11 @@ const useComplexOne = defineStore('complexOne', () => {
   const { data: houses, pending: loadingHouses, execute: showHouses } = useDataFetch<HousesResponse>(showHousesUrl, {
     immediate: false,
     watch: false,
-    query: { with_entrances: 1 },
+    query: {
+      with_entrances: 1,
+      with_parkings: 1,
+      with_storehouses: 1,
+    },
   });
 
   watch(complexId, (id) => {
@@ -46,13 +50,25 @@ export interface HousesResponse {
 }
 
 export interface House {
-  id:        number;
-  letter:    string;
-  name:      string;
-  entrances: Entrance[];
+  id:          number;
+  letter:      string;
+  name:        string;
+  entrances:   Entrance[];
+  parkings:    Parking[];
+  storehouses: Storehouse[];
 }
 
 export interface Entrance {
+  id:   number;
+  name: string;
+}
+
+export interface Parking {
+  id:   number;
+  name: string;
+}
+
+export interface Storehouse {
   id:   number;
   name: string;
 }
