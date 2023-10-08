@@ -19,6 +19,7 @@
 
     &__left {
       flex-basis: 420px;
+      max-width: 420px;
     }
 
     &__right {
