@@ -5,7 +5,7 @@
         <div class="tw-flex tw-flex-wrap -tw-m-[10px]">
           <div
             class="tw-w-1/2 tw-p-[10px]"
-            v-for="_i in 4"
+            v-for="_i in 6"
           >
             <BaseSkeleton class="tw-w-full tw-min-h-[150px] tw-rounded-2xl" />
           </div>
@@ -15,14 +15,19 @@
     <div class="tw-py-10 tw-text-center" v-if="items.length === 0">
       Ничего не найдено, измените значения фильтров.
     </div>
-    <div class="places-area">
-      <div class="places-list">
-        <ListItem
-          class="places-list__item"
-          :place-name="placeName"
-          v-for="item in items"
-          v-bind="item"
-        />
+    <div>
+      <div class="places-area">
+        <div class="places-list">
+          <ListItem
+            class="places-list__item"
+            :place-name="placeName"
+            v-for="item in items"
+            v-bind="item"
+          />
+        </div>
+      </div>
+      <div class="tw-pt-6">
+        <slot name="pagination" />
       </div>
     </div>
   </BaseWait>
@@ -61,7 +66,9 @@
   }
 
   .places-area {
-    padding-top: 32px;
+    padding-top: 24px;
+    padding-right: 24px;
+    margin-right: -24px;
     height: 500px;
     overflow: auto;
   }
