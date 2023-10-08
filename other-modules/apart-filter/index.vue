@@ -5,7 +5,7 @@
         <BaseTabsGroupItem class="tab-zone__item" theme="white" name="flats">
           {{ tabLabels[0] }}
         </BaseTabsGroupItem>
-        <BaseTabsGroupItem class="tab-zone__item" theme="white" name="objects">
+        <BaseTabsGroupItem class="tab-zone__item" theme="white" name="objects" :disabled="!canShowParkStores">
           {{ tabLabels[1] }}
         </BaseTabsGroupItem>
       </BaseTabsGroup>
@@ -14,7 +14,7 @@
           <FlatFilter />
         </BaseTabsTabContentItem>
         <BaseTabsTabContentItem name="objects" key="objects">
-          2
+          <ParkStoresFilter />
         </BaseTabsTabContentItem>
       </BaseTabsTabContent>
     </div>
@@ -23,13 +23,21 @@
 
 <script setup lang="ts">
   import FlatFilter from './components/FlatFilter.vue';
+  import ParkStoresFilter from './components/ParkingStores/ParkStoresFilter.vue';
   import { useFilterHead } from './store/filter-head';
+  import { useComplexOne } from '@/stores/pages/complex-one';
 
   const filterHeadStore = useFilterHead();
+  const complexOne = useComplexOne();
 
   const currentTabFilter = toRef(filterHeadStore, 'currentTabFilter');
 
   const tabLabels = ['Квартиры', 'Машиноместо и кладовые'];
+
+  const canShowParkStores = computed(() => {
+    return complexOne.complex?.data.has_parkings === true
+    && complexOne.complex?.data.has_storehouses === true;
+  });
 </script>
 <style scoped lang="scss">
   .tab-zone {
