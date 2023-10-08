@@ -5,11 +5,12 @@ import { useParkStorParams } from '../filter-parkstor-params';
 const useFilterParking = defineStore('filterParking', () => {
   const params = useParkStorParams();
   const filterParams = computed(() => params.queryFilter);
-  const { showParkings, loadingParkings, parkings } = useParking(filterParams);
+  const { showParkings, loadingParkings, parkings, pagination } = useParking(filterParams);
 
   return {
     loadingParkings,
     parkings,
+    pagination,
     showParkings
   }
 });

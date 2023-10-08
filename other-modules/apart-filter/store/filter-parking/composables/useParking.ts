@@ -2,21 +2,36 @@ import { useComplexOne } from '@/stores/pages/complex-one';
 import { useFilterHead } from '../../filter-head';
 import { useDataFetch } from '@/composables/useDataFetch';
 import type { QueryFilter } from '../../filter-parkstor-params/composables/useParams';
+import { usePagination } from '../../composables/usePagination';
 import { ComputedRef } from 'vue';
 
 function useParking(queryFilter: ComputedRef<QueryFilter>) {
   const complexOne = useComplexOne();
   const filterHead = useFilterHead();
 
+  const page = ref(1);
+
+  const query = computed(() => {
+    return Object.assign({ page: page.value }, queryFilter.value);
+  });
+
   const getAllUrl = computed(() => `estate/complexes/${complexOne.complexId}/parking-lots`);
 
   const { data: parkings, pending: loadingParkings, error, execute: showParkings } = useDataFetch<ParkingResponse>(getAllUrl, {
-    query: queryFilter,
+    query,
     immediate: false,
     watch: false,
   });
 
-  watch([queryFilter, getAllUrl], () => {
+  const meta = computed(() => parkings.value?.meta ?? null);
+
+  const pagination = usePagination(meta, page);
+
+  watch(queryFilter, () => {
+    pagination.setPage(1);
+  });
+
+  watch([ page, queryFilter, getAllUrl ], () => {
     if(filterHead.currentParkStoreFilter === 'parking') {
       showParkings();
     }
@@ -26,6 +41,8 @@ function useParking(queryFilter: ComputedRef<QueryFilter>) {
     parkings,
     loadingParkings,
     showParkings,
+    page,
+    pagination
   }
 }
 

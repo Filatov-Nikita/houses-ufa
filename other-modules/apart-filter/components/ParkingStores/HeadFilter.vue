@@ -38,7 +38,11 @@
           placeName="Машиноместо"
           :loading="loadingParking"
           :items="parkData"
-        />
+        >
+          <template #pagination>
+            <ParkingPagination />
+          </template>
+        </PlacesList>
       </BaseTabsTabContentItem>
     </BaseTabsTabContent>
   </div>
@@ -51,6 +55,7 @@
   import { useParkStorParams } from '../../store/filter-parkstor-params';
   import { useComplexOne } from '@/stores/pages/complex-one';
   import PlacesList from './PlacesList.vue';
+  import ParkingPagination from './ParkingPagination.vue';
   import FindedCount from '../FindedCount.vue';
   import { computed } from 'vue';
 
