@@ -21,7 +21,7 @@
         />
       </div>
       <div class="tw-pt-4">
-        <ListPagination v-if="meta" class="tw-justify-center" :meta="meta" />
+        <FlatListPagination class="tw-justify-center" />
       </div>
     </template>
   </BaseWait>
@@ -29,7 +29,7 @@
 
 <script setup lang="ts">
   import FlatListItem from './FlatListItem.vue';
-  import ListPagination from './ListPagination.vue';
+  import FlatListPagination from './FlatListPagination.vue';
   import type { FlatsResponse } from '../store/filter-list/composables/useFlats';
 
   interface Props {
@@ -40,7 +40,6 @@
   const props = defineProps<Props>();
 
   const flats = computed(() => props.flats?.data ?? []);
-  const meta = computed(() => props.flats?.meta ?? null);
 </script>
 
 <style scoped lang="scss">

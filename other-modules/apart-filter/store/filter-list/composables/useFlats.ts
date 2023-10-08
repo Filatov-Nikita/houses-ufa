@@ -1,7 +1,7 @@
 import { ComputedRef } from 'vue';
 import { useDataFetch } from '@/composables/useDataFetch';
 import type { QueryFilter } from '../../filter-flats-params/composables/useParams';
-import { usePagination } from './usePagination';
+import { usePagination } from '../../composables/usePagination';
 import { useComplexOne } from '@/stores/pages/complex-one';
 import { useFilterHead } from '../../filter-head';
 

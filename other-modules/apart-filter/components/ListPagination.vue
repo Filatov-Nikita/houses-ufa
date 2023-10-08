@@ -23,7 +23,7 @@
     <button
       type="button"
       class="pagination__page"
-      :class="{ 'pagination__page--active': meta.current_page === page }"
+      :class="{ 'pagination__page--active': currentPage === page }"
       v-for="page in currentSection"
       @click="setPage(page)"
     >
@@ -36,9 +36,9 @@
       <button
         type="button"
         class="pagination__page"
-        @click="setPage(meta.last_page)"
+        @click="setPage(lastPage)"
       >
-        {{ meta.last_page }}
+        {{ lastPage }}
       </button>
     </template>
     <button
@@ -53,27 +53,35 @@
 </template>
 
 <script setup lang="ts">
-  import { Meta } from '../store/filter-list/composables/useFlats';
-  import { useFilterList } from '../store/filter-list';
-
-  const props = defineProps<{
-    meta: Meta
+  defineProps<{
+    currentPage: number,
+    lastPage: number,
+    currentSection: number[],
+    prevPage: number | null,
+    nextPage: number | null,
+    showEndDots: boolean,
+    showStartDots: boolean,
+    showStart: boolean,
+    showEnd: boolean,
   }>();
 
-  const meta = computed(() => props.meta);
+  const emit = defineEmits<{
+    (event: 'prev'): void
+    (event: 'next'): void,
+    (event: 'setPage', page: number): void,
+  }>();
 
-  const {
-    currentSection,
-    prevPage,
-    nextPage,
-    showEndDots,
-    showStartDots,
-    showStart,
-    showEnd,
-    next,
-    prev,
-    setPage
-  } = useFilterList().pagination;
+  function setPage(page: number) {
+    emit('setPage', page);
+  }
+
+  function prev() {
+    emit('prev');
+  }
+
+  function next() {
+    emit('next');
+  }
 </script>
 <style scoped lang="scss">
 .pagination {

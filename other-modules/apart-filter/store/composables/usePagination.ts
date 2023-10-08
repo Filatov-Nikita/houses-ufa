@@ -1,4 +1,4 @@
-import type { Meta } from './useFlats';
+import type { Meta } from '../filter-list/composables/useFlats';
 
 function usePagination(meta: Ref<Meta | null>, page: Ref<number>, pagLen = 3) {
   const isLast = computed<boolean>(() => meta.value?.current_page === meta.value?.last_page);
