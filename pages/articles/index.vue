@@ -14,11 +14,11 @@
   </SectionFirst>
   <section>
     <div class="tw-container">
-      <News />
+      <ArticlesFilter />
     </div>
   </section>
 </template>
 <script lang="ts" setup>
-import { News } from '~/other-modules/news'
+import ArticlesFilter from '@/other-modules/articles-filter/index.vue';
 </script>
 <style lang="scss" scoped></style>
