@@ -22,8 +22,6 @@ export default defineNuxtConfig({
       baseURL: 'http://31.129.104.95/api/lobby/'
     }
   },
-  
-  
   // components: [
   //   '~/components/base',
   //   '~/components/base/BaseSelect/displays',
@@ -46,7 +44,7 @@ export default defineNuxtConfig({
     '~/plugins/pretty-amount.ts',
     '~/plugins/icons-sprite.ts',
     '~/plugins/loaders.ts',
-    '~/plugins/format-time.ts',
+    '~/plugins/format-date.ts',
     '~/plugins/notify.ts',
   ],
   css: ['~/assets/css/app.css'],
