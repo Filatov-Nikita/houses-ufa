@@ -241,32 +241,8 @@
     </div>
   </section>
 
-  <section>
-    <div class="tw-container">
-      <div class="section__top tw-flex tw-justify-between">
-        <h2 class="section__title">Новости</h2>
-        <NuxtLink to="/articles" class=" tw-hidden lg:tw-flex tw-gap-2">
-          <span class="tw-text-primary"> Все новости </span>
-          <BaseIcon name="forward-line" class="tw-text-primary tw-w-6 tw-h-6"/>
-        </NuxtLink>
-      </div>
-      <div class="tw-grid tw-gap-4 lg:tw-grid-cols-2 xl:tw-grid-cols-3">
-        <CardsItemNews
-          v-for="n in 4"
-          v-bind="{
-            title: 'Test',
-            date: '12.05.23',
-            to: '/articles/1',
-            is_favorite: true,
-          }"
-        />
-      </div>
-      <NuxtLink to="/articles" class="  tw-flex lg:tw-hidden tw-justify-between tw-mt-4 tw-gap-2">
-          <span class="tw-text-primary"> Все новости </span>
-          <BaseIcon name="forward-line" class="tw-text-primary tw-w-6 tw-h-6"/>
-        </NuxtLink>
-    </div>
-  </section>
+  <SectionNews />
+
   <section>
     <div class="tw-container">
       <div
@@ -294,6 +270,7 @@
 
 <script setup lang="ts">
 import VideoAbout from '@/components/modals/VideoAbout.vue'
+import SectionNews from '@/other-modules/last-news-list/components/SectionNews.vue';
 
 useHead({
   script: [
