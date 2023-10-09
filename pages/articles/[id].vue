@@ -87,18 +87,7 @@
       <div class="section__top tw-flex tw-justify-between">
         <h2 class="section__title">Читать далее</h2>
       </div>
-      <div class="tw-grid tw-gap-4 lg:tw-grid-cols-2 xl:tw-grid-cols-3">
-        <NuxtLink to="/" v-for="n in 3">
-          <CardsItemNews
-            v-bind="{
-              title: 'Test',
-              date: '12.05.23',
-              to: '/',
-              is_favorite: true,
-            }"
-          />
-        </NuxtLink>
-      </div>
+      <ArticlesReadMoreList :article-id="+$route.params.id" />
     </div>
   </section>
   <section>
@@ -107,5 +96,7 @@
     </div>
   </section>
 </template>
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+  import ArticlesReadMoreList from '@/other-modules/articles-readmore-list/index.vue';
+</script>
 <style lang="scss" scoped></style>
