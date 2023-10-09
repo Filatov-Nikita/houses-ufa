@@ -66,7 +66,7 @@ const residentialComplexs = [
     price: '3 258 542',
     place: 'с. Михайловка',
     status: 'Последние участки',
-    to: '/complex/3',
+    to: '/complexes/3',
   },
   {
     img: 'images/home/objects/1.jpg',
@@ -84,7 +84,7 @@ const residentialComplexs = [
     price: '3 258 542',
     place: 'с. Зубово',
     status: 'Последние участки',
-    to: '/complex/4',
+    to: '/complexes/4',
   },
   {
     img: 'images/home/objects/3.jpg',
@@ -111,7 +111,7 @@ const residentialComplexs = [
     price: '3 258 542',
     place: 'с. Шмидтово',
     status: 'Последние участки',
-    to: '/complex/2',
+    to: '/complexes/2',
   },
   {
     img: 'images/home/objects/6.jpg',

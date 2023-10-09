@@ -1,5 +1,5 @@
 <template>
-  <div class="card">
+  <NuxtLink class="card" to="/articles/1">
     <div>
       <div class="date tw-mb-4">{{ $formatTime(published_at) }}</div>
       <h4 class="tw-text-h6 lg:tw-text-h5 tw-line-clamp-3">
@@ -19,7 +19,7 @@
         <BaseIcon v-else name="heart" class="tw-w-6 tw-h-6" />
       </BaseButton>
     </div>
-  </div>
+  </NuxtLink>
 </template>
 <script lang="ts" setup>
 interface Article {

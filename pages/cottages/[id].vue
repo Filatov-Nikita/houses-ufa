@@ -7,6 +7,17 @@
   </section>
   <section>
     <div class="tw-container">
+      <div class="section__top">
+        <h2 class="section__title">Ипотека</h2>
+      </div>
+      <CardsIpotekaForm />
+    </div>
+  </section>
+  <section>
+    <div class="tw-container">
+      <div class="section__top">
+        <h2 class="section__title">Похожие дома в этом посёлке</h2>
+      </div>
       <div
         class="tw-grid lg:tw-grid-cols-3 xl:tw-grid-cols-4 tw-gap-4 lg:tw-gap-5"
       >
@@ -23,14 +34,6 @@
       <BaseButton theme="white" class="tw-w-full tw-mt-6 xl:tw-mt-8">
         Показать ещё 8 из 128
       </BaseButton>
-    </div>
-  </section>
-  <section>
-    <div class="tw-container">
-      <div class="section__top">
-        <h2 class="section__title">Ипотека</h2>
-      </div>
-      <CardsIpotekaForm />
     </div>
   </section>
   <section>

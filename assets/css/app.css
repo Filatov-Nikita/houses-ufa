@@ -196,7 +196,8 @@
     @apply tw-mb-6 xl:tw-mb-8;
   }
   .section__title {
-    @apply tw-text-h5 lg:tw-text-h2;
+    font-size: 32px;
+    line-height: 1.25;
   }
 
   .anim-500ms {

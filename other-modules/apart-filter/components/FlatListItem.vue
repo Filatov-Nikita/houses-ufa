@@ -1,5 +1,5 @@
 <template>
-  <article class="flat-list-item">
+  <NuxtLink to="/apartments/1" class="flat-list-item">
     <div class="flat-list-item__img">
       <img :src="flat.plan_image_url" loading="lazy" :alt="name" />
     </div>
@@ -31,7 +31,7 @@
         </button>
       </div>
     </div>
-  </article>
+  </NuxtLink>
 </template>
 
 <script setup lang="ts">

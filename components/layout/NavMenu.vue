@@ -36,7 +36,7 @@
               <div class="nav-menu__section-name">{{ section.label }}</div>
               <div class="nav-menu__items">
                 <div class="nav-menu__item" v-for="item in section.items">
-                  <NuxtLink :to="item.to">{{ item.label }}</NuxtLink>
+                  <NuxtLink :to="item.to" @click="reload(item.to)">{{ item.label }}</NuxtLink>
                 </div>
               </div>
             </div>
@@ -94,11 +94,17 @@
     return appStore.banner;
   });
 
-
+  function reload(str: string) {
+    if(str.indexOf('complexes') !== -1) {
+      setTimeout(() => {
+        window.location.reload();
+      }, 100);
+    }
+  }
 
   const order = [
     'static',
-    // 'buyers',
+    'buyers',
     'flats',
     // 'houses',
     'about',

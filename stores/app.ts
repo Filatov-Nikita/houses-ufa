@@ -34,7 +34,7 @@ export const useAppStore = defineStore('appStore', {
         (item) => {
           return {
             label: item.name,
-            to: '/complex/' + item.id,
+            to: '/complexes/' + item.id,
           }
         }
       )
@@ -80,7 +80,11 @@ function getHeaderMenu() {
 }
 function getFooterMenu() {
   return {
-    // bayers: [
+    // buyers: [
+    //   {
+    //     label: 'Ипотека',
+    //     to: '/ipoteka',
+    //   },
     // {
     //   label: 'Акции',
     //   to: '/flats',
@@ -139,6 +143,10 @@ function getFooterMenu() {
     // ],
     about_company: [
       {
+        label: 'О компании',
+        to: '/about',
+      },
+      {
         label: 'История компании',
         to: '/about#hist',
       },
@@ -158,11 +166,11 @@ function getFooterMenu() {
     press_center: [
       {
         label: 'Новости',
-        to: '/press-centr',
+        to: '/articles',
       },
       {
         label: 'СМИ о нас',
-        to: '/press-centr',
+        to: '/articles',
       },
       {
         label: 'Вопросы и ответы',
@@ -213,28 +221,28 @@ function getNavSectionLinks() {
       label: "Статика",
       items: [
         {
-          label: "Генплан коттеджей",
-          to:'/cotagge-genplan'
+          label: "Карточка коттеджного поселка",
+          to:'/cottage-settlements/1'
+        },
+        {
+          label: "Карточка коттеджа",
+          to:'/cottages/1'
+        },
+        {
+          label: "Карточка квартиры",
+          to:'/apartments/1'
         },
         {
           label: "Загородная недвижимость",
-          to:'/country-estate'
+          to:'/cottage-settlements'
+        },
+        {
+          label: "Подборщик",
+          to:'/objects-filter'
         },
         {
           label: "Избранное",
           to:'/favorites'
-        },
-        {
-          label: "Подборщик",
-          to:'/pickup'
-        },
-        {
-          label: "Участок",
-          to:'/plot/1'
-        },
-        {
-          label: "Карточка квартиры",
-          to:'/apartment/1'
         },
       ]
     },
@@ -250,10 +258,15 @@ function getNavSectionLinks() {
     //   label: '',
     //   items: [],
     // },
-    // buyers: {
-    //   label: 'Покупателям',
-    //   items: [],
-    // },
+    buyers: {
+      label: 'Покупателям',
+      items: [
+        {
+          label: 'Ипотека',
+          to: '/ipoteka',
+        },
+      ],
+    },
     // owners: {
     //   label: 'Владельцам',
     //   items: [
@@ -266,6 +279,10 @@ function getNavSectionLinks() {
     about: {
       label: 'О компании',
       items: [
+        {
+          label: 'О компании',
+          to: '/about',
+        },
         {
           label: 'История компании',
           to: '/about#hist',
@@ -289,11 +306,11 @@ function getNavSectionLinks() {
       items: [
         {
           label: 'Новости',
-          to: '/press-centr',
+          to: '/articles',
         },
         {
           label: 'СМИ о нас',
-          to: '/press-centr',
+          to: '/articles',
         },
         {
           label: 'Вопросы и ответы',

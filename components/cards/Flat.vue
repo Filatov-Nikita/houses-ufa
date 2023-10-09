@@ -3,7 +3,7 @@
     class="tw-px-4 tw-py-6 lg:tw-p-6 xl:tw-p-10 tw-rounded-2xl tw-bg-white tw-flex tw-flex-col tw-gap-4 lg:tw-gap-6"
   >
     <div class="tw-flex tw-items-center tw-justify-between">
-      <a class="back">
+      <a href="#" class="back" @click="$router.back">
         <img
           src="/images/icons/arrow_line_left.svg"
           width="24"
@@ -123,7 +123,7 @@
       </div>
 
       <div class="lg:tw-px-6 xl:tw-px-10 lg:tw-py-5.5 tw-grid tw-gap-8">
-        
+
         <div>
           <h2 class="tw-text-h5 lg:tw-text-h4 tw-mb-2">1-комнатная, 96 м²</h2>
           <p class="tw-text-text01 tw-text-body_m">
@@ -154,7 +154,7 @@
         </div>
         <div>
           <h5 class="tw-grid tw-gap-2 tw-mb-2">
-            
+
             <span class="tw-text-h4"> 12 165 265 ₽ </span>
           </h5>
           <div class="tw-text-body_m tw-text-text02">
