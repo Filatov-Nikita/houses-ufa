@@ -2,7 +2,7 @@
   <footer class="footer">
     <div class="tw-container">
       <div class="footer__wrapper">
-        <FormSubscribe class="area-form xl:tw-mb-20" />
+        <EmailSubscribe class="area-form xl:tw-mb-20" />
         <div class="area-A">
           <div class="tw-grid lg:tw-hidden">
             <AccordionMain
@@ -103,6 +103,7 @@
   </footer>
 </template>
 <script setup lang="ts">
+import EmailSubscribe from '@/other-modules/email-subscribe/index.vue';
 import { useAppStore } from '~/stores/app'
 const appStore = useAppStore()
 const listComparison = [
