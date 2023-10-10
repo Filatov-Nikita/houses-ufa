@@ -191,9 +191,8 @@ useHead({
     },
   ],
 })
-
 const complexOneStore = useComplexOne();
-const { setComplexId } = complexOneStore;
+const { setComplexId, showOne, showHouses } = complexOneStore;
 
 const route = useRoute();
 
@@ -201,7 +200,10 @@ const complexId = computed<number>(() => parseInt(route.params.id as string));
 const complex = computed(() => complexOneStore.complex?.data ?? null);
 const loadingComplex = computed(() => complexOneStore.loadingComplex);
 
-watch(complexId, (id) => setComplexId(id), { immediate: true });
+useAsyncData(() => {
+  setComplexId(complexId.value);
+  return Promise.all([showOne(), showHouses()]);
+});
 </script>
 <style lang="scss" scoped>
 .head-section {

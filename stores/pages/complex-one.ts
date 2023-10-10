@@ -22,13 +22,6 @@ const useComplexOne = defineStore('complexOne', () => {
     },
   });
 
-  watch(complexId, (id) => {
-    if(id !== null) {
-      showOne();
-      showHouses();
-    }
-  });
-
   function setComplexId(id: number | null) {
     complexId.value = id;
   }
