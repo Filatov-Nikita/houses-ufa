@@ -2,7 +2,13 @@
   <div class="base-breadcrumbs">
     <template v-for="(item, i) in items">
       <span v-if="!item.to">{{ item.label }}</span>
-      <NuxtLink v-else :to="item.to">{{ item.label }}</NuxtLink>
+      <NuxtLink
+        v-else
+        :to="item.to"
+        :class="{ 'tw-pointer-events-none': i === items.length - 1 }"
+      >
+        {{ item.label }}
+      </NuxtLink>
       <span v-if="i !== items.length - 1"> / </span>
     </template>
   </div>
