@@ -15,15 +15,12 @@ const useArticlesReadMore = defineStore('articlesReadMore', () => {
     articleId.value = id;
   }
 
-  watch(articleId, (val) => {
-    if(val) show();
-  }, { immediate: true });
-
   return {
     articles,
     loading,
     articleId,
-    setArticle
+    setArticle,
+    show
   }
 });
 

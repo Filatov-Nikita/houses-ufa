@@ -10,7 +10,8 @@
 
   const store = useArticlesReadMore();
 
-  watch(() => props.articleId, (id) => {
-    store.setArticle(id);
-  }, { immediate: true });
+  useAsyncData(() => {
+    store.setArticle(props.articleId);
+    return store.show();
+  });
 </script>
