@@ -5,7 +5,7 @@
         <BaseTabsGroupItem class="tab-zone__item" theme="white" name="flats">
           {{ tabLabels[0] }}
         </BaseTabsGroupItem>
-        <BaseTabsGroupItem class="tab-zone__item" theme="white" name="objects" :disabled="!canShowParkStores">
+        <BaseTabsGroupItem class="tab-zone__item" theme="white" name="places" :disabled="!canShowParkStores">
           {{ tabLabels[1] }}
         </BaseTabsGroupItem>
       </BaseTabsGroup>
@@ -13,7 +13,7 @@
         <BaseTabsTabContentItem name="flats" key="flats">
           <FlatFilter />
         </BaseTabsTabContentItem>
-        <BaseTabsTabContentItem name="objects" key="objects">
+        <BaseTabsTabContentItem name="places" key="places">
           <ParkStoresFilter />
         </BaseTabsTabContentItem>
       </BaseTabsTabContent>

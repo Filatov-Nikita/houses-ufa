@@ -23,10 +23,13 @@
 
   const current = computed(() => filterHeadStore.currentParkStoreFilter);
 
-  watch(current, (val) => {
-    switch(val) {
-      case 'parking': showParkings(); break;
-      case 'stores': showStores(); break;
+  function load() {
+    switch(current.value) {
+      case 'parking': return showParkings();
+      case 'stores': return showStores();
     }
-  }, { immediate: true });
+  }
+
+  useAsyncData(() => load());
+  watch(current, () => load());
 </script>

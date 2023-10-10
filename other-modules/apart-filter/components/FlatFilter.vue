@@ -23,10 +23,13 @@
 
   const current = computed(() => filterHeadStore.currentFlatFilter);
 
-  watch(current, (val) => {
-    switch(val) {
-      case 'list': showList(); break;
-      case 'plan': showGrid(); break;
+  function load() {
+    switch(current.value) {
+      case 'list': return showList();
+      case 'plan': return showGrid();
     }
-  }, { immediate: true });
+  }
+
+  useAsyncData(() => load());
+  watch(current, () => load());
 </script>
