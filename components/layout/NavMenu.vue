@@ -4,14 +4,14 @@
       leave-active-class="animate__animated anim-300ms animate__fadeOut"
       enter-active-class="animate__animated anim-300ms animate__fadeIn"
     >
-    <div v-show="showed" class="nav-menu">
+      <div v-show="showed" class="nav-menu">
         <div class="tw-container">
           <div class="nav-menu__inner">
 
             <div class="lg:tw-hidden tw-space-y-2 tw-mb-3">
               <AccordionMain
                 header-class="tw-py-3"
-                v-for="section in items"
+                v-for="section in navMenu"
               >
                 <template #title>
                   <h3 class="tw-text-base tw-text-text00">
@@ -21,7 +21,7 @@
                 <template #content>
                   <div class="tw-space-y-6 tw-py-5">
                     <NuxtLink
-                    v-for="item in section.items"
+                    v-for="item in section.links"
                     :to="item.to"
                     class="tw-w-full tw-block tw-text-base tw-text-text02"
                     >
@@ -32,10 +32,10 @@
               </AccordionMain>
             </div>
 
-            <div class="nav-menu__section tw-hidden lg:tw-block" v-for="section in items">
+            <div class="nav-menu__section tw-hidden lg:tw-block" v-for="section in navMenu">
               <div class="nav-menu__section-name">{{ section.label }}</div>
               <div class="nav-menu__items">
-                <div class="nav-menu__item" v-for="item in section.items">
+                <div class="nav-menu__item" v-for="item in section.links">
                   <NuxtLink :to="item.to" @click="reload(item.to)">{{ item.label }}</NuxtLink>
                 </div>
               </div>
@@ -69,18 +69,20 @@
 </template>
 
 <script setup lang="ts">
-  import { useAppStore } from '@/stores/app';
+  import { useMenuStore } from '@/stores/menu';
+  import { useBannerStore } from '@/stores/banner';
   import { useScrollToggle } from '@/composables/useScrollToggle';
-  import { storeToRefs } from 'pinia'
+
   interface Props {
     showed?: boolean,
     headerSelector?: string,
   }
 
-  const appStore = useAppStore();
+  const menuStore = useMenuStore();
+  const bannerStore = useBannerStore();
 
-  const navLinks = computed(() => {
-    return appStore.navSectionLinks;
+  const navMenu = computed(() => {
+    return menuStore.navMenu;
   });
 
   const props = withDefaults(defineProps<Props>(), {
@@ -91,7 +93,7 @@
   useScrollToggle(toRef(props, 'showed'));
 
   const banner = computed(() => {
-    return appStore.banner;
+    return bannerStore.banner;
   });
 
   function reload(str: string) {
@@ -101,22 +103,6 @@
       }, 100);
     }
   }
-
-  const order = [
-    'static',
-    'buyers',
-    'flats',
-    // 'houses',
-    'about',
-    'pressCenter',
-    'contacts'
-  ] as const;
-
-  const items = computed(() => {
-    return order.map(name => {
-      return navLinks.value[name];
-    });
-  });
 
   watch(() => props.showed, (val) => {
     if(val) {

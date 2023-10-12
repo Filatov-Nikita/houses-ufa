@@ -7,15 +7,15 @@
           <div class="tw-grid lg:tw-hidden">
             <AccordionMain
               header-class=" tw-py-3 "
-              v-for="itemComparison in listComparison"
+              v-for="section in footerSections"
             >
               <template #title>
-                <h3 class="tw-text-body_m ">{{ itemComparison.title }}</h3>
+                <h3 class="tw-text-body_m ">{{ section.label }}</h3>
               </template>
               <template #content>
                 <div class="tw-grid tw-gap-6 tw-my-5">
                   <NuxtLink
-                    v-for="item in navList[itemComparison.key_obj]"
+                    v-for="item in section.links"
                     :to="item.to"
                     class="tw-text-text02 tw-text-body_m"
                   >
@@ -26,11 +26,11 @@
             </AccordionMain>
           </div>
           <div class="tw-hidden lg:tw-grid tw-grid-cols-4 tw-gap-16">
-            <div v-for="itemComparison in listComparison">
-              <h3 class="tw-text-body_m lg:tw-text-h6 tw-mb-6 ">{{ itemComparison.title }}</h3>
+            <div v-for="section in footerSections">
+              <h3 class="tw-text-body_m lg:tw-text-h6 tw-mb-6 ">{{ section.label }}</h3>
               <div class="tw-grid tw-gap-6">
                 <NuxtLink
-                  v-for="item in navList[itemComparison.key_obj]"
+                  v-for="item in section.links"
                   :to="item.to"
                   class="tw-text-text02"
                 >
@@ -83,7 +83,7 @@
         <div class="tw-flex tw-gap-[6px] area-soc xl:tw-mt-10">
           <a
             class="tw-w-10 tw-h-10 tw-text-center tw-leading-[40px]"
-            v-for="(link, name) in contacts.socialLinks"
+            v-for="(link, name) in social"
             :href="link"
           >
             <BaseIcon
@@ -104,45 +104,18 @@
 </template>
 <script setup lang="ts">
 import EmailSubscribe from '@/other-modules/email-subscribe/index.vue';
-import { useAppStore } from '~/stores/app'
-const appStore = useAppStore()
-const listComparison = [
-  // {
-  //   title: 'Покупателям',
-  //   key_obj: 'bayers',
-  // },
-  {
-    title: 'Квартиры',
-    key_obj: 'apartments',
-  },
-  // {
-  //   title: 'Коттеджи',
-  //   key_obj: 'cottages',
-  // },
-  // {
-  //   title: 'Коммерческая',
-  //   key_obj: 'commercial',
-  // },
-  // {
-  //   title: 'Владельцам',
-  //   key_obj: 'owners',
-  // },
-  {
-    title: 'О компании',
-    key_obj: 'about_company',
-  },
-  {
-    title: 'Пресс-центр',
-    key_obj: 'press_center',
-  },
-  {
-    title: 'Контакты',
-    key_obj: 'contacts',
-  },
-]
-const navList = computed(() => appStore.footerMenu)
-const contacts = computed(() => appStore.contacts)
-const cleanedContPhone = computed(() => appStore.cleanedContPhone)
+import { useMenuStore } from '@/stores/menu';
+import { useAppStore } from '~/stores/app';
+import { useContactsStore } from '~/stores/contacts';
+
+const menuStore = useMenuStore();
+const appStore = useAppStore();
+const contactsStore = useContactsStore();
+
+const footerSections = computed(() => menuStore.footerMenu);
+const contacts = computed(() => contactsStore.contacts);
+const social = computed(() => contactsStore.social);
+const cleanedContPhone = computed(() => contactsStore.phoneCleaned)
 
 function showCallback() {
   appStore.showedCallback = true

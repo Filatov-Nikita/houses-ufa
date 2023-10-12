@@ -103,14 +103,16 @@
 
 <script setup>
 import NavMenu from '@/components/layout/NavMenu.vue'
-import { useAppStore } from '~/stores/app'
+import { useMenuStore } from '~/stores/menu'
+import { useContactsStore } from '~/stores/contacts';
 
-const appStore = useAppStore();
+const menuStore = useMenuStore();
+const contactsStore = useContactsStore();
 const route = useRoute();
 
-const items = computed(() => appStore.headerMenu);
-const headerPhone = computed(() => appStore.headerPhone);
-const cleanedHeadPhone = computed(() => appStore.cleanedHeadPhone);
+const items = computed(() => menuStore.topMenu);
+const headerPhone = computed(() => contactsStore.contacts.headPhone);
+const cleanedHeadPhone = computed(() => contactsStore.contacts.cleanedHeadPhone);
 
 const showedNav = ref(false);
 

@@ -14,9 +14,17 @@ import HeaderMain from '../components/layout/HeaderMain.vue'
 import FooterMain from '../components/layout/FooterMain.vue'
 import ModalCallback from '../components/modals/Form.vue'
 import { useAppStore } from '@/stores/app';
+import { useComplexesStore } from '@/stores/complexes';
+import { useTownsStore } from '@/stores/towns';
 
+const complexesStore = useComplexesStore();
+const townsStore = useTownsStore();
 const appStore = useAppStore();
 const showedCallback = computed(() => appStore.showedCallback);
+
+useAsyncData(() => {
+  return Promise.all([ complexesStore.show(), townsStore.show() ]);
+});
 
 function updateCallback(val: boolean) {
   appStore.showedCallback = val;
