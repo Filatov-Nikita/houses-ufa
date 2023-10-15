@@ -9,9 +9,10 @@
       <button
         type="button"
         class="base-btn-radio__btn"
-        :class="{
-          'base-btn-radio__btn--active': isActive(btn)
-        }"
+        :class="[
+          `base-btn-radio__btn--${theme}`,
+          { 'base-btn-radio__btn--active': isActive(btn) },
+        ]"
         v-for="btn in btns"
         @click="onClick(btn)"
       >
@@ -43,11 +44,13 @@
     label: string,
     modelValue?: Btn,
     disabled?: boolean,
-    btns: Array<Btn>
+    btns: Array<Btn>,
+    theme?: 'gray' | 'white',
   }
 
   const props = withDefaults(defineProps<Props>(), {
-    disabled: false
+    disabled: false,
+    theme: 'white',
   });
 
   const { value, errorMessage, handleChange } = useField<Btn>(props.name, props.rules, {
@@ -88,7 +91,15 @@
     &__btn {
       padding: 16px;
       transition: background-color 200ms;
-      @apply tw-text-base tw-text-black tw-bg-white tw-rounded-lg tw-w-full tw-text-center;
+      @apply tw-text-base tw-text-black tw-rounded-lg tw-w-full tw-text-center;
+
+      &--white {
+        @apply tw-bg-white;
+      }
+
+      &--gray {
+        @apply tw-bg-base00;
+      }
 
       &:hover {
         @apply tw-bg-secondary-hover;
