@@ -3,7 +3,7 @@
 </template>
 
 <script setup lang="ts">
-  interface Props { theme: 'white' | 'gray' };
+  interface Props { theme?: 'white' | 'gray' };
 
   withDefaults(defineProps<Props>(), { theme: 'gray' });
 </script>

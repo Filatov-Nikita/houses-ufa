@@ -5,7 +5,7 @@
 </template>
 
 <script setup lang="ts">
-  interface Props { theme: 'white' | 'gray', icon: string }
+  interface Props { theme?: 'white' | 'gray', icon: string }
 
   withDefaults(defineProps<Props>(), { theme: 'gray' });
 </script>
