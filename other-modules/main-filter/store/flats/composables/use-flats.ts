@@ -4,9 +4,9 @@ import type { QueryParams } from './use-params';
 
 export function useFlats(queryParams: ComputedRef<QueryParams>) {
   const { data: flats, pending: loading, error, execute: show } = useDataFetch<FlatResponse>('estate/filter/flats', {
-    query: queryParams.value,
+    query: queryParams,
     immediate: false,
-    lazy: true,
+    watch: false
   });
 
 

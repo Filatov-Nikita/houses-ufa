@@ -4,9 +4,9 @@ import type { QueryParams } from './use-params';
 
 export function useTowns(queryParams: ComputedRef<QueryParams>) {
   const { data: towns, pending: loading, error, execute: show } = useDataFetch<TownResponse>('estate/filter/estates', {
-    query: queryParams.value,
+    query: queryParams,
     immediate: false,
-    lazy: true,
+    watch: false,
   });
 
 
