@@ -55,14 +55,8 @@
   const mainFilter = useMainFilter();
   const flatsFilter = useFlatsFilter();
   const townsFilter = useTownsFilter();
-  const contentRef = ref<HTMLElement | null>(null);
 
   const loading = computed(() => mainFilter.loading);
-
-  function scrollBy(): void {
-    if(contentRef.value === null) return;
-    contentRef.value.scrollIntoView({ behavior: 'smooth' })
-  }
 
   const flats = computed(() => flatsFilter.data?.data ?? []);
   const towns = computed(() => townsFilter.data?.data ?? []);
@@ -74,12 +68,6 @@
   });
 
   mainFilter.show();
-
-  watch(() => mainFilter.loading, (val) => {
-    if(val) {
-      scrollBy();
-    }
-  });
 </script>
 <style scoped lang="scss">
   .filter-estate-list {
