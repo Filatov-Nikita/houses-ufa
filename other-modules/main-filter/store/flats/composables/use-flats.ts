@@ -1,23 +1,20 @@
-import type { Response } from '@/types/response';
-import { useDataFetch } from '@/composables/useDataFetch';
 import type { QueryParams } from './use-params';
+import { useSeqDataFetch } from '@/composables/useSeqDataFetch';
 
 export function useFlats(queryParams: ComputedRef<QueryParams>) {
-  const { data: flats, pending: loading, error, execute: show } = useDataFetch<FlatResponse>('estate/filter/flats', {
+  const { response, next, pagination, loadingNext } = useSeqDataFetch<Flat>('estate/filter/flats', {
     query: queryParams,
-    immediate: false,
-    watch: false
   });
 
-
-   return {
-    flats,
-    loading,
-    show
-   }
+  return {
+    flats: response.data,
+    loading: response.pending,
+    loadingNext,
+    pagination,
+    show: response.execute,
+    next
+  }
 };
-
-export type FlatResponse = Response<Flat[]>
 
 export interface Flat {
   id:                       number;

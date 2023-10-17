@@ -6,12 +6,16 @@ import { useFilterParams } from '../filter-params';
 const useFlatsFilter = defineStore('flatsFilter', () => {
   const globalParams = useFilterParams();
   const { params, clearParams, queryParams } = useParams(globalParams.params);
-  const flats = useFlats(queryParams);
+  const { flats, loading, loadingNext, pagination, show, next } = useFlats(queryParams);
 
   return {
     params,
-    data: flats.flats,
-    show: flats.show,
+    data: flats,
+    pagination,
+    loading,
+    loadingNext,
+    show,
+    next,
     clearParams,
   }
 });

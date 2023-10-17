@@ -36,11 +36,20 @@ const useMainFilter = defineStore('mainFilter', () => {
     }
   });
 
-  const showedCount = computed(() => currentFilter.value.data?.data.length ?? 0);
+  const meta = computed(() => currentFilter.value.data?.meta ?? null);
+  const pag = computed(() => currentFilter.value.pagination);
+  const showedCount = computed(() => meta.value?.total ?? 0);
+  const loading = computed(() => currentFilter.value.loading);
+  const loadingNext = computed(() => currentFilter.value.loadingNext);
 
   function show(): void {
     if(isFlat.value) flatFilter.show();
     else if(isTown.value) townFilter.show();
+    showedType.value = filterType.value;
+  }
+
+  function next(): void {
+    currentFilter.value.next();
   }
 
   function clear(): void {
@@ -61,7 +70,13 @@ const useMainFilter = defineStore('mainFilter', () => {
     isFlat,
     isTown,
     showedCount,
+    loading,
+    loadingNext,
+    showedType,
+    meta,
+    pag,
     show,
+    next,
     clear,
   }
 });

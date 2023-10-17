@@ -1,25 +1,22 @@
-import type { Response } from '@/types/response';
-import { useDataFetch } from '@/composables/useDataFetch';
 import type { QueryParams } from './use-params';
+import { useSeqDataFetch } from '@/composables/useSeqDataFetch';
 
 export function useTowns(queryParams: ComputedRef<QueryParams>) {
-  const { data: towns, pending: loading, error, execute: show } = useDataFetch<TownResponse>('estate/filter/estates', {
+  const { response, next, pagination, loadingNext } = useSeqDataFetch<TownOne>('estate/filter/estates', {
     query: queryParams,
-    immediate: false,
-    watch: false,
   });
 
-
-   return {
-    towns,
-    loading,
-    show
-   }
+  return {
+    towns: response.data,
+    loading: response.pending,
+    loadingNext,
+    pagination,
+    show: response.execute,
+    next,
+  }
 };
 
-export type TownResponse = Response<Town[]>;
-
-export interface Town {
+export interface TownOne {
   id:               number;
   area_cottage:     string;
   area_land:        string;

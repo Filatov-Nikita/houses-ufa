@@ -6,12 +6,16 @@ import { useFilterParams } from '../filter-params';
 const useTownsFilter = defineStore('townsFilter', () => {
   const globalParams = useFilterParams();
   const { params, queryParams, clearParams } = useParams(globalParams.params);
-  const towns = useTowns(queryParams);
+  const { towns, loading, loadingNext, pagination, show, next } = useTowns(queryParams);
 
   return {
     params,
-    data: towns.towns,
-    show: towns.show,
+    data: towns,
+    loading,
+    loadingNext,
+    pagination,
+    show,
+    next,
     clearParams
   }
 });
