@@ -5,9 +5,12 @@ type NumOrNull = number | null;
 
 interface FlatParams {
   is_in_city: NumOrNull,
-  number_of_rooms_one: NumOrNull,
-  number_of_rooms_studio: NumOrNull,
-  number_of_rooms_two: NumOrNull,
+  room_factor_studio: NumOrNull,
+  room_factor_one_classic: NumOrNull,
+  room_factor_two_smart: NumOrNull,
+  room_factor_two_classic: NumOrNull,
+  room_factor_three_smart: NumOrNull,
+  room_factor_three_classic: NumOrNull,
   price_max: NumOrNull,
   price_min: NumOrNull,
   price_type: string | null
@@ -45,9 +48,12 @@ export function useParams(globalParams: Params) {
   function initParams() {
     return {
       is_in_city: null,
-      number_of_rooms_one: 1,
-      number_of_rooms_studio: null,
-      number_of_rooms_two: null,
+      room_factor_studio: 1,
+      room_factor_one_classic: null,
+      room_factor_two_smart: null,
+      room_factor_two_classic: null,
+      room_factor_three_smart: null,
+      room_factor_three_classic: null,
       price_max: null,
       price_min: null,
       price_type: null
