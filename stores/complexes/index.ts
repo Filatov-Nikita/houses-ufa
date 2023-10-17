@@ -7,9 +7,19 @@ const useComplexesStore = defineStore('complexesStore', () => {
     watch: false,
   });
 
+  const outCityComplexes = computed(() => {
+    return complexes.value?.data.filter(complex => complex.is_in_city === false) ?? [];
+  });
+
+  const inCityComplexes = computed(() => {
+    return complexes.value?.data.filter(complex => complex.is_in_city === true) ?? [];
+  });
+
   return {
     complexes,
     loading,
+    outCityComplexes,
+    inCityComplexes,
     show
   }
 });
@@ -20,6 +30,7 @@ export interface ComplexesResponse {
 
 export interface ComplexItem {
   id: number,
+  is_in_city: boolean,
   name: string,
 }
 
