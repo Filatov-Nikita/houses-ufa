@@ -80,6 +80,7 @@ const useMainFilter = defineStore('mainFilter', () => {
     showedType,
     meta,
     pag,
+    currentFilter,
     show,
     next,
     clear,
