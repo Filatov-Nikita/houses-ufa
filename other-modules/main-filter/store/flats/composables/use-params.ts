@@ -2,6 +2,7 @@ import { notNullable } from '../../helpers';
 import { type Params } from '../../filter-params';
 
 type NumOrNull = number | null;
+type StrOrNull = string | null;
 
 interface FlatParams {
   is_in_city: NumOrNull,
@@ -13,7 +14,7 @@ interface FlatParams {
   room_factor_three_classic: NumOrNull,
   price_max: NumOrNull,
   price_min: NumOrNull,
-  price_type: string | null
+  price_type: StrOrNull
 }
 
 export type QueryParams = Partial<{
@@ -24,6 +25,8 @@ export type QueryParams = Partial<{
   status: string | null;
   complex_id: NumOrNull;
   is_in_promotion_only: NumOrNull;
+  order_by_direction: StrOrNull,
+  order_by_field: StrOrNull,
 } & FlatParams>;
 
 export function useParams(globalParams: Params) {
@@ -42,6 +45,8 @@ export function useParams(globalParams: Params) {
       status: globalParams.status,
       complex_id: globalParams.object_id,
       is_in_promotion_only: globalParams.is_in_promotion_only,
+      order_by_direction: globalParams.order_by_direction,
+      order_by_field: globalParams.order_by_field,
     }, params));
   });
 

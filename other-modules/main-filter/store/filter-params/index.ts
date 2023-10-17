@@ -1,6 +1,7 @@
 import { defineStore } from 'pinia';
 
 type NumOrNull = number | null;
+type StrOrNull = string | null;
 
 export interface Params {
   area_min: NumOrNull,
@@ -8,8 +9,10 @@ export interface Params {
   object_id: NumOrNull,
   number_of_floors_min: NumOrNull,
   number_of_floors_max: NumOrNull,
-  status: string | null,
-  is_in_promotion_only: NumOrNull
+  status: StrOrNull,
+  is_in_promotion_only: NumOrNull,
+  order_by_direction: StrOrNull,
+  order_by_field: StrOrNull,
 };
 
 const useFilterParams = defineStore('filterParams', () => {
@@ -27,7 +30,9 @@ const useFilterParams = defineStore('filterParams', () => {
       number_of_floors_min: null,
       number_of_floors_max: null,
       status: null,
-      is_in_promotion_only: null
+      is_in_promotion_only: null,
+      order_by_direction: null,
+      order_by_field: null
     }
   }
 

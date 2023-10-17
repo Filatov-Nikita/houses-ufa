@@ -58,7 +58,12 @@ const useMainFilter = defineStore('mainFilter', () => {
     flatFilter.clearParams();
   }
 
-  watch(filterType, () => filterParams.params.object_id = null);
+  watch(filterType, () => {
+    filterParams.params.object_id = null
+    filterParams.params.order_by_direction = null
+    filterParams.params.order_by_field = null
+  });
+
   watch(filterType, (val) => {
     if(val === 'out-city-flats') flatFilter.params.is_in_city = 1;
     else flatFilter.params.is_in_city = 0;

@@ -2,6 +2,7 @@ import { notNullable } from '../../helpers';
 import { type Params } from '../../filter-params';
 
 type NumOrNull = number | null;
+type StrOrNull = string | null;
 
 interface TownParams {
   area_land_min: NumOrNull,
@@ -13,9 +14,11 @@ export type QueryParams = Partial<{
   area_cottage_max: NumOrNull,
   number_of_floors_min: NumOrNull,
   number_of_floors_max: NumOrNull,
-  status: string | null,
+  status: StrOrNull,
   is_in_promotion_only: NumOrNull,
   town_id: NumOrNull,
+  order_by_direction: StrOrNull,
+  order_by_field: StrOrNull,
 } & TownParams>;
 
 export function useParams(globalParams: Params) {
@@ -34,6 +37,8 @@ export function useParams(globalParams: Params) {
       status: globalParams.status,
       is_in_promotion_only: globalParams.is_in_promotion_only,
       town_id: globalParams.object_id,
+      order_by_direction: globalParams.order_by_direction,
+      order_by_field: globalParams.order_by_field,
     }, params));
   });
 
