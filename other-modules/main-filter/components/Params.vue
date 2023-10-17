@@ -284,12 +284,12 @@
 
     &__input-type, &__input-obj, &__input-sqr, &__input-sqr-area {
       @extend %inputs;
-      flex-basis: 230px;
+      flex-basis: 200px;
     }
 
     &__input-rooms {
       @extend %inputs;
-      flex-basis: 240px;
+      flex-basis: 280px;
     }
 
     &__input-price {
