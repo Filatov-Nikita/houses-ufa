@@ -5,6 +5,8 @@ import { useFilterParams } from './filter-params';
 import { useFlatsFilter } from './flats';
 import { useTownsFilter } from './towns';
 
+type CurrentTypes = 'flats' | 'towns' | 'out-city-flats';
+
 const useMainFilter = defineStore('mainFilter', () => {
   const complexStore = useComplexesStore();
   const townsStore = useTownsStore();
@@ -12,21 +14,24 @@ const useMainFilter = defineStore('mainFilter', () => {
   const flatFilter = useFlatsFilter();
   const townFilter = useTownsFilter();
 
-  const filterType = ref<'flats' | 'towns'>('flats');
+  const filterType = ref<CurrentTypes>('flats');
+  const showedType = ref<CurrentTypes>('flats');
 
   const objectList = computed(() => {
     switch(filterType.value) {
       case 'flats': return complexStore.complexes?.data ?? [];
+      case 'out-city-flats': return complexStore.outCityComplexes;
       case 'towns': return townsStore.towns?.data ?? [];
     }
   });
 
-  const isFlat = computed(() => filterType.value === 'flats');
+  const isFlat = computed(() => ['flats', 'out-city-flats'].includes(filterType.value));
   const isTown = computed(() => filterType.value === 'towns');
 
   const currentFilter = computed(() => {
-    switch(filterType.value) {
+    switch(showedType.value) {
       case 'flats': return flatFilter;
+      case 'out-city-flats': return flatFilter;
       case 'towns': return townFilter;
     }
   });
@@ -45,6 +50,10 @@ const useMainFilter = defineStore('mainFilter', () => {
   }
 
   watch(filterType, () => filterParams.params.object_id = null);
+  watch(filterType, (val) => {
+    if(val === 'out-city-flats') flatFilter.params.is_in_city = 1;
+    else flatFilter.params.is_in_city = 0;
+  });
 
   return {
     filterType,

@@ -118,7 +118,8 @@
 
   const typeOpts = [
     { label: 'Квартиры', value: 'flats' } as const,
-    { label: 'Коттеджи', value: 'towns' } as const,
+    { label: 'Загородные квартиры', value: 'out-city-flats' } as const,
+    { label: 'Коттеджи и таунхаусы', value: 'towns' } as const,
   ];
 
   const currentType = computed(() => {
