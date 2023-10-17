@@ -1,0 +1,48 @@
+@layer base {
+  :root {
+    --swiper-pagination-color: theme(colors.primary);
+    --swiper-pagination-bullet-inactive-color: theme(colors.border00);
+    --swiper-pagination-bullet-inactive-opacity: 0.9;
+  }
+}
+
+@layer components {
+  .swiper-paginate {
+    display: flex;
+    justify-content: center;
+    gap: 6px;
+  }
+
+  .swiper-paginate .line {
+    @apply tw-bg-border00;
+    display: inline-block;
+    border-radius: 1px;
+    max-width: 16px;
+    height: 4px;
+    width: 100%;
+  }
+
+  .swiper-paginate .line-active {
+    @apply tw-bg-primary;
+    display: inline-block;
+    border-radius: 1px;
+    max-width: 16px;
+    height: 4px;
+    width: 100%;
+  }
+
+  .swiper-pagination-bullet-active-next-next {
+    opacity: 0.6 !important;
+  }
+
+  .swiper-pagination-bullet-active-next-next {
+    opacity: 0.6 !important;
+  }
+
+  .swiper-pagination.swiper-pagination_lighten .swiper-pagination-bullet-active {
+    opacity: 0.6 !important;
+  }
+  .swiper-pagination.swiper-pagination_lighten .swiper-pagination-bullet {
+    background-color: #ffffff;
+  }
+}
