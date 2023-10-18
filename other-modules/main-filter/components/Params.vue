@@ -31,7 +31,7 @@
         class="main-filter-params__input-sqr"
         theme="gray"
         :min="1"
-        :max="120"
+        :max="500"
         name='square'
         label='Площадь объекта, м²'
         input-witdh="55px"
@@ -42,7 +42,7 @@
         class="main-filter-params__input-sqr-area"
         theme="gray"
         :min="1"
-        :max="120"
+        :max="100"
         name='squareArea'
         label='Площадь участка, сот'
         input-witdh="55px"
@@ -59,11 +59,13 @@
         />
         <BaseRange
           theme="gray"
-          :min="1"
-          :max="120"
+          :min="priceMinMax.min"
+          :max="priceMinMax.max"
+          :step="priceMinMax.step"
           name='price'
           label=''
-          input-witdh="55px"
+          :input-witdh="priceMinMax.inputWitdh"
+          :insert-label="priceMinMax.insertLabel"
           :disabled="!mainFilter.isFlat"
           :model-value="price"
           @after-manipulate="updatePrice"
@@ -73,7 +75,7 @@
         class="main-filter-params__input-floors"
         theme="gray"
         :min="1"
-        :max="120"
+        :max="30"
         name='floors'
         label='Этажность'
         input-witdh="55px"
@@ -195,14 +197,45 @@
     filterParams.params.object_id = val.id;
   }
 
+  const priceMinMax = computed(() => {
+    if(flatFilter.params.price_type === 'mortgage_monthly_payment') {
+      return {
+        min: 1000,
+        max: 500000,
+        step: 1,
+        mult: 1,
+        insertLabel: '₽',
+        inputWitdh: '100px'
+      }
+    }
+
+    return {
+      min: 2,
+      max: 20,
+      step: 0.1,
+      mult: 1000 * 1000,
+      insertLabel: 'млн ₽',
+      inputWitdh: '110px'
+    }
+  });
+
   const price = computed<[NumOrNull, NumOrNull] | null>(() => {
-    return [flatFilter.params.price_min, flatFilter.params.price_max];
+    const div = priceMinMax.value.mult;
+    const min = typeof flatFilter.params.price_min === 'number' ? flatFilter.params.price_min / div : null;
+    const max = typeof flatFilter.params.price_max === 'number' ? flatFilter.params.price_max / div : null;
+    return [min, max];
   });
 
   function updatePrice(val: [NumOrNull, NumOrNull] | null) {
-    flatFilter.params.price_min = val?.[0] ?? null;
-    flatFilter.params.price_max = val?.[1] ?? null;
+    const mult = priceMinMax.value.mult;
+    flatFilter.params.price_min = typeof val?.[0] === 'number' ? val[0] * mult : null;
+    flatFilter.params.price_max = typeof val?.[1] === 'number' ? val[1] * mult : null;
   }
+
+  watch(() => flatFilter.params.price_type, () => {
+    flatFilter.params.price_min = null;
+    flatFilter.params.price_max = null;
+  });
 
   const square = computed<[NumOrNull, NumOrNull] | null>(() => {
     return [filterParams.params.area_min, filterParams.params.area_max];
