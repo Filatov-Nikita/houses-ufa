@@ -1,5 +1,7 @@
 import { notNullable } from '../../helpers';
 import { type Params } from '../../filter-params';
+import { useRoute } from 'vue-router';
+import { initValues } from '../../helpers';
 
 type NumOrNull = number | null;
 type StrOrNull = string | null;
@@ -30,7 +32,21 @@ export type QueryParams = Partial<{
 } & FlatParams>;
 
 export function useParams(globalParams: Params) {
-  const params: FlatParams = reactive(initParams());
+  const route = useRoute();
+
+  const values = initValues(initParams(), {
+    is_in_city: (val) => +val,
+    room_factor_studio: (val) => +val,
+    room_factor_one_classic: (val) => +val,
+    room_factor_two_smart: (val) => +val,
+    room_factor_two_classic: (val) => +val,
+    room_factor_three_smart: (val) => +val,
+    room_factor_three_classic: (val) => +val,
+    price_max: (val) => +val,
+    price_min: (val) => +val,
+  }, route.query);
+
+  const params: FlatParams = reactive(values);
 
   function clearParams(): void {
     Object.assign(params, initParams());
@@ -50,7 +66,7 @@ export function useParams(globalParams: Params) {
     }, params));
   });
 
-  function initParams() {
+  function initParams(): FlatParams {
     return {
       is_in_city: null,
       room_factor_studio: 1,

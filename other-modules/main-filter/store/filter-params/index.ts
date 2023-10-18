@@ -1,4 +1,6 @@
 import { defineStore } from 'pinia';
+import { useRoute } from 'vue-router';
+import { initValues } from '../helpers';
 
 type NumOrNull = number | null;
 type StrOrNull = string | null;
@@ -16,13 +18,24 @@ export interface Params {
 };
 
 const useFilterParams = defineStore('filterParams', () => {
-  const params: Params = reactive(initParams());
+  const route = useRoute();
+
+  const values = initValues(initParams(), {
+    area_min: (val) => +val,
+    area_max: (val) => +val,
+    object_id: (val) => +val,
+    number_of_floors_min: (val) => +val,
+    number_of_floors_max: (val) => +val,
+    is_in_promotion_only: (val) => +val
+  }, route.query);
+
+  const params: Params = reactive(values);
 
   function clearParams() {
     Object.assign(params, initParams());
   }
 
-  function initParams() {
+  function initParams(): Params {
     return {
       area_min: null,
       area_max: null,
@@ -33,7 +46,7 @@ const useFilterParams = defineStore('filterParams', () => {
       is_in_promotion_only: null,
       order_by_direction: null,
       order_by_field: null
-    }
+    };
   }
 
   return {

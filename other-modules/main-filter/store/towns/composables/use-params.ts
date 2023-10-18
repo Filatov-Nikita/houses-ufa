@@ -1,5 +1,7 @@
 import { notNullable } from '../../helpers';
 import { type Params } from '../../filter-params';
+import { initValues } from '../../helpers';
+import { useRoute } from 'vue-router';
 
 type NumOrNull = number | null;
 type StrOrNull = string | null;
@@ -22,7 +24,14 @@ export type QueryParams = Partial<{
 } & TownParams>;
 
 export function useParams(globalParams: Params) {
-  const params: TownParams = reactive(initParams());
+  const route = useRoute();
+
+  const values = initValues(initParams(), {
+    area_land_min: (val) => +val,
+    area_land_max: (val) => +val,
+  }, route.query);
+
+  const params: TownParams = reactive(values);
 
   function clearParams(): void {
     Object.assign(params, initParams());
@@ -42,7 +51,7 @@ export function useParams(globalParams: Params) {
     }, params));
   });
 
-  function initParams() {
+  function initParams(): TownParams {
     return {
       area_land_min: null,
       area_land_max: null,
