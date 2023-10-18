@@ -85,7 +85,7 @@
         class="main-filter-params__input-status"
         name="status"
         label="Статус"
-        :drop-down-props="{ options: statusOpts }"
+        v-bind="selectProps(statusOpts, 'label', 'value')"
         :model-value="currentStatus"
         @update:modelValue="updateStatus"
       />
@@ -93,7 +93,7 @@
         class="main-filter-params__input-sale"
         name="sale"
         label="Акция"
-        :drop-down-props="{ options: saleOpts }"
+        v-bind="selectProps(saleOpts, 'label', 'value')"
         :model-value="currentSale"
         @update:modelValue="updateSale"
       />
@@ -101,6 +101,7 @@
         class="main-filter-params__input-remont"
         name="remont"
         label="Вид отделки"
+        v-bind="selectProps([], '', '')"
         :disabled="true"
       />
     </div>
@@ -166,16 +167,21 @@
   }
 
   const objectListProps = computed(() => {
+    return selectProps(mainFilter.objectList, 'name', 'id');
+  });
+
+  function selectProps<T extends Record<string, unknown>>(options: T[], labelKey: keyof T, valueKey: keyof T) {
     return {
       'drop-down-props': {
-        options: mainFilter.objectList,
-        getLabel: (opt: any) => opt.name,
-        getValue: (opt: any) => opt.id,
-        isActive: (opt: any, val: any) => opt.id === val?.id,
+        getLabel: (opt: T) => opt[labelKey],
+        isActive: (opt: T, v: T | null) => opt[valueKey] === v?.[valueKey],
+        options,
       },
-      'display-props': { getLabel: (val: any) => val?.name || 'Не выбрано' },
+      'display-props': {
+        getLabel: (v: T | null) => v?.[labelKey] || 'не выбрано',
+      }
     };
-  });
+  }
 
   const currentObject = computed(() => {
     return filterParams.params.object_id;
