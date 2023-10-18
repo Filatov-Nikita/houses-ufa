@@ -50,18 +50,25 @@
         :model-value="squareArea"
         @after-manipulate="updateSquareArea"
       />
-      <BaseRange
-        class="main-filter-params__input-price"
-        theme="gray"
-        :min="1"
-        :max="120"
-        name='price'
-        label='стоимость'
-        input-witdh="55px"
-        :disabled="!mainFilter.isFlat"
-        :model-value="price"
-        @after-manipulate="updatePrice"
-      />
+      <div class="main-filter-params__input-price">
+        <EstatePriceType
+          class="tw-mb-2"
+          v-model="flatFilter.params.price_type"
+          :disabled="!mainFilter.isFlat"
+          theme="gray"
+        />
+        <BaseRange
+          theme="gray"
+          :min="1"
+          :max="120"
+          name='price'
+          label=''
+          input-witdh="55px"
+          :disabled="!mainFilter.isFlat"
+          :model-value="price"
+          @after-manipulate="updatePrice"
+        />
+      </div>
       <BaseRange
         class="main-filter-params__input-floors"
         theme="gray"
@@ -70,6 +77,7 @@
         name='floors'
         label='Этажность'
         input-witdh="55px"
+        :disabled="!mainFilter.isTown"
         :model-value="storey"
         @after-manipulate="updateStorey"
       />
@@ -268,6 +276,7 @@
     &__inputs {
       display: flex;
       flex-wrap: wrap;
+      align-items: flex-end;
       column-gap: 20px;
       row-gap: 40px;
     }
@@ -294,12 +303,12 @@
 
     &__input-price {
       @extend %inputs;
-      flex-basis: 340px;
+      flex-basis: 390px;
     }
 
     &__input-floors, &__input-status, &__input-sale, &__input-remont {
       @extend %inputs;
-      flex-basis: 200px;
+      flex-basis: 190px;
     }
   }
 </style>

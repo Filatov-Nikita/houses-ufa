@@ -14,7 +14,7 @@ interface FlatParams {
   room_factor_three_classic: NumOrNull,
   price_max: NumOrNull,
   price_min: NumOrNull,
-  price_type: StrOrNull
+  price_type: 'mortgage_initial_fee' | 'mortgage_monthly_payment' | 'price_total';
 }
 
 export type QueryParams = Partial<{
@@ -61,7 +61,7 @@ export function useParams(globalParams: Params) {
       room_factor_three_classic: null,
       price_max: null,
       price_min: null,
-      price_type: null
+      price_type: 'price_total' as const
     }
   }
 
