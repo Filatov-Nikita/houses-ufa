@@ -42,10 +42,10 @@ const useMainFilter = defineStore('mainFilter', () => {
   const loading = computed(() => currentFilter.value.loading);
   const loadingNext = computed(() => currentFilter.value.loadingNext);
 
-  function show(): void {
-    if(isFlat.value) flatFilter.show();
-    else if(isTown.value) townFilter.show();
+  async function show() {
     showedType.value = filterType.value;
+    if(isFlat.value) return await flatFilter.show();
+    else if(isTown.value) return await townFilter.show();
   }
 
   function next(): void {

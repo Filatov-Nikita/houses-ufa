@@ -19,6 +19,8 @@
     contentRef.value.scrollIntoView({ behavior: 'smooth' })
   }
 
+  await useAsyncData(() => mainFilter.show());
+
   watch(() => mainFilter.loading, (val) => {
     if(val) {
       scrollBy();

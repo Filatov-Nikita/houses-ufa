@@ -66,8 +66,6 @@
     return mainFilter.showedType === 'flats' ||
     mainFilter.showedType === 'out-city-flats';
   });
-
-  mainFilter.show();
 </script>
 <style scoped lang="scss">
   .filter-estate-list {
