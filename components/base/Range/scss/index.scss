@@ -1,4 +1,9 @@
 .base-range-block {
+  &--disabled {
+    pointer-events: none;
+    opacity: 0.5;
+  }
+
   &__label {
     letter-spacing: -0.14px;
     @apply tw-text-text02 tw-text-sm tw-font-normal tw-block tw-mb-2;

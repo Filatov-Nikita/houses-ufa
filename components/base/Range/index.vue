@@ -1,5 +1,5 @@
 <template>
-  <div class="base-range-block">
+  <div class="base-range-block" :class="{ 'base-range-block--disabled': disabled }">
     <label v-if="label" class="base-range-block__label">{{ label }}</label>
     <div class="control-block">
       <div class="control-block__inputs" :class="[`control-block__inputs--${theme}`]">
@@ -12,6 +12,7 @@
             type="text"
             :value="val1"
             :placeholder="min.toString()"
+            :disabled="disabled"
             @change="onChangeFrom"
           />
         </div>
@@ -29,6 +30,7 @@
             type="text"
             :value="val2"
             :placeholder="max.toString()"
+            :disabled="disabled"
             @change="onChangeTo"
           />
         </div>
@@ -66,6 +68,7 @@
     insertLabel?: string,
     label?: string,
     step?: number,
+    disabled?: boolean,
     theme?: "white" | "gray"
   }
 
@@ -74,7 +77,8 @@
     min: 0,
     step: 1,
     modelValue: null,
-    theme: 'gray'
+    theme: 'gray',
+    disabled: false,
   });
 
   const emit = defineEmits<{

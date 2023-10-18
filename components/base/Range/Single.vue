@@ -1,5 +1,5 @@
 <template>
-  <div class="base-range-block">
+  <div class="base-range-block" :class="{ 'base-range-block--disabled': disabled }">
     <label v-if="label" class="base-range-block__label">{{ label }}</label>
     <div class="control-block">
       <div class="control-block__inputs" :class="[`control-block__inputs--${theme}`]">
@@ -11,6 +11,7 @@
             type="text"
             :value="val"
             :placeholder="min.toString()"
+            :disabled="disabled"
             @change="onChange"
           />
         </div>
@@ -42,14 +43,16 @@
     insertLabel?: string,
     label?: string,
     step?: number,
-    theme?: "white" | "gray"
+    theme?: "white" | "gray",
+    disabled?: boolean,
   }
 
   const props = withDefaults(defineProps<Props>(), {
     min: 0,
     step: 1,
     modelValue: null,
-    theme: 'gray'
+    theme: 'gray',
+    disabled: false,
   });
 
   const controlsRef = ref<HTMLElement | null>(null);
