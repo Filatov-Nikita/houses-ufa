@@ -13,10 +13,14 @@ export function useSeqDataFetch<T>(url: string | Ref<string>, options: UseFetchO
     return Object.assign({ page: page.value }, options.query?.value ?? {});
   });
 
+  let oldQuery: any;
   const defOpts: UseFetchOptions<Response<T[]>> = {
     query,
     immediate: false,
     watch: false,
+    onResponse() {
+      oldQuery = { ...query.value };
+    }
   }
 
   const response = useDataFetch<Response<T[]>>(url, Object.assign({}, defOpts, options));
@@ -46,7 +50,7 @@ export function useSeqDataFetch<T>(url: string | Ref<string>, options: UseFetchO
 
         const chunk = await $fetch<Response<T[]>>(unref(url), {
           baseURL: config.public.baseURL,
-          query: query.value,
+          query: Object.assign(oldQuery ?? {}, { page: page.value }),
         });
 
         setMeta(chunk.meta);
