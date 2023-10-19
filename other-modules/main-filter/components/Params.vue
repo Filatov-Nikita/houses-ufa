@@ -277,32 +277,36 @@
     if(flatFilter.params.room_factor_studio) return roomsBtns[0];
     else if(flatFilter.params.room_factor_one_classic) return roomsBtns[1];
     else if(flatFilter.params.room_factor_two_smart) return roomsBtns[2];
-    else if(flatFilter.params.room_factor_two_classic) return roomsBtns[2];
-    else if(flatFilter.params.room_factor_three_smart) return roomsBtns[2];
-    else if(flatFilter.params.room_factor_three_classic) return roomsBtns[2];
+    else if(flatFilter.params.room_factor_two_classic) return roomsBtns[3];
+    else if(flatFilter.params.room_factor_three_smart) return roomsBtns[4];
+    else if(flatFilter.params.room_factor_three_classic) return roomsBtns[5];
   });
 
   function updateRooms(val: typeof roomsBtns[number]): void {
+    clearRooms();
+    switch (val.value) {
+      case 'room_factor_studio':
+        flatFilter.params.room_factor_studio = 1; break;
+      case 'room_factor_one_classic':
+        flatFilter.params.room_factor_one_classic = 1; break;
+      case 'room_factor_two_smart':
+        flatFilter.params.room_factor_two_smart = 1; break;
+      case 'room_factor_two_classic':
+        flatFilter.params.room_factor_two_classic = 1; break;
+      case 'room_factor_three_smart':
+        flatFilter.params.room_factor_three_smart = 1; break;
+      case 'room_factor_three_classic':
+        flatFilter.params.room_factor_three_classic = 1; break;
+    }
+  }
+
+  function clearRooms(): void {
     flatFilter.params.room_factor_studio =
     flatFilter.params.room_factor_one_classic =
     flatFilter.params.room_factor_two_smart =
     flatFilter.params.room_factor_two_classic =
     flatFilter.params.room_factor_three_smart =
     flatFilter.params.room_factor_three_classic = null;
-
-    if(val.value === 'room_factor_studio') {
-      flatFilter.params.room_factor_studio = 1;
-    } else if(val.value === 'room_factor_one_classic') {
-      flatFilter.params.room_factor_one_classic = 1;
-    } else if(val.value === 'room_factor_two_smart') {
-      flatFilter.params.room_factor_two_smart = 1;
-    } else if(val.value === 'room_factor_two_classic') {
-      flatFilter.params.room_factor_two_classic = 1;
-    } else if(val.value === 'room_factor_three_smart') {
-      flatFilter.params.room_factor_three_smart = 1;
-    } else if(val.value === 'room_factor_three_classic') {
-      flatFilter.params.room_factor_three_classic = 1;
-    }
   }
 
   function findOpt<T>(list: T[], filter: (opt: T) => boolean): T | null {
