@@ -1,0 +1,26 @@
+@layer components {
+  .wrapper {
+    padding: 0 16px;
+    width: 100%;
+
+    @include md {
+      max-width: 768px;
+      margin: 0 auto;
+    }
+
+    @include lg {
+      max-width: 1024px;
+      padding: 0 24px;
+    }
+
+    @include xl {
+      max-width: 1440px;
+      padding: 0 40px;
+    }
+
+    @include _2xl {
+      max-width: 1920px;
+      padding: 0 80px;
+    }
+  }
+}

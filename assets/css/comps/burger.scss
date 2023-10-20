@@ -1,0 +1,6 @@
+@layer components {
+  .burger {
+    @apply tw-bg-base00 tw-p-2 tw-w-12 tw-h-12;
+    @apply tw-rounded-lg tw-overflow-hidden tw-cursor-pointer;
+  }
+}

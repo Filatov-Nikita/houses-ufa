@@ -1,0 +1,46 @@
+@layer components {
+  .plan {
+    @apply tw-relative tw-rounded-2xl tw-overflow-hidden;
+  }
+  .plan__wrapper {
+    @apply tw-h-screen lg:tw-h-full tw-relative tw-w-full tw-overflow-auto;
+  }
+
+  .plan__wrapper::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+  }
+
+  .plan__wrapper::-webkit-scrollbar-track {
+    @apply tw-rounded-lg tw-bg-white;
+  }
+
+  .plan__wrapper::-webkit-scrollbar-button {
+    @apply tw-bg-dark;
+  }
+
+  .plan__wrapper::-webkit-scrollbar-thumb {
+    @apply tw-bg-primary tw-rounded-lg;
+  }
+  .plan__img {
+    @apply tw-h-full tw-w-auto tw-max-w-none;
+  }
+  @screen lg {
+    .plan__img {
+      max-width: inherit !important;
+      width: 100%;
+    }
+  }
+  .plan__svg {
+    height: 100%;
+    left: 0;
+    overflow: visible !important;
+    position: absolute;
+    top: 0;
+    width: 100%;
+  }
+  .plan__message {
+    @apply tw-text-body_xs tw-text-white tw-absolute tw-z-10 tw-bottom-4 lg:tw-bottom-6 tw-left-4 lg:tw-right-10;
+    opacity: 0.85;
+  }
+}

@@ -1,0 +1,51 @@
+@import './mixins/screens.scss';
+@import './comps/section.scss';
+@import './comps/accordion.scss';
+@import './comps/swiper.scss';
+@import './comps/plan.scss';
+@import './comps/burger.scss';
+@import './comps/wrapper.scss';
+@import './fonts.scss';
+@import 'animate.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    font-size: 100%;
+  }
+
+  body {
+    font-family: 'freeset';
+    font-weight: 400;
+    @apply tw-text-body_m tw-text-text00 tw-bg-base00;
+  }
+
+  input:focus {
+    outline: none;
+  }
+}
+
+@layer utilities {
+  .transition-base {
+    @apply tw-duration-500 tw-ease-in-out;
+  }
+
+  .anim-500ms {
+    --animate-duration: 500ms;
+  }
+
+  .anim-300ms {
+    --animate-duration: 300ms;
+  }
+
+  .anim-200ms {
+    --animate-duration: 200ms;
+  }
+
+  .anim-100ms {
+    --animate-duration: 100ms;
+  }
+}
