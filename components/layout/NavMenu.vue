@@ -127,14 +127,14 @@
       display: grid;
       grid-template-columns: 100%;
 
-      @screen lg {
+      @include lg {
         grid-template-columns: repeat(3, 1fr);
         column-gap: 20px;
         row-gap: 64px;
         padding: 40px 40px;
       }
 
-      @screen xl {
+      @include xl {
         grid-template-columns: repeat(4, 1fr);
         padding: 64px 40px;
       }
@@ -155,7 +155,7 @@
     &__banner {
       grid-column: 1 / span 3;
 
-      @screen xl {
+      @include xl {
         grid-column: span 2;
       }
     }
@@ -168,11 +168,11 @@
     border-radius: 16px;
     @apply tw-text-white;
 
-    @screen lg {
+    @include lg {
       padding: 40px;
     }
 
-    @screen xl {
+    @include xl {
       padding: 24px;
     }
 
@@ -180,8 +180,6 @@
       @apply tw-text-2xl lg:tw-text-h5 tw-mb-4;
 
     }
-
-
 
     &__img {
       border-radius: 16px;
@@ -192,7 +190,7 @@
     }
 
     &__wrap {
-      @screen lg {
+      @include lg {
         display: flex;
         flex-wrap: wrap;
         align-items: center;
@@ -201,19 +199,19 @@
     }
 
     &__text {
-      @screen lg {
+      @include lg {
         flex-grow: 1;
       }
     }
 
     &__action {
       margin-top: 40px;
-      @screen lg {
+      @include lg {
         margin-top: 0px;
         flex-grow: 0;
       }
 
-      @screen xl {
+      @include xl {
         margin-top: 56px;
         width: 100%;
       }
@@ -221,7 +219,7 @@
 
     &__link {
       @apply tw-w-full;
-      @screen lg {
+      @include lg {
         width: auto;
       }
     }
