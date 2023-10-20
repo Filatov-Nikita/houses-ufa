@@ -65,6 +65,13 @@ export default defineNuxtConfig({
         customDomId: '__svg__icons__dom__',
       }),
     ],
+    css: {
+      preprocessorOptions: {
+        scss: {
+          additionalData: '@use "@/assets/css/mixins/screens.scss" as *;'
+        }
+      }
+    },
     // vue: {
     //   script: {
     //     fs: {
