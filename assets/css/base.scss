@@ -1,0 +1,15 @@
+@layer base {
+  html {
+    font-size: 100%;
+  }
+
+  body {
+    font-family: 'freeset';
+    font-weight: 400;
+    @apply tw-text-body_m tw-text-text00 tw-bg-base00;
+  }
+
+  input:focus {
+    outline: none;
+  }
+}
