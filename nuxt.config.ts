@@ -38,6 +38,7 @@ export default defineNuxtConfig({
     modules: ['navigation', 'pagination'],
   },
   plugins: [
+    '~/plugins/maska.ts',
     '~/plugins/vee-validate.ts',
     '~/directives/click-outside.ts',
     '~/directives/pretty.ts',

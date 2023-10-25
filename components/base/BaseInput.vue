@@ -8,6 +8,8 @@
       :placeholder="placeholder"
       :type="type"
       :disabled="disabled"
+      v-maska
+      :data-maska="maska"
       v-model="value"
     >
     <transition
@@ -34,13 +36,14 @@
     type?: string,
     disabled?: boolean,
     theme?: 'white' | 'gray',
-    inputClass?:  string
+    inputClass?:  string,
+    maska?: string
   }
 
   const props = withDefaults(defineProps<Props>(), {
     theme: 'gray',
     type: 'text',
-    disabled: false
+    disabled: false,
   });
 
   const { value, errorMessage } = useField(props.name, props.rules, {
