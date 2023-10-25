@@ -16,15 +16,18 @@
         <p class="params-block__value">{{ data?.area_calc }} м<sup>2</sup></p>
       </div>
     </div>
-    <BaseButton class="project-info__callback">
+    <BaseButton class="project-info__callback" @click="showedConsult = true">
       Получить консультацию
     </BaseButton>
+    <ConsultForm v-model:showed="showedConsult" />
   </div>
 </template>
 
 <script setup lang="ts">
   import { useProjectCard } from '../store';
+  import ConsultForm from '@/other-modules/consult-form/index.vue';
 
+  const showedConsult = ref(false);
   const projectCard = useProjectCard();
 
   const data = computed(() => projectCard.projectData?.data);
