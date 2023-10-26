@@ -22,7 +22,7 @@ const props = withDefaults(
 </script>
 <style lang="scss" scoped>
 .card {
-  @apply tw-bg-white tw-p-4 tw-py-6 lg:tw-p-12 tw-rounded-2xl tw-w-full lg:tw-w-[668px] tw-overflow-hidden;
+  @apply tw-bg-white tw-p-4 tw-py-6 lg:tw-p-12 tw-rounded-2xl tw-w-full lg:tw-w-[668px];
   &__wrapper {
     @apply tw-relative tw-h-full;
   }
