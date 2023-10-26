@@ -20,16 +20,16 @@
   const props = defineProps<{ town: Town }>();
 
   const name = computed(() => {
-    return `${props.town.project.name}, ${props.town.area_cottage} м2`
+    return `${props.town.layout.name_alias}, ${props.town.area_cottage} м2`
   });
 
   const params = computed(() => {
     return [
-      `Этаж ${props.town.number_of_floors}`,
+      `Этаж ${props.town.layout.number_of_floors}`,
     ]
   });
 
-  const images = computed(() => props.town.feed_images.map(img => img.url));
+  const images = computed(() => props.town.layout.images.map(img => img.url));
 
   const complexName = computed(() => {
     return props.town.town.name;
