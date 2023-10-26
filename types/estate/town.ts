@@ -1,6 +1,5 @@
 export interface Town {
   id:               number;
-  area_cottage:     string;
   area_land:        string;
   is_in_promotion:  boolean;
   number:           string;

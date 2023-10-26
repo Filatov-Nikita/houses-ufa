@@ -20,7 +20,7 @@
   const props = defineProps<{ town: Town }>();
 
   const name = computed(() => {
-    return `${props.town.layout.name_alias}, ${props.town.area_cottage} м2`
+    return `${props.town.layout.name_alias}, ${props.town.layout.area_cottage} м2`
   });
 
   const params = computed(() => {
