@@ -6,7 +6,6 @@ import path from 'path';
 export default defineNuxtConfig({
   ssr: true,
   app: {
-
     head: {
       script: [
         {
@@ -22,11 +21,6 @@ export default defineNuxtConfig({
       baseURL: 'http://31.129.104.95/api/lobby/'
     }
   },
-  // components: [
-  //   '~/components/base',
-  //   '~/components/base/BaseSelect/displays',
-  //   '~/components/base/BaseSelect/dropdowns',
-  // ],
   pinia: {
     autoImports: [
       // automatically imports `defineStore`
@@ -73,17 +67,5 @@ export default defineNuxtConfig({
         }
       }
     },
-    // vue: {
-    //   script: {
-    //     fs: {
-    //       fileExists(file: string) {
-    //         return existsSync(file);
-    //       },
-    //       readFile(file: string) {
-    //         return readFileSync(file, "utf-8");
-    //       },
-    //     },
-    //   },
-    // },
   }
 })
