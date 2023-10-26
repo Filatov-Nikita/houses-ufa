@@ -1,7 +1,11 @@
 import type { MenuItem } from '../../types';
-import { type ComplexItem } from '@/stores/complexes';
 
-export function estateToLink(item: ComplexItem, path: string): MenuItem {
+interface EstateOne {
+  id: number,
+  name: string,
+}
+
+export function estateToLink<T extends EstateOne>(item: T, path: string): MenuItem {
   return {
     label: item.name,
     to: `${path}/${item.id}`,
