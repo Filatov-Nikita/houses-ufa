@@ -29,7 +29,7 @@
     ]
   });
 
-  const images = computed(() => props.town.layout.images.map(img => img.url));
+  const images = computed(() => props.town.layout.feed_images.map(img => img.url));
 
   const complexName = computed(() => {
     return props.town.town.name;

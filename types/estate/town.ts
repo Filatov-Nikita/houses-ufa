@@ -27,4 +27,5 @@ export interface Layout {
   number_of_floors: number;
   number_of_owners: number;
   images:           Image[];
+  feed_images:      Image[];
 }
