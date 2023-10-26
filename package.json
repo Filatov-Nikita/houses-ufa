@@ -27,7 +27,7 @@
     "@vee-validate/rules": "^4.11.7",
     "animate.css": "^4.1.1",
     "maska": "^2.1.10",
-    "nuxt-swiper": "^1.2.0",
+    "nuxt-swiper": "^1.2.2",
     "pinia": "^2.1.4",
     "sass": "^1.63.6",
     "sass-loader": "^13.3.2",
