@@ -126,15 +126,21 @@
   });
 
   const roomsBtns = [
-    { label: 'Студия', value: 'number_of_rooms_studio' },
-    { label: '1', value: 'number_of_rooms_one' },
-    { label: '2', value: 'number_of_rooms_two' },
+    { label: 'С', value: 'room_factor_studio' },
+    { label: '1', value: 'room_factor_one_classic' },
+    { label: '2С', value: 'room_factor_two_smart' },
+    { label: '2', value: 'room_factor_two_classic' },
+    { label: '3С', value: 'room_factor_three_smart' },
+    { label: '3', value: 'room_factor_three_classic' },
   ];
 
   const roomsCurrent = computed(() => {
-    if(filterParams.number_of_rooms_studio) return roomsBtns[0];
-    else if(filterParams.number_of_rooms_one) return roomsBtns[1];
-    else if(filterParams.number_of_rooms_two) return roomsBtns[2];
+    if(filterParams.room_factor_studio) return roomsBtns[0];
+    else if(filterParams.room_factor_one_classic) return roomsBtns[1];
+    else if(filterParams.room_factor_two_smart) return roomsBtns[2];
+    else if(filterParams.room_factor_two_classic) return roomsBtns[3];
+    else if(filterParams.room_factor_three_smart) return roomsBtns[4];
+    else if(filterParams.room_factor_three_classic) return roomsBtns[5];
   });
 
   const square = computed<[NumOrNull, NumOrNull] | null>(() => {
@@ -199,17 +205,30 @@
   }
 
   function updateRooms(val: typeof roomsBtns[number]): void {
-    filterParams.number_of_rooms_studio =
-    filterParams.number_of_rooms_one =
-    filterParams.number_of_rooms_two = null;
-
-    if(val.value === 'number_of_rooms_studio') {
-      filterParams.number_of_rooms_studio = 1;
-    } else if(val.value === 'number_of_rooms_one') {
-      filterParams.number_of_rooms_one = 1;
-    } else if(val.value === 'number_of_rooms_two') {
-      filterParams.number_of_rooms_two = 1;
+    clearRooms();
+    switch (val.value) {
+      case 'room_factor_studio':
+        filterParams.room_factor_studio = 1; break;
+      case 'room_factor_one_classic':
+        filterParams.room_factor_one_classic = 1; break;
+      case 'room_factor_two_smart':
+        filterParams.room_factor_two_smart = 1; break;
+      case 'room_factor_two_classic':
+        filterParams.room_factor_two_classic = 1; break;
+      case 'room_factor_three_smart':
+        filterParams.room_factor_three_smart = 1; break;
+      case 'room_factor_three_classic':
+        filterParams.room_factor_three_classic = 1; break;
     }
+  }
+
+  function clearRooms(): void {
+    filterParams.room_factor_studio =
+    filterParams.room_factor_one_classic =
+    filterParams.room_factor_two_smart =
+    filterParams.room_factor_two_classic =
+    filterParams.room_factor_three_smart =
+    filterParams.room_factor_three_classic = null;
   }
 
   function selectProps<T extends { name: string, id: number }>(options: T[]) {
