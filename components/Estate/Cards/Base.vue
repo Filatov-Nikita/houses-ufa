@@ -2,7 +2,7 @@
   <NuxtLink
     class="estate-card"
     :class="`estate-card--${theme}`"
-    to="/"
+    :to="to"
   >
     <div class="estate-card__header">
       <div class="estate-card__top">
@@ -26,10 +26,12 @@
     name: string,
     params: string[],
     images: string | string[],
+    to?: string,
   }
 
   withDefaults(defineProps<Props>(), {
     theme: 'white',
+    to: '/',
   });
 </script>
 

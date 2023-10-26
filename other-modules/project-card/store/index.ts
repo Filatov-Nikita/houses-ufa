@@ -10,6 +10,7 @@ const useProjectCard = defineStore('projectCard', () => {
 
   const { data: projectData, pending: loading, execute: showProject, error } = useDataFetch<ProjectCard>(url, {
     immediate: false,
+    watch: false,
   });
 
   const planImages = computed(() => {

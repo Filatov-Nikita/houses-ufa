@@ -2,7 +2,9 @@
   <div class="project-card">
     <Header class="project-card__header" />
     <div class="project-card__grid">
-      <Image class="project-card__left" />
+      <div class="project-card__left">
+        <Image />
+      </div>
       <ParamsInfo class="project-card__right" />
     </div>
   </div>
@@ -18,10 +20,12 @@
 
   const route = useRoute();
 
-  await useAsyncData(() => {
+  function load() {
     projectCard.setProjectId(+route.params.id);
     return projectCard.showProject();
-  });
+  }
+
+  await useAsyncData(() => load());
 </script>
 
 <style scoped lang="scss">
