@@ -50,7 +50,7 @@ export function useSeqDataFetch<T>(url: string | Ref<string>, options: UseFetchO
 
         const chunk = await $fetch<Response<T[]>>(unref(url), {
           baseURL: config.public.baseURL,
-          query: Object.assign(oldQuery ?? {}, { page: page.value }),
+          query: Object.assign(oldQuery ?? { ...query.value }, { page: page.value }),
         });
 
         setMeta(chunk.meta);
