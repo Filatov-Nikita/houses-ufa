@@ -4,10 +4,12 @@ import type { Project } from '@/types/estate/project';
 
 export const useProjectList = defineStore('projectList', () => {
   const type = ref<Types>('all');
+  const executeId = ref<number | undefined>();
 
   const query = computed(() => {
-    const params: any = {};
+    const params: any = { per_page: 4 };
     if(type.value !== 'all') params.type = type.value;
+    if(executeId.value !== undefined) params.exclude_id = executeId.value;
     return params;
   });
 
@@ -25,6 +27,7 @@ export const useProjectList = defineStore('projectList', () => {
     loadingNext,
     pagination,
     type,
+    executeId,
     next,
     show: response.execute,
   }
