@@ -32,11 +32,11 @@
 <script setup lang="ts">
   import ArticleItem from '@/components/Articles/Item.vue';
   import Paginate from './Paginate.vue';
-  import type { ArticlesResponse } from '../store';
+  import type { ArticlesListResponse } from '@/types/articles';
 
   interface Props {
     loading: boolean,
-    articles: ArticlesResponse | null,
+    articles: ArticlesListResponse | null,
   }
 
   const props = defineProps<Props>();

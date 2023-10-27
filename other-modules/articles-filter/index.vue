@@ -14,4 +14,6 @@
 
   const loading = computed(() => filter.loading);
   const articles = computed(() => filter.articles);
+
+  await useAsyncData(() => filter.show());
 </script>

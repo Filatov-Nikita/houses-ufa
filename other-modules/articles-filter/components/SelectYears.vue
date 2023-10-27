@@ -26,24 +26,20 @@
     return list;
   }
 
-  function getFullYear(year: number) {
-    return `${year}-01-01`;
-  }
-
   const options = computed(() => {
     return [
       { label: 'Все года' , value: null },
       ...getOptions()
-      .map( year => ({ label: year.toString(), value: getFullYear(year) }) ),
+      .map( year => ({ label: year.toString(), value: year.toString() }) ),
     ];
   });
 
   const current = computed(() => {
-    return options.value.find((opts) => opts.value === filter.params.date) ?? null
+    return options.value.find((opts) => opts.value === filter.params.year_eq) ?? null
   });
 
   function updateValue(val: { label: string, value: string | null } | null) {
-    filter.params.date = val?.value ?? null;
+    filter.params.year_eq = val?.value ?? null;
   }
 
   function selectProps<T extends { label: string, value: string | null }>(options: T[]) {

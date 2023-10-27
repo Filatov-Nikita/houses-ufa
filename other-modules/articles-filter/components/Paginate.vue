@@ -2,8 +2,9 @@
   <LoadMoreBtn
     v-if="!pagination.isLast && meta"
     :total="meta.total"
-    :loaded="meta.from"
-    @click="pagination.next()"
+    :loaded="meta.to"
+    :loading="filter.loadingNext"
+    @click="filter.next"
   />
 </template>
 
