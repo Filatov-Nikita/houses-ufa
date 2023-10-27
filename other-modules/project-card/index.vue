@@ -25,7 +25,7 @@
     return projectCard.showProject();
   }
 
-  await useAsyncData(() => load());
+  await useAsyncData(() => load(), { lazy: true });
 </script>
 
 <style scoped lang="scss">
