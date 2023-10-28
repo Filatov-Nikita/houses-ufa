@@ -1,4 +1,5 @@
 <script lang="ts">
+// @ts-nocheck
 import { Transition, KeepAlive } from 'vue';
 
 export default defineComponent({
@@ -23,12 +24,25 @@ export default defineComponent({
   render() {
     const slotDefault = this.$slots.default;
 
+    const filter = (list) => {
+      let newElelents = [];
+
+      list.forEach((el) => {
+        if(typeof el.type !== 'object') {
+          const newEl = Object.assign({}, el, { children: filter(el.children) });
+          newElelents.push(newEl);
+        } else {
+          newElelents = list.filter((el) => el.props?.name === this.modelValue);
+        }
+      });
+
+      return newElelents;
+    }
+
     const newSlots = () => {
       if(slotDefault === undefined) return undefined;
       const elements = slotDefault();
-      const filterdElements = elements
-        .filter((el) => el.props?.name === this.modelValue);
-
+      const filterdElements = filter(elements);
       return filterdElements.length === 0 ? undefined : filterdElements;
     };
 
