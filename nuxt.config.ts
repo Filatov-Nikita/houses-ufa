@@ -29,7 +29,7 @@ export default defineNuxtConfig({
     ],
   },
   swiper: {
-    modules: ['navigation', 'pagination'],
+    modules: ['navigation', 'pagination', 'effect-fade'],
   },
   plugins: [
     '~/plugins/maska.ts',

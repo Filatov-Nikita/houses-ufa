@@ -1,9 +1,16 @@
 <template>
-  <Swiper class="estate-image-slider" v-bind="swiperProps">
+  <Swiper
+    class="estate-image-slider"
+    v-bind="swiperProps"
+    :effect="effect"
+    :fadeEffect="fadeEffect"
+  >
     <SwiperSlide class="estate-image-slider__slide" v-for="image in images">
       <img
         class="estate-image-slider__img"
+        :class="imgClasses"
         :src="image"
+        loading="lazy"
       />
     </SwiperSlide>
     <NavBtns />
@@ -15,13 +22,16 @@
   import NavBtns from '@/components/sliders/NavBtns.vue';
 
   interface Props {
-    images: Array<string>
+    images: Array<string>,
+    imgClasses?: string,
+    effect?: string,
+    fadeEffect?: { crossFade: boolean },
   }
 
   defineProps<Props>();
 
   const swiperProps = {
-    modules: [SwiperPagination, SwiperNavigation],
+    modules: [SwiperPagination, SwiperNavigation, SwiperEffectFade],
     spaceBetween: 24,
     pagination: {
       type: 'bullets',
