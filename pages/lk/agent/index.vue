@@ -23,6 +23,7 @@
 <script setup lang="ts">
 definePageMeta({
   layout: 'lk',
+  middleware: ['auth'],
 })
 const residentialComplexs = [
   {

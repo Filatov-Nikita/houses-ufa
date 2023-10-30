@@ -70,7 +70,9 @@
             </div>
           </div>
           <div class="tw-flex tw-gap-2">
-            <BaseButton paddingClasses=" tw-px-4 tw-py-2"
+            <BaseButton
+              paddingClasses=" tw-px-4 tw-py-2"
+              @click="checkModal = true"
               >Проверить клиента</BaseButton
             >
 
@@ -85,11 +87,82 @@
       </div>
     </div>
   </section>
+  <BaseModal v-model="checkModal">
+    <div class="tw-w-[668px]">
+      <div class="tw-p-12 tw-bg-white tw-rounded-2xl">
+        <div class="tw-flex tw-justify-between tw-items-start tw-mb-8">
+          <div>
+            <h2 class="tw-text-h4 tw-mb-2">Проверить клиента</h2>
+            <p class="tw-text-text02">
+              Введите номер телефона потенциального <br />
+              клиента для проверки его в базе
+            </p>
+          </div>
+          <button
+            class="tw-rounded-lg tw-p-3 tw-bg-base00 tw-w-fitt"
+            @click="checkModal = false"
+          >
+            <BaseIcon name="close" class="tw-w-6 tw-h-6" />
+          </button>
+        </div>
+        <form class="tw-grid tw-gap-8">
+          <div class="tw-flex tw-justify-between">
+            <div class="tw-flex tw-gap-4">
+              <div
+                class="tw-w-[56px] tw-h-[56px] tw-rounded-lg tw-overflow-hidden tw-bg-base00 tw-grid tw-place-content-center tw-p-2"
+              >
+                <img src="/images/img/plan-apartment.png" alt="" />
+              </div>
+              <div class="tw-grid tw-content-between">
+                <div class="tw-text-body_l">1-комнатная, 36 м²</div>
+                <div class="tw-text-body_s -tw-tracking-875 tw-text-text02">
+                  2 этаж из 17 · Литер 1 · Михайловка Green Place
+                </div>
+              </div>
+            </div>
+            <div class="tw-text-h6">20 256 296 ₽</div>
+          </div>
+          <div class="tw-grid tw-gap-5">
+            <div class="tw-grid tw-grid-cols-2 tw-gap-5">
+              <BaseInput
+                name="phone1"
+                label="Телефон 1"
+                placeholder="+7 (|999) 999-99-99"
+                v-model="client.phone1"
+              />
+              <BaseInput
+                name="phone2"
+                label="Телефон 2"
+                placeholder="+7 (|999) 999-99-99"
+                v-model="client.phone2"
+              />
+            </div>
+
+            <BaseSelect
+              label="Связь между телефоном 1 и 2"
+              name="connection"
+              :drop-down-props="{
+                options: [{ label: 'Брат/сестра - брат/сестра', value: '1' }],
+              }"
+              v-model="client.connection"
+            />
+          </div>
+          <BaseButton theme="gray">Проверить клиента</BaseButton>
+        </form>
+      </div>
+    </div>
+  </BaseModal>
 </template>
 <script setup lang="ts">
 definePageMeta({
   layout: 'lk',
 })
+const client = ref({
+  phone1: '',
+  phone2: '',
+  connection: '',
+})
 const favorites = [{}]
+const checkModal = ref(true)
 </script>
 <style lang="scss" scoped></style>

@@ -1,7 +1,7 @@
 <template>
   <section class="card-wrapper tw-min-h-[648px]">
     <div
-      v-if="true"
+      v-if="false"
       class="tw-grid tw-h-full tw-w-full tw-place-content-center tw-justify-items-center"
     >
       <div class="tw-mb-12 tw-text-center">
@@ -67,16 +67,20 @@
             <div>{{ item.phone }}</div>
             <div>{{ item.apartment }}</div>
             <div class="tw-flex tw-gap-2 tw-justify-center">
-              <button
-                class="tw-rounded-lg tw-px-3 tw-py-2 tw-bg-base00 tw-opacity-50"
-              >
-                Бронь
-              </button>
-              <button
-                class="tw-rounded-lg tw-px-3 tw-py-2 tw-bg-base00 tw-opacity-50"
-              >
-                Ипотека
-              </button>
+              <NuxtLink to="clients/booking/[1]">
+                <button
+                  class="tw-rounded-lg tw-px-3 tw-py-2 tw-bg-base00 tw-opacity-50"
+                >
+                  Бронь
+                </button>
+              </NuxtLink>
+              <NuxtLink to="clients/ipoteka/[1]">
+                <button
+                  class="tw-rounded-lg tw-px-3 tw-py-2 tw-bg-base00 tw-opacity-50"
+                >
+                  Ипотека
+                </button>
+              </NuxtLink>
             </div>
           </div>
           <div

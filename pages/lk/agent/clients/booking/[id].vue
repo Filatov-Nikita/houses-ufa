@@ -428,6 +428,7 @@
 <script setup lang="ts">
 definePageMeta({
   layout: 'lk',
+  parent: 'clients',
 })
 const states = ref<{
   deadline: 'not' | 'active' | 'success'

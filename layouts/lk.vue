@@ -5,14 +5,14 @@
       <div>
         <div class="tw-grid tw-gap-3 tw-content-start">
           <NuxtLink
-            to="/"
-            class="tw-flex tw-gap-4 tw-px-4 tw-py-2 tw-rounded-lg"
-            v-for="item in lkLinks"
+            class="link"
+            :class="{ active: $route.meta?.parent === item.meta }"
+            v-for="item in lkLinksAgent"
+            :to="item.to"
+            exactActiveClass="active"
           >
-            <BaseIcon :name="item.icon" class="tw-w-6 tw-h-6 tw-text-icon" />
-            <span
-              class="tw-text-body_s -tw-tracking-875 tw-text-text02 tw-whitespace-nowrap"
-            >
+            <BaseIcon :name="item.icon" class="link__icon" />
+            <span class="link__title">
               {{ item.name }}
             </span>
           </NuxtLink>
@@ -78,7 +78,6 @@ import ModalCallback from '../components/modals/Form.vue'
 import { useAppStore } from '@/stores/app'
 import { useComplexesStore } from '@/stores/complexes'
 import { useTownsStore } from '@/stores/towns'
-
 const complexesStore = useComplexesStore()
 const townsStore = useTownsStore()
 const appStore = useAppStore()
@@ -92,41 +91,67 @@ function updateCallback(val: boolean) {
   appStore.showedCallback = val
 }
 
-const lkLinks = [
+const lkLinksAgent = [
   {
-    to: '/',
+    to: '/lk/agent',
+    meta: null,
     name: 'Объекты',
     icon: 'house',
   },
   {
-    to: '/',
+    to: '/lk/agent/action',
+    meta: null,
     name: 'Акции',
     icon: 'gift',
   },
   {
-    to: '/',
+    to: '/lk/agent/rating',
+    meta: null,
     name: 'Рейтинги',
     icon: 'chart-bar',
   },
   {
-    to: '/',
+    to: '/lk/agent/report',
+    meta: null,
     name: 'Отчет агентства',
     icon: 'file',
   },
   {
-    to: '/',
+    to: '/lk/agent/favorites',
+    meta: null,
     name: 'Избранное',
     icon: 'heart',
   },
   {
-    to: '/',
+    to: '/lk/agent/clients',
+    meta: 'clients',
     name: 'Клиенты',
     icon: 'handshake',
   },
   {
-    to: '/',
+    to: '/lk/agent/profile',
+    meta: null,
     name: 'Профиль',
     icon: 'user',
   },
 ]
 </script>
+<style lang="scss">
+.link {
+  @apply tw-flex tw-gap-4 tw-px-4 tw-py-2 tw-rounded-lg;
+  &__icon {
+    @apply tw-w-6 tw-h-6 tw-text-icon;
+    @apply tw-transition-colors tw-duration-300 tw-ease-in-out;
+  }
+  &__title {
+    @apply tw-text-body_s -tw-tracking-875 tw-text-text02 tw-whitespace-nowrap;
+    @apply tw-transition-colors tw-duration-300 tw-ease-in-out;
+  }
+  &.active &__icon {
+    @apply tw-text-primary;
+  }
+  &.active &__title {
+    @apply tw-text-text01;
+  }
+}
+</style>

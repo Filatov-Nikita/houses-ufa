@@ -1,6 +1,10 @@
 <template>
   <section class="card-wrapper">
-    <div class="tw-flex tw-gap-2 tw-items-center tw-mb-6">
+    {{ $route.meta }}
+    <div
+      class="tw-flex tw-gap-2 tw-items-center tw-cursor-pointer tw-mb-6"
+      @click="$router.go(-1)"
+    >
       <BaseIcon name="back-line" class="tw-w-6 tw-h-6" />
       Вернуться назад
     </div>
@@ -515,7 +519,9 @@
 <script setup lang="ts">
 definePageMeta({
   layout: 'lk',
+  parent: 'clients',
 })
+
 const states = ref<{
   parametrs: 'not' | 'active' | 'success'
   data: 'not' | 'active' | 'success'
