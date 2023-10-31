@@ -1,0 +1,52 @@
+<template>
+  <BaseWait :waiting="loading">
+    <template #loader>
+      <BaseSkeleton class="tw-w-full tw-h-80 tw-rounded-xl" />
+    </template>
+    <div v-if="isEmpty">Не найдено ни одного объекта</div>
+    <Swiper v-else-if="filter.filterType === 'flats'" v-bind="swiperProps">
+      <SwiperSlide v-for="flat in filter.flats" :key="flat.id">
+        <FlatItem :flat="flat" />
+      </SwiperSlide>
+      <NavBtns />
+      <div class="swiper-pagination estate-image-slider__pag"></div>
+    </Swiper>
+    <Swiper v-else-if="filter.filterType === 'towns'" v-bind="swiperProps">
+      <SwiperSlide v-for="town in filter.towns" :key="town.id">
+        <TownItem :town="town" />
+      </SwiperSlide>
+      <NavBtns />
+      <div class="swiper-pagination estate-image-slider__pag"></div>
+    </Swiper>
+  </BaseWait>
+</template>
+
+<script setup lang="ts">
+  import { useEstateSaleList } from '../store';
+  import FlatItem from './FlatItem.vue';
+  import TownItem from './TownItem.vue';
+  import NavBtns from '@/components/sliders/NavBtns.vue';
+
+  const filter = useEstateSaleList();
+  const isEmpty = computed(() => filter.currentFilter.data.value?.data.length === 0);
+  const loading = computed(() => filter.currentFilter.pending.value);
+
+  const swiperProps = {
+    modules: [SwiperPagination, SwiperNavigation],
+    spaceBetween: 20,
+    slidesPerView: 4,
+    pagination: {
+      type: 'bullets',
+      el: '.swiper-pagination',
+      dynamicBullets: true,
+    } as const,
+    navigation: {
+      nextEl: '.swiper-next',
+      prevEl: '.swiper-prev',
+    } as const,
+  };
+</script>
+
+<style scoped lang="scss">
+
+</style>
