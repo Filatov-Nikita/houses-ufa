@@ -20,16 +20,18 @@ export interface Params {
 const useFilterParams = defineStore('filterParams', () => {
   const route = useRoute();
 
-  const values = initValues(initParams(), {
-    area_min: (val) => +val,
-    area_max: (val) => +val,
-    object_id: (val) => +val,
-    number_of_floors_min: (val) => +val,
-    number_of_floors_max: (val) => +val,
-    is_in_promotion_only: (val) => +val
-  }, route.query);
+  const params: Params = reactive(init());
 
-  const params: Params = reactive(values);
+  function init() {
+    return initValues(initParams(), {
+      area_min: (val) => +val,
+      area_max: (val) => +val,
+      object_id: (val) => +val,
+      number_of_floors_min: (val) => +val,
+      number_of_floors_max: (val) => +val,
+      is_in_promotion_only: (val) => +val
+    }, route.query);
+  }
 
   function clearParams() {
     Object.assign(params, initParams());
@@ -51,6 +53,7 @@ const useFilterParams = defineStore('filterParams', () => {
 
   return {
     params,
+    init,
     clearParams
   }
 });

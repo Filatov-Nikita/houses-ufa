@@ -69,16 +69,13 @@ const useMainFilter = defineStore('mainFilter', () => {
     flatFilter.clearParams();
   }
 
-  watch(filterType, () => {
-    filterParams.params.object_id = null
-    filterParams.params.order_by_direction = null
-    filterParams.params.order_by_field = null
-  });
-
-  watch(filterType, (val) => {
-    if(val === 'out-city-flats') flatFilter.params.is_in_city = 1;
-    else flatFilter.params.is_in_city = 0;
-  });
+  function init() {
+    filterType.value = initType();
+    showedType.value = filterType.value;
+    Object.assign(filterParams.params, filterParams.init());
+    Object.assign(flatFilter.params, flatFilter.init());
+    Object.assign(townFilter.params, townFilter.init());
+  }
 
   watch([
     filterType,
@@ -113,6 +110,7 @@ const useMainFilter = defineStore('mainFilter', () => {
     show,
     next,
     clear,
+    init,
   }
 });
 

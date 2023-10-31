@@ -5,7 +5,7 @@ import { useFilterParams } from '../filter-params';
 
 const useFlatsFilter = defineStore('flatsFilter', () => {
   const globalParams = useFilterParams();
-  const { params, clearParams, queryParams } = useParams(globalParams.params);
+  const { params, clearParams, queryParams, init } = useParams(globalParams.params);
   const { flats, loading, loadingNext, pagination, show, next } = useFlats(queryParams);
 
   return {
@@ -16,6 +16,7 @@ const useFlatsFilter = defineStore('flatsFilter', () => {
     loadingNext,
     show,
     next,
+    init,
     clearParams,
   }
 });

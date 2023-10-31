@@ -5,7 +5,7 @@ import { useFilterParams } from '../filter-params';
 
 const useTownsFilter = defineStore('townsFilter', () => {
   const globalParams = useFilterParams();
-  const { params, queryParams, clearParams } = useParams(globalParams.params);
+  const { params, queryParams, clearParams, init } = useParams(globalParams.params);
   const { towns, loading, loadingNext, pagination, show, next } = useTowns(queryParams);
 
   return {
@@ -16,6 +16,7 @@ const useTownsFilter = defineStore('townsFilter', () => {
     pagination,
     show,
     next,
+    init,
     clearParams
   }
 });

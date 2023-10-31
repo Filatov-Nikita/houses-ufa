@@ -26,12 +26,14 @@ export type QueryParams = Partial<{
 export function useParams(globalParams: Params) {
   const route = useRoute();
 
-  const values = initValues(initParams(), {
-    area_land_min: (val) => +val,
-    area_land_max: (val) => +val,
-  }, route.query);
+  const params: TownParams = reactive(init());
 
-  const params: TownParams = reactive(values);
+  function init() {
+    return initValues(initParams(), {
+      area_land_min: (val) => +val,
+      area_land_max: (val) => +val,
+    }, route.query);
+  }
 
   function clearParams(): void {
     Object.assign(params, initParams());
@@ -61,6 +63,7 @@ export function useParams(globalParams: Params) {
   return {
     params,
     queryParams,
+    init,
     clearParams
   }
 }

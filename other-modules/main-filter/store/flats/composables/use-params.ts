@@ -34,21 +34,25 @@ export type QueryParams = Partial<{
 export function useParams(globalParams: Params) {
   const route = useRoute();
 
-  const values = initValues(initParams(), {
-    is_in_city: (val) => +val,
-    room_factor_studio: (val) => +val,
-    room_factor_one_classic: (val) => +val,
-    room_factor_two_smart: (val) => +val,
-    room_factor_two_classic: (val) => +val,
-    room_factor_three_smart: (val) => +val,
-    room_factor_three_classic: (val) => +val,
-    price_max: (val) => +val,
-    price_min: (val) => +val,
-  }, route.query);
+  function init() {
+    const values = initValues(initParams(), {
+      is_in_city: (val) => +val,
+      room_factor_studio: (val) => +val,
+      room_factor_one_classic: (val) => +val,
+      room_factor_two_smart: (val) => +val,
+      room_factor_two_classic: (val) => +val,
+      room_factor_three_smart: (val) => +val,
+      room_factor_three_classic: (val) => +val,
+      price_max: (val) => +val,
+      price_min: (val) => +val,
+    }, route.query);
 
-  roomsInit(values);
+    roomsInit(values);
 
-  const params: FlatParams = reactive(values);
+    return values;
+  }
+
+  const params: FlatParams = reactive(init());
 
   function clearParams(): void {
     Object.assign(params, initParams());
@@ -102,6 +106,7 @@ export function useParams(globalParams: Params) {
   return {
     params,
     queryParams,
+    init,
     clearParams
   }
 }
