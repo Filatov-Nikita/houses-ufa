@@ -55,6 +55,12 @@
     disabled: false,
   });
 
+  const emit = defineEmits<{
+    (event: 'afterManipulate', val: ModelValue): void,
+    (event: 'change', val: ModelValue): void,
+    (event: 'update:modelValue', val: ModelValue): void,
+  }>();
+
   const controlsRef = ref<HTMLElement | null>(null);
 
   const { value, handleChange } = useField(props.name, undefined, {
@@ -84,11 +90,16 @@
     return withInsertedLabel(value.value);
   });
 
+  function change(): void {
+    emit('change', value.value);
+  }
+
   function onChange(e: Event) {
     const target = e.target as HTMLInputElement;
     const value = target.value;
     const newVal = value === '' ? null : +cutNotNumeric(value);
     setVal(newVal);
+    change();
     nextTick(() => {
       target.value = val.value;
     })
@@ -152,7 +163,11 @@
     handRef.style.transform = `translateX(${x}px)`;
   }
 
-  const { onMousedown, onTouchdown } = useMovable(onMove);
+  function afterManipulate() {
+    emit('afterManipulate', value.value);
+  }
+
+  const { onMousedown, onTouchdown } = useMovable(onMove, afterManipulate);
 </script>
 
 <style lang="scss" src="./scss/index.scss"></style>
