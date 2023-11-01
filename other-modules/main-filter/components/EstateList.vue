@@ -60,7 +60,7 @@
 
   const flats = computed(() => flatsFilter.data?.data ?? []);
   const towns = computed(() => townsFilter.data?.data ?? []);
-  const isEmpty = computed(() => mainFilter.currentFilter.data?.data.length === 0);
+  const isEmpty = computed(() => mainFilter.currentFilter.data?.data?.length === 0);
 
   const showedFlats = computed(() => {
     return mainFilter.showedType === 'flats' ||

@@ -28,7 +28,7 @@
   import NavBtns from '@/components/sliders/NavBtns.vue';
 
   const filter = useEstateSaleList();
-  const isEmpty = computed(() => filter.currentFilter.data.value?.data.length === 0);
+  const isEmpty = computed(() => filter.currentFilter.data.value?.data?.length === 0);
   const loading = computed(() => filter.currentFilter.pending.value);
 
   const swiperProps = {

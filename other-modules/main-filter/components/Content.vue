@@ -19,7 +19,7 @@
     contentRef.value.scrollIntoView({ behavior: 'smooth' })
   }
 
-  await useAsyncData(() => mainFilter.show());
+  await useAsyncData(() => mainFilter.show(), { lazy: true });
 
   watch(() => mainFilter.loading, (val) => {
     if(val) {
