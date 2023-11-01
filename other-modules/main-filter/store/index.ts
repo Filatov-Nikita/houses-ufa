@@ -4,8 +4,7 @@ import { useTownsStore } from '@/stores/towns';
 import { useFilterParams } from './filter-params';
 import { useFlatsFilter } from './flats';
 import { useTownsFilter } from './towns';
-import { useRoute, useRouter } from 'vue-router';
-import { notNullable, recordToNull } from './helpers'
+import { useRoute } from 'vue-router';
 
 type CurrentTypes = 'flats' | 'towns' | 'out-city-flats';
 
@@ -16,7 +15,6 @@ const useMainFilter = defineStore('mainFilter', () => {
   const flatFilter = useFlatsFilter();
   const townFilter = useTownsFilter();
   const route = useRoute();
-  const router = useRouter();
 
   const filterType = ref<CurrentTypes>(initType());
   const showedType = ref<CurrentTypes>(filterType.value);
@@ -76,24 +74,6 @@ const useMainFilter = defineStore('mainFilter', () => {
     Object.assign(flatFilter.params, flatFilter.init());
     Object.assign(townFilter.params, townFilter.init());
   }
-
-  watch([
-    filterType,
-    () => filterParams.params,
-    () => flatFilter.params,
-    () => townFilter.params,
-  ], () => {
-    const newQuery = notNullable(Object.assign(
-      {},
-      route.query,
-      filterParams.params,
-      isFlat.value ? flatFilter.params : recordToNull(flatFilter.params),
-      isTown.value ? townFilter.params : recordToNull(townFilter.params),
-      { filterType: filterType.value },
-    ));
-
-    router.replace({ query: newQuery });
-  }, { deep: true, immediate: true });
 
   return {
     filterType,
