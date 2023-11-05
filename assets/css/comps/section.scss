@@ -9,4 +9,11 @@
     font-size: 32px;
     line-height: 1.25;
   }
+
+  .section-2el {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-bottom: 48px;
+  }
 }
