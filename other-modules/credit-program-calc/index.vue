@@ -25,7 +25,9 @@
     });
   }
 
-  creditCalcStore.groupId = creditStore.creditProgs?.data[0].id ?? null;
+  if(creditCalcStore.groupId === null) {
+    creditCalcStore.groupId = creditStore.creditProgs?.data[0].id ?? null;
+  }
 
   await useLazyAsyncData(() => {
     return creditCalcStore.show();
