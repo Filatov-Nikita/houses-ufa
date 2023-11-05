@@ -3,6 +3,7 @@
     :name="name"
     :params="params"
     :images="images"
+    :to="to"
   >
     <template #actions>
       <BtnsActionsLike />
@@ -18,6 +19,8 @@
   import type { Town } from '@/types/estate/town';
 
   const props = defineProps<{ town: Town }>();
+
+  const to = computed(() => `/towns/${props.town.id}`);
 
   const name = computed(() => {
     return `${props.town.layout.name_alias}, ${props.town.layout.area_cottage} м2`

@@ -3,6 +3,7 @@
     :name="name"
     :params="params"
     :images="flat.plan_image_url"
+    :to="to"
   >
     <template #actions>
       <BtnsActionsLike />
@@ -23,6 +24,8 @@
   const props = defineProps<{
     flat: Flat,
   }>();
+
+  const to = computed(() => `/apartments/${props.flat.id}`);
 
   const name = computed(() => {
     return `${props.flat.number_of_rooms}-комнатная, ${props.flat.area_total}&nbsp;м<sup>2</sup>`;

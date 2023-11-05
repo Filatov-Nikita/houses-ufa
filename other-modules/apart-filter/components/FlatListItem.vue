@@ -1,5 +1,5 @@
 <template>
-  <NuxtLink to="/apartments/1" class="flat-list-item">
+  <NuxtLink :to="to" class="flat-list-item">
     <div class="flat-list-item__img">
       <img :src="flat.plan_image_url" loading="lazy" :alt="name" />
     </div>
@@ -43,6 +43,8 @@
   };
 
   const props = defineProps<Props>();
+
+  const to = computed(() => `/apartments/${props.flat.id}`);
 
   const { amount, pretty } = usePrettyAmount();
   const flat = toRef(props, 'flat');
