@@ -36,7 +36,7 @@
               <div class="nav-menu__section-name">{{ section.label }}</div>
               <div class="nav-menu__items">
                 <div class="nav-menu__item" v-for="item in section.links">
-                  <NuxtLink :to="item.to" @click="reload(item.to)">{{ item.label }}</NuxtLink>
+                  <NuxtLink :to="item.to">{{ item.label }}</NuxtLink>
                 </div>
               </div>
             </div>
@@ -96,17 +96,9 @@
     return bannerStore.banner;
   });
 
-  function reload(str: string) {
-    if(str.indexOf('complexes') !== -1) {
-      setTimeout(() => {
-        window.location.reload();
-      }, 100);
-    }
-  }
-
   watch(() => props.showed, (val) => {
     if(val) {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      window.scrollTo({ top: 0 });
     }
   });
 </script>
