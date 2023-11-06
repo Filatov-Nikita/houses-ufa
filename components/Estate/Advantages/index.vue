@@ -56,7 +56,7 @@
   const emit = defineEmits<{ (event: 'action'): void }>();
 
   const tabs = computed(() => props.items.map(item => item.label));
-  const tab = ref(tabs.value[0]);
+  const tab = ref<string | null>(null);
 
   const _items = computed(() => props.items.map(
     i => ({ ...i, images: i.images.map(img => img.url) })
@@ -70,6 +70,10 @@
   function onAction() {
     emit('action');
   };
+
+  watch(tabs, () => {
+    tab.value = tabs.value[0] ?? null;
+  }, { immediate: true });
 </script>
 
 <style lang="scss">
