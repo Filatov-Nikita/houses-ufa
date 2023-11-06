@@ -6,7 +6,7 @@ export function useTownsSections() {
   const townsStore = useTownsStore();
 
   const townsLinks = computed(() => {
-    return townsStore.towns?.data.map(town => estateToLink(town, '/towns')) ?? [];
+    return townsStore.towns?.data.map(town => estateToLink(town, '/cottage-settlements')) ?? [];
   });
 
   const section = computed<Record<string, Section>>(() => {
