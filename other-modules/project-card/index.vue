@@ -50,6 +50,7 @@
     }
 
     &__right {
+      width: calc(100% / 12 * 5 - 20px);
       margin: 10px;
       flex-grow: 1;
       display: flex;
