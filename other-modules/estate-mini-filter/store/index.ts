@@ -3,7 +3,7 @@ import { defineStore } from 'pinia';
 interface Params {
   filterType: 'flats' | 'out-city-flats' | 'towns',
   status: 'for_sale' | 'booked' | 'sold' | null,
-  price_type: 'price',
+  price_type: 'price_total',
   price_min: number | null,
   area_min: number | null,
   area_max: number | null,
@@ -28,7 +28,7 @@ export const useEstateMiniFilter = defineStore('estateMiniFilter', () => {
     return {
       filterType: 'flats',
       status: null,
-      price_type: 'price',
+      price_type: 'price_total',
       price_min: null,
       area_min: null,
       area_max: null,
