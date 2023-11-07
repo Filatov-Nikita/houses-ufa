@@ -46,6 +46,7 @@ import { Form } from 'vee-validate'
 const authStore = useAuthStore()
 const { openPopup, dataBuyer, selectRole } = storeToRefs(authStore)
 const emits = defineEmits<{
+  (event: 'next'): void
   (event: 'prev'): void
 }>()
 const register = (

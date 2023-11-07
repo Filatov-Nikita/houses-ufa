@@ -1,7 +1,11 @@
+import { useRoute, useRouter } from '#vue-router'
 export const useAuthStore = defineStore('authStore', () => {
+  const route = useRoute()
+  const router = useRouter()
   const isAuth = ref(false)
   const token = ref('')
-  const openPopup = ref(true)
+  const openPopup = ref(false)
+
   const type = ref<'signIn' | 'register'>('signIn')
   //вход
 
@@ -25,11 +29,16 @@ export const useAuthStore = defineStore('authStore', () => {
     selectRole.value = null
   }
 
-  const signIn = (phone: { phone: string }) => {
-    console.log()
+  const signIn = () => {
+    if (route.query.r) {
+      router.push(route.query.r as string)
+    } else {
+      router.push({ name: 'lk-agent' })
+    }
   }
 
   watch(openPopup, (val) => {
+    console.log(val)
     if (!isAuth.value && !val) {
       type.value = 'signIn'
       selectRole.value = null

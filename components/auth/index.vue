@@ -27,5 +27,6 @@ const authStore = useAuthStore()
 const { openPopup, selectRole, type } = storeToRefs(authStore)
 const currentStep = ref('signInStep1')
 const next = () => {}
+console.log(openPopup.value)
 </script>
 <style lang="scss" scoped></style>
