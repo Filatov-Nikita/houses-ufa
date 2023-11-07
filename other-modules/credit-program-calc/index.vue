@@ -25,11 +25,10 @@
     });
   }
 
-  if(creditCalcStore.groupId === null) {
-    creditCalcStore.groupId = creditStore.creditProgs?.data[0].id ?? null;
-  }
-
   await useLazyAsyncData(() => {
+    if(creditCalcStore.groupId === null) {
+      creditCalcStore.groupId = creditStore.creditProgs?.data[0].id ?? null;
+    }
     return creditCalcStore.show();
   });
 
