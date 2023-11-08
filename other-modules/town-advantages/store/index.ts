@@ -7,6 +7,7 @@ export const useTownAdvantages = defineStore('townAdvantages', () => {
   const url = computed(() => `estate/towns/${townId.value}/advantages`);
   const { data: advantages, pending: loading, execute: show } = useDataFetch<AdvantageResponse>(url, {
     immediate: false,
+    watch: false,
   });
 
   function setTownId(id: number) {

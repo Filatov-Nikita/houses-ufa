@@ -7,6 +7,7 @@ export const useComplexAdvantages = defineStore('complexAdvantages', () => {
   const url = computed(() => `estate/complexes/${complexId.value}/advantages`);
   const { data: advantages, pending: loading, execute: show } = useDataFetch<AdvantageResponse>(url, {
     immediate: false,
+    watch: false,
   });
 
   function setComplexId(id: number) {
