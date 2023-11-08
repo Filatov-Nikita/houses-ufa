@@ -1,5 +1,5 @@
 <template>
-  <NuxtLink
+  <component :is="to ? 'NuxtLink' : tag ?? 'div'"
     class="estate-card"
     :class="`estate-card--${theme}`"
     :to="to"
@@ -17,21 +17,23 @@
     </div>
     <EstateCardsImages :theme="theme" :images="images" />
     <slot />
-  </NuxtLink>
+  </component>
 </template>
 
 <script setup lang="ts">
+  import type { RouteLocationRaw } from 'vue-router';
+
   interface Props {
     theme?: 'white' | 'gray',
     name: string,
     params: string[],
     images: string | string[],
-    to?: string,
+    tag?: string,
+    to?: RouteLocationRaw,
   }
 
   withDefaults(defineProps<Props>(), {
     theme: 'white',
-    to: '/',
   });
 </script>
 
