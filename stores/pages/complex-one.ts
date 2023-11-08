@@ -1,5 +1,6 @@
 import { defineStore } from 'pinia';
 import { useDataFetch } from '@/composables/useDataFetch';
+import type { Image } from '@/types/share';
 
 const useComplexOne = defineStore('complexOne', () => {
   const complexId = ref<number | null>(null);
@@ -79,6 +80,7 @@ export interface ComplexOne {
   name:            string;
   about:           About;
   seo:             SEO;
+  image:           Image;
 }
 
 export interface About {

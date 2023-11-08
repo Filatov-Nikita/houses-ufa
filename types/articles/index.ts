@@ -24,7 +24,7 @@ export interface SEO {
 export interface Image {
   id:            number;
   height:        number;
-  path:          string;
+  url:          string;
   size_in_bytes: number;
   width:         number;
 }

@@ -9,16 +9,19 @@
       </BaseButton>
       <p class="estate-header__caption">{{ caption }}</p>
     </div>
-    <img class="estate-header__img" src="/images/img/about.png" alt="">
+    <img v-if="img" class="estate-header__img" :src="img.url" alt="">
   </div>
 </template>
 
 <script setup lang="ts">
+  import { Image } from '@/types/share';
+
   interface Props {
     name: string,
     location: string,
     actionTitle: string,
     caption: string,
+    img: Image | null,
   }
 
   defineProps<Props>();

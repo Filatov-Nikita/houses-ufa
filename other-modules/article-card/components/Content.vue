@@ -8,7 +8,7 @@
         <div class="article-content">
           <div class="article-content__area">
             <div v-if="img" class="article-content__img">
-              <img :width="img.width" :height="img.height" :src="img.path" loading="lazy" />
+              <img :width="img.width" :height="img.height" :src="img.url" loading="lazy" />
             </div>
             <p class="article-content__text" v-html="body ?? '-'"></p>
             <div class="article-content__source" v-if="sourceUrl">

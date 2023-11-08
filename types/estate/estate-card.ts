@@ -1,3 +1,5 @@
+import type { Image } from '../share';
+
 export interface About {
   id:              number;
   description:     string;
@@ -25,4 +27,5 @@ export interface EstateCard  {
   name:            string;
   about:           About;
   seo:             SEO;
+  image:           Image;
 }
