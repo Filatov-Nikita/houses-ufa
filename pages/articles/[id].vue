@@ -11,14 +11,15 @@
   </section>
 
   <section>
-    <div class="tw-container">
-      <FormCard1 />
+    <div class="wrapper">
+      <QuestionForm />
     </div>
   </section>
 </template>
 <script lang="ts" setup>
   import ArticlesReadMoreList from '@/other-modules/articles-readmore-list/index.vue';
   import ArticleCard from '@/other-modules/article-card/index.vue';
+  import QuestionForm from '@/other-modules/question-form/index.vue';
   import { useBreadcrumbsStore } from '@/stores/breadcrumbs';
 
   const bread = useBreadcrumbsStore();

@@ -25,8 +25,8 @@
     &__title {
       font-size: 48px;
       line-height: 1.2;
-      font-weight: 700;
-      @apply tw-text-primary;
+      font-weight: 400;
+      @apply tw-text-primary tw-font-freesetdemi;
     }
 
     &__subtitle {

@@ -9,14 +9,12 @@
         <FlatItem :flat="flat" />
       </SwiperSlide>
       <NavBtns />
-      <div class="swiper-pagination estate-image-slider__pag"></div>
     </Swiper>
     <Swiper v-else-if="filter.filterType === 'towns'" v-bind="swiperProps">
       <SwiperSlide v-for="town in filter.towns" :key="town.id">
         <TownItem :town="town" />
       </SwiperSlide>
       <NavBtns />
-      <div class="swiper-pagination estate-image-slider__pag"></div>
     </Swiper>
   </BaseWait>
 </template>
