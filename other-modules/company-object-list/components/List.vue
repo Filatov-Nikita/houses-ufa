@@ -59,8 +59,7 @@
           }"
     >
       <SwiperSlide v-for="(item, idx) in list" :key="idx">
-        <NuxtLink
-          :to="item.to"
+        <div
           class="tw-relative tw-rounded-2xl tw-overflow-hidden tw-inline-block tw-h-[380px] lg:h-[320px] tw-w-full tw-bg-black-gradient tw-bg-[url('/img/hero-pattern.svg')]"
           :style="{
             background: `linear-gradient(45deg, rgba(0, 0, 0, 0.50) 0%, rgba(0, 0, 0, 0.00) 100%), url(${item.img})  50% / cover no-repeat`,
@@ -69,6 +68,7 @@
           <div class="tw-p-6 tw-grid tw-relative tw-content-between tw-h-full">
             <div
               class="tw-backdrop-blur-sm tw-text-white tw-text-body_s -tw-tracking-875 tw-px-3 tw-h-[32px] tw-bg-text01/40 tw-w-fit tw-rounded-lg tw-grid tw-place-content-center tw-justify-self-end"
+              :class="{ 'tw-opacity-0': item.status === '' }"
             >
               {{ item.status }}
             </div>
@@ -81,21 +81,16 @@
               </p>
             </div>
           </div>
-        </NuxtLink>
+        </div>
       </SwiperSlide>
-      <SwiperSlide class=" tw-hidden lg:tw-block"> </SwiperSlide>
-      <div
-            class="swiper-pagination swiper-pagination_gray !tw-static !tw-mt-3 !tw-translate-x-0  tw-mx-auto"
-          ></div>
+      <div class="swiper-pagination swiper-pagination_gray !tw-static !tw-mt-3 !tw-translate-x-0  tw-mx-auto"></div>
     </Swiper>
-  
   </div>
 </template>
 <script lang="ts" setup>
 import type { Swiper } from 'swiper'
 interface Props {
   list: {
-    to: string
     name: string
     description: string
     subtitle: string
@@ -104,13 +99,12 @@ interface Props {
   }[]
 }
 
-const buildObjProps = defineProps<Props>()
+defineProps<Props>()
 const activeIndex = ref(0)
 const swiper = ref<Swiper>()
 const onSwiper = (s: Swiper) => {
-  swiper.value = s
-  
-  activeIndex.value = s.activeIndex
+  swiper.value = s;
+  activeIndex.value = s.activeIndex;
 }
 const onSlideChange = (s: Swiper) => {
   activeIndex.value = s.activeIndex
