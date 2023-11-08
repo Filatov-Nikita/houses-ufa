@@ -8,7 +8,7 @@
             @click="showedNav = !showedNav"
           >
           <BaseIcon v-if="showedNav" name="close" class=" tw-w-8 tw-h-8"/>
-          <BaseIcon v-else  name="burger" class=" tw-w-8 tw-h-8"/>
+          <BaseIcon v-else name="burger" class=" tw-w-8 tw-h-8"/>
         </div>
           <div class="tw-flex tw-items-center tw-gap-8">
             <NuxtLink to="/" class="logo">
@@ -20,22 +20,22 @@
               />
             </NuxtLink>
 
-            <a
-              href="#"
+            <NuxtLink
+              to="/main-filter?is_in_promotion_only=1&filterType=flats"
               class="tw-hidden lg:tw-inline xl:tw-hidden tw-text-error tw-text-body_m"
             >
               Спецпредложения
-            </a>
+            </NuxtLink>
           </div>
         </div>
         <div class="header__middle">
           <nav class="tw-flex tw-gap-6 tw-items-center">
-            <NuxtLink v-for="item in items" to="/">
+            <NuxtLink v-for="item in items" :to="item.to">
               {{ item.label }}
             </NuxtLink>
-            <a href="#" class="tw-text-error tw-text-body_m">
+            <NuxtLink href="/main-filter?is_in_promotion_only=1&filterType=flats" class="tw-text-error tw-text-body_m">
               Спецпредложения
-            </a>
+            </NuxtLink>
           </nav>
         </div>
         <div class="header__right">

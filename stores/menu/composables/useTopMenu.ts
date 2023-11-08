@@ -4,23 +4,23 @@ export function useTopMenu() {
   const items: MenuItem[] = reactive([
     {
       label: 'Квартиры',
-      to: '/flats',
+      to: '/main-filter?filterType=flats',
     },
     {
-      label: 'Коттеджи',
-      to: '/houses',
-    },
-    {
-      label: 'Таунхаусы',
-      to: '/tauns',
+      label: 'Коттеджи и Таунхаусы',
+      to: '/main-filter?filterType=towns',
     },
     {
       label: 'Ипотека',
-      to: '/credit',
+      to: '/ipoteka',
     },
     {
       label: 'О компании',
       to: '/about',
+    },
+    {
+      label: 'Контакты',
+      to: '/contacts',
     },
   ]);
 
