@@ -41,6 +41,15 @@
 
     <section>
       <div class="wrapper">
+        <div class="section__top">
+          <h2 class="section__title">Типы планировок в {{ complex?.name }}</h2>
+        </div>
+        <ComplexFlatGroups />
+      </div>
+    </section>
+
+    <section>
+      <div class="wrapper">
         <QuestionForm />
       </div>
     </section>
@@ -52,6 +61,7 @@ import QuestionForm from '@/other-modules/question-form/index.vue';
 import ComplexAbout from '@/other-modules/complex-about/index.vue';
 import ComplexHeader from '@/other-modules/complex-header/index.vue';
 import ComplexAdvantages from '@/other-modules/complex-advantages/index.vue';
+import ComplexFlatGroups from '@/other-modules/complex-flat-groups/index.vue';
 import PurchaseMethods from '@/components/Estate/PurchaseMethods/index.vue';
 import { useComplexOne } from '@/stores/pages/complex-one';
 import { useBreadcrumbsStore } from '@/stores/breadcrumbs';
