@@ -1,5 +1,5 @@
 <template>
-  <component :is="to ? 'NuxtLink' : tag ?? 'div'"
+  <component :is="to ? NuxtLink : tag ?? 'div'"
     class="estate-card"
     :class="`estate-card--${theme}`"
     :to="to"
@@ -21,6 +21,7 @@
 </template>
 
 <script setup lang="ts">
+  import { NuxtLink } from '#components';
   import type { RouteLocationRaw } from 'vue-router';
 
   interface Props {
