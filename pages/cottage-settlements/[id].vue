@@ -16,6 +16,14 @@
   </section>
   <section>
     <div class="wrapper">
+      <div class="section__top">
+        <h2 class="section__title">Генплан коттеджного посёлка {{ townOne.town?.data.name }}</h2>
+      </div>
+      <TownGenplan />
+    </div>
+  </section>
+  <section>
+    <div class="wrapper">
       <TownAdvantages />
     </div>
   </section>
@@ -48,6 +56,7 @@
   import TownAbout from '@/other-modules/town-about/index.vue';
   import TownHeader from '@/other-modules/town-header/index.vue';
   import TownFilter from '@/other-modules/town-filter/index.vue';
+  import TownGenplan from '@/other-modules/town-genplan/index.vue';
   import { useTownOne } from '@/stores/pages/town-one';
   import { useBreadcrumbsStore } from '@/stores/breadcrumbs';
 
