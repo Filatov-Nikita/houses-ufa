@@ -1,7 +1,7 @@
 export interface Image {
   id:            number;
-  height:        null;
+  height:        number | null;
   size_in_bytes: number;
   url:           string;
-  width:         null;
+  width:         number | null;
 }
