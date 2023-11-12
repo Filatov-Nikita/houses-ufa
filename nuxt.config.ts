@@ -9,8 +9,9 @@ export default defineNuxtConfig({
     head: {
       script: [
         {
-          src: "https://api-maps.yandex.ru/2.1/?apikey=62425c4f-4dfc-4f52-a01f-bc1e23d27b7d&coordorder=longlat&lang=ru_RU",
-        },
+          src: 'https://api-maps.yandex.ru/2.1/?apikey=7885cb2e-2801-417c-953c-70550f293bf3&lang=ru_RU',
+          type: 'text/javascript',
+        }
       ],
     },
   },

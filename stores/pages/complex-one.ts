@@ -81,6 +81,9 @@ export interface ComplexOne {
   about:           About;
   seo:             SEO;
   image:           Image;
+  latitude:        string,
+  longitude:       string,
+  sight_picture:   Image | null,
 }
 
 export interface About {
