@@ -45,6 +45,15 @@
     <section>
       <div class="wrapper">
         <div class="section__top">
+          <h2 class="section__title">Галерея</h2>
+        </div>
+        <ComplexGallery />
+      </div>
+    </section>
+
+    <section>
+      <div class="wrapper">
+        <div class="section__top">
           <h2 class="section__title">Генплан жилого комплекса {{ complex?.name }}</h2>
         </div>
         <ComplexGenplan />
@@ -85,6 +94,7 @@ import ComplexAdvantages from '@/other-modules/complex-advantages/index.vue';
 import ComplexFlatGroups from '@/other-modules/complex-flat-groups/index.vue';
 import ComplexGenplan from '@/other-modules/complex-genplan/index.vue';
 import ComplexLocations from '@/other-modules/complex-locations/index.vue';
+import ComplexGallery from '@/other-modules/complex-gallery/index.vue';
 import PurchaseMethods from '@/components/Estate/PurchaseMethods/index.vue';
 import { useComplexOne } from '@/stores/pages/complex-one';
 import { useBreadcrumbsStore } from '@/stores/breadcrumbs';
