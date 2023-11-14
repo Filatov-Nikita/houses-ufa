@@ -1,5 +1,6 @@
 import { defineStore } from 'pinia';
 import { useDataFetch } from '@/composables/useDataFetch';
+import type { Location } from '@/types/estate/locations';
 
 export const useComplexLocations = defineStore('complexLocations', () => {
   const complexId = ref<number | null>(null);
@@ -38,17 +39,4 @@ export const useComplexLocations = defineStore('complexLocations', () => {
 
 export interface Response {
   data: Location[];
-}
-
-export interface Location {
-  id:        number;
-  latitude:  string;
-  longitude: string;
-  name:      string;
-  type:      Type;
-}
-
-export interface Type {
-  title: string;
-  value: string;
 }
