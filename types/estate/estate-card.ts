@@ -27,5 +27,8 @@ export interface EstateCard  {
   name:            string;
   about:           About;
   seo:             SEO;
+  latitude:        string,
+  longitude:       string,
+  sight_picture:   Image | null,
   image:           Image;
 }

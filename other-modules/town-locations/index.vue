@@ -1,0 +1,38 @@
+<template>
+  <div class="town-locations">
+    <Sidebar class="town-locations__sidebar" />
+    <Map class="town-locations__map" />
+  </div>
+</template>
+
+<script setup lang="ts">
+  import Sidebar from './components/SideBar.vue';
+  import Map from './components/Map.vue';
+  import { useTownLocations } from './store';
+
+  const store = useTownLocations();
+  const route = useRoute();
+
+  store.setTownId(+route.params.id);
+
+  await useLazyAsyncData(() => store.show());
+</script>
+
+
+<style scoped lang="scss">
+  .town-locations {
+    position: relative;
+
+    &__sidebar {
+      width: 305px;
+      position: absolute;
+      left: 40px;
+      top: 40px;
+      z-index: 100;
+    }
+
+    &__map {
+      height: 608px;
+    }
+  }
+</style>
