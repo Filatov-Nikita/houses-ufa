@@ -1,40 +1,41 @@
-interface Section {
-  id: number
-  name: string
-  priority: number
-  target: 'buyer' | 'owner'
-}
-interface QuestionCard extends Section {
-  qnas: [
-    {
-      id: number
-      question: string
-      priority: number
-      answer: string
-    },
-  ]
-}
-export const useFaqStore = defineStore('faqStore', () => {
-  const config = useRuntimeConfig()
-  const sections = ref<Section[]>()
-  const list = ref<QuestionCard>()
-  const getSections = async () => {
-    const { data } = await useDataFetch('press-center/faq/sections', {
-      baseURL: config.public.baseURL,
-    })
-    sections.value = data.value.data as Section[]
-  }
-  const getList = async (id: number) => {
-    const { data } = await useDataFetch(`press-center/faq/sections/${id}`, {
-      baseURL: config.public.baseURL,
-    })
-    list.value = data.value.data as QuestionCard
+import { useDataFetch } from '@/composables/useDataFetch';
+import { defineStore } from 'pinia';
+
+export const useFaq = defineStore('faq', () => {
+  const filterType = ref<'buyer' | 'owner'>('buyer');
+  const currentSectionId = ref<number | null>(null);
+
+  function setCurrentSectionId(id: number) {
+    currentSectionId.value = id;
   }
 
+  const { data: sectionList, pending, execute: showSections } = useDataFetch<Response>('press-center/faq/sections', {
+    immediate: false,
+    watch: false,
+  });
+
+  const filtredSectionList = computed(() => {
+    if(!sectionList.value) return [];
+    return sectionList.value.data.filter(section => section.target === filterType.value);
+  });
+
   return {
-    list,
-    getList,
-    sections,
-    getSections,
+    sectionList,
+    filtredSectionList,
+    filterType,
+    currentSectionId,
+    showSections,
+    setCurrentSectionId,
   }
-})
+});
+
+export interface Response {
+  data: OneSection[];
+}
+
+export interface OneSection {
+  id:       number;
+  name:     string;
+  priority: number;
+  target:   'buyer' | 'owner';
+}

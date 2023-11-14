@@ -1,24 +1,73 @@
 <template>
-  <AccordionMain
-    class="tw-bg-white tw-py-6 tw-px-4 tw-rounded-2xl"
-    icons-class="tw-h-10 tw-w-10 tw-rounded-lg tw-grid tw-place-content-center tw-bg-secondary"
-  >
-    <template #title>{{ question }}</template>
-
-    <template #content>
-      <div class="tw-mt-4 tw-text-text01 lg:tw-text-body_m2">
-        {{ answer }}
+  <article class="faq-item" @click="showed = !showed">
+    <div class="faq-item__header">
+      <h3 class="faq-item__title">{{ title }}</h3>
+      <BtnsActionsBase class="faq-item__btn" :class="{ 'faq-item__btn--active': showed }" icon="forward" />
+    </div>
+    <transition name="show">
+      <div class="faq-item__body" v-if="showed">
+        <p>{{ body }}</p>
       </div>
-    </template>
-  </AccordionMain>
+    </transition>
+  </article>
 </template>
-<script lang="ts" setup>
-interface Props {
-  id: number
-  question: string
-  priority: number
-  answer: string
-}
-const props = defineProps<Props>()
+
+<script setup lang="ts">
+  defineProps<{
+    title: string,
+    body: string,
+  }>();
+
+  const showed = ref(false);
 </script>
-<style lang="scss" scoped></style>
+
+<style scoped lang="scss">
+  .faq-item {
+    padding: 24px;
+    border-radius: 16px;
+    cursor: pointer;
+    user-select: none;
+    @apply tw-bg-white;
+
+    &__header {
+      display: flex;
+      gap: 48px;
+    }
+
+    &__title {
+      flex-grow: 1;
+      align-self: center;
+      @apply tw-text-text00 tw-text-xl;
+    }
+
+    &__btn {
+      transition: transform 200ms;
+      transform: rotate(90deg);
+
+      &--active {
+        transform: rotate(-90deg);
+      }
+    }
+
+    &__body {
+      padding-top: 16px;
+      padding-right: 80px;
+      font-size: 16px;
+      line-height: 28px;
+      @apply tw-text-text01;
+    }
+  }
+
+  .show-enter-active,
+  .show-leave-active {
+    transform: translateX(0);
+    transition: all 250ms linear;
+    opacity: 1;
+  }
+
+  .show-enter-from,
+  .show-leave-to {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+</style>

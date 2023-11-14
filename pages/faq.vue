@@ -15,13 +15,14 @@
       />
     </template>
   </SectionFirst>
+
   <section>
-    <div class="tw-container">
+    <div class="wrapper">
       <Faq />
     </div>
   </section>
 </template>
+
 <script lang="ts" setup>
-import { Faq } from '~/other-modules/faq'
+  import Faq from '@/other-modules/faq/index.vue';
 </script>
-<style lang="scss" scoped></style>
