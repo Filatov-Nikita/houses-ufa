@@ -35,7 +35,7 @@ export const useEstateMiniFilter = defineStore('estateMiniFilter', () => {
       area_land_min: null,
       area_land_max: null,
       is_in_promotion_only: 0,
-      room_factor_studio: 1,
+      room_factor_studio: null,
       number_of_floors_min: null,
       number_of_floors_max: null,
       room_factor_one_classic: null,

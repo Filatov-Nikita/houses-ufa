@@ -44,7 +44,7 @@ function init(): FilterParams {
   return {
     house_id: null,
     entrance_id: null,
-    room_factor_studio: 1,
+    room_factor_studio: null,
     room_factor_one_classic: null,
     room_factor_two_smart: null,
     room_factor_two_classic: null,

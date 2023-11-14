@@ -83,14 +83,15 @@
         :model-value="storey"
         @after-manipulate="updateStorey"
       />
-      <BaseSelect
+      <!-- <BaseSelect
         class="main-filter-params__input-status"
         name="status"
         label="Статус"
+        disabled
         v-bind="selectProps(statusOpts, 'label', 'value')"
         :model-value="currentStatus"
         @update:modelValue="updateStatus"
-      />
+      /> -->
       <BaseSelect
         class="main-filter-params__input-sale"
         name="sale"

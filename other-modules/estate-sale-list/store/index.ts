@@ -9,7 +9,7 @@ export const useEstateSaleList = defineStore('estateSaleList', () => {
 
   const params = { is_in_promotion_only: 1 };
   const flatParams: FlatParams = reactive({
-    room_factor_studio: 1,
+    room_factor_studio: null,
     room_factor_one_classic: null,
     room_factor_two_smart: null,
     room_factor_two_classic: null,

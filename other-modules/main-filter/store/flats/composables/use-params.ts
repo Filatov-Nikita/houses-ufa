@@ -47,8 +47,6 @@ export function useParams(globalParams: Params) {
       price_min: (val) => +val,
     }, route.query);
 
-    roomsInit(values);
-
     return values;
   }
 
@@ -56,22 +54,6 @@ export function useParams(globalParams: Params) {
 
   function clearParams(): void {
     Object.assign(params, initParams());
-    roomsInit(params);
-  }
-
-  function roomsInit(params: FlatParams): void {
-    const isTrue = [
-      params.room_factor_studio,
-      params.room_factor_one_classic,
-      params.room_factor_two_smart,
-      params.room_factor_two_classic,
-      params.room_factor_three_smart,
-      params.room_factor_three_classic,
-    ].every(val => val === null);
-
-    if(isTrue) {
-      params.room_factor_studio = 1;
-    }
   }
 
   const queryParams = computed<QueryParams>(() => {

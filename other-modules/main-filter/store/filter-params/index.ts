@@ -44,7 +44,7 @@ const useFilterParams = defineStore('filterParams', () => {
       object_id: null,
       number_of_floors_min: null,
       number_of_floors_max: null,
-      status: null,
+      status: 'for_sale',
       is_in_promotion_only: null,
       order_by_direction: null,
       order_by_field: null
