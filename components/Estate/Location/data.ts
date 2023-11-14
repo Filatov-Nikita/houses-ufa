@@ -20,11 +20,11 @@ export const data: Record<string, Item> = {
     color: '#55D679',
     icon: 'placemarks-park',
   },
-  razv: {
+  museum: {
     color: '#7C4EDA',
     icon: 'placemarks-ticket',
   },
-  edu: {
+  school: {
     color: '#EBC74F',
     icon: 'placemarks-edu',
   },
@@ -32,7 +32,7 @@ export const data: Record<string, Item> = {
     color: '#F1704F',
     icon: 'placemarks-sport',
   },
-  beauty: {
+  health: {
     color: '#F255A4',
     icon: 'placemarks-beauty',
   },

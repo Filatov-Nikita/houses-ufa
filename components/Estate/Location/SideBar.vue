@@ -51,7 +51,7 @@
 
     locations.value.forEach(location => {
       if(!list[location.type.value]) {
-        list[location.type.value] = Object.assign(location.type, { count: 1 });
+        list[location.type.value] = Object.assign({}, location.type, { count: 1 });
       } else {
         list[location.type.value].count++;
       }
