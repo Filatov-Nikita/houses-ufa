@@ -70,11 +70,9 @@
     } as const,
   };
 
-  if(!store.cameraData) {
-    await useLazyAsyncData(() => {
-      return store.showCamera();
-    });
-  }
+  await useLazyAsyncData(() => {
+    return store.showCamera();
+  });
 </script>
 
 
