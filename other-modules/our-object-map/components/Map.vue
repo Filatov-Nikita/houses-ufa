@@ -121,8 +121,10 @@
   }
 
   watch(() => props.locations, () => {
-    map.geoObjects.removeAll();
-    appendPlacemarks(map);
+    if(map) {
+      map.geoObjects.removeAll();
+      appendPlacemarks(map);
+    }
   });
 </script>
 

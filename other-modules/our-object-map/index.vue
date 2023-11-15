@@ -1,5 +1,6 @@
 <template>
   <Map
+    v-if="locations.length > 0"
     :locations="locations"
   />
 </template>
