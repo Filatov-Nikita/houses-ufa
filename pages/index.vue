@@ -5,6 +5,14 @@
     </div>
   </section>
   <EstateSaleList />
+  <section>
+    <div class="wrapper">
+      <div class="section__top">
+        <h2 class="section__title">География наших комплексов</h2>
+      </div>
+      <OurObjectMap/>
+    </div>
+  </section>
   <EstateGridList />
   <div>
     <div class="wrapper">
@@ -39,4 +47,5 @@ import EstateMiniFilter from '@/other-modules/estate-mini-filter/index.vue';
 import EstateTypeCards from '@/other-modules/estate-type-cards/index.vue';
 import CompanyShortInfo from '@/other-modules/company-short-info/index.vue';
 import CreditListShort from '@/other-modules/credit-list-short/index.vue';
+import OurObjectMap from '@/other-modules/our-object-map/index.vue';
 </script>
