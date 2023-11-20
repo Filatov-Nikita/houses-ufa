@@ -19,8 +19,8 @@
     ymaps.layout.storage.add('ourObjects#locationLayout', createMarkLayout());
 
     map = new ymaps.Map('our-object-map', {
-      center: getLatLng(props.locations[0]),
-      zoom: 13,
+      center: [54.735152, 55.958722],
+      zoom: 10,
       controls: [],
     });
 
