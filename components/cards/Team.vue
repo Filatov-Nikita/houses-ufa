@@ -1,101 +1,149 @@
 <template>
   <div>
-    <div class="tw-overflow-auto tw-mb-6 xl:tw-mb-8">
-      <BaseTabsGroup v-model="tab" class="">
-        <BaseTabsGroupItem v-for="tab in teamTabs" :name="tab.name">
-          {{ tab.title }}
-        </BaseTabsGroupItem>
-      </BaseTabsGroup>
-    </div>
-    <BaseTabsTabContent v-model="tab">
-      <!-- <BaseTabsTabContentItem v-for="tab in teamTabs" :name="tab.name" :key="tab.name">
-      {{ tab.title }}
-      </BaseTabsTabContentItem> -->
-      <BaseTabsTabContentItem
-        name="management"
-        class="tw-grid lg:tw-grid-cols-2 xl:tw-grid-cols-3 tw-gap-4 lg:tw-gap-5s"
+    <BaseTabsGroup class="tw-mb-8" v-model="tab">
+      <BaseTabsGroupItem
+        v-for="tab in teamTabs"
+        :name="tab.name"
       >
-        <div
-          class="tw-py-5 tw-px-4 lg:tw-px-6 tw-bg-white tw-rounded-2xl tw-overflow-hidden tw-grid tw-gap-6 lg:tw-flex lg:tw-gap-10"
-          v-for="team in managementList"
-        >
-          <div
-            class="tw-rounded-2xl tw-overflow-hidden tw-w-[144px] tw-h-[144px] lg:tw-w-[80px] lg:tw-h-[80px] tw-shrink-0"
-          >
-            <img :src="team.photo" alt="" />
+        {{ tab.title }}
+      </BaseTabsGroupItem>
+    </BaseTabsGroup>
+
+    <BaseTabsTabContent v-model="tab">
+      <BaseTabsTabContentItem
+        class="team-list"
+        v-for="tab in teamTabs"
+        :key="tab.name"
+        :name="tab.name"
+      >
+      <article
+        class="team-list__item team-item"
+        v-for="item in tab.list"
+      >
+          <div class="team-item__img">
+            <img :src="item.photo" alt="" />
           </div>
 
           <div>
-            <h4 class="tw-text-h6 tw-mb-2">{{ team.fio }}</h4>
-            <h5 class="tw-text-body_s2 -tw-tracking-875 tw-text-text02 tw-mb-4">
-              {{ team.status }}
-            </h5>
-            <a
-              :href="`tel:${team.phone}`"
-              class="tw-text-body_m tw-text-primary"
-            >
-              {{ team.phone }}
-            </a>
+            <h3 class="team-item__name">{{ item.name }}</h3>
+            <p class="team-item__position">
+              {{ item.position }}
+            </p>
           </div>
-        </div>
-      </BaseTabsTabContentItem>
-      <BaseTabsTabContentItem name="departmentApartments">
-        departmentApartments
-      </BaseTabsTabContentItem>
-      <BaseTabsTabContentItem name="realEstateAdepartment">
-        departmentApartments
-      </BaseTabsTabContentItem>
-      <BaseTabsTabContentItem name="mortgage">
-        departmentApartments
+        </article>
       </BaseTabsTabContentItem>
     </BaseTabsTabContent>
   </div>
-  <div></div>
 </template>
 <script lang="ts" setup>
-const tab = ref('test')
+const tab = ref('management');
+
 const teamTabs = [
   {
     name: 'management',
     title: 'Руководство',
+    list: [
+      {
+        name: 'Вечков Евгений Борисович',
+        position: 'Генеральный директор УК «Жилой Квартал»',
+        photo: '/images/team/1.jpg',
+      },
+      {
+        name: 'Иванов Дмитрий Сергеевич',
+        position: 'Первый зам. ген. директора УК «Жилой Квартал»',
+        photo: '/images/team/2.jpg',
+      },
+      {
+        name: 'Шаймарданова Эльвира Саматовна',
+        position: 'Зам. ген. директора по развитию и правовым вопросам УК «Жилой Квартал»',
+        photo: '/images/team/3.jpg',
+      }
+    ],
   },
   {
     name: 'departmentApartments',
     title: 'Отдел продаж квартир',
+    list: [
+      {
+        name: 'Абдульменова Алеся',
+        position: 'Эксперт по продажам недвижимости',
+        photo: '/images/team/4.png',
+      },
+      {
+        name: 'Галлямов Руслан',
+        position: 'Эксперт по продажам недвижимости',
+        photo: '/images/team/5.jpg',
+      },
+      {
+        name: 'Чариков Вадим',
+        position: 'Эксперт по продажам недвижимости',
+        photo: '/images/team/6.jpg',
+      }
+    ],
   },
   {
     name: 'realEstateAdepartment',
     title: 'Отдел продаж загородной недвижимости',
+    list: [
+      {
+        name: 'Гаспарян Армен',
+        position: 'Эксперт по продажам недвижимости',
+        photo: '/images/team/7.jpg',
+      },
+      {
+        name: 'Кадырова Чулпан',
+        position: 'Эксперт по продажам недвижимости',
+        photo: '/images/team/8.jpg',
+      },
+      {
+        name: 'Тагирова Анастасия',
+        position: 'Старший эксперт по продажам недвижимости',
+        photo: '/images/team/9.jpg',
+      }
+    ],
   },
-  {
-    name: 'mortgage',
-    title: 'Отдел ипотеки',
-  },
-]
-
-const managementList = [
-  {
-    photo: '/images/team-test.jpg',
-    fio: 'Вечков Евгений Борисович',
-    status: 'Генеральный директор УК «Жилой Квартал»',
-    phone: '+7 (999) 999-99-99',
-  },
-  {
-    photo: '/images/team-test.jpg',
-    fio: 'Шаймарданова Эльвира Саматовна',
-    status:
-      'Зам. ген. директора по развитию и правовым вопросам УК «Жилой Квартал»',
-    phone: '+7 (999) 999-99-99',
-  },
-  {
-    photo: '/images/team-test.jpg',
-    fio: 'Вечков Евгений Борисович',
-    status: 'Генеральный директор УК «Жилой Квартал»',
-    phone: '+7 (999) 999-99-99',
-  },
-]
-onMounted(() => {
-  tab.value = teamTabs[0].name
-})
+];
 </script>
-<style lang="scss" scoped></style>
+
+<style lang="scss" scoped>
+  .team-list {
+    display: flex;
+    flex-wrap: wrap;
+    margin: -10px;
+
+    &__item {
+      width: calc(100% / 12 * 4 - 20px);
+      margin: 10px;
+    }
+  }
+
+  .team-item {
+    border-radius: 16px;
+    padding: 24px 16px;
+    @apply tw-bg-white;
+
+    &__img {
+      border-radius: 16px;
+      height: 408px;
+      width: 100%;
+      margin-bottom: 24px;
+      overflow: hidden;
+
+      img {
+        object-fit: cover;
+        object-position: center;
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+    &__name {
+      margin-bottom: 8px;
+      @apply tw-text-text00 tw-text-xl;
+    }
+
+    &__position {
+      @apply tw-text-text02 tw-text-sm;
+    }
+  }
+</style>
