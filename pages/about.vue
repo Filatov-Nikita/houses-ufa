@@ -15,6 +15,22 @@
       <CompanyObjectList />
     </div>
   </section>
+  <section>
+    <div class="wrapper">
+      <div class="section__top">
+        <h2 class="section__title tw-mb-4 lg:tw-mb-6">История</h2>
+      </div>
+      <History/>
+    </div>
+  </section>
+  <section>
+    <div class="wrapper">
+      <div class="section__top">
+        <h2 class="section__title tw-mb-4 lg:tw-mb-6">Команда</h2>
+      </div>
+      <Team />
+    </div>
+  </section>
   <section id="work">
     <div class="wrapper">
       <CompanyVacancies />
@@ -32,6 +48,8 @@ import CompanyHeader from '@/other-modules/company-header/index.vue';
 import CompanyVacancies from '@/other-modules/company-vacancies/index.vue';
 import CompanyForm from '@/other-modules/company-form/index.vue';
 import CompanyObjectList from '@/other-modules/company-object-list/index.vue';
+import History from '@/components/cards/History.vue';
+import Team from '@/components/cards/Team.vue';
 import { useBreadcrumbsStore } from '@/stores/breadcrumbs';
 
 const bread = useBreadcrumbsStore();
