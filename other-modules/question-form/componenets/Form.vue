@@ -8,7 +8,7 @@
         </p>
       </div>
       <div class="question-form__right">
-        <Form class="question-form__form">
+        <Form ref="formRef" class="question-form__form" @submit="onSubmit">
           <div class="question-form__section">
             <BaseInput
               rules="required"
@@ -16,7 +16,7 @@
               name="name"
               label="Имя"
               placeholder="Иван"
-              v-model="store.form.name"
+              v-model="store.form.first_name"
             />
             <BaseInput
               rules="required"
@@ -35,6 +35,7 @@
               name="time1"
               label="Когда позвонить"
               v-bind="selectProps(time1)"
+              v-model="store.form.callback_date"
             />
             <BaseSelect
               rules="required"
@@ -42,13 +43,16 @@
               name="time2"
               label="Во сколько позвонить"
               v-bind="selectProps(time2)"
+              v-model="store.form.callback_time"
             />
           </div>
           <div class="question-form__section">
             <p class="question-form__perc question-form__input">
               Нажимая кнопку, вы соглашаетесь с&nbsp;<a href="#">условиями обработки персональных данных</a>
             </p>
-            <BaseButton class="question-form__input" type="submit">Отправить</BaseButton>
+            <BaseButton class="question-form__input" type="submit" :disabled="store.loading">
+              Отправить
+            </BaseButton>
           </div>
         </Form>
       </div>
@@ -63,25 +67,34 @@
   const store = useQuestionForm();
 
   const time1 = [
-    { label: 'Сегодня', value: 'today' },
-    { label: 'Завтра', value: 'tomorrow' },
+    'Сегодня',
+    'Завтра',
   ];
 
   const time2 = [
-    { label: '10:00-12:00', value: 'first' },
-    { label: '14:00-16:00', value: 'second' },
-    { label: '16:00-18:00', value: 'third' },
+   '10:00-12:00',
+   '14:00-16:00',
+   '16:00-18:00',
   ];
 
-  function selectProps<T extends { label: string, value: string }>(options: T[]) {
+  const formRef = ref<any>(null);
+
+  async function onSubmit() {
+    try {
+      await store.send();
+      formRef.value.resetForm();
+    } catch(e) {}
+  }
+
+  function selectProps<T extends string>(options: T[]) {
     return {
       'drop-down-props': {
-        getLabel: (opt: T) => opt.label,
-        isActive: (opt: T, v: T | null) => opt.value === v?.value,
+        getLabel: (opt: T) => opt,
+        isActive: (opt: T, v: T | null) => opt === v,
         options,
       },
       'display-props': {
-        getLabel: (v: T | null) => v?.label || 'не выбрано',
+        getLabel: (v: T | null) => v || 'не выбрано',
       }
     };
   }
