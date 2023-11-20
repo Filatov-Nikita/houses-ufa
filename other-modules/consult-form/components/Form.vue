@@ -1,6 +1,13 @@
 <template>
-  <Form class="consult-form">
-    <BaseInput class="consult-form__item" rules="required" label="Имя" name="name" placeholder="Иван" />
+  <Form ref="formRef" class="consult-form" @submit="onSubmit">
+    <BaseInput
+      class="consult-form__item"
+      rules="required"
+      label="Имя"
+      name="name"
+      placeholder="Иван"
+      v-model="store.form.first_name"
+    />
     <div class="consult-form__section consult-form__item">
       <BaseInput
         class="consult-form__column"
@@ -9,6 +16,7 @@
         name="phone"
         placeholder="+7 (XXX) XXX XX XX"
         maska="+7 (###) ### ## ##"
+        v-model="store.form.phone"
       />
       <BaseInput
         class="consult-form__column"
@@ -16,6 +24,7 @@
         label="E-mail"
         name="email"
         placeholder="name@gmail.com"
+        v-model="store.form.email"
       />
     </div>
     <BaseInput
@@ -23,18 +32,31 @@
       label="Сообщение"
       name="text"
       placeholder="У меня есть вопрос..."
+      v-model="store.form.message"
     />
     <div class="consult-form__section consult-form__item">
       <p class="consult-form__column consult-form__perc">
         Нажимая кнопку, вы соглашаетесь с&nbsp;<a href="#">условиями обработки персональных данных</a>
       </p>
-      <BaseButton class="consult-form__column" type="submit">Получить консультацию</BaseButton>
+      <BaseButton class="consult-form__column" type="submit" :disabled="store.loading">
+        Получить консультацию
+      </BaseButton>
     </div>
   </Form>
 </template>
 
 <script setup lang="ts">
   import { Form } from 'vee-validate';
+  import { useConsultForm } from '../store';
+
+  const store = useConsultForm();
+  const formRef = ref<any>(null);
+  async function onSubmit() {
+    try {
+      await store.send();
+      formRef.value.resetForm();
+    } catch(e) {}
+  }
 </script>
 
 <style scoped lang="scss">
