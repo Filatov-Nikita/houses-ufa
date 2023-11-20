@@ -4,10 +4,12 @@
   >
     <div>
       <Swiper
-        :modules="[SwiperPagination, SwiperNavigation]"
+        :modules="[SwiperPagination, SwiperNavigation, SwiperEffectFade]"
         @swiper="onSwiper"
         @slideChange="onSlideChange"
         :slides-per-view="1"
+        effect="fade"
+        :fade-effect="{ crossFade: true }"
         :pagination="{
           type: 'bullets',
           el: '.swiper-pagination',
@@ -24,9 +26,7 @@
                 {{ item.year }} год
               </h4>
               <div class="tw-grid tw-gap-6">
-                <h3 class="tw-text-h5">
-                  {{ item.title }}
-                </h3>
+                <h3 class="tw-text-h5" v-html="item.title"></h3>
                 <p class="tw-text-text02">
                   {{ item.description }}
                 </p>
@@ -115,35 +115,53 @@
 import type { Swiper } from 'swiper'
 const list = [
   {
-    year: '1996',
-    title: 'title',
-    description: 'text',
-    img: '/images/img/country_real_estate.png',
+    year: '2001',
+    title: 'Основание компании',
+    description: '',
+    img: '/images/hist-test.jpg',
   },
   {
-    year: '1997',
-    title: 'title',
-    description: 'text',
-    img: '/images/img/country_real_estate.png',
+    year: '2012',
+    title: 'Начало строительства первого коттеджного посёлка «Сильва Парк»',
+    description: '',
+    img: '/images/hist-test.jpg',
   },
   {
-    year: '1998',
-    title: 'title',
-    description: 'text',
-    img: '/images/img/country_real_estate.png',
+    year: '2014',
+    title: 'Начало строительства первого жилого комплекса «Прованс»',
+    description: '',
+    img: '/images/hist-test.jpg',
   },
   {
-    year: '1999',
-    title: 'title',
-    description: 'text',
-    img: '/images/img/country_real_estate.png',
+    year: '2015',
+    title: 'Начало строительства первого проекта комплексного освоения территории «Михайловка Green Place»',
+    description: '',
+    img: '/images/hist-test.jpg',
+  },
+  {
+    year: '2016',
+    title: 'Начало работы собственной управляющей компании',
+    description: '',
+    img: '/images/hist-test.jpg',
+  },
+  {
+    year: '2022',
+    title: 'Количество жильцов в проектах построенных ГК «Жилой Квартал» достигло 50 000 человек',
+    description: '',
+    img: '/images/hist-test.jpg',
+  },
+  {
+    year: '2023',
+    title: 'Начало строительства уникального для Российского рынка недвижимости концептуального коттеджного посёлка "Созвездие Цефей".<br>Выход в город – начало строительства ЖК «Сапфир».',
+    description: '',
+    img: '/images/hist-test.jpg',
   },
 ]
 const activeIndex = ref(0)
 const swiper = ref<Swiper>()
 const onSwiper = (s: Swiper) => {
   swiper.value = s
-  
+
   activeIndex.value = s.activeIndex
 }
 const onSlideChange = (s: Swiper) => {
