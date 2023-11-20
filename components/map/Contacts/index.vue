@@ -13,9 +13,8 @@
       >
         <template v-for="(item, index) in marks">
           <div
-            class="tw-flex tw-gap-4 tw-py-3 tw-items-center"
+            class="tw-flex tw-gap-4 tw-py-3 tw-items-center tw-cursor-pointer"
             v-show="singleOfficeIdx === null"
-            
             @click="singleOfficeIdx = index"
           >
             <div
@@ -28,7 +27,7 @@
                 class="tw-absolute tw-w-full tw-h-full tw-object-cover"
               />
             </div>
-            <div>
+            <div class="tw-grow">
               <h4 class="tw-text-body_m tw-mb-1">{{ item.title }}</h4>
               <p class="tw-text-text01 tw-text-body_s2 -tw-tracking-875">
                 {{ item.address }}
@@ -88,16 +87,13 @@
               v-model="nameStreet"
               id="suggest"
               input-class="!tw-pr-12"
-              
+
             />
             <BaseIcon name="paper" class=" tw-w-6 tw-h-6 tw-text-icon tw-absolute tw-right-4 tw-top-1/2 -tw-translate-y-1/2 tw-mt-1"/>
           </div>
-          <div class="tw-grid tw-gap-2">
-            <a href="tel:+7 374 264-48-55" class="tw-text-h6"
-              >+7 374 264-48-55</a
-            >
-            <p class="tw-text-body_s">Пн-Сб: 10:00-20:00 (сб. до 18:00)</p>
-            <p class="tw-text-body_s">Вс: 10:00-17:00</p>
+          <div v-if="marks[singleOfficeIdx]" class="tw-grid tw-gap-2">
+            <p class="tw-text-h6" v-html="marks[singleOfficeIdx].phone"></p>
+            <p class="tw-text-body_s" v-html="marks[singleOfficeIdx].workTime"></p>
           </div>
           <div class="tw-flex tw-gap-3">
             <BaseButton class="tw-flex-grow"> Обратный звонок </BaseButton>
@@ -117,7 +113,7 @@
 
         <div
           class="tw-flex tw-gap-4 tw-py-3 tw-items-center"
-          
+
           @click="() => ((openMap = true), (singleOfficeIdx = index))"
         >
           <div
@@ -138,7 +134,7 @@
           </div>
           <BaseIcon name="forward" class="tw-w-6 tw-h-6 tw-text-icon" />
         </div>
-        
+
         <div v-if="index !== marks.length -1" class=" tw-border-b tw-border-border00">
         </div>
       </template>
@@ -216,13 +212,8 @@
             id="suggest"
           />
           <div class="tw-grid tw-gap-2">
-            <a href="tel:+7 374 264-48-55" class="tw-text-h6"
-              >+7 374 264-48-55</a
-            >
-            <p class="tw-text-body_s2 -tw-tracking-875">
-              Пн-Сб: 10:00-20:00 (сб. до 18:00)
-            </p>
-            <p class="tw-text-body_s2 -tw-tracking-875">Вс: 10:00-17:00</p>
+            <p class="tw-text-h6" v-html="marks[singleOfficeIdx].phone"></p>
+            <p class="tw-text-body_s2 -tw-tracking-875" v-html="marks[singleOfficeIdx].workTime"></p>
           </div>
           <div class="tw-flex tw-gap-3">
             <BaseButton class="tw-flex-grow"> Обратный звонок </BaseButton>
@@ -241,24 +232,57 @@
 const marks = [
   {
     id: 1,
-    img: '/images/img/country_real_estate.png',
-    title: 'ОП ЖК «Гудвилл Парк» 1',
-    address: 'с. Шмидтово, ул. Ромашковая, д. 10',
-    coords: [54.739426, 56.098933],
+    img: '/images/offices/1.png',
+    title: 'ЖК «Сапфир»',
+    address: 'г. Уфа, ул. Комсомольская, д. 8',
+    coords: [54.739456, 55.992989],
+    phone: '+7 (347) 225-00-73',
+    workTime: 'Понедельник - суббота: 10:00–20:00<br>Воскресенье: 11:00–18:00',
+  },
+  {
+    id: 2,
+    img: '/images/offices/2.png',
+    title: 'Центральный офис «Жилой Квартал»',
+    address: 'г. Уфа, ул. З. Биишевой, 13',
+    coords: [54.694097, 55.982982],
+    phone: 'Отдел продаж: +7 (347) 225-00-73<br>Офис: +7 (347) 225-03-25',
+    workTime: 'Отдел продаж: 10:00–18:00<br>Офис: 09:00–18:00',
   },
   {
     id: 3,
-    img: '/images/img/country_real_estate.png',
-    title: 'ОП ЖК «Гудвилл Парк» 2',
-    address: 'с. Шмидтово, ул. Ромашковая, д. 10',
-    coords: [54.730201, 56.028651],
+    img: '/images/offices/3.png',
+    title: 'ЖК «Михайловка Green»',
+    address: 'с. Михайловка, ул. Дубравная, 1/1а',
+    coords: [54.829424, 55.878741],
+    phone: '+7 (347) 294-00-40',
+    workTime: 'Отдел продаж: 10:00–18:00<br>Офис: 09:00–18:00',
   },
   {
-    id: 3,
-    img: '/images/img/country_real_estate.png',
-    title: 'ОП ЖК «Гудвилл Парк» 3',
-    address: 'с. Шмидтово, ул. Ромашковая, д. 10',
-    coords: [54.721629, 56.016617],
+    id: 4,
+    img: '/images/offices/4.png',
+    title: 'ЖК «Гудвилл Парк»',
+    address: 'с. Шмидтово, ул. Ромашковая, д 10',
+    coords: [54.615121, 56.093906],
+    phone: '+7 347 225-00-73',
+    workTime: 'Понедельник - суббота: 10:00–20:00 (сб. до 18:00)<br>Воскресенье: 10:00–17:00',
+  },
+  {
+    id: 5,
+    img: '/images/offices/5.png',
+    title: 'ЖК «Зубово Life 3»',
+    address: 'Зубово Life 3, ул. Народная, 1/1',
+    coords: [54.632676, 55.904127],
+    phone: '+7 (347) 225-00-73',
+    workTime: 'Понедельник - суббота: 10:00–20:00<br>Воскресенье: 11:00–18:00',
+  },
+  {
+    id: 6,
+    img: '/images/offices/6.png',
+    title: 'ЖК «Зубово Life 2»',
+    address: 'с.Зубово, ул.Авроры, д.1а',
+    coords: [54.623535, 55.899312],
+    phone: '+7 (347) 225-03-25',
+    workTime: 'Понедельник - суббота: 10:00–20:00 (сб. до 18:00)<br>Воскресенье: 11:00–17:00',
   },
 ]
 const nameStreet = ref('')
