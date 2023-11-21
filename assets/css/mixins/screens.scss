@@ -1,16 +1,9 @@
-$md: 768px;
-$lg: 1024px;
-$xl: 1440px;
-$_2xl: 1920px;
+$lg: 1439.9px;
+$md: 1023.9px;
+$sm: 767.9px;
 
 @mixin screen($size) {
-  @media screen and (min-width: $size) {
-    @content;
-  }
-}
-
-@mixin md() {
-  @include screen($md) {
+  @media screen and (max-width: $size) {
     @content;
   }
 }
@@ -21,14 +14,14 @@ $_2xl: 1920px;
   }
 }
 
-@mixin xl() {
-  @include screen($xl) {
+@mixin md() {
+  @include screen($md) {
     @content;
   }
 }
 
-@mixin _2xl() {
-  @include screen($_2xl) {
+@mixin sm() {
+  @include screen($sm) {
     @content;
   }
 }
