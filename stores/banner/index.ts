@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia';
 
-interface Banner {
+export interface Banner {
   title: string
   subtitle: string
   imgSrc: string

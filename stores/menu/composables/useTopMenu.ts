@@ -22,9 +22,18 @@ export function useTopMenu() {
       label: 'Контакты',
       to: '/contacts',
     },
+    {
+      label: 'Спецпредложения',
+      to: '/main-filter?is_in_promotion_only=1&filterType=flats',
+    },
   ]);
 
+  function isSpec(item: MenuItem) {
+    return item.label === 'Спецпредложения';
+  };
+
   return {
-    items
+    items,
+    isSpec,
   }
 };

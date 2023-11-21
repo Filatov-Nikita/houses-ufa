@@ -6,7 +6,7 @@ import { useTownsSections } from './composables/useTownsSections';
 import { useFooterMenu } from './composables/useFooterMenu';
 
 const useMenuStore = defineStore('menuStore', () => {
-  const { items: topMenu } = useTopMenu();
+  const { items: topMenu, isSpec } = useTopMenu();
 
   const townsSection = useTownsSections();
   const complexesSection = useComplexesSections();
@@ -25,7 +25,8 @@ const useMenuStore = defineStore('menuStore', () => {
   return {
     topMenu,
     navMenu,
-    footerMenu
+    footerMenu,
+    isSpec,
   }
 });
 
