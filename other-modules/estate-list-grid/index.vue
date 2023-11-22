@@ -65,42 +65,101 @@
     &__item-l1-i1 {
       width: calc(50% - 16px);
       margin: 8px;
+
+      @include lg {
+        width: calc(100% - 16px);
+      }
     }
 
     &__item-l1-i2 {
       width: calc(100% / 12 * 3 - 16px);
       margin: 8px;
+
+      @include lg {
+        width: calc(50% - 16px);
+      }
+
+      @include sm {
+        width: calc(100% - 16px);
+      }
     }
 
     &__item-l1-i3 {
       width: calc(100% / 12 * 3 - 16px);
       margin: 8px;
+
+      @include lg {
+        width: calc(50% - 16px);
+      }
+
+      @include sm {
+        width: calc(100% - 16px);
+      }
     }
 
     &__item-l2-i1 {
       width: calc(100% / 12 * 9 - 16px);
       margin: 8px;
+
+      @include lg {
+        width: calc(50% - 16px);
+      }
+
+      @include sm {
+        width: calc(100% - 16px);
+      }
     }
 
     &__item-l2-i2 {
       width: calc(100% / 12 * 3 - 16px);
       margin: 8px;
+
+      @include lg {
+        width: calc(50% - 16px);
+      }
+
+      @include sm {
+        width: calc(100% - 16px);
+      }
     }
 
     &__item-l3-i1 {
       width: calc(100% / 12 * 3 - 16px);
       margin: 8px;
+
+      @include lg {
+        width: calc(50% - 16px);
+      }
+
+      @include sm {
+        width: calc(100% - 16px);
+      }
     }
 
     &__item-l3-i2 {
       width: calc(100% / 12 * 9 - 16px);
       margin: 8px;
+
+      @include lg {
+        width: calc(50% - 16px);
+      }
+
+      @include sm {
+        width: calc(100% - 16px);
+      }
     }
   }
 
   .estate-list-block {
     &__filter {
+      max-width: 100%;
+      width: 100%;
+      overflow-x: scroll;
       margin-bottom: 32px;
+
+      @include lg {
+        margin-bottom: 24px;
+      }
     }
   }
 </style>
