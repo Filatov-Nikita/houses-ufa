@@ -38,6 +38,7 @@ export interface Article {
   title:        string;
   type:         string;
   seo:          SEO;
+  likes_count:  number;
   image:        Image;
 }
 

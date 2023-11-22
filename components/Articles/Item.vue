@@ -7,7 +7,7 @@
     <div class="article-item__bottom">
       <span class="article-item__readmore">Подробнее</span>
       <div class="likes" @click.self.prevent="1">
-        <div class="likes__col">1</div>
+        <div class="likes__col">{{ item.likes_count }}</div>
         <div class="likes__icon">
           <BaseIcon class="tw-w-full tw-h-full" color="tw-fill-icon" name="heart" />
         </div>
@@ -24,6 +24,7 @@
     source_url:   string;
     title:        string;
     type:         string;
+    likes_count:  number;
     seo:          SEO;
   }
 

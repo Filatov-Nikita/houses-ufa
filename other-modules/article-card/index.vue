@@ -1,5 +1,5 @@
 <template>
-  <Header :date="date" :title="title" :loading="loading" />
+  <Header :date="date" :title="title" :likes="likes" :loading="loading" />
   <Content :loading="loading" :body="body" :img="img" :sourceUrl="sourceUrl" />
 </template>
 
@@ -20,6 +20,7 @@
   const img = computed(() => article.value?.data.image ?? null);
   const body = computed(() => article.value?.data.body ?? null);
   const sourceUrl = computed(() => article.value?.data.source_url ?? null);
+  const likes = computed(() => article.value?.data.likes_count ?? null);
 
   await useAsyncData(() => {
     articleCard.setArticleId(props.articleId);

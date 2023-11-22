@@ -10,6 +10,7 @@ export interface ArticleListItem {
   source_url:   string;
   title:        string;
   type:         string;
+  likes_count:  number;
   seo:          SEO;
 }
 

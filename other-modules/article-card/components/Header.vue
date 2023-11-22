@@ -14,9 +14,9 @@
             <h2 class="section__title">{{ title ?? '-' }}</h2>
             <BaseButton theme="gray" padding-classes="tw-py-2 tw-px-4" class="favBlock">
               <div class="favBlock__wrap">
-                <div class="favBlock__cnt">1</div>
+                <div class="favBlock__cnt">{{ likes }}</div>
                 <div class="favBlock__icon">
-                  <BaseIcon class="favBlock__svg" color="tw-fill-primary" name="heart_bg" />
+                  <BaseIcon class="favBlock__svg" color="tw-fill-text00" name="heart" />
                 </div>
               </div>
             </BaseButton>
@@ -43,6 +43,7 @@
   interface Props {
     title: string | null,
     date: string | null,
+    likes: number | null,
     loading: boolean
   }
 
