@@ -12,6 +12,10 @@
 <script setup lang="ts">
   import type { Section } from '@/stores/menu/types';
 
+  defineOptions({
+    inheritAttrs: false,
+  });
+
   defineProps<{
     items: Record<string, Section>,
   }>();

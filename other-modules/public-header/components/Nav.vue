@@ -4,7 +4,7 @@
       leave-active-class="animate__animated anim-300ms animate__fadeOut"
       enter-active-class="animate__animated anim-300ms animate__fadeIn"
     >
-      <div v-show="showed" class="nav-menu">
+      <div v-show="showed" class="header-nav nav-menu">
         <div class="wrapper">
           <div class="nav-menu__inner">
             <NavItemsMobile class="nav-menu__items-mobile" :items="navMenu" />
@@ -56,6 +56,17 @@
     }
   });
 </script>
+<style lang="scss">
+  .header-nav {
+    .nav-menu {
+      &__items {
+        @include md {
+          display: none;
+        }
+      }
+    }
+  }
+</style>
 
 <style scoped lang="scss">
   .nav-menu {
@@ -84,12 +95,6 @@
         padding: 24px 16px;
         grid-template-columns: 100%;
         row-gap: 20px;
-      }
-    }
-
-    &__items {
-      @include md {
-        display: none;
       }
     }
 

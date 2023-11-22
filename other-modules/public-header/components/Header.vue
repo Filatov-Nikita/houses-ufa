@@ -20,7 +20,7 @@
     </nav>
     <div class="public-header__actions">
       <div class="public-header__phone-wrap">
-        <a class="public-header__phone" :href="contacts.headPhoneCleaned">
+        <a class="public-header__phone" :href="'tel:' + contacts.headPhoneCleaned">
           {{ contacts.contacts.headPhone }}
         </a>
         <button class="public-header__callback" @click="store.toggleForm">
