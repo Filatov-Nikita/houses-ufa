@@ -46,6 +46,10 @@
   &__item {
     width: calc(50% - 20px);
     margin: 10px;
+
+    @include md {
+      width: calc(100% - 20px);
+    }
   }
 }
 </style>

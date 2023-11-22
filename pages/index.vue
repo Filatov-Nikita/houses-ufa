@@ -23,9 +23,18 @@
     <div class="wrapper">
       <div class="section-2el">
         <h2 class="section__title">Варианты покупки объектов недвижимости</h2>
-        <LinksShowAll to="/ipoteka">Все ипотечные предложения</LinksShowAll>
+        <div class="section__link section__link--desktop">
+          <LinksShowAll to="/ipoteka">
+            Все ипотечные предложения
+          </LinksShowAll>
+        </div>
       </div>
       <CreditListShort />
+      <div class="section__link section__link--mobile tw-pt-6">
+        <LinksShowAll to="/ipoteka">
+          Все ипотечные предложения
+        </LinksShowAll>
+      </div>
     </div>
   </section>
   <section>

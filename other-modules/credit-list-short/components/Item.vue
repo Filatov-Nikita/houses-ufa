@@ -37,6 +37,14 @@
     height: 425px;
     @apply tw-bg-base01;
 
+    @include lg {
+      padding: 24px;
+    }
+
+    @include sm {
+      height: 380px;
+    }
+
     &:hover &__perc {
       @apply tw-bg-primary;
     }
@@ -49,8 +57,13 @@
       margin-top: auto;
       display: inline-block;
       border-radius: 8px;
-      padding: 12px;
-      @apply tw-text-white tw-bg-base02;
+      padding: 16px 18px;
+      @apply tw-text-white tw-bg-base02 tw-text-xl;
+
+      @include sm {
+        padding: 10px 16px;
+        @apply tw-text-lg;
+      }
     }
 
     &__decor {
@@ -61,6 +74,10 @@
       transition: transform 300ms;
       transform: translateX(100%);
       z-index: 0;
+
+      @include lg {
+        right: -240px;
+      }
     }
 
     &__img {
@@ -72,6 +89,18 @@
       height: calc(100% - 20px);
       object-fit: contain;
       object-position: bottom;
+
+      @include lg {
+        width: 350px;
+      }
+
+      @include md {
+        width: 400px;
+      }
+
+      @include sm {
+        width: 300px;
+      }
     }
 
     &__left {
@@ -92,6 +121,11 @@
       font-size: 32px;
       line-height: 1.25;
       @apply tw-text-text00;
+
+      @include lg {
+        font-size: 24px;
+        line-height: 1.3;
+      }
     }
   }
 </style>
