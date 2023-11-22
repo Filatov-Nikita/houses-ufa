@@ -1,6 +1,6 @@
 <template>
   <section>
-    <div class="tw-container">
+    <div class="wrapper">
       <BaseWait :waiting="loading">
         <template #loader>
           <BaseSkeleton class="tw-w-full tw-h-[500px] tw-rounded-2xl" />

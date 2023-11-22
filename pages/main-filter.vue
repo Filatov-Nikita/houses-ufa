@@ -1,7 +1,7 @@
 <template>
   <MainFilter />
   <section>
-    <div class="tw-container">
+    <div class="wrapper">
       <div class="section__top">
         <h2 class="section__title">Как купить</h2>
       </div>
@@ -49,7 +49,7 @@
     </div>
   </section>
   <section>
-    <div class="tw-container">
+    <div class="wrapper">
       <FormCard1 />
     </div>
   </section>

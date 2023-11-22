@@ -1,5 +1,5 @@
 <template>
-  <section class="tw-container">
+  <section class="wrapper">
     <Header class="tw-mb-10" />
     <Content />
   </section>

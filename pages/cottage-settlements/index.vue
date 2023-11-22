@@ -16,7 +16,7 @@
     </template>
   </SectionFirst>
   <section>
-    <div class="tw-container">
+    <div class="wrapper">
       <div class="tw-grid tw-gap-6 lg:tw-gap-5 lg:tw-grid-cols-2">
         <NuxtLink v-for="item in listCountry" :to="item.to">
           <CardsCountryRealEstate
@@ -32,7 +32,7 @@
     </div>
   </section>
   <section>
-    <div class="tw-container">
+    <div class="wrapper">
       <div class="section__top">
         <h2 class="section__title">Ипотека</h2>
       </div>

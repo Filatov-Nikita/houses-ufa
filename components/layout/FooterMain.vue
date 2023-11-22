@@ -1,6 +1,6 @@
 <template>
   <footer class="footer">
-    <div class="tw-container">
+    <div class="wrapper">
       <div class="footer__wrapper">
         <EmailSubscribe class="area-form xl:tw-mb-20" />
         <div class="area-A">

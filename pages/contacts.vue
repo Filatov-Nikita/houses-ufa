@@ -13,7 +13,7 @@
     </template>
   </SectionFirst>
   <section>
-    <div class="tw-container">
+    <div class="wrapper">
       <TabContacts />
     </div>
   </section>

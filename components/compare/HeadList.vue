@@ -40,7 +40,7 @@
     ref="visibleEL"
     v-show="isVisibleCompareAbsolute"
   >
-    <div class="tw-container">
+    <div class="wrapper">
       <div
         class="tw-relative mx-[88px] tw-rounded-2xl tw-py-4 tw-px-[68px] tw-bg-white tw-shadow-shadow00"
       >

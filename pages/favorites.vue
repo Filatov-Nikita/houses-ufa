@@ -16,7 +16,7 @@
     </template>
   </SectionFirst>
   <section>
-    <div class="tw-container">
+    <div class="wrapper">
       <div
         class="tw-flex tw-flex-wrap tw-items-center tw-justify-between tw-gap-4 tw-mb-6 xl:tw-mb-8"
       >
@@ -105,7 +105,7 @@
     </div>
   </section>
   <section v-if="openComparision">
-    <div class="tw-container">
+    <div class="wrapper">
       <div class="tw-grid tw-gap-6 lg:tw-gap-5 lg:tw-grid-cols-2">
         <div
           class="tw-bg-white tw-rounded-2xl tw-py-6 tw-px-4 tw-grid tw-gap-6 xl:tw-gap-12 tw-content-between"

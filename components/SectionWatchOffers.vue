@@ -1,6 +1,6 @@
 <template>
   <section>
-    <div class="tw-container">
+    <div class="wrapper">
       <form
         class="tw-grid tw-gap-6 lg:tw-grid-cols-6 xl:tw-flex xl:tw-items-start"
       >
@@ -88,7 +88,7 @@
           </div>
         </div>
       </template>
-      
+
       <template #action-second>
           <div class=" tw-bg-white -tw-mx-4 tw-px-4 tw-py-3 tw-fixed tw-w-full tw-bottom-0 lg:tw-static lg:tw-mx-0 lg:tw-p-0 ">
           <BaseButton class=" tw-w-full"> Применить</BaseButton>

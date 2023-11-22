@@ -2,7 +2,7 @@
   <ArticleCard :article-id="+$route.params.id" />
 
   <section>
-    <div class="tw-container">
+    <div class="wrapper">
       <div class="section__top tw-flex tw-justify-between">
         <h2 class="section__title">Читать далее</h2>
       </div>

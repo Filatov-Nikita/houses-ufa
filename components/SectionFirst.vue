@@ -1,6 +1,6 @@
 <template>
   <section class="section-first">
-    <div class="tw-container">
+    <div class="wrapper">
       <div class="section-first__wrapper">
         <BreadCrumbs :history-list="historyList" />
         <div class="content">

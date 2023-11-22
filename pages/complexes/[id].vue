@@ -1,7 +1,7 @@
 <template>
   <BaseWait :waiting="loadingComplex">
     <template #loader>
-      <div class="tw-container tw-space-y-8">
+      <div class="wrapper tw-space-y-8">
         <BaseSkeleton
           class="tw-w-full tw-h-[300px]"
           v-for="_i in 5"
@@ -10,13 +10,13 @@
     </template>
 
     <section>
-      <div class="tw-container">
+      <div class="wrapper">
         <ComplexHeader />
       </div>
     </section>
 
     <section>
-      <div class="tw-container">
+      <div class="wrapper">
         <ApartFilter />
       </div>
     </section>
