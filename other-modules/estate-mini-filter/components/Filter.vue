@@ -5,7 +5,7 @@
       theme="white"
       name="type"
       label="Тип недвижимости"
-      :drop-down-props="{ options: typeOpts }"
+      v-bind="selectProps(typeOpts, 'label', 'value')"
       :model-value="currentType"
       @update:modelValue="updateType"
     />
@@ -20,15 +20,6 @@
       :model-value="priceMin"
       @change="updatePriceMin"
       @after-manipulate="updatePriceMin"
-    />
-    <BaseSelect
-      class="mini-filter-params__item"
-      theme="white"
-      name="status"
-      label="Статус"
-      v-bind="selectProps(statusOpts, 'label', 'value')"
-      :model-value="currentStatus"
-      @update:modelValue="updateStatus"
     />
     <div class="mini-filter-params__item">
       <BaseButton
@@ -70,20 +61,6 @@
 
   function updateType(val: typeof typeOpts[number]) {
     filter.params.filterType = val.value;
-  }
-
-  const statusOpts = [
-    { label: 'Свободно', value: 'for_sale' } as const,
-    { label: 'Забронировано', value: 'booked' } as const,
-    { label: 'Продано', value: 'sold' } as const,
-  ];
-
-  const currentStatus = computed(() => {
-    return findOpt(statusOpts, (opt) => opt.value === filter.params.status);
-  });
-
-  function updateStatus(val: typeof statusOpts[number]) {
-    filter.params.status = val.value;
   }
 
   const priceMin = computed(() => {
@@ -128,16 +105,28 @@
     display: flex;
     flex-wrap: wrap;
     align-items: flex-start;
-    margin: -8px;
+    margin: -10px;
 
     &__item {
-      width: calc(20% - 16px);
-      margin: 8px;
+      width: calc(25% - 20px);
+      margin: 10px;
+
+      @include lg {
+        width: calc(50% - 20px);
+      }
+
+      @include sm {
+        width: calc(100% - 20px);
+      }
     }
 
     &__btn {
       width: 100%;
       margin-top: 28px;
+
+      @include lg {
+        margin-top: 0px;
+      }
     }
   }
 </style>
