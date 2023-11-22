@@ -1,24 +1,32 @@
 <template>
-  <div class="subsForm">
-    <p class="subsForm__text tw-pt-2">
-      Подпишитесь на рассылку
-    </p>
-    <div class="subsForm__right">
-      <Form @submit="onSubmit" class="subsForm__form">
-        <BaseInput
-          class="subsForm__input"
-          theme="white"
-          placeholder="mail@mail.com"
-          name="email"
-          rules="required|email"
-          label=""
-        />
-        <div class="subsForm__btn">
-          <BaseButton type="submit" class="tw-w-full" :disabled="loaders.contains(loaderKey)">
-            Подписаться
-          </BaseButton>
-        </div>
-      </Form>
+  <div class="subscribe-form">
+    <div class="subscribe-form__grid">
+      <div class="subscribe-form__header">
+        <p class="subscribe-form__title">
+          Подпишитесь на рассылку
+        </p>
+      </div>
+      <div class="subscribe-form__body">
+        <Form class="subscribe-form__form" @submit="onSubmit">
+          <BaseInput
+            class="subscribe-form__input"
+            theme="white"
+            placeholder="mail@mail.com"
+            name="email"
+            rules="required|email"
+            label=""
+          />
+          <div class="subscribe-form__btn">
+            <BaseButton
+              type="submit"
+              class="subscribe-form__submit"
+              :disabled="loaders.contains(loaderKey)"
+            >
+              Подписаться
+            </BaseButton>
+          </div>
+        </Form>
+      </div>
     </div>
     <ModalSuccess v-model="successShowed" />
     <ModalUniqueFailed v-model="failedShowed" />
@@ -58,53 +66,82 @@
 </script>
 
 <style scoped lang="scss">
-  .subsForm {
-    padding: 20px 16px;
+  .subscribe-form {
+    padding: 24px 40px;
     border-radius: 16px;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: space-between;
-    column-gap: 16px;
-    row-gap: 24px;
-    @apply tw-bg-base00 lg:tw-grid lg:tw-grid-cols-2;
+    @apply tw-bg-base00;
 
-    &__text {
-      font-size: 20px;
-      @apply tw-text-text02;
+    @include md {
+      padding: 24px 16px;
     }
 
-    &__right {
-      flex-basis: 100%;
+    &__title {
+      @apply tw-text-text02 tw-text-2xl;
+
+      @include md {
+        @apply tw-text-xl;
+      }
+    }
+
+    &__grid {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      margin: -10px;
+
+      @include md {
+        margin: -12px;
+        align-items: flex-start;
+      }
+    }
+
+    &__header {
+      width: calc(50% - 20px);
+      margin: 10px;
+
+      @include md {
+        width: calc(100% - 24px);
+        margin: 12px;
+      }
+    }
+
+    &__body {
+      width: calc(50% - 20px);
+      margin: 10px;
+      padding-left: 10px;
+
+      @include md {
+        width: calc(100% - 24px);
+        margin: 12px;
+        padding-left: 0px;
+      }
     }
 
     &__form {
-      @apply tw-gap-4 tw-grid lg:tw-grid-cols-[421px_auto];
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
     }
 
     &__input {
       flex-grow: 1;
+
+      @include md {
+        width: 100%;
+      }
     }
 
     &__btn {
-      // padding-top: 16px;
-      flex-basis: 100%;
-    }
-  }
-
-  @screen lg {
-    .subsForm {
-      padding: 20px 40px;
-
-      &__text {
-        @apply tw-text-2xl;
+      padding-top: 8px;
+      @include md {
+        padding-top: 0px;
+        width: 100%;
       }
+    }
 
-
-
-      &__btn {
-        padding-top: 8px;
-        flex-basis: auto;
+    &__submit {
+      @include md {
+        width: 100%;
       }
     }
   }
