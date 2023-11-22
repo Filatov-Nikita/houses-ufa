@@ -32,7 +32,7 @@
   const swiperProps = {
     modules: [SwiperPagination, SwiperNavigation],
     spaceBetween: 20,
-    slidesPerView: 4,
+    slidesPerView: 1,
     pagination: {
       type: 'bullets',
       el: '.swiper-pagination',
@@ -41,6 +41,17 @@
     navigation: {
       nextEl: '.swiper-next',
       prevEl: '.swiper-prev',
+    } as const,
+    breakpoints: {
+      768: {
+        slidesPerView: 2,
+      },
+      1024: {
+        slidesPerView: 3,
+      },
+      1440: {
+        slidesPerView: 4,
+      },
     } as const,
   };
 </script>

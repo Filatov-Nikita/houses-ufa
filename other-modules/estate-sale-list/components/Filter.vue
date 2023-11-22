@@ -10,10 +10,12 @@
       :modelValue="roomsCurrent"
       @update:modelValue="updateRooms"
     />
-    <BaseTabsGroup theme="gray" v-model="filter.filterType">
-      <BaseTabsGroupItem theme="gray" name="flats">Квартиры</BaseTabsGroupItem>
-      <BaseTabsGroupItem theme="gray" name="towns">Коттеджи и Таунхаусы</BaseTabsGroupItem>
-    </BaseTabsGroup>
+    <div class="estate-sale-filter__types">
+      <BaseTabsGroup theme="gray" v-model="filter.filterType">
+        <BaseTabsGroupItem theme="gray" name="flats">Квартиры</BaseTabsGroupItem>
+        <BaseTabsGroupItem theme="gray" name="towns">Коттеджи и Таунхаусы</BaseTabsGroupItem>
+      </BaseTabsGroup>
+    </div>
   </div>
 </template>
 
@@ -72,7 +74,21 @@
   .estate-sale-filter {
     display: flex;
     flex-wrap: wrap;
+    gap: 16px;
     justify-content: space-between;
     align-items: flex-end;
+
+    @include sm {
+      display: block;
+    }
+
+    &__types {
+      @include sm {
+        margin-top: 16px;
+        width: 100%;
+        max-width: 100%;
+        overflow-x: scroll;
+      }
+    }
   }
 </style>

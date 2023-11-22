@@ -28,8 +28,20 @@
     padding: 40px;
     @apply tw-bg-white;
 
+    @include lg {
+      padding: 24px;
+    }
+
+    @include sm {
+      padding: 24px 16px;
+    }
+
     &__filter {
       margin-bottom: 32px;
+
+      @include md {
+        margin-bottom: 24px;
+      }
     }
   }
 </style>
