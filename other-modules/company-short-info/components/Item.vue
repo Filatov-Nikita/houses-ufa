@@ -22,6 +22,10 @@
     border-radius: 16px;
     @apply tw-bg-white;
 
+    @include lg {
+      padding: 24px;
+    }
+
     &__title {
       font-size: 48px;
       line-height: 1.2;

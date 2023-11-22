@@ -14,6 +14,10 @@
   .company-short-info {
     &__video {
       margin-top: 20px;
+
+      @include sm {
+        margin-top: 16px;
+      }
     }
   }
 </style>

@@ -21,9 +21,22 @@
     flex-wrap: wrap;
     margin: -10px;
 
+    @include sm {
+      margin: -8px;
+    }
+
     &__item {
       width: calc(100% / 12 * 3 - 20px);
       margin: 10px;
+
+      @include lg {
+        width: calc(50% - 20px);
+      }
+
+      @include sm {
+        margin: 8px;
+        width: calc(100% - 16px);
+      }
     }
   }
 </style>

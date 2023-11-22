@@ -37,8 +37,14 @@
     border-radius: 16px;
     padding: 40px;
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
+    gap: 64px;
     @apply tw-bg-secondary;
+
+    @include lg {
+      padding: 24px;
+    }
   }
 
   .video-btn {
