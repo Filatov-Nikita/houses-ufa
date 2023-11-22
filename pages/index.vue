@@ -1,11 +1,13 @@
 <template>
-  <section>
+  <section class="section">
     <div class="wrapper">
       <EstateTypeCards />
     </div>
   </section>
-  <EstateSaleList />
-  <section>
+
+  <EstateSaleList class="section" />
+
+  <section class="section">
     <div class="wrapper">
       <div class="section__top">
         <h2 class="section__title">География наших комплексов</h2>
@@ -13,13 +15,16 @@
       <OurObjectMap/>
     </div>
   </section>
-  <EstateGridList />
-  <div>
+
+  <EstateGridList class="section" />
+
+  <div class="section">
     <div class="wrapper">
       <EstateMiniFilter />
     </div>
   </div>
-  <section>
+
+  <section class="section">
     <div class="wrapper">
       <div class="section-2el">
         <h2 class="section__title">Варианты покупки объектов недвижимости</h2>
@@ -37,7 +42,8 @@
       </div>
     </div>
   </section>
-  <section>
+
+  <section class="section">
     <div class="wrapper">
       <div class="section__top">
         <h2 class="section__title">Познакомимся поближе</h2>
@@ -45,7 +51,8 @@
       <CompanyShortInfo />
     </div>
   </section>
-  <SectionNews />
+
+  <SectionNews class="section" />
 </template>
 
 <script setup lang="ts">
