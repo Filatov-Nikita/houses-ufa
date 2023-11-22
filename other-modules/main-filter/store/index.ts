@@ -6,7 +6,7 @@ import { useFlatsFilter } from './flats';
 import { useTownsFilter } from './towns';
 import { useRoute } from 'vue-router';
 
-type CurrentTypes = 'flats' | 'towns' | 'out-city-flats';
+export type CurrentTypes = 'flats' | 'towns' | 'out-city-flats';
 
 const useMainFilter = defineStore('mainFilter', () => {
   const complexStore = useComplexesStore();

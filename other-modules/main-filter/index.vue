@@ -8,7 +8,7 @@
 <script setup lang="ts">
   import Header from './components/Header.vue';
   import Content from './components/Content.vue';
-  import { useMainFilter } from './store/index';
+  import { useMainFilter, type CurrentTypes } from './store/index';
   import { useFlatsFilter } from './store/flats';
   import { useTownsFilter } from './store/towns';
   import { useFilterParams } from './store/filter-params';
@@ -24,6 +24,12 @@
   filter.init();
 
   onUnmounted(() => filter.clear());
+
+  watch(() => route.query.filterType, (type) => {
+    if(type !== undefined && type !== filter.filterType) {
+      filter.filterType = type as CurrentTypes;
+    }
+  });
 
   watch(() => filter.filterType, () => {
     filterParams.params.object_id = null;
