@@ -54,7 +54,7 @@
   .last-news-list {
     display: flex;
     flex-wrap: wrap;
-    margin: -16px;
+    margin: -8px;
 
     &__item {
       width: calc(33.3% - 16px);
