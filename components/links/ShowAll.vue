@@ -1,5 +1,5 @@
 <template>
-  <NuxtLink class="show-all-link show-all-link--desktop" :to="to">
+  <NuxtLink class="show-all-link" :to="to">
     <span><slot /></span>
     <BaseIcon name="forward-line" color="tw-fill-primary" class="show-all-link__icon" />
   </NuxtLink>
@@ -15,18 +15,24 @@
 
 <style scoped lang="scss">
   .show-all-link {
-    @apply tw-gap-2 tw-text-primary;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 0;
+    @apply tw-text-primary;
 
-    &--mob {
-      @apply tw-mt-4 tw-flex lg:tw-hidden tw-justify-between tw-items-center;
+    &:hover {
+      opacity: 0.7;
     }
 
-    &--desktop {
-      @apply tw-hidden lg:tw-flex tw-items-center;
+    @include md {
+      padding: 12px 0;
+      justify-content: space-between;
     }
 
     &__icon {
-      @apply tw-w-6 tw-h-6;
+      width: 24px;
+      height: 24px;
     }
   }
 </style>
