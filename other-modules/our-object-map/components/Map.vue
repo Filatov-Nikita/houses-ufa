@@ -183,5 +183,9 @@
     height: 500px;
     border-radius: 16px;
     overflow: hidden;
+
+    @include sm {
+      height: 400px;
+    }
   }
 </style>
