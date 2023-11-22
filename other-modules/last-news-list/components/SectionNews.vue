@@ -1,6 +1,6 @@
 <template>
   <section class="section-news">
-    <div class="tw-container">
+    <div class="wrapper">
       <div class="section__top section-news__toolbar">
         <h2 class="section__title">Новости</h2>
         <NuxtLink class="section-news__link section-news__link--desktop" to="/articles">
@@ -24,23 +24,42 @@
 <style scoped lang="scss">
   .section-news {
     &__toolbar {
-      @apply tw-flex tw-justify-between tw-items-center;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center
     }
 
     &__link {
-      @apply tw-gap-2 tw-text-primary;
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      @apply tw-text-primary;
 
       &--mob {
-        @apply tw-mt-4 tw-flex lg:tw-hidden tw-justify-between tw-items-center;
+        display: none;
+
+        @include sm {
+          margin-top: 32px;
+          display: flex;
+          justify-content: space-between;
+        }
       }
 
       &--desktop {
-        @apply tw-hidden lg:tw-flex tw-items-center;
+        &:hover {
+          opacity: 0.7;
+        }
+
+        @include sm {
+          display: none;
+        }
       }
     }
 
     &__icon {
-      @apply tw-w-6 tw-h-6;
+      width: 24px;
+      height: 24px;
     }
   }
 </style>

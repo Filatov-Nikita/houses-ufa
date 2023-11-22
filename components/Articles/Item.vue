@@ -47,6 +47,17 @@
   border-radius: 24px;
   @apply tw-bg-white tw-text-text00 tw-text-2xl;
 
+  @include lg {
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    @apply tw-text-xl;
+  }
+
+  @include sm {
+    padding: 24px 16px;
+  }
+
   &:hover {
     @apply tw-bg-secondary-hover;
   }
@@ -63,6 +74,12 @@
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
     margin-bottom: 48px;
+
+    @include lg {
+      height: auto;
+      display: block;
+      margin-bottom: 64px;
+    }
   }
 
   &__readmore {
@@ -79,6 +96,10 @@
     align-items: center;
     gap: 16px;
     justify-content: space-between;
+
+    @include lg {
+      margin-top: auto;
+    }
   }
 }
 
