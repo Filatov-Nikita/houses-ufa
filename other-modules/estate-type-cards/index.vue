@@ -23,13 +23,11 @@
     } as const,
     slidesPerView: 1,
     breakpoints: {
-      1024: {
+      768: {
         slidesPerView: 2,
-        spaceBetween: 16,
       },
       1440: {
         slidesPerView: 3,
-        spaceBetween: 16,
       },
     } as const,
   };

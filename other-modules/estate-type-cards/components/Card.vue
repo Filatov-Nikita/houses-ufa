@@ -37,6 +37,14 @@
   border-radius: 16px;
   @apply tw-bg-primary tw-text-white;
 
+  @include lg {
+    padding: 32px;
+  }
+
+  @include md {
+    padding: 24px;
+  }
+
   &::before {
     content: '';
     width: 100%;
@@ -64,11 +72,19 @@
     font-size: 32px;
     line-height: 1.25;
     font-weight: 600;
+
+    @include sm {
+      @apply tw-text-2xl;
+    }
   }
 
   &__text {
     margin-top: 16px;
     @apply tw-text-xl;
+
+    @include sm {
+      @apply tw-text-lg;
+    }
   }
 
   &__next {
