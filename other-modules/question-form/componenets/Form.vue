@@ -4,55 +4,53 @@
       <div class="question-form__left">
         <p class="question-form__title">Остались вопросы?</p>
         <p class="question-form__text">
-          Оставьте свои контактные данные и мы свяжемся с вами
+          Оставьте свои контактные данные и&nbsp;мы&nbsp;свяжемся с&nbsp;вами
         </p>
       </div>
       <div class="question-form__right">
         <Form ref="formRef" class="question-form__form" @submit="onSubmit">
-          <div class="question-form__section">
-            <BaseInput
-              rules="required"
-              class="question-form__input"
-              name="name"
-              label="Имя"
-              placeholder="Иван"
-              v-model="store.form.first_name"
-            />
-            <BaseInput
-              rules="required"
-              class="question-form__input"
-              name="phone"
-              label="Телефон"
-              placeholder="+7 (XXX) XXX XX XX"
-              maska="+7 (###) ### ## ##"
-              v-model="store.form.phone"
-            />
-          </div>
-          <div class="question-form__section">
-            <BaseSelect
-              rules="required"
-              class="question-form__input"
-              name="time1"
-              label="Когда позвонить"
-              v-bind="selectProps(time1)"
-              v-model="store.form.callback_date"
-            />
-            <BaseSelect
-              rules="required"
-              class="question-form__input"
-              name="time2"
-              label="Во сколько позвонить"
-              v-bind="selectProps(time2)"
-              v-model="store.form.callback_time"
-            />
-          </div>
-          <div class="question-form__section">
-            <p class="question-form__perc question-form__input">
-              Нажимая кнопку, вы соглашаетесь с&nbsp;<a href="#">условиями обработки персональных данных</a>
-            </p>
-            <BaseButton class="question-form__input" type="submit" :disabled="store.loading">
-              Отправить
-            </BaseButton>
+          <BaseInput
+            rules="required"
+            class="question-form__input"
+            name="name"
+            label="Имя"
+            placeholder="Иван"
+            v-model="store.form.first_name"
+          />
+          <BaseInput
+            rules="required"
+            class="question-form__input"
+            name="phone"
+            label="Телефон"
+            placeholder="+7 (XXX) XXX XX XX"
+            maska="+7 (###) ### ## ##"
+            v-model="store.form.phone"
+          />
+          <BaseSelect
+            rules="required"
+            class="question-form__input"
+            name="time1"
+            label="Когда позвонить"
+            v-bind="selectProps(time1)"
+            v-model="store.form.callback_date"
+          />
+          <BaseSelect
+            rules="required"
+            class="question-form__input"
+            name="time2"
+            label="Во сколько позвонить"
+            v-bind="selectProps(time2)"
+            v-model="store.form.callback_time"
+          />
+          <div class="question-form__bottom">
+            <div class="question-form__actions">
+              <p class="question-form__perc question-form__input">
+                Нажимая кнопку, вы соглашаетесь с&nbsp;<a href="#">условиями обработки персональных данных</a>
+              </p>
+              <BaseButton class="question-form__input" type="submit" :disabled="store.loading">
+                Отправить
+              </BaseButton>
+            </div>
           </div>
         </Form>
       </div>
@@ -108,6 +106,14 @@
     z-index: 0;
     @apply tw-bg-white;
 
+    @include lg {
+      padding: 24px;
+    }
+
+    @include sm {
+      padding: 24px 16px;
+    }
+
     &::before {
       content: '';
       display: block;
@@ -121,6 +127,15 @@
       height: 100%;
       position: absolute;
       z-index: -1;
+
+      @include lg {
+        background-size: cover;
+        background-position-x: -114px;
+      }
+
+      @include md {
+        display: none;
+      }
     }
 
     &__grid {
@@ -132,11 +147,19 @@
     &__left {
       margin: 10px;
       width: calc(100% / 12 * 6 - 20px);
+
+      @include md {
+        width: calc(100% - 20px);
+      }
     }
 
     &__right {
       margin: 10px;
       width: calc(100% / 12 * 6 - 20px);
+
+      @include md {
+        width: calc(100% - 20px);
+      }
     }
 
     &__title {
@@ -149,23 +172,55 @@
 
     &__text {
       @apply tw-text-text02 tw-text-base;
+
+      @include lg {
+        max-width: 300px;
+      }
     }
 
-    &__section {
+    &__form {
       display: flex;
       flex-wrap: wrap;
-      margin: 0 -10px;
+      margin: -10px;
     }
 
     &__input {
       width: calc(100% / 12 * 6 - 20px);
       margin: 10px;
+
+      @include sm {
+        width: calc(100% - 20px);
+      }
+    }
+
+    &__bottom {
+      width: calc(100% - 20px);
+      margin: 10px;
+      padding-top: 12px;
+
+      @include sm {
+        padding-top: 0px;
+      }
+    }
+
+    &__actions {
+      display: flex;
+      flex-wrap: wrap;
+      margin: -10px;
     }
 
     &__perc {
       @apply tw-text-text02 tw-text-sm;
       a {
         @apply tw-text-primary;
+      }
+
+      @include lg {
+        @apply tw-text-xs;
+      }
+
+      @include sm {
+        order: 10;
       }
     }
   }
