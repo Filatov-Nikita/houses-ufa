@@ -1,7 +1,7 @@
 <template>
   <LoadMoreBtn
     v-if="!store.pagination.isLast && store.projects?.meta"
-    class="tw-mt-8"
+    class="project-list-pag"
     :total="store.projects?.meta.total"
     :loaded="store.projects?.meta.to"
     :loading="store.loadingNext"
@@ -14,3 +14,13 @@
 
   const store = useProjectList();
 </script>
+
+<style scoped lang="scss">
+  .project-list-pag {
+    margin-top: 32px;
+
+    @include lg {
+      margin-top: 24px;
+    }
+  }
+</style>

@@ -43,6 +43,10 @@
     border-radius: 16px;
     padding: 24px;
 
+    @include sm {
+      padding: 24px 16px;
+    }
+
     &--white {
       @apply tw-bg-white;
     }

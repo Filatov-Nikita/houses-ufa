@@ -33,7 +33,7 @@
 
 <style scoped lang="scss">
   .estate-slider {
-    width: 277px;
+    width: 100%;
     height: 277px;
 
     &__img {

@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="project-list-filter">
     <BaseTabsGroup v-model="store.type">
       <BaseTabsGroupItem name="all">Все</BaseTabsGroupItem>
       <BaseTabsGroupItem name="townhouse">Таунхаусы</BaseTabsGroupItem>
@@ -13,3 +13,12 @@
 
   const store = useProjectList();
 </script>
+
+
+<style scoped lang="scss">
+  .project-list-filter {
+    overflow-x: scroll;
+    max-width: 100%;
+    width: 100%;
+  }
+</style>
