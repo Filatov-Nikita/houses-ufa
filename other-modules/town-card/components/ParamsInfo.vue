@@ -21,7 +21,7 @@
       </div>
       <div class="params-block__one">
         <p class="params-block__key">Площадь участка</p>
-        <p class="params-block__value">{{ data?.area_land }} сот.</p>
+        <p class="params-block__value">{{ area }} сот.</p>
       </div>
       <div class="params-block__one">
         <p class="params-block__key">Этажность</p>
@@ -61,6 +61,11 @@
 
   const subtitle = computed(() => {
     return `${data.value?.town.name}, ${data.value?.town.location}`;
+  });
+
+  const area = computed(() => {
+    if(!data.value) return '';
+    return (+data.value.area_land / 100).toFixed(1);
   });
 </script>
 
