@@ -1,7 +1,9 @@
 <template>
-  <section class="wrapper">
-    <Header class="tw-mb-10" />
-    <Content />
+  <section>
+    <div class="wrapper">
+      <Header class="tw-mb-10" />
+      <Content />
+    </div>
   </section>
 </template>
 

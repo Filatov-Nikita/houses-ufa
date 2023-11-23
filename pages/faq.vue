@@ -1,5 +1,6 @@
 <template>
   <SectionFirst
+    class="section"
     :history-list="[{ name: 'Главная', to: '/' }, { name: 'Вопросы и ответы' }]"
   >
     <template #title> Вопросы и ответы </template>
@@ -16,7 +17,7 @@
     </template>
   </SectionFirst>
 
-  <section>
+  <section class="section">
     <div class="wrapper">
       <Faq />
     </div>

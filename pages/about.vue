@@ -1,13 +1,15 @@
 <template>
-  <div class="wrapper">
-    <CompanyHeader />
+  <div class="section">
+    <div class="wrapper">
+      <CompanyHeader />
+    </div>
   </div>
-  <section>
+  <section class="section">
     <div class="wrapper">
       <CompanyShortInfo />
     </div>
   </section>
-  <section>
+  <section class="section">
     <div class="wrapper">
       <div class="section__top">
         <h2 class="section__title tw-mb-4 lg:tw-mb-6">Построенные объекты</h2>
@@ -15,7 +17,7 @@
       <CompanyObjectList />
     </div>
   </section>
-  <section>
+  <section class="section">
     <div class="wrapper">
       <div class="section__top">
         <h2 class="section__title tw-mb-4 lg:tw-mb-6">История</h2>
@@ -23,7 +25,7 @@
       <History/>
     </div>
   </section>
-  <section>
+  <section class="section">
     <div class="wrapper">
       <div class="section__top">
         <h2 class="section__title tw-mb-4 lg:tw-mb-6">Команда</h2>
@@ -31,12 +33,12 @@
       <Team />
     </div>
   </section>
-  <section id="work">
+  <section class="section" id="work">
     <div class="wrapper">
       <CompanyVacancies />
     </div>
   </section>
-  <section id="callback">
+  <section class="section" id="callback">
     <div class="wrapper">
       <CompanyForm />
     </div>

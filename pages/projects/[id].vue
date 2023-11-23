@@ -1,16 +1,16 @@
 <template>
-  <section>
+  <section class="section">
     <div class="wrapper">
       <ProjectCard />
     </div>
   </section>
-  <section>
+  <section class="section">
     <div class="wrapper">
       <h2 class="section__title section__top">Другие проекты коттеджей</h2>
       <ProjectList disabledTabs :excludeId="+$route.params.id" />
     </div>
   </section>
-  <section>
+  <section class="section">
     <div class="wrapper">
       <QuestionForm  />
     </div>

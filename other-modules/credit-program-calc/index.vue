@@ -1,8 +1,10 @@
 <template>
   <div class="credit-calc">
-    <Params class="credit-calc__left" />
-    <div class="credit-calc__right">
-      <ItemList />
+    <div class="credit-calc__grid">
+      <Params class="credit-calc__left" />
+      <div class="credit-calc__right">
+        <ItemList />
+      </div>
     </div>
     <div v-if="loading" class="inner-loading">Загрузка...</div>
   </div>
@@ -43,11 +45,14 @@
   .credit-calc {
     border-radius: 16px;
     padding: 40px;
-    display: flex;
-    flex-wrap: wrap;
-    margin: -10px;
     position: relative;
     @apply tw-bg-white;
+
+    &__grid {
+      display: flex;
+      flex-wrap: wrap;
+      margin: -10px;
+    }
 
     &__left {
       width: calc(100% / 12 * 4 - 20px);

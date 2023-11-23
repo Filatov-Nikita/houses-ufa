@@ -1,7 +1,9 @@
 <template>
-  <ArticleCard :article-id="+$route.params.id" />
+  <div class="section">
+    <ArticleCard :article-id="+$route.params.id" />
+  </div>
 
-  <section>
+  <section class="section">
     <div class="wrapper">
       <div class="section__top tw-flex tw-justify-between">
         <h2 class="section__title">Читать далее</h2>
@@ -10,7 +12,7 @@
     </div>
   </section>
 
-  <section>
+  <section class="section">
     <div class="wrapper">
       <QuestionForm />
     </div>

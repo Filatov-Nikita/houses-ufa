@@ -1,5 +1,6 @@
 <template>
   <SectionFirst
+    class="section"
     :history-list="[{ name: 'Главная', to: '/' }, { name: 'Контакты' }]"
   >
     <template #title> Контакты </template>
@@ -12,7 +13,7 @@
       />
     </template>
   </SectionFirst>
-  <section>
+  <section class="section">
     <div class="wrapper">
       <TabContacts />
     </div>

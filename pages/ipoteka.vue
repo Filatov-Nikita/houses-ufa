@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="section">
     <div class="wrapper">
       <PageInfo
         title="Ипотека"
@@ -13,7 +13,7 @@
       </PageInfo>
     </div>
   </div>
-  <section>
+  <section class="section">
     <div class="wrapper">
       <div class="section__top">
         <h2 class="section__title">Варианты покупки объектов недвижимости</h2>
@@ -21,12 +21,12 @@
       <CreditList />
     </div>
   </section>
-  <section id="credit-calc">
+  <section class="section" id="credit-calc">
     <div class="wrapper">
       <CreditCalc />
     </div>
   </section>
-  <section>
+  <section class="section">
     <div class="wrapper">
       <QuestionForm />
     </div>

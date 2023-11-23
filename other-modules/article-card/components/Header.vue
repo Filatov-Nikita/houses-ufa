@@ -1,5 +1,5 @@
 <template>
-  <section>
+  <section class="section">
     <div class="wrapper tw-h-full">
       <BaseWait :waiting="loading">
         <template #loader>

@@ -9,31 +9,31 @@
       </div>
     </template>
 
-    <section>
+    <section class="section">
       <div class="wrapper">
         <ComplexHeader />
       </div>
     </section>
 
-    <section>
+    <section class="section">
       <div class="wrapper">
         <ApartFilter />
       </div>
     </section>
 
-    <section>
+    <section class="section">
       <div class="wrapper">
         <ComplexAbout />
       </div>
     </section>
 
-    <section>
+    <section class="section">
       <div class="wrapper">
         <ComplexAdvantages />
       </div>
     </section>
 
-    <section>
+    <section class="section">
       <div class="wrapper">
         <div class="section__top">
           <h2 class="section__title">Расположение и инфраструктура</h2>
@@ -42,7 +42,7 @@
       </div>
     </section>
 
-    <section>
+    <section class="section">
       <div class="wrapper">
         <div class="section__top">
           <h2 class="section__title">Галерея</h2>
@@ -51,7 +51,7 @@
       </div>
     </section>
 
-    <section>
+    <section class="section">
       <div class="wrapper">
         <div class="section__top">
           <h2 class="section__title">Генплан жилого комплекса {{ complex?.name }}</h2>
@@ -60,7 +60,7 @@
       </div>
     </section>
 
-    <section>
+    <section class="section">
       <div class="wrapper">
         <div class="section__top">
           <h2 class="section__title">Как купить</h2>
@@ -69,7 +69,7 @@
       </div>
     </section>
 
-    <section>
+    <section class="section">
       <div class="wrapper">
         <div class="section__top">
           <h2 class="section__title">Типы планировок в {{ complex?.name }}</h2>
@@ -78,7 +78,7 @@
       </div>
     </section>
 
-    <section>
+    <section class="section">
       <div class="wrapper">
         <div class="section__top">
           <h2 class="section__title">Ход строительства</h2>
@@ -87,7 +87,7 @@
       </div>
     </section>
 
-    <section>
+    <section class="section">
       <div class="wrapper">
         <QuestionForm />
       </div>

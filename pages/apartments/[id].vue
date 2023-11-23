@@ -1,10 +1,10 @@
 <template>
-  <div>
+  <div class="section">
     <div class="wrapper">
       <FlatCard />
     </div>
   </div>
-  <section>
+  <section class="section">
     <div class="wrapper">
       <div class="section__top">
         <h2 class="section__title">Ипотека</h2>
@@ -12,7 +12,7 @@
       <CreditCalc />
     </div>
   </section>
-  <section>
+  <section class="section">
     <div class="wrapper">
       <div class="section__top">
         <h2 class="section__title">Похожие квартиры</h2>
@@ -20,7 +20,7 @@
       <FlatSimilar />
     </div>
   </section>
-  <section>
+  <section class="section">
     <div class="wrapper">
       <QuestionForm />
     </div>

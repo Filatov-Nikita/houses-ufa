@@ -1,20 +1,20 @@
 <template>
-  <div>
+  <div class="section">
     <div class="wrapper">
       <TownHeader />
     </div>
   </div>
-  <section>
+  <section class="section">
     <div class="wrapper">
       <TownFilter />
     </div>
   </section>
-  <section>
+  <section class="section">
     <div class="wrapper">
       <TownAbout />
     </div>
   </section>
-  <section>
+  <section class="section">
     <div class="wrapper">
       <div class="section__top">
         <h2 class="section__title">Генплан коттеджного посёлка {{ townOne.town?.data.name }}</h2>
@@ -22,12 +22,12 @@
       <TownGenplan />
     </div>
   </section>
-  <section>
+  <section class="section">
     <div class="wrapper">
       <TownAdvantages />
     </div>
   </section>
-  <section>
+  <section class="section">
     <div class="wrapper">
       <div class="section__top">
         <h2 class="section__title">Инфраструктура</h2>
@@ -35,7 +35,7 @@
       <TownLocations />
     </div>
   </section>
-  <section>
+  <section class="section">
     <div class="wrapper">
       <div class="section__top">
         <h2 class="section__title">Проекты домов</h2>
@@ -43,7 +43,7 @@
       <ProjectList />
     </div>
   </section>
-  <section>
+  <section class="section">
     <div class="wrapper">
       <div class="section__top">
         <h2 class="section__title">Материалы</h2>
@@ -51,7 +51,7 @@
       <TownMaterials />
     </div>
   </section>
-  <section>
+  <section class="section">
     <div class="wrapper">
       <div class="section__top">
         <h2 class="section__title">Как купить</h2>
@@ -59,7 +59,7 @@
       <EstatePurchaseMethods />
     </div>
   </section>
-  <section>
+  <section class="section">
     <div class="wrapper">
       <QuestionForm />
     </div>

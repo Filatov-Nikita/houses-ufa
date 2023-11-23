@@ -1,15 +1,15 @@
 <template>
-  <div>
+  <div class="section">
     <div class="wrapper">
       <TownCard />
     </div>
   </div>
-  <section>
+  <section class="section">
     <div class="wrapper">
       <CreditCalc />
     </div>
   </section>
-  <section>
+  <section class="section">
     <div class="wrapper">
       <div class="section__top">
         <h2 class="section__title">Похожие дома в этом посёлке</h2>
@@ -17,7 +17,7 @@
       <TownSimilar />
     </div>
   </section>
-  <section>
+  <section class="section">
     <div class="wrapper">
       <QuestionForm />
     </div>
