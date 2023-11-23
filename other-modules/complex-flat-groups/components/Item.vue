@@ -48,7 +48,7 @@
     return props.flat.plan_image_url;
   });
 
-  const name = computed(() => `${typeRoomCount[props.flat.room_factor]}-комнатные квартиры`);
+  const name = computed(() => `${typeRoomCount[props.flat.room_factor]}-комнатные квартиры, ${props.flat.area_total} м2`);
 
   function scrollToFilter(): void {
     const el = document.querySelector('.apart-filter');
