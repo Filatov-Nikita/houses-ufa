@@ -83,11 +83,11 @@
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       padding: 64px 40px;
+      column-gap: 20px;
+      row-gap: 64px;
 
       @include lg {
         grid-template-columns: repeat(3, 1fr);
-        column-gap: 20px;
-        row-gap: 64px;
         padding: 40px 40px;
       }
 
