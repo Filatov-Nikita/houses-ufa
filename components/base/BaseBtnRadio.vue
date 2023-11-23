@@ -70,7 +70,7 @@
 <style scoped lang="scss">
   .base-btn-radio {
     &--disabled {
-      opacity: 0.5 !important;
+      opacity: 0.3 !important;
       pointer-events: none !important;
     }
 
