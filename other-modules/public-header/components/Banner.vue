@@ -11,7 +11,7 @@
         </p>
       </div>
       <div class="bannerBlock__action">
-        <BaseButton class="bannerBlock__link" :to="banner.readMoreHref" theme="white">
+        <BaseButton class="bannerBlock__link" :to="banner.readMoreHref" theme="white" target="_blank">
           <span class="tw-text-primary">Подробнее</span>
         </BaseButton>
       </div>
