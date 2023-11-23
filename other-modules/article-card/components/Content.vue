@@ -43,7 +43,14 @@
     }
 
     &__img {
-      @apply tw-rounded-2xl tw-overflow-hidden
+      @apply tw-rounded-2xl tw-overflow-hidden;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+      }
     }
 
     &__text {
