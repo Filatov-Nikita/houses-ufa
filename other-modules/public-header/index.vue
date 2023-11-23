@@ -9,6 +9,12 @@
   import NavMenu from './components/Nav.vue';
   import ConsultForm from '@/other-modules/consult-form/index.vue';
   import { usePublicHeader } from './store';
+  import { useRoute } from 'vue-router';
 
   const store = usePublicHeader();
+  const route = useRoute();
+
+  watch(route, () => {
+    store.showedNav = false;
+  });
 </script>
