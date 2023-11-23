@@ -17,7 +17,7 @@
       <CompanyObjectList />
     </div>
   </section>
-  <section class="section">
+  <section class="section" id="history">
     <div class="wrapper">
       <div class="section__top">
         <h2 class="section__title tw-mb-4 lg:tw-mb-6">История</h2>
@@ -25,7 +25,7 @@
       <History/>
     </div>
   </section>
-  <section class="section">
+  <section class="section" id="team">
     <div class="wrapper">
       <div class="section__top">
         <h2 class="section__title tw-mb-4 lg:tw-mb-6">Команда</h2>
