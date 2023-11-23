@@ -208,6 +208,15 @@
         insertLabel: '₽',
         inputWitdh: '100px'
       }
+    } else if(flatFilter.params.price_type === 'mortgage_initial_fee') {
+      return {
+        min: 500000,
+        max: 10000000,
+        step: 1,
+        mult: 1,
+        insertLabel: '₽',
+        inputWitdh: '120px'
+      }
     }
 
     return {
