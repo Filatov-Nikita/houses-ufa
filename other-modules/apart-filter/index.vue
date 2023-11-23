@@ -32,7 +32,7 @@
 
   const currentTabFilter = toRef(filterHeadStore, 'currentTabFilter');
 
-  const tabLabels = ['Квартиры', 'Машиноместо и кладовые'];
+  const tabLabels = ['Квартиры', 'Машиноместа и кладовые'];
 
   const canShowParkStores = computed(() => {
     return complexOne.complex?.data.has_parkings === true

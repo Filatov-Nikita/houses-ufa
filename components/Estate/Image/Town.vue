@@ -2,7 +2,7 @@
   <div class="estate-image-contr">
     <div class="estate-image-contr__toolbar">
       <BaseTabsGroup v-model="tabCurrent">
-        <BaseTabsGroupItem name="render">Рендер</BaseTabsGroupItem>
+        <BaseTabsGroupItem name="render">Экстерьер</BaseTabsGroupItem>
         <BaseTabsGroupItem name="plan">Планировка</BaseTabsGroupItem>
       </BaseTabsGroup>
     </div>
