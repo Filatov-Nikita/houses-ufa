@@ -84,6 +84,11 @@
     &__sort {
       flex-basis: 310px;
       min-width: 0;
+
+      @include sm {
+        flex-basis: auto;
+        width: 100%;
+      }
     }
 
     &__finded {

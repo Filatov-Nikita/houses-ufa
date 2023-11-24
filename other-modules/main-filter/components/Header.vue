@@ -32,6 +32,10 @@
     padding: 40px;
     @apply tw-bg-white;
 
+    @include lg {
+      padding: 24px;
+    }
+
     &__bread {
       margin-bottom: 24px;
       @apply tw-text-text02;
@@ -39,6 +43,10 @@
 
     &__h1 {
       @apply tw-text-text00 tw-text-5xl;
+
+      @include sm {
+        @apply tw-text-2xl;
+      }
     }
 
     &__toolbar {
@@ -48,6 +56,11 @@
       justify-content: space-between;
       align-items: center;
       margin-bottom: 48px;
+
+      @include sm {
+        gap: 16px;
+        margin-bottom: 8px;
+      }
     }
   }
 
