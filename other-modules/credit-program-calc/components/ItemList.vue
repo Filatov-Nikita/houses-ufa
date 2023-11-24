@@ -29,6 +29,14 @@
   &__item {
     width: calc(100% / 12 * 4 - 20px);
     margin: 10px;
+
+    @include lg {
+      width: calc(100% / 12 * 6 - 20px);
+    }
+
+    @include md {
+      width: calc(100% - 20px);
+    }
   }
 }
 </style>

@@ -82,6 +82,10 @@
     &__price-from {
       margin-top: 8px;
       @apply tw-text-lg;
+
+      @include sm {
+        @apply tw-text-base;
+      }
     }
 
     &__label {
@@ -92,11 +96,20 @@
       font-size: 32px;
       line-height: 1.25;
       margin-top: 8px;
+
+      @include sm {
+        @apply tw-text-2xl;
+      }
     }
 
     &__prog-name {
       margin-top: 4px;
       @apply tw-text-xl;
+
+      @include sm {
+        font-size: 20px;
+        line-height: 32px;
+      }
     }
   }
 </style>

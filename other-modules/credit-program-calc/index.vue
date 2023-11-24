@@ -50,6 +50,14 @@
     position: relative;
     @apply tw-bg-white;
 
+    @include lg {
+      padding: 24px;
+    }
+
+    @include sm {
+      padding: 24px 16px;
+    }
+
     &__grid {
       display: flex;
       flex-wrap: wrap;
@@ -59,6 +67,14 @@
     &__left {
       width: calc(100% / 12 * 4 - 20px);
       margin: 10px;
+
+      @include md {
+        width: calc(100% / 12 * 6 - 20px);
+      }
+
+      @include sm {
+        width: calc(100% - 20px);
+      }
     }
 
     &__right {
@@ -66,8 +82,16 @@
       margin: 10px;
       height: 650px;
       overflow: auto;
-      padding: 10px;
+      padding-right: 10px;
       position: relative;
+
+      @include md {
+        width: calc(100% / 12 * 6 - 20px);
+      }
+
+      @include sm {
+        width: calc(100% - 20px);
+      }
 
       &--scroll-off {
         overflow: hidden;
