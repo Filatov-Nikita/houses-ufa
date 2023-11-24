@@ -21,21 +21,23 @@
 
   const loading = computed(() => creditStore.loading || creditCalcStore.loading);
 
-  if(creditStore.creditProgs === null) {
-    await useLazyAsyncData(() => {
-      return creditStore.show();
-    });
+  async function show() {
+    if(creditStore.creditProgs === null) {
+      await creditStore.show();
+    }
+
+    if(creditCalcStore.groupId === null) {
+      creditCalcStore.groupId = creditStore.creditProgs?.data[0].id ?? null;
+      await creditCalcStore.show();
+    }
   }
 
   await useLazyAsyncData(() => {
-    if(creditCalcStore.groupId === null) {
-      creditCalcStore.groupId = creditStore.creditProgs?.data[0].id ?? null;
-    }
-    return creditCalcStore.show();
+    return show();
   });
 
   watch(() => creditCalcStore.groupId, (val) => {
-    if(val) {
+    if(val && creditCalcStore.creditOffers !== null) {
       creditCalcStore.show();
     }
   });
