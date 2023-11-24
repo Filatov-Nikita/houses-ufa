@@ -34,7 +34,7 @@ export function useNavMenu(sectionList: ComputedRef<Sections>) {
         },
         {
           label: 'СМИ о нас',
-          to: '/articles',
+          to: '/articles?type=mass_media',
         },
         {
           label: 'Вопросы и ответы',
@@ -51,7 +51,7 @@ export function useNavMenu(sectionList: ComputedRef<Sections>) {
         },
         {
           label: 'Сервисные службы',
-          to: '/contacts',
+          to: '/contacts?type=service',
         },
       ],
     },

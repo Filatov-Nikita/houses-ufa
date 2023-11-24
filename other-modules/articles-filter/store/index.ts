@@ -2,8 +2,9 @@ import type { ArticleListItem } from '@/types/articles';
 import { defineStore } from 'pinia';
 import { useSeqDataFetch } from '@/composables/useSeqDataFetch';
 
+export type Type = 'tiding' | 'mass_media';
+
 const useArticlesFilter = defineStore('articlesFilter', () => {
-  type Type = 'tiding' | 'mass_media';
   type Params = {
     year_eq: string | null,
   };

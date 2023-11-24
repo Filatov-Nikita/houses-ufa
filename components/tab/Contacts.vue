@@ -39,6 +39,10 @@
   </BaseTabsTabContent>
 </template>
 <script lang="ts" setup>
+import { useRoute, useRouter } from 'vue-router';
+
+const route = useRoute();
+const router = useRouter();
 const tab = ref('office')
 const tabs = [
   {
@@ -76,5 +80,17 @@ const serviceList = [
     phone: '+7 347 264-54-65',
   },
 ]
+
+watch(() => route.query, (query) => {
+  if(query.type !== tab.value) {
+    tab.value = (query.type ?? 'office') as string;
+  }
+}, { immediate: true });
+
+watch(tab, (type) => {
+  if(type !== route.query.type) {
+    router.replace({ query: { type } });
+  }
+}, { immediate: true });
 </script>
 <style lang="scss" scoped></style>
