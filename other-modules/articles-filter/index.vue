@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <Toolbar class="tw-mb-8" />
+  <div class="articles-filter">
+    <Toolbar class="articles-filter__toolbar" />
     <ListItems :loading="loading" :articles="articles" />
   </div>
 </template>
@@ -32,3 +32,15 @@
 
   await useAsyncData(() => filter.show());
 </script>
+
+<style scoped lang="scss">
+  .articles-filter {
+    &__toolbar {
+      margin-bottom: 32px;
+
+      @include lg {
+        margin-bottom: 24px;
+      }
+    }
+  }
+</style>

@@ -1,9 +1,9 @@
 <template>
   <BaseWait :waiting="loading">
     <template #loader>
-      <div class="tw-flex tw-flex-wrap -tw-m-[10px]">
+      <div class="loader">
         <div
-          class="tw-w-1/3 tw-p-[10px]"
+          class="loader__item"
           v-for="_i in 6"
         >
           <BaseSkeleton class="tw-h-[320px] tw-rounded-3xl" />
@@ -46,6 +46,25 @@
 
 
 <style scoped lang="scss">
+  .loader {
+    display: flex;
+    flex-wrap: wrap;
+    margin: -10px;
+
+    &__item {
+      width: calc(33.3% - 20px);
+      margin: 10px;
+
+      @include lg {
+        width: calc(50% - 20px);
+      }
+
+      @include sm {
+        width: calc(100% - 20px);
+      }
+    }
+  }
+
   .list-items {
     &__list {
       display: flex;
@@ -56,10 +75,22 @@
     &__item {
       width: calc(33.3% - 20px);
       margin: 10px;
+
+      @include lg {
+        width: calc(50% - 20px);
+      }
+
+      @include sm {
+        width: calc(100% - 20px);
+      }
     }
 
     &__pag {
       margin-top: 32px;
+
+      @include lg {
+        margin-top: 24px;
+      }
     }
   }
 </style>

@@ -1,11 +1,11 @@
 <template>
   <div class="toolbar">
     <div class="toolbar__tabs">
-      <BaseTabsGroup v-model="filter.currentTab">
-        <BaseTabsGroupItem name="tiding" theme="white">
+      <BaseTabsGroup class="toolbar__group" v-model="filter.currentTab">
+        <BaseTabsGroupItem class="toolbar__tab" name="tiding" theme="white">
           Новости
         </BaseTabsGroupItem>
-        <BaseTabsGroupItem name="mass_media" theme="white">
+        <BaseTabsGroupItem class="toolbar__tab" name="mass_media" theme="white">
           СМИ о нас
         </BaseTabsGroupItem>
       </BaseTabsGroup>
@@ -31,8 +31,35 @@
     align-items: center;
     gap: 32px;
 
+    @include sm {
+      gap: 16px;
+    }
+
+    &__tabs {
+      @include sm {
+        width: 100%;
+      }
+    }
+
+    &__group {
+      @include sm {
+        width: 100%;
+      }
+    }
+
+    &__tab {
+      @include sm {
+        width: 100%;
+      }
+    }
+
     &__params {
       flex-basis: 160px;
+
+      @include sm {
+        flex-basis: auto;
+        width: 100%;
+      }
     }
   }
 </style>

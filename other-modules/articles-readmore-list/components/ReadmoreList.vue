@@ -41,6 +41,14 @@
     &__item {
       width: calc(33.3% - 20px);
       margin: 10px;
+
+      @include lg {
+        width: calc(50% - 20px);
+      }
+
+      @include sm {
+        width: calc(100% - 20px);
+      }
     }
   }
 </style>
