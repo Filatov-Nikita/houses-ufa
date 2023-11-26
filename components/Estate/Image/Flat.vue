@@ -34,6 +34,10 @@
 
     &__img {
       height: 600px;
+
+      @include sm {
+        height: 311px;
+      }
     }
   }
 </style>
