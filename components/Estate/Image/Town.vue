@@ -62,6 +62,10 @@
 
     &__img {
       height: 600px;
+
+      @include md {
+        height: 450px;
+      }
     }
   }
 </style>
