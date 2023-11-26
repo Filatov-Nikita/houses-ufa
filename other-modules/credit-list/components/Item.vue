@@ -44,6 +44,14 @@
     overflow: hidden;
     @apply tw-bg-base01;
 
+    @include lg {
+      padding: 40px;
+    }
+
+    @include sm {
+      padding: 24px 16px;
+    }
+
     &:hover &__next {
       opacity: 1;
     }
@@ -61,6 +69,11 @@
       border-radius: 8px;
       padding: 12px;
       @apply tw-text-white tw-bg-base02;
+
+      @include sm {
+        padding: 10px 8px;
+        @apply tw-bg-primary;
+      }
     }
 
     &__decor {
@@ -71,6 +84,14 @@
       transition: transform 300ms;
       transform: translateX(100%);
       z-index: 0;
+
+      @include sm {
+        height: 192px;
+        top: auto;
+        bottom: -97px;
+        right: -75px;
+        transform: translateX(0);
+      }
     }
 
     &__img {
@@ -82,10 +103,21 @@
       height: calc(100% - 20px);
       object-fit: contain;
       object-position: bottom;
+
+      @include sm {
+        width: 158px;
+        bottom: -35px;
+      }
     }
 
     &__left {
+      position: relative;
+      z-index: 20;
       width: calc(100% / 12 * 7);
+
+      @include sm {
+        width: 100%;
+      }
 
       &--short {
         width: 100%;
@@ -96,6 +128,10 @@
       font-size: 32px;
       line-height: 1.25;
       @apply tw-text-text00;
+
+      @include sm {
+        @apply tw-text-2xl;
+      }
     }
 
     &__title {
@@ -103,6 +139,11 @@
       flex-wrap: wrap;
       justify-content: space-between;
       margin-bottom: 40px;
+      gap: 16px;
+
+      @include lg {
+        margin-bottom: 24px;
+      }
     }
 
     &__text {
@@ -111,6 +152,10 @@
       margin-bottom: 32px;
       max-width: 682px;
       @apply tw-text-text01;
+
+      @include sm {
+        margin-bottom: 45px;
+      }
     }
 
     &__next {
@@ -121,6 +166,10 @@
       opacity: 0;
       transition: opacity 300ms;
       @apply tw-bg-primary tw-text-white;
+
+      @include sm {
+        opacity: 1;
+      }
     }
 
     &__icon {
