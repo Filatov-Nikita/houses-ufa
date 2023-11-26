@@ -73,8 +73,12 @@
   .town-info {
     padding: 0 40px;
 
-    &__badges {
-      margin-bottom: 32px;
+    @include lg {
+      padding: 0 24px;
+    }
+
+    @include sm {
+      padding: 0px;
     }
 
     &__badge {
@@ -97,15 +101,27 @@
       justify-content: space-between;
       align-items: center;
       margin-bottom: 32px;
+
+      @include sm {
+        margin-bottom: 24px;
+      }
     }
 
     &__name {
       margin-bottom: 24px;
 
+      @include sm {
+        margin-bottom: 16px;
+      }
+
       h1 {
         font-size: 32px;
         line-height: 1.25;
         @apply tw-text-text00;
+
+        @include lg {
+          @apply tw-text-2xl;
+        }
       }
     }
 
@@ -116,6 +132,10 @@
 
     &__actions {
       margin-top: 32px;
+
+      @include sm {
+        margin-top: 24px;
+      }
     }
 
     &__price-perm2 {

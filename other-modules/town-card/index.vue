@@ -32,6 +32,14 @@
     padding: 40px;
     @apply tw-bg-white;
 
+    @include lg {
+      padding: 24px;
+    }
+
+    @include sm {
+      padding: 24px 16px;
+    }
+
     &__header {
       margin-bottom: 24px;
     }
@@ -45,6 +53,14 @@
     &__left {
       width: calc(100% / 12 * 7 - 20px);
       margin: 10px;
+
+      @include md {
+        width: calc(100% / 12 * 6 - 20px);
+      }
+
+      @include sm {
+        width: calc(100% - 20px);
+      }
     }
 
     &__right {
@@ -54,6 +70,14 @@
       display: flex;
       flex-direction: column;
       justify-content: center;
+
+      @include md {
+        width: calc(100% / 12 * 6 - 20px);
+      }
+
+      @include sm {
+        width: calc(100% - 20px);
+      }
     }
   }
 </style>
