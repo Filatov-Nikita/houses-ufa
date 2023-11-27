@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="flat-group-filter">
     <BaseTabsGroup theme="white" v-model="store.currentType">
       <BaseTabsGroupItem key="all" name="all">Все</BaseTabsGroupItem>
       <BaseTabsGroupItem
@@ -27,3 +27,11 @@
 
   const store = useComplexFlatGroups();
 </script>
+
+<style scoped lang="scss">
+  .flat-group-filter {
+    width: 100%;
+    max-width: 100%;
+    overflow-y: hidden;
+  }
+</style>
