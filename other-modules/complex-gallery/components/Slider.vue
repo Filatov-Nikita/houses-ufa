@@ -60,6 +60,14 @@
     &__slide {
       height: 560px;
 
+      @include md {
+        height: 450px;
+      }
+
+      @include sm {
+        height: 300px;
+      }
+
       &::before {
         content: '';
         display: block;
@@ -87,6 +95,17 @@
       left: 40px;
       z-index: 20;
       @apply tw-text-white tw-text-sm;
+
+      @include lg {
+        left: 32px;
+      }
+
+      @include sm {
+        left: 16px;
+        bottom: 16px;
+        max-width: 230px;
+        @apply tw-text-xs;
+      }
     }
   }
 </style>
