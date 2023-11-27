@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <Filter v-if="!disabledTabs" class="tw-mb-8" />
+  <div class="project-list-block">
+    <Filter v-if="!disabledTabs" class="project-list-block__filter" />
     <List />
     <PagBtn />
   </div>
@@ -31,3 +31,15 @@
     return store.show();
   }, { lazy: true });
 </script>
+
+<style scoped lang="scss">
+  .project-list-block {
+    &__filter {
+      margin-bottom: 32px;
+
+      @include lg {
+        margin-bottom: 24px;
+      }
+    }
+  }
+</style>

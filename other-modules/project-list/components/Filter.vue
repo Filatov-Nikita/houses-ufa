@@ -17,7 +17,7 @@
 
 <style scoped lang="scss">
   .project-list-filter {
-    overflow-x: scroll;
+    overflow-y: hidden;
     max-width: 100%;
     width: 100%;
   }
