@@ -154,7 +154,7 @@
     &__filter {
       max-width: 100%;
       width: 100%;
-      overflow-x: scroll;
+      overflow-y: hidden;
       margin-bottom: 32px;
 
       @include lg {

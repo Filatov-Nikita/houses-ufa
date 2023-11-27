@@ -87,7 +87,7 @@
         margin-top: 16px;
         width: 100%;
         max-width: 100%;
-        overflow-x: scroll;
+        overflow-y: hidden;
       }
     }
   }
