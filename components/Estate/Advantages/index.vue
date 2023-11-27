@@ -1,14 +1,16 @@
 <template>
-  <div>
-    <BaseTabsGroup class="estate-adv-tabs" v-model="tab">
-      <BaseTabsGroupItem
-        v-for="tab in tabs"
-        :key="tab"
-        :name="tab"
-      >
-        {{ tab }}
-      </BaseTabsGroupItem>
-    </BaseTabsGroup>
+  <div class="estate-adv">
+    <div class="estate-adv__filter">
+      <BaseTabsGroup class="estate-adv-tabs" v-model="tab">
+        <BaseTabsGroupItem
+          v-for="tab in tabs"
+          :key="tab"
+          :name="tab"
+        >
+          {{ tab }}
+        </BaseTabsGroupItem>
+      </BaseTabsGroup>
+    </div>
     <BaseTabsTabContent v-model="tab">
       <BaseTabsTabContentItem
         v-for="item in _items"
@@ -80,11 +82,28 @@
 .estate-adv-one {
   &__slider &__slider-img {
     border-radius: 0px 16px 16px 0px;
+
+    @include sm {
+    border-radius: 0 0 16px 16px;
+    }
   }
 }
 </style>
 
 <style scoped lang="scss">
+  .estate-adv {
+    &__filter {
+      width: 100%;
+      max-width: 100%;
+      overflow-y: hidden;
+      margin-bottom: 32px;
+
+      @include sm {
+        margin-bottom: 24px;
+      }
+    }
+  }
+
   .estate-adv-one {
     display: flex;
     flex-wrap: wrap;
@@ -96,11 +115,24 @@
       border-radius: 16px 0px 0px 16px;
       width: 50%;
       @apply tw-bg-white;
+
+      @include lg {
+        padding: 32px;
+      }
+
+      @include sm {
+        width: 100%;
+        padding: 24px 16px;
+      }
     }
 
     &__right {
       width: 50%;
       @apply tw-bg-white;
+
+      @include sm {
+        width: 100%;
+      }
     }
 
     &__title {
@@ -108,12 +140,21 @@
       line-height: 1.25;
       margin-bottom: 32px;
       @apply tw-text-text00;
+
+      @include sm {
+        margin-bottom: 24px;
+        @apply tw-text-2xl;
+      }
     }
 
     &__text {
       color: #4F4F4F;
       margin-bottom: 32px;
       @apply tw-text-base;
+
+      @include sm {
+        margin-bottom: 24px;
+      }
     }
 
     &__action {
@@ -124,10 +165,10 @@
     &__slider {
       width: 100%;
       height: 488px;
-    }
-  }
 
-  .estate-adv-tabs {
-    margin-bottom: 32px;
+      @include sm {
+        height: 300px;
+      }
+    }
   }
 </style>
