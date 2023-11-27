@@ -59,9 +59,13 @@
       prevEl: '.swiper-prev',
     } as const,
     breakpoints: {
-      1024: {
+      768: {
         slidesPerView: 2,
-        spaceBetween: 16,
+        spaceBetween: 20,
+      },
+      1024: {
+        slidesPerView: 3,
+        spaceBetween: 20,
       },
       1440: {
         slidesPerView: 4,

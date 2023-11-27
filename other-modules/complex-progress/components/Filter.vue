@@ -2,6 +2,7 @@
   <div class="progress-filter">
     <div class="progress-filter__params">
       <BaseSelect
+        class="progress-filter__select"
         theme="white"
         label=""
         name="progress.month"
@@ -10,6 +11,7 @@
         :disabled="store.filterType !== 'album'"
       />
       <BaseSelect
+        class="progress-filter__select"
         theme="white"
         label=""
         name="progress.month"
@@ -19,9 +21,9 @@
       />
     </div>
     <div class="tw-grow"></div>
-    <BaseTabsGroup v-model="store.filterType">
-      <BaseTabsGroupItem name="album">Фото</BaseTabsGroupItem>
-      <BaseTabsGroupItem name="camera">Онлайн-камеры</BaseTabsGroupItem>
+    <BaseTabsGroup class="progress-filter__tabs" v-model="store.filterType">
+      <BaseTabsGroupItem class="progress-filter__tab" name="album">Фото</BaseTabsGroupItem>
+      <BaseTabsGroupItem class="progress-filter__tab" name="camera">Онлайн-камеры</BaseTabsGroupItem>
     </BaseTabsGroup>
   </div>
 </template>
@@ -64,6 +66,29 @@
       display: flex;
       flex-wrap: wrap;
       gap: 16px;
+
+      @include sm {
+        width: 100%;
+        margin-bottom: 16px;
+      }
+    }
+
+    &__select {
+      @include sm {
+        flex-grow: 1;
+      }
+    }
+
+    &__tabs {
+      @include sm {
+        width: 100%;
+      }
+    }
+
+    &__tab {
+      @include sm {
+        width: 100%;
+      }
     }
   }
 </style>

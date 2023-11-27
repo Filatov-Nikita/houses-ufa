@@ -132,6 +132,10 @@
     z-index: 50;
     @apply tw-bg-white;
 
+    @include sm {
+      padding: 24px 16px;
+    }
+
     &__title {
       @apply tw-text-text00 tw-text-xl;
     }
