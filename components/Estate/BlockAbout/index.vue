@@ -6,7 +6,7 @@
       </div>
       <div class="about-block__right">
         <p class="about-block__text">{{ text }}</p>
-        <div class="about-adv about-block__adv">
+        <div class="about-adv">
           <div
             class="about-adv__item"
             v-for="adv in advantages"
@@ -59,6 +59,14 @@
     z-index: 0;
     @apply tw-bg-white;
 
+    @include lg {
+      padding: 24px;
+    }
+
+    @include lg {
+      padding: 24px 16px;
+    }
+
     &::before {
       content: '';
       display: block;
@@ -73,6 +81,14 @@
       height: 100%;
       position: absolute;
       z-index: -1;
+
+      @include md {
+        width: 30%;
+      }
+
+      @include sm {
+        display: none;
+      }
     }
 
     &__grid {
@@ -84,11 +100,19 @@
     &__left {
       margin: 10px;
       width: calc(100% / 12 * 6 - 20px);
+
+      @include sm {
+        width: calc(100% - 20px);
+      }
     }
 
     &__right {
       margin: 10px;
       width: calc(100% / 12 * 6 - 20px);
+
+      @include sm {
+        width: calc(100% - 20px);
+      }
     }
 
     &__title {
@@ -97,6 +121,10 @@
       margin-bottom: 8px;
       @apply tw-text-text00;
 
+      @include sm {
+        margin-bottom: 4px;
+        @apply tw-text-2xl;
+      }
     }
 
     &__text {
@@ -104,22 +132,24 @@
       @apply tw-text-text00 tw-text-base;
     }
 
-    &__adv {
-      margin-bottom: 24px;
-    }
-
     &__action {
       width: 100%;
+      margin-top: 24px;
     }
   }
 
   .about-adv {
     display: flex;
     flex-wrap: wrap;
+    margin: -12px;
 
     &__item {
       margin: 12px;
       width: calc(100% / 12 * 4 - 24px);
+
+      @include md {
+        width: calc(100% / 12 * 6 - 24px);
+      }
     }
 
     &__number {
