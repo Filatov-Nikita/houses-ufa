@@ -11,7 +11,7 @@
     <p class="complex-genplan__caption">
       Визуализация проекта предварительная, возможны изменения
     </p>
-    <svg class="complex-genplan__svg">
+    <svg class="complex-genplan__svg" :viewBox="viewBox">
       <path
         v-for="house in data.houses"
         :key="house.id"
@@ -46,6 +46,11 @@
 
   const data = computed(() => store.data?.data ?? null);
   const genplanImg = computed(() => store.data?.data.master_plan ?? null);
+
+  const viewBox = computed(() => {
+    if(!genplanImg.value) return '';
+    return `0 0 ${genplanImg.value.width} ${genplanImg.value.height}`
+  });
 
   function scrollToFilter(): void {
     const el = document.querySelector('.apart-filter');
@@ -125,6 +130,20 @@
       opacity: 0.85;
       z-index: 9100;
       @apply tw-text-xs tw-text-white;
+
+      @include md {
+        bottom: 12px;
+        right: 12px;
+      }
+
+      @include sm {
+        left: 0;
+        bottom: 0px;
+        right: auto;
+        font-size: 10px;
+        line-height: 1.2;
+        padding: 10px;
+      }
     }
   }
 </style>
