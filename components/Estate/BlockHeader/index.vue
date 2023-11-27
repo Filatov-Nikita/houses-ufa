@@ -42,17 +42,39 @@
     flex-direction: column;
     @apply tw-text-white;
 
+    @include lg {
+      padding: 40px;
+      height: 540px;
+    }
+
+    @include md {
+      padding: 24px;
+    }
+
+    @include sm {
+      padding: 32px 16px;
+      height: 450px;
+    }
+
     &__bread {
       margin-bottom: 16px;
     }
 
     &__location {
-      @apply tw-text-2xl
+      @apply tw-text-2xl;
+
+      @include sm {
+        @apply tw-text-base;
+      }
     }
 
     &__caption {
       opacity: 0.85;
       @apply tw-text-sm;
+
+      @include sm {
+        @apply tw-text-xs;
+      }
     }
 
     &__bottom {
@@ -63,6 +85,11 @@
       margin-bottom: 8px;
       line-height: 1.2;
       font-size: 48px;
+
+      @include sm {
+        margin-bottom: 16px;
+        @apply tw-text-2xl;
+      }
     }
 
     &__action {
