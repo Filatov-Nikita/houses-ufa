@@ -54,6 +54,7 @@
     }
 
     &__text {
+      white-space: pre-wrap;
       @apply tw-grid tw-gap-4 lg:tw-gap-6;
     }
 
