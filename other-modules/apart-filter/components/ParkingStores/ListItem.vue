@@ -37,20 +37,36 @@
     border-radius: 16px;
     @apply tw-border tw-border-solid tw-border-border00;
 
+    @include sm {
+      padding: 12px;
+    }
+
     &__data {
       display: flex;
       gap: 16px;
-      margin-bottom: 16px;
       @apply tw-text-text00;
+
+      @include sm {
+        flex-wrap: wrap;
+      }
     }
 
     &__left {
       flex-grow: 1;
+
+      @include sm {
+        width: 100%;
+      }
     }
 
     &__right {
       flex-grow: 1;
       text-align: right;
+
+      @include sm {
+        width: 100%;
+        text-align: left;
+      }
     }
 
     &__actions {
@@ -75,6 +91,14 @@
     &__param {
       padding-bottom: 16px;
       @apply tw-text-base;
+
+      @include lg {
+        padding-bottom: 12px;
+      }
+
+      @include sm {
+        padding-bottom: 4px;
+      }
     }
   }
 </style>

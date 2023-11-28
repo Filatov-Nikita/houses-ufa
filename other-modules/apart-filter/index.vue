@@ -1,14 +1,16 @@
 <template>
   <div class="apart-filter">
     <div class="tab-zone">
-      <BaseTabsGroup class="tab-zone__groups" v-model="currentTabFilter">
-        <BaseTabsGroupItem class="tab-zone__item" theme="white" name="flats">
-          {{ tabLabels[0] }}
-        </BaseTabsGroupItem>
-        <BaseTabsGroupItem class="tab-zone__item" theme="white" name="places" :disabled="!canShowParkStores">
-          {{ tabLabels[1] }}
-        </BaseTabsGroupItem>
-      </BaseTabsGroup>
+      <div class="tab-zone__area">
+        <BaseTabsGroup class="tab-zone__groups" v-model="currentTabFilter">
+          <BaseTabsGroupItem class="tab-zone__item" theme="white" name="flats">
+            {{ tabLabels[0] }}
+          </BaseTabsGroupItem>
+          <BaseTabsGroupItem class="tab-zone__item" theme="white" name="places" :disabled="!canShowParkStores">
+            {{ tabLabels[1] }}
+          </BaseTabsGroupItem>
+        </BaseTabsGroup>
+      </div>
       <BaseTabsTabContent leave-classes="" enter-classes="" v-model="currentTabFilter">
         <BaseTabsTabContentItem name="flats" key="flats">
           <FlatFilter />
@@ -41,9 +43,19 @@
 </script>
 <style scoped lang="scss">
   .tab-zone {
+    &__area {
+      width: 100%;
+      max-width: 100%;
+      overflow-y: hidden;
+      margin-bottom: 32px;
+
+      @include md {
+        margin-bottom: 24px;
+      }
+    }
+
     &__groups {
       width: 100%;
-      margin-bottom: 32px;
     }
 
     &__item {

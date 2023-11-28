@@ -6,11 +6,11 @@
         :cases="currentCases"
       />
       <div class="head-filter__btns">
-        <BaseTabsGroup theme="gray" v-model="currentView">
-          <BaseTabsGroupItem theme="gray" name="stores" :disabled="!canShowStores">
+        <BaseTabsGroup class="head-filter__tabs" theme="gray" v-model="currentView">
+          <BaseTabsGroupItem class="head-filter__tab" theme="gray" name="stores" :disabled="!canShowStores">
             Кладовки
           </BaseTabsGroupItem>
-          <BaseTabsGroupItem theme="gray" name="parking" :disabled="!canShowPark">
+          <BaseTabsGroupItem class="head-filter__tab" theme="gray" name="parking" :disabled="!canShowPark">
             Паркинг
           </BaseTabsGroupItem>
         </BaseTabsGroup>
@@ -159,12 +159,18 @@
 .head-filter {
   @apply tw-rounded-2xl tw-bg-white tw-p-6;
 
+  @include sm {
+    padding: 16px;
+  }
+
   &__controls {
     display: flex;
     flex-wrap: wrap;
     column-gap: 30px;
+    row-gap: 16px;
     justify-content: space-between;
     align-items: center;
+    margin-bottom: 8px;
   }
 
   &__count {
@@ -176,10 +182,40 @@
     display: flex;
     flex-wrap: wrap;
     column-gap: 16px;
+    row-gap: 16px;
+
+    @include lg {
+      width: 100%;
+      justify-content: space-between;
+    }
+
+    @include md {
+      row-gap: 8px;
+    }
   }
 
   &__sort {
     width: 250px;
+
+    @include lg {
+      width: 310px;
+    }
+
+    @include md {
+      width: 100%;
+    }
+  }
+
+  &__tabs {
+    @include md {
+      width: 100%;
+    }
+  }
+
+  &__tab {
+    @include md {
+      width: 100%;
+    }
   }
 }
 </style>

@@ -1,7 +1,9 @@
 <template>
   <NuxtLink :to="to" class="flat-list-item">
-    <div class="flat-list-item__img">
-      <img :src="flat.plan_image_url" loading="lazy" :alt="name" />
+    <div class="flat-list-item__img-wrap">
+      <div class="flat-list-item__img">
+        <img :src="flat.plan_image_url" loading="lazy" :alt="name" />
+      </div>
     </div>
     <div class="flat-list-item__info1">
       <p class="flat-list-item__name">{{ name }}</p>
@@ -60,26 +62,69 @@
 
 <style scoped lang="scss">
   .flat-list-item {
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: 152px 1fr 1fr;
     column-gap: 32px;
+    row-gap: 16px;
+
+    @include lg {
+      grid-template-columns: 1fr 1fr;
+      column-gap: 0px;
+    }
+
+    @include md {
+      grid-template-columns: 100%;
+      row-gap: 24px;
+    }
 
     &__info1 {
-      flex-grow: 1;
+      @include lg {
+        grid-column: 1 / 2;
+      }
     }
 
     &__info2 {
-      flex-grow: 1;
       text-align: right;
+
+      @include lg {
+        grid-column: 2 / 3;
+      }
+
+      @include md {
+        grid-column: 1 / 2;
+        text-align: left;
+      }
+    }
+
+    &__img-wrap {
+      @include lg {
+        grid-column: 1 / 3;
+      }
+
+      @include md {
+        grid-column: 1 / 2;
+      }
     }
 
     &__img {
       width: 152px;
       height: 152px;
-      flex-shrink: 0;
       border-radius: 16px;
       padding: 24px;
       @apply tw-bg-base00;
+
+      @include lg {
+        width: 120px;
+        height: 120px;
+        padding: 12px;
+      }
+
+      @include md {
+        width: 100%;
+        max-width: 210px;
+        height: 210px;
+        padding: 16px;
+      }
 
       img {
         width: 100%;
@@ -176,6 +221,10 @@
 
     &__adv, &__btns {
       margin-top: 24px;
+
+      @include lg {
+        margin-top: 20px;
+      }
     }
 
     &__btns {

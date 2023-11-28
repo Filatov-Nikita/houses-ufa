@@ -22,7 +22,7 @@
           @update:modelValue="updateEntrance"
         />
         <BaseRange
-          class="flat-params__grid-item"
+          class="flat-params__grid-item flat-params__square"
           theme="white"
           :min="1"
           :max="120"
@@ -34,7 +34,7 @@
           @after-manipulate="updateSquare"
         />
         <BaseRange
-          class="flat-params__grid-item"
+          class="flat-params__grid-item flat-params__storey"
           theme="white"
           :min="1"
           :max="30"
@@ -272,16 +272,46 @@
       display: flex;
       flex-wrap: wrap;
       margin: -16px -10px;
+
+      @include md {
+        margin: -12px -10px;
+      }
+
+      @include sm {
+        margin: -8px -10px;
+      }
     }
 
     &__grid-item {
       width: calc(50% - 20px);
       margin: 16px 10px;
+
+      @include md {
+        margin: 12px 10px;
+      }
+
+      @include sm {
+        margin: 8px 10px;
+      }
+    }
+
+    &__square, &__storey {
+      @include lg {
+        width: calc(100% - 20px);
+      }
     }
 
     &__form {
       & > div + div {
         margin-top: 32px;
+
+        @include md {
+          margin-top: 24px;
+        }
+
+        @include sm {
+          margin-top: 16px;
+        }
       }
     }
   }

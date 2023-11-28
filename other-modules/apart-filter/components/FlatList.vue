@@ -44,10 +44,22 @@
 
 <style scoped lang="scss">
   .flat-list {
-    height: 500px;
+    height: 515px;
     overflow: auto;
     padding-right: 24px;
     margin-right: -24px;
+
+    @include lg {
+      height: 615px;
+    }
+
+    @include md {
+      height: 600px;
+    }
+
+    @include sm {
+      height: 450px;
+    }
 
     &__divider {
       padding-top: 32px;
@@ -55,6 +67,16 @@
 
       & + & {
         border-top: 1px solid theme('colors.border00');
+      }
+
+      @include lg {
+        padding-top: 24px;
+        padding-bottom: 24px;
+      }
+
+      @include sm {
+        padding-top: 16px;
+        padding-bottom: 16px;
       }
     }
   }

@@ -15,17 +15,47 @@
 <style scoped lang="scss">
   .filter-layout {
     display: flex;
-    column-gap: 40px;
+    flex-wrap: wrap;
+    margin: -20px;
+
+    @include lg {
+      margin: -10px;
+    }
 
     &__left {
-      flex-basis: 420px;
-      max-width: 420px;
+      width: calc(100% / 12 * 4 - 40px);
+      margin: 20px;
+
+      @include lg {
+        width: calc(100% / 12 * 4 - 20px);
+        margin: 10px;
+      }
+
+      @include md {
+        width: calc(100% / 12 * 5.5 - 20px);
+      }
+
+      @include sm {
+        width: calc(100% - 20px);
+      }
     }
 
     &__right {
-      flex-basis: 500px;
-      min-width: 0px;
-      flex-grow: 1;
+      width: calc(100% / 12 * 8 - 40px);
+      margin: 20px;
+
+      @include lg {
+        width: calc(100% / 12 * 8 - 20px);
+        margin: 10px;
+      }
+
+      @include md {
+        width: calc(100% / 12 * 6.5 - 20px);
+      }
+
+      @include sm {
+        width: calc(100% - 20px);
+      }
     }
   }
 </style>
