@@ -31,15 +31,6 @@
       :modelValue="storey"
       @update:modelValue="updateStorey"
     />
-    <BaseSelect
-      class="town-filter__item"
-      theme="white"
-      name="status"
-      label="Статус"
-      v-bind="selectProps(statusOpts, 'label', 'value')"
-      :modelValue="currentStatus"
-      @update:modelValue="updateStatus"
-    />
     <div class="town-filter__item town-filter__item--btn">
       <BaseButton class="town-filter__btn" @click="showMainFilter">
         Показать
@@ -58,20 +49,6 @@
   const router = useRouter();
   const route = useRoute();
 
-  const statusOpts = [
-    { label: 'Свободно', value: 'for_sale' },
-    { label: 'Забронировано', value: 'booked' },
-    { label: 'Продано', value: 'sold' },
-  ];
-
-  const currentStatus = computed(() => {
-    return findOpt(statusOpts, (opt) => opt.value === formModule.form.status);
-  });
-
-  function updateStatus(val: typeof statusOpts[number]) {
-    formModule.form.status = val.value;
-  }
-
   const square = computed<[NumOrNull, NumOrNull] | null>(() => {
     return [formModule.form.area_min, formModule.form.area_max];
   });
@@ -79,10 +56,6 @@
   function updateSquare(val: [NumOrNull, NumOrNull] | null) {
     formModule.form.area_min = val?.[0] ?? null;
     formModule.form.area_max = val?.[1] ?? null;
-  }
-
-  function findOpt<T>(list: T[], filter: (opt: T) => boolean): T | null {
-    return list.find(filter) ?? null;
   }
 
   const squareArea = computed<[NumOrNull, NumOrNull] | null>(() => {
@@ -101,19 +74,6 @@
   function updateStorey(val: [NumOrNull, NumOrNull] | null) {
     formModule.form.number_of_floors_min = val?.[0] ?? null;
     formModule.form.number_of_floors_max = val?.[1] ?? null;
-  }
-
-  function selectProps<T extends Record<string, unknown>>(options: T[], labelKey: keyof T, valueKey: keyof T) {
-    return {
-      'drop-down-props': {
-        getLabel: (opt: T) => opt[labelKey],
-        isActive: (opt: T, v: T | null) => opt[valueKey] === v?.[valueKey],
-        options,
-      },
-      'display-props': {
-        getLabel: (v: T | null) => v?.[labelKey] || 'не выбрано',
-      }
-    };
   }
 
   function showMainFilter() {
@@ -136,10 +96,22 @@
 
     &__item {
       margin: 10px;
-      width: calc(20% - 20px);
+      width: calc(25% - 20px);
+
+      @include md {
+        width: calc(50% - 20px);
+      }
+
+      @include sm {
+        width: calc(100% - 20px);
+      }
 
       &--btn {
         padding-top: 28px;
+
+        @include sm {
+          padding-top: 12px;
+        }
       }
     }
 
