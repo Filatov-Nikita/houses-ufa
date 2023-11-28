@@ -45,18 +45,18 @@
     <section class="section">
       <div class="wrapper">
         <div class="section__top">
-          <h2 class="section__title">Галерея</h2>
+          <h2 class="section__title">Генплан жилого комплекса {{ complex?.name }}</h2>
         </div>
-        <ComplexGallery />
+        <ComplexGenplan />
       </div>
     </section>
 
     <section class="section">
       <div class="wrapper">
         <div class="section__top">
-          <h2 class="section__title">Генплан жилого комплекса {{ complex?.name }}</h2>
+          <h2 class="section__title">Галерея</h2>
         </div>
-        <ComplexGenplan />
+        <ComplexGallery />
       </div>
     </section>
 
