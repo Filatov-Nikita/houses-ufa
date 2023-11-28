@@ -46,10 +46,11 @@
       @swiper="onSwiper"
       @slideChange="onSlideChange"
       :slides-per-view="1"
+      :space-between="16"
       :breakpoints="{
         '1024': {
           slidesPerView: 2,
-          spaceBetween: 16,
+          spaceBetween: 20,
         },
       }"
       :pagination="{

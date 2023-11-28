@@ -1,13 +1,15 @@
 <template>
-  <div>
-    <BaseTabsGroup class="tw-mb-8" v-model="tab">
-      <BaseTabsGroupItem
-        v-for="tab in teamTabs"
-        :name="tab.name"
-      >
-        {{ tab.title }}
-      </BaseTabsGroupItem>
-    </BaseTabsGroup>
+  <div class="team-block">
+    <div class="team-block__filter">
+      <BaseTabsGroup v-model="tab">
+        <BaseTabsGroupItem
+          v-for="tab in teamTabs"
+          :name="tab.name"
+        >
+          {{ tab.title }}
+        </BaseTabsGroupItem>
+      </BaseTabsGroup>
+    </div>
 
     <BaseTabsTabContent v-model="tab">
       <BaseTabsTabContentItem
@@ -106,6 +108,15 @@ const teamTabs = [
 </script>
 
 <style lang="scss" scoped>
+  .team-block {
+    &__filter {
+      width: 100%;
+      max-width: 100%;
+      overflow-y: hidden;
+      margin-bottom: 32px;
+    }
+  }
+
   .team-list {
     display: flex;
     flex-wrap: wrap;
@@ -114,6 +125,14 @@ const teamTabs = [
     &__item {
       width: calc(100% / 12 * 4 - 20px);
       margin: 10px;
+
+      @include lg {
+        width: calc(100% / 12 * 6 - 20px);
+      }
+
+      @include sm {
+        width: calc(100% - 20px);
+      }
     }
   }
 
@@ -128,6 +147,10 @@ const teamTabs = [
       width: 100%;
       margin-bottom: 24px;
       overflow: hidden;
+
+      @include md {
+        height: auto;
+      }
 
       img {
         object-fit: cover;

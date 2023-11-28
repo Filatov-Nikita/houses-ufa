@@ -24,14 +24,36 @@
     flex-direction: column;
     @apply tw-text-white;
 
+    @include lg {
+      padding: 40px;
+      height: 540px;
+    }
+
+    @include md {
+      padding: 24px;
+    }
+
+    @include sm {
+      padding: 32px 16px;
+      height: 450px;
+    }
+
     &__text {
       font-size: 24px;
       line-height: 1.3;
+
+      @include sm {
+        @apply tw-text-lg;
+      }
     }
 
     &__caption {
       margin-top: 16px;
       @apply tw-text-base;
+
+      @include sm {
+        @apply tw-text-sm;
+      }
     }
 
     &__bottom {
@@ -43,6 +65,10 @@
       line-height: 1.2;
       font-size: 48px;
       @apply tw-font-freesetdemi;
+
+      @include sm {
+        @apply tw-text-2xl;
+      }
     }
 
     &__img {
