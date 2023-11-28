@@ -29,10 +29,28 @@
       left: 40px;
       top: 40px;
       z-index: 100;
+
+      @include lg {
+        left: 24px;
+        top: 24px;
+      }
+
+      @include md {
+        left: 12px;
+        top: 12px;
+      }
+
+      @include sm {
+        display: none;
+      }
     }
 
     &__map {
       height: 608px;
+
+      @include sm {
+        height: 450px;
+      }
     }
   }
 </style>
