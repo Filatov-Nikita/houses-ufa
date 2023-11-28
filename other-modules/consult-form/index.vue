@@ -8,7 +8,7 @@
             Оставьте свои контактные данные и мы свяжемся с вами
           </p>
         </div>
-        <BtnsActionsBase icon="close" @click="hide" />
+        <BtnsActionsBase class="consult-header__hide" icon="close" @click="hide" />
       </div>
       <Form />
     </BaseModalCard>
@@ -31,14 +31,26 @@
 <style scoped lang="scss">
   .consult-header {
     display: flex;
-    flex-wrap: wrap;
     justify-content: space-between;
+    gap: 20px;
     margin-bottom: 32px;
+
+    @include sm {
+      margin-bottom: 24px;
+    }
 
     &__title {
       font-size: 32px;
       line-height: 1.25;
       margin-bottom: 8px;
+
+      @include sm {
+        @apply tw-text-2xl;
+      }
+    }
+
+    &__hide {
+      flex-shrink: 0;
     }
 
     &__subtitle {

@@ -28,7 +28,7 @@
       />
     </div>
     <BaseInput
-      class="consult-form__item consult-form__item"
+      class="consult-form__item"
       label="Сообщение"
       name="text"
       placeholder="У меня есть вопрос..."
@@ -64,6 +64,16 @@
     &__column {
       margin: 0 10px;
       width: calc(50% - 20px);
+
+      @include sm {
+        width: calc(100% - 20px);
+      }
+
+      & + & {
+        @include sm {
+          margin-top: 16px;
+        }
+      }
     }
 
     &__section {
@@ -82,14 +92,26 @@
 
     &__bottom {
       margin-top: 32px;
+
+      @include sm {
+        margin-top: 24px;
+      }
     }
 
     &__item + &__item {
       margin-top: 20px;
+
+      @include sm {
+        margin-top: 16px;
+      }
     }
 
     &__item:last-child {
       margin-top: 32px;
+
+      @include sm {
+        margin-top: 24px;
+      }
     }
   }
 </style>
