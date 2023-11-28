@@ -49,7 +49,7 @@
 
   const viewBox = computed(() => {
     if(!genplanImg.value) return '';
-    return `0 0 ${genplanImg.value.width} ${genplanImg.value.height}`
+    return `0 0 ${genplanImg.value.width ?? 0} ${genplanImg.value.height ?? 0}`
   });
 
   function scrollToFilter(): void {
