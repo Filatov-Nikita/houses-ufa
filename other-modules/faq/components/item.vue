@@ -29,20 +29,33 @@
     user-select: none;
     @apply tw-bg-white;
 
+    @include md {
+      padding: 24px 16px;
+    }
+
     &__header {
       display: flex;
       gap: 48px;
+
+      @include md {
+        gap: 16px;
+      }
     }
 
     &__title {
       flex-grow: 1;
       align-self: center;
       @apply tw-text-text00 tw-text-xl;
+
+      @include md {
+        @apply tw-text-lg;
+      }
     }
 
     &__btn {
       transition: transform 200ms;
       transform: rotate(90deg);
+      flex-shrink: 0;
 
       &--active {
         transform: rotate(-90deg);
@@ -55,6 +68,10 @@
       font-size: 16px;
       line-height: 28px;
       @apply tw-text-text01;
+
+      @include md {
+        padding-right: 8px;
+      }
     }
   }
 

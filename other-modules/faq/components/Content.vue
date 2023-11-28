@@ -54,6 +54,12 @@
       line-height: 1.25;
       margin-bottom: 32px;
       @apply tw-text-text00;
+
+      @include md {
+        font-size: 20px;
+        line-height: 1.6;
+        margin-bottom: 16px;
+      }
     }
 
     &__item {

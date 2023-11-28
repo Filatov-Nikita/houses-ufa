@@ -27,11 +27,16 @@
     &__item {
       & + & {
         margin-top: 24px;
+
+        @include md {
+          margin-top: 16px;
+        }
       }
     }
 
     &__btn {
       display: inline-block;
+      text-align: left;
       @apply tw-text-text02 tw-text-lg;
 
       &--active {

@@ -39,11 +39,35 @@
     &__sidebar {
       width: calc(100% / 12 * 4 - 48px);
       margin: 24px;
+
+      @include lg {
+        width: calc(100% / 12 * 5 - 48px);
+      }
+
+      @include md {
+        width: calc(100% / 12 * 6 - 48px);
+      }
+
+      @include sm {
+        width: calc(100% - 48px);
+      }
     }
 
     &__content {
       width: calc(100% / 12 * 8 - 48px);
       margin: 24px;
+
+      @include lg {
+        width: calc(100% / 12 * 7 - 48px);
+      }
+
+      @include md {
+        width: calc(100% / 12 * 6 - 48px);
+      }
+
+      @include sm {
+        width: calc(100% - 48px);
+      }
     }
   }
 </style>
