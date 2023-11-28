@@ -1,9 +1,11 @@
 <template>
-  <BaseTabsGroup v-model="store.filterValue">
-    <BaseTabsGroupItem v-for="tab in tabs" :key="tab" :name="tab">
-      {{ tab }}
-    </BaseTabsGroupItem>
-  </BaseTabsGroup>
+  <div class="material-filter">
+    <BaseTabsGroup v-model="store.filterValue">
+      <BaseTabsGroupItem v-for="tab in tabs" :key="tab" :name="tab">
+        {{ tab }}
+      </BaseTabsGroupItem>
+    </BaseTabsGroup>
+  </div>
 </template>
 
 <script setup lang="ts">
@@ -15,3 +17,11 @@
     return store.data?.data.map(el => el.label) ?? [];
   });
 </script>
+
+<style scoped lang="scss">
+  .material-filter {
+    overflow-y: hidden;
+    width: 100%;
+    max-width: 100%;
+  }
+</style>

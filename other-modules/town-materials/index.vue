@@ -29,6 +29,10 @@
 .town-materials {
   &__filter {
     margin-bottom: 32px;
+
+    @include lg {
+      margin-bottom: 24px;
+    }
   }
 }
 </style>

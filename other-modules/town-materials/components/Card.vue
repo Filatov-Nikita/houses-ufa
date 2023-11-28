@@ -20,6 +20,10 @@
     border-radius: 16px;
     @apply tw-bg-white;
 
+    @include md {
+      padding: 16px;
+    }
+
     &__title {
       margin-bottom: 12px;
       @apply tw-text-2xl tw-text-text00;

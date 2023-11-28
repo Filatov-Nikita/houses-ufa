@@ -21,10 +21,10 @@
       />
     </SwiperSlide>
     <Card
-    class="town-materials-content__card"
-    :title="current.title"
-    :text="current.description"
-    :comment="current.comment"
+      class="town-materials-content__card"
+      :title="current.title"
+      :text="current.description"
+      :comment="current.comment"
     />
     <SlidersNavBtns />
     <div class="swiper-pagination !tw-left-auto !-tw-right-4"></div>
@@ -64,7 +64,9 @@
     border-radius: 16px;
 
     &__slide {
-      min-height: 560px;
+      @include lg {
+        height: 500px;
+      }
     }
 
     &__img {
