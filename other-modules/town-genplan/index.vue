@@ -29,7 +29,7 @@
 <style scoped lang="scss">
   .town-genplan {
     position: relative;
-    min-height: 700px;
+    min-height: 120px;
     border-radius: 16px;
     @apply tw-bg-secondary;
 

@@ -9,7 +9,7 @@
       loading="lazy"
       alt="Картинка генплана"
     />
-    <svg class="town-genplan-level1__svg">
+    <svg class="town-genplan-level1__svg" :viewBox="viewBox">
       <path
         v-for="block in blocks"
         :key="block.id"
@@ -37,6 +37,11 @@
 
   const img = computed(() => store.data?.data.master_plan ?? null);
   const blocks = computed(() => store.data?.data.blocks ?? []);
+
+  const viewBox = computed(() => {
+    if(!img.value) return '';
+    return `0 0 ${img.value.width ?? 0} ${img.value.height ?? 0}`;
+  });
 
   function showLevel2(blockId: number) {
     store.showedLevel = 2;

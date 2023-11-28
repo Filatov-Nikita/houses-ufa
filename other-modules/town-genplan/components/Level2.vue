@@ -9,7 +9,7 @@
       loading="lazy"
       alt="Картинка генплана"
     />
-    <svg class="town-genplan-level1__svg">
+    <svg class="town-genplan-level1__svg" :viewBox="viewBox">
       <path
         v-for="estate in estates"
         :key="estate.id"
@@ -51,6 +51,11 @@
   const img = computed(() => data?.value?.data.master_plan ?? null);
   const estates = computed(() => data?.value?.data.estates ?? []);
 
+  const viewBox = computed(() => {
+    if(!img.value) return '';
+    return `0 0 ${img.value.width ?? 0} ${img.value.height ?? 0}`;
+  });
+
   interface Response {
     data: Block;
   }
@@ -84,6 +89,11 @@
       position: absolute;
       left: 24px;
       top: 24px;
+
+      @include lg {
+        left: 12px;
+        top: 12px;
+      }
     }
 
     &__label {
@@ -95,6 +105,10 @@
       padding: 16px 24px;
       backdrop-filter: blur(4px);
       @apply tw-text-white tw-text-base;
+
+      @include sm {
+        display: none;
+      }
     }
   }
 </style>
