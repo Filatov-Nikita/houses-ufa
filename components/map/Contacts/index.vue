@@ -112,7 +112,7 @@
       <template v-for="(item, index) in marks">
 
         <div
-          class="tw-flex tw-gap-4 tw-py-3 tw-items-center"
+          class="tw-flex tw-gap-4 tw-py-3 tw-items-center tw-cursor-pointer"
 
           @click="() => ((openMap = true), (singleOfficeIdx = index))"
         >
@@ -126,7 +126,7 @@
               class="tw-absolute tw-w-full tw-h-full tw-object-cover"
             />
           </div>
-          <div>
+          <div class="tw-grow">
             <h4 class="tw-text-body_m tw-mb-1">{{ item.title }}</h4>
             <p class="tw-text-text01 tw-text-body_s2 -tw-tracking-875">
               {{ item.address }}

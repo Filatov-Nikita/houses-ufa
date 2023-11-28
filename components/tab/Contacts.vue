@@ -1,9 +1,11 @@
 <template>
-  <BaseTabsGroup v-model="tab" class="tw-mb-6 lg:tw-mb-8">
-    <BaseTabsGroupItem v-for="item in tabs" :name="item.name">
-      {{ item.title }}
-    </BaseTabsGroupItem>
-  </BaseTabsGroup>
+  <div class="tw-w-full tw-max-w-full tw-overflow-y-hidden tw-mb-6 lg:tw-mb-8">
+    <BaseTabsGroup v-model="tab">
+      <BaseTabsGroupItem v-for="item in tabs" :name="item.name">
+        {{ item.title }}
+      </BaseTabsGroupItem>
+    </BaseTabsGroup>
+  </div>
   <BaseTabsTabContent v-model="tab">
     <BaseTabsTabContentItem name="office" key="office">
       <MapContacts />
