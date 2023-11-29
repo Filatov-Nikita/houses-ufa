@@ -129,7 +129,7 @@
   const mainFilter = useMainFilter();
 
   const typeOpts = [
-    { label: 'Квартиры', value: 'flats' } as const,
+    { label: 'Квартиры в городе', value: 'flats' } as const,
     { label: 'Загородные квартиры', value: 'out-city-flats' } as const,
     { label: 'Коттеджи и таунхаусы', value: 'towns' } as const,
   ];

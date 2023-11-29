@@ -28,7 +28,7 @@ const useMainFilter = defineStore('mainFilter', () => {
 
   const objectList = computed(() => {
     switch(filterType.value) {
-      case 'flats': return complexStore.complexes?.data ?? [];
+      case 'flats': return complexStore.inCityComplexes ?? [];
       case 'out-city-flats': return complexStore.outCityComplexes;
       case 'towns': return townsStore.towns?.data ?? [];
     }
