@@ -29,13 +29,20 @@
         </div>
         <div>
           <a
-            :href="`tel:${item.padding}`"
+            v-if="item.phone"
+            :href="`tel:${item.phone}`"
             class="tw-text-h6 lg:tw-text-h5 tw-mb-1"
           >
             {{ item.phone }}
           </a>
-          <p class="tw-text-text02">график работы</p>
-        </div>
+          <a
+            v-else-if="item.mail"
+            :href="`mailto:${item.mail}`"
+            class="tw-text-h6 lg:tw-text-h5 tw-mb-1"
+          >
+            {{ item.mail }}
+          </a>
+      </div>
       </div>
     </BaseTabsTabContentItem>
   </BaseTabsTabContent>
@@ -60,26 +67,26 @@ const serviceList = [
   {
     id: 1,
     title: 'Отдел снабжения',
-    text: 'Предложение строительных и расходных материалов',
-    phone: '+7 347 264-54-65',
+    text: 'Предложения по поставке строительных и отделочных материалов',
+    phone: '+7 (347) 295-98-69',
   },
   {
     id: 2,
-    title: 'Отдел снабжения',
-    text: 'Предложение строительных и расходных материалов',
-    phone: '+7 347 264-54-65',
+    title: 'Пресс-служба',
+    text: 'Связи с общественностью и СМИ',
+    mail: 'info@gkufa.ru',
   },
   {
     id: 3,
-    title: 'Пресс-служба',
-    text: 'Предложение строительных и расходных материалов',
-    phone: '+7 347 264-54-65',
+    title: 'Приемная',
+    text: '',
+    phone: '+7 (347) 286-77-96',
   },
   {
     id: 4,
-    title: 'Отдел подбора персонала',
-    text: 'Предложение строительных и расходных материалов',
-    phone: '+7 347 264-54-65',
+    title: 'ЕИРЦ (для жильцов жилых комплексов)',
+    text: '',
+    phone: '+7 (347) 216-44-77',
   },
 ]
 

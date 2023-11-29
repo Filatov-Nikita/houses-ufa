@@ -115,8 +115,7 @@
       display: block;
       z-index: -1;
       position: absolute;
-      background: linear-gradient(180deg, rgba(0, 0, 0, 0.40) 0%, rgba(0, 0, 0, 0.00) 100%),
-      linear-gradient(180deg, rgba(0, 0, 0, 0.00) 0%, rgba(0, 0, 0, 0.40) 100%);
+      background: linear-gradient(270deg, rgba(0, 0, 0, 0.00) 5.33%, rgba(0, 0, 0, 0.40) 100%);
       @apply tw-inset-0;
     }
   }

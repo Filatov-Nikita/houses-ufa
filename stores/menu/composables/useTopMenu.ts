@@ -7,7 +7,7 @@ export function useTopMenu() {
       to: '/main-filter?filterType=flats',
     },
     {
-      label: 'Коттеджи и Таунхаусы',
+      label: 'Коттеджи и таунхаусы',
       to: '/main-filter?filterType=towns',
     },
     {

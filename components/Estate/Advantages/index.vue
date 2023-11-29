@@ -1,6 +1,6 @@
 <template>
   <div class="estate-adv">
-    <div class="estate-adv__filter">
+    <div class="estate-adv__filter scroll-y">
       <BaseTabsGroup class="estate-adv-tabs" v-model="tab">
         <BaseTabsGroupItem
           v-for="tab in tabs"

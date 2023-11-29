@@ -67,20 +67,60 @@ const teamTabs = [
     title: 'Отдел продаж квартир',
     list: [
       {
+        name: 'Илишев Тагир',
+        position: 'Руководитель отдела продаж',
+        photo: '/images/team/DSC_4319_408х408.jpg',
+      },
+      {
         name: 'Абдульменова Алеся',
         position: 'Эксперт по продажам недвижимости',
-        photo: '/images/team/4.png',
+        photo: '/images/team/DSC_4170_408х408.png',
       },
       {
         name: 'Галлямов Руслан',
         position: 'Эксперт по продажам недвижимости',
-        photo: '/images/team/5.jpg',
+        photo: '/images/team/DSC_4401_408х408.jpg',
       },
       {
         name: 'Чариков Вадим',
+        position: 'Чариков Вадим	Старший Эксперт по продажам недвижимости',
+        photo: '/images/team/DSC_4340_408х408.jpg',
+      },
+      {
+        name: 'Декатова Евгения',
         position: 'Эксперт по продажам недвижимости',
-        photo: '/images/team/6.jpg',
-      }
+        photo: '/images/team/DSC_4182_408х408.jpg',
+      },
+      {
+        name: 'Ардаширова Гузель',
+        position: 'Эксперт по продажам недвижимости',
+        photo: '/images/team/DSC_4205_408х408.jpg',
+      },
+      {
+        name: 'Асеева Ксения',
+        position: 'Эксперт по продажам недвижимости',
+        photo: '/images/team/DSC_4245_408х408.jpg',
+      },
+      {
+        name: 'Красильникова Эльмира',
+        position: 'Эксперт по продажам недвижимости',
+        photo: '/images/team/DSC_4273_408х408.jpg',
+      },
+      {
+        name: 'Вагапова Альбина',
+        position: 'Эксперт по продажам недвижимости',
+        photo: '/images/team/DSC_4293_408х408.jpg',
+      },
+      {
+        name: 'Исмагилов Марсель',
+        position: 'Эксперт по продажам недвижимости',
+        photo: '/images/team/DSC_4358_408х408.jpg',
+      },
+      {
+        name: 'Петрова Эльвира',
+        position: 'Эксперт по продажам недвижимости',
+        photo: '/images/team/DSC_4422_408х408.jpg',
+      },
     ],
   },
   {
@@ -88,20 +128,35 @@ const teamTabs = [
     title: 'Отдел продаж загородной недвижимости',
     list: [
       {
-        name: 'Гаспарян Армен',
-        position: 'Эксперт по продажам недвижимости',
-        photo: '/images/team/7.jpg',
-      },
-      {
-        name: 'Кадырова Чулпан',
-        position: 'Эксперт по продажам недвижимости',
-        photo: '/images/team/8.jpg',
-      },
-      {
         name: 'Тагирова Анастасия',
-        position: 'Старший эксперт по продажам недвижимости',
-        photo: '/images/team/9.jpg',
-      }
+        position: 'Старший Эксперт по продажам недвижимости',
+        photo: '/images/team/DSC_4384_408х408.jpg',
+      },
+      {
+        name: 'Токарева Люция',
+        position: 'Руководитель по работе с партнерами',
+        photo: '/images/team/DSC_4285_408х408.jpg',
+      },
+      {
+        name: 'Порфирьева Наталья',
+        position: 'Эксперт по продажам недвижимости',
+        photo: '/images/team/DSC_4193_408х408.jpg',
+      },
+      {
+        name: 'Каримов Руслан',
+        position: 'Эксперт по продажам недвижимости',
+        photo: '/images/team/DSC_4223_408х408.jpg',
+      },
+      {
+        name: 'Капитонова Лариса',
+        position: 'Старший Эксперт по продажам недвижимости',
+        photo: '/images/team/DSC_4252_408х408.jpg',
+      },
+      {
+        name: 'Демченко Гульнара',
+        position: 'Старший Эксперт по продажам недвижимости',
+        photo: '/images/team/DSC_4440_408х408.jpg',
+      },
     ],
   },
 ];

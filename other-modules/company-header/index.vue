@@ -3,8 +3,8 @@
     <BaseBreadcrumbs class="company-header__bread" />
     <div class="company-header__bottom">
       <h1 class="company-header__title">Жилой Квартал</h1>
-      <p class="company-header__text">— признанный бренд в Республике Башкортостан</p>
-      <p class="company-header__caption">с 22 летней историей и сложившейся репутацией надежного партнера</p>
+      <p class="company-header__text">Крупнейший застройщик загородной недвижимости РБ</p>
+      <p class="company-header__caption">22-летняя история и репутация надежного партнера</p>
     </div>
     <img class="company-header__img" src="/images/img/about.png" alt="Коттеджный поселок">
   </div>

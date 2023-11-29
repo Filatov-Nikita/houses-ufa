@@ -18,4 +18,18 @@
   .anim-100ms {
     --animate-duration: 100ms;
   }
+
+  .scroll-y::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  .scroll-y::-webkit-scrollbar-track {
+    @apply tw-bg-base01;
+  }
+
+  .scroll-y::-webkit-scrollbar-thumb {
+    border-radius: 8px;
+    @apply tw-bg-primary;
+  }
 }

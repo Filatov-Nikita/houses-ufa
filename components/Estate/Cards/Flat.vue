@@ -52,6 +52,6 @@
   });
 
   const creditStart = computed(() => {
-    return +props.flat.mortgage_initial_fee;
+    return parseInt(props.flat.mortgage_initial_fee);
   });
 </script>

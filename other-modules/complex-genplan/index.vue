@@ -89,6 +89,8 @@
 <style scoped lang="scss">
   .complex-genplan {
     position: relative;
+    border-radius: 16px;
+    overflow: hidden;
 
     &__img {
       width: 100%;

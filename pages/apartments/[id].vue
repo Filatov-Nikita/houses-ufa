@@ -15,7 +15,7 @@
   <section class="section">
     <div class="wrapper">
       <div class="section__top">
-        <h2 class="section__title">Похожие квартиры</h2>
+        <h2 class="section__title">Похожие квартиры в других комплексах</h2>
       </div>
       <FlatSimilar />
     </div>

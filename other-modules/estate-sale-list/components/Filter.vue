@@ -13,7 +13,7 @@
     <div class="estate-sale-filter__types">
       <BaseTabsGroup theme="gray" v-model="filter.filterType">
         <BaseTabsGroupItem theme="gray" name="flats">Квартиры</BaseTabsGroupItem>
-        <BaseTabsGroupItem theme="gray" name="towns">Коттеджи и Таунхаусы</BaseTabsGroupItem>
+        <BaseTabsGroupItem theme="gray" name="towns">Коттеджи и таунхаусы</BaseTabsGroupItem>
       </BaseTabsGroup>
     </div>
   </div>

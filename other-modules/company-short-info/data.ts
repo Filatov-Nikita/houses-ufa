@@ -1,4 +1,4 @@
-export const videoUrl = 'https://www.youtube.com/embed/_XWFc3aoxCU?si=EMXE6iYm0qplnNfa';
+export const videoUrl = 'https://www.youtube.com/embed/EbfCtsehNRE?si=vi9jbmbl8R_UpIvw';
 
 export const items = [
   {
@@ -13,8 +13,8 @@ export const items = [
   },
   {
     title: '2001',
-    subtitle: 'год —',
-    text: 'год основания компании',
+    subtitle: 'год',
+    text: 'дата основания компании',
   },
   {
     title: '1.5',

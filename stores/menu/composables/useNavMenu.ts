@@ -29,7 +29,7 @@ export function useNavMenu(sectionList: ComputedRef<Sections>) {
       label: 'Пресс-центр',
       links: [
         {
-          label: 'Пресс-центр',
+          label: 'Новости',
           to: '/articles',
         },
         {

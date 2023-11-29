@@ -12,7 +12,7 @@ export function useTownsSections() {
   const section = computed<Record<string, Section>>(() => {
     return {
       towns: {
-        label: 'Коттеджи',
+        label: 'Коттеджи и таунхаусы',
         links: townsLinks.value,
       },
     };

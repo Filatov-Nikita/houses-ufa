@@ -6,7 +6,7 @@
   <section class="section">
     <div class="wrapper">
       <div class="section__top tw-flex tw-justify-between">
-        <h2 class="section__title">Читать далее</h2>
+        <h2 class="section__title">Другие новости</h2>
       </div>
       <ArticlesReadMoreList :article-id="+$route.params.id" />
     </div>

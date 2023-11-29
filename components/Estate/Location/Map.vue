@@ -29,7 +29,7 @@
 
   function initMap() {
     map = new ymaps.Map('map', {
-      zoom: 15,
+      zoom: 13,
       center: getLatLng(props.objectData),
       controls: [],
     });
