@@ -17,12 +17,22 @@ export const useTownCard = defineStore('townCard', () => {
     townId.value = id;
   }
 
+  const images =  computed(() => {
+    return data.value?.data.layout.images ?? [];
+  });
+
   const planImages = computed(() => {
-    return data.value?.data.layout.images.filter(img => img.is_plan) ?? []
+    return images.value.filter(img => img.is_plan) ?? [];
   });
 
   const renderImages = computed(() => {
-    return data.value?.data.layout.images.filter(img => !img.is_plan) ?? []
+    return images.value.filter(img => !img.is_plan) ?? [];
+  });
+
+  const isEmptyPlace = computed(() => {
+    if(!data.value) return false;
+    const name = data.value.data.layout.name.toLowerCase();
+    return name.indexOf('участок') !== -1;
   });
 
   return {
@@ -31,6 +41,8 @@ export const useTownCard = defineStore('townCard', () => {
     townId,
     planImages,
     renderImages,
+    isEmptyPlace,
+    images,
     show,
     setTownId,
   }

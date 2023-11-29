@@ -7,15 +7,17 @@
       <h1>{{ title }}</h1>
       <p class="town-info__subtitle">{{ subtitle }}</p>
     </div>
-    <div class="town-info__badges">
+    <div v-if="!isEmptyPlace" class="town-info__badges">
       <EstateBadgesPreFinishing />
     </div>
     <div class="params-block">
       <div class="params-block__one">
         <p class="params-block__key">Тип</p>
-        <p class="params-block__value">{{ data?.layout.type.title }}</p>
+        <p class="params-block__value">
+          {{ isEmptyPlace ? 'Участок' : data?.layout.type.title }}
+        </p>
       </div>
-      <div class="params-block__one">
+      <div v-if="!isEmptyPlace" class="params-block__one">
         <p class="params-block__key">Площадь дома</p>
         <p class="params-block__value">{{ data?.layout.area_cottage }} м²</p>
       </div>
@@ -23,7 +25,7 @@
         <p class="params-block__key">Площадь участка</p>
         <p class="params-block__value">{{ area }} сот.</p>
       </div>
-      <div class="params-block__one">
+      <div v-if="!isEmptyPlace" class="params-block__one">
         <p class="params-block__key">Этажность</p>
         <p class="params-block__value">{{ data?.layout.number_of_floors }}</p>
       </div>
@@ -67,6 +69,8 @@
     if(!data.value) return '';
     return (+data.value.area_land / 100).toFixed(1);
   });
+
+  const isEmptyPlace = computed(() => townCard.isEmptyPlace);
 </script>
 
 <style scoped lang="scss">

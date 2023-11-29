@@ -9,7 +9,8 @@
       <CreditCalc />
     </div>
   </section>
-  <section class="section">
+  <!-- ломает ssr -->
+  <section v-if="!townCard.isEmptyPlace && townCard.data" class="section">
     <div class="wrapper">
       <div class="section__top">
         <h2 class="section__title">Похожие дома в этом посёлке</h2>
@@ -29,6 +30,9 @@
   import CreditCalc from '@/other-modules/credit-program-calc/index.vue';
   import TownSimilar from '@/other-modules/town-similar/index.vue';
   import QuestionForm from '@/other-modules/question-form/index.vue';
+  import { useTownCard } from '@/other-modules/town-card/store/index';
+
+  const townCard = useTownCard();
 </script>
 
 <style scoped lang="scss">
