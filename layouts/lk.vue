@@ -1,21 +1,40 @@
 <template>
   <div>
-    <HeaderMain />
-    <div class="tw-container tw-flex tw-gap-5">
+    <div class="tw-mb-8">
+      <div class="wrapper">
+        <HeaderMain />
+      </div>
+    </div>
+    <div class="wrapper tw-flex tw-gap-5">
       <div>
         <div class="tw-grid tw-gap-3 tw-content-start">
-          <NuxtLink
-            class="link"
-            :class="{ active: $route.meta?.parent === item.meta }"
-            v-for="item in lkLinksAgent"
-            :to="item.to"
-            exactActiveClass="active"
-          >
-            <BaseIcon :name="item.icon" class="link__icon" />
-            <span class="link__title">
-              {{ item.name }}
-            </span>
-          </NuxtLink>
+          <template v-for="item in links">
+            <NuxtLink
+              v-if="item.name === 'Объекты'"
+              class="link"
+              :class="{ active: $route.meta?.parent === item.meta }"
+              :to="item.to"
+              exactActiveClass="active"
+            >
+              <BaseIcon :name="item.icon" class="link__icon" />
+              <span class="link__title">
+                {{ item.name }}
+              </span>
+            </NuxtLink>
+            <button
+              v-else
+              class="link"
+              :class="{ active: $route.meta?.parent === item.meta }"
+              :to="item.to"
+              exactActiveClass="active"
+              @click="showDevMode()"
+            >
+              <BaseIcon :name="item.icon" class="link__icon" />
+              <span class="link__title">
+                {{ item.name }}
+              </span>
+            </button>
+          </template>
         </div>
         <div
           class="tw-text-text02 tw-text-body_xs tw-flex tw-gap-2 tw-justify-center tw-items-center tw-mt-5"
@@ -59,40 +78,116 @@
           </div>
         </div>
       </div>
-      <main class="tw-flex tw-flex-col tw-gap-5 tw-w-full">
+      <main class="tw-flex tw-flex-col tw-gap-5 tw-w-full tw-bg-white tw-rounded-2xl tw-py-8 tw-px-6">
         <slot />
       </main>
     </div>
-    <FooterMain class="tw-mt-12 lg:tw-mt-20 xl:tw-mt-24" />
-    <ModalCallback
-      :model-value="showedCallback"
-      @update:model-value="updateCallback"
-    />
+    <div class="tw-mt-8">
+      <div class="wrapper">
+        <FooterMain class="tw-mt-12 lg:tw-mt-20 xl:tw-mt-24" />
+      </div>
+    </div>
+    <BaseModal v-model="showedDevMode" v-slot="{ hide }" >
+      <div class="tw-rounded-2xl tw-p-10 tw-bg-white tw-max-w-[507px]">
+        <div class="tw-grid tw-justify-items-center tw-text-center tw-mb-6 ">
+          <div class="tw-bg-base00 tw-rounded-lg tw-p-3 tw-w-fit tw-mb-6">
+            <BaseIcon name="check" class=" tw-w-8 tw-h-8 tw-text-primary"/>
+          </div>
+          <div class="tw-text-h5 tw-mb-4">
+            Раздел находится в разработке
+          </div>
+        </div>
+        <BaseButton theme="gray" class="tw-w-full" @click="hide">
+          Хорошо
+        </BaseButton>
+      </div>
+    </BaseModal>
   </div>
 </template>
 
 <script setup lang="ts">
-import HeaderMain from '../components/layout/HeaderMain.vue'
-import FooterMain from '../components/layout/FooterMain.vue'
-import ModalCallback from '../components/modals/Form.vue'
-import { useAppStore } from '@/stores/app'
+import HeaderMain from '@/other-modules/public-header/index.vue'
+import FooterMain from '@/other-modules/public-footer/index.vue'
 import { useComplexesStore } from '@/stores/complexes'
 import { useTownsStore } from '@/stores/towns'
+
 const complexesStore = useComplexesStore()
 const townsStore = useTownsStore()
-const appStore = useAppStore()
-const showedCallback = computed(() => appStore.showedCallback)
 
 useAsyncData(() => {
   return Promise.all([complexesStore.show(), townsStore.show()])
-})
+});
 
-function updateCallback(val: boolean) {
-  appStore.showedCallback = val
-}
+const showedDevMode = ref(false);
 
-const lkLinksAgent = [
+const buyer = [
   {
+    to: '/lk/agent',
+    meta: null,
+    name: 'Объекты',
+    icon: 'house',
+  },
+  {
+    to: '/lk/agent/action',
+    meta: null,
+    name: 'Акции',
+    icon: 'gift',
+  },
+  {
+    to: '/lk/agent/favorites',
+    meta: null,
+    name: 'Избранное',
+    icon: 'heart',
+  },
+  {
+    to: '/lk/agent/profile',
+    meta: null,
+    name: 'Профиль',
+    icon: 'user',
+  },
+];
+
+const agent = [
+{
+    to: '/lk/agent',
+    meta: null,
+    name: 'Объекты',
+    icon: 'house',
+  },
+  {
+    to: '/lk/agent/action',
+    meta: null,
+    name: 'Акции',
+    icon: 'gift',
+  },
+  {
+    to: '/lk/agent/rating',
+    meta: null,
+    name: 'Рейтинги',
+    icon: 'chart-bar',
+  },
+  {
+    to: '/lk/agent/favorites',
+    meta: null,
+    name: 'Избранное',
+    icon: 'heart',
+  },
+  {
+    to: '/lk/agent/clients',
+    meta: 'clients',
+    name: 'Клиенты',
+    icon: 'handshake',
+  },
+  {
+    to: '/lk/agent/profile',
+    meta: null,
+    name: 'Профиль',
+    icon: 'user',
+  },
+];
+
+const agency = [
+{
     to: '/lk/agent',
     meta: null,
     name: 'Объекты',
@@ -123,18 +218,27 @@ const lkLinksAgent = [
     icon: 'heart',
   },
   {
-    to: '/lk/agent/clients',
-    meta: 'clients',
-    name: 'Клиенты',
-    icon: 'handshake',
-  },
-  {
     to: '/lk/agent/profile',
     meta: null,
     name: 'Профиль',
     icon: 'user',
   },
-]
+];
+
+const userType = process.client ? localStorage.getItem('tokenType') : '';
+
+const links = computed(() => {
+  switch(userType) {
+    case 'b2c': return buyer;
+    case 'b2t': return agent;
+    case 'b2y': return agency;
+  }
+  return buyer;
+});
+
+function showDevMode() {
+  showedDevMode.value = true;
+}
 </script>
 <style lang="scss">
 .link {

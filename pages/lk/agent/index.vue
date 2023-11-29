@@ -4,23 +4,13 @@
       <div class="section__top">
         <h2 class="section__title">Объекты застройщика «Жилой квартал»</h2>
       </div>
-      <div class="complex-list">
-        <CardsResidentialComplex
-          class="item"
-          v-for="item in residentialComplexs"
-          :img="item.img"
-          :title="item.title"
-          :typeApartment="item.typeApartment"
-          :price="item.price"
-          :place="item.place"
-          :status="item.status"
-          :to="item.to"
-        />
-      </div>
+      <EstateGridList />
     </div>
   </section>
 </template>
 <script setup lang="ts">
+import EstateGridList from '@/other-modules/estate-list-grid-lk/index.vue';
+
 definePageMeta({
   layout: 'lk',
   middleware: ['auth'],
