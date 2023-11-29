@@ -5,7 +5,7 @@
     class="grid-item"
     :class="classes"
     v-bind="$attrs"
-    @click="toggleCard"
+    @click="openCard"
   >
     <span v-if="status === 'for_sale'">{{ label }}</span>
     <div v-else-if="iconName" class="grid-item__icon">
@@ -66,6 +66,11 @@
 
   function toggle() {
     showedCard.value = !showedCard.value;
+  }
+
+  function openCard() {
+    const origin = window.location.origin;
+    window.open(origin + `/apartments/${props.flat.id}`, '_blank')?.focus();
   }
 
   const toggleCard = () => setTimeout(toggle, 0);
