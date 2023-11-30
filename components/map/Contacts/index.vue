@@ -96,7 +96,7 @@
             <p class="tw-text-body_s" v-html="marks[singleOfficeIdx].workTime"></p>
           </div>
           <div class="tw-flex tw-gap-3">
-            <BaseButton class="tw-flex-grow"> Обратный звонок </BaseButton>
+            <BaseButton class="tw-flex-grow" @click="showForm"> Обратный звонок </BaseButton>
             <NuxtLink :to="taxiLink" target="_blank">
               <BaseButton theme="gray" padding-classes="tw-p-3">
                 <BaseIcon name="yandex_taxi" class="tw-w-8 tw-h-8" />
@@ -216,7 +216,7 @@
             <p class="tw-text-body_s2 -tw-tracking-875" v-html="marks[singleOfficeIdx].workTime"></p>
           </div>
           <div class="tw-flex tw-gap-3">
-            <BaseButton class="tw-flex-grow"> Обратный звонок </BaseButton>
+            <BaseButton class="tw-flex-grow" @click="showForm"> Обратный звонок </BaseButton>
             <NuxtLink :to="taxiLink" target="_blank">
               <BaseButton theme="gray" padding-classes="tw-p-3">
                 <BaseIcon name="yandex_taxi" class="tw-w-8 tw-h-8" />
@@ -229,6 +229,8 @@
   </BaseModal>
 </template>
 <script setup>
+import { usePublicHeader } from '@/other-modules/public-header/store/index';
+
 const marks = [
   {
     id: 1,
@@ -298,6 +300,13 @@ const updateTaxiLink = (link) => {
 }
 const hideWidget = ref(false)
 const widgetToggle = ref()
+
+const header = usePublicHeader();
+
+function showForm() {
+  openMap.value = false;
+  header.toggleForm();
+}
 </script>
 <style>
 /* Квадратный макет метки */
@@ -354,7 +363,7 @@ const widgetToggle = ref()
 .close {
   @apply tw-rounded-lg tw-grid tw-place-content-center tw-bg-white tw-w-12 tw-h-12;
   @apply tw-fixed tw-right-4 tw-top-4;
-  z-index: 10001;
+  z-index: 1000;
 }
 .yandex-container {
   height: 608px;
