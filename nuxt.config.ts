@@ -19,7 +19,8 @@ export default defineNuxtConfig({
   modules: ['@pinia/nuxt', 'nuxt-swiper'],
   runtimeConfig: {
     public: {
-      baseURL: 'http://31.129.104.95/api/lobby/'
+      baseURL: 'https://adminsite.gkufa.ru/api/lobby/',
+      rootApi: 'https://adminsite.gkufa.ru/api/',
     }
   },
   pinia: {
