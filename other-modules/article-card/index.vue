@@ -22,7 +22,7 @@
   const sourceUrl = computed(() => article.value?.data.source_url ?? null);
   const likes = computed(() => article.value?.data.likes_count ?? null);
 
-  await useAsyncData(() => {
+  await useLazyAsyncData(() => {
     articleCard.setArticleId(props.articleId);
     return articleCard.show()
   });
