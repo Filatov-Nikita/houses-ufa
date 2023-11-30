@@ -77,6 +77,7 @@
   import TownLocations from '@/other-modules/town-locations/index.vue';
   import { useTownOne } from '@/stores/pages/town-one';
   import { useBreadcrumbsStore } from '@/stores/breadcrumbs';
+  import { data } from '@/seo/pages/town';
 
   const route = useRoute();
 
@@ -88,4 +89,16 @@
   await useAsyncData(() => townOne.showOne());
 
   bread.set([ { label: 'Главная', to: '/' }, { label: townOne.town?.data.name ?? '' } ]);
+
+  const seo = getSeo();
+
+  useSeoMeta({
+    title: seo?.title,
+    description: seo?.description,
+  });
+
+  function getSeo() {
+    const id = route.params.id as string;
+    return (data as any)[id] ?? null;
+  }
 </script>

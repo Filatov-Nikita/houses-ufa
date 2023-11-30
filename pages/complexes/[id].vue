@@ -108,6 +108,7 @@ import ComplexProgress from '@/other-modules/complex-progress/index.vue';
 import PurchaseMethods from '@/components/Estate/PurchaseMethods/index.vue';
 import { useComplexOne } from '@/stores/pages/complex-one';
 import { useBreadcrumbsStore } from '@/stores/breadcrumbs';
+import { data } from '@/seo/pages/complex';
 
 const bread = useBreadcrumbsStore();
 
@@ -124,6 +125,18 @@ await useLazyAsyncData(() => {
   setComplexId(complexId.value);
   return Promise.all([showOne(), showHouses()]);
 });
+
+const seo = getSeo();
+
+useSeoMeta({
+  title: seo?.title,
+  description: seo?.description,
+});
+
+function getSeo() {
+  const id = route.params.id as string;
+  return (data as any)[id] ?? null;
+}
 
 watch(complex, () => {
   if(complex.value) {

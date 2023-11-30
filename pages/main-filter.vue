@@ -18,4 +18,25 @@
 <script setup lang="ts">
   import MainFilter from '@/other-modules/main-filter/index.vue';
   import QuestionForm from '@/other-modules/question-form/index.vue';
+  import { useRoute } from 'vue-router';
+  import { data } from '@/seo/pages/main-filter';
+
+  const route = useRoute();
+
+  const seo = getSeo();
+
+  useSeoMeta({
+    title: seo.title,
+    description: seo.description,
+  });
+
+  function getSeo() {
+    const type = route.query.filterType as string;
+    switch(type) {
+      case 'towns': return data.towns;
+      case 'flats': return data.flats;
+      case 'out-city-flats': return data['out-city-flats'];
+    }
+    return data.flats;
+  }
 </script>

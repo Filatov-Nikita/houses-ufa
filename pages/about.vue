@@ -53,10 +53,18 @@ import CompanyObjectList from '@/other-modules/company-object-list/index.vue';
 import History from '@/components/cards/History.vue';
 import Team from '@/components/cards/Team.vue';
 import { useBreadcrumbsStore } from '@/stores/breadcrumbs';
+import { data } from '@/seo/pages/about';
 
 const bread = useBreadcrumbsStore();
 
 bread.set([
   { label: 'Главная', to: '/' }, { label: 'О компании', to: '/about' },
 ]);
+
+useHead({
+  title: data.title,
+  meta: [
+    { name: 'description', content: data.description },
+  ],
+});
 </script>

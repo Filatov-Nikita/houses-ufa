@@ -19,11 +19,31 @@
 </template>
 <script lang="ts" setup>
   import { useBreadcrumbsStore } from '@/stores/breadcrumbs';
+  import { data } from '@/seo/pages/contacts';
+  import { useRoute } from 'vue-router';
 
   const bread = useBreadcrumbsStore();
 
   bread.set([
     { label: 'Главная', to: '/' }, { label: 'Контакты', to: '/contacts' },
   ]);
+
+  const route = useRoute();
+
+  const seo = getSeo();
+
+  useSeoMeta({
+    title: seo.title,
+    description: seo.description,
+  });
+
+  function getSeo() {
+    const type = route.query.type as string;
+    switch(type) {
+      case 'office': return data.office;
+      case 'service': return data.service;
+    }
+    return data.office;
+  }
 </script>
 <style lang="scss" scoped></style>

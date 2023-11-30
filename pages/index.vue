@@ -27,7 +27,7 @@
   <section class="section">
     <div class="wrapper">
       <div class="section-2el">
-        <h2 class="section__title">Варианты покупки объектов недвижимости</h2>
+        <h1 class="section__title">Квартиры в Уфе</h1>
         <div class="section__link section__link--desktop">
           <LinksShowAll to="/ipoteka">
             Все ипотечные предложения
@@ -64,4 +64,12 @@ import EstateTypeCards from '@/other-modules/estate-type-cards/index.vue';
 import CompanyShortInfo from '@/other-modules/company-short-info/index.vue';
 import CreditListShort from '@/other-modules/credit-list-short/index.vue';
 import OurObjectMap from '@/other-modules/our-object-map/index.vue';
+import { data } from '@/seo/pages/index';
+
+useHead({
+  title: data.title,
+  meta: [
+    { name: 'description', content: data.description },
+  ],
+});
 </script>

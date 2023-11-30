@@ -16,7 +16,7 @@
   <section class="section">
     <div class="wrapper">
       <div class="section__top">
-        <h2 class="section__title">Варианты покупки объектов недвижимости</h2>
+        <h1 class="section__title">Ипотека Жилой квартал</h1>
       </div>
       <CreditList />
     </div>
@@ -38,10 +38,18 @@
   import QuestionForm from '@/other-modules/question-form/index.vue';
   import CreditList from '@/other-modules/credit-list/index.vue';
   import { useBreadcrumbsStore } from '@/stores/breadcrumbs';
+  import { data } from '@/seo/pages/ipoteka';
 
   const bread = useBreadcrumbsStore();
 
   bread.set([
     { label: 'Главная', to: '/' }, { label: 'Ипотека', to: '/ipoteka' },
   ]);
+
+  useHead({
+  title: data.title,
+  meta: [
+    { name: 'description', content: data.description },
+  ],
+});
 </script>

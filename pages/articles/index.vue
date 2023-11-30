@@ -28,11 +28,41 @@
 import ArticlesFilter from '@/other-modules/articles-filter/index.vue';
 import QuestionForm from '@/other-modules/question-form/index.vue';
 import { useBreadcrumbsStore } from '@/stores/breadcrumbs';
+import { data } from '@/seo/pages/articles';
+import { useRoute } from 'vue-router';
+
+const route = useRoute();
 
 const bread = useBreadcrumbsStore();
 
 bread.set([
   { label: 'Главная', to: '/' }, { label: 'Пресс-центр', to: '/articles' },
 ]);
+
+const seo = getSeo();
+
+useSeoMeta({
+  title: seo.title,
+  description: seo.description,
+});
+
+function getSeo() {
+  const type = route.query.type as string;
+
+  const news = {
+    title: data.news.title,
+    description: data.news.description,
+  };
+
+  switch(type) {
+    case 'tiding': return news;
+    case 'mass_media': return {
+      title: data.smi.title,
+      description: data.smi.description,
+    }
+  }
+
+  return news;
+}
 </script>
 <style lang="scss" scoped></style>

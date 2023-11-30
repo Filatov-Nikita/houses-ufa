@@ -21,7 +21,7 @@ function getBanner(): Banner {
     subtitle: 'до 30.11.23',
     imgSrc:
       '/images/banner.jpg',
-    readMoreHref: '/articles/29',
+    readMoreHref: '/articles/37',
   }
 }
 
