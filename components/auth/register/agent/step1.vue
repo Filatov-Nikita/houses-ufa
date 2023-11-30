@@ -6,16 +6,20 @@
         name="fio"
         label="ФИО"
         placeholder="Иванов Иван Иванович"
+        v-model="form.full_name"
       />
-      <BaseInput name="E-mail" label="E-mail" placeholder="mail@mail.com" />
+      <BaseInput rules="required|email" name="E-mail" label="E-mail" placeholder="mail@mail.com" v-model="form.email" />
+      <BaseInput type="date" rules="required" name="birthday" label="Дата рождения" v-model="form.birthday" />
       <BaseInput
-        name="phone"
+        disabled
+        name="cellphone"
         label="Телефон"
         placeholder="+7 (999) 999 99-99"
+        v-model="currentPhone"
       />
     </div>
     <div class="tw-flex tw-gap-5">
-      <BaseButton theme="gray" paddingClasses="tw-px-4" @click="back">
+      <BaseButton theme="gray" paddingClasses="tw-px-4" @click="() => $emit('prev')">
         Назад
       </BaseButton>
       <BaseButton
@@ -31,20 +35,20 @@
 <script setup lang="ts">
 import { storeToRefs } from 'pinia'
 import { useAuthStore } from '~/stores/auth'
-
 import { Form } from 'vee-validate'
 
 const authStore = useAuthStore()
-const { openPopup, dataBuyer, selectRole } = storeToRefs(authStore)
+const { selectRole, currentPhone } = storeToRefs(authStore);
 
-const register = (
-  values: { fio: string; email: string; phone: string },
-  { resetForm }: any
-) => {
-  dataBuyer.value = values
-  authStore.sendDataBuyer()
-  emits('next')
+const form = authStore.agentStore.form;
+
+const emits = defineEmits<{
+  (event: 'next'): void,
+  (event: 'prev'): void,
+}>();
+
+const register = () => {
+  emits('next');
 }
-const back = () => (selectRole.value = null)
 </script>
 <style lang="scss" scoped></style>

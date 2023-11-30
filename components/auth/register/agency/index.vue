@@ -8,7 +8,7 @@ import Step1 from './step1.vue'
 import Step2 from './step2.vue'
 import Step3 from './step3.vue'
 import Step4 from './step4.vue'
-import AuthRegisterSuccess from '../success.vue'
+import SuccessAgency from '../successAgency.vue'
 const steps = [
   {
     component: Step1,
@@ -23,7 +23,7 @@ const steps = [
     component: Step4,
   },
   {
-    component: AuthRegisterSuccess,
+    component: SuccessAgency,
   },
 ]
 const step = ref(0)

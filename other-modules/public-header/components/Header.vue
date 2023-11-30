@@ -28,10 +28,10 @@
         </button>
       </div>
       <div class="public-header__btns">
-        <NuxtLink class="action-btn" to="/favorites">
+        <NuxtLink class="action-btn" to="/lk/agent">
           <BaseIcon class="action-btn__icon" name="heart" />
         </NuxtLink>
-        <NuxtLink class="action-btn" to="/favorites">
+        <NuxtLink class="action-btn" to="/lk/agent" @click.prevent="tryShowLk">
           <BaseIcon class="action-btn__icon" name="profile" />
         </NuxtLink>
       </div>
@@ -43,12 +43,24 @@
   import { usePublicHeader } from '../store';
   import { useMenuStore } from '@/stores/menu';
   import { useContactsStore } from '@/stores/contacts';
+  import { useAuthStore } from '@/stores/auth';
+  import { useRouter } from 'vue-router';
 
   const store = usePublicHeader();
   const contacts = useContactsStore();
   const menu = useMenuStore();
+  const auth = useAuthStore();
+  const router = useRouter();
 
   const menuIcon = computed(() => store.showedNav ? 'close' : 'burger');
+
+  function tryShowLk() {
+    if(auth.checkAuth()) {
+      router.push('/lk/agent')
+    } else {
+      auth.openPopup = true;
+    }
+  }
 </script>
 
 <style scoped lang="scss">

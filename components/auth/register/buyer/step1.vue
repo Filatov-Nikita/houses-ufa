@@ -7,16 +7,19 @@
         name="fio"
         label="ФИО"
         placeholder="Иванов Иван Иванович"
+        v-model="form.full_name"
       />
-      <BaseInput name="E-mail" label="E-mail" placeholder="mail@mail.com" />
+      <BaseInput rules="required|email" name="E-mail" label="E-mail" placeholder="mail@mail.com" v-model="form.email" />
       <BaseInput
-        name="phone"
+        disabled
+        name="cellphone"
         label="Телефон"
         placeholder="+7 (999) 999 99-99"
+        v-model="authStore.currentPhone"
       />
     </div>
     <div class="tw-flex tw-gap-5">
-      <BaseButton theme="gray" paddingClasses="tw-px-4" @click="back">
+      <BaseButton theme="gray" paddingClasses="tw-px-4" @click="() => $emit('prev')">
         Назад
       </BaseButton>
       <BaseButton
@@ -36,18 +39,47 @@ import StepHeader from './header.vue'
 import { Form } from 'vee-validate'
 
 const authStore = useAuthStore()
-const { openPopup, dataBuyer, selectRole } = storeToRefs(authStore)
+
+const { openPopup, selectRole } = storeToRefs(authStore)
+
 const emits = defineEmits<{
-  (event: 'prev'): void
+  (event: 'prev'): void,
+  (event: 'next'): void,
 }>()
-const register = (
-  values: { fio: string; email: string; phone: string },
-  { resetForm }: any
-) => {
-  dataBuyer.value = values
-  authStore.sendDataBuyer()
-  emits('next')
+
+const form = reactive({
+  full_name: '',
+  email: '',
+});
+
+const register = async () => {
+  await createUser();
+  authStore.showLK();
+};
+
+const config = useRuntimeConfig();
+
+interface UserRes {
+  data: {
+    id: number,
+    cellphone: string,
+    email: string,
+    full_name: string,
+    token: string
+  }
 }
-const back = () => (selectRole.value = null)
+
+async function createUser() {
+  const res = await $fetch<UserRes>('b2v/b2c/register-and-login', {
+    method: 'post',
+    body: form,
+    baseURL: config.public.rootApi,
+    headers: {
+      Authorization: 'Bearer ' + authStore.tempToken
+    }
+  });
+
+  authStore.setToken(res.data.token, authStore.selectRole);
+}
 </script>
 <style lang="scss" scoped></style>

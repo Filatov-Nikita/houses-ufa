@@ -18,9 +18,11 @@
   <Form class="tw-grid tw-gap-8" @submit="signIn" v-slot="{ meta }">
     <BaseInput
       rules="required"
-      name="phone"
+      name="cellphone"
       label="Телефон"
       placeholder="+7 (999) 999 99-99"
+      maska="+7 (###) ### ## ##"
+      v-model="form.cellphone"
     />
     <div class="tw-flex tw-gap-5">
       <BaseButton
@@ -35,7 +37,7 @@
         :disabled="!meta.valid"
         :theme="!meta.valid ? 'gray' : 'green'"
         type="submit"
-        >Зарегистрироваться</BaseButton
+        >Далее</BaseButton
       >
     </div>
     <!-- <SpinnerDotPulse /> -->
@@ -45,14 +47,49 @@
 import { storeToRefs } from 'pinia'
 import { useAuthStore } from '~/stores/auth'
 import { Form } from 'vee-validate'
+
 const emits = defineEmits<{
   (event: 'next'): void
   (event: 'prev'): void
 }>()
+
+const config = useRuntimeConfig();
+
 const authStore = useAuthStore()
-const { openPopup } = storeToRefs(authStore)
-const signIn = (value: { phone: string }, { resetForm }: any) => {
-  authStore.signIn(value)
+const { openPopup, selectRole } = storeToRefs(authStore)
+
+const form = reactive({
+  cellphone: '',
+});
+
+interface VisitorRes {
+  data: {
+    cellphone: string,
+    id: number,
+    type: string,
+  }
+}
+
+async function createVisitor(): Promise<VisitorRes> {
+  const body = {
+    cellphone: '+' + form.cellphone.replace(/[^0-9]+/g, ''),
+    type: selectRole.value,
+  };
+
+  const data = await $fetch<VisitorRes>('b2v/visitors', {
+    method: 'post',
+    body,
+    baseURL: config.public.rootApi
+  });
+
+  authStore.setVisitorId(data.data.id);
+
+  return data;
+}
+
+const signIn = async (value: { phone: string }, { resetForm }: any) => {
+  await createVisitor();
+  authStore.setCurrentPhone(form.cellphone);
   emits('next')
 }
 </script>

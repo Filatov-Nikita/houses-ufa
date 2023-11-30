@@ -5,22 +5,23 @@
         rules="required"
         name="yr_name"
         label="Название агенства"
-        placeholder="000000000"
+        v-model="form.legal_entity_name"
       />
       <BaseInput
         name="Yr_address"
         label="Юр. адрес"
-        placeholder="000000, город"
+        v-model="form.address_legal"
       />
       <BaseInput
         name="address"
         label="Фактический адрес"
-        placeholder="000000, город"
+        v-model="form.address_actual"
       />
       <BaseInput
         name="manager"
         label="Директор / Руководитель"
         placeholder="Иванов Иван Иванович"
+        v-model="form.director_full_name"
       />
     </div>
     <div class="tw-flex tw-gap-5">
@@ -47,19 +48,16 @@ import { useAuthStore } from '~/stores/auth'
 import { Form } from 'vee-validate'
 
 const authStore = useAuthStore()
-const { openPopup, dataBuyer, selectRole } = storeToRefs(authStore)
+const { selectRole } = storeToRefs(authStore)
 const emits = defineEmits<{
   (event: 'next'): void
   (event: 'prev'): void
 }>()
-const register = (
-  values: { fio: string; email: string; phone: string },
-  { resetForm }: any
-) => {
-  dataBuyer.value = values
-  authStore.sendDataBuyer()
+
+const form = authStore.agencyStore.form;
+
+const register = () => {
   emits('next')
 }
-const back = () => (selectRole.value = null)
 </script>
 <style lang="scss" scoped></style>

@@ -41,7 +41,7 @@ const props = withDefaults(
 )
 const { inputsLenght } = toRefs(props)
 const emit = defineEmits<{
-  (e: 'filled'): void
+  (e: 'filled', code: string): void
 }>()
 const inputEl = ref<HTMLInputElement[]>([])
 const arrValue = ref(Array(3))
@@ -83,11 +83,11 @@ watch(arrValue.value, (val, old) => {
   const arrToString = arrValue.value.join('')
   if (arrToString.length === props.inputsLenght) {
     codeValue.value = arrToString
-    emit('filled')
+    emit('filled', codeValue.value);
   }
 })
 
-const { errorMessage, value: codeValue } = useField(
+const { errorMessage, value: codeValue } = useField<string>(
   'kod',
   `required|min:${inputsLenght.value}`,
   {

@@ -6,7 +6,7 @@
 import HeaderAgent from './header.vue'
 import Step1 from './step1.vue'
 import Step2 from './step2.vue'
-import AuthRegisterSuccess from '../success.vue'
+import SuccessAgent from '../successAgent.vue'
 const steps = [
   {
     component: Step1,
@@ -15,7 +15,7 @@ const steps = [
     component: Step2,
   },
   {
-    component: AuthRegisterSuccess,
+    component: SuccessAgent,
   },
 ]
 const step = ref(0)

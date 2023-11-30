@@ -10,6 +10,8 @@
   <div class="wrapper">
     <PublicFooter />
   </div>
+
+  <Auth />
 </template>
 
 <script setup lang="ts">

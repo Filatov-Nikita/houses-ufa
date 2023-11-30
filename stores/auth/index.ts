@@ -1,59 +1,82 @@
-import { useRoute, useRouter } from '#vue-router'
+import { useRouter, useRoute } from 'vue-router';
+import { useAgent } from './composables/agent';
+import { useAgency } from './composables/agency';
+
 export const useAuthStore = defineStore('authStore', () => {
-  const route = useRoute()
-  const router = useRouter()
-  const isAuth = ref(false)
-  const token = ref('')
-  const openPopup = ref(false)
+  const router = useRouter();
+  const route = useRoute();
+  const isAuth = ref(false);
+  const openPopup = ref(false);
+  const type = ref<'signIn' | 'register'>('signIn');
+  const visitorId = ref<number | null>(null);
+  const currentPhone = ref<string | null>(null);
+  const tempToken = ref<string | null>(null);
+  const agentStore = useAgent();
+  const agencyStore = useAgency();
 
-  const type = ref<'signIn' | 'register'>('signIn')
-  //вход
-
-  const selectRole = ref<'buyer' | 'owner' | 'agent' | 'agency' | null>(null)
-  // console.log(route.query)
-  // watchEffect(() => {
-  //   console.log(route.query)
-
-  const dataBuyer = ref({
-    fio: '',
-    email: '',
-    phone: '',
-  })
-  const sendDataBuyer = () => {
-    isAuth.value = true
-    console.log(dataBuyer.value)
+  function setVisitorId(id: number) {
+    visitorId.value = id;
   }
+
+  function setCurrentPhone(phone: string) {
+    currentPhone.value = phone;
+  }
+
+  function setTempToken(value: string) {
+    tempToken.value = value;
+  }
+
+  const cellphoneRaw = computed(() => {
+    if(currentPhone.value === null) return '';
+    return '+' + currentPhone.value.replace(/[^0-9]+/g, '');
+  });
+
+  const selectRole = ref('b2c');
 
   const toRegister = () => {
     type.value = 'register'
-    selectRole.value = null
-  }
-
-  const signIn = () => {
-    if (route.query.r) {
-      router.push(route.query.r as string)
-    } else {
-      router.push({ name: 'lk-agent' })
-    }
   }
 
   watch(openPopup, (val) => {
-    console.log(val)
     if (!isAuth.value && !val) {
       type.value = 'signIn'
-      selectRole.value = null
     }
-  })
-  // })
+  });
+
+  function setToken(token: string, type: string) {
+    window.localStorage.setItem('token', token);
+    window.localStorage.setItem('tokenType', type);
+  }
+
+  function showLK() {
+    router.push('/lk/agent');
+  }
+
+  function checkAuth() {
+    return localStorage.getItem('token') !== null;
+  }
+
+  watch(route, () => {
+    openPopup.value = false;
+  });
+
   return {
     isAuth,
-    token,
     openPopup,
     selectRole,
     type,
-    dataBuyer,
-    sendDataBuyer,
-    signIn,
+    visitorId,
+    currentPhone,
+    cellphoneRaw,
+    tempToken,
+    agentStore,
+    agencyStore,
+    checkAuth,
+    showLK,
+    setToken,
+    setTempToken,
+    setCurrentPhone,
+    setVisitorId,
     toRegister,
   }
 })

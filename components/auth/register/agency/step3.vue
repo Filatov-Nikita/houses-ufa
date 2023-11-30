@@ -6,19 +6,21 @@
         name="bank_name"
         label="Наименование банка"
         placeholder="Начните вводить ..."
+        v-model="form.bank_name"
       />
-      <BaseInput name="bik" label="БИК банка" placeholder="000000000" />
+      <BaseInput name="bik" label="БИК банка" placeholder="000000000" v-model="form.bank_bik" />
       <BaseInput
         name="raschet"
         label="Расчетный счет"
         placeholder="00000000000000000000"
+        v-model="form.account_checking"
       />
       <BaseInput
         name="korr"
         label="Корр. счет"
         placeholder="00000000000000000000"
+        v-model="form.account_corresponding"
       />
-      <BaseInput name="city" label="Город" placeholder="Начните вводить ..." />
     </div>
     <div class="tw-flex tw-gap-5">
       <BaseButton
@@ -44,19 +46,16 @@ import { useAuthStore } from '~/stores/auth'
 import { Form } from 'vee-validate'
 
 const authStore = useAuthStore()
-const { openPopup, dataBuyer, selectRole } = storeToRefs(authStore)
+const { selectRole } = storeToRefs(authStore)
 const emits = defineEmits<{
   (event: 'next'): void
   (event: 'prev'): void
 }>()
-const register = (
-  values: { fio: string; email: string; phone: string },
-  { resetForm }: any
-) => {
-  dataBuyer.value = values
-  authStore.sendDataBuyer()
+
+const form = authStore.agencyStore.form;
+
+const register = () => {
   emits('next')
 }
-const back = () => (selectRole.value = null)
 </script>
 <style lang="scss" scoped></style>

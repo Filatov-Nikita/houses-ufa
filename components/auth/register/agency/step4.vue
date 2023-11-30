@@ -6,13 +6,20 @@
         name="fio"
         label="ФИО"
         placeholder="Иванов Иван Иванович"
+        v-model="form.applicant_full_name"
       />
-      <BaseInput name="email" label="E-mail" placeholder="mail@mail.com" />
+      <BaseInput rules="required|email" name="email" label="E-mail" placeholder="mail@mail.com" v-model="form.applicant_email" />
       <BaseInput
+        disabled
         name="phone"
         label="Телефон"
         placeholder="+7 (999) 999 99-99"
+        v-model="authStore.currentPhone"
       />
+      <div>
+        <label class="tw-text-text02 tw-text-sm tw-font-normal tw-block tw-mb-2" for="partFile">Карта партнера</label>
+        <input id="partFile" type="file" @change="uploadFile">
+      </div>
     </div>
     <div class="tw-flex tw-gap-5">
       <BaseButton
@@ -36,20 +43,74 @@
 import { storeToRefs } from 'pinia'
 import { useAuthStore } from '~/stores/auth'
 import { Form } from 'vee-validate'
+import { useNotifyStore } from '@/stores/notify';
 
 const authStore = useAuthStore()
-const { openPopup, dataBuyer, selectRole } = storeToRefs(authStore)
+const { selectRole } = storeToRefs(authStore)
 const emits = defineEmits<{
-  (event: 'prev'): void
-}>()
-const register = (
-  values: { fio: string; email: string; phone: string },
-  { resetForm }: any
-) => {
-  dataBuyer.value = values
-  authStore.sendDataBuyer()
+  (event: 'prev'): void,
+  (event: 'next'): void,
+}>();
+
+const form = authStore.agencyStore.form;
+
+const register = async () => {
+  await createUser();
   emits('next')
 }
-const back = () => (selectRole.value = null)
+
+const config = useRuntimeConfig();
+
+async function createUser() {
+  try {
+    await $fetch<Response>('b2v/b2y/registration-forms', {
+      method: 'post',
+      body: form,
+      baseURL: config.public.rootApi,
+      headers: {
+        Authorization: 'Bearer ' + authStore.tempToken,
+      }
+    });
+  } catch(e) {
+    notify.create({ type: 'error', message: 'Не удалось создать заявку' });
+    throw e;
+  }
+}
+
+interface FileRes {
+  data: {
+    id: number,
+    name: string,
+    size_in_bytes: number
+  }
+};
+
+const notify = useNotifyStore();
+
+async function uploadFile(e: Event) {
+  const target = e.target as HTMLInputElement;
+  const file = target.files?.[0];
+  if(!file) return;
+
+  const formData = new FormData();
+  formData.append('file', file);
+
+  try {
+    const res = await $fetch<FileRes>('b2v/b2y/partner-cards', {
+      method: 'post',
+      body: formData,
+      baseURL: config.public.rootApi,
+      headers: {
+        Authorization: 'Bearer ' + authStore.tempToken,
+      }
+    });
+
+    form.partner_card_file_id = res.data.id;
+
+    notify.create({ type: 'success', message: 'Файл успешно загружен' });
+  } catch(e) {
+    notify.create({ type: 'error', message: 'Не удалось загрузить файл' });
+  }
+}
 </script>
 <style lang="scss" scoped></style>

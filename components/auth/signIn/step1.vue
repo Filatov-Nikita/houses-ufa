@@ -37,7 +37,7 @@
     <BaseButton
       :disabled="selectRole ? false : true"
       :theme="selectRole ? 'green' : 'gray'"
-      @click="() => $emit('next')"
+      @click="next"
       >Далее</BaseButton
     >
     <!-- <SpinnerDotPulse /> -->
@@ -46,6 +46,7 @@
 <script setup lang="ts">
 import { storeToRefs } from 'pinia'
 import { useAuthStore } from '~/stores/auth'
+
 const emits = defineEmits<{
   (event: 'next'): void
 }>()
@@ -55,20 +56,20 @@ const { openPopup, selectRole } = storeToRefs(authStore)
 const roles = [
   {
     title: 'Покупатель',
-    value: 'buyer',
-  },
-  {
-    title: 'Владелец',
-    value: 'owner',
+    value: 'b2c',
   },
   {
     title: 'Агентство',
-    value: 'agency',
+    value: 'b2y',
   },
   {
     title: 'Агент',
-    value: 'agent',
+    value: 'b2t',
   },
 ]
+
+function next() {
+  emits('next');
+}
 </script>
 <style lang="scss" scoped></style>

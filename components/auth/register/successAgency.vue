@@ -18,7 +18,4 @@ import { useAuthStore } from '~/stores/auth'
 
 const authStore = useAuthStore()
 const { openPopup } = storeToRefs(authStore)
-watch(openPopup, (val) => {
-  authStore.signIn()
-})
 </script>

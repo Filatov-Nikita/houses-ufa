@@ -5,7 +5,7 @@
     </div>
     <div class="tw-text-h5 tw-mb-4">Успешная регистрация</div>
     <div class="tw-text-text02">
-      Менеджер ООО «Эксперт» скоро добавит вас в агенство
+      Менеджер скоро добавит вас в агенство
     </div>
   </div>
   <BaseButton theme="gray" class="tw-w-full" @click="openPopup = false">
@@ -18,7 +18,4 @@ import { useAuthStore } from '~/stores/auth'
 
 const authStore = useAuthStore()
 const { openPopup } = storeToRefs(authStore)
-watch(openPopup, (val) => {
-  authStore.signIn()
-})
 </script>

@@ -6,12 +6,9 @@
         <SignInStep1 v-if="currentStep === 'signInStep1'" @next="next" /> -->
         <AuthSignIn v-if="type === 'signIn'" />
         <template v-if="type === 'register'">
-          <RegisterStep1 v-if="selectRole === null" />
-          <AuthRegisterBuyer v-if="selectRole === 'buyer'" />
-          <AuthRegisterOwner v-if="selectRole === 'owner'" />
-
-          <AuthRegisterAgent v-if="selectRole === 'agent'" />
-          <AuthRegisterAgency v-if="selectRole === 'agency'" />
+          <AuthRegisterBuyer v-if="selectRole === 'b2c'" />
+          <AuthRegisterAgent v-if="selectRole === 'b2t'" />
+          <AuthRegisterAgency v-if="selectRole === 'b2y'" />
         </template>
       </div>
     </div>
@@ -27,6 +24,5 @@ const authStore = useAuthStore()
 const { openPopup, selectRole, type } = storeToRefs(authStore)
 const currentStep = ref('signInStep1')
 const next = () => {}
-console.log(openPopup.value)
 </script>
 <style lang="scss" scoped></style>

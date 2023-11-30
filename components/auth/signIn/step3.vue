@@ -5,7 +5,7 @@
       <p class="tw-text-text02 tw-text-body_s2 -tw-tracking-875">
         Мы отправили сообщение на номер
         <br />
-        <span class="tw-text-text00"> +7 (999) 999-99-99 </span>
+        <span class="tw-text-text00"> {{ authStore.currentPhone }} </span>
       </p>
     </div>
     <button
@@ -26,39 +26,35 @@
         Назад
       </BaseButton>
       <BaseButton
-        v-if="seconds"
-        class="tw-grow"
-        :disabled="!meta.valid"
-        :theme="!meta.valid ? 'gray' : 'green'"
-        type="submit"
+        class="tw-w-full"
+        :disabled="seconds > 0"
+        @click="requestCode"
       >
         {{
-          meta.valid
-            ? 'Проверить код'
-            : `Запросить код через 00:
-          ${seconds < 10 ? '0' + seconds : seconds}`
+          seconds > 0 ?
+          `Запросить код через 00:${seconds < 10 ? '0' + seconds : seconds}` :
+          'Запросить код'
         }}
       </BaseButton>
-      <BaseButton v-else class="tw-w-full" @click="requestCode">
-        Запросить код
-      </BaseButton>
     </div>
-    <!-- <SpinnerDotPulse /> -->
   </Form>
 </template>
 <script setup lang="ts">
 import { storeToRefs } from 'pinia'
 import { useAuthStore } from '~/stores/auth'
 import { Form } from 'vee-validate'
+import { useNotifyStore } from '@/stores/notify'
+
 const emits = defineEmits<{
   (event: 'next'): void
   (event: 'prev'): void
 }>()
 const authStore = useAuthStore()
+const notify = useNotifyStore();
 const { openPopup } = storeToRefs(authStore)
 const verifiedPhone = () => {}
-const seconds = ref('59')
-let ticker
+const seconds = ref(59)
+let ticker: any;
 const tick = () => {
   seconds.value--
 }
@@ -71,14 +67,20 @@ const start = () => {
 const stop = () => {
   clearInterval(ticker)
 }
-const requestCode = () => {
-  seconds.value = '59'
+
+const requestCode = async () => {
+  seconds.value = 59
   start()
+  await repeatCode();
 }
 
-const filled = () => {
-  authStore.toRegister()
-  console.log('teds')
+const filled = async (code: string) => {
+  const data = await login(code);
+  if(data.data.domain === 'b2v') {
+    authStore.toRegister()
+  } else {
+    authStore.showLK();
+  }
 }
 onMounted(() => start())
 
@@ -87,5 +89,66 @@ watch(seconds, (newVal) => {
     stop()
   }
 })
+
+const config = useRuntimeConfig();
+
+interface LoginRes {
+  data: {
+    domain: string | null,
+    token: string,
+    'b2v-register-powers': {
+      b2c: boolean,
+      b2t: boolean,
+      b2y: boolean
+    } | null,
+  }
+}
+
+async function repeatCode() {
+  const body = {
+    cellphone: authStore.cellphoneRaw,
+    visitor_id: authStore.visitorId,
+  };
+
+  await $fetch('b2v/resend-verification-code', {
+    method: 'post',
+    body,
+    baseURL: config.public.rootApi,
+  });
+
+  return true;
+}
+
+async function login(code: string) {
+  const body = {
+    code,
+    visitor_id: authStore.visitorId,
+  };
+
+  try {
+    const data = await $fetch<LoginRes>('b2v/login', {
+      method: 'post',
+      body,
+      baseURL: config.public.rootApi,
+    });
+
+    if(data.data.domain === 'b2v') {
+      authStore.setTempToken(data.data.token);
+    } else {
+      authStore.setToken(
+        data.data.token,
+        data.data.domain ?? authStore.selectRole
+      );
+    }
+
+    return data;
+  } catch(e: any) {
+    if(e.statusCode === 409) {
+      notify.create({ type: 'error', message: 'Неправильный код' });
+    }
+
+    throw e;
+  }
+};
 </script>
 <style lang="scss" scoped></style>
