@@ -11,6 +11,10 @@ export interface Town {
 export interface TownClass {
   location: string;
   name:     string;
+  finishing_type: {
+    title: string,
+    value: string,
+  },
 }
 
 export interface Image {

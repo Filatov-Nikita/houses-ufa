@@ -14,6 +14,7 @@
       :price="price"
       :creditMonth="creditMonth"
       :creditStart="creditStart"
+      :finishingType="finishingType"
     />
   </EstateCardsBase>
 </template>
@@ -53,5 +54,9 @@
 
   const creditStart = computed(() => {
     return parseInt(props.flat.mortgage_initial_fee);
+  });
+
+  const finishingType = computed(() => {
+    return props.flat.complex.finishing_type.title;
   });
 </script>

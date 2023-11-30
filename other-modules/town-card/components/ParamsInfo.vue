@@ -8,7 +8,12 @@
       <p class="town-info__subtitle">{{ subtitle }}</p>
     </div>
     <div v-if="!isEmptyPlace" class="town-info__badges">
-      <EstateBadgesPreFinishing />
+      <EstateBadgesBase
+        v-if="finishingType"
+        class="estate-card-bottom__badges"
+        icon="paint_brush_board"
+        :label="finishingType"
+      />
     </div>
     <div class="params-block">
       <div class="params-block__one">
@@ -32,7 +37,7 @@
     </div>
 
     <div class="town-info__actions">
-      <BaseButton class="town-info__action">
+      <BaseButton class="town-info__action" @click="showedConsult = true">
         Забронировать
       </BaseButton>
       <BaseButton class="town-info__action" theme="gray" @click="showedConsult = true">
@@ -68,6 +73,10 @@
   const area = computed(() => {
     if(!data.value) return '';
     return (+data.value.area_land / 100).toFixed(1);
+  });
+
+  const finishingType = computed(() => {
+    return data.value?.town.finishing_type.title;
   });
 
   const isEmptyPlace = computed(() => townCard.isEmptyPlace);

@@ -5,7 +5,12 @@
       <p class="flat-info__subtitle">{{ subtitle }}</p>
     </div>
     <div class="flat-info__badges">
-      <EstateBadgesPreFinishing />
+      <EstateBadgesBase
+        v-if="finishingType"
+        class="estate-card-bottom__badges"
+        icon="paint_brush_board"
+        :label="finishingType"
+      />
       <p class="flat-info__price-perm2" v-if="data?.price_per_m2">
         {{ $formatValue(data.price_per_m2, '₽ / м²') }}
       </p>
@@ -46,7 +51,7 @@
       </p>
     </div>
     <div class="flat-info__actions">
-      <BaseButton class="flat-info__action">
+      <BaseButton class="flat-info__action" @click="showedConsult = true">
         Забронировать
       </BaseButton>
       <BaseButton class="flat-info__action" theme="gray" @click="showedConsult = true">
@@ -71,6 +76,10 @@
 
   const subtitle = computed(() => {
     return `${data.value?.complex.name}, ${data.value?.complex.location}`;
+  });
+
+  const finishingType = computed(() => {
+    return data.value?.complex.finishing_type.title;
   });
 </script>
 

@@ -18,6 +18,10 @@ export interface Complex {
   is_in_city: boolean;
   location:   string;
   name:       string;
+  finishing_type: {
+   title: string,
+   value: string,
+  },
 }
 
 export interface House {

@@ -3,7 +3,12 @@
     <div v-if="complexName" class="estate-card-bottom__house">
       {{ complexName }}
     </div>
-    <EstateBadgesPreFinishing class="estate-card-bottom__badges" v-if="!hideBadges" />
+    <EstateBadgesBase
+      v-if="!hideBadges && finishingType"
+      class="estate-card-bottom__badges"
+      icon="paint_brush_board"
+      :label="finishingType"
+    />
     <div v-if="price" class="estate-card-bottom__price">
       {{ $amount(price) }}
     </div>
@@ -24,7 +29,8 @@
     price?: number,
     creditMonth?: number,
     creditStart?: number,
-    hideBadges?: boolean
+    hideBadges?: boolean,
+    finishingType?: string
   }
 
   withDefaults(defineProps<Props>(), { hideBadges: false });

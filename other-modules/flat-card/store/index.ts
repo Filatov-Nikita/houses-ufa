@@ -49,6 +49,10 @@ export interface Flat {
 export interface Complex {
   location: string;
   name:     string;
+  finishing_type: {
+    title: string,
+    value: string,
+  },
 }
 
 export interface Entrance {

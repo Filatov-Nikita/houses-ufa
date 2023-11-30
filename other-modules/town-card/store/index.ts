@@ -79,4 +79,8 @@ export interface Type {
 export interface Town {
   location: string;
   name:     string;
+  finishing_type: {
+    title: string,
+    value: string,
+  },
 }

@@ -11,6 +11,7 @@
     </template>
     <EstateCardsBlocksParamsInfo
       :complexName="complexName"
+      :finishingType="finishingType"
     />
   </EstateCardsBase>
 </template>
@@ -36,5 +37,9 @@
 
   const complexName = computed(() => {
     return props.town.town.name;
+  });
+
+  const finishingType = computed(() => {
+    return props.town.town.finishing_type.title;
   });
 </script>
