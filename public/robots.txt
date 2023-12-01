@@ -1,0 +1,4 @@
+User-Agent: *
+Host: https://gkufa.ru
+Sitemap: https://gkufa.ru/sitemap.xml
+Allow: /

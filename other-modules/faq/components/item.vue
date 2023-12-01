@@ -6,7 +6,7 @@
     </div>
     <transition name="show">
       <div class="faq-item__body" v-if="showed">
-        <p>{{ body }}</p>
+        <p v-html="body"></p>
       </div>
     </transition>
   </article>
@@ -67,6 +67,7 @@
       padding-right: 80px;
       font-size: 16px;
       line-height: 28px;
+      white-space: pre-wrap;
       @apply tw-text-text01;
 
       @include md {
