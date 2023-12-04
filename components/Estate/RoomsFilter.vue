@@ -26,7 +26,7 @@
   type Value = number | null;
 
   interface Props {
-    label: string,
+    label?: string,
     disabled?: boolean,
     theme?: 'gray' | 'white',
     room_factor_studio: Value,

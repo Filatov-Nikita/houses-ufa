@@ -56,7 +56,7 @@
     background-size: cover;
     background-position: center;
     opacity: 0;
-    transition: opacity 200ms ease-in-out;
+    transition: opacity 300ms ease-in-out;
   }
 
   &:hover::before {
@@ -120,7 +120,7 @@
     border-radius: 50px;
     transform-origin: center center;
     transform: translate3d(-50%, -0%, 0px) rotate(45deg);
-    transition: all 150ms ease-in-out;
+    transition: all 250ms ease-in-out;
   }
 
   &:hover &__romb {
