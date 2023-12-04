@@ -17,15 +17,16 @@
         :model-value="currentObjectOpt"
         @update:modelValue="updateObject"
       />
-      <BaseBtnRadio
+      <EstateRoomsFilter
         class="main-filter-params__input-rooms"
-        label="Количество комнат"
-        name="rooms"
         theme="gray"
         :disabled="!mainFilter.isFlat"
-        :btns="roomsBtns"
-        :modelValue="roomsCurrent"
-        @update:modelValue="updateRooms"
+        v-model:room_factor_studio="flatFilter.params.room_factor_studio"
+        v-model:room_factor_one_classic="flatFilter.params.room_factor_one_classic"
+        v-model:room_factor_two_smart="flatFilter.params.room_factor_two_smart"
+        v-model:room_factor_two_classic="flatFilter.params.room_factor_two_classic"
+        v-model:room_factor_three_smart="flatFilter.params.room_factor_three_smart"
+        v-model:room_factor_three_classic="flatFilter.params.room_factor_three_classic"
       />
       <BaseRange
         class="main-filter-params__input-sqr"
@@ -272,51 +273,6 @@
   function updateStorey(val: [NumOrNull, NumOrNull] | null) {
     filterParams.params.number_of_floors_min = val?.[0] ?? null;
     filterParams.params.number_of_floors_max = val?.[1] ?? null;
-  }
-
-  const roomsBtns = [
-    { label: 'С', value: 'room_factor_studio' },
-    { label: '1', value: 'room_factor_one_classic' },
-    { label: '2С', value: 'room_factor_two_smart' },
-    { label: '2', value: 'room_factor_two_classic' },
-    { label: '3С', value: 'room_factor_three_smart' },
-    { label: '3', value: 'room_factor_three_classic' },
-  ];
-
-  const roomsCurrent = computed(() => {
-    if(flatFilter.params.room_factor_studio) return roomsBtns[0];
-    else if(flatFilter.params.room_factor_one_classic) return roomsBtns[1];
-    else if(flatFilter.params.room_factor_two_smart) return roomsBtns[2];
-    else if(flatFilter.params.room_factor_two_classic) return roomsBtns[3];
-    else if(flatFilter.params.room_factor_three_smart) return roomsBtns[4];
-    else if(flatFilter.params.room_factor_three_classic) return roomsBtns[5];
-  });
-
-  function updateRooms(val: typeof roomsBtns[number]): void {
-    clearRooms();
-    switch (val.value) {
-      case 'room_factor_studio':
-        flatFilter.params.room_factor_studio = 1; break;
-      case 'room_factor_one_classic':
-        flatFilter.params.room_factor_one_classic = 1; break;
-      case 'room_factor_two_smart':
-        flatFilter.params.room_factor_two_smart = 1; break;
-      case 'room_factor_two_classic':
-        flatFilter.params.room_factor_two_classic = 1; break;
-      case 'room_factor_three_smart':
-        flatFilter.params.room_factor_three_smart = 1; break;
-      case 'room_factor_three_classic':
-        flatFilter.params.room_factor_three_classic = 1; break;
-    }
-  }
-
-  function clearRooms(): void {
-    flatFilter.params.room_factor_studio =
-    flatFilter.params.room_factor_one_classic =
-    flatFilter.params.room_factor_two_smart =
-    flatFilter.params.room_factor_two_classic =
-    flatFilter.params.room_factor_three_smart =
-    flatFilter.params.room_factor_three_classic = null;
   }
 
   function findOpt<T>(list: T[], filter: (opt: T) => boolean): T | null {

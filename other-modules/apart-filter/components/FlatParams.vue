@@ -66,12 +66,13 @@
         />
       </div>
       <div>
-        <BaseBtnRadio
-          label="Количество комнат"
-          name="rooms"
-          :btns="roomsBtns"
-          :modelValue="roomsCurrent"
-          @update:modelValue="updateRooms"
+        <EstateRoomsFilter
+          v-model:room_factor_studio="filterParams.room_factor_studio"
+          v-model:room_factor_one_classic="filterParams.room_factor_one_classic"
+          v-model:room_factor_two_smart="filterParams.room_factor_two_smart"
+          v-model:room_factor_two_classic="filterParams.room_factor_two_classic"
+          v-model:room_factor_three_smart="filterParams.room_factor_three_smart"
+          v-model:room_factor_three_classic="filterParams.room_factor_three_classic"
         />
       </div>
       <div class="tw-space-y-2">
@@ -123,24 +124,6 @@
 
   const currentEntrance = computed(() => {
     return entrancesOpts.value.find(entr => entr.id === filterParams.entrance_id) ?? null;
-  });
-
-  const roomsBtns = [
-    { label: 'С', value: 'room_factor_studio' },
-    { label: '1', value: 'room_factor_one_classic' },
-    { label: '2С', value: 'room_factor_two_smart' },
-    { label: '2', value: 'room_factor_two_classic' },
-    { label: '3С', value: 'room_factor_three_smart' },
-    { label: '3', value: 'room_factor_three_classic' },
-  ];
-
-  const roomsCurrent = computed(() => {
-    if(filterParams.room_factor_studio) return roomsBtns[0];
-    else if(filterParams.room_factor_one_classic) return roomsBtns[1];
-    else if(filterParams.room_factor_two_smart) return roomsBtns[2];
-    else if(filterParams.room_factor_two_classic) return roomsBtns[3];
-    else if(filterParams.room_factor_three_smart) return roomsBtns[4];
-    else if(filterParams.room_factor_three_classic) return roomsBtns[5];
   });
 
   const square = computed<[NumOrNull, NumOrNull] | null>(() => {
@@ -211,33 +194,6 @@
     const mult = priceMinMax.value.mult;
     filterParams.price_min = typeof val?.[0] === 'number' ? val[0] * mult : null;
     filterParams.price_max = typeof val?.[1] === 'number' ? val[1] * mult : null;
-  }
-
-  function updateRooms(val: typeof roomsBtns[number]): void {
-    clearRooms();
-    switch (val.value) {
-      case 'room_factor_studio':
-        filterParams.room_factor_studio = 1; break;
-      case 'room_factor_one_classic':
-        filterParams.room_factor_one_classic = 1; break;
-      case 'room_factor_two_smart':
-        filterParams.room_factor_two_smart = 1; break;
-      case 'room_factor_two_classic':
-        filterParams.room_factor_two_classic = 1; break;
-      case 'room_factor_three_smart':
-        filterParams.room_factor_three_smart = 1; break;
-      case 'room_factor_three_classic':
-        filterParams.room_factor_three_classic = 1; break;
-    }
-  }
-
-  function clearRooms(): void {
-    filterParams.room_factor_studio =
-    filterParams.room_factor_one_classic =
-    filterParams.room_factor_two_smart =
-    filterParams.room_factor_two_classic =
-    filterParams.room_factor_three_smart =
-    filterParams.room_factor_three_classic = null;
   }
 
   function selectProps<T extends { name: string, id: number }>(options: T[]) {
