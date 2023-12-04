@@ -2,6 +2,11 @@
 import { createSvgIconsPlugin } from 'vite-plugin-svg-icons';
 import path from 'path';
 
+import * as YandexMap from './scripts/yandex-map';
+import * as YandexMetric from './scripts/yandex-metric';
+import * as Roistat from './scripts/roistat';
+import * as Marquiz from './scripts/marquiz';
+import * as Envybox from './scripts/envybox';
 
 export default defineNuxtConfig({
   ssr: true,
@@ -9,11 +14,64 @@ export default defineNuxtConfig({
     head: {
       script: [
         {
-          src: 'https://api-maps.yandex.ru/2.1/?apikey=7885cb2e-2801-417c-953c-70550f293bf3&lang=ru_RU',
           type: 'text/javascript',
+          src: YandexMap.src,
         }
       ],
     },
+  },
+  $production: {
+    app: {
+      head: {
+        script: [
+          {
+            type: 'text/javascript',
+            innerHTML: YandexMetric.body,
+          },
+          {
+            type: 'text/javascript',
+            innerHTML: Roistat.body,
+            tagPosition: 'bodyClose',
+          },
+          {
+            type: 'text/javascript',
+            src: Envybox.src,
+            async: true,
+            tagPosition: 'bodyClose',
+          },
+          {
+            type: 'text/javascript',
+            innerHTML: Marquiz.body1,
+          },
+          {
+            type: 'text/javascript',
+            innerHTML: Marquiz.body2,
+          },
+          {
+            type: 'text/javascript',
+            innerHTML: Marquiz.body3,
+            tagPosition: 'bodyClose',
+          },
+          {
+            type: 'text/javascript',
+            innerHTML: Marquiz.body4,
+            tagPosition: 'bodyClose',
+          },
+        ],
+        noscript: [
+          {
+            innerHTML: YandexMetric.noscript
+          }
+        ],
+        link: [
+          {
+            rel: 'stylesheet',
+            href: Envybox.link,
+            tagPosition: 'bodyClose',
+          }
+        ],
+      }
+    }
   },
   // devtools: { enabled: true },
   modules: ['@pinia/nuxt', 'nuxt-swiper'],
