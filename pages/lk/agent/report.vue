@@ -3,9 +3,9 @@
     <div class="section__top">
       <h2 class="section__title">Отчет агентства</h2>
     </div>
-    <div class="tw-flex tw-justify-between">
+    <div class="tw-grid tw-gap-4 lg:tw-flex lg:tw-justify-between">
       <div
-        class="tw-bg-base00 tw-px-6 tw-py-4 tw-rounded-2xl tw-flex tw-gap-12"
+        class="tw-bg-base00 tw-px-6 tw-py-4 tw-rounded-2xl tw-grid tw-gap-4 lg:tw-flex lg:tw-gap-12"
       >
         <div>
           <div class="tw-text-text02 tw-text-body_s2 tw-tracking-875 tw-mb-2">

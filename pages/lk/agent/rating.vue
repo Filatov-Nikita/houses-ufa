@@ -3,8 +3,10 @@
     <div class="section__top">
       <h2 class="section__title">Рейтинги</h2>
     </div>
-    <div>
-      <div class="tw-flex tw-justify-between tw-mb-6 xl:tw-mb-8">
+    <div class="">
+      <div
+        class="tw-grid tw-gap-3 lg:tw-flex tw-justify-between tw-mb-6 xl:tw-mb-8"
+      >
         <BaseTabsGroup v-model="tab" class="">
           <BaseTabsGroupItem v-for="item in tabs" :name="item.name">
             {{ item.title }}
@@ -19,7 +21,9 @@
           </div>
         </div>
       </div>
-      <div class="tw-flex tw-justify-between tw-items-center tw-mb-8">
+      <div
+        class="tw-grid tw-gap-3 lg:tw-flex tw-justify-between tw-items-center tw-mb-8"
+      >
         <div class="tw-text-h5">Топ-10 агентств недвижимости</div>
         <BaseSelect
           class="xl:tw-basis-[322px]"
@@ -35,8 +39,10 @@
             v-bind="{
               headList: tableHeadList,
               bodyList: tableBodyList,
-              colClass: 'tw-grid-cols-[0.24fr_1fr_0.56fr_0.4fr_0.33fr]',
+              colClass:
+                'tw-min-w-[1024px] tw-grid-cols-[0.18fr_0.8fr_0.4fr_0.3fr_0.33fr] lg:tw-grid-cols-[0.24fr_1fr_0.56fr_0.4fr_0.33fr]',
             }"
+            class="tw-overflow-auto"
           />
         </BaseTabsTabContentItem>
         <BaseTabsTabContentItem name="agennts" key="agennts">

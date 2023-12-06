@@ -6,7 +6,7 @@
       </div>
     </div>
     <div class="wrapper tw-flex tw-gap-5">
-      <div>
+      <div class="tw-hidden lg:tw-block">
         <div class="tw-grid tw-gap-3 tw-content-start">
           <template v-for="item in links">
             <NuxtLink

@@ -1,7 +1,7 @@
 <template>
   <section class="card-wrapper">
     <form v-if="isUpdate">
-      <div class="tw-grid tw-grid-cols-3 tw-gap-5 tw-mb-8">
+      <div class="tw-grid lg:tw-grid-cols-3 tw-gap-5 tw-mb-8">
         <BaseInput
           name="surname"
           label="Фамилия"
@@ -56,7 +56,9 @@
       </div>
     </form>
     <template v-else>
-      <div class="section__top tw-flex tw-justify-between tw-items-center">
+      <div
+        class="section__top tw-grid tw-gap-3 lg:tw-flex lg:tw-justify-between lg:tw-items-center"
+      >
         <h2 class="section__title">Профиль</h2>
         <button
           class="tw-flex tw-gap-2 tw-text-primary"
@@ -66,10 +68,12 @@
           Редактировать
         </button>
       </div>
-      <div class="tw-flex tw-justify-between tw-items-start">
+      <div
+        class="tw-grid tw-gap-3 lg:tw-flex lg:tw-justify-between lg:tw-items-start"
+      >
         <div>
           <div class="tw-text-h5 tw-mb-8">Имя Фамилия Отчетсво</div>
-          <div class="tw-grid tw-grid-cols-2 tw-gap-x-12 tw-gap-y-5">
+          <div class="tw-grid lg:tw-grid-cols-2 tw-gap-x-12 tw-gap-y-5">
             <div class="tw-grid tw-gap-2">
               <div class="tw-text-body_s2 -tw-tracking-875">Агентство</div>
               <div class="tw-text-h6">МФА «Новострой» Недвижимость</div>
@@ -103,18 +107,20 @@
     </template>
   </section>
   <section class="card-wrapper">
-    <div class="tw-flex tw-justify-between tw-items-center tw-mb-8">
+    <div
+      class="tw-grid lg:tw-flex lg:tw-justify-between lg:tw-items-center tw-mb-8"
+    >
       <h3 class="tw-text-h5">Статистика</h3>
-      <div class="tw-flex tw-gap-4">
+      <div class="tw-grid lg:tw-flex tw-gap-4">
         <BaseSelect
-          class="tw-w-fit"
+          class="lg:tw-w-fit"
           label=""
           name="typeAparment"
           :drop-down-props="{ options: [{ label: 'test 1', value: '1' }] }"
           v-model="month"
         />
         <BaseSelect
-          class="tw-w-fit"
+          class="lg:tw-w-fit"
           label=""
           name="typeAparment"
           :drop-down-props="{ options: [{ label: 'test 1', value: '1' }] }"
@@ -122,7 +128,7 @@
         />
       </div>
     </div>
-    <div class="tw-grid tw-gap-5 tw-grid-cols-3">
+    <div class="tw-grid tw-gap-5 lg:tw-grid-cols-3">
       <div
         v-for="item in statics"
         class="tw-grid tw-gap-2 tw-bg-base00 tw-rounded-2xl tw-px-6 tw-py-4"

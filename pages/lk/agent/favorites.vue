@@ -21,18 +21,18 @@
       <div
         v-for="(item, index) in 4"
         :key="index"
-        class="tw-flex tw-justify-between"
+        class="tw-grid tw-gap-3 lg:tw-flex lg:tw-justify-between"
         :class="[
           index === 0 ? 'tw-pb-8' : 4 === index + 1 ? 'tw-pt-8' : 'tw-py-8',
         ]"
       >
-        <div class="tw-flex tw-gap-8">
+        <div class="tw-grid tw-gap-3 lg:tw-flex lg:tw-gap-8">
           <div
             class="tw-w-[152px] tw-h-[152px] tw-rounded-2xl tw-overflow-hidden tw-bg-base00 tw-grid tw-place-content-center tw-p-4"
           >
             <img src="/images/img/plan-apartment.png" alt="" />
           </div>
-          <div class="tw-grid tw-content-between">
+          <div class="tw-grid tw-gap-2 tw-content-between">
             <div>
               <h5 class="tw-text-body_l tw-mb-2">1-комнатная, 36 м²</h5>
               <p
@@ -45,7 +45,7 @@
               </h6>
             </div>
             <div
-              class="tw-rounded-lg tw-bg-base00 tw-py-1 tw-px-2 tw-flex tw-gap-2.5 tw-items-center"
+              class="tw-rounded-lg tw-w-fit tw-bg-base00 tw-py-1 tw-px-2 tw-flex tw-gap-2.5 tw-items-center"
             >
               <BaseIcon
                 name="paint_brush_board"
@@ -56,7 +56,7 @@
           </div>
         </div>
         <div
-          class="tw-grid tw-content-between tw-justify-items-end tw-text-right"
+          class="tw-grid tw-gap-3 tw-content-between lg:tw-justify-items-end lg:tw-text-right"
         >
           <div>
             <h4 class="tw-text-h6 tw-mb-2">20 256 296 ₽</h4>
@@ -88,42 +88,45 @@
     </div>
   </section>
   <BaseModal v-model="checkModal">
-    <div class="tw-w-[668px]">
-      <div class="tw-p-12 tw-bg-white tw-rounded-2xl">
-        <div class="tw-flex tw-justify-between tw-items-start tw-mb-8">
+    <div class="lg:tw-w-[668px]">
+      <div class="tw-p-4 lg:tw-p-12 tw-bg-white tw-rounded-2xl">
+        <div
+          class="tw-flex tw-justify-between tw-items-start tw-mb-2 lg:tw-mb-8"
+        >
           <div>
-            <h2 class="tw-text-h4 tw-mb-2">Проверить клиента</h2>
-            <p class="tw-text-text02">
+            <h2 class="tw-text-h5 lg:tw-text-h4 tw-mb-2">Проверить клиента</h2>
+            <p class="tw-text-sm lg:tw-text-body_m tw-text-text02">
               Введите номер телефона потенциального <br />
               клиента для проверки его в базе
             </p>
           </div>
           <button
-            class="tw-rounded-lg tw-p-3 tw-bg-base00 tw-w-fitt"
+            class="tw-rounded-lg tw-p-2 lg:tw-p-3 tw-bg-base00 tw-w-fitt"
             @click="checkModal = false"
           >
-            <BaseIcon name="close" class="tw-w-6 tw-h-6" />
+            <BaseIcon name="close" class="tw-w-4 tw-h-4 lg:tw-w-6 lg:tw-h-6" />
           </button>
         </div>
-        <form class="tw-grid tw-gap-8">
+        <form class="tw-grid tw-gap-2 lg:tw-gap-8">
           <div class="tw-flex tw-justify-between">
             <div class="tw-flex tw-gap-4">
               <div
-                class="tw-w-[56px] tw-h-[56px] tw-rounded-lg tw-overflow-hidden tw-bg-base00 tw-grid tw-place-content-center tw-p-2"
+                class="tw-flex-shrink-0 tw-w-[56px] tw-h-[56px] tw-rounded-lg tw-overflow-hidden tw-bg-base00 tw-grid tw-place-content-center tw-p-2"
               >
                 <img src="/images/img/plan-apartment.png" alt="" />
               </div>
               <div class="tw-grid tw-content-between">
-                <div class="tw-text-body_l">1-комнатная, 36 м²</div>
+                <div class="lg:tw-text-body_l">1-комнатная, 36 м²</div>
+                <div class="lg:tw-hidden">20 256 296 ₽</div>
                 <div class="tw-text-body_s -tw-tracking-875 tw-text-text02">
                   2 этаж из 17 · Литер 1 · Михайловка Green Place
                 </div>
               </div>
             </div>
-            <div class="tw-text-h6">20 256 296 ₽</div>
+            <div class="tw-hidden lg:tw-block tw-text-h6">20 256 296 ₽</div>
           </div>
-          <div class="tw-grid tw-gap-5">
-            <div class="tw-grid tw-grid-cols-2 tw-gap-5">
+          <div class="tw-grid tw-gap-2 lg:tw-gap-5">
+            <div class="tw-grid lg:tw-grid-cols-2 tw-gap-3 lg:tw-gap-5">
               <BaseInput
                 name="phone1"
                 label="Телефон 1"
