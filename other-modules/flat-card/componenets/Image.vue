@@ -7,13 +7,15 @@
 
 <script setup lang="ts">
   import { useFlatCard } from '../store';
+  import { getRoomsCount } from '@/plugins/rooms-count';
 
   const flatCard = useFlatCard();
 
   const data = computed(() => flatCard.data?.data);
 
   const title = computed(() => {
-    return `${data.value?.number_of_rooms}-комнатная, ${data.value?.area_total} м²`
+    if(!data.value) return '';
+    return `${getRoomsCount(data.value.room_factor)}-комнатная, ${data.value.area_total} м²`
   });
 
   const planImages =  computed(() => {

@@ -5,7 +5,7 @@
     </div>
     <div class="flat-card__data">
       <div class="flat-card__left">
-        <div class="flat-card__param">{{flat.number_of_rooms}}-комнатная</div>
+        <div class="flat-card__param">{{ roomCount }}-комнатная</div>
         <div class="flat-card__price">{{ $amount(flat.price_total) }}</div>
       </div>
       <div class="flat-card__right">
@@ -28,14 +28,17 @@
 
 <script setup lang="ts">
   import type { Flat } from '../../store/filter-plan/composables/usePlan';
+  import { getRoomsCount } from '@/plugins/rooms-count';
 
   interface Props {
     flat: Flat
   }
 
-  defineProps<Props>();
+  const props = defineProps<Props>();
 
   defineEmits<{ (event: 'close'): void }>();
+
+  const roomCount = computed(() => getRoomsCount(props.flat.room_factor));
 </script>
 
 <style scoped lang="scss">

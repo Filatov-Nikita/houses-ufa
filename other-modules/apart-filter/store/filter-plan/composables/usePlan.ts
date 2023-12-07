@@ -3,6 +3,7 @@ import { useFilterHead } from '../../filter-head';
 import { useDataFetch } from '@/composables/useDataFetch';
 import type { QueryFilter } from '../../filter-flats-params/composables/useParams';
 import { ComputedRef } from 'vue';
+import type { RoomFactor } from '@/types/estate/flat';
 
 function usePlan(queryFilter: ComputedRef<QueryFilter>) {
   const complexOne = useComplexOne();
@@ -71,6 +72,7 @@ export interface Flat {
   plan_image_url:           string;
   price_total:              string;
   status:                   Status;
+  room_factor:              RoomFactor;
 }
 
 export interface House {

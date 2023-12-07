@@ -39,6 +39,7 @@
 <script setup lang="ts">
   import { usePrettyAmount } from '../../../composables/usePrettyAmount';
   import { Flat } from '../store/filter-list/composables/useFlats';
+  import { getRoomsCount } from '@/plugins/rooms-count';
 
   interface Props {
     flat: Flat
@@ -51,7 +52,7 @@
   const { amount, pretty } = usePrettyAmount();
   const flat = toRef(props, 'flat');
 
-  const name = computed(() => `${flat.value.number_of_rooms}-комнатная, ${flat.value.area_total} м²`);
+  const name = computed(() => `${getRoomsCount(flat.value.room_factor)}-комнатная, ${flat.value.area_total} м²`);
   const storeyLabel = computed(() => `${flat.value.floor_number} этаж из ${flat.value.entrance.top_floor_number}`);
   const literLabel = computed(() => `Литер ${flat.value.house.letter}`);
   const priceLabel = computed(() => amount(flat.value.price_total));

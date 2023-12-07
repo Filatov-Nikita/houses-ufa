@@ -21,6 +21,7 @@
 
 <script setup lang="ts">
   import type { Flat } from '@/types/estate/flat';
+  import { getRoomsCount } from '@/plugins/rooms-count';
 
   const props = defineProps<{
     flat: Flat,
@@ -29,7 +30,7 @@
   const to = computed(() => `/apartments/${props.flat.id}`);
 
   const name = computed(() => {
-    return `${props.flat.number_of_rooms}-комнатная, ${props.flat.area_total}&nbsp;м<sup>2</sup>`;
+    return `${getRoomsCount(props.flat.room_factor)}-комнатная, ${props.flat.area_total}&nbsp;м<sup>2</sup>`;
   });
 
   const params = computed(() => {

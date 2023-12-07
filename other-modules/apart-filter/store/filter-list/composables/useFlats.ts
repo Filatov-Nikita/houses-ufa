@@ -4,6 +4,7 @@ import type { QueryFilter } from '../../filter-flats-params/composables/useParam
 import { usePagination } from '../../composables/usePagination';
 import { useComplexOne } from '@/stores/pages/complex-one';
 import { useFilterHead } from '../../filter-head';
+import type { RoomFactor } from '@/types/estate/flat';
 
 function useFlatsList(queryFilter: ComputedRef<QueryFilter>) {
   const complexOne = useComplexOne();
@@ -69,6 +70,7 @@ export interface Flat {
   complex:                  Complex;
   entrance:                 Entrance;
   house:                    House;
+  room_factor:              RoomFactor;
 }
 
 export interface Complex {

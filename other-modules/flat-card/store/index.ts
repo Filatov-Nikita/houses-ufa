@@ -1,5 +1,6 @@
 import { defineStore } from 'pinia';
 import { useDataFetch } from '@/composables/useDataFetch';
+import type { RoomFactor } from '@/types/estate/flat';
 
 export const useFlatCard = defineStore('flatCard', () => {
   const flatId = ref<number | null>(null);
@@ -40,7 +41,7 @@ export interface Flat {
   plan_image_url:           string;
   price_per_m2:             string;
   price_total:              string;
-  room_factor:              string;
+  room_factor:              RoomFactor;
   complex:                  Complex;
   entrance:                 Entrance;
   house:                    House;

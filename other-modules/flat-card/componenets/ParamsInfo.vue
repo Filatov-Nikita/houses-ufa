@@ -18,7 +18,7 @@
     <div class="params-block">
       <div class="params-block__one">
         <p class="params-block__key">Комнатность</p>
-        <p class="params-block__value">{{ data?.number_of_rooms }}</p>
+        <p class="params-block__value">{{ roomsCount }}</p>
       </div>
       <div class="params-block__one">
         <p class="params-block__key">Этаж</p>
@@ -65,13 +65,21 @@
 <script setup lang="ts">
   import { useFlatCard } from '../store';
   import ConsultForm from '@/other-modules/consult-form/index.vue';
+  import { getRoomsCount } from '@/plugins/rooms-count';
 
   const showedConsult = ref(false);
   const flatCard = useFlatCard();
 
   const data = computed(() => flatCard.data?.data);
+
+  const roomsCount = computed(() => {
+    if(!data.value) return '';
+    return getRoomsCount(data.value.room_factor)
+  });
+
   const title = computed(() => {
-    return `${data.value?.number_of_rooms}-комнатная, ${data.value?.area_total} м²`
+    if(!data.value) return '';
+    return `${roomsCount.value}-комнатная, ${data.value.area_total} м²`
   });
 
   const subtitle = computed(() => {

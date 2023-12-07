@@ -12,6 +12,7 @@ export interface Flat {
   status:                   string;
   complex:                  Complex;
   house:                    House;
+  room_factor:              RoomFactor;
 }
 
 export interface Complex {
@@ -23,6 +24,13 @@ export interface Complex {
    value: string,
   },
 }
+
+export type RoomFactor = 'studio'       |
+                         'one_classic'  |
+                         'two_smart'    |
+                         'two_classic'  |
+                         'three_smart'  |
+                         'three_classic';
 
 export interface House {
   letter: string;

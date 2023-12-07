@@ -32,6 +32,7 @@
 <script setup lang="ts">
   import type { Flat } from '../../store/filter-plan/composables/usePlan';
   import FlatCard from './FlatCard.vue';
+  import { getRoomsCount } from '@/plugins/rooms-count';
 
   interface Props {
     flat: Flat,
@@ -56,8 +57,7 @@
   });
 
   const label = computed(() => {
-    const { layout, number_of_rooms: count } = props.flat;
-    return layout === 'studio' && count === 1 ? 'С' : count;
+    return props.flat.room_factor === 'studio' ? 'С' : getRoomsCount(props.flat.room_factor);
   });
 
   const showedCard = ref(false);
