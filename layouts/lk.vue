@@ -78,7 +78,9 @@
           </div>
         </div>
       </div>
-      <main class="tw-flex tw-flex-col tw-gap-5 tw-w-full tw-bg-white tw-rounded-2xl tw-py-8 tw-px-6">
+      <main
+        class="tw-flex tw-flex-col tw-gap-5 tw-w-full tw-bg-white tw-rounded-2xl tw-py-8 tw-px-6"
+      >
         <slot />
       </main>
     </div>
@@ -87,21 +89,31 @@
         <FooterMain class="tw-mt-12 lg:tw-mt-20 xl:tw-mt-24" />
       </div>
     </div>
-    <BaseModal v-model="showedDevMode" v-slot="{ hide }" >
+    <BaseModal v-model="showedDevMode" v-slot="{ hide }">
       <div class="tw-rounded-2xl tw-p-10 tw-bg-white tw-max-w-[507px]">
-        <div class="tw-grid tw-justify-items-center tw-text-center tw-mb-6 ">
+        <div class="tw-grid tw-justify-items-center tw-text-center tw-mb-6">
           <div class="tw-bg-base00 tw-rounded-lg tw-p-3 tw-w-fit tw-mb-6">
-            <BaseIcon name="check" class=" tw-w-8 tw-h-8 tw-text-primary"/>
+            <BaseIcon name="check" class="tw-w-8 tw-h-8 tw-text-primary" />
           </div>
-          <div class="tw-text-h5 tw-mb-4">
-            Раздел находится в разработке
-          </div>
+          <div class="tw-text-h5 tw-mb-4">Раздел находится в разработке</div>
         </div>
         <BaseButton theme="gray" class="tw-w-full" @click="hide">
           Хорошо
         </BaseButton>
       </div>
     </BaseModal>
+    <div class="mob-nav">
+      <template v-for="item in links">
+        <NuxtLink
+          class="link"
+          :class="{ active: $route.meta?.parent === item.meta }"
+          :to="item.to"
+          exactActiveClass="active"
+        >
+          <BaseIcon :name="item.icon" class="link__icon" />
+        </NuxtLink>
+      </template>
+    </div>
   </div>
 </template>
 
@@ -116,9 +128,9 @@ const townsStore = useTownsStore()
 
 useAsyncData(() => {
   return Promise.all([complexesStore.show(), townsStore.show()])
-});
+})
 
-const showedDevMode = ref(false);
+const showedDevMode = ref(false)
 
 const buyer = [
   {
@@ -145,10 +157,10 @@ const buyer = [
     name: 'Профиль',
     icon: 'user',
   },
-];
+]
 
 const agent = [
-{
+  {
     to: '/lk/agent',
     meta: null,
     name: 'Объекты',
@@ -184,10 +196,10 @@ const agent = [
     name: 'Профиль',
     icon: 'user',
   },
-];
+]
 
 const agency = [
-{
+  {
     to: '/lk/agent',
     meta: null,
     name: 'Объекты',
@@ -223,28 +235,31 @@ const agency = [
     name: 'Профиль',
     icon: 'user',
   },
-];
+]
 
-const userType = process.client ? localStorage.getItem('tokenType') : '';
+const userType = process.client ? localStorage.getItem('tokenType') : ''
 
 const links = computed(() => {
-  switch(userType) {
-    case 'b2c': return buyer;
-    case 'b2t': return agent;
-    case 'b2y': return agency;
+  switch (userType) {
+    case 'b2c':
+      return buyer
+    case 'b2t':
+      return agent
+    case 'b2y':
+      return agency
   }
-  return buyer;
-});
+  return buyer
+})
 
 function showDevMode() {
-  showedDevMode.value = true;
+  showedDevMode.value = true
 }
 </script>
 <style lang="scss">
 .link {
   @apply tw-flex tw-gap-4 tw-px-4 tw-py-2 tw-rounded-lg;
   &__icon {
-    @apply tw-w-6 tw-h-6 tw-text-icon;
+    @apply tw-w-8 tw-h-8 lg:tw-w-6 lg:tw-h-6 tw-text-icon;
     @apply tw-transition-colors tw-duration-300 tw-ease-in-out;
   }
   &__title {
@@ -257,5 +272,11 @@ function showDevMode() {
   &.active &__title {
     @apply tw-text-text01;
   }
+}
+
+.mob-nav {
+  @apply tw-fixed tw-bottom-0 tw-flex tw-justify-between;
+  @apply tw-p-2 tw-rounded-t-lg tw-shadow-shadow00 tw-w-full tw-bg-white;
+  z-index: 1000;
 }
 </style>

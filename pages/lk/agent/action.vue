@@ -3,7 +3,7 @@
     <div class="section__top">
       <h2 class="section__title">Акции</h2>
     </div>
-    <div class="tw-grid tw-grid-cols-2 tw-gap-5">
+    <div class="tw-grid lg:tw-grid-cols-2 tw-gap-3 lg:tw-gap-5">
       <div
         v-for="item in actions"
         class="tw-rounded-2xl tw-p-6 tw-bg-base00 tw-grid tw-gap-12"

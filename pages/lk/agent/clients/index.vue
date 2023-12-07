@@ -1,5 +1,5 @@
 <template>
-  <section class="card-wrapper tw-min-h-[648px]">
+  <section class="card-wrapper tw-min-h-[648px] tw-overflow-auto">
     <div
       v-if="false"
       class="tw-grid tw-h-full tw-w-full tw-place-content-center tw-justify-items-center"
@@ -50,9 +50,9 @@
         </div>
       </div>
     </div>
-    <div v-else>
+    <div v-else class="">
       <div
-        class="tw-px-6 tw-py-4 tw-grid tw-grid-cols-[51px_230px_230px_280px_auto] tw-border-b-[1px] tw-border-border00"
+        class="tw-min-w-[1024px] tw-px-6 tw-py-4 tw-grid tw-grid-cols-[51px_230px_230px_280px_auto] tw-border-b-[1px] tw-border-border00"
       >
         <div>#</div>
         <div>Покупатель</div>

@@ -24,7 +24,7 @@
         <div class="tw-text-text02 tw-text-body_s2 tw-tracking-875 tw-mb-2">
           Сумма сделок в марте
         </div>
-        <div class="tw-flex tw-gap-2">
+        <div class="tw-grid lg:tw-flex tw-gap-2">
           <span class="tw-text-h5"> 5 595 484 ₽ </span>
           <span class="tw-text-error tw-text-body_s2 -tw-tracking-875">
             -20% к февралю
@@ -36,17 +36,19 @@
   <section class="card-wrapper">
     <div>
       <h3 class="tw-text-h5 tw-mb-8">Закрывающая документация</h3>
-      <div class="tw-flex tw-justify-between tw-mb-8">
-        <div class="tw-flex tw-gap-4">
+      <div
+        class="tw-grid lg:tw-flex lg:tw-justify-between tw-gap-2 tw-mb-2 lg:tw-mb-8"
+      >
+        <div class="tw-grid lg:tw-flex tw-gap-4">
           <BaseSelect
-            class="tw-w-fit"
+            class="lg:tw-w-fit"
             label=""
             name="month"
             :drop-down-props="{ options: [{ label: 'test 1', value: '1' }] }"
             v-model="month"
           />
           <BaseSelect
-            class="tw-w-fit"
+            class="lg:tw-w-fit"
             label=""
             name="year"
             :drop-down-props="{ options: [{ label: 'test 1', value: '1' }] }"
@@ -57,7 +59,7 @@
           <BaseButton theme="gray">Сформировать</BaseButton>
         </div>
       </div>
-      <div class="tw-flex tw-gap-5 tw-mb-4">
+      <div class="tw-grid lg:tw-flex tw-gap-5 tw-mb-4">
         <a v-for="n in 2" href="#" class="link-file">
           <div class="tw-flex tw-gap-4">
             <div class="icon">
@@ -85,7 +87,9 @@
   </section>
   <section class="card-wrapper">
     <div>
-      <div class="tw-flex tw-justify-between tw-items-center tw-mb-10">
+      <div
+        class="tw-grid tw-gap-2 lg:tw-flex lg:tw-justify-between lg:tw-items-center tw-mb-3 lg:tw-mb-10"
+      >
         <h3 class="tw-text-h5">Мои агенты</h3>
         <BaseSelect
           class=" "
@@ -100,8 +104,10 @@
           v-bind="{
             headList: tableHeadList,
             bodyList: tableBodyList,
-            colClass: 'tw-grid-cols-[0.24fr_1fr_0.56fr_0.4fr_0.33fr]',
+            colClass:
+              'tw-min-w-[1024px] tw-grid-cols-[0.18fr_0.8fr_0.4fr_0.3fr_0.33fr] tw-grid-cols-[0.24fr_1fr_0.56fr_0.4fr_0.33fr]',
           }"
+          class="tw-overflow-auto"
         />
         <BaseButton theme="gray">Показать ещё 7 из 17</BaseButton>
       </div>

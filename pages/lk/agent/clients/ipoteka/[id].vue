@@ -1,6 +1,5 @@
 <template>
   <section class="card-wrapper">
-    {{ $route.meta }}
     <div
       class="tw-flex tw-gap-2 tw-items-center tw-cursor-pointer tw-mb-6"
       @click="$router.go(-1)"
@@ -9,7 +8,9 @@
       Вернуться назад
     </div>
     <h2 class="section__title tw-mb-10">Заявка на ипотеку</h2>
-    <div class="tw-flex tw-justify-between tw-mb-10">
+    <div
+      class="tw-grid lg:tw-flex lg:tw-justify-between tw-gap-4 tw-mb-4 lg:tw-mb-10"
+    >
       <div class="tw-flex tw-gap-8">
         <div
           class="tw-w-[88px] tw-h-[88px] tw-rounded-2xl tw-overflow-hidden tw-bg-base00 tw-grid tw-place-content-center tw-p-4"
@@ -29,7 +30,7 @@
         </div>
       </div>
       <div
-        class="tw-grid tw-content-between tw-justify-items-end tw-text-right"
+        class="tw-grid tw-content-between lg:tw-justify-items-end lg:tw-text-right"
       >
         <div>
           <h4 class="tw-text-h6 tw-mb-2">20 256 296 ₽</h4>
@@ -45,7 +46,9 @@
       </div>
     </div>
     <div class="tw-border-b tw-border-border00 tw-mb-10"></div>
-    <div class="tw-flex tw-w-full tw-gap-6 tw-mb-10">
+    <div
+      class="tw-grid lg:tw-flex tw-w-full lg:tw-gap-2 tw-gap-6 tw-mb-4 lg:tw-mb-10"
+    >
       <Progress
         class="tw-w-full"
         title="Параметры ипотеки"
@@ -76,7 +79,7 @@
     </div>
     <form
       v-if="states.parametrs === 'active'"
-      class="tw-grid tw-gap-5 tw-grid-cols-[288px_1fr]"
+      class="tw-grid tw-gap-5 lg:tw-grid-cols-[288px_1fr]"
       @submit="selectProgram"
     >
       <div class="tw-grid tw-gap-8 tw-content-start">
@@ -106,7 +109,7 @@
         />
       </div>
       <div
-        class="tw-grid tw-grid-cols-2 tw-gap-5 tw-overflow-auto tw-h-[792px]"
+        class="tw-grid lg:tw-grid-cols-2 tw-gap-3 lg:tw-gap-5 tw-overflow-auto tw-h-[50vh] lg:tw-h-[792px]"
       >
         <BaseCheckboxSlot
           v-for="(item, index) in listBank"
@@ -134,12 +137,16 @@
       <form @submit="sendDataClient">
         <div class="tw-grid tw-gap-5">
           <div>
-            <div class="tw-flex tw-justify-between tw-items-center tw-mb-6">
+            <div
+              class="tw-grid lg:tw-flex lg:tw-justify-between lg:tw-items-center tw-mb-2 lg:tw-mb-6"
+            >
               <h2 class="tw-text-h5">Данные клиента</h2>
             </div>
             <!-- обновление профиля -->
             <div>
-              <div class="tw-grid tw-grid-cols-3 tw-gap-5 tw-mb-8">
+              <div
+                class="tw-grid lg:tw-grid-cols-3 tw-gap-2 lg:tw-gap-5 tw-mb-3 lg:tw-mb-8"
+              >
                 <BaseInput
                   name="surname"
                   label="Фамилия"
@@ -188,12 +195,16 @@
             </div>
           </div>
           <div>
-            <div class="tw-flex tw-justify-between tw-items-center tw-mb-6">
+            <div
+              class="tw-grid lg:tw-flex lg:tw-justify-between lg:tw-items-center tw-mb-2 lg:tw-mb-6"
+            >
               <h2 class="tw-text-h5">Паспортные данные</h2>
             </div>
 
             <div>
-              <div class="tw-grid tw-grid-cols-3 tw-gap-5 tw-mb-8">
+              <div
+                class="tw-grid lg:tw-grid-cols-3 tw-gap-2 lg:tw-gap-5 tw-mb-3 lg:tw-mb-8"
+              >
                 <BaseInput
                   name="number"
                   label="Серия и номер паспорта"
@@ -253,7 +264,9 @@
     <template v-if="states.check === 'active'">
       <!-- данные профиля -->
       <div>
-        <div class="tw-flex tw-justify-between tw-items-center tw-mb-6">
+        <div
+          class="tw-grid lg:tw-flex lg:tw-justify-between lg:tw-items-center tw-mb-2 lg:tw-mb-6"
+        >
           <h2 class="tw-text-h5">Данные клиента</h2>
           <div v-if="!isUpdateProfile">
             <button
@@ -267,7 +280,9 @@
         </div>
         <!-- обновление профиля -->
         <form v-if="isUpdateProfile">
-          <div class="tw-grid tw-grid-cols-3 tw-gap-5 tw-mb-8">
+          <div
+            class="tw-grid lg:tw-grid-cols-3 tw-gap-2 lg:tw-gap-5 tw-mb-3 lg:tw-mb-8"
+          >
             <BaseInput
               name="surname"
               label="Фамилия"
@@ -361,7 +376,9 @@
       <div class="tw-h-[1px] tw-bg-border00 tw-w-full tw-my-10"></div>
       <!-- паспортные данные -->
       <div class="tw-mb-10">
-        <div class="tw-flex tw-justify-between tw-items-center tw-mb-6">
+        <div
+          class="tw-grid lg:tw-flex lg:tw-justify-between lg:tw-items-center tw-mb-2 lg:tw-mb-6"
+        >
           <h2 class="tw-text-h5">Паспортные данные</h2>
           <div v-if="states.check === 'active' && !isUpdatePassport">
             <button
@@ -376,7 +393,9 @@
 
         <!-- обновление паспортных данных -->
         <form v-if="isUpdatePassport">
-          <div class="tw-grid tw-grid-cols-3 tw-gap-5 tw-mb-8">
+          <div
+            class="tw-grid lg:tw-grid-cols-3 tw-gap-2 lg:tw-gap-5 tw-mb-3 lg:tw-mb-8"
+          >
             <BaseInput
               name="number"
               label="Серия и номер паспорта"
@@ -504,8 +523,10 @@
     </template>
   </section>
   <BaseModal v-model="succesModal">
-    <div class="tw-p-10 tw-bg-white tw-rounded-2xl">
-      <div class="tw-w-[427px] tw-grid tw-justify-items-center">
+    <div class="tw-p-4 lg:tw-p-10 tw-bg-white tw-rounded-2xl">
+      <div
+        class="lg:tw-w-[427px] tw-text-center tw-grid tw-justify-items-center"
+      >
         <div class="tw-rounded-lg tw-bg-base00 tw-w-fit tw-mb-6 tw-p-3">
           <BaseIcon name="check" class="tw-text-primary tw-w-8 tw-h-8" />
         </div>

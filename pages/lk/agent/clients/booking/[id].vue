@@ -5,7 +5,9 @@
       Вернуться назад
     </div>
     <h2 class="section__title tw-mb-10">Онлайн-бронирование</h2>
-    <div class="tw-flex tw-justify-between tw-mb-10">
+    <div
+      class="tw-grid lg:tw-flex lg:tw-justify-between tw-gap-4 tw-mb-4 lg:tw-mb-10"
+    >
       <div class="tw-flex tw-gap-8">
         <div
           class="tw-w-[88px] tw-h-[88px] tw-rounded-2xl tw-overflow-hidden tw-bg-base00 tw-grid tw-place-content-center tw-p-4"
@@ -25,7 +27,7 @@
         </div>
       </div>
       <div
-        class="tw-grid tw-content-between tw-justify-items-end tw-text-right"
+        class="tw-grid tw-content-between lg:tw-justify-items-end lg:tw-text-right"
       >
         <div>
           <h4 class="tw-text-h6 tw-mb-2">20 256 296 ₽</h4>
@@ -57,7 +59,9 @@
     <form @submit="sendDataClient" v-if="states.data === 'active'">
       <h2 class="tw-text-h5 tw-mb-6">Данные клиента</h2>
 
-      <div class="tw-grid tw-grid-cols-3 tw-gap-5 tw-mb-8">
+      <div
+        class="tw-grid lg:tw-grid-cols-3 tw-gap-2 lg:tw-gap-5 tw-mb-3 lg:tw-mb-8"
+      >
         <BaseInput
           name="surname"
           label="Фамилия"
@@ -104,7 +108,9 @@
         />
       </div>
       <h2 class="tw-text-h5 tw-mb-6">Паспортные данные</h2>
-      <div class="tw-grid tw-grid-cols-3 tw-gap-5 tw-mb-8">
+      <div
+        class="tw-grid lg:tw-grid-cols-3 tw-gap-2 lg:tw-gap-5 tw-mb-3 lg:tw-mb-8"
+      >
         <BaseInput
           name="number"
           label="Серия и номер паспорта"
@@ -176,7 +182,9 @@
         </div>
         <!-- обновление профиля -->
         <form v-if="isUpdateProfile">
-          <div class="tw-grid tw-grid-cols-3 tw-gap-5 tw-mb-8">
+          <div
+            class="tw-grid lg:tw-grid-cols-3 tw-gap-2 lg:tw-gap-5 tw-mb-3 lg:tw-mb-8"
+          >
             <BaseInput
               name="surname"
               label="Фамилия"
