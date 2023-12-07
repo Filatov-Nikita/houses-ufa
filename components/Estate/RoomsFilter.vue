@@ -37,13 +37,10 @@
     room_factor_three_classic: Value,
   }
 
+  type EmitNames = `update:${typeof roomsBtns[number]['value']}`;
+
   interface Emits {
-    (name: 'update:room_factor_studio', value: Value): void,
-    (name: 'update:room_factor_one_classic', value: Value): void,
-    (name: 'update:room_factor_two_smart', value: Value): void,
-    (name: 'update:room_factor_two_classic', value: Value): void,
-    (name: 'update:room_factor_three_smart', value: Value): void,
-    (name: 'update:room_factor_three_classic', value: Value): void,
+    (name: EmitNames, value: Value): void,
   }
 
   const props = withDefaults(defineProps<Props>(), {
@@ -65,7 +62,7 @@
 
   function onClick(btn: typeof roomsBtns[number]) {
     const current = props[btn.value];
-    const event = `update:${btn.value}` as any;
+    const event: EmitNames = `update:${btn.value}`;
     const value: Value = current === null ? 1 : null;
     emit(event, value);
   }
