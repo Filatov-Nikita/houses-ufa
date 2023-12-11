@@ -47,16 +47,6 @@ export default defineNuxtConfig({
             type: 'text/javascript',
             innerHTML: Marquiz.body2,
           },
-          {
-            type: 'text/javascript',
-            innerHTML: Marquiz.body3,
-            tagPosition: 'bodyClose',
-          },
-          {
-            type: 'text/javascript',
-            innerHTML: Marquiz.body4,
-            tagPosition: 'bodyClose',
-          },
         ],
         noscript: [
           {
