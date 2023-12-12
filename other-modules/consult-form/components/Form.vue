@@ -48,6 +48,9 @@
 <script setup lang="ts">
   import { Form } from 'vee-validate';
   import { useConsultForm } from '../store';
+  import { useGoal } from '@/composables/useGoal';
+
+  const orderGoal = useGoal('order');
 
   const store = useConsultForm();
   const formRef = ref<any>(null);
@@ -55,6 +58,7 @@
     try {
       await store.send();
       formRef.value.resetForm();
+      orderGoal.execute();
     } catch(e) {}
   }
 </script>
