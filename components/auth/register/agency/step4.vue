@@ -1,5 +1,5 @@
 <template>
-  <Form @submit="register" v-slot="{ meta }" class="tw-grid tw-gap-8">
+  <Form @submit="register" v-slot="{ isSubmitting }" class="tw-grid tw-gap-8">
     <div class="tw-grid tw-gap-5">
       <BaseInput
         rules="required"
@@ -17,7 +17,7 @@
         v-model="authStore.currentPhone"
       />
       <div>
-        <label class="tw-text-text02 tw-text-sm tw-font-normal tw-block tw-mb-2" for="partFile">Карта партнера</label>
+        <label class="tw-text-text02 tw-text-sm tw-font-normal tw-block tw-mb-2" for="partFile">Карта партнера*</label>
         <input id="partFile" type="file" @change="uploadFile">
       </div>
     </div>
@@ -30,9 +30,9 @@
         Назад
       </BaseButton>
       <BaseButton
+        :disabled="isSubmitting"
         class="tw-grow"
-        :disabled="!meta.valid"
-        :theme="!meta.valid ? 'gray' : 'green'"
+        :theme="'green'"
         type="submit"
         >Зарегистрироваться</BaseButton
       >
@@ -44,6 +44,7 @@ import { storeToRefs } from 'pinia'
 import { useAuthStore } from '~/stores/auth'
 import { Form } from 'vee-validate'
 import { useNotifyStore } from '@/stores/notify';
+import { FetchError } from 'ofetch';
 
 const authStore = useAuthStore()
 const { selectRole } = storeToRefs(authStore)
@@ -61,7 +62,17 @@ const register = async () => {
 
 const config = useRuntimeConfig();
 
+type ServerError = {
+  errors: Record<string, string[]>,
+  message: string,
+}
+
 async function createUser() {
+  if(!form.partner_card_file_id) {
+    notify.create({ type: 'error', message: 'Загрузите карту партнера, чтобы продолжить' });
+    throw new Error();
+  }
+
   try {
     await $fetch<Response>('b2v/b2y/registration-forms', {
       method: 'post',
@@ -72,7 +83,16 @@ async function createUser() {
       }
     });
   } catch(e) {
-    notify.create({ type: 'error', message: 'Не удалось создать заявку' });
+    if(e instanceof FetchError) {
+      if(e.status === 422) {
+        const data = e.data as ServerError;
+        Object.values(data.errors).map(e => {
+          notify.create({ type: 'error', message: e.join(', ') });
+        });
+      } else {
+        notify.create({ type: 'error', message: 'Не удалось создать заявку' });
+      }
+    }
     throw e;
   }
 }

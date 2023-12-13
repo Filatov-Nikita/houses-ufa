@@ -2,6 +2,7 @@
   <Form @submit="register" v-slot="{ meta }" class="tw-grid tw-gap-8">
     <div class="tw-grid tw-gap-5 tw-grid-cols-2">
       <BaseSelect
+        rules="required"
         class="tw-col-span-2"
         label="Тип организации"
         name="typeOrg"
@@ -10,14 +11,15 @@
         @update:model-value="updateType"
       />
       <BaseInput
+        rules="required"
         name="ogrn"
         label="ОГРН / ОГРНИП"
         placeholder="000000000000 / 00000000000000"
         class="tw-col-span-2"
         v-model="form.ogrn_ogrnip"
       />
-      <BaseInput name="inn" label="ИНН" placeholder="000000000" v-model="form.inn" />
-      <BaseInput name="kpp" label="КПП" placeholder="000000000" v-model="form.kpp" />
+      <BaseInput rules="required" name="inn" label="ИНН" placeholder="000000000" v-model="form.inn" />
+      <BaseInput rules="required" name="kpp" label="КПП" placeholder="000000000" v-model="form.kpp" />
     </div>
     <div class="tw-flex tw-gap-5">
       <BaseButton theme="gray" paddingClasses="tw-px-4" @click="() => $emit('prev')">
@@ -25,8 +27,7 @@
       </BaseButton>
       <BaseButton
         class="tw-grow"
-        :disabled="!meta.valid"
-        :theme="!meta.valid ? 'gray' : 'green'"
+        :theme="'green'"
         type="submit"
         >Далее</BaseButton
       >

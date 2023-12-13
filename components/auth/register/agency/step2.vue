@@ -8,16 +8,19 @@
         v-model="form.legal_entity_name"
       />
       <BaseInput
+        rules="required"
         name="Yr_address"
         label="Юр. адрес"
         v-model="form.address_legal"
       />
       <BaseInput
+        rules="required"
         name="address"
         label="Фактический адрес"
         v-model="form.address_actual"
       />
       <BaseInput
+        rules="required"
         name="manager"
         label="Директор / Руководитель"
         placeholder="Иванов Иван Иванович"
@@ -34,8 +37,7 @@
       </BaseButton>
       <BaseButton
         class="tw-grow"
-        :disabled="!meta.valid"
-        :theme="!meta.valid ? 'gray' : 'green'"
+        :theme="'green'"
         type="submit"
         >Далее</BaseButton
       >

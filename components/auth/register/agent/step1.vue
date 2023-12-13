@@ -24,8 +24,7 @@
       </BaseButton>
       <BaseButton
         class="tw-grow"
-        :disabled="!meta.valid"
-        :theme="!meta.valid ? 'gray' : 'green'"
+        :theme="'green'"
         type="submit"
         >Далее</BaseButton
       >

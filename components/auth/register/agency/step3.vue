@@ -8,14 +8,16 @@
         placeholder="Начните вводить ..."
         v-model="form.bank_name"
       />
-      <BaseInput name="bik" label="БИК банка" placeholder="000000000" v-model="form.bank_bik" />
+      <BaseInput rules="required" name="bik" label="БИК банка" placeholder="000000000" v-model="form.bank_bik" />
       <BaseInput
+        rules="required"
         name="raschet"
         label="Расчетный счет"
         placeholder="00000000000000000000"
         v-model="form.account_checking"
       />
       <BaseInput
+        rules="required"
         name="korr"
         label="Корр. счет"
         placeholder="00000000000000000000"
@@ -32,8 +34,7 @@
       </BaseButton>
       <BaseButton
         class="tw-grow"
-        :disabled="!meta.valid"
-        :theme="!meta.valid ? 'gray' : 'green'"
+        :theme="'green'"
         type="submit"
         >Далее</BaseButton
       >

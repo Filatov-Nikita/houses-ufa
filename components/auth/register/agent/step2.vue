@@ -1,5 +1,5 @@
 <template>
-  <Form @submit="register" v-slot="{ meta }" class="tw-grid tw-gap-8">
+  <Form @submit="register" v-slot="{ isSubmitting }" class="tw-grid tw-gap-8">
     <div class="tw-grid tw-gap-5">
       <BaseInput
         rules="required"
@@ -9,6 +9,7 @@
         v-model="form.inn"
       />
       <BaseSelect
+        rules="required"
         label="Юр. название организации"
         name="Yr_name"
         v-bind="selectProps(agencies)"
@@ -16,12 +17,13 @@
         @update:modelValue="updateAgency"
       />
       <BaseInput
+        rules="required"
         name="region"
         label="Регион"
         placeholder="Начните вводить ..."
         v-model="form.region"
       />
-      <BaseInput name="city" label="Город" placeholder="Начните вводить ..."  v-model="form.city" />
+      <BaseInput rules="required" name="city" label="Город" placeholder="Начните вводить ..."  v-model="form.city" />
     </div>
     <div class="tw-flex tw-gap-5">
       <BaseButton
@@ -33,8 +35,8 @@
       </BaseButton>
       <BaseButton
         class="tw-grow"
-        :disabled="!meta.valid"
-        :theme="!meta.valid ? 'gray' : 'green'"
+        :disabled="isSubmitting"
+        :theme="'green'"
         type="submit"
         >Зарегистрироваться</BaseButton
       >
@@ -45,8 +47,11 @@
 import { storeToRefs } from 'pinia'
 import { useAuthStore } from '~/stores/auth'
 import { Form } from 'vee-validate'
+import { useNotifyStore } from '@/stores/notify';
+import { FetchError } from 'ofetch';
 
 const authStore = useAuthStore()
+const notify = useNotifyStore();
 const { selectRole } = storeToRefs(authStore)
 const form = authStore.agentStore.form;
 
@@ -75,15 +80,34 @@ interface Response {
   data: { id: number },
 }
 
+type ServerError = {
+  errors: Record<string, string[]>,
+  message: string,
+}
+
 async function createUser() {
-  await $fetch<Response>('b2v/b2t/registration-forms', {
-    method: 'post',
-    body: form,
-    baseURL: config.public.rootApi,
-    headers: {
-      Authorization: 'Bearer ' + authStore.tempToken,
+  try {
+    await $fetch<Response>('b2v/b2t/registration-forms', {
+      method: 'post',
+      body: form,
+      baseURL: config.public.rootApi,
+      headers: {
+        Authorization: 'Bearer ' + authStore.tempToken,
+      }
+    });
+  } catch(e) {
+    if(e instanceof FetchError) {
+      if(e.status === 422) {
+        const data = e.data as ServerError;
+        Object.values(data.errors).map(e => {
+          notify.create({ type: 'error', message: e.join(', ') });
+        });
+      } else {
+        notify.create({ type: 'error', message: 'Не удалось создать заявку' });
+      }
     }
-  });
+    throw e;
+  }
 }
 
 const agencyData = await useFetch<AgencyRes>('b2v/b2t/agencies', {

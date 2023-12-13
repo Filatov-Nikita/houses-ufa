@@ -12,7 +12,7 @@ interface State {
 export const useNotifyStore = defineStore('notifyStore', {
   state: (): State => ({
     items: [],
-    timeout: 2000
+    timeout: 5000
   }),
   actions: {
     create(item: Pick<Item, 'message' | 'type'>): void {

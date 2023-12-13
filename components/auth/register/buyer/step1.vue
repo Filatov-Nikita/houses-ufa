@@ -1,6 +1,6 @@
 <template>
   <StepHeader />
-  <Form @submit="register" v-slot="{ meta }" class="tw-grid tw-gap-8">
+  <Form @submit="register" v-slot="{ isSubmitting }" class="tw-grid tw-gap-8">
     <div class="tw-grid tw-gap-5">
       <BaseInput
         rules="required"
@@ -24,8 +24,8 @@
       </BaseButton>
       <BaseButton
         class="tw-grow"
-        :disabled="!meta.valid"
-        :theme="!meta.valid ? 'gray' : 'green'"
+        :disabled="isSubmitting"
+        :theme="'green'"
         type="submit"
         >Зарегистрироваться</BaseButton
       >
@@ -37,8 +37,11 @@ import { storeToRefs } from 'pinia'
 import { useAuthStore } from '~/stores/auth'
 import StepHeader from './header.vue'
 import { Form } from 'vee-validate'
+import { useNotifyStore } from '@/stores/notify';
+import { FetchError } from 'ofetch';
 
 const authStore = useAuthStore()
+const notify = useNotifyStore();
 
 const { openPopup, selectRole } = storeToRefs(authStore)
 
@@ -69,17 +72,36 @@ interface UserRes {
   }
 }
 
-async function createUser() {
-  const res = await $fetch<UserRes>('b2v/b2c/register-and-login', {
-    method: 'post',
-    body: form,
-    baseURL: config.public.rootApi,
-    headers: {
-      Authorization: 'Bearer ' + authStore.tempToken
-    }
-  });
+type ServerError = {
+  errors: Record<string, string[]>,
+  message: string,
+}
 
-  authStore.setToken(res.data.token, authStore.selectRole);
+async function createUser() {
+  try {
+    const res = await $fetch<UserRes>('b2v/b2c/register-and-login', {
+      method: 'post',
+      body: form,
+      baseURL: config.public.rootApi,
+      headers: {
+        Authorization: 'Bearer ' + authStore.tempToken
+      }
+    });
+
+    authStore.setToken(res.data.token, authStore.selectRole);
+  } catch(e) {
+    if(e instanceof FetchError) {
+      if(e.status === 422) {
+        const data = e.data as ServerError;
+        Object.values(data.errors).map(e => {
+          notify.create({ type: 'error', message: e.join(', ') });
+        });
+      } else {
+        notify.create({ type: 'error', message: 'Не удалось создать заявку' });
+      }
+    }
+    throw e;
+  }
 }
 </script>
 <style lang="scss" scoped></style>
