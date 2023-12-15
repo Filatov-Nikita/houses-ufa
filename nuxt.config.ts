@@ -9,6 +9,11 @@ import * as Envybox from './scripts/envybox';
 
 export default defineNuxtConfig({
   ssr: true,
+  routeRules: {
+    '/favorites': {
+      ssr: false,
+    }
+  },
   app: {
     head: {
       script: [
