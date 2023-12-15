@@ -52,7 +52,6 @@ export function useFavoriteStorage() {
         items.value = parsedItems;
       } catch(e) {
         clearStorage();
-        items.value = [];
       }
     }
   }
