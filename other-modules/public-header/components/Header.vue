@@ -28,7 +28,7 @@
         </button>
       </div>
       <div class="public-header__btns">
-        <NuxtLink class="action-btn" to="/lk/agent">
+        <NuxtLink class="action-btn" to="/favorites">
           <BaseIcon class="action-btn__icon" name="heart" />
         </NuxtLink>
         <NuxtLink class="action-btn" to="/lk/agent" @click.prevent="tryShowLk">
