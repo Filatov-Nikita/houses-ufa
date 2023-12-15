@@ -5,7 +5,6 @@ import path from 'path';
 import * as YandexMap from './scripts/yandex-map';
 import * as YandexMetric from './scripts/yandex-metric';
 import * as Roistat from './scripts/roistat';
-import * as Marquiz from './scripts/marquiz';
 import * as Envybox from './scripts/envybox';
 
 export default defineNuxtConfig({
@@ -38,14 +37,6 @@ export default defineNuxtConfig({
             src: Envybox.src,
             async: true,
             tagPosition: 'bodyClose',
-          },
-          {
-            type: 'text/javascript',
-            innerHTML: Marquiz.body1,
-          },
-          {
-            type: 'text/javascript',
-            innerHTML: Marquiz.body2,
           },
         ],
         noscript: [
