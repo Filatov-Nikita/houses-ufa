@@ -36,6 +36,7 @@ export function useTownStorage(storage: ReturnType<typeof useFavoriteStorage>) {
     if(authStore.isAuth) {
       return await towns.all();
     } else {
+      if(storage.towns.value.length === 0) return [];
       return await towns.showPack(storage.towns.value.map(town => town.id));
     }
   }

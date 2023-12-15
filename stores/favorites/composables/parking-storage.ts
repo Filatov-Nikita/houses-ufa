@@ -36,6 +36,7 @@ export function useParkingStorage(storage: ReturnType<typeof useFavoriteStorage>
     if(authStore.isAuth) {
       return await parkings.all();
     } else {
+      if(storage.parkings.value.length === 0) return [];
       return await parkings.showPack(storage.parkings.value.map(parking => parking.id));
     }
   }

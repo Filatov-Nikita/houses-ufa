@@ -36,6 +36,7 @@ export function usePlaceStorage(storage: ReturnType<typeof useFavoriteStorage>) 
     if(authStore.isAuth) {
       return await places.all();
     } else {
+      if(storage.places.value.length === 0) return [];
       return await places.showPack(storage.places.value.map(place => place.id));
     }
   }

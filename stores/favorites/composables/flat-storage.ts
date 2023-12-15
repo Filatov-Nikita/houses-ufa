@@ -36,6 +36,7 @@ export function useFlatStorage(storage: ReturnType<typeof useFavoriteStorage>) {
     if(authStore.isAuth) {
       return await flats.all();
     } else {
+      if(storage.flats.value.length === 0) return [];
       return await flats.showPack(storage.flats.value.map(flat => flat.id));
     }
   }
