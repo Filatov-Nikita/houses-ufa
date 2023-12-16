@@ -31,6 +31,7 @@
           placeName="Кладовка"
           :loading="loadingStores"
           :items="storeData"
+          type="places"
         >
           <template #pagination>
             <StoresPagination />
@@ -42,6 +43,7 @@
           placeName="Машиноместо"
           :loading="loadingParking"
           :items="parkData"
+          type="parkings"
         >
           <template #pagination>
             <ParkingPagination />
@@ -111,14 +113,16 @@
   );
 
   function toItem<T extends Itemable>(item: T): Itemable {
-    const { price_total, area_total, number } = item;
-    return { price_total, area_total, number }
+    const { price_total, area_total, number, id, is_in_favorite } = item;
+    return { price_total, area_total, number, id, is_in_favorite }
   }
 
   type Itemable = {
     area_total: string,
     price_total: string,
-    number: string
+    number: string,
+    id: number,
+    is_in_favorite: boolean | null,
   };
 
   const sortOptions = [

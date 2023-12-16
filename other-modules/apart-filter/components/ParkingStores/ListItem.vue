@@ -11,9 +11,9 @@
           <button class="list-item__action">
             <BaseIcon class="tw-w-6 tw-h-6" color="tw-text-text01" name="lock2" />
           </button>
-          <button class="list-item__action">
-            <BaseIcon class="tw-w-6 tw-h-6" color="tw-text-text01" name="heart" />
-          </button>
+          <ClientOnly>
+            <EstateActionsAddFav :type="type" :id="id" :initialValue="is_in_favorite" />
+          </ClientOnly>
         </div>
       </div>
     </div>
@@ -25,7 +25,10 @@
     placeName: string,
     area_total: string,
     price_total: string,
-    number: string
+    number: string,
+    type: 'parkings' | 'places',
+    id: number,
+    is_in_favorite: boolean | null,
   }
 
   defineProps<Props>();

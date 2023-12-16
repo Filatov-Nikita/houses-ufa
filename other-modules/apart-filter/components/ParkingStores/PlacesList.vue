@@ -22,6 +22,7 @@
             class="places-list__item"
             :place-name="placeName"
             v-for="item in items"
+            :type="type"
             v-bind="item"
           />
         </div>
@@ -35,17 +36,14 @@
 
 <script setup lang="ts">
   import ListItem from './ListItem.vue';
-
-  interface Item {
-    area_total: string,
-    price_total: string,
-    number: string
-  }
+  import { ParkingOne } from '@/types/estate/parking';
+  import { PlaceOne } from '@/types/estate/place';
 
   interface Props {
     placeName: string,
     loading: boolean,
-    items: Item[] | null
+    items: ParkingOne[] | PlaceOne[] | null,
+    type: 'parkings' | 'places',
   }
 
   const props = defineProps<Props>();
