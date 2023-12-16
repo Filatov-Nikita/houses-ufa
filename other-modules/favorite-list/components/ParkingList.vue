@@ -1,9 +1,10 @@
 <template>
-  <div class="fav-flat-list" v-if="store.parkings.length > 0">
+  <div class="fav-parking-list" v-if="store.parkings.length > 0">
     <PlaceParkingItem
-      class="fav-flat-list__item"
+      class="fav-parking-list__item"
       v-for="item in store.parkings"
       placeName="Машиноместо"
+      type="parkings"
       v-bind="item"
     />
   </div>
@@ -19,7 +20,7 @@
 </script>
 
 <style scoped lang="scss">
-  .fav-flat-list {
+  .fav-parking-list {
     display: flex;
     flex-wrap: wrap;
     margin: -10px;
@@ -27,6 +28,18 @@
     &__item {
       margin: 10px;
       width: calc(25% - 20px);
+
+      @include lg {
+        width: calc(100% / 12 * 4 - 20px);
+      }
+
+      @include md {
+        width: calc(50% - 20px);
+      }
+
+      @include sm {
+        width: calc(100% - 20px);
+      }
     }
   }
 </style>

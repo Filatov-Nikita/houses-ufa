@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="category-filter">
     <BaseTabsGroup v-model="store.favType">
       <BaseTabsGroupItem name="flats">Квартиры</BaseTabsGroupItem>
       <BaseTabsGroupItem name="towns">Коттеджи и таунхаусы</BaseTabsGroupItem>
@@ -14,3 +14,9 @@
 
   const store = useFavList();
 </script>
+
+<style scoped lang="scss">
+  .category-filter {
+    overflow-y: hidden;
+  }
+</style>
