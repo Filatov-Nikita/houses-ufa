@@ -22,7 +22,7 @@ export function useFavoriteParkings() {
 
   async function appendPack(parkingIds: number[]) {
     if(parkingIds.length === 0) return;
-    await $fetch(`favorites/lots`, { baseURL, headers: getHeaders(), method: 'PATCH', body: { flat_ids: parkingIds } });
+    await $fetch(`favorites/lots`, { baseURL, headers: getHeaders(), method: 'PATCH', body: { lot_ids: parkingIds } });
   }
 
   async function all() {

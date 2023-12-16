@@ -41,10 +41,16 @@ export function useFlatStorage(storage: ReturnType<typeof useFavoriteStorage>) {
     }
   }
 
+  function hasItem(flatId: number, apiValue: boolean | null) {
+    if(authStore.isAuth) return apiValue === true;
+    else return storage.hasItem(flatId, 'flats');
+  }
+
   return {
     add,
     remove,
     appendPack: flats.appendPack,
     showAll,
+    hasItem,
   }
 }

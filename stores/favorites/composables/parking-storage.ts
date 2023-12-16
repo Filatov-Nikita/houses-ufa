@@ -6,18 +6,18 @@ export function useParkingStorage(storage: ReturnType<typeof useFavoriteStorage>
   const authStore = useAuthStore();
   const parkings = useFavoriteParkings();
 
-  function add(parkingId: number) {
+  async function add(parkingId: number) {
     if(authStore.isAuth) {
-      parkings.add(parkingId)
+      await parkings.add(parkingId)
     } else {
       storage.addItem(createItem(parkingId))
       storage.saveStorage();
     }
   }
 
-  function remove(parkingId: number) {
+  async function remove(parkingId: number) {
     if(authStore.isAuth) {
-      parkings.remove(parkingId)
+      await parkings.remove(parkingId)
     } else {
       storage.removeItem(parkingId, 'parkings');
       storage.saveStorage();
@@ -41,10 +41,16 @@ export function useParkingStorage(storage: ReturnType<typeof useFavoriteStorage>
     }
   }
 
+  function hasItem(parkingId: number, apiValue: boolean | null) {
+    if(authStore.isAuth) return apiValue === true;
+    else return storage.hasItem(parkingId, 'parkings');
+  }
+
   return {
     add,
     remove,
     appendPack: parkings.appendPack,
     showAll,
+    hasItem,
   }
 }

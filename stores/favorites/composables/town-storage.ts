@@ -6,18 +6,18 @@ export function useTownStorage(storage: ReturnType<typeof useFavoriteStorage>) {
   const authStore = useAuthStore();
   const towns = useFavoriteTowns();
 
-  function add(townId: number) {
+  async function add(townId: number) {
     if(authStore.isAuth) {
-      towns.add(townId)
+      await towns.add(townId)
     } else {
       storage.addItem(createItem(townId))
       storage.saveStorage();
     }
   }
 
-  function remove(townId: number) {
+  async function remove(townId: number) {
     if(authStore.isAuth) {
-      towns.remove(townId)
+      await towns.remove(townId)
     } else {
       storage.removeItem(townId, 'towns');
       storage.saveStorage();
@@ -41,10 +41,16 @@ export function useTownStorage(storage: ReturnType<typeof useFavoriteStorage>) {
     }
   }
 
+  function hasItem(townId: number, apiValue: boolean | null) {
+    if(authStore.isAuth) return apiValue === true;
+    else return storage.hasItem(townId, 'towns');
+  }
+
   return {
     add,
     remove,
     appendPack: towns.appendPack,
     showAll,
+    hasItem,
   }
 }

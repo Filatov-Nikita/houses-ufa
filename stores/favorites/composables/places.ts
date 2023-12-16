@@ -22,7 +22,7 @@ export function useFavoritePlaces() {
 
   async function appendPack(placeIds: number[]) {
     if(placeIds.length === 0) return;
-    await $fetch(`favorites/pantries`, { baseURL, headers: getHeaders(), method: 'PATCH', body: { flat_ids: placeIds } });
+    await $fetch(`favorites/pantries`, { baseURL, headers: getHeaders(), method: 'PATCH', body: { pantry_ids: placeIds } });
   }
 
   async function all() {

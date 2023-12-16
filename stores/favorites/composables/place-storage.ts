@@ -6,18 +6,18 @@ export function usePlaceStorage(storage: ReturnType<typeof useFavoriteStorage>) 
   const authStore = useAuthStore();
   const places = useFavoritePlaces();
 
-  function add(placeId: number) {
+  async function add(placeId: number) {
     if(authStore.isAuth) {
-      places.add(placeId)
+      await places.add(placeId)
     } else {
       storage.addItem(createItem(placeId))
       storage.saveStorage();
     }
   }
 
-  function remove(placeId: number) {
+  async function remove(placeId: number) {
     if(authStore.isAuth) {
-      places.remove(placeId)
+      await places.remove(placeId)
     } else {
       storage.removeItem(placeId, 'places');
       storage.saveStorage();
@@ -41,10 +41,16 @@ export function usePlaceStorage(storage: ReturnType<typeof useFavoriteStorage>) 
     }
   }
 
+  function hasItem(placeId: number, apiValue: boolean | null) {
+    if(authStore.isAuth) return apiValue === true;
+    else return storage.hasItem(placeId, 'places');
+  }
+
   return {
     add,
     remove,
     appendPack: places.appendPack,
     showAll,
+    hasItem,
   }
 }
