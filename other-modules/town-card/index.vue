@@ -23,6 +23,11 @@
 
   townCard.setTownId(+route.params.id);
 
+  onUnmounted(() => {
+    townCard.data = null;
+    townCard.townId = null;
+  });
+
   await useLazyAsyncData(() => townCard.show());
 </script>
 

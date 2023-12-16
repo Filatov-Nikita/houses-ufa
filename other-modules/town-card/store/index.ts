@@ -59,6 +59,7 @@ export interface Data {
   status:    string;
   layout:    Layout;
   town:      Town;
+  is_in_favorite: boolean;
 }
 
 export interface Layout {

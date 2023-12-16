@@ -45,6 +45,7 @@ export interface Flat {
   complex:                  Complex;
   entrance:                 Entrance;
   house:                    House;
+  is_in_favorite:           boolean;
 }
 
 export interface Complex {

@@ -1,7 +1,7 @@
 <template>
-  <div class="town-info">
-    <div class="town-info__badges" v-if="data?.status">
-      <div class="town-info__badge">{{ statusLabel[data?.status] }}</div>
+  <div v-if="data" class="town-info">
+    <div class="town-info__badges">
+      <div class="town-info__badge">{{ statusLabel[data.status] }}</div>
     </div>
     <div class="town-info__name">
       <h1>{{ title }}</h1>
@@ -19,12 +19,12 @@
       <div class="params-block__one">
         <p class="params-block__key">Тип</p>
         <p class="params-block__value">
-          {{ isEmptyPlace ? 'Участок' : data?.layout.type.title }}
+          {{ isEmptyPlace ? 'Участок' : data.layout.type.title }}
         </p>
       </div>
       <div v-if="!isEmptyPlace" class="params-block__one">
         <p class="params-block__key">Площадь дома</p>
-        <p class="params-block__value">{{ data?.layout.area_cottage }} м²</p>
+        <p class="params-block__value">{{ data.layout.area_cottage }} м²</p>
       </div>
       <div class="params-block__one">
         <p class="params-block__key">Площадь участка</p>
@@ -32,7 +32,7 @@
       </div>
       <div v-if="!isEmptyPlace" class="params-block__one">
         <p class="params-block__key">Этажность</p>
-        <p class="params-block__value">{{ data?.layout.number_of_floors }}</p>
+        <p class="params-block__value">{{ data.layout.number_of_floors }}</p>
       </div>
     </div>
 

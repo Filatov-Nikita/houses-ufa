@@ -23,6 +23,11 @@
 
   flatCard.setFlatId(+route.params.id);
 
+  onUnmounted(() => {
+    flatCard.data = null;
+    flatCard.flatId = null;
+  });
+
   await useLazyAsyncData(() => flatCard.show());
 </script>
 

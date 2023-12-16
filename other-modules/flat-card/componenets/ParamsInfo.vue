@@ -1,5 +1,5 @@
 <template>
-  <div class="flat-info">
+  <div class="flat-info" v-if="data">
     <div class="flat-info__name">
       <h1>{{ title }}</h1>
       <p class="flat-info__subtitle">{{ subtitle }}</p>
@@ -11,7 +11,7 @@
         icon="paint_brush_board"
         :label="finishingType"
       />
-      <p class="flat-info__price-perm2" v-if="data?.price_per_m2">
+      <p class="flat-info__price-perm2" v-if="data.price_per_m2">
         {{ $formatValue(data.price_per_m2, '₽ / м²') }}
       </p>
     </div>
@@ -22,28 +22,28 @@
       </div>
       <div class="params-block__one">
         <p class="params-block__key">Этаж</p>
-        <p class="params-block__value">{{ data?.floor_number }}</p>
+        <p class="params-block__value">{{ data.floor_number }}</p>
       </div>
       <div class="params-block__one">
         <p class="params-block__key">Квартира №</p>
-        <p class="params-block__value">{{ data?.number }}</p>
+        <p class="params-block__value">{{ data.number }}</p>
       </div>
       <div class="params-block__one">
         <p class="params-block__key">Литер</p>
-        <p class="params-block__value">{{ data?.house.letter }}</p>
+        <p class="params-block__value">{{ data.house.letter }}</p>
       </div>
       <div class="params-block__one">
         <p class="params-block__key">Срок ввода</p>
         <p class="params-block__value">
-          {{ data?.entrance.completion_quarter }} кв. {{ data?.entrance.completion_year }}
+          {{ data.entrance.completion_quarter }} кв. {{ data.entrance.completion_year }}
         </p>
       </div>
     </div>
     <div class="flat-info__price-block">
-      <p class="flat-info__price" v-if="data?.price_total">
+      <p class="flat-info__price" v-if="data.price_total">
         {{ $amount(data.price_total) }}
       </p>
-      <p class="flat-info__credit" v-if="data?.mortgage_monthly_payment">
+      <p class="flat-info__credit" v-if="data.mortgage_monthly_payment">
         В ипотеку от
         <span class="tw-text-primary">
           {{ $formatValue(data.mortgage_monthly_payment, '₽ / мес') }}
