@@ -9,21 +9,25 @@ const tokenName = 'token';
 const tokenTypeName = 'tokenType';
 
 export function get(): TokenInfo | null {
-  const token = localStorage.getItem(tokenName);
-  const type = localStorage.getItem(tokenTypeName) as UserType | null;
-  if(!token || !type) return null;
+  const token = useCookie('token');
+  const type = useCookie('type') as Ref<UserType | null>;
+  if(!token.value || !type.value) return null;
   return {
-    token,
-    type,
+    token: token.value,
+    type: type.value,
   }
 }
 
 export function set(token: string, tokenType: UserType): void {
-  localStorage.setItem(tokenName, token);
-  localStorage.setItem(tokenTypeName, tokenType);
+  const _token = useCookie('token');
+  const _type = useCookie('type') as Ref<UserType | null>;
+  _token.value = token;
+  _type.value = tokenType;
 }
 
 export function clear(): void {
-  localStorage.removeItem(tokenName);
-  localStorage.removeItem(tokenTypeName);
+  const token = useCookie('token');
+  const type = useCookie('type');
+  token.value = null;
+  type.value = null;
 }
