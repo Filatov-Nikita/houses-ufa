@@ -7,7 +7,7 @@
   >
     <template #actions>
       <ClientOnly>
-        <EstateActionsAddFav :type="'flats'" :id="flat.id" />
+        <EstateActionsAddFav type="flats" :id="flat.id" :initialValue="props.flat.is_in_favorite" />
       </ClientOnly>
       <BtnsActionsMenu />
     </template>

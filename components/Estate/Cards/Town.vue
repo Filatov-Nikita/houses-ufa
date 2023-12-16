@@ -6,7 +6,9 @@
     :to="to"
   >
     <template #actions>
-      <BtnsActionsLike />
+      <ClientOnly>
+        <EstateActionsAddFav type="towns" :id="town.id" :initialValue="props.town.is_in_favorite" />
+      </ClientOnly>
       <BtnsActionsMenu />
     </template>
     <EstateCardsBlocksParamsInfo
