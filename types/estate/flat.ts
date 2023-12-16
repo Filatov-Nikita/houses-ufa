@@ -13,6 +13,7 @@ export interface Flat {
   complex:                  Complex;
   house:                    House;
   room_factor:              RoomFactor;
+  is_in_favorite:              boolean | null,
 }
 
 export interface Complex {

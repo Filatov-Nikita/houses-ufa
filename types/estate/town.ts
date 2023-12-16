@@ -6,6 +6,7 @@ export interface Town {
   status:           string;
   layout:           Layout;
   town:             TownClass;
+  is_in_favorite:   boolean,
 }
 
 export interface TownClass {

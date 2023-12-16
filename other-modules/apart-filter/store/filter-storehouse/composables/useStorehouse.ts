@@ -62,6 +62,7 @@ export interface OneStore {
   price_total:    string;
   status:         string;
   storehouse:     Storehouse;
+  is_in_favorite: boolean | null;
 }
 
 export interface Storehouse {

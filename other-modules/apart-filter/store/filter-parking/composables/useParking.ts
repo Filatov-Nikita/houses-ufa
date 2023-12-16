@@ -60,6 +60,7 @@ export interface OneParking {
   price_total:    string;
   status:         string;
   parking:        Parking;
+  is_in_favorite: boolean | null;
 }
 
 export interface Parking {
