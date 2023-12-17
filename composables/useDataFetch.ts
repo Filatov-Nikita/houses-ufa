@@ -1,21 +1,23 @@
 import type { UseFetchOptions } from 'nuxt/app'
 import { defu } from 'defu'
+import * as Tokens from '@/helpers/tokens';
 
 export function useDataFetch<T>(url: string | Ref<string>, options: UseFetchOptions<T> = {}) {
   const config = useRuntimeConfig();
+
+  const headers: Record<string, string> = {};
+
+    const tokenData = Tokens.get();
+
+    if(tokenData) {
+      headers.Authorization = 'Bearer ' + tokenData.token;
+    }
 
   const defaults: UseFetchOptions<T> = {
     baseURL: config.public.baseURL ?? '',
     // cache request
     key: unref(url),
-
-    onResponse(_ctx) {
-      // _ctx.response._data = new myBusinessResponse(_ctx.response._data)
-    },
-
-    onResponseError(_ctx) {
-      // throw new myBusinessError()
-    },
+    headers,
   }
 
   // for nice deep defaults, please use unjs/defu
