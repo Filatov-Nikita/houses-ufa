@@ -2,10 +2,10 @@
   <NuxtLink
     class="estate-type-card"
     :to="to"
-    :style="{ '--bg-card': `url(${img})` }"
+    :style="[{ '--bg-card': `url(${img})` }, styleCard]"
   >
     <div class="estate-type-card__content">
-      <div class="estate-type-card__title">{{ name }}</div>
+      <div class="estate-type-card__title" v-html="name"></div>
       <p v-if="text" class="estate-type-card__text">{{ text }}</p>
     </div>
     <div class="estate-type-card__romb">
@@ -14,24 +14,27 @@
     <div class="estate-type-card__next">
       <BaseIcon class="estate-type-card__next-icon" name="forward-line" />
     </div>
+    <div v-html="svg" class="estate-type-card__svg"></div>
   </NuxtLink>
 </template>
 <script setup lang="ts">
-  import type { RouteLocationRaw } from 'vue-router';
+import type { RouteLocationRaw } from 'vue-router'
 
-  defineProps<{
-    name: string,
-    text?: string,
-    img: string,
-    to: RouteLocationRaw,
-  }>();
+defineProps<{
+  name: string
+  text?: string
+  img: string
+  to: RouteLocationRaw
+  svg: string
+  styleCard?: string
+}>()
 </script>
 <style lang="scss" scoped>
 .estate-type-card {
   overflow: hidden;
   display: block;
   width: 100%;
-  height: 540px;
+  height: 640px;
   position: relative;
   padding: 40px;
   border-radius: 16px;
@@ -52,7 +55,12 @@
     position: absolute;
     left: 0;
     top: 0;
-    background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.20) 0%, rgba(0, 0, 0, 0.20) 100%), var(--bg-card);
+    background-image: linear-gradient(
+        0deg,
+        rgba(0, 0, 0, 0.2) 0%,
+        rgba(0, 0, 0, 0.2) 100%
+      ),
+      var(--bg-card);
     background-size: cover;
     background-position: center;
     opacity: 0;
@@ -60,9 +68,13 @@
   }
 
   &:hover::before {
-    opacity: 1;
+    // opacity: 1;
   }
-
+  &__svg {
+    @apply tw-absolute tw-left-1/2 tw-transform -tw-translate-x-1/2;
+    z-index: 1;
+    top: 204px;
+  }
   &__content {
     position: relative;
     z-index: 10;
@@ -88,6 +100,7 @@
   }
 
   &__next {
+    z-index: 2;
     position: absolute;
     bottom: 24px;
     left: 24px;
@@ -110,6 +123,7 @@
   }
 
   &__romb {
+    z-index: 2;
     overflow: hidden;
     width: 254px;
     height: 254px;
@@ -124,8 +138,8 @@
   }
 
   &:hover &__romb {
-    transform: translate3d(-50%, -0%, 0px) rotate(45deg) scale(4);
-    opacity: 0;
+    // transform: translate3d(-50%, -0%, 0px) rotate(45deg) scale(1.2);
+    // opacity: 0;
   }
 
   &__romb-img {
@@ -146,11 +160,20 @@
       width: 311px;
       height: 311px;
       position: absolute;
-      background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.20) 0%, rgba(0, 0, 0, 0.20) 100%), var(--bg-card);
+      background-image: linear-gradient(
+          0deg,
+          rgba(0, 0, 0, 0.2) 0%,
+          rgba(0, 0, 0, 0.2) 100%
+        ),
+        var(--bg-card);
       background-size: cover;
       background-position: center;
       transform: translate3d(-31px, -31px, 0px) rotate(-45deg);
+      transition: transform 300ms ease-in-out;
     }
+  }
+  &:hover &__romb-img::before {
+    transform: translate3d(-31px, -31px, 0px) rotate(-45deg) scale(1.2);
   }
 }
 </style>
