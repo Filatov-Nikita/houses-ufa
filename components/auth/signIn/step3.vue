@@ -78,7 +78,8 @@ const filled = async (code: string) => {
   const data = await login(code);
   if(data.data.domain === 'b2v') {
     authStore.toRegister()
-  } else {
+  } else if(data.data.domain) {
+    authStore.userType = data.data.domain;
     authStore.showLK();
   }
 }
@@ -94,7 +95,7 @@ const config = useRuntimeConfig();
 
 interface LoginRes {
   data: {
-    domain: string | null,
+    domain: 'b2v' | 'b2c' | 'b2y' | 'b2t' | null,
     token: string,
     'b2v-register-powers': {
       b2c: boolean,

@@ -31,9 +31,9 @@
         <NuxtLink class="action-btn" to="/favorites">
           <BaseIcon class="action-btn__icon" name="heart" />
         </NuxtLink>
-        <NuxtLink class="action-btn" to="/lk/agent" @click.prevent="tryShowLk">
+        <button class="action-btn" @click.prevent="tryShowLk">
           <BaseIcon class="action-btn__icon" name="profile" />
-        </NuxtLink>
+        </button>
       </div>
     </div>
   </header>
@@ -55,8 +55,8 @@
   const menuIcon = computed(() => store.showedNav ? 'close' : 'burger');
 
   function tryShowLk() {
-    if(auth.checkAuth()) {
-      router.push('/lk/agent')
+    if(auth.userType !== null) {
+      router.push(`/lk/${auth.userType}`)
     } else {
       auth.openPopup = true;
     }

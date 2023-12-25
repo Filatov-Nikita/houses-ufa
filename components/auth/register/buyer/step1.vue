@@ -87,8 +87,8 @@ async function createUser() {
         Authorization: 'Bearer ' + authStore.tempToken
       }
     });
-
-    authStore.setToken(res.data.token, authStore.selectRole);
+    authStore.userType = 'b2c';
+    authStore.setToken(res.data.token, authStore.userType);
   } catch(e) {
     if(e instanceof FetchError) {
       if(e.status === 422) {

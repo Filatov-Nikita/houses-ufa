@@ -16,6 +16,7 @@ export const useAuthStore = defineStore('authStore', () => {
   const tempToken = ref<string | null>(null);
   const agentStore = useAgent();
   const agencyStore = useAgency();
+  const failedRoutePath = ref<string | null>(null);
   const config = useRuntimeConfig();
 
   function setVisitorId(id: number) {
@@ -48,11 +49,26 @@ export const useAuthStore = defineStore('authStore', () => {
   });
 
   function showLK() {
-    router.push('/lk/agent');
+    if(failedRoutePath.value) {
+      router.push(failedRoutePath.value).then(() => {
+        failedRoutePath.value = null;
+      });
+    } else {
+      router.push(`/lk/${userType.value}`);
+    }
   }
 
   function checkAuth() {
     return Tokens.get() !== null;
+  }
+
+  function logout() {
+    Tokens.clear();
+    router.replace('/').then(() => {
+      if(process.client) {
+        window.location.reload();
+      }
+    });
   }
 
   async function checkTokenValid(type: UserType, token: string) {
@@ -89,6 +105,7 @@ export const useAuthStore = defineStore('authStore', () => {
     tempToken,
     agentStore,
     agencyStore,
+    failedRoutePath,
     checkTokenValid,
     getToken: Tokens.get,
     checkAuth,
@@ -98,5 +115,6 @@ export const useAuthStore = defineStore('authStore', () => {
     setCurrentPhone,
     setVisitorId,
     toRegister,
+    logout,
   }
 })
