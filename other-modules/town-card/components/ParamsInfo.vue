@@ -36,13 +36,14 @@
         Получить консультацию
       </BaseButton>
     </div>
-    <ConsultForm v-model:showed="showedConsult" />
+    <ConsultForm v-model:showed="showedConsult" goal="order_cottage_taun" />
   </div>
 </template>
 
 <script setup lang="ts">
   import { useTownCard } from '../store';
   import ConsultForm from '@/other-modules/consult-form/index.vue';
+  import { useGoal } from '@/composables/useGoal';
 
   const statusLabel: Record<string, string> = {
     'for_sale': 'Свободен',
@@ -53,6 +54,8 @@
   const showedConsult = ref(false);
   const townCard = useTownCard();
   const router = useRouter();
+
+  const bookGoal = useGoal('book_cottage_taun');
 
   const data = computed(() => townCard.data?.data);
   const title = computed(() => {
@@ -79,6 +82,8 @@
       path: '/lk/b2c/apps/book',
       query: { id: townCard.townId, type: 'town' }
     });
+
+    bookGoal.execute();
   }
 </script>
 

@@ -49,8 +49,13 @@
   import { Form } from 'vee-validate';
   import { useConsultForm } from '../store';
   import { useGoal } from '@/composables/useGoal';
+  import { data } from '@/composables/useGoal/data';
 
-  const orderGoal = useGoal('order');
+  const props = withDefaults(defineProps<{
+    goal?: keyof typeof data,
+  }>(), { goal: 'order' });
+
+  const orderGoal = useGoal(props.goal);
 
   const store = useConsultForm();
   const formRef = ref<any>(null);

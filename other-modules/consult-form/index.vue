@@ -10,7 +10,7 @@
         </div>
         <BtnsActionsBase class="consult-header__hide" icon="close" @click="hide" />
       </div>
-      <Form />
+      <Form :goal="goal" />
     </BaseModalCard>
   </BaseModal>
 </template>
@@ -18,9 +18,11 @@
 <script setup lang="ts">
   import Form from './components/Form.vue';
   import { useSyncProps } from '@/composables/useSyncProp';
+  import { data } from '@/composables/useGoal/data';
 
   const props = defineProps<{
-    showed: boolean
+    showed: boolean,
+    goal?: keyof typeof data,
   }>();
 
   defineEmits<{ (event: 'update:showed', val: boolean): void }>();

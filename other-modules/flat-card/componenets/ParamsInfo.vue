@@ -52,7 +52,7 @@
         Получить консультацию
       </BaseButton>
     </div>
-    <ConsultForm v-model:showed="showedConsult" />
+    <ConsultForm v-model:showed="showedConsult" goal="order_city" />
   </div>
 </template>
 
@@ -60,10 +60,12 @@
   import { useFlatCard } from '../store';
   import ConsultForm from '@/other-modules/consult-form/index.vue';
   import { getRoomsCount } from '@/plugins/rooms-count';
+  import { useGoal } from '@/composables/useGoal';
 
   const showedConsult = ref(false);
   const flatCard = useFlatCard();
   const router = useRouter();
+  const bookGoal = useGoal('book_city');
 
   const data = computed(() => flatCard.data?.data);
 
@@ -90,6 +92,8 @@
       path: '/lk/b2c/apps/book',
       query: { id: flatCard.flatId, type: 'flat' }
     });
+
+    bookGoal.execute();
   }
 </script>
 
