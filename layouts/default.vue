@@ -17,13 +17,4 @@
 <script setup lang="ts">
 import PublicHeader from '@/other-modules/public-header/index.vue';
 import PublicFooter from '@/other-modules/public-footer/index.vue';
-import { useComplexesStore } from '@/stores/complexes';
-import { useTownsStore } from '@/stores/towns';
-
-const complexesStore = useComplexesStore();
-const townsStore = useTownsStore();
-
-useAsyncData(() => {
-  return Promise.all([ complexesStore.show(), townsStore.show() ]);
-});
 </script>
