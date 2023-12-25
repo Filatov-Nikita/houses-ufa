@@ -5,12 +5,6 @@
       <p class="flat-info__subtitle">{{ subtitle }}</p>
     </div>
     <div class="flat-info__badges">
-      <EstateBadgesBase
-        v-if="finishingType"
-        class="estate-card-bottom__badges"
-        icon="paint_brush_board"
-        :label="finishingType"
-      />
       <p class="flat-info__price-perm2" v-if="data.price_per_m2">
         {{ $formatValue(data.price_per_m2, '₽ / м²') }}
       </p>

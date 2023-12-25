@@ -3,12 +3,6 @@
     <div v-if="complexName" class="estate-card-bottom__house">
       {{ complexName }}
     </div>
-    <EstateBadgesBase
-      v-if="!hideBadges && finishingType"
-      class="estate-card-bottom__badges"
-      icon="paint_brush_board"
-      :label="finishingType"
-    />
     <div v-if="price" class="estate-card-bottom__price">
       {{ $amount(price) }}
     </div>

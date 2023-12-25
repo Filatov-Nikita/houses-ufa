@@ -13,10 +13,6 @@
         <p>{{ literLabel }}</p>
       </div>
       <p class="flat-list-item__house">{{ complexName }}</p>
-      <div class="flat-list-item__adv">
-        <BaseIcon class="tw-w-4 tw-h-4 tw-text-primary" name="paint_brush_board" />
-        <span>Предчистовая отделка</span>
-      </div>
     </div>
     <div class="flat-list-item__info2">
       <p class="flat-list-item__price">{{ priceLabel }}</p>

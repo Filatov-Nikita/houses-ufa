@@ -3,9 +3,6 @@
     <div class="project-info__name">
       <h1>{{ data?.name_alias }}</h1>
     </div>
-    <div class="project-info__badges">
-      <EstateBadgesPreFinishing />
-    </div>
     <div class="params-block">
       <div class="params-block__one">
         <p class="params-block__key">Тип</p>

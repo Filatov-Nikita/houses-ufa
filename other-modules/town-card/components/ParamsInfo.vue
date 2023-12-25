@@ -7,14 +7,6 @@
       <h1>{{ title }}</h1>
       <p class="town-info__subtitle">{{ subtitle }}</p>
     </div>
-    <div v-if="!isEmptyPlace" class="town-info__badges">
-      <EstateBadgesBase
-        v-if="finishingType"
-        class="estate-card-bottom__badges"
-        icon="paint_brush_board"
-        :label="finishingType"
-      />
-    </div>
     <div class="params-block">
       <div class="params-block__one">
         <p class="params-block__key">Тип</p>
