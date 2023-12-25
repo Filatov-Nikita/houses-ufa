@@ -11,9 +11,9 @@ import * as Marquiz from './scripts/marquiz';
 export default defineNuxtConfig({
   ssr: true,
   routeRules: {
-    '/favorites': {
-      ssr: false,
-    }
+    '/favorites': { ssr: false },
+    '/lk/**': { ssr: false },
+    '/debug/**': { ssr: false },
   },
   app: {
     head: {
