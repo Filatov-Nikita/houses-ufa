@@ -42,14 +42,14 @@
       </div>
     </section>
 
-    <!-- <section class="section">
+    <section class="section">
       <div class="wrapper">
         <div class="section__top">
           <h2 class="section__title">Генплан жилого комплекса {{ complex?.name }}</h2>
         </div>
         <ComplexGenplan />
       </div>
-    </section> -->
+    </section>
 
     <section class="section">
       <div class="wrapper">
