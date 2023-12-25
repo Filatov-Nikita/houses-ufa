@@ -51,7 +51,7 @@
       </p>
     </div>
     <div class="flat-info__actions">
-      <BaseButton class="flat-info__action" @click="showedConsult = true">
+      <BaseButton class="flat-info__action" @click="book">
         Забронировать
       </BaseButton>
       <BaseButton class="flat-info__action" theme="gray" @click="showedConsult = true">
@@ -69,6 +69,7 @@
 
   const showedConsult = ref(false);
   const flatCard = useFlatCard();
+  const router = useRouter();
 
   const data = computed(() => flatCard.data?.data);
 
@@ -89,6 +90,13 @@
   const finishingType = computed(() => {
     return data.value?.complex.finishing_type.title;
   });
+
+  function book() {
+    router.push({
+      path: '/lk/b2c/apps/book',
+      query: { id: flatCard.flatId, type: 'flat' }
+    });
+  }
 </script>
 
 <style scoped lang="scss">

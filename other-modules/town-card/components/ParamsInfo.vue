@@ -37,7 +37,7 @@
     </div>
 
     <div class="town-info__actions">
-      <BaseButton class="town-info__action" @click="showedConsult = true">
+      <BaseButton class="town-info__action" @click="book">
         Забронировать
       </BaseButton>
       <BaseButton class="town-info__action" theme="gray" @click="showedConsult = true">
@@ -60,6 +60,7 @@
 
   const showedConsult = ref(false);
   const townCard = useTownCard();
+  const router = useRouter();
 
   const data = computed(() => townCard.data?.data);
   const title = computed(() => {
@@ -80,6 +81,13 @@
   });
 
   const isEmptyPlace = computed(() => townCard.isEmptyPlace);
+
+  function book() {
+    router.push({
+      path: '/lk/b2c/apps/book',
+      query: { id: townCard.townId, type: 'town' }
+    });
+  }
 </script>
 
 <style scoped lang="scss">

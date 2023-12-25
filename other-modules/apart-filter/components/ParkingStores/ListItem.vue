@@ -8,7 +8,7 @@
       <div class="list-item__right">
         <div class="list-item__param">{{ area_total }} м²</div>
         <div class="list-item__actions">
-          <button class="list-item__action">
+          <button class="list-item__action" @click="book">
             <BaseIcon class="tw-w-6 tw-h-6" color="tw-text-text01" name="lock2" />
           </button>
           <ClientOnly>
@@ -31,7 +31,21 @@
     is_in_favorite: boolean | null,
   }
 
-  defineProps<Props>();
+  const props = defineProps<Props>();
+
+  const router = useRouter();
+
+  const types = {
+    'parkings': 'parking',
+    'places': 'place',
+  }
+
+  function book() {
+    router.push({
+      path: '/lk/b2c/apps/book',
+      query: { id: props.id, type: types[props.type] },
+    });
+  }
 </script>
 
 <style scoped lang="scss">
