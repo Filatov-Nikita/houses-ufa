@@ -70,6 +70,11 @@ const teamTabs = [
         position: 'Директор по персоналу',
         photo: '/images/team/5.jpg',
       },
+      {
+        name: 'Ахметова Лира Рахимьяновна',
+        position: 'Коммерческий директор',
+        photo: '/images/team/6.jpg',
+      },
     ],
   },
   {
@@ -168,6 +173,32 @@ const teamTabs = [
         photo: '/images/team/DSC_4440_408х408.jpg',
       },
     ],
+  },
+  {
+    name: 'partners',
+    title: 'Отдел по работе с партнерами',
+    list: [
+      {
+        name: 'Токарева Люция',
+        position: 'Руководитель по работе с партнерами',
+        photo: '/images/team/DSC_4285_408х408.jpg',
+      },
+      {
+        name: 'Декатова Евгения',
+        position: 'Эксперт по продажам недвижимости',
+        photo: '/images/team/DSC_4182_408х408.jpg',
+      },
+      {
+        name: 'Вагапова Альбина',
+        position: 'Эксперт по продажам недвижимости',
+        photo: '/images/team/DSC_4293_408х408.jpg',
+      },
+      {
+        name: 'Петрова Эльвира',
+        position: 'Эксперт по продажам недвижимости',
+        photo: '/images/team/DSC_4422_408х408.jpg',
+      },
+    ]
   },
 ];
 </script>
