@@ -21,7 +21,7 @@
 <script setup lang="ts">
   import PersonalDataForm from './PersonalDataForm.vue';
   import PersonalDataShow from './PersonalDataShow.vue';
-  import { useClientProfile } from '@/lk-modules/client/profile/store';
+  import { useClientProfile } from '@/lk-modules/b2c/profile/store';
 
   const profile = useClientProfile();
 

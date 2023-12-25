@@ -8,12 +8,23 @@
       v-if="book.currentType === 'flat'"
       :id="book.currentId!"
     />
+    <TownCard
+      v-else-if="book.currentType === 'town'"
+      :id="book.currentId!"
+    />
+    <PlaceCard
+      v-else-if="book.currentType === 'parking' || book.currentType === 'place'"
+      :id="book.currentId!"
+      :type="book.currentType"
+    />
     <PersonalData class="estate-book-module__profile" />
   </div>
 </template>
 
 <script setup lang="ts">
   import FlatCard from './components/FlatCard.vue';
+  import TownCard from './components/TownCard.vue';
+  import PlaceCard from './components/PlaceCard.vue';
   import PersonalData from './components/PersonalData.vue';
   import { useEstateBook, type EstateTypes } from './store';
 

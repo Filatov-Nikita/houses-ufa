@@ -101,7 +101,7 @@
 </template>
 
 <script setup lang="ts">
-  import { type ProfileData } from '@/lk-modules/client/profile/store';
+  import { type ProfileData } from '@/lk-modules/b2c/profile/store';
   import { useEstateBook } from '../store';
   defineProps<{
     profileData: ProfileData | null,
@@ -121,7 +121,7 @@
   async function onSubmit() {
     try {
       await bookStore.book();
-      router.push('/lk/client/apps');
+      router.push('/lk/b2c/apps');
     } catch(e) {
       throw e;
     }

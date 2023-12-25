@@ -91,7 +91,7 @@
 </template>
 
 <script setup lang="ts">
-  import  { type PassportData, useClientProfile } from '@/lk-modules/client/profile/store/index';
+  import  { type PassportData, useClientProfile } from '@/lk-modules/b2c/profile/store/index';
   import { Form, SubmissionHandler } from 'vee-validate';
 
   const props = defineProps<{
