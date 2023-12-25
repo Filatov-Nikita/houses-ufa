@@ -1,18 +1,28 @@
 <template>
-  <div :style="{ '--speed': speed }" class="base-skeleton" :class="{ 'base-skeleton--round': round }"></div>
+  <div
+    :style="{ '--speed': speed }"
+    class="base-skeleton"
+    :class="{
+      'base-skeleton--round': round,
+      'base-skeleton--white': theme === 'white',
+      'base-skeleton--gray': theme === 'gray',
+    }"
+  ></div>
 </template>
 
 <script setup lang="ts">
 interface Props {
  round?: boolean,
- speed?: string
+ speed?: string,
+ theme?: 'gray' | 'white',
 }
 
 withDefaults(
   defineProps<Props>(),
   {
     round: false,
-    speed: '1.5s'
+    speed: '1.5s',
+    theme: 'gray',
   }
 );
 </script>
@@ -21,10 +31,17 @@ withDefaults(
   .base-skeleton {
     position: relative;
     overflow: hidden;
-    @apply tw-bg-base01;
 
     &--round {
       border-radius: 50%;
+    }
+
+    &--gray {
+      @apply tw-bg-base01;
+    }
+
+    &--white {
+      @apply tw-bg-white;
     }
 
     &::after {
