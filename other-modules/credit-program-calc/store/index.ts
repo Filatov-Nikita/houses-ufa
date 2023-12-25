@@ -5,6 +5,9 @@ import { defineStore } from 'pinia';
 export const useCreditProgramCalc = defineStore('creditProgramCalc', () => {
   const groupId = ref<number | null>(null);
 
+  const objectType = ref<'flat' | 'town'>();
+  const objectId = ref<number>();
+
   const params = {
     cost: 2000000,
     initialPay: 200000,
@@ -28,6 +31,8 @@ export const useCreditProgramCalc = defineStore('creditProgramCalc', () => {
     loading,
     groupId,
     params,
+    objectType,
+    objectId,
     show,
   };
 });

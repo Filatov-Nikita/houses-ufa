@@ -16,8 +16,16 @@
   import { useCreditPrograms } from '@/stores/credit-programs';
   import { useCreditProgramCalc } from './store';
 
+  const props = defineProps<{
+    objectType?: 'flat' | 'town',
+    objectId?: number,
+  }>();
+
   const creditStore = useCreditPrograms();
   const creditCalcStore = useCreditProgramCalc();
+
+  creditCalcStore.objectId = props.objectId;
+  creditCalcStore.objectType = props.objectType;
 
   const loading = computed(() => creditStore.loading || creditCalcStore.loading);
 
@@ -31,6 +39,11 @@
       await creditCalcStore.show();
     }
   }
+
+  onUnmounted(() => {
+    creditCalcStore.objectId = undefined;
+    creditCalcStore.objectType = undefined;
+  });
 
   await useLazyAsyncData(() => {
     return show();

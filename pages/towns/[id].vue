@@ -6,7 +6,7 @@
   </div>
   <section class="section">
     <div class="wrapper">
-      <CreditCalc />
+      <CreditCalc object-type="town" :object-id="+$route.params.id" />
     </div>
   </section>
   <!-- ломает ssr -->

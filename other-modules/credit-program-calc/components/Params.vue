@@ -42,7 +42,7 @@
       @change="updatePeriod"
       @after-manipulate="updatePeriod"
     />
-    <BaseButton class="credit-calc-params__item credit-calc-params__btn" @click="goDown">
+    <BaseButton class="credit-calc-params__item credit-calc-params__btn" @click="next">
       Запросить одобрение
     </BaseButton>
   </div>
@@ -51,9 +51,12 @@
 <script setup lang="ts">
   import { useCreditProgramCalc } from '../store';
   import { useCreditPrograms } from '@/stores/credit-programs';
+  import { useCreditProgramCalc as useLkStore } from '@/lk-modules/b2c/credit-program-list/store';
 
   const creditCalc = useCreditProgramCalc();
   const creditProg = useCreditPrograms();
+  const lkStore = useLkStore();
+  const router = useRouter();
 
   const progs = computed(() => creditProg.creditProgs?.data ?? []);
 
@@ -88,6 +91,19 @@
         getLabel: (v: T | null) => v?.[labelKey] || 'не выбрано',
       }
     };
+  }
+
+  function next() {
+    if(creditCalc.objectId && creditCalc.objectType) {
+      lkStore.params = { ...creditCalc.params };
+      lkStore.groupId = creditCalc.groupId;
+      router.push({
+        path: '/lk/b2c/apps/ipoteka',
+        query: { id: creditCalc.objectId, type: creditCalc.objectType }
+      });
+    } else {
+      goDown();
+    }
   }
 
   function goDown() {

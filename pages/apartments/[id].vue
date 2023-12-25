@@ -9,7 +9,7 @@
       <div class="section__top">
         <h2 class="section__title">Ипотека</h2>
       </div>
-      <CreditCalc />
+      <CreditCalc object-type="flat" :object-id="+$route.params.id" />
     </div>
   </section>
   <section class="section">
