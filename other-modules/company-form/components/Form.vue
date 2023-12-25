@@ -52,7 +52,7 @@
       </BaseButton>
       <p class=" tw-text-text02 tw-text-body_xs lg:tw-text-body_m">
         Нажимая кнопку, вы соглашаетесь
-        <a href="#" class="tw-text-primary">
+        <a href="/docs/sogl.pdf" target="_blank" class="tw-text-primary">
           с условиями обработки персональных данных
         </a>
       </p>

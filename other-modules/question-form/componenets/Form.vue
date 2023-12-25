@@ -45,7 +45,7 @@
           <div class="question-form__bottom">
             <div class="question-form__actions">
               <p class="question-form__perc question-form__input">
-                Нажимая кнопку, вы соглашаетесь с&nbsp;<a href="#">условиями обработки персональных данных</a>
+                Нажимая кнопку, вы соглашаетесь с&nbsp;<a href="/docs/sogl.pdf" target="_blank">условиями обработки персональных данных</a>
               </p>
               <BaseButton class="question-form__input" type="submit" :disabled="store.loading">
                 Отправить

@@ -36,7 +36,7 @@
     />
     <div class="consult-form__section consult-form__item">
       <p class="consult-form__column consult-form__perc">
-        Нажимая кнопку, вы соглашаетесь с&nbsp;<a href="#">условиями обработки персональных данных</a>
+        Нажимая кнопку, вы соглашаетесь с&nbsp;<a href="/docs/sogl.pdf" target="_blank">условиями обработки персональных данных</a>
       </p>
       <BaseButton class="consult-form__column" type="submit" :disabled="store.loading">
         Получить консультацию
