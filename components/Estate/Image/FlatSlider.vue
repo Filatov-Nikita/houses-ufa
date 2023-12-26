@@ -63,6 +63,9 @@
 <style scoped lang="scss">
   .estate-image-slider {
     position: relative;
+    border-radius: 16px;
+    padding: 100px 40px 30px;
+    @apply tw-bg-base00;
 
     &__pag {
       left: auto !important;

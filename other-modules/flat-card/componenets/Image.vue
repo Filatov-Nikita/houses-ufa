@@ -2,6 +2,7 @@
   <EstateImageFlatViewer
     :title="title"
     :planImages="planImages"
+    :floorImage="floorImage"
   />
 </template>
 
@@ -20,6 +21,13 @@
 
   const planImages =  computed(() => {
     if(!flatCard.data) return [];
-    return [ flatCard.data.data.plan_image_url ];
+    const data = flatCard.data.data;
+    return [ data.plan_image_url ];
+  });
+
+  const floorImage =  computed(() => {
+    if(!flatCard.data) return null;
+    const data = flatCard.data.data;
+    return data.flat_on_floor_plan_image_url;
   });
 </script>
