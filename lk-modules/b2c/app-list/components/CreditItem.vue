@@ -3,10 +3,10 @@
     <LkCardFlat v-if="item.object_type === 'flat'" :flat="item.object" />
     <LkCardTown v-else-if="item.object_type === 'estate'" :town="item.object" />
     <div class="info-block">
-      <button class="info-block__toggle" :class="{ 'info-block__toggle--showed': showed }">
-        <BaseIcon class="tw-w-6 tw-h-6" name="down" />
-      </button>
       <div class="info-block__grid" @click="showed = !showed">
+        <button class="info-block__toggle" :class="{ 'info-block__toggle--showed': showed }">
+          <BaseIcon class="tw-w-6 tw-h-6" name="down" />
+        </button>
         <div class="info-block__left">
           <p class="info-block__date">{{ $formatDate(item.created_at) }}</p>
           <p>Заявка на ипотеку № {{ item.id }}</p>
