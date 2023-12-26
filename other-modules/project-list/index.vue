@@ -14,6 +14,7 @@
 
   interface Props {
     excludeId?: number,
+    townId?: number,
     disabledTabs?: boolean,
   }
 
@@ -25,9 +26,11 @@
 
   store.type = 'all';
   store.executeId = undefined;
+  store.townId = undefined;
 
   await useAsyncData(() => {
     store.executeId = props.excludeId;
+    store.townId = props.townId;
     return store.show();
   }, { lazy: true });
 </script>

@@ -40,7 +40,7 @@
       <div class="section__top">
         <h2 class="section__title">Проекты домов</h2>
       </div>
-      <ProjectList />
+      <ProjectList :townId="+route.params.id" />
     </div>
   </section>
   <section class="section">
