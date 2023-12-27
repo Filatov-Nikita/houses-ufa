@@ -24,6 +24,11 @@
       icon: 'handshake',
       to: '/lk/b2t/clients',
     },
+    {
+      label: 'Избранное',
+      icon: 'heart',
+      to: '/lk/b2t/favorites',
+    },
   ];
 </script>
 
