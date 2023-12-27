@@ -1,0 +1,73 @@
+<template>
+  <div class="estate-book-module">
+    <BtnsGoBack class="estate-book-module__back" />
+    <h1 class="estate-book-module__title">
+      Онлайн-бронирование
+    </h1>
+    <FlatCard
+      v-if="book.currentType === 'flat'"
+      :id="book.currentId!"
+    />
+    <TownCard
+      v-else-if="book.currentType === 'town'"
+      :id="book.currentId!"
+    />
+    <PlaceCard
+      v-else-if="book.currentType === 'parking' || book.currentType === 'place'"
+      :id="book.currentId!"
+      :type="book.currentType"
+    />
+    <PersonalData class="estate-book-module__profile" />
+  </div>
+</template>
+
+<script setup lang="ts">
+  import FlatCard from './components/FlatCard.vue';
+  import TownCard from './components/TownCard.vue';
+  import PlaceCard from './components/PlaceCard.vue';
+  import PersonalData from '@/lk-modules/b2t/client-data/components/PersonalData.vue';
+  import { useClientProfile } from '@/lk-modules/b2t/client-data/store';
+  import { useEstateBook, type EstateTypes } from './store';
+
+  const book = useEstateBook();
+  const clientData = useClientProfile();
+  const route = useRoute();
+
+  watch(() => route.query.shopperId, (id) => {
+    if(id) {
+      book.shopperId = +id;
+      clientData.shopperId = +id;
+    }
+  }, { immediate: true });
+
+  watch(() => route.query.id, (id) => {
+    if(id) book.setCurrentId(+id);
+  }, { immediate: true });
+
+  watch(() => route.query.type, (type) => {
+    if(type) book.setCurrentType(type as EstateTypes);
+  }, { immediate: true });
+</script>
+
+<style scoped lang="scss">
+  .estate-book-module {
+    padding: 40px;
+    border-radius: 16px;
+    @apply tw-bg-white;
+
+    &__title {
+      font-size: 32px;
+      line-height: 1.25;
+      margin-bottom: 40px;
+      @apply tw-text-text00;
+    }
+
+    &__back {
+      margin-bottom: 24px;
+    }
+
+    &__profile {
+      margin-top: 40px;
+    }
+  }
+</style>
