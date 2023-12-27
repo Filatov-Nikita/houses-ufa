@@ -24,12 +24,20 @@
           <button
             class="client-table-action"
             :disabled="item.consumer.bookings.length > 0"
+            @click="$router.push({
+              path: '/lk/b2t/apps/book',
+              query: { id: item.object.id, type: item.object_type, shopperId: item.id }
+            })"
           >
             Бронь
           </button>
           <button
             class="client-table-action"
             :disabled="item.consumer.mortgageClaims.length > 0"
+            @click="$router.push({
+              path: '/lk/b2t/apps/ipoteka',
+              query: { id: item.object.id, type: item.object_type, shopperId: item.id }
+            })"
           >
             Ипотека
           </button>
