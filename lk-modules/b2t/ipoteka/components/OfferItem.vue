@@ -14,7 +14,9 @@
       </div>
       <div class="bank-prog-mini-item__item bank-prog-mini-item__item--name">
         <div class="bank-prog-mini-item__label">Платёж в месяц</div>
-        <div class="bank-prog-mini-item__value">{{ $amount(payMonth) }}</div>
+        <div class="bank-prog-mini-item__value">
+          {{ sum === 0 ? '-' : $amount(payMonth) }}
+        </div>
       </div>
       <div class="bank-prog-mini-item__item bank-prog-mini-item__item--name">
         <div class="bank-prog-mini-item__label">Ставка</div>

@@ -28,7 +28,7 @@
             <p class="info-detailed__label">Срок</p>
             <p class="info-detailed__value">{{ item.period_in_years }}</p>
           </div>
-          <div class="info-detailed__text-item">
+          <div v-if="item.object_type !== 'estate'" class="info-detailed__text-item">
             <p class="info-detailed__label">Сумма кредита</p>
             <p class="info-detailed__value">{{ $amount(item.credit_amount) }}</p>
           </div>
