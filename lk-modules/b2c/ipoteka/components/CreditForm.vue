@@ -6,8 +6,8 @@
 </template>
 
 <script setup lang="ts">
-  import CreditList from '@/lk-modules/b2c/credit-program-list/index.vue';
-  import { useCreditProgramCalc } from '@/lk-modules/b2c/credit-program-list/store';
+  import CreditList from '@/lk-modules/credit-program-list/index.vue';
+  import { useCreditProgramCalc } from '@/lk-modules/credit-program-list/store';
   import { useNotifyStore } from '@/stores/notify';
 
   const store = useCreditProgramCalc();

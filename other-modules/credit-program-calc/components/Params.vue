@@ -51,7 +51,7 @@
 <script setup lang="ts">
   import { useCreditProgramCalc } from '../store';
   import { useCreditPrograms } from '@/stores/credit-programs';
-  import { useCreditProgramCalc as useLkStore } from '@/lk-modules/b2c/credit-program-list/store';
+  import { useCreditProgramCalc as useLkStore } from '@/lk-modules/credit-program-list/store';
 
   const creditCalc = useCreditProgramCalc();
   const creditProg = useCreditPrograms();

@@ -1,11 +1,11 @@
 import { defineStore } from 'pinia';
 import { useNotifyStore } from '@/stores/notify';
 import * as Tokens from '@/helpers/tokens';
-import { useCreditProgramCalc } from '@/lk-modules/b2c/credit-program-list/store';
+import { useCreditProgramCalc } from '@/lk-modules/credit-program-list/store';
 
 export type EstateTypes = 'town' | 'flat' | 'parking' | 'place';
 
-export const useIpotekaModule = defineStore('ipotekaModule', () => {
+export const useIpotekaModule = defineStore('b2cIpotekaModule', () => {
   const creditStore = useCreditProgramCalc();
   const config = useRuntimeConfig();
 

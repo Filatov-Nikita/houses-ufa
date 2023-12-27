@@ -27,9 +27,15 @@
   import PlaceCard from '@/lk-modules/b2c/book/components/PlaceCard.vue';
   import StepForm from './components/StepForm.vue'
   import { useIpotekaModule, type EstateTypes } from './store';
+  import { useCreditProgramCalc } from '@/lk-modules/credit-program-list/store';
 
   const store = useIpotekaModule();
+  const credit = useCreditProgramCalc();
   const route = useRoute();
+
+  onUnmounted(() => {
+    credit.offerIds = [];
+  });
 
   watch(() => route.query.id, (id) => {
     if(id) store.setCurrentId(+id);

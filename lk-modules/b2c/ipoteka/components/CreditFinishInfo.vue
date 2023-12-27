@@ -35,7 +35,7 @@
 </template>
 
 <script setup lang="ts">
-  import { useCreditProgramCalc } from '@/lk-modules/b2c/credit-program-list/store';
+  import { useCreditProgramCalc } from '@/lk-modules/credit-program-list/store';
   import OfferItem from './OfferItem.vue';
 
   const store = useCreditProgramCalc();
