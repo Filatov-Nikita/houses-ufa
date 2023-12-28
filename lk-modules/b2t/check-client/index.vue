@@ -34,28 +34,6 @@
                   class="check-client-form__input"
                   rules="required"
                   label="Телефон"
-                  name="backup_phone"
-                  maska="+7 (###) ### ## ##"
-                  placeholder="+7 (999) 999 99-99"
-                  v-model="store.form.backup_phone"
-                />
-                <BaseInput
-                  class="check-client-form__input"
-                  rules="required"
-                  label="ФИО"
-                  name="backup_full_name"
-                  placeholder="Иванов Иван Иванович"
-                  v-model="store.form.backup_full_name"
-                />
-              </div>
-            </div>
-            <div class="check-client-form__client-one">
-              <p class="check-client-form__title">Клиент 2</p>
-              <div class="check-client-form__inputs">
-                <BaseInput
-                  class="check-client-form__input"
-                  rules="required"
-                  label="Телефон"
                   name="consumer_phone"
                   maska="+7 (###) ### ## ##"
                   placeholder="+7 (999) 999 99-99"
@@ -68,6 +46,28 @@
                   name="consumer_full_name"
                   placeholder="Иванов Иван Иванович"
                   v-model="store.form.consumer_full_name"
+                />
+              </div>
+            </div>
+            <div class="check-client-form__client-one">
+              <p class="check-client-form__title">Клиент 2</p>
+              <div class="check-client-form__inputs">
+                <BaseInput
+                  class="check-client-form__input"
+                  rules="required"
+                  label="Телефон"
+                  name="backup_phone"
+                  maska="+7 (###) ### ## ##"
+                  placeholder="+7 (999) 999 99-99"
+                  v-model="store.form.backup_phone"
+                />
+                <BaseInput
+                  class="check-client-form__input"
+                  rules="required"
+                  label="ФИО"
+                  name="backup_full_name"
+                  placeholder="Иванов Иван Иванович"
+                  v-model="store.form.backup_full_name"
                 />
               </div>
             </div>
