@@ -2,11 +2,11 @@
   <NuxtLink
     class="estate-type-card"
     :to="to"
-    :style="[{ '--bg-card': `url(${img})` }, styleCard]"
+    :style="[{ '--bg-card': `url(${img})` }]"
   >
     <div class="estate-type-card__content">
       <div class="estate-type-card__title" v-html="name"></div>
-      <p v-if="text" class="estate-type-card__text">{{ text }}</p>
+      <p v-if="text" class="estate-type-card__text" v-html="text"></p>
     </div>
     <div class="estate-type-card__romb">
       <div class="estate-type-card__romb-img"></div>
@@ -14,19 +14,18 @@
     <div class="estate-type-card__next">
       <BaseIcon class="estate-type-card__next-icon" name="forward-line" />
     </div>
-    <div v-html="svg" class="estate-type-card__svg"></div>
+    <img class="estate-type-card__cover" :src="imgCover" />
   </NuxtLink>
 </template>
 <script setup lang="ts">
 import type { RouteLocationRaw } from 'vue-router'
 
 defineProps<{
-  name: string
-  text?: string
-  img: string
-  to: RouteLocationRaw
-  svg: string
-  styleCard?: string
+  name: string,
+  text?: string,
+  img: string,
+  imgCover: string,
+  to: RouteLocationRaw,
 }>()
 </script>
 <style lang="scss" scoped>
@@ -47,6 +46,7 @@ defineProps<{
   @include md {
     padding: 24px;
   }
+
 
   &::before {
     content: '';
@@ -70,11 +70,17 @@ defineProps<{
   &:hover::before {
     // opacity: 1;
   }
-  &__svg {
-    @apply tw-absolute tw-left-1/2 tw-transform -tw-translate-x-1/2;
+
+  &__cover {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    left: 0;
+    top: 0;
     z-index: 1;
-    top: 204px;
   }
+
   &__content {
     position: relative;
     z-index: 10;

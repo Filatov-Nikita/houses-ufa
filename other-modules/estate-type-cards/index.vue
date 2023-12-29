@@ -1,7 +1,7 @@
 <template>
   <Swiper v-bind="swiperOpts">
     <SwiperSlide
-      v-for="card in data"
+      v-for="card in items"
       :key="card.name"
     >
       <Card v-bind="card" />
@@ -12,7 +12,7 @@
 
 <script setup lang="ts">
   import Card from './components/Card.vue';
-  import { data } from './data';
+  import { data, newYearData } from './data';
 
   const swiperOpts = {
     spaceBetween: 16,
@@ -31,6 +31,17 @@
       },
     } as const,
   };
+
+  const current = new Date();
+  const nextDate = new Date('2024-01-03T23:30:00');
+
+  const items = computed(() => {
+    if(nextDate.getTime() <= current.getTime()) {
+      return newYearData;
+    } else {
+      return data;
+    }
+  });
 </script>
 
 <style scoped lang="scss">
