@@ -19,7 +19,7 @@
         v-model="form.ogrn_ogrnip"
       />
       <BaseInput rules="required" name="inn" label="ИНН" placeholder="000000000" v-model="form.inn" />
-      <BaseInput rules="required" name="kpp" label="КПП" placeholder="000000000" v-model="form.kpp" />
+      <BaseInput name="kpp" label="КПП" placeholder="000000000" v-model="form.kpp" />
     </div>
     <div class="tw-flex tw-gap-5">
       <BaseButton theme="gray" paddingClasses="tw-px-4" @click="() => $emit('prev')">
