@@ -102,11 +102,6 @@ const teamTabs = [
         photo: '/images/team/DSC_4340_408х408.jpg',
       },
       {
-        name: 'Декатова Евгения',
-        position: 'Эксперт по продажам недвижимости',
-        photo: '/images/team/DSC_4182_408х408.jpg',
-      },
-      {
         name: 'Ардаширова Гузель',
         position: 'Эксперт по продажам недвижимости',
         photo: '/images/team/DSC_4205_408х408.jpg',
@@ -117,24 +112,9 @@ const teamTabs = [
         photo: '/images/team/DSC_4245_408х408.jpg',
       },
       {
-        name: 'Красильникова Эльмира',
-        position: 'Эксперт по продажам недвижимости',
-        photo: '/images/team/DSC_4273_408х408.jpg',
-      },
-      {
-        name: 'Вагапова Альбина',
-        position: 'Эксперт по продажам недвижимости',
-        photo: '/images/team/DSC_4293_408х408.jpg',
-      },
-      {
         name: 'Исмагилов Марсель',
         position: 'Эксперт по продажам недвижимости',
         photo: '/images/team/DSC_4358_408х408.jpg',
-      },
-      {
-        name: 'Петрова Эльвира',
-        position: 'Эксперт по продажам недвижимости',
-        photo: '/images/team/DSC_4422_408х408.jpg',
       },
     ],
   },
@@ -146,16 +126,6 @@ const teamTabs = [
         name: 'Тагирова Анастасия',
         position: 'Старший Эксперт по продажам недвижимости',
         photo: '/images/team/DSC_4384_408х408.jpg',
-      },
-      {
-        name: 'Токарева Люция',
-        position: 'Руководитель по работе с партнерами',
-        photo: '/images/team/DSC_4285_408х408.jpg',
-      },
-      {
-        name: 'Порфирьева Наталья',
-        position: 'Эксперт по продажам недвижимости',
-        photo: '/images/team/DSC_4193_408х408.jpg',
       },
       {
         name: 'Каримов Руслан',
