@@ -61,11 +61,13 @@
   import ConsultForm from '@/other-modules/consult-form/index.vue';
   import { getRoomsCount } from '@/plugins/rooms-count';
   import { useGoal } from '@/composables/useGoal';
+  import { useAuthStore } from '@/stores/auth';
 
   const showedConsult = ref(false);
   const flatCard = useFlatCard();
   const router = useRouter();
   const bookGoal = useGoal('book_city');
+  const authStore = useAuthStore();
 
   const data = computed(() => flatCard.data?.data);
 
@@ -87,12 +89,32 @@
     return data.value?.complex.finishing_type.title;
   });
 
-  function book() {
+  function toB2C() {
     router.push({
       path: '/lk/b2c/apps/book',
       query: { id: flatCard.flatId, type: 'flat' }
     });
+  }
 
+  function toB2T() {
+    router.push({
+      path: '/lk/b2t/favorites',
+    });
+  }
+
+  function toB2Y() {
+    router.push({
+      path: '/lk/b2y',
+    });
+  }
+
+  function book() {
+    const type = authStore.userType;
+    switch(type) {
+      case 'b2c': toB2C(); break;
+      case 'b2t': toB2T(); break;
+      case 'b2y': toB2Y(); break;
+    }
     bookGoal.execute();
   }
 </script>

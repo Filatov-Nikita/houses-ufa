@@ -44,6 +44,7 @@
   import { useTownCard } from '../store';
   import ConsultForm from '@/other-modules/consult-form/index.vue';
   import { useGoal } from '@/composables/useGoal';
+  import { useAuthStore } from '@/stores/auth';
 
   const statusLabel: Record<string, string> = {
     'for_sale': 'Свободен',
@@ -54,7 +55,7 @@
   const showedConsult = ref(false);
   const townCard = useTownCard();
   const router = useRouter();
-
+  const authStore = useAuthStore();
   const bookGoal = useGoal('book_cottage_taun');
 
   const data = computed(() => townCard.data?.data);
@@ -77,12 +78,32 @@
 
   const isEmptyPlace = computed(() => townCard.isEmptyPlace);
 
-  function book() {
+  function toB2C() {
     router.push({
       path: '/lk/b2c/apps/book',
       query: { id: townCard.townId, type: 'town' }
     });
+  }
 
+  function toB2T() {
+    router.push({
+      path: '/lk/b2t/favorites',
+    });
+  }
+
+  function toB2Y() {
+    router.push({
+      path: '/lk/b2y',
+    });
+  }
+
+  function book() {
+    const type = authStore.userType;
+    switch(type) {
+      case 'b2c': toB2C(); break;
+      case 'b2t': toB2T(); break;
+      case 'b2y': toB2Y(); break;
+    }
     bookGoal.execute();
   }
 </script>

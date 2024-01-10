@@ -52,11 +52,13 @@
   import { useCreditProgramCalc } from '../store';
   import { useCreditPrograms } from '@/stores/credit-programs';
   import { useCreditProgramCalc as useLkStore } from '@/lk-modules/credit-program-list/store';
+  import { useAuthStore } from '@/stores/auth';
 
   const creditCalc = useCreditProgramCalc();
   const creditProg = useCreditPrograms();
   const lkStore = useLkStore();
   const router = useRouter();
+  const authStore = useAuthStore();
 
   const progs = computed(() => creditProg.creditProgs?.data ?? []);
 
@@ -93,14 +95,35 @@
     };
   }
 
+  function toB2C() {
+    router.push({
+      path: '/lk/b2c/apps/ipoteka',
+      query: { id: creditCalc.objectId, type: creditCalc.objectType }
+    });
+  }
+
+  function toB2T() {
+    router.push({
+      path: '/lk/b2t/favorites',
+    });
+  }
+
+  function toB2Y() {
+    router.push({
+      path: '/lk/b2y',
+    });
+  }
+
   function next() {
     if(creditCalc.objectId && creditCalc.objectType) {
       lkStore.params = { ...creditCalc.params };
       lkStore.groupId = creditCalc.groupId;
-      router.push({
-        path: '/lk/b2c/apps/ipoteka',
-        query: { id: creditCalc.objectId, type: creditCalc.objectType }
-      });
+      const type = authStore.userType;
+      switch(type) {
+        case 'b2c': toB2C(); break;
+        case 'b2t': toB2T(); break;
+        case 'b2y': toB2Y(); break;
+      }
     } else {
       goDown();
     }
