@@ -10,7 +10,6 @@
         <div class="tw-grid tw-gap-3 tw-content-start">
           <template v-for="item in links">
             <NuxtLink
-              v-if="item.name === 'Объекты'"
               class="link"
               :class="{ active: $route.meta?.parent === item.meta }"
               :to="item.to"
@@ -21,19 +20,6 @@
                 {{ item.name }}
               </span>
             </NuxtLink>
-            <button
-              v-else
-              class="link"
-              :class="{ active: $route.meta?.parent === item.meta }"
-              :to="item.to"
-              exactActiveClass="active"
-              @click="showDevMode()"
-            >
-              <BaseIcon :name="item.icon" class="link__icon" />
-              <span class="link__title">
-                {{ item.name }}
-              </span>
-            </button>
           </template>
         </div>
         <div
@@ -120,125 +106,49 @@ useAsyncData(() => {
 
 const showedDevMode = ref(false);
 
-const buyer = [
-  {
-    to: '/lk/agent',
-    meta: null,
-    name: 'Объекты',
-    icon: 'house',
-  },
-  {
-    to: '/lk/agent/action',
-    meta: null,
-    name: 'Акции',
-    icon: 'gift',
-  },
-  {
-    to: '/lk/agent/favorites',
-    meta: null,
-    name: 'Избранное',
-    icon: 'heart',
-  },
-  {
-    to: '/lk/agent/profile',
-    meta: null,
-    name: 'Профиль',
-    icon: 'user',
-  },
-];
-
-const agent = [
-{
-    to: '/lk/agent',
-    meta: null,
-    name: 'Объекты',
-    icon: 'house',
-  },
-  {
-    to: '/lk/agent/action',
-    meta: null,
-    name: 'Акции',
-    icon: 'gift',
-  },
-  {
-    to: '/lk/agent/rating',
-    meta: null,
-    name: 'Рейтинги',
-    icon: 'chart-bar',
-  },
-  {
-    to: '/lk/agent/favorites',
-    meta: null,
-    name: 'Избранное',
-    icon: 'heart',
-  },
-  {
-    to: '/lk/agent/clients',
-    meta: 'clients',
-    name: 'Клиенты',
-    icon: 'handshake',
-  },
-  {
-    to: '/lk/agent/profile',
-    meta: null,
-    name: 'Профиль',
-    icon: 'user',
-  },
-];
-
 const agency = [
 {
-    to: '/lk/agent',
+    to: '/lk/b2y',
     meta: null,
     name: 'Объекты',
     icon: 'house',
   },
   {
-    to: '/lk/agent/action',
+    to: '/lk/b2y/action',
     meta: null,
     name: 'Акции',
     icon: 'gift',
   },
   {
-    to: '/lk/agent/rating',
+    to: '/lk/b2y/rating',
     meta: null,
     name: 'Рейтинги',
     icon: 'chart-bar',
   },
   {
-    to: '/lk/agent/report',
+    to: '/lk/b2y/report',
     meta: null,
     name: 'Отчет агентства',
     icon: 'file',
   },
   {
-    to: '/lk/agent/favorites',
+    to: '/lk/b2y/favorites',
     meta: null,
     name: 'Избранное',
     icon: 'heart',
   },
   {
-    to: '/lk/agent/profile',
+    to: '/lk/b2y/profile',
     meta: null,
     name: 'Профиль',
     icon: 'user',
   },
 ];
 
-const userType = process.client ? localStorage.getItem('tokenType') : '';
 
 const links = computed(() => {
-  switch(userType) {
-    case 'b2c': return buyer;
-    case 'b2t': return agent;
-    case 'b2y': return agency;
-  }
-  return buyer;
+  return agency;
 });
-
-function showDevMode() {
-  showedDevMode.value = true;
-}
 </script>
 <style lang="scss">
 .link {
