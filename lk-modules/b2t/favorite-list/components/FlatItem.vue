@@ -1,5 +1,5 @@
 <template>
-  <div class="flat-card">
+  <RouterLink class="flat-card" :to="`/apartments/${flat.id}`">
     <div class="flat-card__img-wrap">
       <div class="flat-card__img">
         <img :src="flat.plan_image_url" loading="lazy" :alt="name" />
@@ -23,7 +23,7 @@
         Первоначальный взнос — <span>от {{ initialPay }}</span>
       </p>
       <div class="flat-card__actions">
-        <button class="flat-card__check-btn" @click="emit('checkClient', flat.id, 'flat')">
+        <button class="flat-card__check-btn" @click.prevent="emit('checkClient', flat.id, 'flat')">
           Проверить клиента
         </button>
         <EstateActionsAddFav
@@ -33,7 +33,7 @@
         />
       </div>
     </div>
-  </div>
+  </RouterLink>
 </template>
 
 <script setup lang="ts">

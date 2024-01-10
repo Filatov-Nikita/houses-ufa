@@ -18,7 +18,9 @@
           {{ item.consumer.cellphone }}
         </div>
         <div class="client-table-col">
-          {{ getObjectName(item) }}
+          <RouterLink :to="getObjectLink(item)">
+            {{ getObjectName(item) }}
+          </RouterLink>
         </div>
         <div class="client-table-col client-table__actions">
           <button
@@ -72,6 +74,10 @@
   const props = defineProps<{
     items: ClientResponse['data'],
   }>();
+
+  function getObjectLink(item: typeof props.items[number]) {
+    return `/${ item.object_type === 'flat' ? 'apartments' : 'towns' }/${item.object.id}`;
+  }
 
   function getObjectName(item: typeof props.items[number]) {
     if(item.object_type === 'flat') {

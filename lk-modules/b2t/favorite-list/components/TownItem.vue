@@ -1,5 +1,5 @@
 <template>
-  <div class="town-card">
+  <RouterLink class="town-card" :to="`/towns/${town.id}`">
     <div class="town-card__img-wrap">
     <img
       class="town-card__img"
@@ -16,7 +16,7 @@
       </div>
       <p class="town-card__house">{{ complexName }}</p>
       <div class="town-card__actions">
-        <button class="town-card__check-btn" @click="emit('checkClient', town.id, 'estate')">
+        <button class="town-card__check-btn" @click.prevent="emit('checkClient', town.id, 'estate')">
           Проверить клиента
         </button>
         <EstateActionsAddFav
@@ -26,7 +26,7 @@
         />
       </div>
     </div>
-  </div>
+  </RouterLink>
 </template>
 
 <script setup lang="ts">
