@@ -54,7 +54,6 @@
               <div class="check-client-form__inputs">
                 <BaseInput
                   class="check-client-form__input"
-                  rules="required"
                   label="Телефон"
                   name="backup_phone"
                   maska="+7 (###) ### ## ##"
@@ -63,7 +62,6 @@
                 />
                 <BaseInput
                   class="check-client-form__input"
-                  rules="required"
                   label="ФИО"
                   name="backup_full_name"
                   placeholder="Иванов Иван Иванович"
