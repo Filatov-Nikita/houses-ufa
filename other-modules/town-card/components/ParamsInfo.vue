@@ -97,12 +97,17 @@
     });
   }
 
+  function toAuth() {
+    authStore.openPopup = true;
+  }
+
   function book() {
     const type = authStore.userType;
     switch(type) {
       case 'b2c': toB2C(); break;
       case 'b2t': toB2T(); break;
       case 'b2y': toB2Y(); break;
+      default: toAuth();
     }
     bookGoal.execute();
   }

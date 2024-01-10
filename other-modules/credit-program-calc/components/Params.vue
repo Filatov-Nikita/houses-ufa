@@ -114,6 +114,10 @@
     });
   }
 
+  function toAuth() {
+    authStore.openPopup = true;
+  }
+
   function next() {
     if(creditCalc.objectId && creditCalc.objectType) {
       lkStore.params = { ...creditCalc.params };
@@ -123,6 +127,7 @@
         case 'b2c': toB2C(); break;
         case 'b2t': toB2T(); break;
         case 'b2y': toB2Y(); break;
+        default: toAuth();
       }
     } else {
       goDown();
