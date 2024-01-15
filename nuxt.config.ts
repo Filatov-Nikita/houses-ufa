@@ -7,6 +7,7 @@ import * as YandexMetric from './scripts/yandex-metric';
 import * as Roistat from './scripts/roistat';
 import * as Envybox from './scripts/envybox';
 import * as Marquiz from './scripts/marquiz';
+import * as Pixel from './scripts/pixel';
 
 export default defineNuxtConfig({
   ssr: true,
@@ -51,6 +52,10 @@ export default defineNuxtConfig({
           {
             type: 'text/javascript',
             innerHTML: Marquiz.body2,
+          },
+          {
+            type: 'text/javascript',
+            innerHTML: Pixel.body,
           },
         ],
         noscript: [
