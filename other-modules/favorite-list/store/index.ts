@@ -7,6 +7,7 @@ import { type PlaceOne } from '@/types/estate/place';
 import { type ParkingOne } from '@/types/estate/parking';
 
 export const useFavList = defineStore('favList', () => {
+  const showedCompare = ref(false);
   const favType  = ref<FavTypes>('flats');
 
   const favStore = useFavoritesStore();
@@ -38,6 +39,7 @@ export const useFavList = defineStore('favList', () => {
     towns,
     parkings,
     places,
+    showedCompare,
     showFlats,
     showTowns,
     showPlaces,
