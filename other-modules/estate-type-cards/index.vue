@@ -28,6 +28,7 @@
       },
       1440: {
         slidesPerView: 3,
+        pagination: false,
       },
     } as const,
   };

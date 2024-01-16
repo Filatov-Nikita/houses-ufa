@@ -1,38 +1,39 @@
 export const newYearData = [
   {
-    name: 'Выгода до 520 тыс. ₽<br>на коттеджи<br>Орландо',
-    text: 'новая цена 12 440 000 ₽',
-    img: '/images/home/estate-types/img1.jpg',
-    imgCover: '/images/home/estate-types/new-year1.jpg',
-    to: {
-      path: '/towns/461',
-    },
-  },
-  {
-    name: 'Рождественская<br/>распродажа',
-    text: 'Дополнительная выгода<br>на квартиры до 14.01.2024',
-    img: '/images/home/estate-types/img2.jpg',
-    imgCover: '/images/home/estate-types/new-year2.jpg',
-    to: {
-      path: '/main-filter',
-      query: {
-        filterType: 'flats',
-        is_in_promotion_only: 1,
-      },
-    },
-  },
-  {
-    name: 'Рождественская распродажа',
-    text: 'Дополнительная выгода<br>на дома до 14.01.2024',
-    img: '/images/home/estate-types/img3.jpg',
-    imgCover: '/images/home/estate-types/new-year3.jpg',
+    name: 'Коттеджи и таунхаусы<br>по ценам 2023 года',
+    text: 'от 8 200 000 ₽',
+    img: '/images/home/estate-types/h1.jpg',
+    imgCover: '/images/home/estate-types/snow-1.jpg',
     to: {
       path: '/main-filter',
       query: {
         filterType: 'towns',
-        is_in_promotion_only: 1,
       },
-    }
+    },
+  },
+  {
+    name: 'Настало время<br>волшебства',
+    text: 'своя квартира от 20 000 ₽ в месяц',
+    img: '/images/home/estate-types/h2.jpg',
+    imgCover: '/images/home/estate-types/snow-2.jpg',
+    to: {
+      path: '/main-filter',
+      query: {
+        filterType: 'flats',
+      },
+    },
+  },
+  {
+    name: 'Выгода до 260 тыс. ₽<br>на 1-к. квартиру',
+    text: 'от 4 376 745 ₽',
+    img: '/images/home/estate-types/h3.jpg',
+    imgCover: '/images/home/estate-types/snow-3.jpg',
+    to: {
+      path: '/main-filter',
+      query: {
+        filterType: 'out-city-flats',
+      },
+    },
   },
 ];
 
