@@ -5,40 +5,32 @@
       <div class="tender-table__th">Номенклатура закупки</div>
       <div class="tender-table__th">Предмет закупки</div>
     </div>
-    <div class="tender-table__body">
-      <div class="tender-table__row">
-        <div class="tender-table__td tender-table__number">1</div>
+    <p class="tender-table__empty" v-if="items.length === 0">
+      Нет записей
+    </p>
+    <div class="tender-table__body" v-else>
+      <div class="tender-table__row" v-for="item in items" :key="item.id">
+        <div class="tender-table__td tender-table__number">{{ item.number }}</div>
+        <div class="tender-table__td">{{ item.nomenclature }}</div>
         <div class="tender-table__td">
-          Выполнение строительно-монтажных работ устройству сетей бытовой канализации объекта: «Многоквартирный жилой дом, расположенный по адресу: РБ, МР Уфимский район, СП Зубовский сельсовет, с. Зубово, квартал Зубово Лайф 2, литер 22» и присоединению к действующим коммуникациям
-        </div>
-        <div class="tender-table__td">
-          РБ, МР Уфимский район, СП Зубовский сельсовет, с. Зубово, квартал Зубово Лайф 2, литер 22 (1675)
+          {{ item.object }}
         </div>
         <div class="tender-table__action">
-          <BaseButton>Принять участие</BaseButton>
-        </div>
-      </div>
-      <div class="tender-table__row">
-        <div class="tender-table__td tender-table__number">1</div>
-        <div class="tender-table__td">
-          Выполнение строительно-монтажных работ устройству сетей бытовой канализации объекта: «Многоквартирный жилой дом, расположенный по адресу: РБ, МР Уфимский район, СП Зубовский сельсовет, с. Зубово, квартал Зубово Лайф 2, литер 22» и присоединению к действующим коммуникациям
-        </div>
-        <div class="tender-table__td">
-          РБ, МР Уфимский район, СП Зубовский сельсовет, с. Зубово, квартал Зубово Лайф 2, литер 22 (1675)
-        </div>
-        <div class="tender-table__action">
-          <BaseButton @click="showed = true">Принять участие</BaseButton>
+          <BaseButton :to="item.url" target="_blank">
+            Принять участие
+          </BaseButton>
         </div>
       </div>
     </div>
-    <Modal v-model:showed="showed" />
   </div>
 </template>
 
 <script setup lang="ts">
-  import Modal from './Modal.vue';
+  import type { TenderOne } from '../types';
 
-  const showed = ref(false);
+  defineProps<{
+    items: TenderOne[],
+  }>();
 </script>
 
 <style scoped lang="scss">
@@ -50,6 +42,11 @@
       grid-template-columns: 64px 637px 296px;
       gap: 20px;
       @apply tw-bg-base00;
+    }
+
+    &__empty {
+      padding: 30px 16px;
+      text-align: center;
     }
 
     &__row {
@@ -72,7 +69,7 @@
     }
 
     &__number {
-      align-self: center;
+      align-self: flex-start;
     }
   }
 </style>

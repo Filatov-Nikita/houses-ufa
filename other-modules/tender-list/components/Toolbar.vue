@@ -1,11 +1,15 @@
 <template>
   <div class="tender-toolbar">
-    <p class="tender-toolbar__count">931 689 закупок</p>
+    <p class="tender-toolbar__count"><BasePlural :total="count" :cases="сases" /></p>
   </div>
 </template>
 
 <script setup lang="ts">
+  defineProps<{
+    count: number,
+  }>();
 
+  const сases: [ string, string, string ] = [ 'закупка', 'закупки', 'закупок' ];
 </script>
 
 <style scoped lang="scss">
