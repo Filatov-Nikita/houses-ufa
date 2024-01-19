@@ -40,6 +40,7 @@
             class="book-passport-form-grid__item"
             name="series_and_number"
             label="Серия и номер паспорта"
+            maska="#### ######"
             v-model="form.series_and_number"
           />
           <BaseInput
@@ -53,6 +54,7 @@
             class="book-passport-form-grid__item"
             name="department_code"
             label="Код подразделения"
+            maska="###-###"
             v-model="form.department_code"
           />
           <BaseInput
@@ -126,10 +128,17 @@
   const onSubmit: SubmissionHandler = async function(_, ctx) {
     try {
       let data: PassportData;
+
+      const body = {
+        ...form,
+        department_code: form.department_code.replace(/[^0-9]+/, ''),
+        series_and_number: form.series_and_number.replace(/[^0-9]+/, ''),
+      };
+
       if(props.passport === null) {
-        data = await profile.createPassport(form);
+        data = await profile.createPassport(body);
       } else {
-        data = await profile.updatePassport(form);
+        data = await profile.updatePassport(body);
       }
       Object.assign(form, data);
       emit('next');
