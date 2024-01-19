@@ -30,7 +30,7 @@
       <div class="section__top">
         <h2 class="section__title tw-mb-4 lg:tw-mb-6">Команда</h2>
       </div>
-      <Team />
+      <CompanyTeam />
     </div>
   </section>
   <section class="section" id="work">
@@ -51,7 +51,7 @@ import CompanyVacancies from '@/other-modules/company-vacancies/index.vue';
 import CompanyForm from '@/other-modules/company-form/index.vue';
 import CompanyObjectList from '@/other-modules/company-object-list/index.vue';
 import History from '@/components/cards/History.vue';
-import Team from '@/components/cards/Team.vue';
+import CompanyTeam from '@/other-modules/company-team/index.vue';
 import { useBreadcrumbsStore } from '@/stores/breadcrumbs';
 import { data } from '@/seo/pages/about';
 
