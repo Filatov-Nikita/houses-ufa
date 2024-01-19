@@ -5,30 +5,44 @@
       <div class="search-table__th">Площадь</div>
       <div class="search-table__th">Назначение</div>
     </div>
-    <div class="search-table__body">
-      <div class="search-table__row">
+    <p class="search-table__empty" v-if="items.length === 0">
+      Нет записей
+    </p>
+    <div class="search-table__body" v-else>
+      <div class="search-table__row" v-for="item in items" :key="item.id">
         <div class="search-table__td">
-          Республика Башкортостан
+          {{ item.region }}
         </div>
         <div class="search-table__td">
-          от 500 соток
+          {{ item.area }}
         </div>
         <div class="search-table__td">
-          ИЖС, ЛПХ, СХН, МКД
+          {{ item.purpose }}
         </div>
         <div class="search-table__action">
-          <BaseButton @click="showed = true">Отправить заявку</BaseButton>
+          <BaseButton @click="showModal(item)">Отправить заявку</BaseButton>
         </div>
       </div>
     </div>
-    <Modal v-model:showed="showed" />
+    <Modal v-model:showed="showed" :item="current" />
   </div>
 </template>
 
 <script setup lang="ts">
   import Modal from './Modal.vue';
+  import type { AreaOne } from '../types'
 
+  defineProps<{
+    items: AreaOne[],
+  }>();
+
+  const current = ref<AreaOne>();
   const showed = ref(false);
+
+  function showModal(item: AreaOne) {
+    current.value = item;
+    showed.value = true;
+  }
 </script>
 
 <style scoped lang="scss">
@@ -40,6 +54,11 @@
       grid-template-columns: 329px 329px 329px;
       gap: 20px;
       @apply tw-bg-base00;
+    }
+
+    &__empty {
+      padding: 30px 16px;
+      text-align: center;
     }
 
     &__row {

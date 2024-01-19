@@ -10,7 +10,7 @@
         </div>
         <BtnsActionsBase class="tender-app__hide" icon="close" @click="hide" />
       </div>
-      <Form />
+      <Form :item="item" @success="showed = false" />
     </BaseModalCard>
   </BaseModal>
 </template>
@@ -18,9 +18,11 @@
 <script setup lang="ts">
   import { useSyncProps } from '@/composables/useSyncProp';
   import Form from './Form.vue';
+  import type { AreaOne } from '../types';
 
   const props = defineProps<{
     showed: boolean,
+    item?: AreaOne,
   }>();
 
   defineEmits<{ (event: 'update:showed', val: boolean): void }>();

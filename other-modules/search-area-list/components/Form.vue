@@ -1,6 +1,5 @@
 <template>
-  <Form ref="formRef" class="search-form" @submit="onSubmit">
-      <!-- v-model="store.form.first_name" -->
+  <Form ref="formRef" class="search-form" v-slot="{ isSubmitting }" @submit="onSubmit">
     <div class="search-form__section">
       <BaseInput
         class="search-form__column"
@@ -8,13 +7,16 @@
         label="Имя"
         name="name"
         placeholder="Иван"
-        />
+        v-model="form.first_name"
+      />
       <BaseInput
         class="search-form__column"
+        rules="required"
         label="Организация"
         name="text"
         placeholder="ООО СтройЭкспертПро"
-        />
+        v-model="form.entity"
+      />
       <BaseInput
         class="search-form__column"
         rules="required"
@@ -22,25 +24,24 @@
         name="phone"
         placeholder="+7 (XXX) XXX XX XX"
         maska="+7 (###) ### ## ##"
-        />
-        <!-- v-model="store.form.phone" -->
+        v-model="form.phone"
+      />
       <BaseInput
         class="search-form__column"
         rules="required|email"
         label="E-mail"
         name="email"
         placeholder="name@gmail.com"
-        />
-        <!-- v-model="store.form.email" -->
+        v-model="form.email"
+      />
     </div>
-      <!-- v-model="store.form.message" -->
     <div class="search-form__actions">
       <div class="search-form__section">
         <p class="search-form__column search-form__perc">
           Нажимая кнопку, вы соглашаетесь с&nbsp;<a href="/docs/sogl.pdf" target="_blank">условиями обработки персональных данных</a>
         </p>
-        <!-- :disabled="store.loading" -->
-        <BaseButton class="search-form__column" type="submit">
+
+        <BaseButton class="search-form__column" type="submit" :disabled="isSubmitting">
           Отправить
         </BaseButton>
       </div>
@@ -49,18 +50,46 @@
 </template>
 
 <script setup lang="ts">
+  import { useNotifyStore } from '@/stores/notify';
   import { Form } from 'vee-validate';
-  import { useGoal } from '@/composables/useGoal';
-  import { data } from '@/composables/useGoal/data';
+  import { cleanPhone } from '@/helpers/index';
+  import type { AreaOne } from '../types';
 
-  // const store = useConsultForm();
+  const props = defineProps<{
+    item?: AreaOne,
+  }>();
+
+  const emit = defineEmits<{
+    (event: 'success'): void,
+  }>();
+
+  const notify = useNotifyStore();
   const formRef = ref<any>(null);
+
+  const form = reactive({
+    first_name: '',
+    phone: '',
+    email: '',
+    entity: '',
+  });
+
   async function onSubmit() {
-    // try {
-    //   await store.send();
-    //   formRef.value.resetForm();
-    //   orderGoal.execute();
-    // } catch(e) {}
+    const { error } = await useDataFetch('/lead/recall', {
+      method: 'POST',
+      body: {
+        ...form,
+        phone: cleanPhone(form.phone),
+        theme: `Заявка на земельный участок №${props.item!.id}`,
+      },
+    });
+
+    if(error.value) {
+      notify.create({ type: 'error', message: 'Не удалось создать заявку' });
+    } else {
+      emit('success');
+      formRef.value.resetForm();
+      notify.create({ type: 'success', message: 'Заявка успешно отправлена' });
+    }
   }
 </script>
 
