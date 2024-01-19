@@ -22,6 +22,10 @@
             </NuxtLink>
           </template>
         </div>
+        <button class="logout tw-mt-8" @click="authStore.logout">
+          <BaseIcon class="logout__icon" name="logout" />
+          <span class="logout__label">Выйти</span>
+        </button>
         <div
           class="tw-text-text02 tw-text-body_xs tw-flex tw-gap-2 tw-justify-center tw-items-center tw-mt-5"
         >
@@ -96,9 +100,11 @@ import HeaderMain from '@/other-modules/public-header/index.vue'
 import FooterMain from '@/other-modules/public-footer/index.vue'
 import { useComplexesStore } from '@/stores/complexes'
 import { useTownsStore } from '@/stores/towns'
+import { useAuthStore } from '@/stores/auth';
 
 const complexesStore = useComplexesStore()
 const townsStore = useTownsStore()
+const authStore = useAuthStore();
 
 useAsyncData(() => {
   return Promise.all([complexesStore.show(), townsStore.show()])
@@ -168,4 +174,27 @@ const links = computed(() => {
     @apply tw-text-text01;
   }
 }
+
+.logout {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    gap: 16px;
+    padding: 8px 16px;
+    border-radius: 8px;
+    @apply tw-text-error;
+
+    &:hover {
+      @apply tw-bg-white;
+    }
+
+    &__icon {
+      width: 24px;
+      height: 24px;
+    }
+
+    &__label {
+      @apply tw-text-sm;
+    }
+  }
 </style>
