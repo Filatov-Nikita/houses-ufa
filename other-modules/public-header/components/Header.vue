@@ -1,7 +1,7 @@
 <template>
   <header class="public-header">
     <div class="public-header__logo-menu">
-      <button class="action-btn" @click="store.toggleNav">
+      <button class="action-btn public-header__burger" @click="store.toggleNav">
         <BaseIcon class="action-btn__icon" :name="menuIcon" />
       </button>
       <NuxtLink class="public-header__logo" to="/">
@@ -33,6 +33,9 @@
         </NuxtLink>
         <button class="action-btn" @click.prevent="tryShowLk">
           <BaseIcon class="action-btn__icon" name="profile" />
+        </button>
+        <button class="action-btn public-header__burger-mobile" @click="store.toggleNav">
+          <BaseIcon class="action-btn__icon" :name="menuIcon" />
         </button>
       </div>
     </div>
@@ -75,6 +78,7 @@
 
     @include sm {
       padding: 16px 16px;
+      gap: 16px;
     }
 
     &__logo-menu {
@@ -84,8 +88,6 @@
 
       @include md {
         width: 100%;
-        justify-content: space-between;
-        flex-direction: row-reverse;
       }
     }
 
@@ -100,10 +102,6 @@
       display: flex;
       align-items: center;
       gap: 32px;
-
-      @include md {
-        display: none;
-      }
     }
 
     &__phone {
@@ -129,6 +127,10 @@
       display: flex;
       align-items: center;
       gap: 12px;
+
+      @include md {
+        gap: 8px;
+      }
     }
 
     &__nav {
@@ -165,6 +167,26 @@
         @include lg {
           display: block;
         }
+      }
+    }
+
+    &__phone-wrap {
+      @include md {
+        display: none;
+      }
+    }
+
+    &__burger {
+      @include md {
+        display: none;
+      }
+    }
+
+    &__burger-mobile {
+      display: none;
+
+      @include md {
+        display: block;
       }
     }
   }
