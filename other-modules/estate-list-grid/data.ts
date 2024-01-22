@@ -4,13 +4,14 @@ interface Estate {
   location: string | null,
   priceFrom: number | null,
   badge: string | null,
-  objectId: number
 }
 
-type Town = Estate & { type: 'town' };
-type Flat = Estate & { type: 'flat', is_in_city: boolean };
+export const showedMilav = ref(false);
+export type Town = Estate & { type: 'town', objectId: number };
+export type Flat = Estate & { type: 'flat', is_in_city: boolean, objectId: number };
+export type Milav = Estate & { type: 'milav', text: string, };
 
-export type Item = Town | Flat;
+export type Item = Town | Flat | Milav;
 
 export const data: Item[] = [
   {
@@ -78,5 +79,14 @@ export const data: Item[] = [
     priceFrom: null,
     badge: null,
     objectId: 3,
+  },
+  {
+    type: 'milav',
+    name: 'Премьера 2024 г.<br />Новый посёлок «Миллаверде»',
+    text: 'Скоро старт<br />продаж',
+    image: '/images/home/objects/milav.jpg',
+    location: 'с. Миловка',
+    priceFrom: null,
+    badge: null,
   },
 ];

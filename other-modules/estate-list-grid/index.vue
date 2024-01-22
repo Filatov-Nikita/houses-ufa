@@ -13,12 +13,20 @@
         </BaseTabsGroup>
       </div>
       <div class="estate-list-grid">
-        <Item
-          v-for="(item, index) in items"
-          :key="`${item.type}${item.objectId}`"
-          :class="itemClasses[index]"
-          :item="item"
-        />
+        <template v-for="(item, index) in items">
+          <ItemMilav
+            v-if="item.type === 'milav'"
+            key="milav"
+            :class="itemClasses[index]"
+            :item="item"
+          />
+          <Item
+            v-else
+            :key="`${item.type}${item.objectId}`"
+            :class="itemClasses[index]"
+            :item="item"
+          />
+        </template>
       </div>
     </div>
   </section>
@@ -26,6 +34,7 @@
 
 <script setup lang="ts">
   import Item from './components/Item.vue';
+  import ItemMilav from './components/ItemMilav.vue';
   import { data } from './data';
 
   type Types = 'all' | 'flats_in_city' | 'flats_out_city' | 'towns';
@@ -40,6 +49,7 @@
     'estate-list-grid__item-l2-i2',
     'estate-list-grid__item-l3-i1',
     'estate-list-grid__item-l3-i2',
+    'estate-list-grid__item-l3-i3',
   ];
 
   const items = computed(() => {
@@ -137,7 +147,7 @@
     }
 
     &__item-l3-i2 {
-      width: calc(100% / 12 * 9 - 16px);
+      width: calc(100% / 12 * 3 - 16px);
       margin: 8px;
 
       @include lg {
@@ -147,6 +157,19 @@
       @include sm {
         width: calc(100% - 16px);
       }
+    }
+
+    &__item-l3-i3 {
+      width: calc(100% / 12 * 6 - 16px);
+      margin: 8px;
+
+      @include lg {
+        width: calc(100% - 16px);
+      }
+
+      // @include sm {
+      //   width: calc(100% - 16px);
+      // }
     }
   }
 

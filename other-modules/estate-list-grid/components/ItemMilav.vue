@@ -1,38 +1,30 @@
 <template>
-  <NuxtLink class="estate-grid-item" :to="to">
+  <div class="estate-grid-item">
     <div>
-      <div class="estate-grid-item__name">{{ item.name }}</div>
-      <div class="estate-grid-item__price" v-if="item.priceFrom">
-        от {{ $amount(item.priceFrom) }}
-      </div>
+      <div class="estate-grid-item__name" v-html="item.name"></div>
+      <div class="estate-grid-item__text" v-html="item.text"></div>
     </div>
     <div class="estate-grid-item__bottom">
-      <div class="estate-grid-item__location" v-if="item.badge">
-        {{ item.badge }}
-      </div>
+      <BaseButton @click="showedMilav = !showedMilav">
+        Узнать подробности
+      </BaseButton>
       <div class="estate-grid-item__badge" v-if="item.location">
         <BaseIcon class="estate-grid-item__badge-icon" name="geo" />
         <span>{{ item.location }}</span>
       </div>
     </div>
     <img class="estate-grid-item__img" :src="item.image" alt="">
-    <div class="estate-grid-item__next">
-      <BaseIcon class="estate-grid-item__next-icon" name="forward-line" />
-    </div>
-  </NuxtLink>
+    <Modal v-model:showed="showedMilav" />
+  </div>
 </template>
 
 <script setup lang="ts">
-  import type { Flat, Town } from '../data';
+  import { type Milav, showedMilav } from '../data';
+  import Modal from './ModalMilav/index.vue';
 
   const props = defineProps<{
-    item: Flat | Town,
+    item: Milav,
   }>();
-
-  const to = computed(() => {
-    let path = props.item.type === 'flat' ? `/complexes/` : '/cottage-settlements/';
-    return path + props.item.objectId;
-  });
 </script>
 
 <style scoped lang="scss">
@@ -48,19 +40,39 @@
 
     &__name {
       font-weight: 600;
-      margin-bottom: 4px;
-      @apply tw-text-2xl;
+      margin-bottom: 20px;
+      font-size: 24px;
+      line-height: 32px;
+
+      @include sm {
+        margin-bottom: 10px;
+        font-size: 18px;
+        line-height: 28px;
+      }
     }
 
-    &__price {
-      @apply tw-text-lg;
+    &__text {
+      font-size: 48px;
+      font-weight: 600;
+      line-height: 1.2;
+
+      @include sm {
+        font-size: 32px;
+      }
     }
 
     &__bottom {
       margin-top: auto;
       display: flex;
-      flex-direction: column;
+      flex-wrap: wrap;
       align-items: flex-end;
+      justify-content: space-between;
+      row-gap: 15px;
+      column-gap: 20px;
+
+      @include sm {
+        justify-content: flex-end;
+      }
     }
 
     &__location {
@@ -118,16 +130,6 @@
     &__next-icon {
       width: 24px;
       height: 24px;
-    }
-
-    &::after {
-      content: '';
-      display: block;
-      border-radius: 16px;
-      background: linear-gradient(96deg, rgba(0, 0, 0, 0.32) 0%, rgba(0, 0, 0, 0.00) 100%);
-      position: absolute;
-      z-index: -1;
-      @apply tw-inset-0;
     }
   }
 </style>
