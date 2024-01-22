@@ -1,15 +1,14 @@
+import { showedMilav } from '@/other-modules/estate-list-grid/data';
+
 export const newYearData = [
   {
-    name: 'Коттеджи и таунхаусы<br>по ценам 2023 года',
-    text: 'от 8 200 000 ₽',
-    img: '/images/home/estate-types/h1.jpg',
-    imgCover: '/images/home/estate-types/snow-1.jpg',
-    to: {
-      path: '/main-filter',
-      query: {
-        filterType: 'towns',
-      },
-    },
+    name: 'Скоро',
+    text: 'Старт продаж нового посёлка',
+    img: '/images/home/estate-types/milav-prev.jpg',
+    imgCover: '/images/home/estate-types/milav-cover.jpg',
+    action() {
+      showedMilav.value = true;
+    }
   },
   {
     name: 'Настало время<br>волшебства',

@@ -1,8 +1,9 @@
 <template>
   <NuxtLink
     class="estate-type-card"
-    :to="to"
+    :to="to ?? '/'"
     :style="[{ '--bg-card': `url(${img})` }]"
+    @click="onAction"
   >
     <div class="estate-type-card__content">
       <div class="estate-type-card__title" v-html="name"></div>
@@ -20,13 +21,21 @@
 <script setup lang="ts">
 import type { RouteLocationRaw } from 'vue-router'
 
-defineProps<{
+const props = defineProps<{
   name: string,
   text?: string,
   img: string,
   imgCover: string,
-  to: RouteLocationRaw,
+  to?: RouteLocationRaw,
+  action?: Function,
 }>()
+
+function onAction(e: Event) {
+  if(props.action) {
+    e.preventDefault();
+    props.action();
+  }
+}
 </script>
 <style lang="scss" scoped>
 .estate-type-card {
