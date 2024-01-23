@@ -58,7 +58,7 @@
 
     @include md {
       grid-template-columns: 100%;
-      row-gap: 24px;
+      row-gap: 16px;
     }
 
     &__info1 {

@@ -71,9 +71,9 @@
       column-gap: 0px;
     }
 
-    @include md {
+    @include sm {
       grid-template-columns: 100%;
-      row-gap: 24px;
+      row-gap: 16px;
     }
 
     &__actions {
@@ -82,6 +82,15 @@
       flex-wrap: wrap;
       justify-content: flex-end;
       gap: 8px;
+
+      @include lg {
+        margin-top: 16px;
+      }
+
+      @include sm {
+        justify-content: flex-start;
+        margin-top: 16px;
+      }
     }
 
     &__check-btn {
@@ -94,7 +103,7 @@
       grid-column: 2 / 4;
 
       @include lg {
-        grid-column: 1 / 2;
+        grid-column: 1 / 3;
       }
     }
 
@@ -105,7 +114,7 @@
         grid-column: 2 / 3;
       }
 
-      @include md {
+      @include sm {
         grid-column: 1 / 2;
         text-align: left;
       }
@@ -116,7 +125,7 @@
         grid-column: 1 / 3;
       }
 
-      @include md {
+      @include sm {
         grid-column: 1 / 2;
       }
     }
@@ -131,14 +140,12 @@
       @include lg {
         width: 120px;
         height: 120px;
-        padding: 12px;
       }
 
-      @include md {
+      @include sm {
         width: 100%;
         max-width: 210px;
         height: 210px;
-        padding: 16px;
       }
 
       img {

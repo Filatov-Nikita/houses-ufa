@@ -262,6 +262,10 @@
   .check-client-form {
     margin-top: 32px;
 
+    @include sm {
+      margin-top: 16px;
+    }
+
     &__title {
       margin-bottom: 16px;
       @apply tw-text-text00 tw-text-lg;
@@ -274,6 +278,10 @@
 
     &__client-one {
       padding: 16px;
+
+      @include sm {
+        padding: 0px;
+      }
 
       & + & {
         @apply tw-border-t tw-border-solid tw-border-base01;
@@ -298,6 +306,10 @@
     &__input {
       margin: 10px;
       width: calc(50% - 20px);
+
+      @include sm {
+        width: calc(100% - 20px);
+      }
     }
 
     &__msg {
