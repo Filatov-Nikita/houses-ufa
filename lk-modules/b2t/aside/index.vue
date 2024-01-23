@@ -33,7 +33,7 @@
     justify-content: space-between;
     gap: 24px;
 
-    @include sm {
+    @include md {
       min-height: auto;
     }
 
