@@ -32,6 +32,10 @@
     align-items: flex-start;
     margin: -10px;
 
+    @include md {
+      margin: -20px -10px;
+    }
+
     &__aside {
       margin: 10px;
       width: calc(100% / 12 * 2 - 20px);
@@ -41,10 +45,7 @@
       }
 
       @include md {
-        width: calc(100% / 12 * 4 - 20px);
-      }
-
-      @include sm {
+        margin: 20px 10px;
         width: calc(100% - 20px);
       }
     }
@@ -58,11 +59,7 @@
       }
 
       @include md {
-        width: calc(100% / 12 * 8 - 20px);
-      }
-
-      @include sm {
-        order: -1;
+        margin: 20px 10px;
         width: calc(100% - 20px);
       }
     }
