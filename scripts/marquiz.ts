@@ -10,7 +10,7 @@ export const body1 = `
   })(window, document, 'script', {
       host: '//quiz.marquiz.ru',
       region: 'eu',
-      id: '6576a009d31c6600253aac67',
+      id: '65aa00bdce81980025280de5',
       autoOpen: false,
       autoOpenFreq: 'once',
       openOnExit: false,
@@ -20,5 +20,5 @@ export const body1 = `
 `;
 
 export const body2 = `
-  (function(t, p) {window.Marquiz ? Marquiz.add([t, p]) : document.addEventListener('marquizLoaded', function() {Marquiz.add([t, p])})})('Widget', {id: '6576a009d31c6600253aac67', position: 'right', delay: 35, autoOpen: 50})
+  (function(t, p) {window.Marquiz ? Marquiz.add([t, p]) : document.addEventListener('marquizLoaded', function() {Marquiz.add([t, p])})})('Widget', {id: '65aa00bdce81980025280de5', position: 'right', delay: 40, autoOpen: 30})
 `;
