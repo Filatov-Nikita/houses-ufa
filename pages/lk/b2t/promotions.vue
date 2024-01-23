@@ -20,11 +20,25 @@
     border-radius: 16px;
     @apply tw-bg-white;
 
+    @include md {
+      padding: 24px;
+    }
+
+    @include sm {
+      padding: 16px;
+    }
+
     &__title {
       font-size: 32px;
       line-height: 1.25;
       margin-bottom: 32px;
       @apply tw-text-text00;
+
+      @include sm {
+        font-size: 24px;
+        line-height: 1.3;
+        margin-bottom: 24px;
+      }
     }
   }
 </style>
