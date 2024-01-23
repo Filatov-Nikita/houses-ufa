@@ -9,15 +9,19 @@
     <div class="client-table__body">
       <div class="client-table-row" v-for="item in items" :key="item.id">
         <div class="client-table-col">
+          <span class="client-label-mobile">Номер</span>
           {{ item.id }}
         </div>
         <div class="client-table-col">
+          <span class="client-label-mobile">Покупатель</span>
           {{ item.consumer.full_name }}
         </div>
         <div class="client-table-col">
+          <span class="client-label-mobile">Телефон</span>
           {{ item.consumer.cellphone }}
         </div>
         <div class="client-table-col">
+          <span class="client-label-mobile">Недвижимость</span>
           <RouterLink :to="getObjectLink(item)">
             {{ getObjectName(item) }}
           </RouterLink>
@@ -93,9 +97,23 @@
 </script>
 
 <style scoped lang="scss">
+  .client-label-mobile {
+    display: none;
+
+    @include sm {
+      display: block;
+      margin-bottom: 4px;
+      @apply tw-text-text02;
+    }
+  }
+
   .client-table {
     &__body {
       padding-top: 16px;
+
+      @include sm {
+        padding-top: 0px;
+      }
     }
 
     &__actions {
@@ -103,11 +121,19 @@
       flex-wrap: wrap;
       justify-content: flex-end;
       gap: 8px;
+
+      @include sm {
+        justify-content: flex-start;
+      }
     }
 
     &__info {
       grid-column: 2 / 6;
       margin-top: 16px;
+
+      @include sm {
+        grid-column: 1;
+      }
 
       &-item {
         & + & {
@@ -123,6 +149,16 @@
     grid-template-columns: 51px 230px 230px 280px;
     @apply tw-border-b tw-border-solid tw-border-border00;
 
+    @include lg {
+      grid-template-columns: 31px 80px 120px 1fr;
+      gap: 12px;
+      padding: 16px;
+    }
+
+    @include sm {
+      display: none;
+    }
+
     &__th {
       font-size: 14px;
       line-height: 24px;
@@ -133,7 +169,20 @@
   .client-table-row {
     padding: 16px 24px;
     display: grid;
+    align-items: flex-start;
     grid-template-columns: 51px 230px 230px 280px 211px;
+
+    @include lg {
+      grid-template-columns: 31px 80px 120px 1fr 170px;
+      gap: 12px;
+      padding: 16px;
+    }
+
+    @include sm {
+      grid-template-columns: 100%;
+      padding: 16px 0;
+      gap: 16px;
+    }
 
     & + & {
       margin-top: 16px;

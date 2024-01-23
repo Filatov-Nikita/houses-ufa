@@ -64,6 +64,10 @@
     position: relative;
     @apply tw-bg-base00;
 
+    @include sm {
+      padding: 24px 16px;
+    }
+
     &__toggle {
       position: absolute;
       right: 24px;
@@ -92,11 +96,19 @@
       justify-content: space-between;
       gap: 24px;
       cursor: pointer;
+
+      @include sm {
+        gap: 16px;
+      }
     }
 
     &__right {
       align-self: flex-end;
       padding-right: 40px;
+
+      @include sm {
+        padding-right: 0px;
+      }
     }
 
     &__caption {
@@ -124,6 +136,10 @@
       flex-wrap: wrap;
       gap: 24px;
       margin-bottom: 16px;
+
+      @include sm {
+        gap: 16px;
+      }
     }
 
     &__label {
@@ -146,6 +162,10 @@
     &__offer {
       width: calc(50% - 16px);
       margin: 8px;
+
+      @include sm {
+        width: calc(100% - 16px);
+      }
     }
   }
 </style>
