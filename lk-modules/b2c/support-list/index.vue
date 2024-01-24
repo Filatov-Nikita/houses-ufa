@@ -65,7 +65,6 @@
     @include sm {
       font-size: 24px;
       line-height: 1.3;
-      margin-bottom: 24px;
     }
   }
 

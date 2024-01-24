@@ -35,9 +35,17 @@
     padding: 16px 24px;
     @apply tw-bg-base00;
 
+    @include sm {
+      padding: 16px;
+    }
+
     &__title {
       font-size: 20px;
       line-height: 1.6;
+
+      @include sm {
+        font-size: 18px;
+      }
     }
 
     &__title-wrap {
@@ -50,7 +58,6 @@
     }
 
     &__question {
-      margin-bottom: 16px;
       max-width: 800px;
       @apply tw-text-text02 tw-text-sm;
     }
@@ -61,6 +68,7 @@
       @apply tw-text-text01 tw-text-base tw-bg-white;
 
       &-wrap {
+        margin-top: 16px;
         display: flex;
         align-items: flex-start;
         gap: 8px;
