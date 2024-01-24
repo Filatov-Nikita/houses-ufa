@@ -15,14 +15,19 @@
 <script setup lang="ts">
   const items = [
     {
-      label: 'Профиль',
-      icon: 'profile',
-      to: '/lk/b2c/profile',
-    },
-    {
       label: 'Мои заявки',
       icon: 'read',
       to: '/lk/b2c/apps',
+    },
+    {
+      label: 'Обращения',
+      icon: 'chat',
+      to: '/lk/b2c/support',
+    },
+    {
+      label: 'Профиль',
+      icon: 'profile',
+      to: '/lk/b2c/profile',
     },
   ];
 </script>
