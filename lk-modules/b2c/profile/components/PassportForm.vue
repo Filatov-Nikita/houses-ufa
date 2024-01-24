@@ -134,11 +134,24 @@
     border-radius: 16px;
     @apply tw-bg-white;
 
+    @include md {
+      padding: 24px;
+    }
+
+    @include sm {
+      padding: 16px;
+    }
+
     &__title {
       font-size: 24px;
       line-height: 1.3;
       margin-bottom: 16px;
       @apply tw-text-text00;
+
+      @include sm {
+        font-size: 20px;
+        margin-bottom: 8px;
+      }
     }
 
     &__text {
@@ -146,6 +159,10 @@
       line-height: 24px;
       margin-bottom: 32px;
       @apply tw-text-text02;
+
+      @include sm {
+        margin-bottom: 16px;
+      }
     }
   }
 
@@ -174,6 +191,10 @@
       display: flex;
       flex-wrap: wrap;
       gap: 20px;
+
+      @include sm {
+        padding-top: 24px;
+      }
     }
   }
 </style>

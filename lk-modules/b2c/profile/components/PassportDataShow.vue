@@ -91,11 +91,22 @@
     border-radius: 16px;
     @apply tw-bg-white;
 
+    @include md {
+      padding: 24px;
+    }
+
+    @include sm {
+      padding: 16px;
+    }
+
     &__title {
       font-size: 24px;
       line-height: 1.3;
-      margin-bottom: 24px;
       @apply tw-text-text01;
+
+      @include sm {
+        font-size: 20px;
+      }
     }
 
     &__head {
@@ -103,6 +114,7 @@
       flex-wrap: wrap;
       gap: 16px;
       justify-content: space-between;
+      margin-bottom: 24px;
     }
   }
 
@@ -110,6 +122,10 @@
     &__item {
       & + & {
         margin-top: 24px;
+
+        @include sm {
+          margin-top: 16px;
+        }
       }
     }
 
@@ -130,6 +146,10 @@
     align-items: center;
     gap: 8px;
     @apply tw-text-primary tw-text-base;
+
+    @include sm {
+      @apply tw-text-sm;
+    }
 
     &__icon {
       width: 24px;

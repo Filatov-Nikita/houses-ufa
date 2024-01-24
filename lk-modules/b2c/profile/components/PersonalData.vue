@@ -68,7 +68,8 @@
       @apply tw-text-text00 tw-text-2xl;
 
       @include sm {
-        margin-bottom: 24px;
+        margin-bottom: 16px;
+        @apply tw-text-xl;
       }
     }
 
@@ -77,6 +78,10 @@
       flex-wrap: wrap;
       column-gap: 48px;
       row-gap: 24px;
+
+      @include sm {
+        row-gap: 16px;
+      }
     }
 
     &__label {
@@ -88,6 +93,10 @@
       font-size: 20px;
       line-height: 1.6;
       @apply tw-text-text00;
+
+      @include sm {
+        font-size: 16px;
+      }
     }
   }
 </style>

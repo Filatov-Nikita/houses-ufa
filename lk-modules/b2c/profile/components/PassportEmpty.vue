@@ -33,6 +33,14 @@
     align-items: center;
     @apply tw-bg-white;
 
+    @include md {
+      padding: 24px;
+    }
+
+    @include sm {
+      padding: 16px;
+    }
+
     &__title {
       text-align: center;
       font-size: 20px;
@@ -47,6 +55,10 @@
       line-height: 24px;
       margin-bottom: 32px;
       @apply tw-text-text02;
+
+      @include sm {
+        margin-bottom: 16px;
+      }
     }
 
     &__decor {
@@ -54,6 +66,10 @@
       padding: 16px;
       margin-bottom: 32px;
       @apply tw-bg-base00 tw-text-text01;
+
+      @include sm {
+        margin-bottom: 16px;
+      }
     }
 
     &__icon {
