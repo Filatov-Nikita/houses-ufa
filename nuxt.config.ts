@@ -29,6 +29,9 @@ export default defineNuxtConfig({
   $production: {
     app: {
       head: {
+        meta: [
+          { name: 'yandex-verification', content: '89eb28202ac895e5' }
+        ],
         script: [
           {
             type: 'text/javascript',
