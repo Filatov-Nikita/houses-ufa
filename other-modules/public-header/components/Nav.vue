@@ -9,8 +9,10 @@
           <div class="nav-menu__inner">
             <NavItemsMobile class="nav-menu__items-mobile" :items="navMenu" />
             <NavItems class="nav-menu__items" :items="navMenu" />
-            <div v-if="banner" class="nav-menu__banner">
-              <Banner :banner="banner" />
+            <div class="nav-menu__banner">
+              <ClientOnly>
+                <Banner />
+              </ClientOnly>
             </div>
           </div>
         </div>
@@ -107,11 +109,11 @@
     }
 
     &__banner {
-      grid-column: span 2;
+      grid-column: 3 / span 2;
 
       @include lg {
         margin-top: auto;
-        grid-column: 1 / span 3;
+        grid-column: 1 / span 2;
       }
 
       @include md {
