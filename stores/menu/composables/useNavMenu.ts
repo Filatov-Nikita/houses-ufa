@@ -23,6 +23,10 @@ export function useNavMenu(sectionList: ComputedRef<Sections>) {
           label: 'Работа в компании',
           to: '/about#work',
         },
+        {
+          label: 'Акции',
+          to: '/promotions',
+        },
       ],
     },
     press: {

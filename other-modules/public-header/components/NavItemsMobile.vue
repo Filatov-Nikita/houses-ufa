@@ -25,9 +25,17 @@
     <div key="spec" class="nav-items-mobile__dropdown nav-items-mobile__title">
       <NuxtLink
         to="/main-filter?is_in_promotion_only=1&filterType=flats"
-        class="nav-items-mobile__link nav-items-mobile__link--red"
+        class="nav-items-mobile__link nav-items-mobile__extra-link nav-items-mobile__link--red"
       >
         Спецпредложения
+      </NuxtLink>
+      <NuxtLink class="extra-link nav-items-mobile__extra-link" to="/tenders" target="_blank">
+        <span class="extra-link__label">Тендеры</span>
+        <BaseIcon class="extra-link__icon" color="tw-fill-primary" name="link-external" />
+      </NuxtLink>
+      <NuxtLink class="extra-link nav-items-mobile__extra-link" to="/search-areas" target="_blank">
+        <span class="extra-link__label">Поиск земельных участков</span>
+        <BaseIcon class="extra-link__icon" color="tw-fill-primary" name="link-external" />
       </NuxtLink>
     </div>
   </div>
@@ -56,6 +64,12 @@
       padding: 20px 0;
     }
 
+    &__extra-link {
+      & + & {
+        margin-top: 24px;
+      }
+    }
+
     &__link {
       @apply tw-text-text02 tw-text-base tw-block;
 
@@ -72,6 +86,21 @@
       & + & {
         margin-top: 8px;
       }
+    }
+  }
+
+  .extra-link {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+
+    &__icon {
+      width: 16px;
+      height: 16px;
+    }
+
+    &__label {
+      @apply tw-text-text00 tw-text-lg;
     }
   }
 </style>

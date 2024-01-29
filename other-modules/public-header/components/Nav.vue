@@ -9,6 +9,20 @@
           <div class="nav-menu__inner">
             <NavItemsMobile class="nav-menu__items-mobile" :items="navMenu" />
             <NavItems class="nav-menu__items" :items="navMenu" />
+            <div class="nav-menu__items">
+              <div class="nav-menu__link-item">
+                <NuxtLink class="extra-link" to="/tenders" target="_blank">
+                  <span class="extra-link__label">Тендеры</span>
+                  <BaseIcon class="extra-link__icon" color="tw-fill-primary" name="link-external" />
+                </NuxtLink>
+              </div>
+              <div class="nav-menu__link-item">
+                <NuxtLink class="extra-link" to="/search-areas" target="_blank">
+                  <span class="extra-link__label">Поиск земельных участков</span>
+                  <BaseIcon class="extra-link__icon" color="tw-fill-primary" name="link-external" />
+                </NuxtLink>
+              </div>
+            </div>
             <div class="nav-menu__banner">
               <ClientOnly>
                 <Banner />
@@ -23,7 +37,6 @@
 
 <script setup lang="ts">
   import { useMenuStore } from '@/stores/menu';
-  import { useBannerStore } from '@/stores/banner';
   import { useScrollToggle } from '@/composables/useScrollToggle';
   import Banner from './Banner.vue';
   import NavItems from './NavItems.vue';
@@ -35,7 +48,6 @@
   }
 
   const menuStore = useMenuStore();
-  const bannerStore = useBannerStore();
 
   const navMenu = computed(() => {
     return menuStore.navMenu;
@@ -47,10 +59,6 @@
   });
 
   useScrollToggle(toRef(props, 'showed'));
-
-  const banner = computed(() => {
-    return bannerStore.banner;
-  });
 
   watch(() => props.showed, (val) => {
     if(val) {
@@ -119,6 +127,31 @@
       @include md {
         grid-column: 1;
       }
+    }
+
+    &__link-item {
+      & + & {
+        margin-top: 32px;
+      }
+    }
+  }
+
+  .extra-link {
+    display: inline-flex;
+    align-items: flex-start;
+    gap: 8px;
+
+    &__icon {
+      width: 16px;
+      height: 16px;
+    }
+
+    &__label {
+      @apply tw-text-text00 tw-text-xl;
+    }
+
+    & + & {
+      margin-top: 32px;
     }
   }
 </style>
