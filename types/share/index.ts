@@ -5,3 +5,9 @@ export interface Image {
   url:           string;
   width:         number | null;
 }
+
+export interface File {
+  id:            number;
+  name:          string;
+  size_in_bytes: number;
+}

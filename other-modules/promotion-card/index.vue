@@ -1,0 +1,103 @@
+<template>
+  <div class="section" v-if="response">
+    <div class="wrapper">
+      <PageInfo :title="response.data.title">
+        <template #text>
+          <p v-if="response.data.comment" class="promo-period">
+            c {{ $formatDate(response.data.starts_at) }} по {{ $formatDate(response.data.ends_at) }}
+          </p>
+        </template>
+        <template #icon="attrs">
+          <svg v-bind="attrs" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 254 196">
+            <path d="M234.25 0.75H19.75C14.5783 0.75 9.61838 2.80446 5.96142 6.46142C2.30446 10.1184 0.25 15.0783 0.25 20.25V205.5C0.250887 207.162 0.676496 208.796 1.48642 210.247C2.29634 211.698 3.4637 212.918 4.87766 213.791C6.29163 214.664 7.90527 215.161 9.56539 215.235C11.2255 215.309 12.877 214.958 14.3631 214.214L49 196.896L83.6369 214.214C84.9914 214.892 86.4853 215.245 88 215.245C89.5147 215.245 91.0086 214.892 92.3631 214.214L127 196.896L161.637 214.214C162.991 214.892 164.485 215.245 166 215.245C167.515 215.245 169.009 214.892 170.363 214.214L205 196.896L239.637 214.214C241.123 214.958 242.774 215.309 244.435 215.235C246.095 215.161 247.708 214.664 249.122 213.791C250.536 212.918 251.704 211.698 252.514 210.247C253.324 208.796 253.749 207.162 253.75 205.5V20.25C253.75 15.0783 251.696 10.1184 248.039 6.46142C244.382 2.80446 239.422 0.75 234.25 0.75ZM185.5 127.5H68.5C65.9141 127.5 63.4342 126.473 61.6057 124.644C59.7772 122.816 58.75 120.336 58.75 117.75C58.75 115.164 59.7772 112.684 61.6057 110.856C63.4342 109.027 65.9141 108 68.5 108H185.5C188.086 108 190.566 109.027 192.394 110.856C194.223 112.684 195.25 115.164 195.25 117.75C195.25 120.336 194.223 122.816 192.394 124.644C190.566 126.473 188.086 127.5 185.5 127.5ZM185.5 88.5H68.5C65.9141 88.5 63.4342 87.4728 61.6057 85.6443C59.7772 83.8158 58.75 81.3359 58.75 78.75C58.75 76.1641 59.7772 73.6842 61.6057 71.8557C63.4342 70.0272 65.9141 69 68.5 69H185.5C188.086 69 190.566 70.0272 192.394 71.8557C194.223 73.6842 195.25 76.1641 195.25 78.75C195.25 81.3359 194.223 83.8158 192.394 85.6443C190.566 87.4728 188.086 88.5 185.5 88.5Z" />
+          </svg>
+        </template>
+      </PageInfo>
+    </div>
+  </div>
+  <div class="section" v-if="response">
+    <div class="wrapper">
+      <div class="promo-card">
+        <div class="promo-card__body">
+          {{ response.data.body }}
+        </div>
+        <div class="promo-card__files" v-if="response.data.files.length > 0">
+          <FilePreview
+            v-for="file in response.data.files"
+            :file="file"
+            :key="file.id"
+          />
+        </div>
+        <div class="promo-card__action">
+          <BaseButton @click="showed = true">
+            Выбрать недвижимость по акции
+          </BaseButton>
+        </div>
+      </div>
+    </div>
+    <Modal v-model:showed="showed" :item="response.data" />
+  </div>
+</template>
+
+<script setup lang="ts">
+  import type { PromotionDetailed } from '@/types/promotions';
+  import FilePreview from './components/FilePreview.vue';
+  import { useBreadcrumbsStore } from '@/stores/breadcrumbs';
+  import Modal from './components/Modal.vue';
+
+  const showed = ref(false);
+
+  const bread = useBreadcrumbsStore();
+
+  const route = useRoute();
+
+  const { data: response } = await useDataFetch<{ data: PromotionDetailed }>(
+    computed(() => `marketing/promotions/${route.params.id}`),
+  );
+
+  bread.set([
+    { label: 'Главная', to: '/' },
+    { label: 'Акции', to: '/promotions' },
+    { label: response.value?.data.title ?? '', to: '/promotions/' + response.value?.data.id },
+  ]);
+
+  useHead({
+    title: response.value?.data.title,
+    meta: [
+      { name: 'description', content: response.value?.data.subtitle },
+    ],
+  });
+</script>
+
+<style scoped lang="scss">
+  .promo-card {
+    padding: 24px;
+    border-radius: 16px;
+    @apply tw-bg-white;
+
+    @include sm {
+      padding: 16px;
+    }
+
+    &__body {
+      max-width: 768px;
+      white-space: pre-wrap;
+    }
+
+    &__files {
+      margin-top: 24px;
+      max-width: 454px;
+    }
+
+    &__action {
+      margin-top: 24px;
+    }
+  }
+
+  .promo-period {
+    display: inline-block;
+    padding: 12px 16px;
+    border-radius: 8px;
+    @apply tw-bg-secondary;
+  }
+</style>
