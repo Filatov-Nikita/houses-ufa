@@ -213,7 +213,10 @@
             text: `Клиент с номером ${store.form.consumer_phone} занят другим агентом`,
             type: 'error'
           }
-        } else {
+        } else if(e.data.reason || e.data.message) {
+          notify.create({ type: 'error', message: e.data.reason || e.data.message });
+        }
+        else {
           notify.create({ type: 'error', message: 'Произошла ошибка на сервере' });
         }
       }
