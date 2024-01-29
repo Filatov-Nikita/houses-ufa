@@ -15,6 +15,11 @@
 <script setup lang="ts">
   const items = [
     {
+      label: 'Объекты',
+      icon: 'house',
+      to: '/lk/b2t/objects',
+    },
+    {
       label: 'Акции',
       icon: 'gift',
       to: '/lk/b2t/promotions',
