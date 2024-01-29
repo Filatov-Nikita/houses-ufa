@@ -29,9 +29,11 @@
       </div>
       <div class="public-header__btns">
         <NuxtLink class="action-btn" to="/favorites">
-          <span v-if="favStorageCount > 0" class="counter action-btn__count">
-            {{ favStorageCount }}
-          </span>
+          <ClientOnly>
+            <span v-if="favStorageCount > 0" class="counter action-btn__count">
+              {{ favStorageCount }}
+            </span>
+          </ClientOnly>
           <BaseIcon class="action-btn__icon" name="heart" />
         </NuxtLink>
         <button class="action-btn" @click.prevent="tryShowLk">
