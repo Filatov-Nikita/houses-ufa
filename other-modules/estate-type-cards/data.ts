@@ -5,16 +5,16 @@ export const newYearData = [
     name: 'Скоро',
     text: 'Старт продаж нового посёлка',
     img: '/images/home/estate-types/milav-prev.jpg',
-    imgCover: '/images/home/estate-types/milav-cover.jpg',
+    imgCover: '/images/home/estate-types/yellow.jpg',
     action() {
       showedMilav.value = true;
     }
   },
   {
-    name: 'Настало время<br>волшебства',
-    text: 'своя квартира от 20 000 ₽ в месяц',
+    name: 'Выгода более 600 тыс.Р<br />на 2-к. квартиру',
+    text: 'от 8 278 559 ₽',
     img: '/images/home/estate-types/h2.jpg',
-    imgCover: '/images/home/estate-types/snow-2.jpg',
+    imgCover: '/images/home/estate-types/blue.jpg',
     to: {
       path: '/main-filter',
       query: {
@@ -23,10 +23,10 @@ export const newYearData = [
     },
   },
   {
-    name: 'Выгода до 260 тыс. ₽<br>на 1-к. квартиру',
-    text: 'от 4 376 745 ₽',
+    name: 'Ипотека по ставке 0,71%',
+    text: 'Успейте оформить до 15.02.2024 ',
     img: '/images/home/estate-types/h3.jpg',
-    imgCover: '/images/home/estate-types/snow-3.jpg',
+    imgCover: '/images/home/estate-types/green.jpg',
     to: {
       path: '/main-filter',
       query: {
