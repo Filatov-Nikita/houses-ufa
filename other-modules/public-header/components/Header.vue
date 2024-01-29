@@ -29,6 +29,9 @@
       </div>
       <div class="public-header__btns">
         <NuxtLink class="action-btn" to="/favorites">
+          <span v-if="favStorageCount > 0" class="counter action-btn__count">
+            {{ favStorageCount }}
+          </span>
           <BaseIcon class="action-btn__icon" name="heart" />
         </NuxtLink>
         <button class="action-btn" @click.prevent="tryShowLk">
@@ -48,6 +51,7 @@
   import { useContactsStore } from '@/stores/contacts';
   import { useAuthStore } from '@/stores/auth';
   import { useRouter } from 'vue-router';
+  import { useFavoritesStore } from '@/stores/favorites';
 
   const store = usePublicHeader();
   const contacts = useContactsStore();
@@ -56,6 +60,10 @@
   const router = useRouter();
 
   const menuIcon = computed(() => store.showedNav ? 'close' : 'burger');
+
+  const fav = useFavoritesStore();
+
+  const favStorageCount = computed(() => fav.storage.activeItems.length);
 
   function tryShowLk() {
     if(auth.userType !== null) {
@@ -197,6 +205,7 @@
     padding: 8px;
     border-radius: 8px;
     user-select: none;
+    position: relative;
     @apply tw-bg-base00 tw-text-text00;
 
     &:hover {
@@ -207,5 +216,22 @@
       width: 32px;
       height: 32px;
     }
+
+    &__count {
+      position: absolute;
+      z-index: 10;
+      right: -5px;
+      top: -5px;
+    }
+  }
+
+  .counter {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    text-align: center;
+    font-size: 12px;
+    line-height: 20px;
+    @apply tw-bg-error tw-text-white;
   }
 </style>
