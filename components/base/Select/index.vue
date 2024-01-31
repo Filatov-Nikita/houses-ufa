@@ -114,7 +114,8 @@
     }
 
     &__icon {
-      min-width: 24px;
+      flex-shrink: 0;
+      width: 24px;
       height: 24px;
       transition: transform 300ms;
 
