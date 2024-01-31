@@ -1,10 +1,10 @@
 <template>
   <Swiper v-bind="swiperOpts">
     <SwiperSlide
-      v-for="card in items"
-      :key="card.name"
+      v-for="item in items"
+      :key="item.id"
     >
-      <Card v-bind="card" />
+      <Card :item="item" />
     </SwiperSlide>
     <div class="swiper-pagination swiper-pagination_lighten estate-type-pag"></div>
   </Swiper>
@@ -12,7 +12,7 @@
 
 <script setup lang="ts">
   import Card from './components/Card.vue';
-  import { data, newYearData } from './data';
+  import type { BannerOne } from './types';
 
   const swiperOpts = {
     spaceBetween: 16,
@@ -33,15 +33,11 @@
     } as const,
   };
 
-  const current = new Date();
-  const nextDate = new Date('2024-01-03T23:30:00');
+  const { data: response } = await useDataFetch<{ data: BannerOne[] }>('marketing/banners');
 
   const items = computed(() => {
-    if(nextDate.getTime() <= current.getTime()) {
-      return newYearData;
-    } else {
-      return data;
-    }
+    if(!response.value) return [];
+    return response.value.data.sort((a, b) => b.priority - a.priority);
   });
 </script>
 

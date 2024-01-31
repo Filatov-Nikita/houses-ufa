@@ -1,13 +1,12 @@
 <template>
   <NuxtLink
     class="estate-type-card"
-    :to="to ?? '/'"
-    :style="[{ '--bg-card': `url(${img})` }]"
-    @click="onAction"
+    :to="item.url"
+    :style="[{ '--bg-card': `url(${ item.main_image?.url ?? '' })` }]"
   >
-    <div class="estate-type-card__content">
-      <div class="estate-type-card__title" v-html="name"></div>
-      <p v-if="text" class="estate-type-card__text" v-html="text"></p>
+  <div class="estate-type-card__content">
+      <div class="estate-type-card__title" v-html="item.title"></div>
+      <p class="estate-type-card__text" v-html="item.subtitle"></p>
     </div>
     <div class="estate-type-card__romb">
       <div class="estate-type-card__romb-img"></div>
@@ -15,27 +14,15 @@
     <div class="estate-type-card__next">
       <BaseIcon class="estate-type-card__next-icon" name="forward-line" />
     </div>
-    <img class="estate-type-card__cover" :src="imgCover" />
+    <img v-if="item.background_image" class="estate-type-card__cover" :src="item.background_image.url" />
   </NuxtLink>
 </template>
 <script setup lang="ts">
-import type { RouteLocationRaw } from 'vue-router'
+import type { BannerOne } from '../types';
 
-const props = defineProps<{
-  name: string,
-  text?: string,
-  img: string,
-  imgCover: string,
-  to?: RouteLocationRaw,
-  action?: Function,
-}>()
-
-function onAction(e: Event) {
-  if(props.action) {
-    e.preventDefault();
-    props.action();
-  }
-}
+defineProps<{
+  item: BannerOne,
+}>();
 </script>
 <style lang="scss" scoped>
 .estate-type-card {
