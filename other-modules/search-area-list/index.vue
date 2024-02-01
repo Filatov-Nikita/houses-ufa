@@ -1,6 +1,8 @@
 <template>
   <div class="search-table-block">
-    <Table v-if="response" :items="response.data" />
+    <div class="scroll-area">
+      <Table v-if="response" :items="response.data" />
+    </div>
   </div>
 </template>
 
@@ -16,5 +18,17 @@
     padding: 40px;
     border-radius: 16px;
     @apply tw-bg-white;
+
+    @include md {
+      padding: 24px;
+    }
+
+    @include sm {
+      padding: 16px;
+    }
+  }
+
+  .scroll-area {
+    overflow-y: hidden;
   }
 </style>

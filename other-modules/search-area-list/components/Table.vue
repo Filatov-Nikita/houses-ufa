@@ -47,13 +47,19 @@
 
 <style scoped lang="scss">
   .search-table {
+    min-width: 800px;
+
     &__head {
       padding: 16px 24px;
       border-radius: 8px;
       display: grid;
-      grid-template-columns: 329px 329px 329px;
+      grid-template-columns: minmax(120px, 28%) minmax(120px, 28%) minmax(120px, 28%) 185px;
       gap: 20px;
       @apply tw-bg-base00;
+
+      @include sm {
+        padding: 16px;
+      }
     }
 
     &__empty {
@@ -66,8 +72,12 @@
       border-radius: 8px;
       width: 100%;
       display: grid;
-      grid-template-columns: 329px 329px 329px 185px;
+      grid-template-columns: minmax(120px, 28%) minmax(120px, 28%) minmax(120px, 28%) 185px;
       gap: 20px;
+
+      @include sm {
+        padding: 16px;
+      }
 
       & + & {
         border-top: 1px;
@@ -78,6 +88,12 @@
 
     &__td {
       align-self: center;
+    }
+
+    &__td, &__th {
+      @include sm {
+        @apply tw-text-sm;
+      }
     }
 
     &__action {
