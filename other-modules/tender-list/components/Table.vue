@@ -35,11 +35,13 @@
 
 <style scoped lang="scss">
   .tender-table {
+    min-width: 800px;
+
     &__head {
       padding: 16px 24px;
       border-radius: 8px;
       display: grid;
-      grid-template-columns: 64px 637px 296px;
+      grid-template-columns: minmax(60px, 5.5%) minmax(250px, 50%) minmax(200px, 25%) minmax(180px, 15%);
       gap: 20px;
       @apply tw-bg-base00;
     }
@@ -54,13 +56,19 @@
       border-radius: 8px;
       width: 100%;
       display: grid;
-      grid-template-columns: 64px 637px 296px 175px;
+      grid-template-columns: minmax(60px, 5.5%) minmax(250px, 50%) minmax(200px, 25%) minmax(180px, 15%);
       gap: 20px;
 
       & + & {
         border-top: 1px;
         border-style: solid;
         @apply tw-border-border00;
+      }
+    }
+
+    &__td, &__th {
+      @include sm {
+        @apply tw-text-sm;
       }
     }
 

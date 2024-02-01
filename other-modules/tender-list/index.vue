@@ -1,7 +1,9 @@
 <template>
   <div class="tender-table-block">
     <Toolbar class="tender-table-block__head" :count="count" />
-    <Table v-if="response" :items="response.data" />
+    <div class="scrol-area">
+      <Table v-if="response" :items="response.data" />
+    </div>
   </div>
 </template>
 
@@ -24,8 +26,20 @@
     border-radius: 16px;
     @apply tw-bg-white;
 
+    @include md {
+      padding: 24px;
+    }
+
+    @include sm {
+      padding: 16px;
+    }
+
     &__head {
       margin-bottom: 32px;
     }
+  }
+
+  .scrol-area {
+    overflow-y: hidden;
   }
 </style>
