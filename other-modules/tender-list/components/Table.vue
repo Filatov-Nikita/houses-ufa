@@ -4,6 +4,7 @@
       <div class="tender-table__th">№ п/п</div>
       <div class="tender-table__th">Номенклатура закупки</div>
       <div class="tender-table__th">Предмет закупки</div>
+      <div class="tender-table__th">Дата проведения</div>
     </div>
     <p class="tender-table__empty" v-if="items.length === 0">
       Нет записей
@@ -14,6 +15,12 @@
         <div class="tender-table__td">{{ item.nomenclature }}</div>
         <div class="tender-table__td">
           {{ item.object }}
+        </div>
+        <div class="tender-table__td">
+          <span v-if="item.tender_date">
+            {{ $formatDate(item.tender_date) }}
+          </span>
+          <span v-else>-</span>
         </div>
         <div class="tender-table__action">
           <BaseButton :to="item.url" target="_blank">
@@ -35,13 +42,13 @@
 
 <style scoped lang="scss">
   .tender-table {
-    min-width: 800px;
+    min-width: 900px;
 
     &__head {
       padding: 16px 24px;
       border-radius: 8px;
       display: grid;
-      grid-template-columns: minmax(60px, 5.5%) minmax(250px, 50%) minmax(200px, 25%) minmax(180px, 15%);
+      grid-template-columns: minmax(60px, 5.5%) minmax(240px, 40%) minmax(190px, 25%) minmax(100px, 10%) minmax(180px, 15%);
       gap: 20px;
       @apply tw-bg-base00;
     }
@@ -56,7 +63,7 @@
       border-radius: 8px;
       width: 100%;
       display: grid;
-      grid-template-columns: minmax(60px, 5.5%) minmax(250px, 50%) minmax(200px, 25%) minmax(180px, 15%);
+      grid-template-columns: minmax(60px, 5.5%) minmax(240px, 40%) minmax(190px, 25%) minmax(100px, 10%) minmax(180px, 15%);
       gap: 20px;
 
       & + & {

@@ -4,4 +4,5 @@ export interface TenderOne {
   number:       string;
   object:       string;
   url:          string;
+  tender_date:  string | null;
 }
