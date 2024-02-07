@@ -1,6 +1,6 @@
 <template>
-  <article class="faq-item" @click="showed = !showed">
-    <div class="faq-item__header">
+  <article class="faq-item">
+    <div class="faq-item__header" @click="showed = !showed">
       <h3 class="faq-item__title">{{ title }}</h3>
       <BtnsActionsBase class="faq-item__btn" :class="{ 'faq-item__btn--active': showed }" icon="forward" />
     </div>
@@ -21,12 +21,16 @@
   const showed = ref(false);
 </script>
 
+<style>
+  .faq-item__body a {
+    @apply tw-text-primary tw-underline;
+  }
+</style>
+
 <style scoped lang="scss">
   .faq-item {
     padding: 24px;
     border-radius: 16px;
-    cursor: pointer;
-    user-select: none;
     @apply tw-bg-white;
 
     @include md {
@@ -36,6 +40,8 @@
     &__header {
       display: flex;
       gap: 48px;
+      cursor: pointer;
+      user-select: none;
 
       @include md {
         gap: 16px;

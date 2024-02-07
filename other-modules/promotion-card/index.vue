@@ -18,9 +18,7 @@
   <div class="section" v-if="response">
     <div class="wrapper">
       <div class="promo-card">
-        <div class="promo-card__body">
-          {{ response.data.body }}
-        </div>
+        <div class="promo-card__body" v-html="response.data.body"></div>
         <div class="promo-card__files" v-if="response.data.files.length > 0">
           <FilePreview
             v-for="file in response.data.files"
@@ -68,6 +66,12 @@
     ],
   });
 </script>
+
+<style>
+  .promo-card__body a {
+    @apply tw-text-primary tw-underline;
+  }
+</style>
 
 <style scoped lang="scss">
   .promo-card {

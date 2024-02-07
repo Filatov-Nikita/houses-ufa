@@ -34,6 +34,12 @@
   defineProps<Props>();
 </script>
 
+<style>
+  .article-content__text a {
+    @apply tw-text-primary tw-underline;
+  }
+</style>
+
 <style scoped lang="scss">
   .article-content {
     @apply tw-bg-white tw-rounded-2xl tw-px-4 tw-py-6 lg:tw-p-6 xl:tw-p-10;
@@ -55,7 +61,6 @@
 
     &__text {
       white-space: pre-wrap;
-      @apply tw-grid tw-gap-4 lg:tw-gap-6;
     }
 
     &__source {
