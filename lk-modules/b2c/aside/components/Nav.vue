@@ -15,6 +15,11 @@
 <script setup lang="ts">
   const items = [
     {
+      label: 'Объекты',
+      icon: 'house',
+      to: '/lk/b2c/objects',
+    },
+    {
       label: 'Мои заявки',
       icon: 'read',
       to: '/lk/b2c/apps',
