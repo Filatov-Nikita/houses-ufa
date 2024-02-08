@@ -12,6 +12,10 @@
     layout: 'lk-client',
     middleware: ['auth'],
   });
+
+  useSeoMeta({
+    title: 'Мои объекты',
+  });
 </script>
 
 <style scoped lang="scss">

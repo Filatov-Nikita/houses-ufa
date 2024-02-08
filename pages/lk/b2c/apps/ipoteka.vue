@@ -9,4 +9,8 @@
     layout: 'lk-client',
     middleware: ['auth'],
   });
+
+  useSeoMeta({
+    title: 'Заявка на ипотеку',
+  });
 </script>

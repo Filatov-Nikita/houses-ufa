@@ -11,4 +11,8 @@
     layout: 'lk-client',
     middleware: ['auth'],
   });
+
+  useSeoMeta({
+    title: 'Мои заявки',
+  });
 </script>
