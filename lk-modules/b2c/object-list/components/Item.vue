@@ -82,7 +82,7 @@
         ],
         files: props.town.files,
         image: props.town.layout.feed_images[0]?.url ?? null,
-        fileBaseUrl: host + `crm/condominium/estates/${props.town.id}/`,
+        fileBaseUrl: host + `crm/town/estates/${props.town.id}/`,
       }
     } else if(props.place) {
       return {
