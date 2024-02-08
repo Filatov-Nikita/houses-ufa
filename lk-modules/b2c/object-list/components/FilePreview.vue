@@ -14,14 +14,14 @@
   import type { File } from '@/types/share';
 
   const props = defineProps<{
-    file: File
+    file: File,
+    fileBaseUrl: string,
   }>();
 
   const filesize = computed(() => (props.file.size_in_bytes / 1024).toFixed(0) + ' Кб');
 
-  const fileUrl = computed(() => `${useRuntimeConfig().public.baseURL}marketing/promotions/files/${props.file.id}`);
+  const fileUrl = computed(() => `${props.fileBaseUrl}files/${props.file.id}`);
 </script>
-
 <style scoped lang="scss">
   .file-preview {
     display: flex;

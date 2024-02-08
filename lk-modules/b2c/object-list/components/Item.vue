@@ -1,15 +1,15 @@
 <template>
   <div class="object-item">
     <div class="object-item-info">
-      <div class="object-item-info__img-wrap">
-        <img class="object-item-info__img" src="/images/banner.jpg" alt="">
+      <div v-if="info.image" class="object-item-info__img-wrap">
+        <img class="object-item-info__img" :src="info.image" alt="">
       </div>
       <div class="object-item-info__body">
         <p class="object-item-info__name">{{ info.name }}</p>
         <div class="object-item-info__section">
           <template v-for="(section, index) in info.sections">
             <p>{{ section }}</p>
-            <div v-if="index > info.sections.length" class="object-item-info__dot"></div>
+            <div v-if="index < info.sections.length - 1" class="object-item-info__dot"></div>
           </template>
         </div>
       </div>
@@ -27,7 +27,7 @@
             class="object-docs__file-item"
             v-for="file in info.files"
           >
-            <FilePreview :file="file" />
+            <FilePreview :file="file" :fileBaseUrl="info.fileBaseUrl" />
           </div>
         </div>
       </div>
@@ -60,6 +60,8 @@
   });
 
   const info = computed(() => {
+    const host = useRuntimeConfig().public.host;
+
     if(props.flat) {
       return {
         name: flatName.value,
@@ -69,6 +71,8 @@
           props.flat.complex.name,
         ],
         files: props.flat.files,
+        image: props.flat.plan_image_url,
+        fileBaseUrl: host + `crm/condominium/flats/${props.flat.id}/`,
       }
     } else if(props.town) {
       return {
@@ -77,6 +81,8 @@
           `${props.town.town.location}`,
         ],
         files: props.town.files,
+        image: props.town.layout.feed_images[0]?.url ?? null,
+        fileBaseUrl: host + `crm/condominium/estates/${props.town.id}/`,
       }
     } else if(props.place) {
       return {
@@ -85,6 +91,8 @@
           `${props.place.area_total} м²`,
         ],
         files: props.place.files,
+        image: null,
+        fileBaseUrl: host + `crm/condominium/pantries/${props.place.id}/`,
       }
     } else if(props.parking) {
       return {
@@ -93,6 +101,8 @@
           `${props.parking.area_total} м²`,
         ],
         files: props.parking.files,
+        image: null,
+        fileBaseUrl: host + `crm/condominium/lots/${props.parking.id}/`,
       }
     }
 
@@ -100,6 +110,8 @@
       name: '-',
       sections: [],
       files: [],
+      image: null,
+      fileBaseUrl: '',
     }
   });
 </script>

@@ -9,6 +9,15 @@ import * as Envybox from './scripts/envybox';
 import * as Marquiz from './scripts/marquiz';
 import * as Pixel from './scripts/pixel';
 
+function definePublicConfig() {
+  const host = 'https://adminsite.gkufa.ru/';
+  return {
+    host,
+    baseURL: host + 'api/lobby/',
+    rootApi: host + 'api/',
+  }
+}
+
 export default defineNuxtConfig({
   ssr: true,
   routeRules: {
@@ -79,10 +88,7 @@ export default defineNuxtConfig({
   // devtools: { enabled: true },
   modules: ['@pinia/nuxt', 'nuxt-swiper'],
   runtimeConfig: {
-    public: {
-      baseURL: 'https://adminsite.gkufa.ru/api/lobby/',
-      rootApi: 'https://adminsite.gkufa.ru/api/',
-    }
+    public: definePublicConfig(),
   },
   pinia: {
     autoImports: [

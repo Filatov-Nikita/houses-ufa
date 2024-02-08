@@ -105,6 +105,7 @@
     &__item {
       & + & {
         margin-top: 32px;
+        padding-top: 32px;
         border-top: 1px solid theme('colors.border00');
       }
     }
