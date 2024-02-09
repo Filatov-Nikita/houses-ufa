@@ -1,14 +1,16 @@
 import { useFavoriteStorage } from './storage';
+import { useEstateCounter } from './estate-counter';
 import { useFavoriteFlats } from './flats';
 import { useAuthStore } from '@/stores/auth';
 
-export function useFlatStorage(storage: ReturnType<typeof useFavoriteStorage>) {
+export function useFlatStorage(storage: ReturnType<typeof useFavoriteStorage>, estateCounter: ReturnType<typeof useEstateCounter>) {
   const authStore = useAuthStore();
   const flats = useFavoriteFlats();
 
   async function add(flatId: number) {
     if(authStore.isAuth) {
-      await flats.add(flatId)
+      await flats.add(flatId);
+      estateCounter.counter.value.flats++;
     } else {
       storage.addItem(createItem(flatId))
       storage.saveStorage();
@@ -17,7 +19,8 @@ export function useFlatStorage(storage: ReturnType<typeof useFavoriteStorage>) {
 
  async function remove(flatId: number) {
     if(authStore.isAuth) {
-      await flats.remove(flatId)
+      await flats.remove(flatId);
+      estateCounter.counter.value.flats--;
     } else {
       storage.removeItem(flatId, 'flats');
       storage.saveStorage();

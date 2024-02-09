@@ -1,14 +1,16 @@
 import { useFavoriteStorage } from './storage';
+import { useEstateCounter } from './estate-counter';
 import { useFavoriteTowns } from './towns';
 import { useAuthStore } from '@/stores/auth';
 
-export function useTownStorage(storage: ReturnType<typeof useFavoriteStorage>) {
+export function useTownStorage(storage: ReturnType<typeof useFavoriteStorage>, estateCounter: ReturnType<typeof useEstateCounter>) {
   const authStore = useAuthStore();
   const towns = useFavoriteTowns();
 
   async function add(townId: number) {
     if(authStore.isAuth) {
-      await towns.add(townId)
+      await towns.add(townId);
+      estateCounter.counter.value.estates++;
     } else {
       storage.addItem(createItem(townId))
       storage.saveStorage();
@@ -17,7 +19,8 @@ export function useTownStorage(storage: ReturnType<typeof useFavoriteStorage>) {
 
   async function remove(townId: number) {
     if(authStore.isAuth) {
-      await towns.remove(townId)
+      await towns.remove(townId);
+      estateCounter.counter.value.estates--;
     } else {
       storage.removeItem(townId, 'towns');
       storage.saveStorage();

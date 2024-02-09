@@ -1,14 +1,16 @@
 import { useFavoriteStorage } from './storage';
+import { useEstateCounter } from './estate-counter';
 import { useFavoriteParkings } from './parkings';
 import { useAuthStore } from '@/stores/auth';
 
-export function useParkingStorage(storage: ReturnType<typeof useFavoriteStorage>) {
+export function useParkingStorage(storage: ReturnType<typeof useFavoriteStorage>, estateCounter: ReturnType<typeof useEstateCounter>) {
   const authStore = useAuthStore();
   const parkings = useFavoriteParkings();
 
   async function add(parkingId: number) {
     if(authStore.isAuth) {
-      await parkings.add(parkingId)
+      await parkings.add(parkingId);
+      estateCounter.counter.value.lots++;
     } else {
       storage.addItem(createItem(parkingId))
       storage.saveStorage();
@@ -17,7 +19,8 @@ export function useParkingStorage(storage: ReturnType<typeof useFavoriteStorage>
 
   async function remove(parkingId: number) {
     if(authStore.isAuth) {
-      await parkings.remove(parkingId)
+      await parkings.remove(parkingId);
+      estateCounter.counter.value.lots--;
     } else {
       storage.removeItem(parkingId, 'parkings');
       storage.saveStorage();

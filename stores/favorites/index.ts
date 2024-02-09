@@ -1,4 +1,5 @@
 import { defineStore } from 'pinia';
+import { useEstateCounter } from './composables/estate-counter';
 import { useFlatStorage } from './composables/flat-storage';
 import { useTownStorage } from './composables/town-storage';
 import { usePlaceStorage } from './composables/place-storage';
@@ -6,11 +7,12 @@ import { useParkingStorage } from './composables/parking-storage';
 import { useFavoriteStorage } from './composables/storage';
 
 export const useFavoritesStore = defineStore('favoritesStore', () => {
+  const estateCounter = useEstateCounter();
   const storage = useFavoriteStorage();
-  const flatStorage = useFlatStorage(storage);
-  const townStorage = useTownStorage(storage);
-  const placeStorage = usePlaceStorage(storage);
-  const parkingStorage = useParkingStorage(storage);
+  const flatStorage = useFlatStorage(storage, estateCounter);
+  const townStorage = useTownStorage(storage, estateCounter);
+  const placeStorage = usePlaceStorage(storage, estateCounter);
+  const parkingStorage = useParkingStorage(storage, estateCounter);
 
   async function sync() {
     await Promise.all([
@@ -28,6 +30,7 @@ export const useFavoritesStore = defineStore('favoritesStore', () => {
     placeStorage,
     parkingStorage,
     storage,
+    estateCounter,
     sync,
   }
 });

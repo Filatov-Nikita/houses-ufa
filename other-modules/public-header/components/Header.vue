@@ -30,8 +30,11 @@
       <div class="public-header__btns">
         <NuxtLink class="action-btn" to="/favorites">
           <ClientOnly>
-            <span v-if="favStorageCount > 0" class="counter action-btn__count">
+            <span v-if="!auth.isAuth && favStorageCount > 0" class="counter action-btn__count">
               {{ favStorageCount }}
+            </span>
+            <span v-else-if="auth.isAuth && estateCounter.total > 0" class="counter action-btn__count">
+              {{ estateCounter.total }}
             </span>
           </ClientOnly>
           <BaseIcon class="action-btn__icon" name="heart" />
@@ -52,20 +55,17 @@
   import { useMenuStore } from '@/stores/menu';
   import { useContactsStore } from '@/stores/contacts';
   import { useAuthStore } from '@/stores/auth';
+  import { useFavCounter } from '../composables/useFavCounter';
   import { useRouter } from 'vue-router';
-  import { useFavoritesStore } from '@/stores/favorites';
 
   const store = usePublicHeader();
   const contacts = useContactsStore();
   const menu = useMenuStore();
   const auth = useAuthStore();
   const router = useRouter();
+  const { estateCounter, favStorageCount } = useFavCounter();
 
   const menuIcon = computed(() => store.showedNav ? 'close' : 'burger');
-
-  const fav = useFavoritesStore();
-
-  const favStorageCount = computed(() => fav.storage.activeItems.length);
 
   function tryShowLk() {
     if(auth.userType !== null) {
