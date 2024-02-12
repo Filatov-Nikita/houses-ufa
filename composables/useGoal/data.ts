@@ -6,4 +6,5 @@ export const data = {
   order_kvartira_zagorod: 318806328,
   order_cottage_taun: 318805146,
   order_city: 318803455,
+  aksiya_burger: 323540167,
 };

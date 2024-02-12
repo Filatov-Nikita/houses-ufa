@@ -45,6 +45,7 @@
   import { Form } from 'vee-validate';
   import { cleanPhone } from '@/helpers/index';
   import type { PromotionDetailed } from '@/types/promotions';
+  import { useGoal } from '@/composables/useGoal';
 
   const props = defineProps<{
     item: PromotionDetailed,
@@ -79,6 +80,7 @@
       emit('success');
       formRef.value.resetForm();
       notify.create({ type: 'success', message: 'Заявка успешно отправлена' });
+      useGoal('aksiya_burger').execute();
     }
   }
 </script>
