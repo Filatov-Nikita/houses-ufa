@@ -7,6 +7,7 @@ type TokenInfo = {
 
 const tokenName = 'token';
 const tokenTypeName = 'tokenType';
+const maxAge = 60 * 60 * 24 * 30;
 
 export function get(): TokenInfo | null {
   const token = useCookie('token');
@@ -19,8 +20,8 @@ export function get(): TokenInfo | null {
 }
 
 export function set(token: string, tokenType: UserType): void {
-  const _token = useCookie('token');
-  const _type = useCookie('type') as Ref<UserType | null>;
+  const _token = useCookie('token', { maxAge });
+  const _type = useCookie('type', { maxAge }) as Ref<UserType | null>;
   _token.value = token;
   _type.value = tokenType;
 }
