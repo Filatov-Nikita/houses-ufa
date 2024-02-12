@@ -129,6 +129,14 @@
   const townFilter = useTownsFilter();
   const mainFilter = useMainFilter();
 
+  function setFirstObjectDefault() {
+    if(mainFilter.objectList[0]) {
+      filterParams.params.object_id = mainFilter.objectList[0].id;
+    }
+  };
+
+  watch(() => mainFilter.objectList, setFirstObjectDefault, { immediate: true });
+
   const typeOpts = [
     { label: 'Квартиры в городе', value: 'flats' } as const,
     { label: 'Загородные квартиры', value: 'out-city-flats' } as const,
@@ -279,6 +287,14 @@
     return list.find(filter) ?? null;
   }
 </script>
+
+<style lang="scss">
+  .main-filter-params__input-obj {
+    .base-select-block__input {
+      border: 1px solid theme('colors.primary');
+    }
+  }
+</style>
 
 <style scoped lang="scss">
   .main-filter-params {
