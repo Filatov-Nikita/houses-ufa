@@ -40,6 +40,11 @@ export function useParams(globalParams: Params) {
   }
 
   const queryParams = computed<QueryParams>(() => {
+    const newParams = {
+      area_land_min: params.area_land_min ? params.area_land_min * 100 : null,
+      area_land_max: params.area_land_max ? params.area_land_max * 100 : null,
+    };
+
     return notNullable(Object.assign({
       area_cottage_min: globalParams.area_min,
       area_cottage_max: globalParams.area_max,
@@ -50,7 +55,7 @@ export function useParams(globalParams: Params) {
       town_id: globalParams.object_id,
       order_by_direction: globalParams.order_by_direction,
       order_by_field: globalParams.order_by_field,
-    }, params));
+    }, newParams));
   });
 
   function initParams(): TownParams {
