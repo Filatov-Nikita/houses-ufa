@@ -10,11 +10,14 @@
       :key="item.id"
       :title="item.question"
       :body="item.answer"
+      :files="item.files"
+      :id="item.id"
     />
   </div>
 </template>
 
 <script setup lang="ts">
+  import type { File } from '@/types/share';
   import Item from './Item.vue';
   import { useDataFetch } from '@/composables/useDataFetch';
   import { useFaq } from '../store';
@@ -44,6 +47,7 @@
       answer:   string;
       priority: number;
       question: string;
+      files:    File[];
   }
 </script>
 

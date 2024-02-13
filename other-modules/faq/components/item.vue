@@ -7,22 +7,39 @@
     <transition name="show">
       <div class="faq-item__body" v-if="showed">
         <p v-html="body"></p>
+        <div class="faq-item__files" v-if="files.length > 0">
+          <div
+            class="faq-item__file-item"
+            v-for="file in files"
+            :key="file.id"
+          >
+            <FilePreview
+              :file="file"
+              :qna-id="id"
+            />
+          </div>
+        </div>
       </div>
     </transition>
   </article>
 </template>
 
 <script setup lang="ts">
+  import type { File } from '@/types/share';
+  import FilePreview from './FilePreview.vue'
+
   defineProps<{
     title: string,
     body: string,
+    files: File[],
+    id: number,
   }>();
 
   const showed = ref(false);
 </script>
 
 <style>
-  .faq-item__body a {
+  .faq-item__body p a {
     @apply tw-text-primary tw-underline;
   }
 </style>
@@ -78,6 +95,21 @@
 
       @include md {
         padding-right: 8px;
+      }
+    }
+
+    &__files {
+      display: flex;
+      flex-wrap: wrap;
+      margin: 22px -8px -8px;
+    }
+
+    &__file-item {
+      width: calc(50% - 16px);
+      margin: 8px;
+
+      @include lg {
+        width: calc(100% - 16px);
       }
     }
   }
