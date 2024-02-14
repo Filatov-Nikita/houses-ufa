@@ -5,7 +5,7 @@
       <div class="estate-grid-item__text" v-html="item.text"></div>
     </div>
     <div class="estate-grid-item__bottom">
-      <BaseButton @click="showedMilav = !showedMilav">
+      <BaseButton :to="`/cottage-settlements/${item.objectId}`" target="_blank">
         Узнать подробности
       </BaseButton>
       <div class="estate-grid-item__badge" v-if="item.location">
@@ -14,7 +14,7 @@
       </div>
     </div>
     <img class="estate-grid-item__img" :src="item.image" alt="">
-    <Modal v-model:showed="showedMilav" />
+    <!-- <Modal v-model:showed="showedMilav" /> -->
   </div>
 </template>
 
@@ -40,25 +40,20 @@
 
     &__name {
       font-weight: 600;
-      margin-bottom: 20px;
-      font-size: 24px;
-      line-height: 32px;
+      margin-bottom: 16px;
+      font-size: 32px;
+      line-height: 1.375;
 
       @include sm {
         margin-bottom: 10px;
-        font-size: 18px;
-        line-height: 28px;
+        font-size: 24px;
       }
     }
 
     &__text {
-      font-size: 48px;
-      font-weight: 600;
-      line-height: 1.2;
-
-      @include sm {
-        font-size: 32px;
-      }
+      font-size: 18px;
+      font-weight: 400;
+      line-height: 1.5;
     }
 
     &__bottom {

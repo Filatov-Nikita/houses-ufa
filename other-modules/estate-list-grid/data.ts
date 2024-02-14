@@ -9,7 +9,7 @@ interface Estate {
 export const showedMilav = ref(false);
 export type Town = Estate & { type: 'town', objectId: number };
 export type Flat = Estate & { type: 'flat', is_in_city: boolean, objectId: number };
-export type Milav = Estate & { type: 'milav', text: string, };
+export type Milav = Estate & { type: 'milav', text: string, objectId: number };
 
 export type Item = Town | Flat | Milav;
 
@@ -82,11 +82,12 @@ export const data: Item[] = [
   },
   {
     type: 'milav',
-    name: 'Премьера 2024 г.<br />Новый посёлок «Миллаверде»',
-    text: 'Скоро старт<br />продаж',
+    name: 'Самая романтичная<br>премьера года',
+    text: 'Новый посёлок «Миллаверде»',
     image: '/images/home/objects/milav.jpg',
     location: 'с. Миловка',
     priceFrom: null,
     badge: null,
+    objectId: 6,
   },
 ];

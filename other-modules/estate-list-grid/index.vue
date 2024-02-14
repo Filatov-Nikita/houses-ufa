@@ -63,7 +63,7 @@
 
   const flatsInCity = computed(() => data.filter((item) => item.type === 'flat' && item.is_in_city));
   const flatsOutCity = computed(() => data.filter((item) => item.type === 'flat' && !item.is_in_city));
-  const towns = computed(() => data.filter((item) => item.type === 'town'));
+  const towns = computed(() => data.filter((item) => item.type === 'town' || item.type === 'milav'));
 </script>
 
 <style scoped lang="scss">
