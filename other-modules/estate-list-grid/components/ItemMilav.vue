@@ -5,9 +5,6 @@
       <div class="estate-grid-item__text" v-html="item.text"></div>
     </div>
     <div class="estate-grid-item__bottom">
-      <BaseButton :to="`/cottage-settlements/${item.objectId}`" target="_blank">
-        Узнать подробности
-      </BaseButton>
       <div class="estate-grid-item__badge" v-if="item.location">
         <BaseIcon class="estate-grid-item__badge-icon" name="geo" />
         <span>{{ item.location }}</span>
@@ -61,7 +58,7 @@
       display: flex;
       flex-wrap: wrap;
       align-items: flex-end;
-      justify-content: space-between;
+      justify-content: flex-end;
       row-gap: 15px;
       column-gap: 20px;
 
