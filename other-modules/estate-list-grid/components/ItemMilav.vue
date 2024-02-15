@@ -1,5 +1,5 @@
 <template>
-  <div class="estate-grid-item">
+  <NuxtLink class="estate-grid-item" :to="`/cottage-settlements/${item.objectId}`">
     <div>
       <div class="estate-grid-item__name" v-html="item.name"></div>
       <div class="estate-grid-item__text" v-html="item.text"></div>
@@ -11,8 +11,10 @@
       </div>
     </div>
     <img class="estate-grid-item__img" :src="item.image" alt="">
-    <!-- <Modal v-model:showed="showedMilav" /> -->
-  </div>
+    <div class="estate-grid-item__next">
+      <BaseIcon class="estate-grid-item__next-icon" name="forward-line" />
+    </div>
+  </NuxtLink>
 </template>
 
 <script setup lang="ts">
