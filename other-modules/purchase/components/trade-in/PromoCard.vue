@@ -1,6 +1,6 @@
 <template>
-  <div class="promo-grid">
-    <article class="purchase-promo-card promo-item promo-grid__item">
+  <div class="purchase-promo-grid">
+    <article class="purchase-promo-card promo-item purchase-promo-grid__item">
       <h2 class="purchase-promo-card__title">
         У вас есть
         <span class="purchase-promo-card__text-accent">недвижимость</span>,
@@ -9,14 +9,14 @@
       <p class="promo-item__body">
         Воспользуйтесь программой Трейд-ин от ГК «Жилой Квартал» и купите абсолютно любой объект от застройщика — квартиру, коттедж или таунхаус
       </p>
-      <div class="promo-item__action">
+      <div class="purchase-promo-card__action">
         <BaseButton to="/main-filter.vue">
           Смотреть объекты
         </BaseButton>
       </div>
     </article>
-    <div class="promo-img promo-grid__item">
-      <img class="promo-img__img" src="../../images/trade-in-promo.jpg" width="1005" height="582" alt="фото интерьера">
+    <div class="purchase-promo-img purchase-promo-grid__item">
+      <img class="purchase-promo-img__img" src="../../images/trade-in-promo.jpg" width="1005" height="582" alt="фото интерьера">
     </div>
   </div>
 </template>
@@ -26,40 +26,12 @@
 </script>
 
 <style scoped lang="scss">
-  .promo-grid {
-    display: flex;
-    flex-wrap: wrap;
-    margin: -10px;
-
-    &__item {
-      width: calc(50% - 20px);
-      margin: 10px;
-    }
-  }
-
-  .promo-img {
-    position: relative;
-    border-radius: 16px;
-    overflow: hidden;
-
-    &__img {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-  }
-
   .promo-item {
     &__body {
       margin-top: 24px;
       font-size: 16px;
       line-height: 1.75;
       @apply tw-text-text01;
-    }
-
-    &__action {
-      margin-top: 40px;
     }
   }
 </style>

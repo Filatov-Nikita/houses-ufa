@@ -26,6 +26,22 @@
     -webkit-text-stroke: 1px #4FBA78;
     -webkit-text-fill-color: transparent;
   }
+
+  &__body {
+    margin-top: 24px;
+    font-size: 16px;
+    line-height: 1.75;
+  }
+
+  &__bottom {
+    margin-top: 24px;
+  }
+
+  &__link {
+    font-size: 16px;
+    font-size: 16px;
+    @apply tw-text-primary;
+  }
 }
 
 .purchase-promo-card {
@@ -38,12 +54,59 @@
     line-height: 1.375;
   }
 
-  &__body {
-    font-size: 16px;
-    line-height: 1.75;
-  }
-
   &__text-accent {
     @apply tw-text-primary;
+  }
+
+  &__action {
+    margin-top: 40px;
+  }
+}
+
+.purchase-info {
+  .page-info__decor {
+    path {
+      fill: #4FBA78 !important;
+    }
+  }
+
+  .page-info__icon {
+    fill: #6AD091 !important;
+    opacity: 1 !important;
+  }
+}
+
+.purchase-promo-img {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+
+  &__img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.purchase-promo-grid {
+  display: flex;
+  flex-wrap: wrap;
+  margin: -10px;
+
+  &__item {
+    width: calc(50% - 20px);
+    margin: 10px;
+  }
+}
+
+.purchase-step-items {
+  display: flex;
+  flex-wrap: wrap;
+  margin: -10px;
+
+  &__item {
+    margin: 10px;
+    width: calc(100% / 12 * 4 - 20px);
   }
 }

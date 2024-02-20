@@ -1,7 +1,7 @@
 <template>
-  <div class="step-items">
+  <div class="purchase-step-items">
     <article
-      class="purchase-card-item step-item step-items__item"
+      class="purchase-card-item purchase-step-items__item"
       v-for="(item, index) in items"
     >
       <div class="purchase-card-item__top">
@@ -10,11 +10,11 @@
         </div>
         <span class="purchase-card-item__number">0{{ index + 1 }}</span>
       </div>
-      <div class="step-item__body">
+      <div class="purchase-card-item__body">
         <p>{{ item.body }}</p>
       </div>
-      <div class="step-item__bottom" v-if="item.link">
-        <NuxtLink class="step-item__link" :to="item.link.to">
+      <div class="purchase-card-item__bottom" v-if="item.link">
+        <NuxtLink class="purchase-card-item__link" :to="item.link.to">
           {{ item.link.label }}
         </NuxtLink>
       </div>
@@ -46,34 +46,3 @@
     },
   ];
 </script>
-
-<style scoped lang="scss">
-  .step-item {
-    &__body {
-      margin-top: 24px;
-      font-size: 16px;
-      line-height: 1.75;
-    }
-
-    &__bottom {
-      margin-top: 24px;
-    }
-
-    &__link {
-      font-size: 16px;
-      font-size: 16px;
-      @apply tw-text-primary;
-    }
-  }
-
-  .step-items {
-    display: flex;
-    flex-wrap: wrap;
-    margin: -10px;
-
-    &__item {
-      margin: 10px;
-      width: calc(100% / 12 * 4 - 20px);
-    }
-  }
-</style>
