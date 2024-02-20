@@ -11,7 +11,7 @@
         <p v-html="items[0].body"></p>
       </div>
       <div class="purchase-card-item__bottom">
-        <button class="purchase-card-item__link">
+        <button class="purchase-card-item__link" @click="showForm">
           Заполнить форму
         </button>
       </div>
@@ -50,6 +50,7 @@
 </template>
 
 <script setup lang="ts">
+  import { usePublicHeader } from '@/other-modules/public-header/store';
   const items = [
     {
       body: 'Заполните форму обратного звонка<br>на нашем сайте',
@@ -64,6 +65,10 @@
       icon: 'info',
     },
   ];
+
+  function showForm() {
+    usePublicHeader().toggleForm();
+  }
 </script>
 
 <style scoped lang="scss">
