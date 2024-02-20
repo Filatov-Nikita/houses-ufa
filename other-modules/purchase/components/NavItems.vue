@@ -50,7 +50,7 @@
     },
     {
       name: 'Трейд-ин',
-      to: '/ipoteka',
+      to: '/purchase/trade-in',
       icon: iconKeys,
     },
     {
