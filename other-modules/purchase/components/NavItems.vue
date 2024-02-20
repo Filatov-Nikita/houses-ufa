@@ -55,7 +55,7 @@
     },
     {
       name: 'Материнский капитал',
-      to: '/ipoteka',
+      to: '/purchase/mat-capital',
       icon: iconBaby,
     },
     {
