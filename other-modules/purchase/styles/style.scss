@@ -1,6 +1,9 @@
 .purchase-card-item {
   border-radius: 16px;
   padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
   @apply tw-bg-base01;
 
   &__top {
@@ -28,13 +31,12 @@
   }
 
   &__body {
-    margin-top: 24px;
     font-size: 16px;
     line-height: 1.75;
   }
 
   &__bottom {
-    margin-top: 24px;
+    margin-top: auto;
   }
 
   &__link {

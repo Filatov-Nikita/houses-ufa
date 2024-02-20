@@ -60,7 +60,7 @@
     },
     {
       name: 'Программа лояльности',
-      to: '/ipoteka',
+      to: '/purchase/discont',
       icon: iconRub,
     },
   ];

@@ -2,7 +2,7 @@
   <div class="page-info">
     <div class="page-info__left">
       <BaseBreadcrumbs class="page-info__bread" />
-      <h1 class="page-info__title">{{ title }}</h1>
+      <h1 class="page-info__title" v-html="title"></h1>
       <slot name="text" v-if="$slots.text" />
       <p v-else-if="text" class="page-info__text" v-html="text"></p>
     </div>
