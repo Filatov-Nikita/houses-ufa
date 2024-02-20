@@ -27,12 +27,18 @@
       <StepItems />
     </div>
   </section>
+  <section class="section">
+    <div class="wrapper">
+      <QuestionForm />
+    </div>
+  </section>
 </template>
 
 <script setup lang="ts">
 import { useBreadcrumbsStore } from '@/stores/breadcrumbs';
 import StepItems from '@/other-modules/purchase/components/discont/StepItems.vue';
 import PromoCard from '@/other-modules/purchase/components/discont/PromoCard.vue';
+import QuestionForm from '@/other-modules/question-form/index.vue';
 
 const bread = useBreadcrumbsStore();
 
