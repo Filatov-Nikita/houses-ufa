@@ -2,6 +2,7 @@
   <div class="section">
     <div class="wrapper">
       <PageInfo
+        class="purchase-info"
         title="Ипотека"
         text="Настройте ипотеку сами. Выберите свой льготный период с&nbsp;пониженной ставкой. Чем меньше срок — тем ниже процент"
       >
@@ -13,6 +14,14 @@
       </PageInfo>
     </div>
   </div>
+  <section class="section">
+    <div class="wrapper">
+      <h2 class="section__title section__top">
+        Условия для оформления ипотеки:
+      </h2>
+      <StepItems />
+    </div>
+  </section>
   <section class="section">
     <div class="wrapper">
       <div class="section__top">
@@ -37,6 +46,7 @@
   import CreditCalc from '@/other-modules/credit-program-calc/index.vue';
   import QuestionForm from '@/other-modules/question-form/index.vue';
   import CreditList from '@/other-modules/credit-list/index.vue';
+  import StepItems from '@/other-modules/purchase/components/ipoteka/StepItems.vue';
   import { useBreadcrumbsStore } from '@/stores/breadcrumbs';
   import { data } from '@/seo/pages/ipoteka';
 
@@ -53,3 +63,5 @@
   ],
 });
 </script>
+
+<style lang="scss" src="@/other-modules/purchase/styles/style.scss"></style>
