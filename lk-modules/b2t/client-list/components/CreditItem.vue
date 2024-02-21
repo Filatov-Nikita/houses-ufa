@@ -11,7 +11,7 @@
       <div class="info-block__right">
         <p class="info-block__caption">
           <BaseIcon class="info-block__caption-icon" name="clock" color="tw-fill-primary" />
-          <span>{{ item.status.title }}</span>
+          <span>{{ item.crm3_status?.name ?? item.status.title }}</span>
         </p>
       </div>
     </div>

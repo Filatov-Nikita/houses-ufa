@@ -1,7 +1,6 @@
 import type { Flat } from '@/types/estate/flat';
 import type { Town } from '@/types/estate/town';
 import type { Offer } from '@/types/credit';
-import type { Image } from '@/types/share';
 
 export type ClientResponse = {
   data: Array<Data & ObjectResponse>;
@@ -25,6 +24,7 @@ export interface Booking {
   created_at:  string;
   object_type: string;
   status:      Status;
+  crm3_status: Crm3Status | null;
 }
 
 export interface CreditItem {
@@ -35,12 +35,18 @@ export interface CreditItem {
   object_type:          string;
   period_in_years:      number;
   status:               Status;
+  crm3_status:          Crm3Status | null;
   offers:               Offer[];
 }
 
 export interface Status {
   title: string;
   value: string;
+}
+
+export interface Crm3Status {
+  uuid: string;
+  name: string;
 }
 
 export interface Passport {
