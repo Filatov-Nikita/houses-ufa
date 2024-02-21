@@ -59,6 +59,27 @@ export function useNavMenu(sectionList: ComputedRef<Sections>) {
         },
       ],
     },
+    purchase: {
+      label: 'Как купить',
+      links: [
+        {
+          label: 'Ипотека',
+          to: '/ipoteka',
+        },
+        {
+          label: 'Трейд-ин',
+          to: '/purchase/trade-in',
+        },
+        {
+          label: 'Материнский капитал',
+          to: '/purchase/mat-capital',
+        },
+        {
+          label: 'Программа лояльности',
+          to: '/purchase/discont',
+        },
+      ],
+    },
   });
 
   const items = computed<Sections>(() => {
