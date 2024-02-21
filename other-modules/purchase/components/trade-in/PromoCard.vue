@@ -10,7 +10,7 @@
         Воспользуйтесь программой Трейд-ин от ГК «Жилой Квартал» и купите абсолютно любой объект от застройщика — квартиру, коттедж или таунхаус
       </p>
       <div class="purchase-promo-card__action">
-        <BaseButton to="/main-filter.vue">
+        <BaseButton to="/main-filter">
           Смотреть объекты
         </BaseButton>
       </div>
