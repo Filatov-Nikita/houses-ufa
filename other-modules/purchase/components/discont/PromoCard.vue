@@ -29,10 +29,20 @@
       font-size: 18px;
       line-height: 1.5;
       @apply tw-text-text01;
+
+      @include sm {
+        margin-top: 16px;
+        font-size: 16px;
+        line-height: 1.75;
+      }
     }
 
     &__profit {
       margin-top: 40px;
+
+      @include sm {
+        margin-top: 24px;
+      }
     }
   }
 
@@ -40,6 +50,10 @@
     padding: 24px;
     border-radius: 16px;
     @apply tw-bg-white;
+
+    @include sm {
+      padding: 16px;
+    }
 
     &__title {
       font-size: 16px;
@@ -53,6 +67,11 @@
       font-size: 48px;
       line-height: 1.1;
       @apply tw-text-primary tw-font-freesetdemi;
+
+      @include sm {
+        font-size: 32px;
+        line-height: 1.375;
+      }
     }
   }
 </style>

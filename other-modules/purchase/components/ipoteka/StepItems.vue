@@ -1,6 +1,6 @@
 <template>
   <div class="purchase-step-items">
-    <article class="purchase-card-item purchase-step-items__item">
+    <article class="purchase-card-item bank-item">
       <div class="purchase-card-item__top">
         <div class="purchase-card-item__icon-wrap">
           <BaseIcon fit :name="items[0].icon" />
@@ -28,7 +28,7 @@
         </span>
       </div>
     </article>
-    <article class="purchase-card-item purchase-step-items__item">
+    <article class="purchase-card-item bank-item">
       <div class="purchase-card-item__top">
         <div class="purchase-card-item__icon-wrap">
           <BaseIcon fit :name="items[1].icon" />
@@ -39,7 +39,7 @@
         <p>{{ items[1].body }}</p>
       </div>
     </article>
-    <article class="purchase-card-item purchase-step-items__item">
+    <article class="purchase-card-item bank-item">
       <div class="purchase-card-item__top">
         <div class="purchase-card-item__icon-wrap">
           <BaseIcon fit :name="items[2].icon" />
@@ -86,6 +86,15 @@
       img {
         width: 100%;
       }
+    }
+  }
+
+  .bank-item {
+    margin: 10px;
+    width: calc(100% / 12 * 4 - 20px);
+
+    @include md {
+      width: calc(100% - 20px);
     }
   }
 </style>
