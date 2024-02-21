@@ -32,6 +32,11 @@
       font-size: 16px;
       line-height: 1.75;
       @apply tw-text-text01;
+
+      @include sm {
+        margin-top: 8px;
+        font-size: 14px;
+      }
     }
   }
 </style>
