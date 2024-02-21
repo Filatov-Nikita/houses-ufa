@@ -80,8 +80,19 @@
   .purchase-nav-item {
     &__icon {
       opacity: 0.1;
+
+      @include sm {
+        width: 48px;
+        height: 48px;
+      }
+
       svg {
         fill: #4F4F4F;
+
+        @include sm {
+          width: 100% !important;
+          height: 100% !important;
+        }
       }
     }
 
@@ -99,6 +110,11 @@
       right: 0;
       bottom: 0;
       z-index: 0;
+
+      @include sm {
+        width: 225px;
+        height: 100px;
+      }
 
       svg {
         width: 100%;
@@ -126,8 +142,16 @@
 
     &__item {
       margin: 10px;
-      height: 212px;
+      min-height: 212px;
       width: calc(50% - 20px);
+
+      @include md {
+        width: calc(100% - 20px);
+      }
+
+      @include sm {
+        min-height: auto;
+      }
     }
   }
 
@@ -135,10 +159,14 @@
     position: relative;
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: 24px;
     border-radius: 8px;
     padding: 24px;
     @apply tw-bg-base01 tw-text-text00;
+
+    @include sm {
+      padding: 16px;
+    }
 
     &:hover {
       @apply tw-bg-primary tw-text-white;
@@ -150,6 +178,11 @@
       margin-top: auto;
       font-size: 32px;
       line-height: 1.375;
+
+      @include sm {
+        font-size: 20px;
+        line-height: 1.6;
+      }
     }
   }
 </style>
