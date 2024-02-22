@@ -6,6 +6,7 @@
     :images="flat.plan_image_url"
     :name="name"
     :params="params"
+    :badges="flat.badges"
   >
     <template #actions>
       <BtnsActionsMenu theme="white" />

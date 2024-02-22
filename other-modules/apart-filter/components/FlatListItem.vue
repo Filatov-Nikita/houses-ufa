@@ -13,6 +13,20 @@
         <p>{{ literLabel }}</p>
       </div>
       <p class="flat-list-item__house">{{ complexName }}</p>
+      <div class="flat-list-item__btns">
+        <button class="flat-list-item__order">Забронировать</button>
+        <button class="flat-list-item__action">
+          <BaseIcon name="heart" />
+        </button>
+      </div>
+    </div>
+    <div class="flat-list-item__badges">
+      <EstateBadgesPromo
+        class="flat-list-item__badge"
+        v-for="badge in flat.badges"
+        :key="badge.id"
+        :badge="badge"
+      />
     </div>
     <div class="flat-list-item__info2">
       <p class="flat-list-item__price">{{ priceLabel }}</p>
@@ -22,12 +36,6 @@
       <p class="flat-list-item__credit">
         Первоначальный взнос — <span>от {{ initialPay }}</span>
       </p>
-      <div class="flat-list-item__btns">
-        <button class="flat-list-item__order">Забронировать</button>
-        <button class="flat-list-item__action">
-          <BaseIcon name="heart" />
-        </button>
-      </div>
     </div>
   </NuxtLink>
 </template>
@@ -60,7 +68,7 @@
 <style scoped lang="scss">
   .flat-list-item {
     display: grid;
-    grid-template-columns: 152px 1fr 1fr;
+    grid-template-columns: 152px 1fr 1fr 1fr;
     column-gap: 32px;
     row-gap: 16px;
 
@@ -231,6 +239,14 @@
 
     &__name, &__price {
       margin-bottom: 8px;
+    }
+
+    &__badges {}
+
+    &__badge {
+      & + & {
+        margin-top: 8px;
+      }
     }
   }
 </style>

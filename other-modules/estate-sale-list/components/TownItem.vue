@@ -6,6 +6,7 @@
     :images="images"
     :name="name"
     :params="params"
+    :badges="town.badges"
   >
     <EstateCardsBlocksParamsInfo
       hideBadges
