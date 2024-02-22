@@ -1,5 +1,13 @@
 <template>
   <div v-if="data" class="town-info">
+    <div class="town-info__promo-badges" v-if="data.badges.length > 0">
+      <EstateBadgesPromo
+        class="town-info__promo-badge"
+        v-for="badge in data.badges"
+        :key="badge.id"
+        :badge="badge"
+      />
+    </div>
     <div class="town-info__badges">
       <div class="town-info__badge">{{ statusLabel[data.status] }}</div>
     </div>
@@ -198,6 +206,16 @@
     &__credit {
       margin-top: 8px;
       @apply tw-text-text02 tw-text-base;
+    }
+
+    &__promo-badges {
+      margin-bottom: 16px;
+    }
+
+    &__promo-badge {
+      & + & {
+        margin-top: 8px;
+      }
     }
   }
 

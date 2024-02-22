@@ -1,5 +1,13 @@
 <template>
   <div class="flat-info" v-if="data">
+    <div class="flat-info__promo-badges" v-if="data.badges.length > 0">
+      <EstateBadgesPromo
+        class="flat-info__promo-badge"
+        v-for="badge in data.badges"
+        :key="badge.id"
+        :badge="badge"
+      />
+    </div>
     <div class="flat-info__name">
       <h1>{{ title }}</h1>
       <p class="flat-info__subtitle">{{ subtitle }}</p>
@@ -199,6 +207,16 @@
     &__credit {
       margin-top: 8px;
       @apply tw-text-text02 tw-text-base;
+    }
+
+    &__promo-badges {
+      margin-bottom: 16px;
+    }
+
+    &__promo-badge {
+      & + & {
+        margin-top: 8px;
+      }
     }
   }
 

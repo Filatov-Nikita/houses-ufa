@@ -1,6 +1,7 @@
 import { defineStore } from 'pinia';
 import { useDataFetch } from '@/composables/useDataFetch';
 import type { RoomFactor } from '@/types/estate/flat';
+import type { Badge } from '@/types/estate/badges';
 
 export const useFlatCard = defineStore('flatCard', () => {
   const flatId = ref<number | null>(null);
@@ -47,6 +48,7 @@ export interface Flat {
   house:                    House;
   is_in_favorite:           boolean;
   flat_on_floor_plan_image_url: string | null;
+  badges:                   Badge[],
 }
 
 export interface Complex {

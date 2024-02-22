@@ -1,5 +1,6 @@
 import { defineStore } from 'pinia';
 import { useDataFetch } from '@/composables/useDataFetch';
+import type { Badge } from '@/types/estate/badges';
 
 export const useTownCard = defineStore('townCard', () => {
   const townId = ref<number | null>(null);
@@ -60,6 +61,7 @@ export interface Data {
   layout:    Layout;
   town:      Town;
   is_in_favorite: boolean;
+  badges:    Badge[];
 }
 
 export interface Layout {
