@@ -1,3 +1,5 @@
+import type { Badge } from '@/types/estate/badges';
+
 export interface Town {
   id:               number;
   area_land:        string;
@@ -7,6 +9,7 @@ export interface Town {
   layout:           Layout;
   town:             TownClass;
   is_in_favorite:   boolean,
+  badges:           Badge[],
 }
 
 export interface TownClass {

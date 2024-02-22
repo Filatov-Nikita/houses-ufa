@@ -4,6 +4,7 @@
     :params="params"
     :images="flat.plan_image_url"
     :to="to"
+    :badges="flat.badges"
   >
     <template #actions>
       <ClientOnly>

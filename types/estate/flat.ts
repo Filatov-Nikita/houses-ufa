@@ -1,3 +1,5 @@
+import type { Badge } from '@/types/estate/badges';
+
 export interface Flat {
   id:                       number;
   area_total:               string;
@@ -13,7 +15,8 @@ export interface Flat {
   complex:                  Complex;
   house:                    House;
   room_factor:              RoomFactor;
-  is_in_favorite:              boolean | null,
+  is_in_favorite:           boolean | null,
+  badges:                   Badge[],
 }
 
 export interface Complex {

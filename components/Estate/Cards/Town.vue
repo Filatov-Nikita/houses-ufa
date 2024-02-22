@@ -4,6 +4,7 @@
     :params="params"
     :images="images"
     :to="to"
+    :badges="town.badges"
   >
     <template #actions>
       <ClientOnly>

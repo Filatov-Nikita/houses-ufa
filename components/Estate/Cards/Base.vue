@@ -17,12 +17,21 @@
     </div>
     <EstateCardsImages :theme="theme" :images="images" />
     <slot />
+    <div v-if="badges && badges.length > 0" class="estate-card__badges">
+      <EstateBadgesPromo
+        class="estate-card__badge"
+        v-for="badge in badges"
+        :key="badge.id"
+        :badge="badge"
+      />
+    </div>
   </component>
 </template>
 
 <script setup lang="ts">
   import { NuxtLink } from '#components';
   import type { RouteLocationRaw } from 'vue-router';
+  import type { Badge } from '@/types/estate/badges';
 
   interface Props {
     theme?: 'white' | 'gray',
@@ -31,6 +40,7 @@
     images: string | string[],
     tag?: string,
     to?: RouteLocationRaw,
+    badges?: Badge[],
   }
 
   withDefaults(defineProps<Props>(), {
@@ -96,6 +106,16 @@
       flex-shrink: 0;
       display: flex;
       gap: 8px;
+    }
+
+    &__badges {
+      margin-top: 16px;
+    }
+
+    &__badge {
+      & + & {
+        margin-top: 8px;
+      }
     }
   }
 </style>
