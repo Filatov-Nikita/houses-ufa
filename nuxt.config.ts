@@ -73,6 +73,9 @@ export default defineNuxtConfig({
         noscript: [
           {
             innerHTML: YandexMetric.noscript
+          },
+          {
+            innerHTML: Pixel.noscript
           }
         ],
         link: [
