@@ -29,7 +29,12 @@
       />
     </div>
     <div class="flat-list-item__info2">
-      <p class="flat-list-item__price">{{ priceLabel }}</p>
+      <div class="flat-list-item__price-wrap">
+        <p class="flat-list-item__old-price" v-if="flat.price_promo">
+          {{ amount(flat.price_promo) }}
+        </p>
+        <p class="flat-list-item__price">{{ priceLabel }}</p>
+      </div>
       <p class="flat-list-item__credit">
         В ипотеку — <span>от {{ monthPay }}</span>
       </p>
@@ -208,6 +213,18 @@
       }
     }
 
+    &__price-wrap {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 8px;
+    }
+
+    &__old-price {
+      @apply tw-text-text02 tw-text-sm tw-line-through;
+    }
+
     &__price {
       @apply tw-text-text00 tw-text-xl;
     }
@@ -237,7 +254,7 @@
       gap: 8px;
     }
 
-    &__name, &__price {
+    &__name, &__price-wrap {
       margin-bottom: 8px;
     }
 

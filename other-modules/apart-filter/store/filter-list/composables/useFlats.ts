@@ -67,6 +67,7 @@ export interface Flat {
   number_of_rooms:          number;
   plan_image_url:           string;
   price_total:              string;
+  price_promo:              string | null;
   status:                   string;
   complex:                  Complex;
   entrance:                 Entrance;
