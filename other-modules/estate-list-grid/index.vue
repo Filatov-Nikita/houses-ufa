@@ -7,26 +7,18 @@
       <div class="estate-list-block__filter">
         <BaseTabsGroup v-model="filter">
           <BaseTabsGroupItem name="all">Все</BaseTabsGroupItem>
-          <BaseTabsGroupItem name="flats_in_city">Квартиры в Уфе</BaseTabsGroupItem>
-          <BaseTabsGroupItem name="flats_out_city">Квартиры в Уфимском районе</BaseTabsGroupItem>
-          <BaseTabsGroupItem name="towns">Коттеджи и таунхаусы</BaseTabsGroupItem>
+          <BaseTabsGroupItem name="flats_in_ufa_city">Квартиры в Уфе</BaseTabsGroupItem>
+          <BaseTabsGroupItem name="flats_in_ufa_district">Квартиры в Уфимском районе</BaseTabsGroupItem>
+          <BaseTabsGroupItem name="cottages_and_townhouses">Коттеджи и таунхаусы</BaseTabsGroupItem>
         </BaseTabsGroup>
       </div>
       <div class="estate-list-grid">
-        <template v-for="(item, index) in items">
-          <ItemMilav
-            v-if="item.type === 'milav'"
-            key="milav"
-            :class="itemClasses[index]"
-            :item="item"
-          />
-          <Item
-            v-else
-            :key="`${item.type}${item.objectId}`"
-            :class="itemClasses[index]"
-            :item="item"
-          />
-        </template>
+        <Item
+          v-for="(item, index) in items"
+          :key="item.id"
+          :class="currentItemClass(index)"
+          :item="item"
+        />
       </div>
     </div>
   </section>
@@ -34,8 +26,7 @@
 
 <script setup lang="ts">
   import Item from './components/Item.vue';
-  import ItemMilav from './components/ItemMilav.vue';
-  import { data } from './data';
+  import type { PosterItem } from './types';
 
   type Types = 'all' | 'flats_in_city' | 'flats_out_city' | 'towns';
 
@@ -52,18 +43,18 @@
     'estate-list-grid__item-l3-i3',
   ];
 
-  const items = computed(() => {
-    switch(filter.value) {
-      case 'all': return data;
-      case 'flats_in_city': return flatsInCity.value;
-      case 'flats_out_city': return flatsOutCity.value;
-      case 'towns': return towns.value;
-    }
-  });
+  function currentItemClass(ind: number) {
+    return itemClasses[ind % itemClasses.length];
+  }
 
-  const flatsInCity = computed(() => data.filter((item) => item.type === 'flat' && item.is_in_city));
-  const flatsOutCity = computed(() => data.filter((item) => item.type === 'flat' && !item.is_in_city));
-  const towns = computed(() => data.filter((item) => item.type === 'town' || item.type === 'milav'));
+  const { data: response } = await useDataFetch<{ data: PosterItem[] }>('/marketing/posters');
+
+  const data = computed(() => response.value?.data ?? []);
+
+  const items = computed(() => {
+    if(filter.value === 'all') return data.value;
+    return data.value.filter(item => item.type === filter.value);
+  });
 </script>
 
 <style scoped lang="scss">

@@ -1,21 +1,29 @@
 <template>
-  <NuxtLink class="estate-grid-item" :to="to">
+  <NuxtLink class="estate-grid-item" :to="to" target="_blank">
     <div>
-      <div class="estate-grid-item__name">{{ item.name }}</div>
-      <div class="estate-grid-item__price" v-if="item.priceFrom">
-        от {{ $amount(item.priceFrom) }}
+      <div class="estate-grid-item__name">{{ item.title }}</div>
+      <div class="estate-grid-item__price" v-if="item.subtitle">
+        {{ item.subtitle }}
       </div>
     </div>
     <div class="estate-grid-item__bottom">
-      <div class="estate-grid-item__location" v-if="item.badge">
-        {{ item.badge }}
+      <div class="estate-grid-item__location" v-if="item.marketing_tag">
+        {{ item.marketing_tag }}
       </div>
-      <div class="estate-grid-item__badge" v-if="item.location">
+      <div class="estate-grid-item__badge" v-if="item.location_tag">
         <BaseIcon class="estate-grid-item__badge-icon" name="geo" />
-        <span>{{ item.location }}</span>
+        <span>{{ item.location_tag }}</span>
       </div>
     </div>
-    <img class="estate-grid-item__img" :src="item.image" alt="">
+    <img
+      class="estate-grid-item__img"
+      v-if="item.image"
+      :width="item.image.width ?? 0"
+      :height="item.image.height ?? 0"
+      :src="item.image.url"
+      :alt="item.title"
+      loading="lazy"
+    >
     <div class="estate-grid-item__next">
       <BaseIcon class="estate-grid-item__next-icon" name="forward-line" />
     </div>
@@ -23,15 +31,14 @@
 </template>
 
 <script setup lang="ts">
-  import type { Flat, Town } from '../data';
+  import type { PosterItem } from '../types';
 
   const props = defineProps<{
-    item: Flat | Town,
+    item: PosterItem,
   }>();
 
   const to = computed(() => {
-    let path = props.item.type === 'flat' ? `/complexes/` : '/cottage-settlements/';
-    return path + props.item.objectId;
+    return props.item.url;
   });
 </script>
 
