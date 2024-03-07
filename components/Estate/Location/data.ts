@@ -36,4 +36,8 @@ export const data: Record<string, Item> = {
     color: '#F255A4',
     icon: 'placemarks-beauty',
   },
+  other: {
+    color: '#4C7CC5',
+    icon: 'placemarks-other',
+  },
 };
