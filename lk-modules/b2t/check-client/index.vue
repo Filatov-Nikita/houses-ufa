@@ -79,6 +79,13 @@
             :model-value="currentRel"
             @update:model-value="updateRel"
           />
+          <BaseInput
+            class="check-client-form__comment-input"
+            label="Комментарий"
+            name="comment"
+            placeholder="Текст комментария"
+            v-model="store.form.comment"
+          />
           <p
             v-if="clientMsg.text"
             class="check-client-form__msg"
@@ -186,6 +193,7 @@
         consumer_phone: cleanPhone(store.form.consumer_phone),
         object_id: props.id,
         object_type: props.type,
+        comment: store.form.comment !== '' ? store.form.comment : undefined
       });
 
       if(res.status === 200) {
@@ -313,6 +321,11 @@
       @include sm {
         width: calc(100% - 20px);
       }
+    }
+
+    &__comment-input {
+      width: 100%;
+      margin-top: 20px;
     }
 
     &__msg {

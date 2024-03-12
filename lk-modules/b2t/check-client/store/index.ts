@@ -11,6 +11,7 @@ interface Body {
   object_id: number,
   object_type: 'estate' | 'flat',
   relationship_type: RelTypes,
+  comment?: string,
 }
 
 export const useCheckClient = defineStore('b2tCheckClient', () => {
@@ -18,13 +19,14 @@ export const useCheckClient = defineStore('b2tCheckClient', () => {
 
   const form = reactive(init());
 
-  function init() {
+  function init(): Omit<Body, 'object_id' | 'object_type'> {
     return {
       backup_full_name: '',
       backup_phone: '',
       consumer_full_name: '',
       consumer_phone: '',
       relationship_type: 'sibling' as RelTypes,
+      comment: '',
     }
   }
 
