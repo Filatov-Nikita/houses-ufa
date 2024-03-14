@@ -1,5 +1,5 @@
 <template>
-  <div class="main-filter-params">
+  <div class="filter-params">
     <BaseTabsGroup class="toolbar__group" :model-value="_layout_type" @update:model-value="setLayout($event as any)">
       <BaseTabsGroupItem class="toolbar__tab" name="all" theme="gray">
         Все
@@ -11,31 +11,34 @@
         Таунхаусы
       </BaseTabsGroupItem>
     </BaseTabsGroup>
-    <BaseSelect
-      class="main-filter-params__input-obj"
-      name="objects"
-      label="Посёлки"
-      v-bind="objectListProps"
-      :model-value="currentObjectOpt"
-      @update:modelValue="updateObject"
-    />
-    <EstateSquareFilter
-      :options="squareOpts"
-      v-model:from-val="area_land_min"
-      v-model:to-val="area_land_max"
-    />
-    <BaseRange
-      class="main-filter-params__input-floors"
-      theme="gray"
-      :min="1"
-      :max="4"
-      name='floors'
-      label='Этажность'
-      input-witdh="55px"
-      :model-value="storey"
-      @after-manipulate="updateStorey"
-    />
-    <BaseButton class="main-filter-params__btn" @click="emit('show')">
+    <div class="filter-params__inputs">
+      <BaseSelect
+        class="filter-params__input-obj"
+        name="objects"
+        label="Посёлки"
+        v-bind="objectListProps"
+        :model-value="currentObjectOpt"
+        @update:modelValue="updateObject"
+      />
+      <EstateSquareFilter
+        class="filter-params__input-square"
+        :options="squareOpts"
+        v-model:from-val="area_land_min"
+        v-model:to-val="area_land_max"
+      />
+      <BaseRange
+        class="filter-params__input-floors"
+        theme="gray"
+        :min="1"
+        :max="4"
+        name='floors'
+        label='Этажность'
+        input-witdh="55px"
+        :model-value="storey"
+        @after-manipulate="updateStorey"
+      />
+    </div>
+    <BaseButton class="filter-params__btn" @click="emit('show')">
       Показать
     </BaseButton>
   </div>
@@ -137,19 +140,64 @@
   }
 </script>
 
+<style lang="scss">
+  .filter-params__input-obj {
+    .base-select-block__input {
+      border: 1px solid theme('colors.primary');
+    }
+  }
+</style>
+
 <style scoped lang="scss">
-  .main-filter-params {
+  .filter-params {
     &__inputs {
       display: flex;
       flex-wrap: wrap;
       align-items: flex-end;
       column-gap: 20px;
       row-gap: 40px;
+
+      @include md {
+        row-gap: 20px;
+      }
+
+      @include sm {
+        row-gap: 16px;
+      }
+    }
+
+    &__input-obj, &__input-floors {
+      flex-basis: 320px;
+
+      @include lg {
+        flex-basis: 280px;
+      }
+
+      @include md {
+        flex-basis: 100%;
+      }
+    }
+
+    &__input-square {
+      flex-grow: 1;
+      flex-basis: 600px;
+
+      @include md {
+        order: -1;
+        min-width: 0px;
+      }
     }
 
     &__btn {
       width: 100%;
       margin-top: 32px;
+    }
+
+    .toolbar__group {
+      max-width: 100%;
+      width: 100%;
+      margin-bottom: 24px;
+      overflow-y: hidden;
     }
   }
 </style>

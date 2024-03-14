@@ -3,23 +3,25 @@
     <div class="list-control__finded">
       Найдено <BasePlural :total="showedCount" :cases="cases" />
     </div>
-    <BaseButton v-if="!hideGenplanBtn" theme="white" @click="showedGenplan = !showedGenplan">
-      <div class="tw-flex tw-gap-2 tw-items-center">
-        <BaseIcon class="tw-w-6 tw-h-6" color="#4FBA78" :name="showedGenplan ? 'eye-closed' : 'eye'" />
-        <span>
-          {{ showedGenplan ? 'Скрыть генлан' : 'Показать генлан' }}
-        </span>
-      </div>
-    </BaseButton>
-    <BaseSelect
-      class="list-control__sort"
-      theme="white"
-      name="sort"
-      label=""
-      v-bind="selectProps(townSortOptions)"
-      :model-value="currentSort"
-      @update:modelValue="updateSort"
-    />
+    <div class="list-control__inputs">
+      <BaseButton class="list-control__genplan-btn" v-if="!hideGenplanBtn" theme="white" @click="showedGenplan = !showedGenplan">
+        <div class="tw-flex tw-gap-2 tw-items-center">
+          <BaseIcon class="tw-w-6 tw-h-6" color="#4FBA78" :name="showedGenplan ? 'eye-closed' : 'eye'" />
+          <span>
+            {{ showedGenplan ? 'Скрыть генлан' : 'Показать генлан' }}
+          </span>
+        </div>
+      </BaseButton>
+      <BaseSelect
+        class="list-control__sort"
+        theme="white"
+        name="sort"
+        label=""
+        v-bind="selectProps(townSortOptions)"
+        :model-value="currentSort"
+        @update:modelValue="updateSort"
+      />
+    </div>
   </div>
 </template>
 
@@ -68,3 +70,54 @@
     order_by_field.value = opt?.order_by_field ?? undefined;
   }
 </script>
+
+<style scoped lang="scss">
+  .list-control {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 32px;
+
+    @include md {
+      gap: 20px;
+    }
+
+    &__inputs {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 16px;
+      flex-basis: 700px;
+
+      @include md {
+        justify-content: flex-start;
+      }
+
+      @include sm {
+        gap: 8px;
+        flex-basis: 100%;
+      }
+    }
+
+    &__sort {
+      flex-basis: 350px;
+
+      @include sm {
+        flex-basis: 100%;
+      }
+
+    }
+
+    &__genplan-btn {
+      @include sm {
+        flex-basis: 100%;
+      }
+    }
+
+    &__finded {
+      @apply tw-text-text00 tw-text-lg;
+    }
+  }
+</style>

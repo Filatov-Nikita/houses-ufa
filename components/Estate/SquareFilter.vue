@@ -78,11 +78,14 @@
     &__btns {
       display: flex;
       column-gap: 8px;
+      overflow: auto;
     }
 
     &__btn {
       padding: 16px;
       transition: background-color 200ms;
+      text-wrap: nowrap;
+
       @apply tw-text-base tw-text-black tw-rounded-lg tw-w-full tw-text-center;
 
       &--white {

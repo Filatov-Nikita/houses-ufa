@@ -30,7 +30,6 @@
 </template>
 
 <script setup lang="ts">
-  // import PagBtn from './PagBtn.vue';
   import TownCard from '@/components/Estate/Cards/Town.vue';
   import type { Town } from '@/types/estate/town';
 

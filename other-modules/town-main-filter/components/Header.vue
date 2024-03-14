@@ -1,8 +1,8 @@
 <template>
-  <div class="main-filter-header">
-    <BaseBreadcrumbs class="main-filter-header__bread" />
-    <div class="main-filter-header__toolbar">
-      <h1 class="main-filter-header__h1">Подобрать коттеджи и таунхаусы</h1>
+  <div class="filter-header">
+    <BaseBreadcrumbs class="filter-header__bread" />
+    <div class="filter-header__toolbar">
+      <h1 class="filter-header__h1">Подобрать коттеджи и таунхаусы</h1>
       <button type="button" class="clearBtn" @click="$emit('clearFilter')">
         <span>Очистить фильтр</span>
         <BaseIcon class="clearBtn__icon" name="close" />
@@ -28,7 +28,7 @@
 </script>
 
 <style scoped lang="scss">
-  .main-filter-header {
+  .filter-header {
     border-radius: 16px;
     padding: 40px;
     @apply tw-bg-white;
@@ -53,13 +53,16 @@
     &__toolbar {
       display: flex;
       flex-wrap: wrap;
-      gap: 24px;
+      gap: 16px;
       justify-content: space-between;
       align-items: center;
       margin-bottom: 48px;
 
+      @include lg {
+        margin-bottom: 24px;
+      }
+
       @include sm {
-        gap: 16px;
         margin-bottom: 8px;
       }
     }

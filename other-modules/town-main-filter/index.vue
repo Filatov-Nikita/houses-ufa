@@ -19,7 +19,7 @@
     v-model:order_by_field="filter.params.order_by_field"
     v-model:showed-genplan="showedGenplan"
   />
-  <TownGenplan v-if="genplanTownId" v-show="showedGenplan" :town-id="genplanTownId" />
+  <TownGenplan class="tw-mb-8" v-if="genplanTownId" v-show="showedGenplan" :town-id="genplanTownId" />
   <TownList
     :towns="towns?.data ?? null"
     :loading="loading"
