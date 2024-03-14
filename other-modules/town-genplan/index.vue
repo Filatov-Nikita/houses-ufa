@@ -13,15 +13,18 @@
   import Level1 from './components/Level1.vue';
   import Level2 from './components/Level2.vue';
 
+  const props = defineProps<{
+    townId: number,
+  }>();
+
   const store = useTownGenplan();
-  const route = useRoute();
 
-  store.setTownId(+route.params.id);
-
-  onUnmounted(() => {
+  watch(() => props.townId, () => {
     store.showedLevel = 1;
     store.showedBlockId = null;
-  });
+    store.setTownId(props.townId);
+    store.show();
+  }, { immediate: true });
 
   await useLazyAsyncData(() => store.show());
 </script>

@@ -8,7 +8,7 @@ export function useTopMenu() {
     },
     {
       label: 'Коттеджи и таунхаусы',
-      to: '/main-filter?filterType=towns',
+      to: '/towns',
     },
     {
       label: 'Ипотека',

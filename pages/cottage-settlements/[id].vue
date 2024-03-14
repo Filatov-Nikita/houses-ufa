@@ -19,7 +19,7 @@
       <div class="section__top">
         <h2 class="section__title">Генплан коттеджного посёлка {{ townOne.town?.data.name }}</h2>
       </div>
-      <TownGenplan />
+      <TownGenplan :townId="+route.params.id" />
     </div>
   </section>
   <section class="section">
