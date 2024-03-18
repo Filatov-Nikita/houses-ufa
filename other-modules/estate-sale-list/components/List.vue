@@ -1,22 +1,17 @@
 <template>
-  <BaseWait :waiting="loading">
-    <template #loader>
-      <BaseSkeleton class="tw-w-full tw-h-80 tw-rounded-xl" />
-    </template>
-    <div v-if="isEmpty">Не найдено ни одного объекта</div>
-    <Swiper v-else-if="filter.filterType === 'flats'" v-bind="swiperProps">
-      <SwiperSlide v-for="flat in filter.flats" :key="flat.id">
-        <FlatItem :flat="flat" />
-      </SwiperSlide>
-      <NavBtns />
-    </Swiper>
-    <Swiper v-else-if="filter.filterType === 'towns'" v-bind="swiperProps">
-      <SwiperSlide v-for="town in filter.towns" :key="town.id">
-        <TownItem :town="town" />
-      </SwiperSlide>
-      <NavBtns />
-    </Swiper>
-  </BaseWait>
+  <div v-if="isEmpty">Не найдено ни одного объекта</div>
+  <Swiper v-else-if="filter.filterType === 'flats'" v-bind="swiperProps">
+    <SwiperSlide v-for="flat in filter.flats" :key="flat.id">
+      <FlatItem :flat="flat" />
+    </SwiperSlide>
+    <NavBtns />
+  </Swiper>
+  <Swiper v-else-if="filter.filterType === 'towns'" v-bind="swiperProps">
+    <SwiperSlide v-for="town in filter.towns" :key="town.id">
+      <TownItem :town="town" />
+    </SwiperSlide>
+    <NavBtns />
+  </Swiper>
 </template>
 
 <script setup lang="ts">
@@ -27,7 +22,6 @@
 
   const filter = useEstateSaleList();
   const isEmpty = computed(() => filter.currentFilter.data.value?.data?.length === 0);
-  const loading = computed(() => filter.currentFilter.pending.value);
 
   const swiperProps = {
     modules: [SwiperPagination, SwiperNavigation],

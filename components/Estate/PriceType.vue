@@ -23,7 +23,7 @@
   type Btn = { label: string, value: Types };
 
   const props = withDefaults(defineProps<{
-    modelValue: ModelValue,
+    modelValue?: ModelValue,
     disabled?: boolean,
     theme?: 'gray' | 'white',
   }>(), { disabled: false, theme: 'white' });
@@ -33,7 +33,7 @@
   }>();
 
   const btns: Btn[] = [
-    { label: 'По стоимости', value: 'price_total' },
+    { label: 'По цене', value: 'price_total' },
     { label: 'По взносу', value: 'mortgage_initial_fee' },
     { label: 'По платежу', value: 'mortgage_monthly_payment' },
   ];

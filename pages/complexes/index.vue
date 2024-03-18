@@ -1,7 +1,7 @@
 <template>
   <div class="section">
     <div class="wrapper">
-      <TownMainFilter />
+      <ComplexMainFilter />
     </div>
   </div>
   <section class="section">
@@ -20,9 +20,9 @@
 </template>
 
 <script setup lang="ts">
-  import TownMainFilter from '@/other-modules/town-main-filter/index.vue';
+  import ComplexMainFilter from '@/other-modules/complex-main-filter/index.vue';
   import QuestionForm from '@/other-modules/question-form/index.vue';
-  import { data } from '@/seo/pages/towns';
+  import { data } from '@/seo/pages/complexes';
 
   useSeoMeta({
     title: data.title,

@@ -4,7 +4,7 @@ export function useTopMenu() {
   const items: MenuItem[] = reactive([
     {
       label: 'Квартиры',
-      to: '/main-filter?filterType=flats',
+      to: '/complexes',
     },
     {
       label: 'Коттеджи и таунхаусы',
