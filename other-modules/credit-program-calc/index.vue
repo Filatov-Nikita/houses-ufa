@@ -18,7 +18,7 @@
 
   const props = defineProps<{
     objectType?: 'flat' | 'town',
-    objectId?: number,
+    objectId?: string | number,
   }>();
 
   const creditStore = useCreditPrograms();
@@ -39,11 +39,6 @@
       await creditCalcStore.show();
     }
   }
-
-  onUnmounted(() => {
-    creditCalcStore.objectId = undefined;
-    creditCalcStore.objectType = undefined;
-  });
 
   await useLazyAsyncData(() => {
     return show();

@@ -4,7 +4,7 @@ import type { RoomFactor } from '@/types/estate/flat';
 import type { Badge } from '@/types/estate/badges';
 
 export const useFlatCard = defineStore('flatCard', () => {
-  const flatId = ref<number | null>(null);
+  const flatId = ref<string | null>(null);
 
   const url = computed(() => {
     return `estate/flats/${flatId.value}`;
@@ -15,7 +15,7 @@ export const useFlatCard = defineStore('flatCard', () => {
     watch: false,
   });
 
-  function setFlatId(id: number) {
+  function setFlatId(id: string) {
     flatId.value = id;
   }
 

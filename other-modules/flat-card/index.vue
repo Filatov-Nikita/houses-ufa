@@ -17,11 +17,12 @@
   import ParamsInfo from './componenets/ParamsInfo.vue';
   import Image from './componenets/Image.vue';
   import { useFlatCard } from './store';
+  import { getRoomsCount } from '@/plugins/rooms-count';
 
   const route = useRoute();
   const flatCard = useFlatCard();
 
-  flatCard.setFlatId(+route.params.id);
+  flatCard.setFlatId(route.params.id as string);
 
   onUnmounted(() => {
     flatCard.data = null;
@@ -29,6 +30,18 @@
   });
 
   await useLazyAsyncData(() => flatCard.show());
+
+  const title = computed(() => {
+    const data = flatCard.data?.data;
+    const name = data?.complex.name ?? '-';
+    const count = getRoomsCount(data?.room_factor ?? 'one_classic');
+    const area = data?.area_total ?? '';
+    return `${name} ${count}-комнатная ${area}м2`;
+  });
+
+  useSeoMeta({
+    title,
+  });
 </script>
 
 <style scoped lang="scss">

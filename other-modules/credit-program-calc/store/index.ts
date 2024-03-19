@@ -6,7 +6,7 @@ export const useCreditProgramCalc = defineStore('creditProgramCalc', () => {
   const groupId = ref<number | null>(null);
 
   const objectType = ref<'flat' | 'town'>();
-  const objectId = ref<number>();
+  const objectId = ref<number | string>();
 
   const params = {
     cost: 2000000,

@@ -9,7 +9,7 @@
   const store = useFlatSimilar();
   const route = useRoute();
 
-  store.setFlatId(+route.params.id);
+  store.setFlatId(route.params.id as string);
 
   await useLazyAsyncData(() => store.show());
 </script>

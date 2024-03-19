@@ -3,9 +3,9 @@ import { useDataFetch } from '@/composables/useDataFetch';
 import type { Flat } from '@/types/estate/flat';
 
 export const useFlatSimilar = defineStore('flatSimilar', () => {
-  const flatId = ref<number | null>(null);
+  const flatId = ref<string | null>(null);
 
-  function setFlatId(id: number) {
+  function setFlatId(id: string) {
     flatId.value = id;
   }
 

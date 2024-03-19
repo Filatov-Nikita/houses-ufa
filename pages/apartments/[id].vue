@@ -9,7 +9,7 @@
       <div class="section__top">
         <h2 class="section__title">Ипотека</h2>
       </div>
-      <CreditCalc object-type="flat" :object-id="+$route.params.id" />
+      <CreditCalc object-type="flat" :object-id="id" />
     </div>
   </section>
   <section class="section">
@@ -32,4 +32,6 @@
   import CreditCalc from '@/other-modules/credit-program-calc/index.vue';
   import FlatCard from '@/other-modules/flat-card/index.vue';
   import FlatSimilar from '@/other-modules/flat-similar/index.vue';
+
+  const id = computed(() => useRoute().params.id as string);
 </script>
