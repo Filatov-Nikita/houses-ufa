@@ -354,8 +354,10 @@
     }
 
     &__clear {
-      width: 100%;
-      justify-content: center;
+      @include sm {
+        width: 100%;
+        justify-content: center;
+      }
     }
   }
 
