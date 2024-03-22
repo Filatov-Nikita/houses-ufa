@@ -5,7 +5,7 @@
     <div class="client-section__grid">
       <h1 class="client-section__title">Клиенты</h1>
       <div class="client-section__space"></div>
-      <BaseButton theme="gray" to="/main-filter">
+      <BaseButton theme="gray" to="/lk/b2t/objects">
         Выбрать объект
       </BaseButton>
       <BaseButton theme="gray" @click="checkModal = !checkModal">

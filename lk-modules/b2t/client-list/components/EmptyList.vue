@@ -12,7 +12,7 @@
           <p class="client-empty-list__title">
             Выберите объект<br>и добавьте в избранное
           </p>
-          <BaseButton class="client-empty-list__action" theme="gray" to="/main-filter">
+          <BaseButton class="client-empty-list__action" theme="gray" to="/lk/b2t/objects">
             Выбрать объект
           </BaseButton>
         </div>
