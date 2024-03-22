@@ -12,23 +12,14 @@
           <p class="client-empty-list__title">
             Выберите объект<br>и добавьте в избранное
           </p>
-          <BaseButton class="client-empty-list__action" to="/main-filter">
-            Объекты
+          <BaseButton class="client-empty-list__action" theme="gray" to="/main-filter">
+            Выбрать объект
           </BaseButton>
         </div>
-        <div class="client-empty-list__item-next">
-          <BaseIcon class="client-empty-list__icon-next" name="forward-line" />
-        </div>
-        <div class="client-empty-list__item">
-          <div class="client-empty-list__icon-wrap">
-            <BaseIcon class="client-empty-list__icon" name="heart" />
-          </div>
-          <p class="client-empty-list__title">
-            Перейдите<br>в личный кабинет
+        <div class="client-empty-list__or orBlock">
+          <p class="orBlock__text">
+            или
           </p>
-        </div>
-        <div class="client-empty-list__item-next">
-          <BaseIcon class="client-empty-list__icon-next" name="forward-line" />
         </div>
         <div class="client-empty-list__item">
           <div class="client-empty-list__icon-wrap">
@@ -37,6 +28,9 @@
           <p class="client-empty-list__title">
             Проверьте клиента, нажав<br>на кнопку «Проверить клиента»
           </p>
+          <BaseButton class="client-empty-list__action" theme="gray" @click="$emit('check:client')">
+            Проверить клиента
+          </BaseButton>
         </div>
       </div>
     </div>
@@ -44,7 +38,9 @@
 </template>
 
 <script setup lang="ts">
-
+  defineEmits<{
+    (event: 'check:client'): void,
+  }>();
 </script>
 
 <style scoped lang="scss">
@@ -56,6 +52,10 @@
     border-radius: 16px;
     padding: 40px;
     @apply tw-bg-white;
+
+    @include sm {
+      padding: 16px;
+    }
 
     &__text {
       text-align: center;
@@ -70,8 +70,12 @@
 
     &__grid {
       display: grid;
-      grid-template-columns: 1fr auto 1fr auto 1fr;
+      grid-template-columns: 1fr 25px 1fr;
       gap: 16px;
+
+      @include sm {
+        grid-template-columns: 100%;
+      }
     }
 
     &__item {
@@ -109,6 +113,33 @@
     &__icon-next {
       width: 16px;
       height: 16px;
+    }
+  }
+
+  .orBlock {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+
+    &::after {
+      content: '';
+      width: 1px;
+      height: 100%;
+      position: absolute;
+      left: 50%;
+      top: 0px;
+      transform: translateX(-50%);
+      z-index: 0;
+      @apply tw-bg-border00;
+    }
+
+    &__text {
+      position: relative;
+      z-index: 10;
+      padding: 8px 0px;
+      @apply tw-text-text02 tw-text-sm tw-bg-white;
     }
   }
 </style>

@@ -1,6 +1,6 @@
 <template>
   <BaseSkeleton v-if="pending" class="tw-w-full tw-h-[300px] tw-rounded-2xl" />
-  <EmptyList v-else-if="clientResponse && clientResponse.data.length === 0" />
+  <EmptyList v-else-if="clientResponse && clientResponse.data.length === 0" @check:client="checkModal = !checkModal" />
   <div v-else-if="clientResponse" class="client-section">
     <div class="client-section__grid">
       <h1 class="client-section__title">Клиенты</h1>
@@ -16,8 +16,8 @@
       :items="clientResponse.data"
       @refresh="refresh"
     />
-    <CheckClient v-model:showed="checkModal" finish-action="close" @finish="finishCheck"/>
   </div>
+  <CheckClient v-model:showed="checkModal" finish-action="close" @finish="finishCheck"/>
 </template>
 
 <script setup lang="ts">;
