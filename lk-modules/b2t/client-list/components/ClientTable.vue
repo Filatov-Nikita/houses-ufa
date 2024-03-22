@@ -22,31 +22,37 @@
         </div>
         <div class="client-table-col">
           <span class="client-label-mobile">Недвижимость</span>
-          <RouterLink :to="getObjectLink(item)">
+          <RouterLink v-if="item.object" :to="getObjectLink(item)">
             {{ getObjectName(item) }}
           </RouterLink>
+          <button v-else class="bind-btn" @click="showBind(item.id)">Закрепить объект</button>
         </div>
         <div class="client-table-col client-table__actions">
-          <button
-            class="client-table-action"
-            :disabled="item.consumer.bookings.length > 0"
-            @click="$router.push({
-              path: '/lk/b2t/apps/book',
-              query: { id: item.object.id, type: item.object_type, shopperId: item.id }
-            })"
-          >
-            Бронь
-          </button>
-          <button
-            class="client-table-action"
-            :disabled="item.consumer.mortgageClaims.length > 0"
-            @click="$router.push({
-              path: '/lk/b2t/apps/ipoteka',
-              query: { id: item.object.id, type: item.object_type, shopperId: item.id }
-            })"
-          >
-            Ипотека
-          </button>
+          <div class="no-object-badge" v-if="item.object === null">
+            У клиента нет привязанного объекта
+          </div>
+          <template v-else>
+            <button
+              class="client-table-action"
+              :disabled="item.consumer.bookings.length > 0"
+              @click="$router.push({
+                path: '/lk/b2t/apps/book',
+                query: { id: item.object.id, type: item.object_type, shopperId: item.id }
+              })"
+            >
+              Бронь
+            </button>
+            <button
+              class="client-table-action"
+              :disabled="item.consumer.mortgageClaims.length > 0"
+              @click="$router.push({
+                path: '/lk/b2t/apps/ipoteka',
+                query: { id: item.object.id, type: item.object_type, shopperId: item.id }
+              })"
+            >
+              Ипотека
+            </button>
+          </template>
         </div>
         <div class="client-table__info" v-if="item.consumer.bookings.length > 0">
           <BookItem
@@ -66,6 +72,12 @@
         </div>
       </div>
     </div>
+    <BaseModal v-model="bindModal" v-slot="{ hide }">
+      <BaseModalCard is-full id="client-object-modal">
+        <BtnsActionsBase class="close-modal" icon="close" @click="hide" />
+        <BindObject v-if="bindClientId" :clientId="bindClientId" @bind:success="bindSuccess" />
+      </BaseModalCard>
+    </BaseModal>
   </div>
 </template>
 
@@ -74,16 +86,37 @@
   import { getRoomsCount } from '@/plugins/rooms-count';
   import BookItem from './BookItem.vue';
   import CreditItem from './CreditItem.vue';
+  import BindObject from '@/lk-modules/b2t/bind-object/index.vue';
 
   const props = defineProps<{
     items: ClientResponse['data'],
   }>();
 
+  const emit = defineEmits<{
+    (event: 'refresh'): void,
+  }>();
+
+  const bindModal = ref(false);
+  const bindClientId = ref<number | null>(null);
+
+  function showBind(id: number) {
+    bindModal.value = true;
+    bindClientId.value = id;
+  }
+
+  function bindSuccess() {
+    bindModal.value = false;
+    bindClientId.value = null;
+    emit('refresh');
+  }
+
   function getObjectLink(item: typeof props.items[number]) {
+    if(item.object === null) return '-';
     return `/${ item.object_type === 'flat' ? 'apartments' : 'towns' }/${item.object.id}`;
   }
 
   function getObjectName(item: typeof props.items[number]) {
+    if(item.object === null) return '-';
     if(item.object_type === 'flat') {
       return `
         ${item.object.complex.name},
@@ -95,6 +128,12 @@
     }
   }
 </script>
+
+<style>
+  #client-object-modal {
+    max-width: 1440px;
+  }
+</style>
 
 <style scoped lang="scss">
   .client-label-mobile {
@@ -201,5 +240,35 @@
     &:disabled {
       opacity: 0.5 !important;
     }
+  }
+
+  .no-object-badge {
+    max-width: 177px;
+    padding: 8px 12px;
+    border-radius: 8px;
+    @apply tw-text-text02 tw-bg-base00 tw-text-center tw-text-sm;
+
+    @include lg {
+      max-width: 150px;
+      padding: 8px 8px;
+      @apply tw-text-xs;
+    }
+  }
+
+  .bind-btn {
+    border-radius: 8px;
+    padding: 12px 24px;
+    @apply tw-border tw-border-solid tw-border-primary tw-text-primary tw-text-base;
+
+    @include lg {
+      padding: 12px 12px;
+      @apply tw-text-sm;
+    }
+  }
+
+  .close-modal {
+    position: absolute;
+    right: 0px;
+    top: 0px;
   }
 </style>

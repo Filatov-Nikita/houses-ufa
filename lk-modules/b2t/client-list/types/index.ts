@@ -60,7 +60,12 @@ export interface Passport {
   snils:                string;
 }
 
-type ObjectResponse = FlatResponse | TownResponse;
+type ObjectResponse = FlatResponse | TownResponse | ObjNullResponse;
+
+type ObjNullResponse = {
+  object_type: null,
+  object: null,
+}
 
 type FlatResponse = {
   object_type: 'flat',

@@ -96,9 +96,14 @@
           >
             {{ clientMsg.text }}
           </p>
-          <BaseButton v-if="clientMsg.type === 'success'" class="check-client-form__btn" to="/lk/b2t/clients">
-            Перейти в клиенты
-          </BaseButton>
+          <template v-if="clientMsg.type === 'success'">
+            <BaseButton v-if="finishAction === 'to-clients'" class="check-client-form__btn" to="/lk/b2t/clients">
+              Перейти в клиенты
+            </BaseButton>
+            <BaseButton v-else-if="finishAction === 'close'" class="check-client-form__btn" @click="$emit('finish')">
+              Завершить
+            </BaseButton>
+          </template>
           <BaseButton v-else class="check-client-form__btn" type="submit" :disabled="isSubmitting">
             Проверить клиента
           </BaseButton>
@@ -122,14 +127,18 @@
 
   const props = defineProps<{
     showed: boolean,
-    id: number,
-    type: 'flat' | 'estate',
+    id?: number,
+    type?: 'flat' | 'estate',
+    finishAction?: 'to-clients' | 'close',
   }>();
 
   const store = useCheckClient();
   const notify = useNotifyStore();
 
-  defineEmits<{ (event: 'update:showed', val: boolean): void }>();
+  defineEmits<{
+    (event: 'update:showed', val: boolean): void,
+    (event: 'finish'): void,
+  }>();
 
   const showed = useSyncProps(props, 'showed');
 
@@ -191,9 +200,9 @@
         ...store.form,
         backup_phone: cleanPhone(store.form.backup_phone),
         consumer_phone: cleanPhone(store.form.consumer_phone),
-        object_id: props.id,
-        object_type: props.type,
-        comment: store.form.comment !== '' ? store.form.comment : undefined
+        object_id: props.id ?? null,
+        object_type: props.type ?? null,
+        comment: store.form.comment,
       });
 
       if(res.status === 200) {
@@ -235,9 +244,26 @@
     () => props.id,
     () => props.type,
   ], () => {
-    if(props.type === 'estate') showTowns();
-    else showFlats();
+    if(props.type && props.id) {
+      if(props.type === 'estate') showTowns();
+      else showFlats();
+    }
   }, { immediate: true });
+
+  function reset() {
+    store.clearForm();
+    clientMsg.value = { text: '', type: 'error' };
+  }
+
+  watch(showed, (val) => {
+    if(!val) {
+      reset();
+    }
+  });
+
+  onUnmounted(() => {
+    reset();
+  })
 </script>
 
 <style scoped lang="scss">

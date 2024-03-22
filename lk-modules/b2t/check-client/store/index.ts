@@ -8,10 +8,10 @@ interface Body {
   backup_phone: string,
   consumer_full_name: string,
   consumer_phone: string,
-  object_id: number,
-  object_type: 'estate' | 'flat',
+  object_id: number | null,
+  object_type: 'estate' | 'flat' | null,
   relationship_type: RelTypes,
-  comment?: string,
+  comment: string,
 }
 
 export const useCheckClient = defineStore('b2tCheckClient', () => {

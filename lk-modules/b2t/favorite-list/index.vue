@@ -59,7 +59,6 @@
   }
 
   onUnmounted(() => {
-    form.clearForm();
     store.currentId = undefined;
     store.currentType = undefined;
     store.showedCheckClient = false;
