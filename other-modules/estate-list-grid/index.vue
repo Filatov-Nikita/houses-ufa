@@ -1,7 +1,7 @@
 <template>
   <section class="estate-list-block">
-    <div class="wrapper">
-      <div class="section__top">
+    <div :class="{ 'wrapper': flexible !== true }">
+      <div class="section__top" v-if="flexible !== true">
         <h2 class="section__title">Объекты</h2>
       </div>
       <div class="estate-list-block__filter">
@@ -27,6 +27,10 @@
 <script setup lang="ts">
   import Item from './components/Item.vue';
   import type { PosterItem } from './types';
+
+  defineProps<{
+    flexible?: boolean,
+  }>();
 
   type Types = 'all' | 'flats_in_city' | 'flats_out_city' | 'towns';
 

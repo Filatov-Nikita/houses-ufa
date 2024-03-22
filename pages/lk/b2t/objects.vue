@@ -4,17 +4,22 @@
       <div class="section__top">
         <h2 class="section__title">Объекты застройщика «Жилой квартал»</h2>
       </div>
-      <EstateGridList />
+      <EstateGridList flexible />
     </div>
   </section>
 </template>
 <script setup lang="ts">
-import EstateGridList from '@/other-modules/estate-list-grid-lk/index.vue';
+import EstateGridList from '@/other-modules/estate-list-grid/index.vue';
 
 definePageMeta({
   layout: 'lk-b2t',
   middleware: ['auth'],
 })
+
+useSeoMeta({
+  title: 'ЖК ЛК агента | Объекты',
+});
+
 const residentialComplexs = [
   {
     img: 'images/img/country_real_estate.png',

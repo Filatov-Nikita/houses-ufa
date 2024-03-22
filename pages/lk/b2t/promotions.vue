@@ -12,6 +12,10 @@
     layout: 'lk-b2t',
     middleware: ['auth'],
   });
+
+  useSeoMeta({
+    title: 'ЖК ЛК агента | Акции',
+  });
 </script>
 
 <style scoped lang="scss">

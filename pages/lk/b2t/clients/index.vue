@@ -11,4 +11,8 @@
     layout: 'lk-b2t',
     middleware: ['auth'],
   });
+
+  useSeoMeta({
+    title: 'ЖК ЛК агента | Клиенты',
+  });
 </script>
