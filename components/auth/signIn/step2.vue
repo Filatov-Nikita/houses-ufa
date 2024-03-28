@@ -15,7 +15,7 @@
     </button>
   </div>
 
-  <Form class="tw-grid tw-gap-8" @submit="signIn" v-slot="{ meta }">
+  <Form class="tw-grid tw-gap-8" @submit="signIn" v-slot="{ meta, isSubmitting }">
     <BaseInput
       rules="required"
       name="cellphone"
@@ -24,6 +24,13 @@
       maska="+7 (###) ### ## ##"
       v-model="form.cellphone"
     />
+    <div
+      id="captcha-container"
+      class="smart-captcha"
+      style="height: 100px"
+    >
+      <input id="captcha-token" type="hidden" name="smart-token" value="">
+    </div>
     <div class="tw-flex tw-gap-5">
       <BaseButton
         theme="gray"
@@ -34,8 +41,8 @@
       </BaseButton>
       <BaseButton
         class="tw-grow"
-        :disabled="!meta.valid"
-        :theme="!meta.valid ? 'gray' : 'green'"
+        :disabled="!meta.valid || !captchaReady || isSubmitting"
+        :theme="(!meta.valid || !captchaReady) ? 'gray' : 'green'"
         type="submit"
         >Далее</BaseButton
       >
@@ -47,6 +54,8 @@
 import { storeToRefs } from 'pinia'
 import { useAuthStore } from '~/stores/auth'
 import { Form } from 'vee-validate'
+import { FetchError } from 'ofetch';
+import { useNotifyStore } from '@/stores/notify';
 
 const emits = defineEmits<{
   (event: 'next'): void
@@ -54,6 +63,7 @@ const emits = defineEmits<{
 }>()
 
 const config = useRuntimeConfig();
+const notify = useNotifyStore();
 
 const authStore = useAuthStore()
 const { openPopup, selectRole } = storeToRefs(authStore)
@@ -61,6 +71,9 @@ const { openPopup, selectRole } = storeToRefs(authStore)
 const form = reactive({
   cellphone: '',
 });
+
+const captchaReady = ref(false);
+const captchaToken = ref<string | null>(null);
 
 interface VisitorRes {
   data: {
@@ -74,6 +87,7 @@ async function createVisitor(): Promise<VisitorRes> {
   const body = {
     cellphone: '+' + form.cellphone.replace(/[^0-9]+/g, ''),
     type: selectRole.value,
+    captcha: captchaToken.value,
   };
 
   const data = await $fetch<VisitorRes>('b2v/visitors', {
@@ -88,9 +102,44 @@ async function createVisitor(): Promise<VisitorRes> {
 }
 
 const signIn = async (value: { phone: string }, { resetForm }: any) => {
-  await createVisitor();
-  authStore.setCurrentPhone(form.cellphone);
-  emits('next')
+  try {
+    await createVisitor();
+    authStore.setCurrentPhone(form.cellphone);
+    emits('next')
+  } catch(e) {
+    if(e instanceof FetchError) {
+      if(e.status === 422) {
+        const data = e.data as any;
+        notify.create({ type: 'error', message: data.message ?? 'Произошла ошибка!' });
+      }
+    }
+    throw e;
+  }
 }
+
+function resultCaptcha(token: string) {
+  captchaReady.value = false;
+  captchaToken.value = null;
+  if(token) {
+    captchaReady.value = true;
+    captchaToken.value = token;
+  }
+}
+
+function renderCaptcha() {
+  if(window.smartCaptcha) {
+    const cont = document.querySelector('#captcha-container');
+    if(!cont) return;
+    window.smartCaptcha.render(cont, {
+      sitekey: config.public.captchaClientKey,
+      hl: 'ru',
+      callback: resultCaptcha,
+    });
+  }
+}
+
+onMounted(() => {
+  renderCaptcha();
+});
 </script>
 <style lang="scss" scoped></style>

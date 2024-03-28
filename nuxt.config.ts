@@ -8,6 +8,7 @@ import * as Roistat from './scripts/roistat';
 import * as Envybox from './scripts/envybox';
 import * as Marquiz from './scripts/marquiz';
 import * as Pixel from './scripts/pixel';
+import * as Captcha from './scripts/ysmartcaptcha';
 
 function definePublicConfig() {
   const host = 'https://adminsite.gkufa.ru/';
@@ -31,6 +32,11 @@ export default defineNuxtConfig({
         {
           type: 'text/javascript',
           src: YandexMap.src,
+        },
+        {
+          type: 'text/javascript',
+          src: Captcha.src,
+          defer: true,
         }
       ],
     },
@@ -92,6 +98,9 @@ export default defineNuxtConfig({
   modules: ['@pinia/nuxt', 'nuxt-swiper'],
   runtimeConfig: {
     public: definePublicConfig(),
+  },
+  appConfig: {
+    captchaClientKey: '',
   },
   pinia: {
     autoImports: [
