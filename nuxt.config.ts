@@ -16,6 +16,8 @@ function definePublicConfig() {
     host,
     baseURL: host + 'api/lobby/',
     rootApi: host + 'api/',
+    captchaClientKey: '',
+    devCaptchaToken: '',
   }
 }
 
@@ -99,9 +101,7 @@ export default defineNuxtConfig({
   runtimeConfig: {
     public: definePublicConfig(),
   },
-  appConfig: {
-    captchaClientKey: '',
-  },
+  appConfig: {},
   pinia: {
     autoImports: [
       // automatically imports `defineStore`

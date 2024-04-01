@@ -27,7 +27,7 @@
     <div
       id="captcha-container"
       class="smart-captcha"
-      style="height: 100px"
+      style="height: 105px"
     >
       <input id="captcha-token" type="hidden" name="smart-token" value="">
     </div>
@@ -72,8 +72,8 @@ const form = reactive({
   cellphone: '',
 });
 
-const captchaReady = ref(false);
-const captchaToken = ref<string | null>(null);
+const captchaReady = ref(import.meta.env.DEV ? true : false);
+const captchaToken = ref<string | null>(import.meta.env.DEV ? config.public.devCaptchaToken as string : null);
 
 interface VisitorRes {
   data: {
@@ -88,6 +88,7 @@ async function createVisitor(): Promise<VisitorRes> {
     cellphone: '+' + form.cellphone.replace(/[^0-9]+/g, ''),
     type: selectRole.value,
     captcha: captchaToken.value,
+    token: import.meta.env.DEV ? config.public.devCaptchaToken : undefined,
   };
 
   const data = await $fetch<VisitorRes>('b2v/visitors', {
@@ -139,7 +140,9 @@ function renderCaptcha() {
 }
 
 onMounted(() => {
-  renderCaptcha();
+  if(import.meta.env.PROD) {
+    renderCaptcha();
+  }
 });
 </script>
 <style lang="scss" scoped></style>
