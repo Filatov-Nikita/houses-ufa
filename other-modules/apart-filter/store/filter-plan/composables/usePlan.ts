@@ -73,6 +73,7 @@ export interface Flat {
   price_total:              string;
   status:                   Status;
   room_factor:              RoomFactor;
+  price_promo:              string | null,
 }
 
 export interface House {

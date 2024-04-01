@@ -15,6 +15,7 @@
       hideBadges
       :complexName="complexName"
       :price="price"
+      :pricePromo="flat.price_promo"
     />
   </EstateCardsBase>
 </template>

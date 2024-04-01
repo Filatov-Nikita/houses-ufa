@@ -30,10 +30,8 @@
     </div>
     <div class="flat-list-item__info2">
       <div class="flat-list-item__price-wrap">
-        <p class="flat-list-item__old-price" v-if="flat.price_promo">
-          {{ amount(flat.price_promo) }}
-        </p>
-        <p class="flat-list-item__price">{{ priceLabel }}</p>
+        <EstatePromoPrice class="flat-list-item__old-price" v-if="flat.price_promo" :value="flat.price_total" />
+        <span class="flat-list-item__price">{{ priceLabel }}</span>
       </div>
       <p class="flat-list-item__credit">
         В ипотеку — <span>от {{ monthPay }}</span>
@@ -64,7 +62,7 @@
   const name = computed(() => `${getRoomsCount(flat.value.room_factor)}-комнатная, ${flat.value.area_total} м²`);
   const storeyLabel = computed(() => `${flat.value.floor_number} этаж из ${flat.value.entrance.top_floor_number}`);
   const literLabel = computed(() => `Литер ${flat.value.house.letter}`);
-  const priceLabel = computed(() => amount(flat.value.price_total));
+  const priceLabel = computed(() => amount(flat.value.price_promo ?? flat.value.price_total));
   const initialPay = computed(() => amount(flat.value.mortgage_initial_fee));
   const monthPay = computed(() => pretty(flat.value.mortgage_monthly_payment, '₽ / мес'));
   const complexName = computed(() => flat.value.complex.name);

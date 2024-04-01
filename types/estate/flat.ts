@@ -17,6 +17,7 @@ export interface Flat {
   room_factor:              RoomFactor;
   is_in_favorite:           boolean | null,
   badges:                   Badge[],
+  price_promo:              string | null,
 }
 
 export interface Complex {

@@ -222,7 +222,7 @@ const lastItem = computed(() => {
   return {
     id: item.id,
     title: item['complex.name'],
-    price: item.price_total,
+    price: item.price_promo ?? item.price_total,
     images: [item.plan_image_url, item.flat_on_floor_plan_image_url],
     payment_month: item.mortgage_monthly_payment,
   }
@@ -234,7 +234,7 @@ const firstItem = computed(() => {
   return {
     id: item.id,
     title: item['complex.name'],
-    price: item.price_total,
+    price: item.price_promo ?? item.price_total,
     images: [item.plan_image_url, item.flat_on_floor_plan_image_url],
     payment_month: item.mortgage_monthly_payment,
   }

@@ -42,8 +42,11 @@
       </div>
     </div>
     <div class="flat-info__price-block">
+      <p v-if="data.price_promo">
+        <EstatePromoPrice :value="data.price_total" />
+      </p>
       <p class="flat-info__price" v-if="data.price_total">
-        {{ $amount(data.price_total) }}
+        {{ $amount(data.price_promo ?? data.price_total) }}
       </p>
       <p class="flat-info__credit" v-if="data.mortgage_monthly_payment">
         В ипотеку от

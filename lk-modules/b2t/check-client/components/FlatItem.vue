@@ -16,6 +16,9 @@
       </div>
     </div>
     <div class="flat-card__info2">
+      <p v-if="flat.price_promo">
+        <EstatePromoPrice :value="flat.price_total" />
+      </p>
       <p class="flat-card__price">{{ priceLabel }}</p>
     </div>
   </div>
@@ -38,7 +41,7 @@
   const name = computed(() => `${getRoomsCount(flat.value.room_factor)}-комнатная, ${flat.value.area_total} м²`);
   const storeyLabel = computed(() => `${flat.value.floor_number} этаж`);
   const literLabel = computed(() => `Литер ${flat.value.house.letter}`);
-  const priceLabel = computed(() => amount(flat.value.price_total));
+  const priceLabel = computed(() => amount(flat.value.price_promo ?? flat.value.price_total));
   const initialPay = computed(() => amount(flat.value.mortgage_initial_fee));
   const monthPay = computed(() => pretty(flat.value.mortgage_monthly_payment, '₽ / мес'));
   const complexName = computed(() => flat.value.complex.name);

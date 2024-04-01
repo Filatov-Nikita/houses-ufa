@@ -49,6 +49,7 @@ export interface Flat {
   is_in_favorite:           boolean;
   flat_on_floor_plan_image_url: string | null;
   badges:                   Badge[],
+  price_promo:              string | null,
 }
 
 export interface Complex {

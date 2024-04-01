@@ -15,6 +15,7 @@
     <EstateCardsBlocksParamsInfo
       :complexName="complexName"
       :price="price"
+      :pricePromo="flat.price_promo"
       :creditMonth="creditMonth"
       :creditStart="creditStart"
       :finishingType="finishingType"

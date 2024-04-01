@@ -6,7 +6,10 @@
     <div class="flat-card__data">
       <div class="flat-card__left">
         <div class="flat-card__param">{{ roomCount }}-комнатная</div>
-        <div class="flat-card__price">{{ $amount(flat.price_total) }}</div>
+        <div v-if="flat.price_promo" class="flat-card__old-price">
+          <EstatePromoPrice :value="flat.price_total" />
+        </div>
+        <div class="flat-card__price">{{ $amount(flat.price_promo ?? flat.price_total) }}</div>
       </div>
       <div class="flat-card__right">
         <div class="flat-card__param">от {{ flat.area_total }} м²</div>
@@ -79,8 +82,11 @@
     }
 
     &__price {
-      padding-top: 12px;
       @apply tw-text-xl;
+    }
+
+    &__old-price {
+      padding-top: 12px;
     }
 
     &__param {

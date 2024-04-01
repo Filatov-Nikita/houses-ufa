@@ -3,8 +3,9 @@
     <div v-if="complexName" class="estate-card-bottom__house">
       {{ complexName }}
     </div>
-    <div v-if="price" class="estate-card-bottom__price">
-      {{ $amount(price) }}
+    <div v-if="price" class="estate-card-bottom__price-block">
+      <EstatePromoPrice class="estate-card-bottom__promo-price" v-if="pricePromo && price" :value="price" />
+      <span class="estate-card-bottom__price">{{ $amount(pricePromo ?? price) }}</span>
     </div>
     <div v-if="creditMonth || creditStart" class="estate-card-bottom__credit">
       <p v-if="creditMonth" class="estate-card-bottom__credit-text">
@@ -21,6 +22,7 @@
   interface Props {
     complexName?: string,
     price?: number,
+    pricePromo?: string | number | null,
     creditMonth?: number,
     creditStart?: number,
     hideBadges?: boolean,
@@ -34,9 +36,17 @@
   .estate-card-bottom {
     padding-top: 24px;
 
-    &__price {
+    &__price-block {
       padding-top: 16px;
-      @apply tw-text-text00 tw-text-2xl;
+    }
+
+    &__promo-price {
+      margin-bottom: 2px;
+      @apply tw-text-base tw-block;
+    }
+
+    &__price {
+      @apply tw-text-text00 tw-text-2xl tw-block;
     }
 
     &__house {
