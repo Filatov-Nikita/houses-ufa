@@ -1,7 +1,7 @@
 <template>
   <div class="apart-filter">
     <div class="tab-zone">
-      <div class="tab-zone__area">
+      <div class="tab-zone__area scroll-y">
         <BaseTabsGroup class="tab-zone__groups" v-model="currentTabFilter">
           <BaseTabsGroupItem class="tab-zone__item" theme="white" name="flats">
             {{ tabLabels[0] }}
@@ -13,7 +13,8 @@
       </div>
       <BaseTabsTabContent leave-classes="" enter-classes="" v-model="currentTabFilter">
         <BaseTabsTabContentItem name="flats" key="flats">
-          <FlatFilter />
+          <GenplanController v-if="currentFlatFilter === 'genplan'" />
+          <FlatFilter v-else />
         </BaseTabsTabContentItem>
         <BaseTabsTabContentItem name="places" key="places">
           <ParkStoresFilter />
@@ -26,6 +27,7 @@
 <script setup lang="ts">
   import FlatFilter from './components/FlatFilter.vue';
   import ParkStoresFilter from './components/ParkingStores/ParkStoresFilter.vue';
+  import GenplanController from './components/Genplan/Controller.vue';
   import { useFilterHead } from './store/filter-head';
   import { useComplexOne } from '@/stores/pages/complex-one';
 
@@ -33,6 +35,7 @@
   const complexOne = useComplexOne();
 
   const currentTabFilter = toRef(filterHeadStore, 'currentTabFilter');
+  const currentFlatFilter = toRef(filterHeadStore, 'currentFlatFilter');
 
   const tabLabels = ['Квартиры', 'Машиноместа и кладовые'];
 
@@ -41,6 +44,7 @@
     && complexOne.complex?.data.has_storehouses === true;
   });
 </script>
+
 <style scoped lang="scss">
   .tab-zone {
     &__area {

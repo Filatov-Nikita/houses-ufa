@@ -65,7 +65,7 @@
           @after-manipulate="updatePrice"
         />
       </div>
-      <div>
+      <div class="tw-max-w-full tw-overflow-y-hidden scroll-y">
         <EstateRoomsFilter
           v-model:room_factor_studio="filterParams.room_factor_studio"
           v-model:room_factor_one_classic="filterParams.room_factor_one_classic"
@@ -242,6 +242,11 @@
       width: calc(50% - 20px);
       margin: 16px 10px;
 
+      @include lg {
+        margin: 10px 10px;
+        width: calc(100% - 20px);
+      }
+
       @include md {
         margin: 12px 10px;
       }
@@ -251,11 +256,7 @@
       }
     }
 
-    &__square, &__storey {
-      @include lg {
-        width: calc(100% - 20px);
-      }
-    }
+    &__square, &__storey {}
 
     &__form {
       & > div + div {

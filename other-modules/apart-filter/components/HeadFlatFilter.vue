@@ -3,14 +3,6 @@
     <div class="head-filter__controls">
       <FindedCount class="head-filter__count" :total="total" :cases="cases" />
       <div class="head-filter__btns">
-        <BaseTabsGroup class="head-filter__tabs" theme="gray" v-model="listView">
-          <BaseTabsGroupItem class="head-filter__tab" theme="gray" name="plan">
-            На плане
-          </BaseTabsGroupItem>
-          <BaseTabsGroupItem class="head-filter__tab" theme="gray" name="list">
-            Списком
-          </BaseTabsGroupItem>
-        </BaseTabsGroup>
         <BaseSelect
           class="head-filter__sort"
           theme="gray"
@@ -21,6 +13,19 @@
           :modelValue="currentSort"
           @update:modelValue="updateSort"
         />
+        <div class="scroll-y head-filter__scroll-area">
+          <BaseTabsGroup class="head-filter__tabs" theme="gray" v-model="listView">
+            <BaseTabsGroupItem class="head-filter__tab" theme="gray" name="genplan">
+              На фасаде
+            </BaseTabsGroupItem>
+            <BaseTabsGroupItem class="head-filter__tab" theme="gray" name="plan">
+              Шахматка
+            </BaseTabsGroupItem>
+            <BaseTabsGroupItem class="head-filter__tab" theme="gray" name="list">
+              Списком
+            </BaseTabsGroupItem>
+          </BaseTabsGroup>
+        </div>
       </div>
     </div>
     <BaseTabsTabContent v-bind="animTabs" v-model="listView" keepAlive>
@@ -108,10 +113,20 @@
     padding: 16px;
   }
 
+  &__scroll-area {
+    @include lg {
+      width: 100%;
+    }
+
+    @include sm {
+      @apply tw-max-w-full tw-w-full tw-overflow-y-hidden;
+    }
+  }
+
   &__controls {
     display: flex;
     flex-wrap: wrap;
-    column-gap: 30px;
+    column-gap: 20px;
     row-gap: 16px;
     justify-content: space-between;
     align-items: center;
@@ -119,7 +134,7 @@
   }
 
   &__count {
-    flex-basis: 270px;
+    flex-basis: 260px;
     @apply tw-text-lg tw-text-text00;
   }
 
@@ -140,25 +155,21 @@
   }
 
   &__sort {
-    width: 250px;
+    width: 200px;
 
     @include lg {
-      width: 310px;
-    }
-
-    @include md {
       width: 100%;
     }
   }
 
   &__tabs {
-    @include md {
+    @include lg {
       width: 100%;
     }
   }
 
   &__tab {
-    @include md {
+    @include lg {
       width: 100%;
     }
   }

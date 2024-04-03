@@ -16,15 +16,15 @@
   .filter-layout {
     display: flex;
     flex-wrap: wrap;
-    margin: -20px;
+    margin: -15px;
 
     @include lg {
       margin: -10px;
     }
 
     &__left {
-      width: calc(100% / 12 * 4 - 40px);
-      margin: 20px;
+      width: calc(100% / 12 * 3.5 - 30px);
+      margin: 15px;
 
       @include lg {
         width: calc(100% / 12 * 4 - 20px);
@@ -32,7 +32,7 @@
       }
 
       @include md {
-        width: calc(100% / 12 * 5.5 - 20px);
+        width: calc(100% / 12 * 3.5 - 20px);
       }
 
       @include sm {
@@ -41,8 +41,8 @@
     }
 
     &__right {
-      width: calc(100% / 12 * 8 - 40px);
-      margin: 20px;
+      width: calc(100% / 12 * 8.5 - 30px);
+      margin: 15px;
 
       @include lg {
         width: calc(100% / 12 * 8 - 20px);
@@ -50,7 +50,7 @@
       }
 
       @include md {
-        width: calc(100% / 12 * 6.5 - 20px);
+        width: calc(100% / 12 * 8.5 - 20px);
       }
 
       @include sm {

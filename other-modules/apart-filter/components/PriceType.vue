@@ -1,5 +1,5 @@
 <template>
-  <div class="price-type">
+  <div class="price-type scroll-y">
     <button
       class="price-type__btn"
       :class="{ 'price-type__btn--active': isActive(btn) }"

@@ -217,6 +217,10 @@
       align-items: center;
       justify-content: flex-end;
       gap: 8px;
+
+      @include md {
+        justify-content: flex-start;
+      }
     }
 
     &__old-price {
@@ -256,11 +260,24 @@
       margin-bottom: 8px;
     }
 
-    &__badges {}
+    &__badges {
+      @include lg {
+        order: 3;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        grid-column: 1 / 3;
+        gap: 8px;
+      }
+    }
 
     &__badge {
       & + & {
         margin-top: 8px;
+
+        @include lg {
+          margin-top: 0px;
+        }
       }
     }
   }
