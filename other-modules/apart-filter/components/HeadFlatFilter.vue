@@ -6,8 +6,8 @@
         <BaseSelect
           class="head-filter__sort"
           theme="gray"
-          label=""
           name="sort"
+          height="64px"
           v-bind="selectProps(sortOptions)"
           :disabled="disabledSort"
           :modelValue="currentSort"

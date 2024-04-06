@@ -132,9 +132,7 @@
     }
 
     &__btn {
-      padding-top: 8px;
       @include md {
-        padding-top: 0px;
         width: 100%;
       }
     }

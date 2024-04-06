@@ -1,5 +1,6 @@
 <template>
   <EstateCardsBase
+    class="town-mini-card"
     :name="name"
     :params="params"
     :images="images"
@@ -27,7 +28,7 @@
   const to = computed(() => `/towns/${props.town.id}`);
 
   const name = computed(() => {
-    return `${props.town.layout.name_alias}, ${props.town.layout.area_cottage} м2`
+    return `${props.town.layout.name_alias}, ${props.town.layout.area_cottage}&nbsp;м2`
   });
 
   const params = computed(() => {
@@ -46,3 +47,11 @@
     return props.town.town.finishing_type.title;
   });
 </script>
+
+<style lang="scss">
+  .town-mini-card {
+    .estate-card__name {
+      min-height: 48px;
+    }
+  }
+</style>

@@ -16,7 +16,6 @@
         class="list-control__sort"
         theme="white"
         name="sort"
-        label=""
         v-bind="selectProps(townSortOptions)"
         :model-value="currentSort"
         @update:modelValue="updateSort"
@@ -86,7 +85,7 @@
     &__inputs {
       display: flex;
       flex-wrap: wrap;
-      align-items: center;
+      align-items: flex-end;
       justify-content: flex-end;
       gap: 16px;
       flex-basis: 700px;
