@@ -17,7 +17,7 @@
         <BaseSelect
           class="head-filter__sort"
           theme="gray"
-          label=""
+          height="64px"
           name="sort"
           v-bind="selectProps(sortOptions)"
           :modelValue="currentSort"

@@ -1,8 +1,8 @@
 <template>
   <div class="tw-relative" :class="{ 'tw-opacity-50': disabled }" v-click-outside="close">
     <div class="base-select-block" @click="toggle">
-      <label class="base-select-block__label">{{ label }}</label>
-      <div class="base-select-block__input" :class="[ `base-select-block__input--${theme}`, { 'base-select-block__input--error': errorMessage } ]">
+      <label v-if="label" class="base-select-block__label">{{ label }}</label>
+      <div class="base-select-block__input" :style="{ '--height': height }" :class="[ `base-select-block__input--${theme}`, { 'base-select-block__input--error': errorMessage } ]">
         <div class="tw-grow tw-min-w-0">
           <component :is="displayComp" v-bind="displayProps" :toggle="toggle" :value="value" :handleChange="handleChange" />
         </div>
@@ -39,7 +39,7 @@
   import DefaultDisplay from './displays/DefaultDisplay.vue';
 
   interface Props {
-    label: string,
+    label?: string,
     name: string,
     rules?: string,
     disabled?: boolean,
@@ -49,6 +49,7 @@
     dropdownComp?: any,
     dropDownProps?: any,
     displayProps?: any,
+    height?: string,
   }
 
   const props = withDefaults(defineProps<Props>(), {
@@ -58,6 +59,7 @@
     dropdownComp: DefaultDropdown,
     dropDownProps: {},
     displayProps: {},
+    height: '56px',
   });
 
   const { value, errorMessage, handleChange } = useField(props.name, props.rules, {
@@ -86,7 +88,7 @@
 
     &__input {
       border-radius: 8px;
-      min-height: 56px;
+      min-height: var(--height);
       transition: background-color 300ms;
       border-width: 1px;
       border-style: solid;

@@ -4,7 +4,7 @@
       <BaseSelect
         class="progress-filter__select"
         theme="white"
-        label=""
+        height="64px"
         name="progress.month"
         v-bind="selectProps(store.availableMonths, 'месяц')"
         v-model="store.albumParams.month"
@@ -13,7 +13,7 @@
       <BaseSelect
         class="progress-filter__select"
         theme="white"
-        label=""
+        height="64px"
         name="progress.month"
         v-bind="selectProps(store.availableYears, 'год')"
         v-model="store.albumParams.year"

@@ -1,7 +1,7 @@
 <template>
   <BaseSelect
+    height="64px"
     theme="white"
-    label=""
     name="date"
     v-bind="selectProps(options)"
     :model-value="current"

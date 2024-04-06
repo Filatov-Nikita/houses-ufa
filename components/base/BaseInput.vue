@@ -1,6 +1,6 @@
 <template>
   <div class="base-input" :class="{ 'base-input--disabled': disabled }">
-    <label class="base-input__label" :for="name">{{ label }}</label>
+    <label v-if="label" class="base-input__label" :for="name">{{ label }}</label>
     <input
       class="base-input__input"
       :class="[ `base-input__input--${theme}`, { 'base-input__input--error': errorMessage }, inputClass ]"
@@ -29,7 +29,7 @@
   interface Props {
     name: string,
     rules?: string,
-    label: string,
+    label?: string,
     caption?: string,
     modelValue?: any,
     placeholder?: string,

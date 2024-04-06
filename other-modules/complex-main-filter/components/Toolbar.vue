@@ -8,7 +8,6 @@
         class="list-control__sort"
         theme="white"
         name="sort"
-        label=""
         v-bind="selectProps(flatSortOptions)"
         :model-value="currentSort"
         @update:modelValue="updateSort"
@@ -94,6 +93,7 @@
     }
 
     &__sort {
+      height: 64px;
       flex-basis: 350px;
 
       @include sm {

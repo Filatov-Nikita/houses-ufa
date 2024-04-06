@@ -7,7 +7,6 @@
       class="list-control__sort"
       theme="white"
       name="sort"
-      label=""
       v-bind="selectProps(sortOpts)"
       :model-value="currentSort"
       @update:modelValue="updateSort"

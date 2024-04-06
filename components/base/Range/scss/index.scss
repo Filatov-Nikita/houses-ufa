@@ -15,7 +15,6 @@
 }
 
 .control-block {
-  padding-bottom: 8px;
   position: relative;
 
   &__inputs {
@@ -81,7 +80,7 @@
 
   &__controls {
     position: absolute;
-    bottom: 0;
+    bottom: -8px;
     left: 16px;
     z-index: 100;
     width: calc(100% - 32px);
