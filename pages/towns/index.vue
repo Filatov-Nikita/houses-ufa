@@ -22,10 +22,6 @@
 <script setup lang="ts">
   import TownMainFilter from '@/other-modules/town-main-filter/index.vue';
   import QuestionForm from '@/other-modules/question-form/index.vue';
-  import { data } from '@/seo/pages/towns';
 
-  useSeoMeta({
-    title: data.title,
-    description: data.description,
-  });
+  await usePageSeo('towns/index.json');
 </script>

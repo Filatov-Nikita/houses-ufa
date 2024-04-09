@@ -25,7 +25,6 @@
 <script lang="ts" setup>
   import Faq from '@/other-modules/faq/index.vue';
   import { useBreadcrumbsStore } from '@/stores/breadcrumbs';
-  import { data } from '@/seo/pages/faq';
 
   const bread = useBreadcrumbsStore();
 
@@ -33,8 +32,5 @@
     { label: 'Главная', to: '/' }, { label: 'Вопросы и ответы', to: '/faq' },
   ]);
 
-  useSeoMeta({
-    title: data.title,
-    description: data.description,
-  });
+  await usePageSeo('faq.json');
 </script>

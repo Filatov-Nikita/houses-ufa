@@ -53,7 +53,6 @@ import CompanyObjectList from '@/other-modules/company-object-list/index.vue';
 import History from '@/components/cards/History.vue';
 import CompanyTeam from '@/other-modules/company-team/index.vue';
 import { useBreadcrumbsStore } from '@/stores/breadcrumbs';
-import { data } from '@/seo/pages/about';
 
 const bread = useBreadcrumbsStore();
 
@@ -61,10 +60,5 @@ bread.set([
   { label: 'Главная', to: '/' }, { label: 'О компании', to: '/about' },
 ]);
 
-useHead({
-  title: data.title,
-  meta: [
-    { name: 'description', content: data.description },
-  ],
-});
+await usePageSeo('about.json');
 </script>

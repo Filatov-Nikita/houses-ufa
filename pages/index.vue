@@ -64,12 +64,6 @@ import EstateTypeCards from '@/other-modules/estate-type-cards/index.vue';
 import CompanyShortInfo from '@/other-modules/company-short-info/index.vue';
 import CreditListShort from '@/other-modules/credit-list-short/index.vue';
 import OurObjectMap from '@/other-modules/our-object-map/index.vue';
-import { data } from '@/seo/pages/index';
 
-useHead({
-  title: data.title,
-  meta: [
-    { name: 'description', content: data.description },
-  ],
-});
+await usePageSeo('index.json');
 </script>

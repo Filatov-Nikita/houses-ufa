@@ -48,7 +48,6 @@
   import CreditList from '@/other-modules/credit-list/index.vue';
   import StepItems from '@/other-modules/purchase/components/ipoteka/StepItems.vue';
   import { useBreadcrumbsStore } from '@/stores/breadcrumbs';
-  import { data } from '@/seo/pages/ipoteka';
 
   const bread = useBreadcrumbsStore();
 
@@ -56,12 +55,7 @@
     { label: 'Главная', to: '/' }, { label: 'Ипотека', to: '/ipoteka' },
   ]);
 
-  useHead({
-  title: data.title,
-  meta: [
-    { name: 'description', content: data.description },
-  ],
-});
+  await usePageSeo('ipoteka.json');
 </script>
 
 <style lang="scss" src="@/other-modules/purchase/styles/style.scss"></style>
