@@ -19,7 +19,6 @@
 
 <script setup lang="ts">
   import { useBreadcrumbsStore } from '@/stores/breadcrumbs';
-  import { data } from '@/seo/pages/promotions';
   import PromotionList from '@/other-modules/promotion-list/index.vue';
 
   const bread = useBreadcrumbsStore();
@@ -28,10 +27,5 @@
     { label: 'Главная', to: '/' }, { label: 'Акции', to: '/promotions' },
   ]);
 
-  useHead({
-    title: data.title,
-    meta: [
-      { name: 'description', content: data.description },
-    ],
-  });
+  await usePageSeo('promotions/index.json');
 </script>

@@ -26,13 +26,9 @@
 </template>
 
 <script setup lang="ts">
-  import { data as seo } from '@/seo/pages/tenders';
   import TenderList from '@/other-modules/tender-list/index.vue';
 
-  useSeoMeta({
-    title: seo.title,
-    description: seo.description,
-  });
+  await usePageSeo('tenders.json');
 </script>
 
 <style lang="scss">

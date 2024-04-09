@@ -101,7 +101,9 @@ export default defineNuxtConfig({
   runtimeConfig: {
     public: definePublicConfig(),
   },
-  appConfig: {},
+  appConfig: {
+    seoBase: 'https://seo.dash-gkufa.ru/',
+  },
   pinia: {
     autoImports: [
       // automatically imports `defineStore`

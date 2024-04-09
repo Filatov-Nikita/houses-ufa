@@ -21,11 +21,7 @@
 </template>
 
 <script setup lang="ts">
-  import { data as seo } from '@/seo/pages/search-areas';
   import SearchAreaList from '@/other-modules/search-area-list/index.vue';
 
-  useSeoMeta({
-    title: seo.title,
-    description: seo.description,
-  });
+  await usePageSeo('search_areas.json');
 </script>

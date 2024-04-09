@@ -19,7 +19,6 @@
 </template>
 <script lang="ts" setup>
   import { useBreadcrumbsStore } from '@/stores/breadcrumbs';
-  import { data } from '@/seo/pages/contacts';
   import { useRoute } from 'vue-router';
 
   const bread = useBreadcrumbsStore();
@@ -30,20 +29,14 @@
 
   const route = useRoute();
 
-  const seo = getSeo();
-
-  useSeoMeta({
-    title: seo.title,
-    description: seo.description,
-  });
+  await getSeo();
 
   function getSeo() {
-    const type = route.query.type as string;
+    const type = route.query.type ?? 'office' as string;
     switch(type) {
-      case 'office': return data.office;
-      case 'service': return data.service;
+      case 'office': return usePageSeo('contacts/offices.json');
+      case 'service': return usePageSeo('contacts/services.json');
     }
-    return data.office;
   }
 </script>
 <style lang="scss" scoped></style>
