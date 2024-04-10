@@ -1,0 +1,13 @@
+.page-card {
+  border-radius: 16px;
+  padding: 40px;
+  @apply tw-bg-white;
+
+  @include lg {
+    padding: 24px;
+  }
+
+  @include sm {
+    padding: 24px 16px;
+  }
+}

@@ -30,6 +30,11 @@
       to: '/lk/b2t',
     },
     {
+      label: 'Мотивация',
+      icon: 'rub',
+      to: '/lk/b2t/motivation',
+    },
+    {
       label: 'Клиенты',
       icon: 'handshake',
       to: '/lk/b2t/clients',

@@ -23,6 +23,7 @@
   import PublicHeader from '@/other-modules/public-header/index.vue';
   import PublicFooter from '@/other-modules/public-footer/index.vue';
   import AsideLeft from '@/lk-modules/b2t/aside/index.vue';
+  import '@/assets/css/lk/main.scss';
 </script>
 
 <style scoped lang="scss">
