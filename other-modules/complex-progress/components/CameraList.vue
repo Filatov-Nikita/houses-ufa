@@ -28,7 +28,7 @@
         </button>
         <p class="camera-slider__caption">{{ item.title }}</p>
       </SwiperSlide>
-      <SlidersNavBtns />
+      <SlidersNavBtns class="camera-slider__nav" />
       <BaseModal v-model="showedModal" v-slot="{ hide }">
         <CameraModalCard v-if="currentCamera" :camera="currentCamera" @close="hide" />
       </BaseModal>
@@ -79,6 +79,13 @@
   });
 </script>
 
+<style lang="scss">
+  .camera-slider {
+    .swiper-nav--right {
+      left: 80px;
+    }
+  }
+</style>
 
 <style scoped lang="scss">
   .camera-slider {

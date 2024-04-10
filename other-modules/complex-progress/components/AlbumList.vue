@@ -30,7 +30,7 @@
           <p class="album-slider__year">{{ item.year }} г.</p>
         </div>
       </SwiperSlide>
-      <SlidersNavBtns />
+      <SlidersNavBtns class="album-slider__nav" />
       <BaseModal v-model="showedModal" v-slot="{ hide }">
         <AlbumModalCard
           v-if="currentAlbum"
@@ -93,6 +93,13 @@
   });
 </script>
 
+<style lang="scss">
+  .album-slider {
+    .swiper-nav--right {
+      left: 80px;
+    }
+  }
+</style>
 
 <style scoped lang="scss">
   .album-slider {
