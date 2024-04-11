@@ -23,5 +23,7 @@
   import ComplexMainFilter from '@/other-modules/complex-main-filter/index.vue';
   import QuestionForm from '@/other-modules/question-form/index.vue';
 
+  useCanonical({ preserveParams: [ 'complex_id', 'page' ] });
+
   await usePageSeo('complexes/index.json');
 </script>

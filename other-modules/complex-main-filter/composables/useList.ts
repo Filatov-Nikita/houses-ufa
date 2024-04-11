@@ -4,9 +4,22 @@ import type { Flat } from '@/types/estate/flat';
 
 export default async function(filter: ReturnType<typeof useFilter>) {
   const params = computed(() => filter.params);
+  const route = useRoute();
 
-  const { response, next, pagination, loadingNext } = useSeqDataFetch<Flat>('estate/filter/flats', {
+  const { response, next, pagination, loadingNext, page } = useSeqDataFetch<Flat>('estate/filter/flats', {
     query: params,
+  }, route.query.page ? +route.query.page : undefined);
+
+  function syncPage() {
+    useRouter().replace({ query: { ...route.query, ...filter.params, page: page.value } });
+  }
+
+  onMounted(() => {
+    syncPage();
+  });
+
+  watch(page, () => {
+    syncPage();
   });
 
   await response.execute();

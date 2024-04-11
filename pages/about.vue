@@ -54,6 +54,8 @@ import History from '@/components/cards/History.vue';
 import CompanyTeam from '@/other-modules/company-team/index.vue';
 import { useBreadcrumbsStore } from '@/stores/breadcrumbs';
 
+useCanonical();
+
 const bread = useBreadcrumbsStore();
 
 bread.set([

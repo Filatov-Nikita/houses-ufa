@@ -43,6 +43,12 @@ import StepItems from '@/other-modules/purchase/components/trade-in/StepItems.vu
 import PromoCard from '@/other-modules/purchase/components/trade-in/PromoCard.vue';
 import QuestionForm from '@/other-modules/question-form/index.vue';
 
+useCanonical();
+
+useSeoMeta({
+  title: 'Трейд-ин',
+});
+
 const bread = useBreadcrumbsStore();
 
 bread.set([

@@ -49,6 +49,8 @@
   import StepItems from '@/other-modules/purchase/components/ipoteka/StepItems.vue';
   import { useBreadcrumbsStore } from '@/stores/breadcrumbs';
 
+  useCanonical();
+
   const bread = useBreadcrumbsStore();
 
   bread.set([

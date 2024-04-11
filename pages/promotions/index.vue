@@ -21,6 +21,8 @@
   import { useBreadcrumbsStore } from '@/stores/breadcrumbs';
   import PromotionList from '@/other-modules/promotion-list/index.vue';
 
+  useCanonical();
+
   const bread = useBreadcrumbsStore();
 
   bread.set([

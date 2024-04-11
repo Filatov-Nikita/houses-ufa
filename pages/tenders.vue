@@ -28,6 +28,8 @@
 <script setup lang="ts">
   import TenderList from '@/other-modules/tender-list/index.vue';
 
+  useCanonical();
+
   await usePageSeo('tenders.json');
 </script>
 

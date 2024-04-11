@@ -26,6 +26,8 @@
   import Faq from '@/other-modules/faq/index.vue';
   import { useBreadcrumbsStore } from '@/stores/breadcrumbs';
 
+  useCanonical();
+
   const bread = useBreadcrumbsStore();
 
   bread.set([

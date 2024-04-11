@@ -109,6 +109,8 @@ import PurchaseMethods from '@/components/Estate/PurchaseMethods/index.vue';
 import { useComplexOne } from '@/stores/pages/complex-one';
 import { useBreadcrumbsStore } from '@/stores/breadcrumbs';
 
+useCanonical();
+
 const bread = useBreadcrumbsStore();
 
 const complexOneStore = useComplexOne();

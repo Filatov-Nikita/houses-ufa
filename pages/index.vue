@@ -65,5 +65,7 @@ import CompanyShortInfo from '@/other-modules/company-short-info/index.vue';
 import CreditListShort from '@/other-modules/credit-list-short/index.vue';
 import OurObjectMap from '@/other-modules/our-object-map/index.vue';
 
+useCanonical();
+
 await usePageSeo('index.json');
 </script>

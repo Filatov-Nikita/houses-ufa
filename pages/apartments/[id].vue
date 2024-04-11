@@ -33,5 +33,7 @@
   import FlatCard from '@/other-modules/flat-card/index.vue';
   import FlatSimilar from '@/other-modules/flat-similar/index.vue';
 
+  useCanonical();
+
   const id = computed(() => useRoute().params.id as string);
 </script>

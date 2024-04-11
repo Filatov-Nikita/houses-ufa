@@ -21,6 +21,17 @@
   import { useRoute } from 'vue-router';
   import { data } from '@/seo/pages/main-filter';
 
+  useHead({
+    meta: [
+      {
+        name: 'robots',
+        content: 'noindex',
+      }
+    ]
+  })
+
+  useCanonical({ preserveParams: ['page'] });
+
   const route = useRoute();
 
   const seo = getSeo();

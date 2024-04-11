@@ -41,6 +41,12 @@ import StepItems from '@/other-modules/purchase/components/mat-capital/StepItems
 import PromoCard from '@/other-modules/purchase/components/mat-capital/PromoCard.vue';
 import QuestionForm from '@/other-modules/question-form/index.vue';
 
+useCanonical();
+
+useSeoMeta({
+  title: 'Материнский капитал',
+});
+
 const bread = useBreadcrumbsStore();
 
 bread.set([
