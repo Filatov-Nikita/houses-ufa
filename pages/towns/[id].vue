@@ -32,6 +32,8 @@
   import QuestionForm from '@/other-modules/question-form/index.vue';
   import { useTownCard } from '@/other-modules/town-card/store/index';
 
+  useCanonical();
+
   const townCard = useTownCard();
 </script>
 

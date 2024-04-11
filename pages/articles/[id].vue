@@ -24,6 +24,8 @@
   import QuestionForm from '@/other-modules/question-form/index.vue';
   import { useBreadcrumbsStore } from '@/stores/breadcrumbs';
 
+  useCanonical();
+
   const bread = useBreadcrumbsStore();
 
   bread.set([ { label: 'Главная', to: '/' }, { label: 'Пресс-центр', to: '/articles' } ]);

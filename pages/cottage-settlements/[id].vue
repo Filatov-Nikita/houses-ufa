@@ -78,6 +78,8 @@
   import { useTownOne } from '@/stores/pages/town-one';
   import { useBreadcrumbsStore } from '@/stores/breadcrumbs';
 
+  useCanonical();
+
   const route = useRoute();
 
   const townOne = useTownOne();

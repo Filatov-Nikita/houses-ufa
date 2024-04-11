@@ -40,6 +40,12 @@ import StepItems from '@/other-modules/purchase/components/discont/StepItems.vue
 import PromoCard from '@/other-modules/purchase/components/discont/PromoCard.vue';
 import QuestionForm from '@/other-modules/question-form/index.vue';
 
+useCanonical();
+
+useSeoMeta({
+  title: 'Программа лояльности от ГК «Жилой Квартал»',
+});
+
 const bread = useBreadcrumbsStore();
 
 bread.set([

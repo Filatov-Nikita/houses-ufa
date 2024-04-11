@@ -29,6 +29,8 @@
 
   const route = useRoute();
 
+  useCanonical({ preserveParams: [ 'type' ] });
+
   await getSeo();
 
   function getSeo() {

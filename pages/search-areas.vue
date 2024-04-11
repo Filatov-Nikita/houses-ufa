@@ -23,5 +23,7 @@
 <script setup lang="ts">
   import SearchAreaList from '@/other-modules/search-area-list/index.vue';
 
+  useCanonical();
+
   await usePageSeo('search_areas.json');
 </script>

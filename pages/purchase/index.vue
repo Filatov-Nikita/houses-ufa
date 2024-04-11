@@ -29,6 +29,12 @@
 import NavItems from '@/other-modules/purchase/components/NavItems.vue';
 import { useBreadcrumbsStore } from '@/stores/breadcrumbs'
 
+useCanonical();
+
+useSeoMeta({
+  title: 'Как купить',
+});
+
 const bread = useBreadcrumbsStore();
 
 bread.set([

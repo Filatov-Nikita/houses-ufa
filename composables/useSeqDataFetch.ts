@@ -3,10 +3,11 @@ import type { UseFetchOptions } from 'nuxt/app';
 import { useDataFetch } from './useDataFetch';
 import { useSeqPagination } from './useSeqPagination';
 
-export function useSeqDataFetch<T>(url: string | Ref<string>, options: UseFetchOptions<Response<T[]>> = {}) {
+export function useSeqDataFetch<T>(url: string | Ref<string>, options: UseFetchOptions<Response<T[]>> = {}, initialPage?: number) {
   const config = useRuntimeConfig();
 
-  const page = ref(1);
+  const page = ref(initialPage ?? 1);
+
   const loadingNext = ref(false);
 
   const query = computed(() => {
@@ -23,7 +24,7 @@ export function useSeqDataFetch<T>(url: string | Ref<string>, options: UseFetchO
     }
   }
 
-  const response = useDataFetch<Response<T[]>>(url, Object.assign({}, defOpts, options));
+  const response = useDataFetch<Response<T[]>>(url, Object.assign({}, defOpts, options, { query }));
 
   const meta = computed(() => response.data.value?.meta ?? null);
   const pagination = useSeqPagination(page, meta);

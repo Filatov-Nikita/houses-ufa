@@ -21,4 +21,6 @@
   import ProjectCard from '@/other-modules/project-card/index.vue';
   import ProjectList from '@/other-modules/project-list/index.vue';
   import QuestionForm from '@/other-modules/question-form/index.vue';
+
+  useCanonical();
 </script>
