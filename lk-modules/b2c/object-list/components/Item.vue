@@ -5,6 +5,20 @@
         <img class="object-item-info__img" :src="info.image" alt="">
       </div>
       <div class="object-item-info__body">
+        <div v-if="flat" class="tw-mb-4">
+          <button class="flat-key-badge" v-if="flat.entrance.keying" @click="showedOrderKeys = !showedOrderKeys">
+            <span class="flat-key-badge__icon-wrap">
+              <BaseIcon fit name="key" />
+            </span>
+            <span>Выдача ключей — <span class="tw-text-primary">Оформить заявку</span></span>
+          </button>
+          <div v-else class="flat-key-badge">
+            <span class="flat-key-badge__icon-wrap">
+              <BaseIcon fit name="key" />
+            </span>
+            <span>Строится</span>
+          </div>
+        </div>
         <p class="object-item-info__name">{{ info.name }}</p>
         <div class="object-item-info__section">
           <template v-for="(section, index) in info.sections">
@@ -32,12 +46,16 @@
         </div>
       </div>
     </div>
+    <template v-if="flat">
+      <OrderKeys v-model="showedOrderKeys" :flatId="flat.id" @success="showedOrderKeys = false" />
+    </template>
   </div>
 </template>
 
 <script setup lang="ts">
   import type { UserTown, UserFlat, UserParking, UserPlace } from '../types';
   import FilePreview from './FilePreview.vue';
+  import OrderKeys from '@/lk-modules/b2c/order-keys/index.vue';
   import { getRoomsCount } from '@/plugins/rooms-count';
 
   const props = defineProps<{
@@ -46,6 +64,8 @@
     parking?: UserParking,
     place?: UserPlace,
   }>();
+
+  const showedOrderKeys = ref(false);
 
   const showedDocs = ref(false);
 
@@ -117,6 +137,21 @@
 </script>
 
 <style scoped lang="scss">
+  .flat-key-badge {
+    border-radius: 8px;
+    padding: 8px 16px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    @apply tw-bg-base00;
+
+    &__icon-wrap {
+      width: 24px;
+      height: 24px;
+      @apply tw-text-primary;
+    }
+  }
+
   .object-item {
     &__docs {
       margin-top: 24px;
