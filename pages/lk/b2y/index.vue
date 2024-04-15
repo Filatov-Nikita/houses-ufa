@@ -12,7 +12,7 @@
 import EstateGridList from '@/other-modules/estate-list-grid-lk/index.vue';
 
 definePageMeta({
-  layout: 'lk',
+  layout: 'lk-b2y',
   middleware: ['auth'],
 })
 const residentialComplexs = [
