@@ -1,7 +1,7 @@
 <template>
   <div class="section">
     <div class="wrapper">
-      <TownMainFilter />
+      <ProjectMainFilter />
     </div>
   </div>
   <section class="section">
@@ -20,7 +20,7 @@
 </template>
 
 <script setup lang="ts">
-  import TownMainFilter from '@/other-modules/town-main-filter/index.vue';
+  import ProjectMainFilter from '@/other-modules/project-main-filter/index.vue';
   import QuestionForm from '@/other-modules/question-form/index.vue';
 
   useCanonical({ preserveParams: [ 'town_id', 'page' ] });
