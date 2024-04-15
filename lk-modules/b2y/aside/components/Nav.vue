@@ -19,6 +19,16 @@
       icon: 'file',
       to: '/lk/b2y/report',
     },
+    {
+      label: 'Мотивация',
+      icon: 'rub',
+      to: '/lk/b2y/motivation',
+    },
+    {
+      label: 'Рейтинги',
+      icon: 'chart-bar',
+      to: '/lk/b2y/ratings',
+    },
   ];
 </script>
 
