@@ -22,6 +22,10 @@ export default async function(filter: ReturnType<typeof useFilter>) {
     syncPage();
   });
 
+  watch(filter.params, () => {
+    page.value = 1;
+  });
+
   await response.execute();
 
   const showedCount = computed(() => {
