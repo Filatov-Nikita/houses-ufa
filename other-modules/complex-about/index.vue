@@ -4,6 +4,7 @@
     :text="about?.description ?? ''"
     :advantages="advantages"
     actionTitle="Перейти к генплану"
+    @action="onAction"
   />
 </template>
 
@@ -23,4 +24,12 @@
       { title: about.value.feature_3_title, value: about.value.feature_3_value },
     ]
   });
+
+  function onAction() {
+    const el = document.querySelector('.complex-genplan') as HTMLElement;
+    if(!el) return;
+    const sec = el.closest('.section');
+    if(!sec) return;
+    sec.scrollIntoView({ behavior: 'smooth' });
+  }
 </script>

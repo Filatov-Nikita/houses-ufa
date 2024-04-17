@@ -43,7 +43,7 @@
         <p v-html="items[2].body"></p>
       </div>
       <div class="purchase-card-item__bottom">
-        <a class="purchase-card-item__link" href="tel:+7 (347) 225-00-73">+7 (347) 225-00-73</a>
+        <a class="purchase-card-item__link" href="tel:+7 (347) 294-00-40">+7 (347) 294-00-40</a>
       </div>
     </article>
   </div>

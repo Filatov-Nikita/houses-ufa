@@ -10,21 +10,31 @@
 </template>
 
 <script setup lang="ts">
+  import { usePublicHeader } from '@/other-modules/public-header/store';
+
   const items = [
     {
       title: 'Получить предложение',
       text: 'Условия покупки и специальные предложения.',
       icon: 'wallet',
+      tag: 'button',
+      onClick: () => usePublicHeader().toggleForm(),
     },
     {
       title: 'Купить онлайн',
       text: 'Условия покупки и специальные предложения.',
       icon: 'read',
+      tag: resolveComponent('NuxtLink'),
+      to: '/purchase',
+      target: '_blank',
     },
     {
       title: 'Взять ипотеку',
       text: 'Условия покупки и специальные предложения.',
       icon: 'rub',
+      tag: resolveComponent('NuxtLink'),
+      to: '/ipoteka',
+      target: '_blank',
     },
   ];
 </script>
