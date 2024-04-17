@@ -1,5 +1,5 @@
 <template>
-  <article class="buy-item">
+  <component :is="tag ?? 'article'" class="buy-item">
     <div class="buy-item__icon">
       <BaseIcon class="buy-item__svg" :name="icon" />
     </div>
@@ -7,7 +7,7 @@
       <h3 class="buy-item__title">{{ title }}</h3>
       <p class="buy-item__text">{{ text }}</p>
     </div>
-  </article>
+  </component>
 </template>
 
 <script setup lang="ts">
@@ -15,6 +15,7 @@
     title: string,
     text: string,
     icon: string,
+    tag?: string | object,
   }
 
   defineProps<Props>();
@@ -27,7 +28,7 @@
     display: flex;
     flex-wrap: wrap;
     gap: 24px;
-    @apply tw-bg-white;
+    @apply tw-bg-white tw-text-left;
 
     &__title {
       margin-bottom: 16px;

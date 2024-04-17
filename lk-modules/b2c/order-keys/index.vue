@@ -11,8 +11,8 @@
           <BaseInput label="Телефон" placeholder="Телефон" name="phone" maska="+7 (9##) ### ## ##" rules="required" v-model="form.visitor_phone" />
           <BaseInput
             class="book-passport-form-grid__item"
-            name="birthday"
-            label="Дата рождения"
+            name="visit_date"
+            label="Дата приемки"
             v-model="form.visit_date"
             type="date"
             rules="required"
