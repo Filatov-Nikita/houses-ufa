@@ -1,9 +1,10 @@
 <template>
-  <section class="section">
+  <div class="section">
     <div class="wrapper">
-      <EstateTypeCards />
+      <EstateTypeCards class="tw-mb-4" />
+      <HomeBanner />
     </div>
-  </section>
+  </div>
 
   <EstateSaleList class="section" />
 
@@ -64,6 +65,7 @@ import EstateTypeCards from '@/other-modules/estate-type-cards/index.vue';
 import CompanyShortInfo from '@/other-modules/company-short-info/index.vue';
 import CreditListShort from '@/other-modules/credit-list-short/index.vue';
 import OurObjectMap from '@/other-modules/our-object-map/index.vue';
+import HomeBanner from '@/other-modules/home-banner/index.vue';
 
 useCanonical();
 
