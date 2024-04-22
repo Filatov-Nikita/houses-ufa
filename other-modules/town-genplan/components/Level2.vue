@@ -9,14 +9,15 @@
       loading="lazy"
       alt="Картинка генплана"
     />
-    <svg class="town-genplan-level1__svg" :viewBox="viewBox">
-      <path
-        v-for="estate in estates"
-        :key="estate.id"
-        class="town-genplan-level1__path"
-        :d="estate.block_plan_polygon"
-        @click="showTown(estate.id)"
-      />
+    <svg class="town-genplan-level1__svg" v-if="viewBox" :viewBox="viewBox">
+      <template v-for="estate in estates" :key="estate.id">
+        <path
+          v-if="estate.turn_plan_polygon"
+          class="town-genplan-level1__path"
+          :d="estate.turn_plan_polygon"
+          @click="showTown(estate.id)"
+        />
+      </template>
     </svg>
     <div class="town-genplan-level1__label">{{ data?.data.name }}</div>
     <BaseButton class="town-genplan-level1__back" theme="white" @click="back">
@@ -30,7 +31,7 @@
 
 <script setup lang="ts">
   import { useTownGenplan } from '../store';
-  import type { Block } from '../types';
+  import type { Turn } from '../types';
   const store = useTownGenplan();
   const router = useRouter();
 
@@ -44,7 +45,7 @@
     store.showedLevel = 1;
   }
 
-  const url = computed(() => `estate/blocks/${store.showedBlockId}/master-plan`);
+  const url = computed(() => `estate/turns/${store.showedBlockId}/master-plan`);
 
   const { data } = await useDataFetch<Response>(url, { lazy: true });
 
@@ -57,7 +58,7 @@
   });
 
   interface Response {
-    data: Block;
+    data: Turn;
   }
 </script>
 

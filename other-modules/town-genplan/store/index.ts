@@ -40,11 +40,19 @@ export interface Response {
 export interface Data {
   id:          number;
   master_plan: Image | null;
-  blocks:      Block[];
+  turns: Turn[]
 }
 
-export interface Block {
+export interface Turn {
   id:                   number;
-  town_plan_polygon:    string;
+  has_for_sale_estates: boolean,
+  town_plan_polygon:    string | null;
   name:                 string;
+  master_plan:          Image | null,
+  estates:              Estate[],
+}
+
+export interface Estate {
+  id: number,
+  turn_plan_polygon: string | null,
 }
