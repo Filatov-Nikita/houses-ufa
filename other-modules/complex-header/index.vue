@@ -2,7 +2,7 @@
   <EstateBlockHeader
     :name="complexStore.complex?.data.name ?? ''"
     :location="complexStore.complex?.data.location ?? ''"
-    :img="complexStore.complex?.data.image ?? null"
+    :images="complexStore.complex?.data.images ?? []"
     actionTitle="Выбрать квартиру"
     caption="Визуализация проекта предварительная, возможны изменения"
     @action="showMainFilter"

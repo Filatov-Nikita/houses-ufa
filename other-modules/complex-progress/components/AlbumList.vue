@@ -30,7 +30,7 @@
           <p class="album-slider__year">{{ item.year }} г.</p>
         </div>
       </SwiperSlide>
-      <SlidersNavBtns class="album-slider__nav" />
+      <SlidersNavBtns />
       <BaseModal v-model="showedModal" v-slot="{ hide }">
         <AlbumModalCard
           v-if="currentAlbum"

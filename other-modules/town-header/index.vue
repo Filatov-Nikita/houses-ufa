@@ -2,7 +2,7 @@
   <EstateBlockHeader
     :name="townStore.town?.data.name ?? ''"
     :location="townStore.town?.data.location ?? ''"
-    :img="townStore.town?.data.image ?? null"
+    :images="townStore.town?.data.images ?? []"
     actionTitle="Выбрать дом"
     caption="Визуализация проекта предварительная, возможны изменения"
     @action="showMainFilter"
