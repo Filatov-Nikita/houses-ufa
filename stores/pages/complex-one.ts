@@ -80,7 +80,7 @@ export interface ComplexOne {
   name:            string;
   about:           About;
   seo:             SEO;
-  image:           Image;
+  images:          Image[];
   latitude:        string,
   longitude:       string,
   sight_picture:   Image | null,

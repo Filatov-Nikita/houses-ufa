@@ -30,5 +30,5 @@ export interface EstateCard  {
   latitude:        string,
   longitude:       string,
   sight_picture:   Image | null,
-  image:           Image;
+  images:          Image[];
 }

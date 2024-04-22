@@ -9,19 +9,24 @@
       </BaseButton>
       <p class="estate-header__caption">{{ caption }}</p>
     </div>
-    <img v-if="img" class="estate-header__img" :src="img.url" alt="">
+    <Swiper class="estate-header__slider" :autoplay="{ delay: 5000 }" loop :modules="[Autoplay, EffectFade]" watchOverflow effect="fade" :speed="500">
+      <SwiperSlide class="estate-header__slide" v-for="image in images">
+        <img class="estate-header__img" :src="image.url" :width="image.width ?? 'auto'" :height="image.height ?? 'auto'" :alt="name" />
+      </SwiperSlide>
+    </Swiper>
   </div>
 </template>
 
 <script setup lang="ts">
   import { Image } from '@/types/share';
+  import { Autoplay, EffectFade } from 'swiper/modules';
 
   interface Props {
     name: string,
     location: string,
     actionTitle: string,
     caption: string,
-    img: Image | null,
+    images: Image[],
   }
 
   defineProps<Props>();
@@ -96,17 +101,22 @@
       margin-bottom: 16px;
     }
 
-    &__img {
+    &__slider {
       position: absolute;
       z-index: -2;
-      object-position: center;
-      object-fit: cover;
-      border-radius: 16px;
       width: 100%;
       height: 100%;
       left: 0;
       top: 0;
       @apply tw-inset-0;
+    }
+
+    &__img {
+      width: 100%;
+      height: 100%;
+      object-position: center;
+      object-fit: cover;
+      border-radius: 16px;
     }
 
     &::after {
