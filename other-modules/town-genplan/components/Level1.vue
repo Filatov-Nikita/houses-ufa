@@ -9,16 +9,17 @@
       loading="lazy"
       alt="Картинка генплана"
     />
-    <svg class="town-genplan-level1__svg" :viewBox="viewBox">
-      <path
-        v-for="block in blocks"
-        :key="block.id"
-        class="town-genplan-level1__path"
-        :d="block.town_plan_polygon"
-        @click="showLevel2(block.id)"
-        @mouseenter="showPopup($event, block)"
-        @mouseleave="closePopup"
-      />
+    <svg class="town-genplan-level1__svg" v-if="viewBox" :viewBox="viewBox">
+      <template v-for="block in blocks" :key="block.id">
+        <path
+          v-if="block.town_plan_polygon && block.has_for_sale_estates"
+          class="town-genplan-level1__path"
+          :d="block.town_plan_polygon"
+          @click="showLevel2(block.id)"
+          @mouseenter="showPopup($event, block)"
+          @mouseleave="closePopup"
+        />
+      </template>
     </svg>
     <div
       v-if="showedPopup && pointer"
@@ -31,12 +32,12 @@
 </template>
 
 <script setup lang="ts">
-  import { useTownGenplan, type Block } from '../store';
+  import { useTownGenplan, type Turn } from '../store';
 
   const store = useTownGenplan();
 
   const img = computed(() => store.data?.data.master_plan ?? null);
-  const blocks = computed(() => store.data?.data.blocks ?? []);
+  const blocks = computed(() => store.data?.data.turns ?? []);
 
   const viewBox = computed(() => {
     if(!img.value) return '';
@@ -48,11 +49,11 @@
     store.setShowedBlock(blockId);
   }
 
-  const currentBlock = ref<Block | null>(null);
+  const currentBlock = ref<Turn | null>(null);
   const pointer = ref<MouseEvent | null>(null);
   const showedPopup = ref<boolean>(false);
 
-  function showPopup(e: MouseEvent, block: Block) {
+  function showPopup(e: MouseEvent, block: Turn) {
     pointer.value = e;
     currentBlock.value = block;
     showedPopup.value = true;
