@@ -10,7 +10,7 @@
             <div v-if="img" class="article-content__img">
               <img :width="img.width" :height="img.height" :src="img.url" loading="lazy" />
             </div>
-            <p class="article-content__text" v-html="body ?? '-'"></p>
+            <div class="article-content__text" v-html="body ?? '-'"></div>
             <div class="article-content__source" v-if="sourceUrl">
               Новость взята из источника: <a :href="sourceUrl">{{ sourceUrl }}</a>
             </div>
