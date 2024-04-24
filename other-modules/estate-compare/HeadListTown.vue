@@ -136,9 +136,9 @@ const next = () => {
     currentIndex.value += 1
 }
 onMounted(() => {
-  if (window.screen.width <= 1024 && window.screen.width < 1440)
+  if (window.screen.width <= 1024 && window.screen.width < 1420)
     countData.value = 3
-  else if (window.screen.width >= 1440) countData.value = 4
+  else if (window.screen.width >= 1420) countData.value = 4
   windowData.value = headValues.value.slice(0, countData.value)
 })
 

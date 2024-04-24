@@ -26,7 +26,7 @@
       768: {
         slidesPerView: 2,
       },
-      1440: {
+      1420: {
         slidesPerView: 3,
         pagination: false,
       },
