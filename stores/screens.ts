@@ -13,7 +13,7 @@ export const useScreensStore = defineStore('useScreensStore', {
       const objScreens = {
         md: '768px',
         lg: '1024px',
-        xl: '1440px',
+        xl: '1420px',
         '2xl': '1920px',
       }
       for (let key in objScreens) {

@@ -131,7 +131,7 @@
 
 <style>
   #client-object-modal {
-    max-width: 1440px;
+    max-width: 1420px;
   }
 </style>
 

@@ -43,7 +43,7 @@
       1024: {
         slidesPerView: 3,
       },
-      1440: {
+      1420: {
         slidesPerView: 4,
       },
     } as const,
