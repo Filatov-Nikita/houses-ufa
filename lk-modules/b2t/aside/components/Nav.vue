@@ -25,9 +25,14 @@
       to: '/lk/b2t/promotions',
     },
     {
-      label: 'Профиль',
-      icon: 'profile',
-      to: '/lk/b2t',
+      label: 'Рейтинги',
+      icon: 'chart-bar',
+      to: '/lk/b2t/ratings',
+    },
+    {
+      label: 'Избранное',
+      icon: 'heart',
+      to: '/lk/b2t/favorites',
     },
     {
       label: 'Мотивация',
@@ -40,9 +45,9 @@
       to: '/lk/b2t/clients',
     },
     {
-      label: 'Избранное',
-      icon: 'heart',
-      to: '/lk/b2t/favorites',
+      label: 'Профиль',
+      icon: 'profile',
+      to: '/lk/b2t',
     },
   ];
 </script>

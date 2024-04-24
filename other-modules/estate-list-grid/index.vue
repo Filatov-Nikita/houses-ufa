@@ -5,11 +5,11 @@
         <h2 class="section__title">Объекты</h2>
       </div>
       <div class="estate-list-block__filter">
-        <BaseTabsGroup v-model="filter">
-          <BaseTabsGroupItem name="all">Все</BaseTabsGroupItem>
-          <BaseTabsGroupItem name="flats_in_ufa_city">Квартиры в Уфе</BaseTabsGroupItem>
-          <BaseTabsGroupItem name="flats_in_ufa_district">Квартиры в Уфимском районе</BaseTabsGroupItem>
-          <BaseTabsGroupItem name="cottages_and_townhouses">Коттеджи и таунхаусы</BaseTabsGroupItem>
+        <BaseTabsGroup v-model="filter" :theme="theme">
+          <BaseTabsGroupItem :theme="theme" name="all">Все</BaseTabsGroupItem>
+          <BaseTabsGroupItem :theme="theme" name="flats_in_ufa_city">Квартиры в Уфе</BaseTabsGroupItem>
+          <BaseTabsGroupItem :theme="theme" name="flats_in_ufa_district">Квартиры в Уфимском районе</BaseTabsGroupItem>
+          <BaseTabsGroupItem :theme="theme" name="cottages_and_townhouses">Коттеджи и таунхаусы</BaseTabsGroupItem>
         </BaseTabsGroup>
       </div>
       <div class="estate-list-grid">
@@ -28,9 +28,13 @@
   import Item from './components/Item.vue';
   import type { PosterItem } from './types';
 
-  defineProps<{
-    flexible?: boolean,
-  }>();
+  withDefaults(
+    defineProps<{
+      flexible?: boolean,
+      theme?: 'white' | 'gray',
+    }>(),
+    { theme: 'white', flexible: false, }
+  );
 
   type Types = 'all' | 'flats_in_city' | 'flats_out_city' | 'towns';
 

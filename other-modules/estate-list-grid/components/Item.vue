@@ -47,6 +47,7 @@
     display: block;
     border-radius: 16px;
     position: relative;
+    z-index: 1;
     height: 374px;
     padding: 24px;
     display: flex;

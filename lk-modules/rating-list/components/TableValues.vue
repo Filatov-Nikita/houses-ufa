@@ -2,7 +2,7 @@
   <div class="rating-table lk-table">
     <div class="rating-table__head lk-table__head">
       <div class="lk-table__th">Место</div>
-      <div class="lk-table__th">Агент</div>
+      <div class="lk-table__th">{{ currentTab === 'agent' ? 'Агент' : 'Агентство' }}</div>
       <div class="lk-table__th">Клиенты/Интересы</div>
       <div class="lk-table__th">Кол-во сделок</div>
       <div class="lk-table__th">Сумма оплат, ₽ </div>
