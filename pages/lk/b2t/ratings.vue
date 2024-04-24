@@ -3,7 +3,7 @@
     <div class="section__top">
       <h1 class="section__title">Рейтинги</h1>
     </div>
-    <RatingList type="b2y" />
+    <RatingList type="b2t" />
   </div>
 </template>
 
@@ -11,11 +11,11 @@
   import RatingList from '@/lk-modules/rating-list/index.vue';
 
   definePageMeta({
-    layout: 'lk-b2y',
+    layout: 'lk-b2t',
     middleware: ['auth'],
   });
 
   useSeoMeta({
-    title: 'ЖК ЛК агенства | Рейтинги',
+    title: 'ЖК ЛК агента | Рейтинги',
   });
 </script>

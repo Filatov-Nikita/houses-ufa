@@ -15,9 +15,19 @@
 <script setup lang="ts">
   const items = [
     {
-      label: 'Отчет агентства',
-      icon: 'file',
-      to: '/lk/b2y/report',
+      label: 'Объекты',
+      icon: 'house',
+      to: '/lk/b2y/objects',
+    },
+    {
+      label: 'Акции',
+      icon: 'gift',
+      to: '/lk/b2y/promotions',
+    },
+    {
+      label: 'Рейтинги',
+      icon: 'chart-bar',
+      to: '/lk/b2y/ratings',
     },
     {
       label: 'Мотивация',
@@ -25,9 +35,9 @@
       to: '/lk/b2y/motivation',
     },
     {
-      label: 'Рейтинги',
-      icon: 'chart-bar',
-      to: '/lk/b2y/ratings',
+      label: 'Отчет агентства',
+      icon: 'file',
+      to: '/lk/b2y/report',
     },
   ];
 </script>
