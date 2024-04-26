@@ -35,7 +35,7 @@
   });
 
   function submit() {
-    emit('submit', {...form });
+    emit('submit', { ...form });
   }
 
   function cancel() {
