@@ -7,6 +7,7 @@ export function useEditProfile() {
     editing.value = true;
 
     await useDataFetch<{ data: ProfileB2Y }>(`b2y/profile`, {
+      key: 'edit_profile',
       method: 'PATCH',
       baseURL: useRuntimeConfig().public.rootApi,
       body: form,
