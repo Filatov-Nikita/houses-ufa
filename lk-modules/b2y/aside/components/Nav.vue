@@ -39,6 +39,11 @@
       icon: 'file',
       to: '/lk/b2y/report',
     },
+    {
+      label: 'Профиль',
+      icon: 'profile',
+      to: '/lk/b2y',
+    },
   ];
 </script>
 

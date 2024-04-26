@@ -13,3 +13,15 @@
     padding: 24px 16px;
   }
 }
+
+.edit-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  @apply tw-text-primary tw-text-base;
+
+  &__icon {
+    width: 24px;
+    height: 24px;
+  }
+}
