@@ -30,6 +30,7 @@
           </p>
         </div>
       </div>
+      <slot name="rank"></slot>
     </div>
   </div>
 </template>
@@ -61,6 +62,9 @@
     &__grid {
       display: flex;
       flex-wrap: wrap;
+      align-items: flex-start;
+      gap: 30px;
+      justify-content: space-between;
     }
 
     &__title {
