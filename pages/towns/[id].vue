@@ -4,12 +4,14 @@
       <TownCard />
     </div>
   </div>
+
+  <LandProjectList v-if="townCard.isEmptyPlace && townCard.data" :town-id="townId" />
+
   <section class="section">
     <div class="wrapper">
       <CreditCalc object-type="town" :object-id="townId" />
     </div>
   </section>
-  <!-- ломает ssr -->
   <section v-if="!townCard.isEmptyPlace && townCard.data" class="section">
     <div class="wrapper">
       <div class="section__top">
@@ -29,6 +31,7 @@
   import TownCard from '@/other-modules/town-card/index.vue';
   import CreditCalc from '@/other-modules/credit-program-calc/index.vue';
   import TownSimilar from '@/other-modules/town-similar/index.vue';
+  import LandProjectList from '@/other-modules/land-project-list/index.vue';
   import QuestionForm from '@/other-modules/question-form/index.vue';
   import { useTownCard } from '@/other-modules/town-card/store/index';
 
