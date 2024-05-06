@@ -16,19 +16,6 @@
   import Header from './components/Header.vue';
   import ParamsInfo from './components/ParamsInfo.vue';
   import Image from './components/Image.vue';
-  import { useTownCard } from './store';
-
-  const route = useRoute();
-  const townCard = useTownCard();
-
-  townCard.setTownId(+route.params.id);
-
-  onUnmounted(() => {
-    townCard.data = null;
-    townCard.townId = null;
-  });
-
-  await useLazyAsyncData(() => townCard.show());
 </script>
 
 <style scoped lang="scss">
