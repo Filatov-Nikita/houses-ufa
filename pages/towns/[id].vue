@@ -6,7 +6,7 @@
   </div>
   <section class="section">
     <div class="wrapper">
-      <CreditCalc object-type="town" :object-id="+$route.params.id" />
+      <CreditCalc object-type="town" :object-id="townId" />
     </div>
   </section>
   <!-- ломает ssr -->
@@ -34,7 +34,19 @@
 
   useCanonical();
 
+  const route = useRoute();
   const townCard = useTownCard();
+
+  townCard.setTownId(+route.params.id);
+
+  const townId = computed(() => +route.params.id);
+
+  await useLazyAsyncData(() => townCard.show());
+
+  onUnmounted(() => {
+    townCard.data = null;
+    townCard.townId = null;
+  });
 </script>
 
 <style scoped lang="scss">
