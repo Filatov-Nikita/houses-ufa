@@ -38,6 +38,10 @@
   .article-content__text a {
     @apply tw-text-primary tw-underline;
   }
+
+  .article-content__text b {
+    @apply tw-font-bold tw-font-freesetdemi;
+  }
 </style>
 
 <style scoped lang="scss">
