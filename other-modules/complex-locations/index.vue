@@ -11,11 +11,15 @@
   import { useComplexLocations } from './store';
   import { useComplexOne } from '@/stores/pages/complex-one';
 
+  const props = defineProps<{
+    complexId: number,
+  }>();
+
   const store = useComplexLocations();
   const route = useRoute();
   const complex = useComplexOne();
 
-  store.setComplexId(+route.params.id);
+  store.setComplexId(props.complexId);
 
   await useLazyAsyncData(() => store.show());
 </script>

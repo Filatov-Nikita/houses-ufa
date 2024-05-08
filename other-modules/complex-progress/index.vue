@@ -14,10 +14,14 @@
   import AlbumList from './components/AlbumList.vue';
   import { useComplexProgress } from './store';
 
+  const props = defineProps<{
+    complexId: number,
+  }>();
+
   const store = useComplexProgress();
   const route = useRoute();
 
-  store.setComplexId(+route.params.id);
+  store.setComplexId(props.complexId);
 </script>
 
 <style scoped lang="scss">

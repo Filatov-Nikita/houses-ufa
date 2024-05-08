@@ -29,7 +29,7 @@
 
     <section class="section">
       <div class="wrapper">
-        <ComplexAdvantages />
+        <ComplexAdvantages :complex-id="complexOneStore.complexId!" />
       </div>
     </section>
 
@@ -38,7 +38,7 @@
         <div class="section__top">
           <h2 class="section__title">Расположение и инфраструктура</h2>
         </div>
-        <ComplexLocations />
+        <ComplexLocations :complex-id="complexOneStore.complexId!" />
       </div>
     </section>
 
@@ -47,7 +47,7 @@
         <div class="section__top">
           <h2 class="section__title">Генплан жилого комплекса {{ complex?.name }}</h2>
         </div>
-        <ComplexGenplan />
+        <ComplexGenplan :complex-id="complexOneStore.complexId!" />
       </div>
     </section>
 
@@ -56,7 +56,7 @@
         <div class="section__top">
           <h2 class="section__title">Галерея</h2>
         </div>
-        <ComplexGallery />
+        <ComplexGallery :complex-id="complexOneStore.complexId!" />
       </div>
     </section>
 
@@ -74,7 +74,7 @@
         <div class="section__top">
           <h2 class="section__title">Типы планировок в {{ complex?.name }}</h2>
         </div>
-        <ComplexFlatGroups />
+        <ComplexFlatGroups :complex-id="complexOneStore.complexId!" />
       </div>
     </section>
 
@@ -83,7 +83,7 @@
         <div class="section__top">
           <h2 class="section__title">Ход строительства</h2>
         </div>
-        <ComplexProgress />
+        <ComplexProgress :complex-id="complexOneStore.complexId!" />
       </div>
     </section>
 
@@ -118,14 +118,15 @@ const { setComplexId, showOne, showHouses } = complexOneStore;
 
 const route = useRoute();
 
-const complexId = computed<number>(() => parseInt(route.params.id as string));
+const complexSlug = computed<string>(() => route.params.id as string);
 const complex = computed(() => complexOneStore.complex?.data ?? null);
 const loadingComplex = computed(() => complexOneStore.loadingComplex);
 
-await usePageSeo(`complexes/slugs/${route.params.id}.json`);
+setComplexId(complexSlug.value);
+
+await usePageSeo(`complexes/slugs/${complexOneStore.complexId}.json`);
 
 await useLazyAsyncData(() => {
-  setComplexId(complexId.value);
   return Promise.all([showOne(), showHouses()]);
 });
 
