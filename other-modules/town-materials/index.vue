@@ -10,10 +10,14 @@
   import Filter from './components/Filter.vue';
   import Content from './components/Content.vue';
 
+  const props = defineProps<{
+    townId: number,
+  }>();
+
   const store = useTownMaterials();
   const route = useRoute();
 
-  store.setTownId(+route.params.id);
+  store.setTownId(props.townId);
 
   function initFilter() {
     store.filterValue = store.data?.data[0].label ?? null;

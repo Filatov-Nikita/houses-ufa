@@ -19,12 +19,12 @@
       <div class="section__top">
         <h2 class="section__title">Генплан коттеджного посёлка {{ townOne.town?.data.name }}</h2>
       </div>
-      <TownGenplan :townId="+route.params.id" />
+      <TownGenplan :townId="townOne.townId!" />
     </div>
   </section>
   <section class="section">
     <div class="wrapper">
-      <TownAdvantages />
+      <TownAdvantages :townId="townOne.townId!" />
     </div>
   </section>
   <section class="section">
@@ -32,7 +32,7 @@
       <div class="section__top">
         <h2 class="section__title">Инфраструктура</h2>
       </div>
-      <TownLocations />
+      <TownLocations :townId="townOne.townId!" />
     </div>
   </section>
   <section class="section">
@@ -40,7 +40,7 @@
       <div class="section__top">
         <h2 class="section__title">Проекты домов</h2>
       </div>
-      <ProjectList :townId="+route.params.id" />
+      <ProjectList :townId="townOne.townId!" />
     </div>
   </section>
   <section class="section">
@@ -48,7 +48,7 @@
       <div class="section__top">
         <h2 class="section__title">Материалы</h2>
       </div>
-      <TownMaterials />
+      <TownMaterials :townId="townOne.townId!" />
     </div>
   </section>
   <section class="section">
@@ -85,11 +85,13 @@
   const townOne = useTownOne();
   const bread = useBreadcrumbsStore();
 
-  townOne.setTownId(+route.params.id);
+  const townSlug = computed<string>(() => route.params.id as string);
+
+  townOne.setTownId(townSlug.value);
 
   await useAsyncData(() => townOne.showOne());
 
   bread.set([ { label: 'Главная', to: '/' }, { label: townOne.town?.data.name ?? '' } ]);
 
-  await usePageSeo(`towns/slugs/${route.params.id}.json`);
+  await usePageSeo(`towns/slugs/${townOne.townId}.json`);
 </script>

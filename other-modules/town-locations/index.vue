@@ -10,10 +10,14 @@
   import Map from './components/Map.vue';
   import { useTownLocations } from './store';
 
+  const props = defineProps<{
+    townId: number,
+  }>();
+
   const store = useTownLocations();
   const route = useRoute();
 
-  store.setTownId(+route.params.id);
+  store.setTownId(props.townId);
 
   await useLazyAsyncData(() => store.show());
 </script>
