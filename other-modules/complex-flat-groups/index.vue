@@ -10,10 +10,14 @@
   import List from './components/List.vue';
   import { useComplexFlatGroups } from './store';
 
+  const props = defineProps<{
+    complexId: number,
+  }>();
+
   const store = useComplexFlatGroups();
   const route = useRoute();
 
-  store.setComplexId(+route.params.id);
+  store.setComplexId(props.complexId);
 
   onUnmounted(() => {
     store.currentType = 'all';

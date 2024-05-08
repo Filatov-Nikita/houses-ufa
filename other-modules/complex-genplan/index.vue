@@ -36,11 +36,15 @@
   import { useComplexGenplan, type House } from './store';
   import { useFilterList } from '@/other-modules/apart-filter/store/filter-list';
 
+  const props = defineProps<{
+    complexId: number,
+  }>();
+
   const store = useComplexGenplan();
   const filterList = useFilterList();
   const route = useRoute();
 
-  store.setComplexId(+route.params.id);
+  store.setComplexId(props.complexId);
 
   await useLazyAsyncData(() => store.show());
 

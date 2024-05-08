@@ -10,10 +10,14 @@
   import Slider from './components/Slider.vue';
   import { useComplexGallery } from './store';
 
+  const props = defineProps<{
+    complexId: number,
+  }>();
+
   const store = useComplexGallery();
   const route = useRoute();
 
-  store.setComplexId(+route.params.id);
+  store.setComplexId(props.complexId);
 
   function initCurrentType() {
     const data = store.data?.data ?? [];

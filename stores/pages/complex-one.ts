@@ -1,8 +1,11 @@
 import { defineStore } from 'pinia';
 import { useDataFetch } from '@/composables/useDataFetch';
 import type { Image } from '@/types/share';
+import { useSlugsStore } from '@/stores/slugs';
 
 const useComplexOne = defineStore('complexOne', () => {
+  const slugsStore = useSlugsStore();
+
   const complexId = ref<number | null>(null);
 
   const showOneUrl = computed(() => `/estate/complexes/${complexId.value}`);
@@ -23,8 +26,13 @@ const useComplexOne = defineStore('complexOne', () => {
     },
   });
 
-  function setComplexId(id: number | null) {
-    complexId.value = id;
+  function setComplexId(slug: string | null) {
+    if(slug === null) {
+      complexId.value = null;
+    } else {
+      const id = slugsStore.complexSlugIds[slug];
+      complexId.value = id ? parseInt(id) : parseInt(slug);
+    }
   }
 
   return {

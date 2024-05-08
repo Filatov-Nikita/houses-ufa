@@ -4,11 +4,16 @@
 
 <script setup lang="ts">
   import { useComplexAdvantages } from './store';
+
+  const props = defineProps<{
+    complexId: number,
+  }>();
+
   const route = useRoute();
   const router = useRouter();
   const store = useComplexAdvantages();
 
-  store.setComplexId(+route.params.id);
+  store.setComplexId(props.complexId);
 
   await useLazyAsyncData(() => {
     return store.show();
@@ -19,7 +24,7 @@
   function toMainFilter() {
     router.push({
       path: '/main-filter',
-      query: { filterType: 'flats', object_id: +route.params.id }
+      query: { filterType: 'flats', object_id: props.complexId }
     });
   }
 </script>
