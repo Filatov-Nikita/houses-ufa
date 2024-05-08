@@ -1,6 +1,6 @@
 <template>
   <div v-if="isEmpty">Не найдено ни одного объекта</div>
-  <Swiper v-else-if="filter.filterType === 'flats'" v-bind="swiperProps">
+  <Swiper class="sale-flat-slider" v-else-if="filter.filterType === 'flats'" v-bind="swiperProps">
     <SwiperSlide v-for="flat in filter.flats" :key="flat.id">
       <FlatItem :flat="flat" />
     </SwiperSlide>
@@ -51,5 +51,9 @@
 </script>
 
 <style scoped lang="scss">
-
+  .sale-flat-slider {
+    &::v-deep .estate-card-bottom__house {
+      min-height: 48px;
+    }
+  }
 </style>
