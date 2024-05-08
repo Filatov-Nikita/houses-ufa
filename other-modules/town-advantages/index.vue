@@ -4,11 +4,16 @@
 
 <script setup lang="ts">
   import { useTownAdvantages } from './store';
+
+  const props = defineProps<{
+    townId: number,
+  }>();
+
   const route = useRoute();
   const router = useRouter();
   const store = useTownAdvantages();
 
-  store.setTownId(+route.params.id);
+  store.setTownId(props.townId);
 
   const items = computed(() => store.advantages?.data ?? []);
 
@@ -19,7 +24,7 @@
   function toMainFilter() {
     router.push({
       path: '/main-filter',
-      query: { filterType: 'towns', object_id: +route.params.id }
+      query: { filterType: 'towns', object_id: props.townId }
     });
   }
 </script>

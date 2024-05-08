@@ -19,7 +19,7 @@ export const useSlugsStore = defineStore('slugsStore', () => {
 
   const townSlugIds = computed(() => {
     const newMap: Record<string, string> = {};
-    const _slugs = slugs.value?.complexes ?? {};
+    const _slugs = slugs.value?.towns ?? {};
     for(let key in _slugs) {
       newMap[_slugs[key]] = key;
     }
