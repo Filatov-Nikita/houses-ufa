@@ -12,6 +12,7 @@ export interface ArticleListItem {
   type:         string;
   likes_count:  number;
   seo:          SEO;
+  slug:         string,
 }
 
 export type ArticleOne = ArticleListItem & { image: Image };
