@@ -56,7 +56,7 @@
   bread.set([
     { label: 'Главная', to: '/' },
     { label: 'Акции', to: '/promotions' },
-    { label: response.value?.data.title ?? '', to: '/promotions/' + response.value?.data.id },
+    { label: response.value?.data.title ?? '', to: '/promotions/' + response.value?.data.slug },
   ]);
 
   useHead({
