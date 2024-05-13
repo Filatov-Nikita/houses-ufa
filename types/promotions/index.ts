@@ -6,6 +6,7 @@ export interface PromotionListItem {
   subtitle: string;
   title:    string;
   image:    Image | null;
+  slug:     string;
 }
 
 export interface PromotionDetailed {
@@ -19,4 +20,5 @@ export interface PromotionDetailed {
   url:       string;
   image:     Image | null;
   files:     File[];
+  slug:      string;
 }

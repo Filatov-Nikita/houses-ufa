@@ -1,5 +1,5 @@
 <template>
-  <RouterLink class="promo-list-item" :to="`/promotions/${item.id}`">
+  <RouterLink class="promo-list-item" :to="`/promotions/${item.slug}`">
     <img
       v-if="item.image"
       class="promo-list-item__preview"
