@@ -3,7 +3,7 @@ import { defineStore } from 'pinia';
 import { useDataFetch } from '@/composables/useDataFetch';
 
 const useArticleCard = defineStore('articleCard', () => {
-  const articleId = ref<number | null>(null);
+  const articleId = ref<string | null>(null);
   const url = computed(() => `press-center/articles/${articleId.value}`);
 
   const { data: article, pending: loading, error, execute: show } = useDataFetch<ArticleOneResponse>(url, {
@@ -11,7 +11,7 @@ const useArticleCard = defineStore('articleCard', () => {
     watch: false,
   });
 
-  function setArticleId(id: number | null) {
+  function setArticleId(id: string | null) {
     articleId.value = id;
   }
 

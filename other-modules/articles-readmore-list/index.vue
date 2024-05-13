@@ -6,7 +6,7 @@
   import ReadmoreList from './components/ReadmoreList.vue';
   import { useArticlesReadMore } from './store';
 
-  const props = defineProps<{ articleId: number }>();
+  const props = defineProps<{ articleId: string }>();
 
   const store = useArticlesReadMore();
 

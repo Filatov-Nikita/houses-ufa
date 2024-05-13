@@ -19,7 +19,7 @@
   const articles = computed(() => filter.articles);
 
   watch(() => route.query, (query) => {
-    if(query.type !== filter.currentTab) {
+    if(query.type && query.type !== filter.currentTab) {
       filter.currentTab = (query.type ?? 'tiding') as Type;
     }
   }, { immediate: true });

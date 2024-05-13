@@ -9,7 +9,7 @@
   import { useArticleCard } from './store';
 
   const props = defineProps<{
-    articleId: number
+    articleId: string
   }>();
 
   const articleCard = useArticleCard();

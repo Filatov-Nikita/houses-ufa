@@ -1,5 +1,5 @@
 <template>
-  <NuxtLink class="article-item" :to="`/articles/${item.id}`">
+  <NuxtLink class="article-item" :to="`/articles/${item.slug}`">
     <div v-if="item.published_at" class="article-item__date">
       {{ $formatDate(item.published_at) }}
     </div>
@@ -26,6 +26,7 @@
     type:         string;
     likes_count:  number;
     seo:          SEO;
+    slug:         string,
   }
 
   interface SEO {

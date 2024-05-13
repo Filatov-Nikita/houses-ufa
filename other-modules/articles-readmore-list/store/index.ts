@@ -2,7 +2,7 @@ import { defineStore } from 'pinia';
 import { useDataFetch } from '@/composables/useDataFetch';
 
 const useArticlesReadMore = defineStore('articlesReadMore', () => {
-  const articleId = ref<number | null>(null);
+  const articleId = ref<string | null>(null);
 
   const url = computed(() => `press-center/articles/${articleId.value}/read-more`);
 
@@ -11,7 +11,7 @@ const useArticlesReadMore = defineStore('articlesReadMore', () => {
     watch: false
   });
 
-  function setArticle(id: number | null) {
+  function setArticle(id: string | null) {
     articleId.value = id;
   }
 
@@ -40,6 +40,7 @@ export interface Article {
   seo:          SEO;
   likes_count:  number;
   image:        Image;
+  slug:         string;
 }
 
 export interface Image {
