@@ -23,8 +23,8 @@
       <EstateSquareFilter
         class="filter-params__input-square"
         :options="squareOpts"
-        v-model:from-val="area_land_min"
-        v-model:to-val="area_land_max"
+        v-model:from-val="area_calc_min"
+        v-model:to-val="area_calc_max"
       />
       <BaseRange
         class="filter-params__input-floors"
@@ -52,8 +52,8 @@
   const layout_type = defineModel<'cottage' | 'townhouse'>('layout_type');
   const number_of_floors_min = defineModel<number>('number_of_floors_min');
   const number_of_floors_max = defineModel<number>('number_of_floors_max');
-  const area_land_min = defineModel<number>('area_land_min');
-  const area_land_max = defineModel<number>('area_land_max');
+  const area_calc_min = defineModel<number>('area_calc_min');
+  const area_calc_max = defineModel<number>('area_calc_max');
   const town_id = defineModel<number>('town_id');
 
   const props = defineProps<{
