@@ -3,8 +3,8 @@
     <Params
       v-model:layout_type="filter.params.layout_type"
       v-model:town_id="filter.params.town_id"
-      v-model:area_land_min="filter.params.area_land_min"
-      v-model:area_land_max="filter.params.area_land_max"
+      v-model:area_calc_min="filter.params.area_calc_min"
+      v-model:area_calc_max="filter.params.area_calc_max"
       v-model:number_of_floors_min="filter.params.number_of_floors_min"
       v-model:number_of_floors_max="filter.params.number_of_floors_max"
       :objects="townsStore.towns?.data ?? []"
