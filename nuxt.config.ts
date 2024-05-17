@@ -6,7 +6,6 @@ import * as YandexMap from './scripts/yandex-map';
 import * as YandexMetric from './scripts/yandex-metric';
 import * as Roistat from './scripts/roistat';
 import * as Envybox from './scripts/envybox';
-import * as Marquiz from './scripts/marquiz';
 import * as Pixel from './scripts/pixel';
 import * as Captcha from './scripts/ysmartcaptcha';
 
@@ -64,14 +63,6 @@ export default defineNuxtConfig({
             src: Envybox.src,
             async: true,
             tagPosition: 'bodyClose',
-          },
-          {
-            type: 'text/javascript',
-            innerHTML: Marquiz.body1,
-          },
-          {
-            type: 'text/javascript',
-            innerHTML: Marquiz.body2,
           },
           {
             type: 'text/javascript',
