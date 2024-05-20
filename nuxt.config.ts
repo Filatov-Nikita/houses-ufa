@@ -8,6 +8,7 @@ import * as Roistat from './scripts/roistat';
 import * as Envybox from './scripts/envybox';
 import * as Pixel from './scripts/pixel';
 import * as Captcha from './scripts/ysmartcaptcha';
+import useRouteRules from './config-parts/useRouteRules';
 
 function definePublicConfig() {
   const host = 'https://adminsite.gkufa.ru/';
@@ -22,11 +23,7 @@ function definePublicConfig() {
 
 export default defineNuxtConfig({
   ssr: true,
-  routeRules: {
-    '/favorites': { ssr: false },
-    '/lk/**': { ssr: false },
-    '/debug/**': { ssr: false },
-  },
+  routeRules: useRouteRules(),
   app: {
     head: {
       script: [
