@@ -7,6 +7,7 @@ import * as YandexMetric from './scripts/yandex-metric';
 import * as Roistat from './scripts/roistat';
 import * as Envybox from './scripts/envybox';
 import * as Pixel from './scripts/pixel';
+import * as Pixel2 from './scripts/pixel2';
 import * as Captcha from './scripts/ysmartcaptcha';
 import useRouteRules from './config-parts/useRouteRules';
 
@@ -64,6 +65,10 @@ export default defineNuxtConfig({
           {
             type: 'text/javascript',
             innerHTML: Pixel.body,
+          },
+          {
+            type: 'text/javascript',
+            innerHTML: Pixel2.body,
           },
         ],
         noscript: [
