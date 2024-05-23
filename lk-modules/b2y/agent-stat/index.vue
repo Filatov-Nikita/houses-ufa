@@ -1,9 +1,9 @@
 <template>
   <div class="agent-stat">
     <div class="agent-stat__toolbar">
-      <h1 class="agent-stat__title">
+      <h2 class="agent-stat__title">
         Мои агенты
-      </h1>
+      </h2>
       <BaseSelect
         class="progress-filter__select"
         theme="gray"
