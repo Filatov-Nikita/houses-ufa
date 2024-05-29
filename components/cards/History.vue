@@ -4,6 +4,7 @@
   >
     <div>
       <Swiper
+        autoHeight
         :modules="[SwiperPagination, SwiperNavigation, SwiperEffectFade]"
         @swiper="onSwiper"
         @slideChange="onSlideChange"
