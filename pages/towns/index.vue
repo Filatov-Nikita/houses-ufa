@@ -23,7 +23,5 @@
   import ProjectMainFilter from '@/other-modules/project-main-filter/index.vue';
   import QuestionForm from '@/other-modules/question-form/index.vue';
 
-  useCanonical({ preserveParams: [ 'town_id', 'page' ] });
-
   await usePageSeo('towns/index.json');
 </script>
