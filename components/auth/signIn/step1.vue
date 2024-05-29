@@ -22,13 +22,13 @@
         v-slot="{ checked }"
       >
         <div
-          class="tw-flex tw-justify-between tw-items-center tw-bg-base00 tw-rounded-lg tw-p-4"
+          class="tw-flex tw-justify-between tw-items-center tw-bg-base00 tw-rounded-lg tw-py-4 tw-px-2 md:tw-px-4 tw-gap-2"
         >
           <span class="tw-text-body_s -tw-tracking-875">
             {{ item.title }}
           </span>
           <div
-            class="tw-w-5 tw-h-5 tw-rounded-full tw-border tw-border-border00 tw-bg-secondary transi tw-duration-100 tw-ease-in"
+            class="tw-w-5 tw-h-5 tw-shrink-0 tw-rounded-full tw-border tw-border-border00 tw-bg-secondary transi tw-duration-100 tw-ease-in"
             :class="[checked ? ' tw-border-[6px] tw-border-primary' : '']"
           ></div>
         </div>
