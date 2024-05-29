@@ -9,18 +9,16 @@
       />
       <Item
         v-if="items[1]"
-        class="credit-list__item credit-list__item--half"
+        class="credit-list__item credit-list__item--full"
         :item="items[1]"
         :img="imgIds[items[1].id]"
-        short
         @click="changeProg(items[1].id)"
       />
       <Item
         v-if="items[2]"
-        class="credit-list__item credit-list__item--half"
+        class="credit-list__item credit-list__item--full"
         :item="items[2]"
         :img="imgIds[items[2].id]"
-        short
         @click="changeProg(items[2].id)"
       />
     </template>
@@ -43,7 +41,9 @@
 
   const imgIds: Record<number, string> = {
     1: '/images/credit-progs/free.png',
-    2: '/images/credit-progs/family.png',
+    2: '/images/credit-progs/family2.png',
+    3: '/images/credit-progs/it.png',
+    4: '/images/credit-progs/farmer.png',
   };
 
   const grid = computed(() => {
