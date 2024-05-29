@@ -29,6 +29,8 @@
   const imgIds: Record<number, string> = {
     1: '/images/credit-progs/free.png',
     2: '/images/credit-progs/family.png',
+    3: '/images/credit-progs/it.png',
+    4: '/images/credit-progs/farmer.png',
   };
 
   function showProg(id: number) {
