@@ -1,7 +1,7 @@
 <template>
   <BaseModal v-model="openPopup">
     <div class="lg:tw-w-[507px]">
-      <div class="tw-p-12 tw-bg-white tw-rounded-2xl">
+      <div class="tw-p-4 lg:tw-p-12 tw-bg-white tw-rounded-2xl">
         <!-- <SignInStep1 v-if="currentStep === 'signInStep1'" @next="next" />
         <SignInStep1 v-if="currentStep === 'signInStep1'" @next="next" /> -->
         <AuthSignIn v-if="type === 'signIn'" />
