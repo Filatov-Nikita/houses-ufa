@@ -26,7 +26,7 @@
 
 <script setup lang="ts">
   const order_by_direction = defineModel<'asc' | 'desc'>('order_by_direction');
-  const order_by_field = defineModel<'area_cottage'>('order_by_field');
+  const order_by_field = defineModel<'area_calc'>('order_by_field');
   const showedGenplan = defineModel<boolean>('showedGenplan');
 
   defineProps<{
@@ -37,8 +37,8 @@
   const cases: [ string, string, string ] = ['предложение', 'предложения', 'предложений'];
 
   const townSortOptions = [
-    { label: 'Сначала с большей площадью', order_by_direction: 'desc', order_by_field: 'area_cottage' },
-    { label: 'Сначала с меньшей площадью', order_by_direction: 'asc', order_by_field: 'area_cottage' },
+    { label: 'Сначала с большей площадью', order_by_direction: 'desc', order_by_field: 'area_calc' },
+    { label: 'Сначала с меньшей площадью', order_by_direction: 'asc', order_by_field: 'area_calc' },
   ] as const;
 
   function selectProps(options: typeof townSortOptions) {

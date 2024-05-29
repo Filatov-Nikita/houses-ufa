@@ -5,7 +5,7 @@ export interface Params {
   town_id?: number,
   area_calc_min?: number,
   area_calc_max?: number,
-  order_by_field?: 'area_cottage',
+  order_by_field?: 'area_calc',
   order_by_direction?: 'asc' | 'desc',
 }
 
