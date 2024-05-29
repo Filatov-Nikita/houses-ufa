@@ -57,6 +57,7 @@ Disallow: /proekty-kottedzhey-ufa/
 Disallow: /proekty-kottedzhey-cefei/
 Disallow: /tenders
 Disallow: /search-areas
+Disallow: /favorites
 Disallow: /school-of-buyers/
 Disallow: /upload/iblock/*/*.pdf
 Disallow: /vse-kottedzhnye-poselki/
