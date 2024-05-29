@@ -45,7 +45,9 @@
 
   const contacts = computed(() => contactsStore.contacts);
 
-  const caption = 'Отправляя любую форму на&nbsp;сайте, вы&nbsp;соглашаетесь с&nbsp;политикой конфиденциальности данного сайта';
+  const caption = `
+    Отправляя любую форму на&nbsp;сайте, вы&nbsp;соглашаетесь с&nbsp;<a class="tw-text-primary hover:tw-text-primary-hover" href="/docs/sogl.pdf" target="_blank">политикой конфиденциальности</a> данного сайта
+  `;
 </script>
 
 <style scoped lang="scss">
