@@ -44,6 +44,10 @@ export function useNavMenu(sectionList: ComputedRef<Sections>) {
           label: 'Вопросы и ответы',
           to: '/faq',
         },
+        {
+          label: 'Документы',
+          to: '/documents',
+        },
       ],
     },
     contacts: {
