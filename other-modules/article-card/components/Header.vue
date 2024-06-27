@@ -11,7 +11,7 @@
           />
 
           <div class="article-header__toolbar">
-            <h2 class="section__title">{{ title ?? '-' }}</h2>
+            <h1 class="section__title">{{ title ?? '-' }}</h1>
             <BaseButton theme="gray" padding-classes="tw-py-2 tw-px-4" class="favBlock">
               <div class="favBlock__wrap">
                 <div class="favBlock__cnt">{{ likes }}</div>
