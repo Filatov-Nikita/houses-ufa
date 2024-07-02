@@ -1,7 +1,7 @@
 <template>
   <BaseModal v-model="showed" v-slot="{ hide }">
     <BaseModalCard>
-      <div class="modal-header">
+      <div class="modal-header tw-mb-4">
         <p class="modal-header__title">Создать обращение</p>
         <BtnsActionsBase class="modal-header__hide" icon="close" @click="hide" />
       </div>
@@ -57,30 +57,6 @@
 </script>
 
 <style scoped lang="scss">
-  .modal-header {
-    display: flex;
-    justify-content: space-between;
-    gap: 20px;
-    margin-bottom: 32px;
-
-    @include sm {
-      margin-bottom: 24px;
-    }
-
-    &__title {
-      font-size: 32px;
-      line-height: 1.25;
-
-      @include sm {
-        @apply tw-text-2xl;
-      }
-    }
-
-    &__hide {
-      flex-shrink: 0;
-    }
-  }
-
   .modal-form {
     &__input {
       width: 100%;
