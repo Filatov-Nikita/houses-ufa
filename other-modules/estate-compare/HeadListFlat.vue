@@ -50,7 +50,7 @@
         <div class="products-slider__fixed-wrapper">
           <div v-for="(item, index) in windowData" class="tw-grid tw-gap-2">
             <div class="tw-flex tw-justify-between">
-              <h3 v-if="item.price" class="tw-text-h5">{{ $amount(item.price) }}</h3>
+              <!-- <h3 v-if="item.price" class="tw-text-h5">{{ $amount(item.price) }}</h3> -->
             </div>
             <div class="tw-text-body_s2">
               <div class=" ">
