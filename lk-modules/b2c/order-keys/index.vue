@@ -1,26 +1,24 @@
 <template>
   <BaseModal v-model="model" v-slot="{ hide }">
     <BaseModalCard>
-      <div class="modal-header">
+      <div class="modal-header tw-mb-4">
         <p class="modal-header__title">Заявка на получение ключей</p>
         <BtnsActionsBase class="modal-header__hide" icon="close" @click="hide" />
       </div>
+      <DocumentsAlert class="tw-mb-6" />
       <Form class="keys-form" v-slot="{ isSubmitting }" @submit="onSubmit">
         <div class="keys-form__inputs">
           <BaseInput label="Имя" name="name" placeholder="Имя" rules="required" v-model="form.visitor_name" />
           <BaseInput label="Телефон" placeholder="Телефон" name="phone" maska="+7 (9##) ### ## ##" rules="required" v-model="form.visitor_phone" />
-          <BaseInput
-            class="book-passport-form-grid__item"
-            name="visit_date"
-            label="Дата приемки"
-            v-model="form.visit_date"
-            type="date"
-            rules="required"
-          />
-          <BaseSelect label="Время" name="time" :drop-down-props="{ options: timeOpts }" rules="required" v-model="time" @update:modelValue="form.visit_time = $event?.value ?? ''" />
-          <BaseInput class="keys-form__comment" label="Комментарий" name="comment" placeholder="Текст комментария"  v-model="form.comment" />
         </div>
-        <BaseButton class="keys-form__btn" type="submit" :disabled="isSubmitting">
+        <OrderDayList
+          class="keys-form__day-list"
+          :order-days="slotStore.orderDays"
+          :loading="slotStore.loading"
+          v-model="day"
+        />
+        <OrderTimeSlots v-if="day && !slotStore.loading" :slots="timeSlots" v-model="slot"  />
+        <BaseButton class="keys-form__btn" type="submit" :disabled="!canSend(isSubmitting)">
           Отправить
         </BaseButton>
       </Form>
@@ -30,76 +28,66 @@
 
 <script setup lang="ts">
   import { Form } from 'vee-validate';
-  import useOrder from './composables/useOrder';
+  import useOrder, { SlotResponse } from './composables/useOrder';
+  import { useTimeSlotsStore } from './store/timeSlots';
+  import OrderDayList from './components/OrderDayList.vue';
+  import OrderTimeSlots from './components/OrderTimeSlots.vue';
+  import DocumentsAlert from './components/DocumentsAlert.vue';
 
   const props = defineProps<{
     flatId: number,
   }>();
 
   const emit = defineEmits<{
-    (event: 'success'): void,
+    (event: 'success', slot: SlotResponse): void,
   }>();
+
+  const slotStore = useTimeSlotsStore();
 
   const model = defineModel<boolean>({ default: false });
 
-  const { form, time, send } = useOrder();
+  const { form, timeSlots, slot, day, send } = useOrder();
 
   async function onSubmit() {
-    await send(props.flatId, form, () => {
-      emit('success');
+    await send(props.flatId, (data) => {
+      emit('success', data);
     });
   }
 
-  const timeOpts = [
-    {
-      label: '12:00 - 14:00',
-      value: '12:00 - 14:00',
-    },
-    {
-      label: '14:00 - 16:00',
-      value: '14:00 - 16:00',
-    },
-    {
-      label: '16:00 - 18:00',
-      value: '16:00 - 18:00',
-    },
-  ];
+  function canSend(isSubmitting: boolean) {
+    return !isSubmitting
+            && day.value
+            && slot.value
+            && form.visitor_name
+            && form.visitor_phone
+  }
+
+  watch(model, (val) => {
+    if(val && slotStore.orderDays === null && !slotStore.loading) {
+      slotStore.showOrderDays();
+    }
+  });
+
+  watch(day, () => {
+    slot.value = null;
+  });
 </script>
 
 <style scoped lang="scss">
-  .modal-header {
-    display: flex;
-    justify-content: space-between;
-    gap: 20px;
-    margin-bottom: 32px;
-
-    @include sm {
-      margin-bottom: 24px;
-    }
-
-    &__title {
-      font-size: 32px;
-      line-height: 1.25;
-
-      @include sm {
-        @apply tw-text-2xl;
-      }
-    }
-
-    &__hide {
-      flex-shrink: 0;
-    }
-  }
-
   .keys-form {
     &__inputs {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 20px;
+      margin-bottom: 20px;
     }
 
     &__comment {
       grid-column: 1 / 3;
+    }
+
+    &__day-list {
+      margin-bottom: 20px;
     }
 
     &__btn {
