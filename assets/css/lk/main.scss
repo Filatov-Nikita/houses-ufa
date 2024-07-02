@@ -25,3 +25,22 @@
     height: 24px;
   }
 }
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+
+  &__title {
+    font-size: 32px;
+    line-height: 1.25;
+
+    @include sm {
+      @apply tw-text-2xl;
+    }
+  }
+
+  &__hide {
+    flex-shrink: 0;
+  }
+}
