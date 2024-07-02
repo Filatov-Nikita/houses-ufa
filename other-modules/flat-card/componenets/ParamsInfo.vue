@@ -13,7 +13,7 @@
       <p class="flat-info__subtitle">{{ subtitle }}</p>
     </div>
     <div class="flat-info__badges">
-      <p class="flat-info__price-perm2" v-if="data.price_per_m2">
+      <p class="flat-info__price-perm2" v-if="data.price_per_m2 && 0">
         {{ $formatValue(data.price_per_m2, '₽ / м²') }}
       </p>
     </div>
@@ -41,7 +41,7 @@
         </p>
       </div>
     </div>
-    <div class="flat-info__price-block">
+    <div class="flat-info__price-block" v-if="0">
       <p v-if="data.price_promo">
         <EstatePromoPrice :value="data.price_total" />
       </p>

@@ -32,7 +32,7 @@
         >
           {{ description.title }}
         </h5>
-        <div v-if="description?.price" class="tw-text-body_m tw-mb-2">
+        <div v-if="description?.price && 0" class="tw-text-body_m tw-mb-2">
           {{ $amount(description?.price) }}
         </div>
       </div>

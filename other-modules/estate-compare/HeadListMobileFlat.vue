@@ -91,7 +91,7 @@
     v-show="isVisibleCompareAbsolute"
   >
     <div v-if="firstItem" class="tw-overflow-x-hidden">
-      <div>{{ $amount(firstItem.price) }}</div>
+      <!-- <div>{{ $amount(firstItem.price) }}</div> -->
       <div class="tw-text-text01 tw-text-xs tw-mt-2">
         {{ firstItem.title }}
       </div>
