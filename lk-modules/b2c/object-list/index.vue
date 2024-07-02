@@ -13,6 +13,8 @@
         class="object-list__item"
         :key="flat.id"
         :flat="flat"
+        @successCancelKeyOrder="refreshFlats"
+        @successKeyOrder="refreshFlats"
       />
       <Item
         v-for="parking in parkings"
@@ -41,6 +43,10 @@
     placeResponse,
     parkingResponse
   } = await getData();
+
+  function refreshFlats() {
+    flatResponse.refresh();
+  }
 
   const towns = computed(() => {
     return townResponse.data.value?.data ?? [];

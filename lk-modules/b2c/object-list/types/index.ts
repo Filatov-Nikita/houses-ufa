@@ -11,7 +11,20 @@ interface Entrence {
   name: string,
 }
 
+interface KeyAcquisition {
+  id: number,
+  starts_at: string,
+  ends_at: string
+}
+
+interface FlatExtra {
+  is_key_acquisible: boolean,
+  key_acquisition: KeyAcquisition | null,
+  files: File[],
+  entrance: Entrence,
+}
+
 export type UserTown = Omit<Town, 'is_in_favorite'> & { files: File[] };
-export type UserFlat = Flat & { files: File[], entrance: Entrence };
+export type UserFlat = Flat & FlatExtra;
 export type UserParking = ParkingOne & { files: File[] };
 export type UserPlace = PlaceOne & { files: File[] };
