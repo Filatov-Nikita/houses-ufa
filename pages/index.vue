@@ -28,7 +28,7 @@
   <section class="section">
     <div class="wrapper">
       <div class="section-2el">
-        <h1 class="section__title">Квартиры в Уфе</h1>
+        <h2 class="section__title">Квартиры в Уфе</h2>
         <div class="section__link section__link--desktop">
           <LinksShowAll to="/ipoteka">
             Все ипотечные предложения

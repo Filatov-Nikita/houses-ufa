@@ -25,7 +25,7 @@
   <section class="section">
     <div class="wrapper">
       <div class="section__top">
-        <h1 class="section__title">Ипотека Жилой квартал</h1>
+        <h2 class="section__title">Ипотека Жилой квартал</h2>
       </div>
       <CreditList />
     </div>
