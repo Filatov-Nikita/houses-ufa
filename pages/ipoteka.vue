@@ -51,6 +51,8 @@
 
   useCanonical();
 
+  usePageMicro('ipoteka.json');
+
   const bread = useBreadcrumbsStore();
 
   bread.set([

@@ -69,5 +69,7 @@ import HomeBanner from '@/other-modules/home-banner/index.vue';
 
 useCanonical();
 
+usePageMicro('index.json');
+
 await usePageSeo('index.json');
 </script>

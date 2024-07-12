@@ -45,6 +45,8 @@ import QuestionForm from '@/other-modules/question-form/index.vue';
 
 useCanonical();
 
+usePageMicro('purchase/trade_in.json');
+
 useSeoMeta({
   title: 'Трейд-ин',
 });

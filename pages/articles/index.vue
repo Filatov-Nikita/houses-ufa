@@ -32,6 +32,8 @@ import { useRoute } from 'vue-router';
 
 useCanonical({ preserveParams: [ 'type' ] });
 
+usePageMicro('press-center.json');
+
 const route = useRoute();
 
 const bread = useBreadcrumbsStore();

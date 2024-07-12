@@ -27,8 +27,17 @@
 
 <script setup lang="ts">
   import TenderList from '@/other-modules/tender-list/index.vue';
+  import { useBreadcrumbsStore } from '@/stores/breadcrumbs';
 
   useCanonical();
+
+  usePageMicro('tenders.json');
+
+  const bread = useBreadcrumbsStore();
+
+  bread.set([
+    { label: 'Главная', to: '/' }, { label: 'Тендеры', to: '/tenders' },
+  ]);
 
   await usePageSeo('tenders.json');
 </script>

@@ -27,6 +27,8 @@
     { label: 'Главная', to: '/' }, { label: 'Контакты', to: '/contacts' },
   ]);
 
+  usePageMicro('contacts.json');
+
   const route = useRoute();
 
   useCanonical({ preserveParams: [ 'type' ] });

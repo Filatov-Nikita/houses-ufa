@@ -56,6 +56,8 @@ import { useBreadcrumbsStore } from '@/stores/breadcrumbs';
 
 useCanonical();
 
+usePageMicro('about.json');
+
 const bread = useBreadcrumbsStore();
 
 bread.set([

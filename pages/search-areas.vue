@@ -22,8 +22,17 @@
 
 <script setup lang="ts">
   import SearchAreaList from '@/other-modules/search-area-list/index.vue';
+  import { useBreadcrumbsStore } from '@/stores/breadcrumbs';
 
   useCanonical();
+
+  usePageMicro('search_areas.json');
+
+  const bread = useBreadcrumbsStore();
+
+  bread.set([
+    { label: 'Главная', to: '/' }, { label: 'Поиск земельных участков', to: '/search-areas' },
+  ]);
 
   await usePageSeo('search_areas.json');
 </script>

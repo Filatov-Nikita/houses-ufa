@@ -43,6 +43,8 @@ import QuestionForm from '@/other-modules/question-form/index.vue';
 
 useCanonical();
 
+usePageMicro('purchase/mat_capital.json');
+
 useSeoMeta({
   title: 'Материнский капитал',
 });

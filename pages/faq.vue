@@ -28,6 +28,8 @@
 
   useCanonical();
 
+  usePageMicro('faq.json');
+
   const bread = useBreadcrumbsStore();
 
   bread.set([

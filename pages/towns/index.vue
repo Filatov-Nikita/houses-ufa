@@ -23,5 +23,6 @@
   import ProjectMainFilter from '@/other-modules/project-main-filter/index.vue';
   import QuestionForm from '@/other-modules/question-form/index.vue';
 
+  usePageMicro('towns/index/breadcrumbs.json');
   await usePageSeo('towns/index.json');
 </script>

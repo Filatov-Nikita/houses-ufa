@@ -124,6 +124,9 @@ const loadingComplex = computed(() => complexOneStore.loadingComplex);
 
 setComplexId(complexSlug.value);
 
+usePageMicro(`complexes/slugs/${complexOneStore.complexId}/local_business.json`);
+usePageMicro(`complexes/slugs/${complexOneStore.complexId}/breadcrumbs.json`);
+
 await usePageSeo(`complexes/slugs/${complexOneStore.complexId}.json`);
 
 await useLazyAsyncData(() => {

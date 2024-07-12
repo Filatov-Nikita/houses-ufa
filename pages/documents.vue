@@ -28,11 +28,21 @@
 </template>
 
 <script setup lang="ts">
+  import { useBreadcrumbsStore } from '@/stores/breadcrumbs';
+
   useCanonical();
 
   useSeoMeta({
     title: 'Документы',
   });
+
+  usePageMicro('documents.json');
+
+  const bread = useBreadcrumbsStore();
+
+  bread.set([
+    { label: 'Главная', to: '/' }, { label: 'Документы', to: '/documents' },
+  ]);
 
   const data = [
     {

@@ -23,6 +23,8 @@
 
   useCanonical();
 
+  usePageMicro('promotions.json');
+
   const bread = useBreadcrumbsStore();
 
   bread.set([

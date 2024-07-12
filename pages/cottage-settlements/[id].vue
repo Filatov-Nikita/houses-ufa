@@ -93,5 +93,8 @@
 
   bread.set([ { label: 'Главная', to: '/' }, { label: townOne.town?.data.name ?? '' } ]);
 
+  usePageMicro(`towns/slugs/${townOne.townId}/local_business.json`);
+  usePageMicro(`towns/slugs/${townOne.townId}/breadcrumbs.json`);
+
   await usePageSeo(`towns/slugs/${townOne.townId}.json`);
 </script>

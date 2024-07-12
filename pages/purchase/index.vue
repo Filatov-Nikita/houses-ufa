@@ -31,6 +31,8 @@ import { useBreadcrumbsStore } from '@/stores/breadcrumbs'
 
 useCanonical();
 
+usePageMicro('purchase/index.json');
+
 useSeoMeta({
   title: 'Как купить',
 });

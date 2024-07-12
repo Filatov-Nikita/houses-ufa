@@ -42,6 +42,8 @@ import QuestionForm from '@/other-modules/question-form/index.vue';
 
 useCanonical();
 
+usePageMicro('purchase/discont.json');
+
 useSeoMeta({
   title: 'Программа лояльности от ГК «Жилой Квартал»',
 });
