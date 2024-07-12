@@ -15,7 +15,7 @@
         />
         <div class="scroll-y head-filter__scroll-area">
           <BaseTabsGroup class="head-filter__tabs" theme="gray" v-model="listView">
-            <BaseTabsGroupItem class="head-filter__tab" theme="gray" name="genplan">
+            <BaseTabsGroupItem v-if="hasFilledFacade" class="head-filter__tab" theme="gray" name="genplan">
               На фасаде
             </BaseTabsGroupItem>
             <BaseTabsGroupItem class="head-filter__tab" theme="gray" name="plan">
@@ -47,11 +47,18 @@
   import FloorsList from './Plan/FloorsList.vue';
   import FindedCount from './FindedCount.vue';
   import { computed } from 'vue';
+  import { useComplexOne } from '@/stores/pages/complex-one';
 
   const animTabs = {
     leaveClasses: '',
     enterClasses: '',
   }
+
+  const complexOne = useComplexOne();
+
+  const hasFilledFacade = computed(() => {
+    return complexOne.complex?.data.has_filled_facade ?? false;
+  });
 
   const filterListStore = useFilterList();
   const filterPlanStore = useFilterPlan();

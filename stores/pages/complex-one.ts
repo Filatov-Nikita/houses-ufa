@@ -81,6 +81,7 @@ export interface ComplexResponse {
 
 export interface ComplexOne {
   id:              number;
+  has_filled_facade: boolean;
   has_parkings:    boolean;
   has_storehouses: boolean;
   location:        string;
