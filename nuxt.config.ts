@@ -90,7 +90,7 @@ export default defineNuxtConfig({
     }
   },
   // devtools: { enabled: true },
-  modules: ['@pinia/nuxt', 'nuxt-swiper'],
+  modules: ['@pinia/nuxt', 'nuxt-swiper', 'nuxt-jsonld'],
   runtimeConfig: {
     public: definePublicConfig(),
   },
