@@ -24,7 +24,7 @@ export function useTopMenu() {
     },
     {
       label: 'Спецпредложения',
-      to: '/main-filter?is_in_promotion_only=1&filterType=flats',
+      to: '/promotions',
     },
   ]);
 

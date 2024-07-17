@@ -24,7 +24,7 @@
     </BaseDropdown>
     <div key="spec" class="nav-items-mobile__dropdown nav-items-mobile__title">
       <NuxtLink
-        to="/main-filter?is_in_promotion_only=1&filterType=flats"
+        to="/promotions"
         class="nav-items-mobile__link nav-items-mobile__extra-link nav-items-mobile__link--red"
       >
         Спецпредложения
