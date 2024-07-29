@@ -162,12 +162,7 @@ defineProps<{
       width: 311px;
       height: 311px;
       position: absolute;
-      background-image: linear-gradient(
-          0deg,
-          rgba(0, 0, 0, 0.2) 0%,
-          rgba(0, 0, 0, 0.2) 100%
-        ),
-        var(--bg-card);
+      background-image: var(--bg-card);
       background-size: cover;
       background-position: center;
       transform: translate3d(-31px, -31px, 0px) rotate(-45deg);

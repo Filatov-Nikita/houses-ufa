@@ -106,7 +106,6 @@
 
       @include sm {
         width: 158px;
-        bottom: -35px;
       }
     }
 

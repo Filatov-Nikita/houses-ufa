@@ -25,7 +25,7 @@
 
   const props =  defineProps<Props>();
 
-  const perc = computed(() => (+props.item.percent_min).toFixed(0));
+  const perc = computed(() => parseFloat(props.item.percent_min));
 </script>
 
 <style scoped lang="scss">
