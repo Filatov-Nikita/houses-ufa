@@ -15,14 +15,14 @@ export const list = [
     description: 'Кирпичный многоквартирный дом в самом центре Михайловки. Видовые квартиры. Рядом лес и озеро',
   },
   {
-    img: '/images/company-objects/03.png',
+    img: '/images/company-objects/03.jpg',
     name: 'Михайловка Green Place',
     subtitle: '',
     status: '',
     description: '16 кирпичных многоквартирных домов достроены и заселены. Школа и детский сад на территории комплекса. Развитая инфраструктура.',
   },
   {
-    img: '/images/company-objects/04.png',
+    img: '/images/company-objects/04.jpg',
     name: 'Зубово Life Garden',
     subtitle: '',
     status: '',
