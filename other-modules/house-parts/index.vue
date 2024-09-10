@@ -28,7 +28,7 @@
             id="image0_13974_179456"
             width="1360"
             height="720"
-            xlink:href="/images/img/house-parts.png"
+            xlink:href="@/assets/images/img/house-parts.png"
           />
           <g class="indicator" :class="{ active: 18 === activePartId }">
             <g class="indicator__button" @click="openPart(18)">
