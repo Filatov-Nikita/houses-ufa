@@ -16,7 +16,7 @@
         </svg>
         <div>Вы можете перемещать схему дома</div>
       </div>
-      <div class="tw-overflow-scroll" ref="plan">
+      <div class="map" ref="plan">
         <svg
           class="lg:tw-w-full tw-h-[516px] lg:tw-h-[720px]"
           viewBox="0 0 1360 720"
@@ -1418,6 +1418,20 @@ onMounted(() => {
       display: none !important;
     }
   }
+  .map {
+    @apply tw-overflow-auto;
+  }
+  @media screen and (min-width: 1024px) {
+    .map::-webkit-scrollbar {
+      display: none;
+    }
+
+    /* Скрываем scrollbar для IE, Edge и Firefox */
+    .map {
+      -ms-overflow-style: none; /* IE и Edge */
+      scrollbar-width: none; /* Firefox */
+    }
+  }
   .item {
     position: absolute;
     top: 0;
@@ -1455,6 +1469,7 @@ onMounted(() => {
   @apply tw-w-full tw-h-full  tw-fixed  tw-top-0 tw-left-0;
   background: #00000057;
   z-index: 1;
+  display: grid;
   align-content: end;
   padding: 24px 16px;
   @media (min-width: 1024px) {
