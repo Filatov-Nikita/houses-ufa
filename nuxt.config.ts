@@ -90,7 +90,7 @@ export default defineNuxtConfig({
     }
   },
   // devtools: { enabled: true },
-  modules: ['@pinia/nuxt', 'nuxt-swiper', 'nuxt-jsonld'],
+  modules: ['@pinia/nuxt', 'nuxt-swiper', 'nuxt-jsonld', 'nuxt-viewport'],
   runtimeConfig: {
     public: definePublicConfig(),
   },
@@ -106,6 +106,15 @@ export default defineNuxtConfig({
   },
   swiper: {
     modules: ['navigation', 'pagination', 'effect-fade'],
+  },
+  viewport: {
+    breakpoints: {
+      lg: 1420.9,
+      md: 1023.9,
+      sm: 767.9,
+    },
+    fallbackBreakpoint: 'lg',
+    feature: 'maxWidth',
   },
   plugins: [
     '~/plugins/maska.ts',

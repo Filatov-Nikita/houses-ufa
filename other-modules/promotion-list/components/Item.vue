@@ -1,7 +1,15 @@
 <template>
   <RouterLink class="promo-list-item" :to="`/promotions/${item.slug}`">
     <img
-      v-if="item.image"
+      v-if="item.image_mobile && $viewport.isLessThan('md')"
+      class="promo-list-item__preview"
+      :src="item.image_mobile.url"
+      :width="item.image_mobile.width ?? 0"
+      :height="item.image_mobile.height ?? 0"
+      loading="lazy"
+    />
+    <img
+      v-else-if="item.image"
       class="promo-list-item__preview"
       :src="item.image.url"
       :width="item.image.width ?? 0"
