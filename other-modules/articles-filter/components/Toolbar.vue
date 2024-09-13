@@ -8,6 +8,9 @@
         <BaseTabsGroupItem class="toolbar__tab" name="mass_media" theme="white">
           СМИ о нас
         </BaseTabsGroupItem>
+        <BaseTabsGroupItem class="toolbar__tab" name="useful" theme="white">
+          Полезное
+        </BaseTabsGroupItem>
       </BaseTabsGroup>
     </div>
     <div class="toolbar__params">

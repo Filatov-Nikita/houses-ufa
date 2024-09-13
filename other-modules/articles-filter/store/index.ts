@@ -2,7 +2,7 @@ import type { ArticleListItem } from '@/types/articles';
 import { defineStore } from 'pinia';
 import { useSeqDataFetch } from '@/composables/useSeqDataFetch';
 
-export type Type = 'tiding' | 'mass_media';
+export type Type = 'tiding' | 'mass_media' | 'useful';
 
 const useArticlesFilter = defineStore('articlesFilter', () => {
   type Params = {
