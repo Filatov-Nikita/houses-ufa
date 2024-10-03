@@ -6,14 +6,24 @@
   </div>
   <section class="section">
     <div class="wrapper">
+      <Banner />
+    </div>
+  </section>
+  <section class="section">
+    <div class="wrapper">
       <TownFilter />
     </div>
   </section>
+
+  <EstateSaleList class="section" />
+
   <section class="section">
     <div class="wrapper">
       <TownAbout />
     </div>
   </section>
+
+  <TransportAccessibility />
   <section class="section">
     <div class="wrapper">
       <div class="section__top">
@@ -24,8 +34,12 @@
       <TownGenplan :townId="townOne.townId!" />
     </div>
   </section>
+
   <section class="section">
     <div class="wrapper">
+      <div class="section__top">
+        <h2 class="section__title">Разнообразие преимуществ</h2>
+      </div>
       <TownAdvantages :townId="townOne.townId!" />
     </div>
   </section>
@@ -61,7 +75,19 @@
       <HouseParts />
     </div>
   </section>
-
+  <div class="section">
+    <div class="wrapper">
+      <Contacts />
+    </div>
+  </div>
+  <section class="section">
+    <div class="wrapper">
+      <div class="section__top">
+        <h2 class="section__title">Документы</h2>
+      </div>
+      <Docs />
+    </div>
+  </section>
   <section class="section">
     <div class="wrapper">
       <div class="section__top">
@@ -73,6 +99,16 @@
   <section class="section">
     <div class="wrapper">
       <QuestionForm />
+    </div>
+  </section>
+  <section class="section">
+    <div class="wrapper">
+      <div class="section__top">
+        <h2 class="section__title">
+          Откройте для себя еще больше коттеджей и таунхаусов
+        </h2>
+      </div>
+      <EstateMore />
     </div>
   </section>
 </template>
@@ -87,6 +123,12 @@ import TownGenplan from '@/other-modules/town-genplan/index.vue'
 import HouseParts from '@/other-modules/house-parts/index.vue'
 import TownMaterials from '@/other-modules/town-materials/index.vue'
 import TownLocations from '@/other-modules/town-locations/index.vue'
+import EstateSaleList from '@/other-modules/estate-sale-list/index.vue'
+import TransportAccessibility from '@/other-modules/transport-accessibility/index.vue'
+import Docs from '@/other-modules/docs-download/index.vue'
+import EstateMore from '@/other-modules/estate-more/index.vue'
+import Contacts from '@/other-modules/contacts-map/index.vue'
+import Banner from '@/other-modules/action-banner/index.vue'
 import { useTownOne } from '@/stores/pages/town-one'
 import { useBreadcrumbsStore } from '@/stores/breadcrumbs'
 
