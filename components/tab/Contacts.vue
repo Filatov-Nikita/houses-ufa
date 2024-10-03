@@ -42,24 +42,24 @@
           >
             {{ item.mail }}
           </a>
-      </div>
+        </div>
       </div>
     </BaseTabsTabContentItem>
   </BaseTabsTabContent>
 </template>
 <script lang="ts" setup>
-import { useRoute, useRouter } from 'vue-router';
+import { useRoute, useRouter } from 'vue-router'
 
-const route = useRoute();
-const router = useRouter();
+const route = useRoute()
+const router = useRouter()
 const tab = computed({
   get() {
-    return (route.query.type ?? 'office') as string;
+    return (route.query.type ?? 'office') as string
   },
   set(type) {
-    router.replace({ query: { type } });
+    router.replace({ query: { type } })
   },
-});
+})
 
 const tabs = [
   {
@@ -96,6 +96,6 @@ const serviceList = [
     text: '',
     phone: '+7 (347) 216-44-77',
   },
-];
+]
 </script>
 <style lang="scss" scoped></style>
