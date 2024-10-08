@@ -28,7 +28,7 @@
         :badge="badge"
       />
     </div>
-    <div class="flat-list-item__info2" v-if="0">
+    <div class="flat-list-item__info2">
       <div class="flat-list-item__price-wrap">
         <EstatePromoPrice class="flat-list-item__old-price" v-if="flat.price_promo" :value="flat.price_total" />
         <span class="flat-list-item__price">{{ priceLabel }}</span>

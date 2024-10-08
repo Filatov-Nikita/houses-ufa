@@ -3,12 +3,10 @@
     <div v-if="complexName" class="estate-card-bottom__house">
       {{ complexName }}
     </div>
-    <template v-if="0">
-      <div v-if="price" class="estate-card-bottom__price-block">
-        <EstatePromoPrice class="estate-card-bottom__promo-price" v-if="pricePromo && price" :value="price" />
-        <span class="estate-card-bottom__price">{{ $amount(pricePromo ?? price) }}</span>
-      </div>
-    </template>
+    <div v-if="price" class="estate-card-bottom__price-block">
+      <EstatePromoPrice class="estate-card-bottom__promo-price" v-if="pricePromo && price" :value="price" />
+      <span class="estate-card-bottom__price">{{ $amount(pricePromo ?? price) }}</span>
+    </div>
     <div v-if="creditMonth || creditStart" class="estate-card-bottom__credit">
       <p v-if="creditMonth" class="estate-card-bottom__credit-text">
         В ипотеку — <span class="tw-text-primary">от {{ $formatValue(creditMonth, '₽ / мес') }}</span>
