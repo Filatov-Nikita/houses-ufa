@@ -11,7 +11,7 @@
       <BtnsActionsMenu theme="gray" />
     </template>
     <div class="complex-flat-item__params">
-      <!-- <div class="complex-flat-item__price">от {{ $amount(flat.price_total_min) }}</div> -->
+      <div class="complex-flat-item__price">от {{ $amount(flat.price_total_min) }}</div>
       <button class="complex-flat-item__btn">
         Показать <BasePlural :total="flat.count" :cases="planCases" />
       </button>
