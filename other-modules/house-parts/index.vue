@@ -1,6 +1,14 @@
 <template>
   <div class="house-parts">
     <div class="house-parts__wrapper" ref="content">
+      <div class="info-block">
+        <button class="info-btn" @click="showedInfo = !showedInfo">
+          <BaseIcon fit name="info" />
+        </button>
+        <p class="info-text" v-if="showedInfo">
+          Информация основана на предпроектных разработках и носит информационный характер. Не является публичной офертой и может отличаться от проектной документации. Визуализация ориентировочная, цвет и тип применяемых материалов зависит от концепции коттеджного поселка. Застройщик может вносить изменения в проект в соответствии с законодательством РФ.
+        </p>
+      </div>
       <div class="house-parts__info active" ref="info">
         <svg
           width="41"
@@ -1289,6 +1297,7 @@ const activePartId = ref<number | null>(null)
 const content = ref<HTMLElement | null>(null)
 const plan = ref<HTMLElement | null>(null)
 const info = ref<HTMLElement | null>(null)
+const showedInfo = ref(false);
 const swiper = ref<Swiper>()
 const onSwiper = (s: Swiper) => {
   swiper.value = s
@@ -1404,6 +1413,7 @@ onMounted(() => {
 
     background: #000000a6;
     position: absolute;
+    z-index: 9100;
     width: 100%;
     height: 100%;
     color: white;
@@ -1508,5 +1518,38 @@ onMounted(() => {
       }
     }
   }
+}
+
+.info-block {
+  position: absolute;
+  top: 0px;
+  right: 0;
+  padding-top: 24px;
+  padding-right: 24px;
+  padding-left: 16px;
+  z-index: 9000;
+  width: 100%;
+  max-width: 400px;
+
+  @include sm {
+    padding: 16px;
+  }
+}
+
+.info-text {
+  padding: 12px;
+  border-radius: 8px;
+  margin-top: 12px;
+  @apply tw-bg-white tw-text-sm;
+}
+
+.info-btn {
+  margin-left: auto;
+  display: block;
+  border-radius: 8px;
+  padding: 8px;
+  width: 32px;
+  height: 32px;
+  @apply tw-bg-white tw-text-text02;
 }
 </style>
