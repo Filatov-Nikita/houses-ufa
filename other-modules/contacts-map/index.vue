@@ -39,18 +39,18 @@
             class="tw-w-10 tw-h-10 tw-rounded-lg tw-relative tw-overflow-hidden"
           >
             <img
-              v-if="marks[singleOfficeIdx]"
-              :src="marks[singleOfficeIdx].img"
+              v-if="marks[singleOfficeIdx].photo"
+              :src="marks[singleOfficeIdx].photo"
               alt=""
               class="tw-absolute tw-w-full tw-h-full tw-object-cover"
             />
           </div>
           <div>
             <h4 v-if="marks[singleOfficeIdx]" class="tw-text-body_m tw-mb-1">
-              {{ marks[singleOfficeIdx].title }}
+              {{ marks[singleOfficeIdx].name }}
             </h4>
             <p
-              v-if="marks[singleOfficeIdx]"
+              v-if="marks[singleOfficeIdx].address"
               class="tw-text-text01 tw-text-body_s2 -tw-tracking-875"
             >
               {{ marks[singleOfficeIdx].address }}
@@ -59,14 +59,17 @@
         </div>
 
         <div v-if="marks[singleOfficeIdx]" class="tw-grid tw-gap-2">
-          <p class="tw-text-h6" v-html="marks[singleOfficeIdx].phone"></p>
+          <a class="tw-text-h6" v-if="marks[singleOfficeIdx].phone" :href="`tel:${marks[singleOfficeIdx].phone}`">
+            {{ marks[singleOfficeIdx].phone }}
+          </a>
           <p
+            v-if="marks[singleOfficeIdx].workTime"
             class="tw-text-body_s tw-text-text01"
             v-html="marks[singleOfficeIdx].workTime"
           ></p>
         </div>
         <div class="tw-flex tw-gap-3">
-          <BaseButton class="tw-flex-grow" @click="showForm">
+          <BaseButton class="tw-flex-grow" @click="toggleForm">
             Обратный звонок
           </BaseButton>
         </div>
@@ -75,27 +78,51 @@
   </div>
 </template>
 <script lang="ts" setup>
-import Map from './components/Map.vue'
-const marks = [
-  {
-    id: 1,
-    img: '/images/offices/1.png',
-    title: 'ЖК «Сапфир»',
-    address: 'г. Уфа, ул. Комсомольская, д. 8',
-    coords: [54.739456, 55.992989],
-    phone: '+7 (347) 225-00-73',
-    workTime: 'Пн-Сб: 10:00-20:00 (сб. до 18:00) <br> Вс: 10:00-17:00',
-  },
-  {
-    id: 2,
-    img: '/images/offices/1.png',
-    title: 'ЖК «Сапфир»',
-    address: 'г. Уфа, ул. Комсомольская, д. 9',
-    coords: [54.731456, 55.993989],
-    phone: '+7 (347) 225-00-73',
-    workTime: 'Пн-Сб: 10:00-20:00 (сб. до 18:00) <br> Вс: 10:00-17:00',
-  },
-]
+import { usePublicHeader } from '@/other-modules/public-header/store';
+import type { EstateCard } from '@/types/estate/estate-card';
+import Map from './components/Map.vue';
+
+interface Item {
+  name: string,
+  coords: [ string, string ],
+  photo?: string,
+  address?: string,
+  phone?: string,
+  workTime?: string,
+}
+
+const props = defineProps<{
+  townCard: EstateCard,
+}>();
+
+const { toggleForm } = usePublicHeader();
+
+const townData = computed<Item>(() => {
+  return {
+    name: props.townCard.name,
+    coords: [ props.townCard.latitude, props.townCard.longitude ],
+    photo: props.townCard.sight_picture?.url,
+  }
+});
+
+const officeData = computed<Item | null>(() => {
+  if(!props.townCard.shop) return null;
+  return {
+    name: props.townCard.shop.name,
+    coords: [ props.townCard.shop.latitude, props.townCard.shop.longitude ],
+    photo: props.townCard.shop.sight_picture?.url,
+    address: props.townCard.shop.address,
+    phone: props.townCard.shop.phone_number,
+    workTime: props.townCard.shop.business_hours,
+  }
+});
+
+const marks = computed<Item[]>(() => {
+  const items: Item[] = [ townData.value ];
+  if(officeData.value) items.unshift(officeData.value);
+  return items;
+});
+
 const nameStreet = ref('')
 const suggest = ref()
 const singleOfficeIdx = ref(0)

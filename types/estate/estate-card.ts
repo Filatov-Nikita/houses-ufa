@@ -29,6 +29,19 @@ export interface Document {
   url:                string;
 }
 
+export interface Shop {
+  id:             number;
+  address:        string;
+  business_hours: string;
+  latitude:       string;
+  longitude:      string;
+  name:           string;
+  phone_number:   string;
+  priority:       number;
+  sight_picture:  Image | null;
+}
+
+
 export interface EstateCard  {
   id:              number;
   location:        string;
@@ -41,4 +54,5 @@ export interface EstateCard  {
   sight_picture:   Image | null,
   images:          Image[];
   documents:       Document[];
+  shop:            Shop | null,
 }

@@ -129,10 +129,10 @@ const createMark = (item, idx, active = false) => {
   var animatedLayout = ymaps.templateLayoutFactory.createClass(
     `<div class="contact-layout ${active ? 'active' : ''}">
             <div class="contact-layout__img ">
-            <img src=${item.img} width="40" height="40">
+            <img src=${item.photo} width="40" height="40">
             </div>
             <div class="contact-layout__content">
-              <span class="contact-layout__title">${item.title}</span>
+              <span class="contact-layout__title">${item.name}</span>
             </div>
             </div>`,
     {
@@ -231,5 +231,101 @@ watch(
 <style lang="scss" scoped>
 .map-complex {
   @apply tw-h-full tw-w-full;
+}
+</style>
+<style>
+/* Квадратный макет метки */
+
+.contact-layout {
+  display: flex;
+  border-radius: 12px;
+  border: 2px solid white;
+  position: absolute;
+  width: max-content;
+  /* width: 32px;
+  height: 32px; */
+  background-color: white;
+  align-items: center;
+  @apply tw-shadow-shadow01;
+}
+.contact-layout__img {
+  gap: 6px;
+  border-radius: 12px;
+
+  overflow: hidden;
+}
+.contact-layout__img > img {
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+}
+
+.contact-layout__content {
+  padding: 0 16px;
+}
+.contact-layout.active {
+  background: theme('colors.primary');
+  color: white;
+}
+
+.contact-layout__title {
+  @apply tw-text-body_m;
+}
+</style>
+<style lang="scss" scoped>
+.map {
+  @apply tw-w-full tw-h-[560px] lg:tw-h-[600px] tw-rounded-2xl tw-overflow-hidden  tw-relative;
+  &.fullscreen {
+    @apply tw-fixed tw-top-0 tw-left-0 tw-w-screen tw-h-screen;
+  }
+
+  .btn-to-fullscreen {
+    @apply tw-absolute tw-left-1/2 tw-transform -tw-translate-x-1/2 tw-bottom-4 tw-max-w-[311px] tw-w-full  tw-bg-white tw-rounded-lg tw-px-6 tw-py-4;
+    @apply tw-flex tw-justify-center tw-items-center tw-gap-4 tw-text-body_m;
+    @apply lg:tw-hidden;
+  }
+}
+.close {
+  @apply tw-rounded-lg tw-grid tw-place-content-center tw-bg-white tw-w-12 tw-h-12;
+  @apply tw-fixed tw-right-4 tw-top-4;
+  z-index: 1000;
+}
+.yandex-container {
+  height: 608px;
+}
+
+.card {
+  $this: &;
+
+  @apply tw-rounded-2xl tw-p-6 tw-bg-white tw-shadow-shadow01 tw-absolute tw-top-1/2 lg:tw-top-auto tw-grid tw-gap-6 tw-max-w-[360px] tw-w-full  tw-z-10 tw-content-start tw-opacity-100;
+  @apply tw-left-1/2 tw-transform -tw-translate-x-1/2 -tw-translate-y-1/2 lg:tw-left-auto lg:tw-translate-x-0;
+  &__content {
+    @apply tw-grid tw-gap-6;
+    #{$this}__image {
+      @apply tw-rounded-lg tw-overflow-hidden tw-h-[220px] tw-w-full tw-relative;
+      & > img {
+        @apply tw-absolute tw-w-full tw-h-full tw-object-cover;
+      }
+    }
+    .status {
+      @apply tw-rounded-lg tw-w-fit tw-bg-base01 tw-text-body_s tw-px-3 tw-py-[5px] tw-grid tw-place-content-center;
+    }
+    .title {
+      @apply tw-text-h6 tw-mb-1;
+    }
+    .text {
+      @apply tw-text-text02 tw-text-body_s2 -tw-tracking-875;
+    }
+  }
+  &__btns {
+    @apply tw-flex tw-gap-4;
+  }
+}
+
+.fade-enter-active {
+  @apply tw-animate-fadeIn;
+}
+.fade-leave-active {
+  @apply tw-animate-fadeOut;
 }
 </style>

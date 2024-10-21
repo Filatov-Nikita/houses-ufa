@@ -75,9 +75,9 @@
       <HouseParts />
     </div>
   </section>
-  <div class="section">
+  <div class="section" v-if="townOne.town && townOne.town.data.shop">
     <div class="wrapper">
-      <Contacts />
+      <Contacts :townCard="townOne.town.data" />
     </div>
   </div>
   <section class="section" v-if="townOne.town && townOne.town.data.documents">
