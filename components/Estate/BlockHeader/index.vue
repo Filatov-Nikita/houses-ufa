@@ -1,8 +1,15 @@
 <template>
   <div class="estate-header">
     <BaseBreadcrumbs class="estate-header__bread" />
-    <h1 class="estate-header__title">{{ name }}</h1>
-    <p class="estate-header__location">{{ location }}</p>
+    <div class="estate-header__wrap">
+      <div class="estate-header__item">
+        <h1 class="estate-header__title">{{ name }}</h1>
+        <p class="estate-header__location">{{ location }}</p>
+      </div>
+      <p class="estate-header__date" v-if="completionQuarter && completionYear">
+        Сдача в {{ completionQuarter }} кв. {{ completionYear }}
+      </p>
+    </div>
     <div class="estate-header__bottom">
       <BaseButton class="estate-header__action" theme="white" @click="onAction">
         {{ actionTitle }}
@@ -27,6 +34,8 @@
     actionTitle: string,
     caption: string,
     images: Image[],
+    completionQuarter?: number | string,
+    completionYear?: number | string,
   }
 
   defineProps<Props>();
@@ -95,6 +104,32 @@
         margin-bottom: 16px;
         @apply tw-text-2xl;
       }
+    }
+
+    &__wrap {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-start;
+      gap: 24px;
+
+      @include sm {
+        gap: 8px;
+      }
+    }
+
+    &__item {
+      flex-grow: 1;
+
+      @include sm {
+        width: 100%;
+      }
+    }
+
+    &__date {
+      padding: 6px 12px;
+      border-radius: 100px;
+      background: rgba(0,0,0,0.4);
+      @apply tw-text-white tw-text-body_s tw-font-medium;
     }
 
     &__action {

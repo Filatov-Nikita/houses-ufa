@@ -43,16 +43,18 @@ export interface Shop {
 
 
 export interface EstateCard  {
-  id:              number;
-  location:        string;
-  marketing_tag:   null;
-  name:            string;
-  about:           About;
-  seo:             SEO;
-  latitude:        string,
-  longitude:       string,
-  sight_picture:   Image | null,
-  images:          Image[];
-  documents:       Document[];
-  shop:            Shop | null,
+  id:                 number;
+  location:           string;
+  marketing_tag:      null;
+  name:               string;
+  about:              About;
+  seo:                SEO;
+  latitude:           string,
+  longitude:          string,
+  sight_picture:      Image | null,
+  images:             Image[];
+  documents:          Document[];
+  shop:               Shop | null,
+  completion_quarter: number,
+  completion_year:    number,
 }
