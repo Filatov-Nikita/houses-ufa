@@ -20,6 +20,15 @@ export interface SEO {
   text_title:       string;
 }
 
+export interface Document {
+  id:                 number;
+  extension:          string;
+  name:               string;
+  size_human_readable: string;
+  size_in_bytes:      number;
+  url:                string;
+}
+
 export interface EstateCard  {
   id:              number;
   location:        string;
@@ -31,4 +40,5 @@ export interface EstateCard  {
   longitude:       string,
   sight_picture:   Image | null,
   images:          Image[];
+  documents:       Document[];
 }

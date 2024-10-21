@@ -1,10 +1,10 @@
 <template>
   <div class="docs-download">
     <div class="list">
-      <a href="#" class="item" v-for="item in 10">
+      <a v-for="item in documents" :key="item.id" :href="item.url" class="item" target="_blank">
         <div class="item__content">
-          <div class="item__title">Заключение о степени готовности</div>
-          <div class="item__subtitle">0.5 Мб, pdf</div>
+          <div class="item__title">{{ item.name }}</div>
+          <div class="item__subtitle">{{ item.size_human_readable }}, {{ item.extension }}</div>
         </div>
         <div class="item__icon">
           <BaseIcon name="download-file" />
@@ -13,6 +13,15 @@
     </div>
   </div>
 </template>
+
+<script setup lang="ts">
+  import type { Document } from '@/types/estate/estate-card';
+
+  defineProps<{
+    documents: Document[],
+  }>();
+</script>
+
 <style lang="scss" scoped>
 .docs-download {
   @apply tw-p-4 lg:tw-p-6 tw-rounded-2xl tw-bg-white;

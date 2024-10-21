@@ -80,12 +80,12 @@
       <Contacts />
     </div>
   </div>
-  <section class="section">
+  <section class="section" v-if="townOne.town && townOne.town.data.documents">
     <div class="wrapper">
       <div class="section__top">
         <h2 class="section__title">Документы</h2>
       </div>
-      <Docs />
+      <Docs :documents="townOne.town.data.documents" />
     </div>
   </section>
   <section class="section">
