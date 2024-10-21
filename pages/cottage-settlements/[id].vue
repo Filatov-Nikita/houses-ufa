@@ -6,7 +6,7 @@
   </div>
   <section class="section">
     <div class="wrapper">
-      <Banner />
+      <Banner :townId="townOne.townId!" />
     </div>
   </section>
   <section class="section">
