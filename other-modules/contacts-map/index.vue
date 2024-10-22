@@ -23,7 +23,7 @@
             <span class="tw-text-body_s tw-leading-normal"> Назад </span>
           </div>
         </BaseButton> -->
-        <BaseTabsGroup v-model="tab" theme="gray">
+        <BaseTabsGroup v-if="townCard.shop" v-model="tab" theme="gray">
           <BaseTabsGroupItem
             v-for="(item, index) in tabs"
             :name="item.name"
@@ -131,7 +131,7 @@ const updateSingleIdx = (idx) => {
   singleOfficeIdx.value = idx
 }
 
-const tab = ref('office')
+const tab = ref(props.townCard.shop ? 'office' : 'object')
 const tabs = [
   {
     name: 'office',

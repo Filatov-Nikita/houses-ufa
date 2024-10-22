@@ -75,12 +75,12 @@
       <HouseParts />
     </div>
   </section>
-  <div class="section" v-if="townOne.town && townOne.town.data.shop">
+  <div class="section" v-if="townOne.town">
     <div class="wrapper">
       <Contacts :townCard="townOne.town.data" />
     </div>
   </div>
-  <section class="section" v-if="townOne.town && townOne.town.data.documents">
+  <section class="section" v-if="townOne.town && townOne.town.data.documents.length > 0">
     <div class="wrapper">
       <div class="section__top">
         <h2 class="section__title">Документы</h2>
@@ -131,6 +131,7 @@ import Contacts from '@/other-modules/contacts-map/index.vue'
 import Banner from '@/other-modules/action-banner/index.vue'
 import { useTownOne } from '@/stores/pages/town-one'
 import { useBreadcrumbsStore } from '@/stores/breadcrumbs'
+import { useEstateSaleList } from '@/other-modules/estate-sale-list/store';
 
 useCanonical()
 
@@ -138,6 +139,11 @@ const route = useRoute()
 
 const townOne = useTownOne()
 const bread = useBreadcrumbsStore()
+const saleList = useEstateSaleList();
+
+onMounted(() => {
+  saleList.filterType = 'towns';
+});
 
 const townSlug = computed<string>(() => route.params.id as string)
 
