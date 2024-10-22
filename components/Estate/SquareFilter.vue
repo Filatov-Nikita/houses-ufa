@@ -33,8 +33,8 @@
     disabled?: boolean,
     label?: string,
     theme?: 'gray' | 'white',
-    fromVal?: number,
-    toVal?: number,
+    fromVal?: number | null,
+    toVal?: number | null,
     options: Option[],
   }
 
@@ -54,8 +54,13 @@
   }
 
   function onClick(option: Option) {
-    emit('update:fromVal', option.from);
-    emit('update:toVal', option.to);
+    if(isActive(option)) {
+      emit('update:fromVal', undefined);
+      emit('update:toVal', undefined);
+    } else {
+      emit('update:fromVal', option.from);
+      emit('update:toVal', option.to);
+    }
   }
 </script>
 

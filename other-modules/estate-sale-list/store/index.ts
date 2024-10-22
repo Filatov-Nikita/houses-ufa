@@ -17,11 +17,17 @@ export const useEstateSaleList = defineStore('estateSaleList', () => {
     room_factor_three_classic: null
   });
 
+  const townParams: TownParams = reactive({
+    area_cottage_min: null,
+    area_cottage_max: null,
+  });
+
   const query = computed(() => {
     if(filterType.value === 'flats') {
       return notNullable(Object.assign({}, params, flatParams));
+    } else {
+      return notNullable(Object.assign({}, params, townParams));
     }
-    return params;
   });
 
   function notNullable<T extends Record<string, any>>(record: T): Partial<T> {
@@ -63,6 +69,7 @@ export const useEstateSaleList = defineStore('estateSaleList', () => {
     towns,
     filterType,
     flatParams,
+    townParams,
     currentFilter,
     show,
   }
@@ -75,4 +82,9 @@ interface FlatParams {
   room_factor_two_classic: number| null,
   room_factor_three_smart: number| null,
   room_factor_three_classic: number| null
+}
+
+interface TownParams {
+  area_cottage_min?: number | null,
+  area_cottage_max?: number | null,
 }
