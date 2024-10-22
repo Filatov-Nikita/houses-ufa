@@ -108,7 +108,7 @@
           Откройте для себя еще больше коттеджей и таунхаусов
         </h2>
       </div>
-      <EstateMore />
+      <EstateMore :slug="townSlug" />
     </div>
   </section>
 </template>
