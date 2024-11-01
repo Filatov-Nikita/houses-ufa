@@ -14,7 +14,7 @@
         <a class="footer-sidebar__phone" :href="'tel:' + contactsStore.phoneCleaned">
           {{ contacts.phone }}
         </a>
-        <button class="footer-sidebar__callback" @click="store.toggleForm">
+        <button class="footer-sidebar__callback" @click="store.toggleForm('order')">
           Заказать звонок
         </button>
       </div>

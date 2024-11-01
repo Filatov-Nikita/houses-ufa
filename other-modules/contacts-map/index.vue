@@ -69,7 +69,7 @@
           ></p>
         </div>
         <div class="tw-flex tw-gap-3">
-          <BaseButton class="tw-flex-grow" @click="toggleForm">
+          <BaseButton class="tw-flex-grow" @click="toggleForm('order')">
             Обратный звонок
           </BaseButton>
         </div>

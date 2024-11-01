@@ -23,7 +23,7 @@
         <a class="public-header__phone" :href="'tel:' + contacts.headPhoneCleaned">
           {{ contacts.contacts.headPhone }}
         </a>
-        <button class="public-header__callback" @click="store.toggleForm">
+        <button class="public-header__callback" @click="store.toggleForm('order')">
           Заказать звонок
         </button>
       </div>

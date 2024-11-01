@@ -81,7 +81,7 @@
         v-for="item in generalValuesKeys.id"
         theme="gray"
         class="tw-text-body_s2 -tw-tracking-875 lg:tw-text-body_m"
-        @click="headerStore.toggleForm"
+        @click="headerStore.toggleForm('order')"
       >
         Оставить заявку
       </BaseButton>

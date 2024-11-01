@@ -1,6 +1,6 @@
 <template>
   <Footer />
-  <ConsultForm v-model:showed="store.showedForm" />
+  <ConsultForm v-model:showed="store.showedForm" :goal="store.goalForm" />
 </template>
 
 <script setup lang="ts">

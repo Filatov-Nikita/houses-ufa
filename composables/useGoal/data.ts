@@ -7,4 +7,6 @@ export const data = {
   order_cottage_taun: 318805146,
   order_city: 318803455,
   aksiya_burger: 323540167,
+  aksiya_timer: 349601929,
+  vibrat_nedvizimost_po_aksiyi: 323540167,
 };

@@ -80,7 +80,7 @@
       emit('success');
       formRef.value.resetForm();
       notify.create({ type: 'success', message: 'Заявка успешно отправлена' });
-      useGoal('aksiya_burger').execute();
+      useGoal('vibrat_nedvizimost_po_aksiyi').execute();
     }
   }
 </script>

@@ -83,7 +83,7 @@
             <span class="tw-text-text02"> сек </span>
           </div>
         </div>
-        <BaseButton @click="headerStore.toggleForm">Оставить заявку</BaseButton>
+        <BaseButton @click="headerStore.toggleForm('aksiya_timer')">Оставить заявку</BaseButton>
       </div>
     </div>
   </div>

@@ -1,6 +1,6 @@
 <template>
   <Header />
-  <ConsultForm v-model:showed="store.showedForm" />
+  <ConsultForm v-model:showed="store.showedForm" :goal="store.goalForm" />
   <NavMenu :showed="store.showedNav" />
 </template>
 

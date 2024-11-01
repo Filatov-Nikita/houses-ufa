@@ -20,5 +20,5 @@ export const body1 = `
 `;
 
 export const body2 = `
-  (function(t, p) {window.Marquiz ? Marquiz.add([t, p]) : document.addEventListener('marquizLoaded', function() {Marquiz.add([t, p])})})('Widget', {id: '648813499b34230025a3bcd7', position: 'right', delay: 35, autoOpen: 60})
+  (function(t, p) {window.Marquiz ? Marquiz.add([t, p]) : document.addEventListener('marquizLoaded', function() {Marquiz.add([t, p])})})('Widget', {id: '648813499b34230025a3bcd7', position: 'right', delay: 60, autoOpen: 120})
 `;
