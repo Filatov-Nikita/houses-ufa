@@ -22,8 +22,7 @@
       <TownAbout />
     </div>
   </section>
-
-  <TransportAccessibility />
+  <TransportAccessibility v-if="townOne.town" :townSlug="townSlug" :town="townOne.town.data"  />
   <section class="section">
     <div class="wrapper">
       <div class="section__top">
