@@ -20,6 +20,7 @@ export const useProjectList = defineStore('projectList', () => {
   });
 
   watch(type, () => {
+    pagination.setPage(1);
     response.execute();
   });
 
