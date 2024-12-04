@@ -106,8 +106,19 @@ import ComplexLocations from '@/other-modules/complex-locations/index.vue';
 import ComplexGallery from '@/other-modules/complex-gallery/index.vue';
 import ComplexProgress from '@/other-modules/complex-progress/index.vue';
 import PurchaseMethods from '@/components/Estate/PurchaseMethods/index.vue';
+import { addComplexesWidget, removeWidgets, addComplexesScript } from '@/scripts/marquiz';
 import { useComplexOne } from '@/stores/pages/complex-one';
 import { useBreadcrumbsStore } from '@/stores/breadcrumbs';
+
+addComplexesScript();
+
+onMounted(() => {
+  addComplexesWidget();
+});
+
+onUnmounted(() => {
+  removeWidgets();
+});
 
 useCanonical();
 
