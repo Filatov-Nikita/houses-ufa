@@ -1,12 +1,11 @@
 <template>
-  <BaseModal v-model="showed" v-slot="{ hide }">
-    <BaseModalCard class="estate-image-modal__card">
+  <BaseModal class="modal-view" v-model="showed" v-slot="{ hide }">
+    <div class="estate-image-modal__card">
       <div class="estate-image-modal__header">
-        <p class="estate-image-modal__name">{{ title }}</p>
         <BtnsActionsBase theme="gray" icon="close" @click="hide" />
       </div>
       <slot />
-    </BaseModalCard>
+    </div>
   </BaseModal>
 </template>
 
@@ -26,12 +25,16 @@
 </script>
 
 <style scoped lang="scss">
+  :global(.modal-view .base-modal__wrap) {
+    padding: 24px;
+  }
+
   .estate-image-modal {
     &__header {
-      margin-bottom: 24px;
-      display: flex;
-      justify-content: space-between;
-      gap: 24px;
+      position: absolute;
+      top: 24px;
+      right: 32px;
+      z-index: 100;
     }
 
     &__name {
@@ -42,6 +45,7 @@
 
     &__card {
       width: 100%;
+      border-radius: 16px;
     }
   }
 </style>

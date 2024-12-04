@@ -67,6 +67,11 @@
     padding: 100px 40px 30px;
     @apply tw-bg-base00;
 
+    @include sm {
+      padding-left: 16px;
+      padding-right: 16px;
+    }
+
     &__pag {
       left: auto !important;
       right: -16px !important;

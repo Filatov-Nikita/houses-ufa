@@ -10,6 +10,7 @@
       <BaseTabsTabContentItem key="plan" name="plan">
         <EstateImageFlatSlider
           class="estate-image-contr__img"
+          :class="fullscreen ? 'estate-image-contr__img' : 'estate-image-contr__img-full'"
           :images="planImages"
           :fullscreen="fullscreen"
           @showImg="emit('showModalImg')"
@@ -17,7 +18,7 @@
       </BaseTabsTabContentItem>
       <BaseTabsTabContentItem key="floor" name="floor">
         <EstateImageFlatSlider
-          class="estate-image-contr__img"
+          :class="fullscreen ? 'estate-image-contr__img' : 'estate-image-contr__img-full'"
           :images="floorImages"
           :fullscreen="fullscreen"
           @showImg="emit('showModalImg')"
@@ -65,6 +66,21 @@
 
       @include sm {
         height: 311px;
+      }
+    }
+
+    &__img-full {
+      height: 100vh;
+      max-height: 1000px;
+      min-height: 900px;
+
+      @include md {
+        min-height: auto;
+        max-height: min-content;
+      }
+
+      @include sm {
+        min-width: 700px;
       }
     }
   }

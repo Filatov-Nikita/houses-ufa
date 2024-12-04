@@ -61,6 +61,9 @@
     position: relative;
     @apply tw-bg-base00;
 
+    @include sm {
+      padding: 40px 8px 40px;
+    }
 
     &__fullscreen {
       opacity: 0;

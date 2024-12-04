@@ -12,7 +12,7 @@
       </BaseTabsTabContentItem>
       <BaseTabsTabContentItem key="plan" name="plan">
         <EstateImagePlanFloors
-          class="estate-image-contr__img"
+          :class="planFullscreen ? 'estate-image-contr__img' : 'estate-image-contr__img-full'"
           :fullscreen="planFullscreen"
           v-model:current-floor="currentFloor"
           :images="planImages"
@@ -65,6 +65,22 @@
 
       @include md {
         height: 450px;
+      }
+    }
+
+    &__img-full {
+      height: 110vh;
+      max-height: 1050px;
+      min-height: 840px;
+
+      @include md {
+        height: 100vh;
+        min-height: auto;
+        max-height: min-content;
+      }
+
+      @include sm {
+        min-width: 700px;
       }
     }
   }
