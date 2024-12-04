@@ -3,7 +3,7 @@
     <div class="wrapper">
       <div class="sale-list-section">
         <div class="section__top">
-          <h2 class="section__title">Спецпредложения</h2>
+          <h2 class="section__title">Спецпредложения по всем объектам</h2>
         </div>
         <Filter class="sale-list-section__filter" />
         <List />

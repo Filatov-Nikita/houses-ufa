@@ -17,6 +17,4 @@
 <script setup lang="ts">
 import PublicHeader from '@/other-modules/public-header/index.vue';
 import PublicFooter from '@/other-modules/public-footer/index.vue';
-
-useMarquiz();
 </script>
