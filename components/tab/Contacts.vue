@@ -11,36 +11,38 @@
       <MapContacts />
     </BaseTabsTabContentItem>
     <BaseTabsTabContentItem
+      v-if="serviceList"
       name="service"
       key="service"
       class="tw-grid tw-gap-4 lg:tw-gap-5 lg:tw-grid-cols-2"
     >
       <div
         class="tw-bg-white tw-rounded-2xl tw-py-6 tw-px-4 lg:tw-p-6 tw-grid tw-gap-16 lg:tw-gap-20"
-        v-for="item in serviceList"
+        v-for="item in serviceList.data"
+        :key="item.id"
       >
         <div>
           <h4 class="tw-text-h5 lg:tw-text-h4 tw-mb-2">
-            {{ item.title }}
+            {{ item.name }}
           </h4>
-          <p class="tw-text-body_m">
-            {{ item.text }}
+          <p v-if="item.comment" class="tw-text-body_m">
+            {{ item.comment }}
           </p>
         </div>
         <div>
           <a
-            v-if="item.phone"
-            :href="`tel:${item.phone}`"
+            v-if="item.phone_number"
+            :href="`tel:${item.phone_number}`"
             class="tw-text-h6 lg:tw-text-h5 tw-mb-1"
           >
-            {{ item.phone }}
+            {{ item.phone_number }}
           </a>
           <a
-            v-else-if="item.mail"
-            :href="`mailto:${item.mail}`"
+            v-else-if="item.email"
+            :href="`mailto:${item.email}`"
             class="tw-text-h6 lg:tw-text-h5 tw-mb-1"
           >
-            {{ item.mail }}
+            {{ item.email }}
           </a>
         </div>
       </div>
@@ -71,31 +73,16 @@ const tabs = [
     title: 'Сервисные службы',
   },
 ]
-const serviceList = [
-  {
-    id: 1,
-    title: 'Отдел снабжения',
-    text: 'Предложения по поставке строительных и отделочных материалов',
-    phone: '+7 (347) 295-98-69',
-  },
-  {
-    id: 2,
-    title: 'Пресс-служба',
-    text: 'Связи с общественностью и СМИ',
-    mail: 'info@gkufa.ru',
-  },
-  {
-    id: 3,
-    title: 'Приемная',
-    text: '',
-    phone: '+7 (347) 286-77-96',
-  },
-  {
-    id: 4,
-    title: 'ЕИРЦ (для жильцов жилых комплексов)',
-    text: '',
-    phone: '+7 (347) 216-44-77',
-  },
-]
+
+interface ServiceItem {
+  id: number,
+  comment: string | null,
+  email: string | null,
+  name: string,
+  phone_number: string | null,
+  priority: string,
+}
+
+const { data: serviceList } = await useDataFetch<{ data: ServiceItem[] }>('about/desks');
 </script>
 <style lang="scss" scoped></style>

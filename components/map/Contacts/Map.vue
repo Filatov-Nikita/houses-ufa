@@ -21,7 +21,7 @@ const mapInit = () => {
         map = new ymaps.Map(
           mapEl.value,
           {
-            center: props.marks[props.singleIdx].coords,
+            center: [ props.marks[props.singleIdx].latitude, props.marks[props.singleIdx].longitude ],
             zoom: 13,
             controls: [],
           },
@@ -129,10 +129,10 @@ const createMark = (item, idx, active = false) => {
   var animatedLayout = ymaps.templateLayoutFactory.createClass(
     `<div class="contact-layout ${active ? 'active' : ''}">
             <div class="contact-layout__img ">
-            <img src=${item.img} width="40" height="40">
+            ${item.sight_picture ? `<img src=${item.sight_picture.url} width="40" height="40">` : ''}
             </div>
             <div class="contact-layout__content">
-              <span class="contact-layout__title">${item.title}</span>
+              <span class="contact-layout__title">${item.name}</span>
             </div>
             </div>`,
     {
@@ -170,7 +170,7 @@ const createMark = (item, idx, active = false) => {
   )
   const mark = new ymaps.Placemark(
     // Координаты метки
-    item.coords,
+    [ item.latitude, item.longitude ],
     {},
     {
       iconLayout: animatedLayout,
@@ -214,7 +214,7 @@ watch(
             .fromGlobalPixels(pixelCenter, map.getZoom())
           map.panTo(geoCenter, map.getZoom())
         } else {
-          map.panTo([props.marks[val].coords], map.getZoom())
+          map.panTo([ [ props.marks[val].latitude, props.marks[val].longitude ] ], map.getZoom())
         }
       }
       if (Number.isInteger(+oldVal) && oldVal !== null) {

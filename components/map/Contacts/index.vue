@@ -22,13 +22,14 @@
               class="tw-w-10 tw-h-10 tw-rounded-lg tw-relative tw-overflow-hidden"
             >
               <img
-                :src="item.img"
+                v-if="item.sight_picture"
+                :src="item.sight_picture.url"
                 alt=""
                 class="tw-absolute tw-w-full tw-h-full tw-object-cover"
               />
             </div>
             <div class="tw-grow">
-              <h4 class="tw-text-body_m tw-mb-1">{{ item.title }}</h4>
+              <h4 class="tw-text-body_m tw-mb-1">{{ item.name }}</h4>
               <p class="tw-text-text01 tw-text-body_s2 -tw-tracking-875">
                 {{ item.address }}
               </p>
@@ -52,20 +53,20 @@
               <span class="tw-text-body_s tw-leading-normal"> Назад </span>
             </div>
           </BaseButton>
-          <div class="tw-flex tw-gap-4">
+          <div v-if="singleOfficeIdx" class="tw-flex tw-gap-4">
             <div
               class="tw-w-10 tw-h-10 tw-rounded-lg tw-relative tw-overflow-hidden"
             >
               <img
-                v-if="marks[singleOfficeIdx]"
-                :src="marks[singleOfficeIdx].img"
+                v-if="marks[singleOfficeIdx] && marks[singleOfficeIdx].sight_picture"
+                :src="marks[singleOfficeIdx].sight_picture!.url"
                 alt=""
                 class="tw-absolute tw-w-full tw-h-full tw-object-cover"
               />
             </div>
             <div>
               <h4 v-if="marks[singleOfficeIdx]" class="tw-text-body_m tw-mb-1">
-                {{ marks[singleOfficeIdx].title }}
+                {{ marks[singleOfficeIdx].name }}
               </h4>
               <p
                 v-if="marks[singleOfficeIdx]"
@@ -91,9 +92,9 @@
             />
             <BaseIcon name="paper" class=" tw-w-6 tw-h-6 tw-text-icon tw-absolute tw-right-4 tw-top-1/2 -tw-translate-y-1/2 tw-mt-1"/>
           </div>
-          <div v-if="marks[singleOfficeIdx]" class="tw-grid tw-gap-2">
-            <p class="tw-text-h6" v-html="marks[singleOfficeIdx].phone"></p>
-            <p class="tw-text-body_s" v-html="marks[singleOfficeIdx].workTime"></p>
+          <div v-if="singleOfficeIdx && marks[singleOfficeIdx]" class="tw-grid tw-gap-2">
+            <p class="tw-text-h6" v-html="marks[singleOfficeIdx].phone_number"></p>
+            <p class="tw-text-body_s" v-html="marks[singleOfficeIdx].business_hours"></p>
           </div>
           <div class="tw-flex tw-gap-3">
             <BaseButton class="tw-flex-grow" @click="showForm"> Обратный звонок </BaseButton>
@@ -121,13 +122,14 @@
             class="tw-w-10 tw-h-10 tw-rounded-lg tw-relative tw-overflow-hidden"
           >
             <img
-              :src="item.img"
+              v-if="item.sight_picture"
+              :src="item.sight_picture.url"
               alt=""
               class="tw-absolute tw-w-full tw-h-full tw-object-cover"
             />
           </div>
           <div class="tw-grow">
-            <h4 class="tw-text-body_m tw-mb-1">{{ item.title }}</h4>
+            <h4 class="tw-text-body_m tw-mb-1">{{ item.name }}</h4>
             <p class="tw-text-text01 tw-text-body_s2 -tw-tracking-875">
               {{ item.address }}
             </p>
@@ -177,21 +179,21 @@
         >
           <div class="tw-w-12 tw-h-1 tw-rounded-[50px] tw-bg-secondary"></div>
         </div>
-        <div class="tw-p-4 tw-grid tw-gap-4 tw-bg-white tw-rounded-2xl">
+        <div v-if="singleOfficeIdx" class="tw-p-4 tw-grid tw-gap-4 tw-bg-white tw-rounded-2xl">
           <div class="tw-flex tw-gap-4">
             <div
               class="tw-w-10 tw-h-10 tw-rounded-lg tw-relative tw-overflow-hidden"
             >
               <img
-                v-if="marks[singleOfficeIdx]"
-                :src="marks[singleOfficeIdx].img"
+                v-if="marks[singleOfficeIdx] && marks[singleOfficeIdx].sight_picture"
+                :src="marks[singleOfficeIdx].sight_picture!.url"
                 alt=""
                 class="tw-absolute tw-w-full tw-h-full tw-object-cover"
               />
             </div>
             <div>
               <h4 v-if="marks[singleOfficeIdx]" class="tw-text-body_l tw-mb-1">
-                {{ marks[singleOfficeIdx].title }}
+                {{ marks[singleOfficeIdx].name }}
               </h4>
               <p
                 v-if="marks[singleOfficeIdx]"
@@ -212,8 +214,8 @@
             id="suggest"
           />
           <div class="tw-grid tw-gap-2">
-            <p class="tw-text-h6" v-html="marks[singleOfficeIdx].phone"></p>
-            <p class="tw-text-body_s2 -tw-tracking-875" v-html="marks[singleOfficeIdx].workTime"></p>
+            <p class="tw-text-h6" v-html="marks[singleOfficeIdx].phone_number"></p>
+            <p class="tw-text-body_s2 -tw-tracking-875" v-html="marks[singleOfficeIdx].business_hours"></p>
           </div>
           <div class="tw-flex tw-gap-3">
             <BaseButton class="tw-flex-grow" @click="showForm"> Обратный звонок </BaseButton>
@@ -228,74 +230,35 @@
     </div>
   </BaseModal>
 </template>
-<script setup>
+<script setup lang="ts">
+import type { Image } from '@/types/share';
 import { usePublicHeader } from '@/other-modules/public-header/store/index';
 
-const marks = [
-  {
-    id: 1,
-    img: '/images/offices/1.png',
-    title: 'ЖК «Сапфир»',
-    address: 'г. Уфа, ул. Комсомольская, д. 8',
-    coords: [54.739456, 55.992989],
-    phone: '+7 (347) 225-00-73',
-    workTime: 'Понедельник - суббота: 10:00–20:00<br>Воскресенье: 11:00–18:00',
-  },
-  {
-    id: 2,
-    img: '/images/offices/2.png',
-    title: 'Центральный офис «Жилой Квартал»',
-    address: 'г. Уфа, ул. З. Биишевой, 13',
-    coords: [54.694097, 55.982982],
-    phone: 'Отдел продаж: +7 (347) 225-00-73<br>Офис: +7 (347) 225-03-25',
-    workTime: 'Отдел продаж: 10:00–18:00<br>Офис: 09:00–18:00',
-  },
-  {
-    id: 3,
-    img: '/images/offices/3.png',
-    title: 'ЖК «Михайловка Green»',
-    address: 'с. Михайловка, ул. Дубравная, 1/1а',
-    coords: [54.829424, 55.878741],
-    phone: '+7 (347) 294-00-40',
-    workTime: 'Отдел продаж: 10:00–18:00<br>Офис: 09:00–18:00',
-  },
-  {
-    id: 4,
-    img: '/images/offices/4.png',
-    title: 'ЖК «Гудвилл Парк»',
-    address: 'с. Шмидтово, ул. Ромашковая, д 10',
-    coords: [54.615121, 56.093906],
-    phone: '+7 347 225-00-73',
-    workTime: 'Понедельник - суббота: 10:00–20:00 (сб. до 18:00)<br>Воскресенье: 10:00–17:00',
-  },
-  {
-    id: 5,
-    img: '/images/offices/5.png',
-    title: 'ЖК «Зубово Life 3»',
-    address: 'Зубово Life 3, ул. Народная, 1/1',
-    coords: [54.632676, 55.904127],
-    phone: '+7 (347) 225-00-73',
-    workTime: 'Понедельник - суббота: 10:00–20:00<br>Воскресенье: 11:00–18:00',
-  },
-  {
-    id: 6,
-    img: '/images/offices/6.png',
-    title: 'ЖК «Зубово Life 2»',
-    address: 'с.Зубово, ул.Авроры, д.1а',
-    coords: [54.623535, 55.899312],
-    phone: '+7 (347) 225-03-25',
-    workTime: 'Понедельник - суббота: 10:00–20:00 (сб. до 18:00)<br>Воскресенье: 11:00–17:00',
-  },
-]
+interface ShopItem {
+  id: number,
+  address: string,
+  business_hours: string,
+  latitude: string,
+  longitude: string,
+  name: string,
+  phone_number: string,
+  priority: number,
+  sight_picture: Image | null,
+}
+
+const { data: shopsList } = await useDataFetch<{ data: ShopItem[] }>('about/shops');
+
+const marks = computed(() => shopsList.value?.data ?? []);
+
 const nameStreet = ref('')
 const suggest = ref()
-const singleOfficeIdx = ref(null)
+const singleOfficeIdx = ref<number | null>(null)
 const openMap = ref(false)
-const updateSingleIdx = (idx) => {
+const updateSingleIdx = (idx: number) => {
   singleOfficeIdx.value = idx
 }
 const taxiLink = ref('')
-const updateTaxiLink = (link) => {
+const updateTaxiLink = (link: string) => {
   taxiLink.value = link
 }
 const hideWidget = ref(false)
