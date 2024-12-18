@@ -1,5 +1,5 @@
 <template>
-  <Header @clear-filter="filter.clear">
+  <Header @clear-filter="filter.reset">
     <Params
       v-model:layout_type="filter.params.layout_type"
       v-model:town_id="filter.params.town_id"
@@ -51,6 +51,8 @@
 
   const filter = useFilter({
     town_id: townsStore.towns?.data?.[0].id,
+    order_by_field: 'area_calc',
+    order_by_direction: 'asc',
   });
 
   const showedGenplan = ref(true);

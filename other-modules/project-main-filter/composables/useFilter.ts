@@ -42,6 +42,10 @@ export default function(initParams?: Partial<Params>) {
     }
   }
 
+  function reset() {
+    Object.assign(params, init(), initParams);
+  }
+
   const queryStr = computed(() => JSON.stringify(route.query));
 
   function syncParams(params: Record<string, any>, casts: Record<string, (v: any) => any>, initParams: Record<string, any> = {}): void {
@@ -76,5 +80,6 @@ export default function(initParams?: Partial<Params>) {
   return {
     params,
     clear,
+    reset,
   }
 }
