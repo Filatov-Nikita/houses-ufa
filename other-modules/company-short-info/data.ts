@@ -1,4 +1,4 @@
-export const videoUrl = 'https://www.youtube.com/embed/EbfCtsehNRE?si=vi9jbmbl8R_UpIvw';
+export const videoUrl = 'https://rutube.ru/play/embed/8685c04a5f60960d7d08842deb2a65a2/';
 
 export const items = [
   {
