@@ -4,14 +4,14 @@
     <div class="company-header__bottom">
       <h1 class="company-header__title">Жилой Квартал</h1>
       <p class="company-header__text">Крупнейший застройщик загородной недвижимости РБ</p>
-      <p class="company-header__caption">22-летняя история и репутация надежного партнера</p>
+      <p class="company-header__caption">{{ years }}-летняя история и репутация надежного партнера</p>
     </div>
     <img class="company-header__img" src="/images/img/about.png" alt="Коттеджный поселок">
   </div>
 </template>
 
 <script setup lang="ts">
-
+  const years = (new Date()).getFullYear() - 2002;
 </script>
 
 <style scoped lang="scss">
