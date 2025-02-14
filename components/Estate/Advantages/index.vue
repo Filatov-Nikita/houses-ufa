@@ -52,13 +52,13 @@
               </div>
             </div>
             <div class="estate-adv-one__right">
-              <EstateImageSlider
-                v-if="item.images.length > 0"
-                class="estate-adv-one__slider"
-                imgClasses="estate-adv-one__slider-img"
-                v-bind="sliderProps"
-                :images="item.images"
-              />
+              <Swiper v-if="item.images.length > 0" class="slider-photo" autoHeight>
+                <SwiperSlide
+                  v-for="image in item.images"
+                >
+                  <img class="slider-photo__img" :src="image" />
+                </SwiperSlide>
+              </Swiper>
               <div class="estate-adv__btns">
                 <BaseButton
                   v-if="!hideAction"
@@ -123,16 +123,9 @@ watch(
 )
 </script>
 
-<style lang="scss">
-.estate-adv-one {
-  &__slider &__slider-img {
-    border-radius: 16px;
-  }
-}
-</style>
-
 <style scoped lang="scss">
 .estate-adv {
+  max-width: 800px;
   padding: 16px;
   background: theme('colors.white');
   border-radius: 16px;
@@ -188,6 +181,7 @@ watch(
   }
 
   &__right {
+    max-width: 100%;
     min-height: 180px;
     @apply tw-bg-white;
     .estate-adv__btns {
@@ -215,17 +209,6 @@ watch(
   &__action {
     width: 100%;
     margin-top: auto;
-  }
-
-  &__slider {
-    height: 180px;
-
-    @screen lg {
-      height: 460px;
-    }
-    @screen xl {
-      height: 560px;
-    }
   }
 }
 .adv-6 {
@@ -435,6 +418,13 @@ watch(
         @apply tw-text-body_s2 tw-left-4 tw-bottom-4 lg:tw-text-h6 lg:tw-left-6 lg:tw-bottom-6;
       }
     }
+  }
+}
+
+.slider-photo {
+  &__img {
+    width: 100%;
+    border-radius: 16px;
   }
 }
 </style>
