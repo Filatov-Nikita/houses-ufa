@@ -55,7 +55,7 @@
       icon: 'edit',
     },
     {
-      body: 'После приобретения объекта (полного расчета за&nbsp;объект) ожидайте звонок нашего сотрудника о&nbsp;выплате вознаграждения.<br>Подробную информацию о&nbsp;программе можно найти <a class="purchase-card-item__link" href="https://disk.yandex.ru/i/Jx7yFXomX5qA0g" target="_blank">здесь</a>.',
+      body: 'После приобретения объекта (полного расчета за&nbsp;объект) ожидайте звонок нашего сотрудника о&nbsp;выплате вознаграждения.<br>Подробную информацию о&nbsp;программе можно найти <a class="purchase-card-item__link" href="https://disk.yandex.ru/d/3E9S_2LjJ0kLKg" target="_blank">здесь</a>.',
       icon: 'info',
     },
   ];
