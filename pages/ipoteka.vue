@@ -37,6 +37,11 @@
   </section>
   <section class="section">
     <div class="wrapper">
+      <TextSpecification />
+    </div>
+  </section>
+  <section class="section">
+    <div class="wrapper">
       <QuestionForm />
     </div>
   </section>
@@ -47,6 +52,7 @@
   import QuestionForm from '@/other-modules/question-form/index.vue';
   import CreditList from '@/other-modules/credit-list/index.vue';
   import StepItems from '@/other-modules/purchase/components/ipoteka/StepItems.vue';
+  import TextSpecification from '@/other-modules/credit-program-calc/components/TextSpecification.vue';
   import { useBreadcrumbsStore } from '@/stores/breadcrumbs';
 
   useCanonical();

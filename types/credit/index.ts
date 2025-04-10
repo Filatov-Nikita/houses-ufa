@@ -4,7 +4,8 @@ export interface Group {
   id: number,
   description: string,
   name: string,
-  percent_min: string
+  percent_min: string,
+  specification: string,
 }
 
 export interface Offer {

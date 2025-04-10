@@ -9,7 +9,7 @@
     </div>
     <div class="bank-prog-item__perc-block">
       <div class="bank-prog-item__label">Ставка</div>
-      <div class="bank-prog-item__perc">{{ item.percent }}%</div>
+      <div class="bank-prog-item__perc">от {{ item.percent }}%</div>
       <div class="bank-prog-item__price-from">
         <span class="tw-text-text02">от</span> {{ $formatValue(payMonth, '₽/мес') }}
       </div>
