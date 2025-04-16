@@ -1,5 +1,5 @@
 <template>
-  <NuxtLink class="estate-grid-item" :to="to" target="_blank">
+  <NuxtLink class="estate-grid-item" :to="url" target="_blank">
     <div>
       <div class="estate-grid-item__name">{{ item.title }}</div>
       <div class="estate-grid-item__price" v-if="item.subtitle">
@@ -35,11 +35,8 @@
 
   const props = defineProps<{
     item: PosterItem,
+    url: string,
   }>();
-
-  const to = computed(() => {
-    return props.item.url;
-  });
 </script>
 
 <style scoped lang="scss">

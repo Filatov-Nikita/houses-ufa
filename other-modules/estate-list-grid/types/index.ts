@@ -9,6 +9,7 @@ export interface PosterItem {
   title:         string;
   type:          string;
   url:           string;
+  build_feed_url: string;
   width_in_cols: number;
   image:         Image | null,
 }

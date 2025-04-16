@@ -18,6 +18,7 @@
           :key="item.id"
           :class="currentItemClass(index)"
           :item="item"
+          :url="item[urlKey]"
         />
       </div>
     </div>
@@ -32,8 +33,9 @@
     defineProps<{
       flexible?: boolean,
       theme?: 'white' | 'gray',
+      urlKey: keyof Pick<PosterItem, 'build_feed_url' | 'url'>,
     }>(),
-    { theme: 'white', flexible: false, }
+    { theme: 'white', flexible: false, urlKey: 'url' }
   );
 
   type Types = 'all' | 'flats_in_city' | 'flats_out_city' | 'towns';
