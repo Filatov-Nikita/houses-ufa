@@ -45,4 +45,10 @@
         { label: complex.data.name } ]);
     }
   }, { immediate: true });
+
+  useSeoMeta({
+    title: () => 'Ход строительства | ' + complexOneStore.complex?.data.name,
+    description: () => 'Ход строительства ' + complexOneStore.complex?.data.name,
+    keywords: 'Онлайн камеры, ход строительства, жилой комплекс',
+  });
 </script>

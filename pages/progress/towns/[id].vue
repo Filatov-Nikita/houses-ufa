@@ -45,4 +45,10 @@
         { label: town.data.name } ]);
     }
   }, { immediate: true });
+
+  useSeoMeta({
+    title: () => 'Ход строительства | ' + townOneStore.town?.data.name,
+    description: () => 'Ход строительства ' + townOneStore.town?.data.name,
+    keywords: 'Онлайн камеры, ход строительства, коттеджи и таунхаусы',
+  });
 </script>
