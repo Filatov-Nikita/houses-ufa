@@ -22,6 +22,12 @@
                   <BaseIcon class="extra-link__icon" color="tw-fill-primary" name="link-external" />
                 </NuxtLink>
               </div>
+              <div class="nav-menu__link-item">
+                <NuxtLink class="extra-link" to="/progress" target="_blank">
+                  <span class="extra-link__label">Ход строительства</span>
+                  <BaseIcon class="extra-link__icon" color="tw-fill-primary" name="link-external" />
+                </NuxtLink>
+              </div>
             </div>
             <div class="nav-menu__banner">
               <ClientOnly>

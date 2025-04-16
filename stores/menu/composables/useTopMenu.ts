@@ -19,12 +19,12 @@ export function useTopMenu() {
       to: '/about',
     },
     {
-      label: 'Контакты',
-      to: '/contacts',
-    },
-    {
       label: 'Спецпредложения',
       to: '/promotions',
+    },
+    {
+      label: 'Камеры',
+      to: '/progress',
     },
   ]);
 

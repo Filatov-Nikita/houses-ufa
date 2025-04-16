@@ -29,6 +29,12 @@
       >
         Спецпредложения
       </NuxtLink>
+      <NuxtLink
+        to="/progress"
+        class="nav-items-mobile__link nav-items-mobile__extra-link nav-items-mobile__link--dark"
+      >
+        Ход строительства
+      </NuxtLink>
       <NuxtLink class="extra-link nav-items-mobile__extra-link" to="/tenders" target="_blank">
         <span class="extra-link__label">Тендеры</span>
         <BaseIcon class="extra-link__icon" color="tw-fill-primary" name="link-external" />
@@ -75,6 +81,10 @@
 
       &--red {
         @apply tw-text-error;
+      }
+
+      &--dark {
+        @apply tw-text-text00;
       }
 
       & + & {
