@@ -22,8 +22,8 @@
     </div>
     <div class="tw-grow"></div>
     <BaseTabsGroup class="progress-filter__tabs" v-model="store.filterType">
-      <BaseTabsGroupItem class="progress-filter__tab" name="album">Фото</BaseTabsGroupItem>
       <BaseTabsGroupItem class="progress-filter__tab" name="camera">Онлайн-камеры</BaseTabsGroupItem>
+      <BaseTabsGroupItem class="progress-filter__tab" name="album">Фото</BaseTabsGroupItem>
     </BaseTabsGroup>
   </div>
 </template>
@@ -52,7 +52,7 @@
   onUnmounted(() => {
     store.albumParams.month = null;
     store.albumParams.year = null;
-    store.filterType = 'album';
+    store.filterType = 'camera';
   });
 </script>
 

@@ -3,7 +3,7 @@ import { defineStore } from 'pinia';
 import { useDataFetch } from '@/composables/useDataFetch';
 
 export const useComplexProgress = defineStore('complexProgress', () => {
-  const filterType = ref<'album' | 'camera'>('album');
+  const filterType = ref<'album' | 'camera'>('camera');
   const albumParams = reactive(initAlbumParams());
 
   function initAlbumParams(): AlbumParams {
