@@ -4,6 +4,7 @@
       <BaseTabsGroup v-if="floorImage" v-model="tabCurrent">
         <BaseTabsGroupItem name="plan">Планировка</BaseTabsGroupItem>
         <BaseTabsGroupItem name="floor">На этаже</BaseTabsGroupItem>
+        <BaseTabsGroupItem v-if="genplanImage" name="genplan">На генплане</BaseTabsGroupItem>
       </BaseTabsGroup>
     </div>
     <BaseTabsTabContent enter-classes="" leave-classes="" keep-alive v-model="tabCurrent">
@@ -24,6 +25,14 @@
           @showImg="emit('showModalImg')"
         />
       </BaseTabsTabContentItem>
+      <BaseTabsTabContentItem key="genplan" name="genplan">
+        <EstateImageFlatSlider
+          :class="fullscreen ? 'estate-image-contr__img' : 'estate-image-contr__img-full'"
+          :images="genplanImages"
+          :fullscreen="fullscreen"
+          @showImg="emit('showModalImg')"
+        />
+      </BaseTabsTabContentItem>
     </BaseTabsTabContent>
   </div>
 </template>
@@ -32,6 +41,7 @@
   interface Props {
     planImages: Array<string>,
     floorImage: string | null,
+    genplanImage: string | null,
     tabCurrent: string,
     fullscreen?: boolean,
   }
@@ -45,20 +55,23 @@
 
   const tabCurrent = useSyncProps(props, 'tabCurrent');
   const floorImages = computed(() => props.floorImage ? [ props.floorImage ] : []);
+  const genplanImages = computed(() => props.genplanImage ? [ props.genplanImage ] : []);
 </script>
 
 <style scoped lang="scss">
   .estate-image-contr {
     position: relative;
+    overflow: hidden;
 
     &__toolbar {
       position: absolute;
       top: 16px;
       left: 0;
-      display: flex;
-      justify-content: center;
       width: 100%;
       z-index: 50;
+      overflow-y: hidden;
+      text-align: center;
+      padding: 0 16px;
     }
 
     &__img {

@@ -4,11 +4,12 @@
     v-model:tabCurrent="tabCurrent"
     :planImages="planImages"
     :floorImage="floorImage"
+    :genplanImage="genplanImage"
     fullscreen
     @showModalImg="showedModal = true"
   />
   <EstateImageModalView :title="title" v-model:showed="showedModal">
-    <EstateImageFlat :planImages="planImages"  :floorImage="floorImage" v-model:tabCurrent="tabCurrent" />
+    <EstateImageFlat :planImages="planImages"  :floorImage="floorImage" :genplanImage="genplanImage" v-model:tabCurrent="tabCurrent" />
   </EstateImageModalView>
 </template>
 
@@ -17,6 +18,7 @@
     title: string,
     planImages: Array<string>,
     floorImage: string | null,
+    genplanImage: string | null,
   }
 
   defineProps<Props>();

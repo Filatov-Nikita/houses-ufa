@@ -3,6 +3,7 @@
     :title="title"
     :planImages="planImages"
     :floorImage="floorImage"
+    :genplanImage="genplanImage"
   />
 </template>
 
@@ -29,5 +30,11 @@
     if(!flatCard.data) return null;
     const data = flatCard.data.data;
     return data.flat_on_floor_plan_image_url;
+  });
+
+  const genplanImage =  computed(() => {
+    if(!flatCard.data) return null;
+    const data = flatCard.data.data;
+    return data.entrance.flat_on_master_plan?.url ?? null;
   });
 </script>
