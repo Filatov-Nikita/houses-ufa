@@ -78,6 +78,8 @@
       </div>
     </section>
 
+    <ComplexDocs :complex-id="complexOneStore.complexId!" />
+
     <section class="section">
       <div class="wrapper">
         <div class="section__top">
@@ -105,6 +107,7 @@ import ComplexGenplan from '@/other-modules/complex-genplan/index.vue';
 import ComplexLocations from '@/other-modules/complex-locations/index.vue';
 import ComplexGallery from '@/other-modules/complex-gallery/index.vue';
 import ComplexProgress from '@/other-modules/complex-progress/index.vue';
+import ComplexDocs from '@/other-modules/complex-docs/index.vue';
 import PurchaseMethods from '@/components/Estate/PurchaseMethods/index.vue';
 import { addComplexesWidget, removeWidgets, addComplexesScript } from '@/scripts/marquiz';
 import { useComplexOne } from '@/stores/pages/complex-one';
