@@ -95,6 +95,9 @@
       <EstatePurchaseMethods />
     </div>
   </section>
+
+  <TownBooklets :townId="townOne.townId!" />
+
   <section class="section">
     <div class="wrapper">
       <QuestionForm />
@@ -128,6 +131,7 @@ import Docs from '@/other-modules/docs-download/index.vue'
 import EstateMore from '@/other-modules/estate-more/index.vue'
 import Contacts from '@/other-modules/contacts-map/index.vue'
 import Banner from '@/other-modules/action-banner/index.vue'
+import TownBooklets from '@/other-modules/booklets-list/TownBooklets.vue';
 import { addTownsWidget, addTownsScript, removeWidgets } from '@/scripts/marquiz';
 import { useTownOne } from '@/stores/pages/town-one'
 import { useBreadcrumbsStore } from '@/stores/breadcrumbs'
