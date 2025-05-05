@@ -30,7 +30,7 @@
         class="filter-params__input-floors"
         theme="gray"
         :min="1"
-        :max="4"
+        :max="2"
         name='floors'
         label='Этажность'
         input-witdh="55px"
@@ -80,15 +80,10 @@
       from: 145,
       to: 200,
     },
-    {
-      label: '250-300  м²',
-      from: 245,
-      to: 300,
-    },
-    {
-      label: '>300 м²',
-      from: 300,
-    },
+    // {
+    //   label: '>300 м²',
+    //   from: 300,
+    // },
   ];
 
   const storey = computed<[NumOrNull, NumOrNull] | null>(() => {
