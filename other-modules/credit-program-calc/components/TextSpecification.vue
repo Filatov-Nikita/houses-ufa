@@ -29,5 +29,18 @@
     @include sm {
       padding: 24px 16px;
     }
+
+    &:deep(p) {
+      margin: 10px 0;
+    }
+
+    &:deep(ol) {
+      list-style: disc;
+      padding-left: 20px;
+    }
+
+    &:deep(strong) {
+      @apply tw-font-freesetdemi;
+    }
   }
 </style>

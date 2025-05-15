@@ -6,7 +6,7 @@
         {{ item.file.size_human_readable }}, {{ item.file.extension }}
       </div>
     </div>
-    <button class="btn" type="button">
+    <button v-if="item.file" class="btn" type="button">
       <BaseIcon name="download-file" fit />
     </button>
   </a>
