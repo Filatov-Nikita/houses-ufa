@@ -100,6 +100,15 @@
 
   <section class="section">
     <div class="wrapper">
+      <div class="section__top">
+        <h2 class="section__title">Ход строительства</h2>
+      </div>
+      <TownProgress :complex-id="townOne.townId!" />
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrapper">
       <QuestionForm />
     </div>
   </section>
@@ -132,6 +141,7 @@ import EstateMore from '@/other-modules/estate-more/index.vue'
 import Contacts from '@/other-modules/contacts-map/index.vue'
 import Banner from '@/other-modules/action-banner/index.vue'
 import TownBooklets from '@/other-modules/booklets-list/TownBooklets.vue';
+import TownProgress from '@/other-modules/town-progress/index.vue';
 import { addTownsWidget, addTownsScript, removeWidgets } from '@/scripts/marquiz';
 import { useTownOne } from '@/stores/pages/town-one'
 import { useBreadcrumbsStore } from '@/stores/breadcrumbs'
