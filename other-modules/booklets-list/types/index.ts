@@ -13,6 +13,7 @@ export interface BookletItem {
   id: number,
   priority: number,
   name: string,
-  preview: Image | null,
+  preview_desktop: Image | null,
+  preview_mobile: Image | null,
   file: File | null,
 }

@@ -1,13 +1,23 @@
 <template>
   <a class="item" :href="item.file?.url ?? '/'" target="_blank">
-    <div class="preview" v-if="item.preview">
-      <img
-        class="preview-img"
-        :width="item.preview.width ?? 0"
-        :height="item.preview.height ?? 0"
-        :src="item.preview.url"
-        loading="lazy"
-      />
+    <div class="preview" v-if="item.preview_desktop || item.preview_mobile">
+      <picture>
+        <source
+          v-if="item.preview_mobile"
+          :srcset="item.preview_mobile.url"
+          media="(max-width: 767.9px)"
+          :width="item.preview_mobile.width ?? 0"
+          :height="item.preview_mobile.height ?? 0"
+        />
+        <img
+          v-if="item.preview_desktop"
+          class="preview-img"
+          :width="item.preview_desktop.width ?? 0"
+          :height="item.preview_desktop.height ?? 0"
+          :src="item.preview_desktop.url"
+          loading="lazy"
+        />
+      </picture>
     </div>
     <div class="body" >
       <div class="text">
@@ -58,11 +68,16 @@
   }
 
   .preview {
-    width: 200px;
-    height: 200px;
+    width: 100%;
+    height: 300px;
     border-radius: 8px;
     overflow: hidden;
     background: #F7F8F8;
+
+    @include sm {
+      width: 200px;
+      height: 200px;
+    }
   }
 
   .preview-img {
