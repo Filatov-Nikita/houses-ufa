@@ -7,6 +7,7 @@ export default defineNuxtPlugin({
 
     const appFetch = $fetch.create({
       baseURL: useRuntimeConfig().public.rootApi,
+      retry: false,
       onRequest({ options }) {
         if(tokenData) {
           if(Array.isArray(options.headers)) {
@@ -20,7 +21,8 @@ export default defineNuxtPlugin({
       },
       onResponseError({ response }) {
         if(response.status === 401) {
-          // nav to login
+          Tokens.clear();
+          navigateTo('/');
         }
       },
     });
