@@ -27,11 +27,6 @@
     modules: [SwiperPagination, SwiperNavigation],
     spaceBetween: 20,
     slidesPerView: 1,
-    pagination: {
-      type: 'bullets',
-      el: '.swiper-pagination',
-      dynamicBullets: true,
-    } as const,
     navigation: {
       nextEl: '.swiper-next',
       prevEl: '.swiper-prev',

@@ -7,15 +7,10 @@
     loop
     autoHeight
     :navigation="{
-      nextEl: '.swiper-next',
-      prevEl: '.swiper-prev',
+      nextEl: '.swiper-nav--right',
+      prevEl: '.swiper-nav--left',
     }"
-    :pagination="{
-      type: 'bullets',
-      el: '.home-slider-bulls',
-      bulletActiveClass: 'home-slider-bull-active',
-      bulletClass: 'home-slider-bull',
-    }"
+    :pagination="{ type: 'bullets' }"
     @swiper="swiper = $event"
     @slideChange="onChangeSlide"
   >
@@ -71,7 +66,6 @@
       </picture>
     </SwiperSlide>
     <NavBtns />
-    <div class="swiper-pagination home-slider-bulls"></div>
   </Swiper>
 </template>
 
@@ -115,8 +109,26 @@
 
 <style scoped lang="scss">
   .slider {
+    --swiper-pagination-color: #fff;
+    --swiper-pagination-left: auto;
+    --swiper-pagination-bottom: 40px;
+    --swiper-pagination-top: auto;
+    --swiper-pagination-bullet-inactive-color: #fff;
+    --swiper-pagination-bullet-inactive-opacity: 0.6;
     border-radius: 16px;
     overflow: hidden;
+  }
+
+  .swiper :deep(.swiper-pagination) {
+    padding-right: 40px;
+    text-align: right;
+    pointer-events: none;
+  }
+
+  .slider :deep(.swiper-nav) {
+    @include sm {
+      display: none;
+    }
   }
 
   .photo {
@@ -157,33 +169,5 @@
   .subtitle {
     margin-top: 8px;
     @apply tw-text-body_l;
-  }
-</style>
-
-<style lang="scss">
-  .home-slider-bull {
-    display: inline-block;
-    margin: 4px;
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    opacity: 0.6;
-    @apply tw-bg-white;
-
-    &-active {
-      opacity: 1;
-    }
-  }
-
-  .home-slider-bulls {
-    --swiper-pagination-bottom: 40px;
-    text-align: right;
-    padding-right: 40px;
-    z-index: 5;
-
-    @include sm {
-      --swiper-pagination-bottom: 24px;
-      padding-right: 24px;
-    }
   }
 </style>
