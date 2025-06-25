@@ -28,7 +28,7 @@
   });
 
   useSeoMeta({
-    title: () => article.value?.data.title ?? null,
+    title: () => article.value?.data.seo.title ?? null,
     description: () => article.value?.data.seo.description,
     keywords: () => article.value?.data.seo.key_words,
   });

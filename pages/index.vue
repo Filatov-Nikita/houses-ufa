@@ -1,7 +1,7 @@
 <template>
   <div class="section">
     <div class="wrapper">
-      <EstateTypeCards class="tw-mb-4" />
+      <HomeSlider class="tw-mb-4" />
       <HomeBanner />
     </div>
   </div>
@@ -61,7 +61,7 @@ import SectionNews from '@/other-modules/last-news-list/components/SectionNews.v
 import EstateSaleList from '@/other-modules/estate-sale-list/index.vue';
 import EstateGridList from '@/other-modules/estate-list-grid/index.vue';
 import EstateMiniFilter from '@/other-modules/estate-mini-filter/index.vue';
-import EstateTypeCards from '@/other-modules/estate-type-cards/index.vue';
+import HomeSlider from '@/other-modules/home-slider/index.vue';
 import CompanyShortInfo from '@/other-modules/company-short-info/index.vue';
 import CreditListShort from '@/other-modules/credit-list-short/index.vue';
 import OurObjectMap from '@/other-modules/our-object-map/index.vue';
