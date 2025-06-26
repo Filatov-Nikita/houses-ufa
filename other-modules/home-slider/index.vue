@@ -4,6 +4,7 @@
     v-if="data"
     :modules="[ Navigation, Pagination ]"
     :spaceBetween="16"
+    :speed="700"
     loop
     autoHeight
     :navigation="{
@@ -115,7 +116,6 @@
     --swiper-pagination-top: auto;
     --swiper-pagination-bullet-inactive-color: #fff;
     --swiper-pagination-bullet-inactive-opacity: 0.6;
-    border-radius: 16px;
     overflow: hidden;
   }
 
@@ -132,6 +132,7 @@
   }
 
   .photo {
+    border-radius: 16px;
     width: 100%;
     height: auto;
   }
