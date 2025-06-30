@@ -4,7 +4,7 @@
     v-if="data"
     :modules="[ Navigation, Pagination ]"
     :spaceBetween="16"
-    :speed="700"
+    :speed="1400"
     loop
     autoHeight
     :navigation="{
