@@ -47,6 +47,7 @@
 
   const caption = `
     Отправляя любую форму на&nbsp;сайте, вы&nbsp;соглашаетесь с&nbsp;<a class="tw-text-primary hover:tw-text-primary-hover" href="/docs/sogl.pdf" target="_blank">политикой конфиденциальности</a> данного сайта
+    <br><br><a class="tw-text-primary hover:tw-text-primary-hover" href="/docs/polz-sogl.pdf" target="_blank">Пользовательское соглашение</a>
   `;
 </script>
 
