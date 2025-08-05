@@ -116,16 +116,6 @@ import { addComplexesWidget, removeWidgets, addComplexesScript } from '@/scripts
 import { useComplexOne } from '@/stores/pages/complex-one';
 import { useBreadcrumbsStore } from '@/stores/breadcrumbs';
 
-addComplexesScript();
-
-onMounted(() => {
-  addComplexesWidget();
-});
-
-onUnmounted(() => {
-  removeWidgets();
-});
-
 useCanonical();
 
 const bread = useBreadcrumbsStore();
@@ -156,4 +146,16 @@ watch(complex, () => {
     bread.set([ { label: 'Главная', to: '/' }, { label: complex.value?.name ?? '' } ]);
   }
 }, { immediate: true });
+
+if(complexSlug.value !== 'sapfir') {
+  addComplexesScript();
+
+  onMounted(() => {
+    addComplexesWidget();
+  });
+
+  onUnmounted(() => {
+    removeWidgets();
+  });
+}
 </script>
