@@ -55,6 +55,10 @@
   import { useTownsFilter } from '../store/towns';
   import { useNotifyStore } from '@/stores/notify';
 
+  const props = defineProps<{
+    extraBooking: boolean,
+  }>();
+
   const emit = defineEmits<{
     (event: 'bind:success'): void,
   }>();
@@ -81,7 +85,9 @@
 
     bindLoading.value = true;
 
-    const { error } = await useDataFetch(`b2t/shoppers/${mainFilter.clientId}/object`, {
+    const url = `b2t/shoppers/${mainFilter.clientId}/`;
+
+    const { error } = await useDataFetch(url + (props.extraBooking ? 'direct-bookings' : 'object'), {
       baseURL: useRuntimeConfig().public.rootApi,
       method: 'POST',
       body: {

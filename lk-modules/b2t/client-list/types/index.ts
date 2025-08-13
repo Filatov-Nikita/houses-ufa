@@ -19,13 +19,12 @@ export interface Consumer {
   mortgageClaims: CreditItem[];
 }
 
-export interface Booking {
+export type Booking = {
   id:          number;
   created_at:  string;
-  object_type: string;
   status:      Status;
   crm3_status: Crm3Status | null;
-}
+} & ObjectResponse;
 
 export interface CreditItem {
   id:                   number;
@@ -60,7 +59,7 @@ export interface Passport {
   snils:                string;
 }
 
-type ObjectResponse = FlatResponse | TownResponse | ObjNullResponse;
+export type ObjectResponse = FlatResponse | TownResponse | ObjNullResponse;
 
 type ObjNullResponse = {
   object_type: null,

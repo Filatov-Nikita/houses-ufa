@@ -5,6 +5,9 @@
         <p class="info-block__date">{{ $formatDate(item.created_at) }}</p>
         <p>Онлайн-бронирование № {{ item.id }}</p>
       </div>
+      <RouterLink class="info-block__link" v-if="item.object" :to="getObjectLink(item)">
+        {{ getObjectName(item) }}
+      </RouterLink>
       <div class="info-block__right">
         <p class="info-block__caption">
           <BaseIcon class="info-block__caption-icon" name="clock" color="tw-fill-primary" />
@@ -16,6 +19,7 @@
 </template>
 
 <script setup lang="ts">
+  import { getObjectName, getObjectLink } from '../shared';
   import type { Booking } from '../types';
 
   defineProps<{
@@ -63,6 +67,10 @@
         width: 16px;
         height: 16px;
       }
+    }
+
+    &__link {
+      align-self: flex-end;
     }
   }
 </style>

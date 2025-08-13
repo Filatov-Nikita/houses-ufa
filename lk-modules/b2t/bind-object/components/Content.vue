@@ -1,7 +1,7 @@
 <template>
   <div ref="contentRef">
     <ListControl class="tw-mb-8" />
-    <EstateList @bind:success="emit('bind:success')" />
+    <EstateList :extraBooking="extraBooking" @bind:success="emit('bind:success')" />
   </div>
 </template>
 
@@ -9,6 +9,10 @@
   import ListControl from './ListControl.vue';
   import EstateList from './EstateList.vue';
   import { useMainFilter } from '../store';
+
+  defineProps<{
+    extraBooking: boolean,
+  }>();
 
   const emit = defineEmits<{
     (event: 'bind:success'): void,

@@ -33,8 +33,15 @@
           </div>
           <template v-else>
             <button
+              v-if="item.consumer.bookings.length > 0"
               class="client-table-action"
-              :disabled="item.consumer.bookings.length > 0"
+              @click="showBind(item.id, true)"
+            >
+              Бронь +
+            </button>
+            <button
+              v-else
+              class="client-table-action"
               @click="$router.push({
                 path: '/lk/b2t/apps/book',
                 query: { id: item.object.id, type: item.object_type, shopperId: item.id }
@@ -75,7 +82,12 @@
     <BaseModal v-model="bindModal" v-slot="{ hide }">
       <BaseModalCard is-full id="client-object-modal">
         <BtnsActionsBase class="close-modal" icon="close" @click="hide" />
-        <BindObject v-if="bindClientId" :clientId="bindClientId" @bind:success="bindSuccess" />
+        <BindObject
+          v-if="bindClientId"
+          :extraBooking="extraBooking"
+          :clientId="bindClientId"
+          @bind:success="bindSuccess"
+        />
       </BaseModalCard>
     </BaseModal>
   </div>
@@ -83,7 +95,7 @@
 
 <script setup lang="ts">
   import { ClientResponse } from '../types';
-  import { getRoomsCount } from '@/plugins/rooms-count';
+  import { getObjectName, getObjectLink } from '../shared';
   import BookItem from './BookItem.vue';
   import CreditItem from './CreditItem.vue';
   import BindObject from '@/lk-modules/b2t/bind-object/index.vue';
@@ -98,34 +110,19 @@
 
   const bindModal = ref(false);
   const bindClientId = ref<number | null>(null);
+  const extraBooking = ref<boolean>(false);
 
-  function showBind(id: number) {
+  function showBind(id: number, extra: boolean = false) {
     bindModal.value = true;
     bindClientId.value = id;
+    extraBooking.value = extra;
   }
 
   function bindSuccess() {
     bindModal.value = false;
     bindClientId.value = null;
+    extraBooking.value = false;
     emit('refresh');
-  }
-
-  function getObjectLink(item: typeof props.items[number]) {
-    if(item.object === null) return '-';
-    return `/${ item.object_type === 'flat' ? 'apartments' : 'towns' }/${item.object.id}`;
-  }
-
-  function getObjectName(item: typeof props.items[number]) {
-    if(item.object === null) return '-';
-    if(item.object_type === 'flat') {
-      return `
-        ${item.object.complex.name},
-         ${getRoomsCount(item.object.room_factor)}-комнатная,
-         ${item.object.area_total}м²
-      `;
-    } else {
-      return `${item.object.town.name}, ${item.object.layout.name}м²`;
-    }
   }
 </script>
 

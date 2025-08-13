@@ -1,7 +1,7 @@
 <template>
   <div class="tw-pb-8">
     <Header class="tw-mb-8" />
-    <Content @bind:success="emit('bind:success')" />
+    <Content :extraBooking="extraBooking" @bind:success="emit('bind:success')" />
   </div>
 </template>
 
@@ -14,6 +14,7 @@
 
   const props = defineProps<{
     clientId: number,
+    extraBooking: boolean,
   }>();
 
   const emit = defineEmits<{
