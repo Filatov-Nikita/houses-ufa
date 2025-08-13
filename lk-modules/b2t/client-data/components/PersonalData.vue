@@ -1,20 +1,21 @@
 <template>
   <div class="book-personal">
     <LkProgress class="book-personal__progress" :items="steps" :current="currentStep" />
-    <KeepAlive v-if="data">
-      <PersonalDataForm
+    <!-- <KeepAlive v-if="data"> -->
+      <!-- <PersonalDataForm
         v-if="currentStep === 0"
         :passport="data.consumer.passport"
         :fullName="data.consumer.full_name"
         :phone="data.consumer.cellphone"
         @next="onNext"
       />
+      v-else-if="currentStep === 1"-->
       <PersonalDataShow
-        v-else-if="currentStep === 1"
+        v-if="data"
         :profileData="data.consumer"
         @prev="onPrev"
       />
-    </KeepAlive>
+    <!-- </KeepAlive> -->
   </div>
 </template>
 
@@ -26,7 +27,7 @@
   const profile = useClientProfile();
 
   const steps = [
-    { label: 'Личные данные' }, { label: 'Проверка данных' },
+    /*{ label: 'Личные данные' },*/ { label: 'Проверка данных' },
   ];
 
   const currentStep = ref(0);
