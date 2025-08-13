@@ -3,15 +3,15 @@
     <LkProgress class="step-form__progress" :items="steps" :current="currentStep" />
     <KeepAlive>
       <CreditForm v-if="currentStep === 0" @next="onNext" />
-      <PersonalDataForm
+      <!-- <PersonalDataForm
         v-else-if="currentStep === 1 && data"
         :passport="data.consumer.passport"
         :fullName="data.consumer.full_name"
         :phone="data.consumer.cellphone"
         @next="onNext"
-      />
+      /> -->
       <FinishStep
-        v-else-if="currentStep === 2 && data"
+        v-else-if="currentStep === 1 && data"
         :profileData="data.consumer"
         @next="onNext"
         @prev="onPrev"
@@ -30,7 +30,7 @@
 
   const steps = [
     { label: 'Параметры ипотеки' },
-    { label: 'Личные данные' },
+    // { label: 'Личные данные' },
     { label: 'Проверка данных' },
   ];
 

@@ -26,7 +26,7 @@
         </div>
       </div>
     </section>
-    <section class="book-data">
+    <!-- <section class="book-data">
       <div class="book-data__head">
         <h2 class="book-data__title">
           Паспортные данные
@@ -94,7 +94,7 @@
           </p>
         </div>
       </div>
-    </section>
+    </section> -->
     <BaseButton class="passport-show__action" :disabled="store.finishing" @click="onSubmit">
       Отправить заявку
     </BaseButton>
