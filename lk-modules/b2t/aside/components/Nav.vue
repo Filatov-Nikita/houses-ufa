@@ -20,6 +20,11 @@
       to: '/lk/b2t/objects',
     },
     {
+      label: 'Клиенты',
+      icon: 'handshake',
+      to: '/lk/b2t/clients',
+    },
+    {
       label: 'Акции',
       icon: 'gift',
       to: '/lk/b2t/promotions',
@@ -38,11 +43,6 @@
       label: 'Мотивация',
       icon: 'rub',
       to: '/lk/b2t/motivation',
-    },
-    {
-      label: 'Клиенты',
-      icon: 'handshake',
-      to: '/lk/b2t/clients',
     },
     {
       label: 'Профиль',
