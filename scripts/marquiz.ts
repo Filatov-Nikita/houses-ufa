@@ -10,7 +10,7 @@ const complexesScript = `
   })(window, document, 'script', {
       host: '//quiz.marquiz.ru',
       region: 'ru',
-      id: '658c1102deb8d700258adea4',
+      id: '688770df3a64e10019d4dfc4',
       autoOpen: false,
       autoOpenFreq: 'once',
       openOnExit: false,
@@ -51,7 +51,7 @@ export function addComplexesWidget() {
   if(import.meta.server || import.meta.env.DEV) return;
   exec(() => {
     // @ts-ignore
-    (function(t, p) {window.Marquiz ? Marquiz.add([t, p]) : document.addEventListener('marquizLoaded', function() {Marquiz.add([t, p])})})('Widget', {id: '658c1102deb8d700258adea4', position: 'right', delay: 0, autoOpen: 0, disableIfClosed: false})
+    (function(t, p) {window.Marquiz ? Marquiz.add([t, p]) : document.addEventListener('marquizLoaded', function() {Marquiz.add([t, p])})})('Widget', {id: '688770df3a64e10019d4dfc4', position: 'right', delay: 60, autoOpen: 180, disableOnMobile: false, disableIfClosed: false, gradientEnabled: true, gradientColor: '#303537', gradientIntensity: 40, hiddenArrowOnMobile: false})
   });
 }
 

@@ -147,15 +147,13 @@ watch(complex, () => {
   }
 }, { immediate: true });
 
-if(complexSlug.value !== 'sapfir') {
-  addComplexesScript();
+addComplexesScript();
 
-  onMounted(() => {
-    addComplexesWidget();
-  });
+onMounted(() => {
+  addComplexesWidget();
+});
 
-  onUnmounted(() => {
-    removeWidgets();
-  });
-}
+onUnmounted(() => {
+  removeWidgets();
+});
 </script>
