@@ -11,7 +11,7 @@
 </template>
 
 <script setup lang="ts">
-  const years = (new Date()).getFullYear() - 2002;
+  const years = (new Date()).getFullYear() - 2001;
 </script>
 
 <style scoped lang="scss">
