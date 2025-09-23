@@ -109,12 +109,12 @@
   }
 
   const square = computed<[NumOrNull, NumOrNull] | null>(() => {
-    return [filter.params.area_min, filter.params.area_max];
+    return [filter.params.area_total_min, filter.params.area_total_max];
   });
 
   function updateSquare(val: [NumOrNull, NumOrNull] | null) {
-    filter.params.area_min = val?.[0] ?? null;
-    filter.params.area_max = val?.[1] ?? null;
+    filter.params.area_total_min = val?.[0] ?? null;
+    filter.params.area_total_max = val?.[1] ?? null;
   }
 
   const storey = computed<[NumOrNull, NumOrNull] | null>(() => {

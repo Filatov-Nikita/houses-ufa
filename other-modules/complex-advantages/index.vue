@@ -23,8 +23,8 @@
 
   function toMainFilter() {
     router.push({
-      path: '/main-filter',
-      query: { filterType: 'flats', object_id: props.complexId }
+      path: '/complexes',
+      query: { complex_id: props.complexId }
     });
   }
 </script>

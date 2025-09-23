@@ -20,8 +20,8 @@
 
   function showMainFilter() {
     router.push({
-      path: '/main-filter',
-      query: { filterType: 'towns', object_id: +route.params.id },
+      path: '/towns',
+      query: { town_id: townStore.townId, },
     });
   }
 </script>

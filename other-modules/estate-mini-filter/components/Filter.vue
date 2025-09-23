@@ -25,6 +25,7 @@
       <BaseButton
         class="mini-filter-params__btn"
         theme="white"
+        :disabled="filter.params.filterType === 'towns'"
         @click="showModal"
       >
         Дополнительные фильтры
@@ -94,7 +95,7 @@
 
   function showMainFilter() {
     router.push({
-      path: '/main-filter',
+      path: filter.params.filterType === 'towns' ? '/towns' : '/complexes',
       query: { ...filter.query },
     })
   }

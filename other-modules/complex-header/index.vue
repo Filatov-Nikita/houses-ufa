@@ -18,8 +18,8 @@
 
   function showMainFilter() {
     router.push({
-      path: '/main-filter',
-      query: { filterType: 'flats' },
+      path: '/complexes',
+      query: { complex_id: complexStore.complexId },
     });
   }
 </script>
