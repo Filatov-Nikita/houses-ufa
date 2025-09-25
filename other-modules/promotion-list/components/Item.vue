@@ -19,10 +19,10 @@
     <div class="promo-list-item__until">
       <p>до {{ $formatDate(item.ends_at) }}</p>
     </div>
-    <div class="promo-list-item__body">
+    <!-- <div class="promo-list-item__body">
       <h2 class="promo-list-item__title">{{ item.title }}</h2>
       <p class="promo-list-item__text">{{ item.subtitle }}</p>
-    </div>
+    </div> -->
   </RouterLink>
 </template>
 
