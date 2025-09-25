@@ -62,6 +62,7 @@ export interface Data {
   town:      Town;
   is_in_favorite: boolean;
   badges:    Badge[];
+  video_url: string | null;
 }
 
 export interface Layout {

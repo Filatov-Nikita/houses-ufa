@@ -1,5 +1,6 @@
 <template>
   <div v-if="data" class="town-info">
+    <VideoBlock v-if="data.video_url" :videoUrl="data.video_url" />
     <div class="town-info__promo-badges" v-if="data.badges.length > 0">
       <EstateBadgesPromo
         class="town-info__promo-badge"
@@ -53,6 +54,7 @@
   import ConsultForm from '@/other-modules/consult-form/index.vue';
   import { useGoal } from '@/composables/useGoal';
   import { useAuthStore } from '@/stores/auth';
+  import VideoBlock from './VideoBlock.vue';
 
   const statusLabel: Record<string, string> = {
     'for_sale': 'Свободен',
