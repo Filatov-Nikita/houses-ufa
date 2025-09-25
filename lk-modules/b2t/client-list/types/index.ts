@@ -1,5 +1,7 @@
 import type { Flat } from '@/types/estate/flat';
 import type { Town } from '@/types/estate/town';
+import type { ParkingOne } from '@/types/estate/parking';
+import type { PlaceOne } from '@/types/estate/place';
 import type { Offer } from '@/types/credit';
 
 export type ClientResponse = {
@@ -9,6 +11,26 @@ export type ClientResponse = {
 export type Data = {
   id:          number;
   consumer:    Consumer;
+  bargains: BargainItem[];
+};
+
+export interface BargainItem {
+  id: number;
+  external_uuid: string;
+  external_status: string;
+  created_at: string;
+  object: Flat | Town | BargainParking | BargainPlace | null;
+  object_title: string | null;
+  object_uuid: string | null;
+  updated_at: string;
+}
+
+type BargainParking = ParkingOne & {
+  parking: { name: string };
+};
+
+type BargainPlace = PlaceOne & {
+  storehouse: { name: string };
 };
 
 export interface Consumer {

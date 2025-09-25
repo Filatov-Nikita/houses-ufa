@@ -77,6 +77,9 @@
             :item="creditItem"
           />
         </div>
+        <div class="client-table__info" v-if="item.bargains.length > 0">
+          <RequestsList :items="item.bargains" />
+        </div>
       </div>
     </div>
     <BaseModal v-model="bindModal" v-slot="{ hide }">
@@ -97,6 +100,7 @@
   import { ClientResponse } from '../types';
   import { getObjectName, getObjectLink } from '../shared';
   import BookItem from './BookItem.vue';
+  import RequestsList from './RequestsList.vue';
   import CreditItem from './CreditItem.vue';
   import BindObject from '@/lk-modules/b2t/bind-object/index.vue';
 
