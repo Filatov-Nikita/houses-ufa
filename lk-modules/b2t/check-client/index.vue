@@ -79,6 +79,23 @@
             :model-value="currentRel"
             @update:model-value="updateRel"
           />
+          <BaseSelect
+            class="check-client-form__rel"
+            rules="required"
+            label="Тип предпочтений клиента"
+            name="favor_type"
+            v-bind="selectProps(favorTypeOptions)"
+            :model-value="currentFavorType"
+            @update:model-value="updateFavorType"
+          />
+          <BaseSelect
+            class="check-client-form__rel"
+            label="Встреча в офисе продаж"
+            name="visit_time"
+            v-bind="selectPropsSimple(officeVisitTimeOptions)"
+            v-model="store.form.visit_time"
+            @update:modelValue="updateVisitComment"
+          />
           <BaseInput
             class="check-client-form__comment-input"
             label="Комментарий"
@@ -152,6 +169,18 @@
     { value: 'grandchild', label: 'дедушка/бабушка - внук/внучка' } as const,
   ];
 
+  const favorTypeOptions = [
+    { value: '1', label: 'МКД в городе' } as const,
+    { value: '2', label: 'МКД в пригороде' } as const,
+    { value: '3', label: 'Коттедж/таунхаус' } as const,
+  ];
+
+  const officeVisitTimeOptions = [
+    'сегодня',
+    'в течении недели',
+    'не определился',
+  ];
+
   const currentRel = computed(() => {
     if(!store.form.relationship_type) return null;
     return relOptions.filter(rel => store.form.relationship_type === rel.value)[0] ?? null;
@@ -159,6 +188,15 @@
 
   function updateRel(value: typeof relOptions[number]) {
     store.form.relationship_type = value.value;
+  }
+
+  const currentFavorType = computed(() => {
+    if(!store.form.favor_type) return null;
+    return favorTypeOptions.filter(type => store.form.favor_type === type.value)[0] ?? null;
+  });
+
+  function updateFavorType(value: typeof favorTypeOptions[number]) {
+    store.form.favor_type = value.value;
   }
 
   function selectProps<T extends { label: string, value: string }>(options: T[]) {
@@ -172,6 +210,23 @@
         getLabel: (v: T | null) => v?.label || 'не выбрано',
       }
     };
+  }
+
+  function selectPropsSimple<T extends string>(options: T[]) {
+    return {
+      'drop-down-props': {
+        getLabel: (opt: T) => opt,
+        isActive: (opt: T, v: T | null) => opt === v,
+        options,
+      },
+      'display-props': {
+        getLabel: (v: T | null) => v || 'не выбрано',
+      }
+    };
+  }
+
+  function updateVisitComment(value: string) {
+    store.form.comment = `${store.form.comment} (Встреча - ${value})`.trim();
   }
 
   const body = computed(() => {

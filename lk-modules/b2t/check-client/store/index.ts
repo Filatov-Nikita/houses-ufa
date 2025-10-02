@@ -2,6 +2,7 @@ import { defineStore } from 'pinia';
 import * as Tokens from '@/helpers/tokens';
 
 type RelTypes = 'sibling' | 'child' | 'daughter-in-law' | 'spouse' | 'nephew' | 'son-in-law' | 'grandchild';
+type FavorTypes = '1' | '2' | '3';
 
 interface Body {
   backup_full_name: string,
@@ -12,6 +13,8 @@ interface Body {
   object_type: 'estate' | 'flat' | null,
   relationship_type: RelTypes,
   comment: string,
+  favor_type: FavorTypes | null,
+  visit_time: string,
 }
 
 export const useCheckClient = defineStore('b2tCheckClient', () => {
@@ -27,6 +30,8 @@ export const useCheckClient = defineStore('b2tCheckClient', () => {
       consumer_phone: '',
       relationship_type: 'sibling' as RelTypes,
       comment: '',
+      favor_type: null,
+      visit_time: '',
     }
   }
 
