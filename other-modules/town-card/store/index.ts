@@ -73,6 +73,7 @@ export interface Layout {
   number_of_owners: number;
   type:             Type;
   images:           any[];
+  video_url:        string | null;
 }
 
 export interface Type {

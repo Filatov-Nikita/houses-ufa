@@ -1,6 +1,7 @@
 <template>
   <div v-if="data" class="town-info">
     <VideoBlock v-if="data.video_url" :videoUrl="data.video_url" />
+    <VideoBlock v-else-if="data.layout.video_url" :videoUrl="data.layout.video_url" />
     <div class="town-info__promo-badges" v-if="data.badges.length > 0">
       <EstateBadgesPromo
         class="town-info__promo-badge"
