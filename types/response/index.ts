@@ -28,3 +28,7 @@ export type Response<T> = {
   links: Links;
   meta:  Meta;
 }
+
+export type ResponseSimple<T> = {
+  data: T,
+}

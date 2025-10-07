@@ -1,4 +1,5 @@
 import createMarketingRepo from '@/repositories/marketing';
+import createPressCenterRepo from '@/repositories/press-center';
 
 export default defineNuxtPlugin({
   name: 'api',
@@ -6,11 +7,13 @@ export default defineNuxtPlugin({
     const appFetch = useNuxtApp().$appFetch;
 
     const marketing = createMarketingRepo(appFetch);
+    const pressCenter = createPressCenterRepo(appFetch);
 
     return {
       provide: {
         api: {
           marketing,
+          pressCenter,
         },
       }
     }
