@@ -25,10 +25,10 @@
           <RouterLink v-if="item.object" :to="getObjectLink(item)">
             {{ getObjectName(item) }}
           </RouterLink>
-          <button v-else class="bind-btn" @click="showBind(item.id)">Закрепить объект</button>
+          <!-- <button v-else class="bind-btn" @click="showBind(item.id)">Закрепить объект</button> -->
         </div>
         <div class="client-table-col client-table__actions">
-          <div class="no-object-badge" v-if="item.object === null">
+          <!-- <div class="no-object-badge" v-if="item.object === null">
             У клиента нет привязанного объекта
           </div>
           <template v-else>
@@ -59,7 +59,7 @@
             >
               Ипотека
             </button>
-          </template>
+          </template> -->
         </div>
         <div class="client-table__info" v-if="item.consumer.bookings.length > 0">
           <BookItem
