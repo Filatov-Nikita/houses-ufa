@@ -14,7 +14,8 @@ interface Body {
   relationship_type: RelTypes,
   comment: string,
   favor_type: FavorTypes | null,
-  visit_time: string,
+  chosen_meeting_date_option: string,
+  manager_communication_consent: boolean,
 }
 
 export const useCheckClient = defineStore('b2tCheckClient', () => {
@@ -31,7 +32,8 @@ export const useCheckClient = defineStore('b2tCheckClient', () => {
       relationship_type: 'sibling' as RelTypes,
       comment: '',
       favor_type: null,
-      visit_time: '',
+      chosen_meeting_date_option: '',
+      manager_communication_consent: false,
     }
   }
 

@@ -91,10 +91,9 @@
           <BaseSelect
             class="check-client-form__rel"
             label="Встреча в офисе продаж"
-            name="visit_time"
+            name="chosen_meeting_date_option"
             v-bind="selectPropsSimple(officeVisitTimeOptions)"
-            v-model="store.form.visit_time"
-            @update:modelValue="updateVisitComment"
+            v-model="store.form.chosen_meeting_date_option"
           />
           <BaseInput
             class="check-client-form__comment-input"
@@ -102,6 +101,14 @@
             name="comment"
             placeholder="Текст комментария"
             v-model="store.form.comment"
+          />
+          <BaseCheckbox
+            class="check-client-form__rel"
+            v-model="store.form.manager_communication_consent"
+            name="manager_communication_consent"
+            :unchecked-value="false"
+            :checked-value="true"
+            label="Клиент даёт согласие на общение с менеджером отдела продаж?"
           />
           <p
             v-if="clientMsg.text"
@@ -177,7 +184,7 @@
 
   const officeVisitTimeOptions = [
     'сегодня',
-    'в течении недели',
+    'в течение недели',
     'не определился',
   ];
 
@@ -223,10 +230,6 @@
         getLabel: (v: T | null) => v || 'не выбрано',
       }
     };
-  }
-
-  function updateVisitComment(value: string) {
-    store.form.comment = `${store.form.comment} (Встреча - ${value})`.trim();
   }
 
   const body = computed(() => {
@@ -410,7 +413,7 @@
     }
 
     &__msg {
-      margin-top: 8px;
+      margin-top: 12px;
       @apply tw-text-xs;
 
       &--error {
