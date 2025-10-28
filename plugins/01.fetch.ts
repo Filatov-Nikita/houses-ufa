@@ -3,19 +3,19 @@ import * as Tokens from '@/helpers/tokens';
 export default defineNuxtPlugin({
   name: 'fetch',
   setup() {
-    const tokenData = Tokens.get();
+    const token = useCookie('token');
 
     const appFetch = $fetch.create({
       baseURL: useRuntimeConfig().public.rootApi,
       retry: false,
       onRequest({ options }) {
-        if(tokenData) {
+        if(token.value) {
           if(Array.isArray(options.headers)) {
-            options.headers.push([ 'Authorization', 'Bearer ' + tokenData.token ]);
+            options.headers.push([ 'Authorization', 'Bearer ' + token.value ]);
           } else if(options.headers instanceof Headers) {
-            options.headers.append('Authorization', 'Bearer ' + tokenData.token);
+            options.headers.append('Authorization', 'Bearer ' + token.value);
           } else if(options.headers) {
-            options.headers['Authorization'] = 'Bearer ' + tokenData.token;
+            options.headers['Authorization'] = 'Bearer ' + token.value;
           }
         }
       },
