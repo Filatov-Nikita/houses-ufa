@@ -1,16 +1,16 @@
 <template>
   <div class="project-info">
     <div class="project-info__name">
-      <h1>{{ data?.name_alias }}</h1>
+      <h1>{{ project.name_alias }}</h1>
     </div>
     <div class="params-block">
       <div class="params-block__one">
         <p class="params-block__key">Тип</p>
-        <p class="params-block__value">{{ data?.type.title }}</p>
+        <p class="params-block__value">{{ project.type.title }}</p>
       </div>
       <div class="params-block__one">
         <p class="params-block__key">Площадь дома</p>
-        <p class="params-block__value">{{ data?.area_calc }} м<sup>2</sup></p>
+        <p class="params-block__value">{{ project.area_calc }} м<sup>2</sup></p>
       </div>
     </div>
     <BaseButton class="project-info__callback" @click="showedConsult = true">
@@ -21,13 +21,14 @@
 </template>
 
 <script setup lang="ts">
-  import { useProjectCard } from '../store';
   import ConsultForm from '@/other-modules/consult-form/index.vue';
+  import type { ProjectOne } from '@/repositories/towns/projects';
+
+  defineProps<{
+    project: ProjectOne,
+  }>();
 
   const showedConsult = ref(false);
-  const projectCard = useProjectCard();
-
-  const data = computed(() => projectCard.projectData?.data);
 </script>
 
 <style scoped lang="scss">

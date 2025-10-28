@@ -1,16 +1,24 @@
 <template>
   <EstateImageTownViewer
-    :title="projectCard.projectData?.data.name ?? ''"
+    :title="title"
     :renderImages="renderImages"
     :planImages="planImages"
   />
 </template>
 
 <script setup lang="ts">
-  import { useProjectCard } from '../store';
+  import type { FeedImage } from '@/repositories/towns/projects';
 
-  const projectCard = useProjectCard();
+  const props = defineProps<{
+    images: FeedImage[],
+    title: string,
+  }>();
 
-  const renderImages =  computed(() => projectCard.renderImages.map(i => i.url));
-  const planImages =  computed(() => projectCard.planImages.map(i => i.url));
+  const planImages = computed(() => {
+    return props.images.filter(img => img.is_plan).map(img => img.url);
+  });
+
+  const renderImages = computed(() => {
+    return props.images.filter(img => !img.is_plan).map(img => img.url);
+  });
 </script>
