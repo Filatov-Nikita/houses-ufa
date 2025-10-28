@@ -11,3 +11,12 @@ export interface File {
   name:          string;
   size_in_bytes: number;
 }
+
+export interface FileExtented {
+  id: number,
+  name: string,
+  extension: string,
+  size_readable_size: string,
+  size_in_bytes: number,
+  url: string,
+}

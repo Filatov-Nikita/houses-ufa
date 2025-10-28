@@ -3,12 +3,12 @@
     <div class="section__top">
       <h2 class="section__title">Мотивация</h2>
     </div>
-    <MotivationList type="b2t" />
+    <MotivationStrategiesList />
   </section>
 </template>
 
 <script setup lang="ts">
-  import MotivationList from '@/lk-modules/motivation-list/index.vue';
+  import MotivationStrategiesList from '@/lk-modules/motivation-strategies-list/index.vue';
 
   definePageMeta({
     layout: 'lk-b2t',
