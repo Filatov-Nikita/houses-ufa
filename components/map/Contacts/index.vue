@@ -18,11 +18,11 @@
             @click="singleOfficeIdx = index"
           >
             <div
+              v-if="item.sight_picture"
               :key="item.id"
               class="tw-w-10 tw-h-10 tw-rounded-lg tw-relative tw-overflow-hidden"
             >
               <img
-                v-if="item.sight_picture"
                 :src="item.sight_picture.url"
                 alt=""
                 class="tw-absolute tw-w-full tw-h-full tw-object-cover"
@@ -39,7 +39,7 @@
           <div v-if="index !== marks.length -1 && marks.length > 1" class=" tw-border-b tw-border-border00"></div>
         </template>
         <div
-          v-show="Number.isInteger(singleOfficeIdx) && singleOfficeIdx !== null"
+          v-show="singleOfficeIdx !== null"
           class="tw-p-4 tw-grid tw-gap-4"
         >
           <BaseButton
@@ -53,12 +53,12 @@
               <span class="tw-text-body_s tw-leading-normal"> Назад </span>
             </div>
           </BaseButton>
-          <div v-if="singleOfficeIdx" class="tw-flex tw-gap-4">
+          <div v-if="singleOfficeIdx !== null" class="tw-flex tw-gap-4">
             <div
+              v-if="marks[singleOfficeIdx] && marks[singleOfficeIdx].sight_picture"
               class="tw-w-10 tw-h-10 tw-rounded-lg tw-relative tw-overflow-hidden"
             >
               <img
-                v-if="marks[singleOfficeIdx] && marks[singleOfficeIdx].sight_picture"
                 :src="marks[singleOfficeIdx].sight_picture!.url"
                 alt=""
                 class="tw-absolute tw-w-full tw-h-full tw-object-cover"
@@ -92,7 +92,7 @@
             />
             <BaseIcon name="paper" class=" tw-w-6 tw-h-6 tw-text-icon tw-absolute tw-right-4 tw-top-1/2 -tw-translate-y-1/2 tw-mt-1"/>
           </div>
-          <div v-if="singleOfficeIdx && marks[singleOfficeIdx]" class="tw-grid tw-gap-2">
+          <div v-if="singleOfficeIdx !== null && marks[singleOfficeIdx]" class="tw-grid tw-gap-2">
             <p class="tw-text-h6" v-html="marks[singleOfficeIdx].phone_number"></p>
             <p class="tw-text-body_s" v-html="marks[singleOfficeIdx].business_hours"></p>
           </div>
@@ -118,11 +118,11 @@
           @click="() => ((openMap = true), (singleOfficeIdx = index))"
         >
           <div
+            v-if="item.sight_picture"
             :key="item.id"
             class="tw-w-10 tw-h-10 tw-rounded-lg tw-relative tw-overflow-hidden"
           >
             <img
-              v-if="item.sight_picture"
               :src="item.sight_picture.url"
               alt=""
               class="tw-absolute tw-w-full tw-h-full tw-object-cover"
@@ -162,7 +162,7 @@
       />
 
       <div
-        v-show="Number.isInteger(singleOfficeIdx) && singleOfficeIdx !== null"
+        v-show="singleOfficeIdx !== null"
         class="widget tw-absolute tw-z-10 tw-bottom-0 tw-left-0 tw-bg-base00 tw-px-4 tw-rounded-t-2xl tw-transition-transform tw-duration-300 tw-ease-in"
         :style="[
           hideWidget
@@ -179,13 +179,13 @@
         >
           <div class="tw-w-12 tw-h-1 tw-rounded-[50px] tw-bg-secondary"></div>
         </div>
-        <div v-if="singleOfficeIdx" class="tw-p-4 tw-grid tw-gap-4 tw-bg-white tw-rounded-2xl">
+        <div v-if="singleOfficeIdx !== null" class="tw-p-4 tw-grid tw-gap-4 tw-bg-white tw-rounded-2xl">
           <div class="tw-flex tw-gap-4">
             <div
+              v-if="marks[singleOfficeIdx] && marks[singleOfficeIdx].sight_picture"
               class="tw-w-10 tw-h-10 tw-rounded-lg tw-relative tw-overflow-hidden"
             >
               <img
-                v-if="marks[singleOfficeIdx] && marks[singleOfficeIdx].sight_picture"
                 :src="marks[singleOfficeIdx].sight_picture!.url"
                 alt=""
                 class="tw-absolute tw-w-full tw-h-full tw-object-cover"
