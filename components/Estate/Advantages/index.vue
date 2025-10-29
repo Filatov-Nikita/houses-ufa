@@ -124,8 +124,22 @@ watch(
 </script>
 
 <style scoped lang="scss">
+.item {
+  cursor: pointer;
+
+  &:hover {
+    img {
+      transform: scale(1.1);
+    }
+  }
+
+  img {
+    transition: transform 200ms;
+  }
+}
+
 .estate-adv {
-  max-width: 800px;
+  max-width: 100%;
   padding: 16px;
   background: theme('colors.white');
   border-radius: 16px;
