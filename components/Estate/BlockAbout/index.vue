@@ -16,14 +16,27 @@
             <p class="about-adv__value">{{ adv.value }}</p>
           </div>
         </div>
-        <BaseButton
-          v-if="!hideAction"
-          class="about-block__action"
-          theme="gray"
-          @click="onAction"
-        >
-          {{ actionTitle }}
-        </BaseButton>
+        <div class="about-block__actions">
+          <BaseButton
+            v-if="!hideAction"
+            class="about-block__action"
+            theme="green"
+            @click="onAction"
+          >
+            {{ actionTitle }}
+          </BaseButton>
+          <BaseButton
+            v-if="showedDownloadBtn"
+            class="about-block__action about-block__action2"
+            theme="gray"
+            @click="scrollToBooklets"
+          >
+            <span>Скачать презентацию</span>
+            <span class="tw-w-6 tw-h-6">
+              <BaseIcon name="download" fit />
+            </span>
+          </BaseButton>
+        </div>
       </div>
     </div>
   </div>
@@ -48,6 +61,21 @@
 
   function onAction() {
     emit('action');
+  }
+
+  const bookletsRef = ref<HTMLElement | null>(null);
+  const showedDownloadBtn = ref(true);
+
+  onMounted(() => {
+    bookletsRef.value = document.querySelector('.booklets') as HTMLElement;
+    showedDownloadBtn.value = bookletsRef.value !== null;
+  });
+
+  function scrollToBooklets() {
+    if(!bookletsRef.value) return;
+    const sec =  bookletsRef.value.closest('.section');
+    if(!sec) return;
+    sec.scrollIntoView({ behavior: 'smooth' });
   }
 </script>
 
@@ -132,9 +160,23 @@
       @apply tw-text-text00 tw-text-base;
     }
 
-    &__action {
-      width: 100%;
+    &__actions {
       margin-top: 24px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    &__action {
+      flex-basis: 250px;
+      flex-grow: 1;
+    }
+
+    &__action2 {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
     }
   }
 
