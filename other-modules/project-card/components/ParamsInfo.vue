@@ -1,5 +1,6 @@
 <template>
   <div class="project-info">
+    <VideoBlock v-if="project.video_url" :videoUrl="project.video_url" />
     <div class="project-info__name">
       <h1>{{ project.name_alias }}</h1>
     </div>
@@ -21,6 +22,7 @@
 </template>
 
 <script setup lang="ts">
+  import VideoBlock from './VideoBlock.vue';
   import ConsultForm from '@/other-modules/consult-form/index.vue';
   import type { ProjectOne } from '@/repositories/towns/projects';
 

@@ -16,6 +16,7 @@ export interface ProjectOne {
   name_alias:  string;
   type:        Type;
   feed_images: FeedImage[];
+  video_url: string | null;
 }
 
 export interface FeedImage {
