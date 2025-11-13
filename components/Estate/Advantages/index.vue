@@ -1,5 +1,5 @@
 <template>
-  <div class="adv" :class="`adv-${items.length}`">
+  <div class="promo" :class="`promo-${items.length}`">
     <div class="list">
       <div
         class="item"
@@ -225,7 +225,7 @@ watch(
     margin-top: auto;
   }
 }
-.adv-6 {
+.promo-6 {
   .list {
     @apply tw-grid tw-gap-5;
 
@@ -299,7 +299,7 @@ watch(
     }
   }
 }
-.adv-7 {
+.promo-7 {
   .list {
     @apply tw-grid tw-gap-5;
 
@@ -369,7 +369,7 @@ watch(
   }
 }
 
-.adv-8 {
+.promo-8 {
   .list {
     @apply tw-grid tw-gap-5;
 
