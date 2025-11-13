@@ -7,7 +7,7 @@
         :key="item.id"
         @click="openModal(item.label)"
       >
-        <img :src="item.images[0].url" alt="" />
+        <img v-if="item.images[0]" :src="item.images[0].url" alt="" />
         <span class="item__title">{{ item.label }}</span>
       </div>
     </div>
