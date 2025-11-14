@@ -139,7 +139,8 @@ watch(
 }
 
 .estate-adv {
-  max-width: 100%;
+  width: 100%;
+  max-width: 1500px;
   padding: 16px;
   background: theme('colors.white');
   border-radius: 16px;
