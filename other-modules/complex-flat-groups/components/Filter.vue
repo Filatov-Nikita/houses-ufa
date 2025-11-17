@@ -23,6 +23,7 @@
     two_classic: '2-комнатные',
     three_smart: '3-комнатные смарт',
     three_classic: '3-комнатные',
+    four_smart: '4-комнатные',
   };
 
   const store = useComplexFlatGroups();

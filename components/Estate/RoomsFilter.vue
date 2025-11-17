@@ -35,6 +35,7 @@
     room_factor_two_classic: Value,
     room_factor_three_smart: Value,
     room_factor_three_classic: Value,
+    room_factor_four_smart?: Value,
   }
 
   type EmitNames = `update:${typeof roomsBtns[number]['value']}`;
@@ -58,6 +59,7 @@
     { label: '2', value: 'room_factor_two_classic' as const },
     { label: '3С', value: 'room_factor_three_smart' as const },
     { label: '3', value: 'room_factor_three_classic' as const },
+    { label: '4С', value: 'room_factor_four_smart' as const },
   ];
 
   function onClick(btn: typeof roomsBtns[number]) {

@@ -14,6 +14,7 @@ export interface Params {
   room_factor_three_smart?: number,
   room_factor_two_classic?: number,
   room_factor_two_smart?: number,
+  room_factor_four_smart?: number,
 }
 
 export default function(initParams?: Partial<Params>) {
@@ -32,6 +33,7 @@ export default function(initParams?: Partial<Params>) {
       room_factor_three_smart: undefined,
       room_factor_two_classic: undefined,
       room_factor_two_smart: undefined,
+      room_factor_four_smart: undefined,
       price_type: undefined,
       price_min: undefined,
       price_max: undefined,
@@ -54,6 +56,7 @@ export default function(initParams?: Partial<Params>) {
     room_factor_three_smart: Number,
     room_factor_two_classic: Number,
     room_factor_two_smart: Number,
+    room_factor_four_smart: Number,
   }
 
   function clear() {

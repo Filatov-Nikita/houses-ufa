@@ -11,6 +11,7 @@ const roomsCount = {
   'two_classic': 2 as const,
   'three_smart': 3 as const,
   'three_classic': 3 as const,
+  'four_smart': 4 as const,
 };
 
 type RoomTypes = keyof typeof roomsCount;

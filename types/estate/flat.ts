@@ -36,6 +36,7 @@ export type RoomFactor = 'studio'       |
                          'two_classic'  |
                          'three_smart'  |
                          'three_classic';
+                         'four_smart';
 
 export interface House {
   letter: string;

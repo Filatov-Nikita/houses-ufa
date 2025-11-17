@@ -30,6 +30,9 @@
 
           :room_factor_three_classic="room_factor_three_classic ?? null"
           @update:room_factor_three_classic="room_factor_three_classic = $event ?? undefined"
+
+          :room_factor_four_smart="room_factor_four_smart ?? null"
+          @update:room_factor_four_smart="room_factor_four_smart = $event ?? undefined"
         />
       </div>
 
@@ -95,6 +98,7 @@
   const room_factor_three_smart = defineModel<number>('room_factor_three_smart');
   const room_factor_two_classic = defineModel<number>('room_factor_two_classic');
   const room_factor_two_smart = defineModel<number>('room_factor_two_smart');
+  const room_factor_four_smart = defineModel<number>('room_factor_four_smart');
   const area_total_min = defineModel<number>('area_total_min');
   const area_total_max = defineModel<number>('area_total_max');
 

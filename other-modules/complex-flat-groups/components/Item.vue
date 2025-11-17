@@ -42,6 +42,7 @@
     two_classic: 2,
     three_smart: 3,
     three_classic: 3,
+    four_smart: 4,
   };
 
   const images = computed(() => {
