@@ -7,7 +7,7 @@
         </span>
       </div>
       <div class="keys-alert-modal__title">
-        Заявка на получение ключей успешна отправлена
+        Заявка на получение ключей успешно отправлена
       </div>
       <div class="keys-alert-modal__body tw-py-4">
         <p>Дата и время получения ключей</p>
