@@ -33,14 +33,14 @@
           <a
             v-if="item.phone_number"
             :href="`tel:${item.phone_number}`"
-            class="tw-text-h6 lg:tw-text-h5 tw-mb-1"
+            class="tw-text-h6 lg:tw-text-h5 tw-mb-1 tw-block tw-w-fit hover:tw-opacity-50"
           >
             {{ item.phone_number }}
           </a>
           <a
-            v-else-if="item.email"
+            v-if="item.email"
             :href="`mailto:${item.email}`"
-            class="tw-text-h6 lg:tw-text-h5 tw-mb-1"
+            class="tw-text-h6 lg:tw-text-h5 tw-mt-2 tw-block tw-w-fit tw-text-primary hover:tw-text-primary-hover"
           >
             {{ item.email }}
           </a>
