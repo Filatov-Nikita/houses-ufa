@@ -33,8 +33,8 @@
   ];
 
   const townSortOptions = [
-    { label: 'Сначала с большей площадью', order_by_direction: 'desc', order_by_field: 'area_cottage' },
-    { label: 'Сначала с меньшей площадью', order_by_direction: 'asc', order_by_field: 'area_cottage' },
+    { label: 'Сначала с большим участком', order_by_direction: 'desc', order_by_field: 'area_land' },
+    { label: 'Сначала с меньшим участком', order_by_direction: 'asc', order_by_field: 'area_land' },
   ];
 
   const sortOpts = computed(() => {
