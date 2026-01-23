@@ -27,6 +27,7 @@
         v-model:room_factor_two_classic="flatFilter.params.room_factor_two_classic"
         v-model:room_factor_three_smart="flatFilter.params.room_factor_three_smart"
         v-model:room_factor_three_classic="flatFilter.params.room_factor_three_classic"
+        v-model:room_factor_four_smart="flatFilter.params.room_factor_four_smart"
       />
       <BaseRange
         class="main-filter-params__input-sqr"
@@ -323,7 +324,7 @@
 
     &__input-rooms {
       @extend %inputs;
-      flex-basis: 280px;
+      flex-basis: 375px;
     }
 
     &__input-price {
