@@ -33,6 +33,13 @@
     }
   });
 
+  watch(() => filter.filterType, (type) => {
+    if(type === 'towns') {
+      filterParams.params.order_by_direction = 'asc';
+      filterParams.params.order_by_field = 'area_land';
+    }
+  }, { immediate: true });
+
   watch(() => filter.filterType, () => {
     filterParams.params.object_id = null;
     filterParams.params.order_by_direction = null;
