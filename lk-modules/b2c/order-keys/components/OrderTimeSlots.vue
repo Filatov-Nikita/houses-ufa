@@ -34,7 +34,8 @@
     const [_fromDate, fromTime] = slot.starts_at.split(' ');
     const [_toDate, toTime] = slot.ends_at.split(' ');
     return {
-      text: fromTime.slice(0, 5) + ' - ' + toTime.slice(0, 5),
+      // text: fromTime.slice(0, 5) + ' - ' + toTime.slice(0, 5),
+      text: fromTime.slice(0, 5),
       ...slot,
     };
   }
