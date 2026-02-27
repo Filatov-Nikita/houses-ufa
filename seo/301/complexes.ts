@@ -1,4 +1,10 @@
 export default {
+  '/complexes/mihajlovka-green-place': {
+    redirect: {
+      to: '/complexes/mihajlovka-zelenaya',
+      statusCode: 301
+    }
+  },
   '/complexes/1': {
     redirect: {
       to: '/complexes/malina',
@@ -7,7 +13,7 @@ export default {
   },
   '/complexes/2': {
     redirect: {
-      to: '/complexes/mihajlovka-green-place',
+      to: '/complexes/mihajlovka-zelenaya',
       statusCode: 301
     }
   },

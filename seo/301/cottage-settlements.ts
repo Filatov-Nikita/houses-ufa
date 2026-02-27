@@ -1,4 +1,16 @@
 export default {
+  '/cottage-settlements/zubovo-life-3': {
+    redirect: {
+      to: '/cottage-settlements/zubovo-prestizh',
+      statusCode: 301
+    }
+  },
+  '/cottage-settlements/mihajlovka-green-2': {
+    redirect: {
+      to: '/cottage-settlements/mihajlovka-2',
+      statusCode: 301
+    }
+  },
   '/cottage-settlements/1': {
     redirect: {
       to: '/cottage-settlements/gudvill-park',
@@ -7,13 +19,13 @@ export default {
   },
   '/cottage-settlements/2': {
     redirect: {
-      to: '/cottage-settlements/zubovo-life-3',
+      to: '/cottage-settlements/zubovo-prestizh',
       statusCode: 301
     }
   },
   '/cottage-settlements/3': {
     redirect: {
-      to: '/cottage-settlements/mihajlovka-green-2',
+      to: '/cottage-settlements/mihajlovka-2',
       statusCode: 301
     }
   },
