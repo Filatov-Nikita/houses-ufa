@@ -5,11 +5,17 @@
         Зарабатывайте на <span class="purchase-promo-card__text-accent">рекомендациях</span>!
       </h2>
       <p class="promo-item__body tw-max-w-[546px]">
-        Рекомендуйте «Жилой Квартал» своим друзьям и, если они выбирают нас, получайте вознаграждение
+        Рекомендуйте «Жилой Квартал» своим друзьям и, если они выбирают нас, получайте вознаграждение:
       </p>
       <div class="profit-block promo-item__profit">
-        <p class="profit-block__title">Вознаграждение до</p>
-        <p class="profit-block__value">30 000 рублей!</p>
+        <div class="profit-block__item">
+          <p class="profit-block__title">Коттедж</p>
+          <p class="profit-block__value">100 000 рублей</p>
+        </div>
+        <div class="profit-block__item">
+          <p class="profit-block__title">Квартира</p>
+          <p class="profit-block__value">30 000 рублей</p>
+        </div>
       </div>
     </article>
     <div class="purchase-promo-img purchase-promo-grid__item">
@@ -55,21 +61,31 @@
       padding: 16px;
     }
 
+    &__item {
+      & + & {
+        margin-top: 12px;
+      }
+    }
+
     &__title {
-      font-size: 16px;
+      font-size: 18px;
       line-height: 1.75;
       @apply tw-text-text01;
+
+      @include sm {
+        font-size: 16px;
+      }
     }
 
     &__value {
-      margin-top: 8px;
+      margin-top: 4px;
       font-weight: 400;
-      font-size: 48px;
+      font-size: 40px;
       line-height: 1.1;
       @apply tw-text-primary tw-font-freesetdemi;
 
       @include sm {
-        font-size: 32px;
+        font-size: 28px;
         line-height: 1.375;
       }
     }
