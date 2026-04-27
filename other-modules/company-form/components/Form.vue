@@ -26,7 +26,7 @@
           v-model="store.form.phone"
         />
         <BaseInput
-          rules="required|email"
+          rules="email"
           name="email"
           label="E-mail"
           placeholder="mail@mail.ru"

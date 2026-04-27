@@ -28,7 +28,7 @@
       />
       <BaseInput
         class="search-form__column"
-        rules="required|email"
+        rules="email"
         label="E-mail"
         name="email"
         placeholder="name@gmail.com"
