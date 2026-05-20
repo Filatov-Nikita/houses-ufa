@@ -14,7 +14,7 @@
         </div>
         <div class="profit-block__item">
           <p class="profit-block__title">Квартира</p>
-          <p class="profit-block__value">30 000 рублей</p>
+          <p class="profit-block__value">50 000 рублей</p>
         </div>
       </div>
     </article>
