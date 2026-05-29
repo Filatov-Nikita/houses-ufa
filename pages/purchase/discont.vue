@@ -21,10 +21,12 @@
   </section>
   <section class="section">
     <div class="wrapper">
-      <h2 class="section__title section__top">
-        Хотите получить подарок быстрее?
-      </h2>
-      <StepItems />
+      <FormReferral />
+    </div>
+  </section>
+  <section class="section">
+    <div class="wrapper">
+      <StepItem />
     </div>
   </section>
   <section class="section">
@@ -36,9 +38,10 @@
 
 <script setup lang="ts">
 import { useBreadcrumbsStore } from '@/stores/breadcrumbs';
-import StepItems from '@/other-modules/purchase/components/discont/StepItems.vue';
+import StepItem from '@/other-modules/purchase/components/discont/StepItem.vue';
 import PromoCard from '@/other-modules/purchase/components/discont/PromoCard.vue';
 import QuestionForm from '@/other-modules/question-form/index.vue';
+import FormReferral from '@/other-modules/purchase/components/discont/FormReferral/index.vue';
 
 useCanonical();
 
