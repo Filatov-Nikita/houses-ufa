@@ -1,6 +1,7 @@
 <template>
   <Form @submit="onSubmit" v-slot="{ isSubmitting }">
     <BaseInput
+      class="form-inp"
       rules="required"
       name="fio1"
       label="Ваше имя (ФИО)"
@@ -8,6 +9,7 @@
       v-model="form.fio1"
     />
     <BaseInput
+      class="form-inp"
       rules="required"
       name="phone1"
       label="Ваш номер телефона"
@@ -16,6 +18,7 @@
       v-model="form.phone1"
     />
     <BaseInput
+      class="form-inp"
       rules="required"
       name="fio2"
       label="ИМЯ рекомендуемого человека (ФИО)"
@@ -23,6 +26,7 @@
       v-model="form.fio2"
     />
     <BaseInput
+      class="form-inp"
       rules="required"
       name="phone2"
       label="Номер телефона рекомендуемого человека"
@@ -31,10 +35,12 @@
       v-model="form.phone2"
     />
     <div class="actions">
-      <p class="perc question-form__input">
-        Нажимая кнопку, вы соглашаетесь с&nbsp;<a href="/docs/sogl.pdf" target="_blank">условиями обработки персональных данных</a>
-      </p>
-      <BaseButton class="btn-submit" type="submit" :disabled="isSubmitting">
+      <BaseCheckbox name="agree" label="" :checkedValue="true" :uncheckedValue="false" v-model="agree">
+        <p class="perc question-form__input">
+          Нажимая кнопку, вы соглашаетесь с&nbsp;<a href="/docs/sogl.pdf" target="_blank">условиями обработки персональных данных</a>
+        </p>
+      </BaseCheckbox>
+      <BaseButton class="btn-submit" type="submit" :disabled="!agree || isSubmitting">
         Отправить
       </BaseButton>
       <p class="notice">
@@ -48,7 +54,7 @@
   import { Form } from 'vee-validate';
   import type { BindReferralBody } from '@/repositories/purchase';
   import { cleanPhone } from '@/helpers';
-  import { useNotifyStore } from '~/stores/notify';
+  import { useNotifyStore } from '@/stores/notify';
 
   const notify = useNotifyStore();
 
@@ -58,6 +64,8 @@
     fio2: '',
     phone2: '',
   });
+
+  const agree = ref(false);
 
   const api = useNuxtApp().$api;
 
@@ -91,12 +99,21 @@
 </script>
 
 <style scoped lang="scss">
+  .form-inp {
+    & + & {
+      margin-top: 16px;
+    }
+  }
+
   .actions {
-    margin-top: 12px;
+    margin-top: 24px;
+
+    @include md {
+      margin-top: 16px
+    }
   }
 
   .perc {
-    margin-bottom: 12px;
     @apply tw-text-text02 tw-text-sm;
 
     @include lg {
@@ -109,6 +126,7 @@
   }
 
   .btn-submit {
+    margin-top: 12px;
     width: 100%;
     max-width: 240px;
   }

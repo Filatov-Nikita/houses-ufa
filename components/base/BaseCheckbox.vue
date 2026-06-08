@@ -19,7 +19,9 @@
         </svg>
       </div>
       <div class="base-checkbox__label" :class="{ 'base-checkbox__label--disabled': disabled }">
-        {{ label }}
+        <slot>
+          {{ label }}
+        </slot>
       </div>
     </div>
   </div>
