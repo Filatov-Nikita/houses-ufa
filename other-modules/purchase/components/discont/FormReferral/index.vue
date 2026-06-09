@@ -1,36 +1,21 @@
 <template>
-  <div class="form-referral">
-    <h2 class="section__title section__top">
-      Заявка на рекомендацию клиента
-    </h2>
-    <div class="form-referral__wrap">
-      <FormValues class="form-referral__form" />
-    </div>
-  </div>
+  <FormSection class="ref-form">
+    <template #title>«Пригласи друга»</template>
+    <template #text>Оставьте свои данные и данные друга</template>
+    <FormValues class="form-referral__form" />
+  </FormSection>
 </template>
 
 <script setup lang="ts">
+  import FormSection from '@/other-modules/question-form/componenets/Section.vue';
   import FormValues from './FormValues.vue';
 </script>
 
-<style scoped lang="scss">
-  .form-referral {
-    &__wrap {
-      padding: 40px;
-      border-radius: 16px;
-      @apply tw-bg-white;
-
-      @include lg {
-        padding: 24px;
-      }
-
-      @include sm {
-        padding: 24px 16px;
-      }
-    }
-
-    &__form {
-      max-width: 500px;
-    }
+<style scoped>
+  .ref-form {
+    --bg-size: cover;
+    --bg-size-lg: cover;
+    --bg-x: right;
+    --bg-x-lg: right;
   }
 </style>

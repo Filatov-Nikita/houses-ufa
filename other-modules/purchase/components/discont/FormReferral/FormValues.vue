@@ -1,7 +1,7 @@
 <template>
-  <Form @submit="onSubmit" v-slot="{ isSubmitting }">
+  <Form class="quest-form__form" @submit="onSubmit" v-slot="{ isSubmitting }">
     <BaseInput
-      class="form-inp"
+      class="quest-form__input"
       rules="required"
       name="fio1"
       label="Ваше имя (ФИО)"
@@ -9,7 +9,7 @@
       v-model="form.fio1"
     />
     <BaseInput
-      class="form-inp"
+      class="quest-form__input"
       rules="required"
       name="phone1"
       label="Ваш номер телефона"
@@ -18,15 +18,15 @@
       v-model="form.phone1"
     />
     <BaseInput
-      class="form-inp"
+      class="quest-form__input"
       rules="required"
       name="fio2"
-      label="ИМЯ рекомендуемого человека (ФИО)"
+      label="Имя рекомендуемого человека (ФИО)"
       placeholder="Иван Иванов Иванович"
       v-model="form.fio2"
     />
     <BaseInput
-      class="form-inp"
+      class="quest-form__input"
       rules="required"
       name="phone2"
       label="Номер телефона рекомендуемого человека"
@@ -34,15 +34,17 @@
       maska="+7 (###) ### ## ##"
       v-model="form.phone2"
     />
-    <div class="actions">
-      <BaseCheckbox name="agree" label="" :checkedValue="true" :uncheckedValue="false" v-model="agree">
-        <p class="perc question-form__input">
-          Нажимая кнопку, вы соглашаетесь с&nbsp;<a href="/docs/sogl.pdf" target="_blank">условиями обработки персональных данных</a>
-        </p>
-      </BaseCheckbox>
-      <BaseButton class="btn-submit" type="submit" :disabled="!agree || isSubmitting">
-        Отправить
-      </BaseButton>
+    <div class="quest-form__bottom">
+      <div class="quest-form__actions">
+        <BaseCheckbox class="quest-form__input" name="agree" label="" :checkedValue="true" :uncheckedValue="false" v-model="agree">
+          <p class="quest-form__perc">
+            Нажимая кнопку, вы соглашаетесь с&nbsp;<a href="/docs/sogl.pdf" target="_blank">условиями обработки персональных данных</a>
+          </p>
+        </BaseCheckbox>
+        <BaseButton class="quest-form__input btn-submit" type="submit" :disabled="!agree || isSubmitting">
+          Отправить
+        </BaseButton>
+      </div>
       <p class="notice">
         ВАЖНО! Этого человека не&nbsp;должно быть в&nbsp;нашей базе - засчитываются только уникальные пользователи. Программа не&nbsp;распространяется на&nbsp;родственников первого круга (родители, супруги, дети)
       </p>
@@ -98,39 +100,9 @@
   }
 </script>
 
+<style scoped src="@/other-modules/question-form/assets/style/form.scss"></style>
+
 <style scoped lang="scss">
-  .form-inp {
-    & + & {
-      margin-top: 16px;
-    }
-  }
-
-  .actions {
-    margin-top: 24px;
-
-    @include md {
-      margin-top: 16px
-    }
-  }
-
-  .perc {
-    @apply tw-text-text02 tw-text-sm;
-
-    @include lg {
-      @apply tw-text-xs;
-    }
-
-    a {
-      @apply tw-text-primary;
-    }
-  }
-
-  .btn-submit {
-    margin-top: 12px;
-    width: 100%;
-    max-width: 240px;
-  }
-
   .notice {
     margin-top: 16px;
     @apply tw-text-negative tw-text-sm;

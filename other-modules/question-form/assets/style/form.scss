@@ -1,0 +1,47 @@
+.quest-form {
+  &__form {
+    display: flex;
+    flex-wrap: wrap;
+    margin: -10px;
+  }
+
+  &__input {
+    width: calc(100% / 12 * 6 - 20px);
+    margin: 10px;
+
+    @include sm {
+      width: calc(100% - 20px);
+    }
+  }
+
+  &__bottom {
+    width: calc(100% - 20px);
+    margin: 10px;
+    padding-top: 12px;
+
+    @include sm {
+      padding-top: 0px;
+    }
+  }
+
+  &__actions {
+    display: flex;
+    flex-wrap: wrap;
+    margin: -10px;
+  }
+
+  &__perc {
+    @apply tw-text-text02 tw-text-sm;
+    a {
+      @apply tw-text-primary;
+    }
+
+    @include lg {
+      @apply tw-text-xs;
+    }
+
+    @include sm {
+      order: 10;
+    }
+  }
+}
