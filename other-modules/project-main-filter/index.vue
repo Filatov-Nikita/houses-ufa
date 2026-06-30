@@ -1,5 +1,14 @@
 <template>
   <Header @clear-filter="filter.reset">
+    <EstateGridList
+      class="tw-pb-8"
+      flexible
+      hideFilter
+      initialFilterValue="cottages_and_townhouses"
+      btnMode
+      :activeItem="active"
+      @update:activeItem="onChange"
+    />
     <Params
       v-model:layout_type="filter.params.layout_type"
       v-model:town_id="filter.params.town_id"
@@ -45,6 +54,7 @@
   import TownList from './components/TownList.vue';
   import Toolbar from './components/Toolbar.vue';
   import TownGenplan from '@/other-modules/town-genplan/index.vue';
+  import EstateGridList from '@/other-modules/estate-list-grid/index.vue';
   import { useTownsStore } from '@/stores/towns';
 
   const townsStore = useTownsStore();
@@ -68,6 +78,31 @@
   async function refresh() {
     genplanTownId.value = filter.params.town_id ?? null;
     scrollToView();
+    active.value = getInitial(filter.params.town_id);
     await show();
+  }
+
+  // it is very bad, todo: remove when backend will be ready.
+  const MAP_IDS: Record<string, number> = {
+    8: 6,
+    4: 4,
+    3: 2,
+    7: 3,
+    5: 1,
+  };
+
+  const active = ref<number | null>(getInitial(filter.params.town_id));
+
+  function getInitial(townId: number | undefined) {
+    if(!townId) return null;
+    const res = Object.entries(MAP_IDS).find(entry => entry[1] === townId);
+    if(!res) return null;
+    return Number(res[0]);
+  }
+
+  function onChange(item: number) {
+    active.value = item;
+    filter.params.town_id = MAP_IDS[item];
+    refresh();
   }
 </script>

@@ -4,7 +4,7 @@
       <div class="section__top" v-if="flexible !== true">
         <h2 class="section__title">Объекты</h2>
       </div>
-      <div class="estate-list-block__filter">
+      <div class="estate-list-block__filter" v-if="!hideFilter">
         <BaseTabsGroup v-model="filter" :theme="theme">
           <BaseTabsGroupItem :theme="theme" name="all">Все</BaseTabsGroupItem>
           <BaseTabsGroupItem :theme="theme" name="flats_in_ufa_city">Квартиры в Уфе</BaseTabsGroupItem>
@@ -12,13 +12,27 @@
           <BaseTabsGroupItem :theme="theme" name="cottages_and_townhouses">Коттеджи и таунхаусы</BaseTabsGroupItem>
         </BaseTabsGroup>
       </div>
-      <div class="estate-list-grid">
+      <div class="estate-list-grid" v-if="btnMode">
         <Item
           v-for="(item, index) in items"
           :key="item.id"
+          tag="button"
+          type="button"
           :class="currentItemClass(index)"
           :item="item"
-          :url="item[urlKey]"
+          :active="item.id === activeItem"
+          @click="onChange(item)"
+        />
+      </div>
+      <div class="estate-list-grid" v-else>
+        <Item
+          v-for="(item, index) in items"
+          :key="item.id"
+          tag="a"
+          target="_blank"
+          :href="item[urlKey]"
+          :class="currentItemClass(index)"
+          :item="item"
         />
       </div>
     </div>
@@ -29,18 +43,37 @@
   import Item from './components/Item.vue';
   import type { PosterItem } from './types';
 
-  withDefaults(
+  type Types = 'all' | 'flats_in_ufa_city' | 'flats_in_ufa_district' | 'cottages_and_townhouses';
+
+  const props = withDefaults(
     defineProps<{
       flexible?: boolean,
       theme?: 'white' | 'gray',
-      urlKey: keyof Pick<PosterItem, 'build_feed_url' | 'url'>,
+      urlKey?: keyof Pick<PosterItem, 'build_feed_url' | 'url'>,
+      btnMode?: boolean,
+      hideFilter?: boolean,
+      initialFilterValue?: Types,
+      activeItem?: number | null,
     }>(),
-    { theme: 'white', flexible: false, urlKey: 'url' }
+    {
+      theme: 'white',
+      flexible: false,
+      urlKey: 'url',
+      btnMode: false,
+      hideFilter: false,
+      initialFilterValue: 'all',
+    },
   );
 
-  type Types = 'all' | 'flats_in_city' | 'flats_out_city' | 'towns';
+  const emit = defineEmits<{
+    (event: 'update:activeItem', value: number ): void,
+  }>();
 
-  const filter = ref<Types>('all');
+  const filter = ref<Types>(props.initialFilterValue);
+
+  function onChange(item: PosterItem) {
+    emit('update:activeItem', item.id);
+  }
 
   const itemClasses = [
     'estate-list-grid__item-l1-i1',

@@ -1,5 +1,5 @@
 <template>
-  <NuxtLink class="estate-grid-item" :to="url" target="_blank">
+  <component :is="tag" class="estate-grid-item" :class="{ 'estate-grid-item--active': active }">
     <div>
       <div class="estate-grid-item__name">{{ item.title }}</div>
       <div class="estate-grid-item__price" v-if="item.subtitle">
@@ -27,16 +27,20 @@
     <div class="estate-grid-item__next">
       <BaseIcon class="estate-grid-item__next-icon" name="forward-line" />
     </div>
-  </NuxtLink>
+  </component>
 </template>
 
 <script setup lang="ts">
   import type { PosterItem } from '../types';
 
-  const props = defineProps<{
-    item: PosterItem,
-    url: string,
-  }>();
+  const props = withDefaults(
+    defineProps<{
+      tag?: string,
+      item: PosterItem,
+      active?: boolean,
+    }>(),
+    { tag: 'div', active: false },
+  );
 </script>
 
 <style scoped lang="scss">
@@ -49,7 +53,22 @@
     padding: 24px;
     display: flex;
     flex-direction: column;
+    text-align: left;
     @apply tw-text-white;
+
+    &--active {
+      &::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+        border: 3px solid theme('colors.primary');
+        border-radius: 16px;
+      }
+    }
 
     &__name {
       font-weight: 600;
