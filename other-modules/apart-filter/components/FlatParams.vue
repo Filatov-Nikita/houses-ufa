@@ -73,6 +73,7 @@
           v-model:room_factor_two_classic="filterParams.room_factor_two_classic"
           v-model:room_factor_three_smart="filterParams.room_factor_three_smart"
           v-model:room_factor_three_classic="filterParams.room_factor_three_classic"
+          v-model:room_factor_four_smart="filterParams.room_factor_four_smart"
         />
       </div>
       <div class="tw-space-y-2">

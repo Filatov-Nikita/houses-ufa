@@ -47,6 +47,7 @@
             v-model:room_factor_two_classic="filter.params.room_factor_two_classic"
             v-model:room_factor_three_smart="filter.params.room_factor_three_smart"
             v-model:room_factor_three_classic="filter.params.room_factor_three_classic"
+            v-model:room_factor_four_smart="filter.params.room_factor_four_smart"
           />
           <div class="add-params__columns add-params__section">
             <BaseRange

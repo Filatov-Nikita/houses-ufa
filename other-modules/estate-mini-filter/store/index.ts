@@ -18,6 +18,7 @@ interface Params {
   room_factor_two_classic: number | null,
   room_factor_three_smart: number | null,
   room_factor_three_classic: number | null,
+  room_factor_four_smart: number | null,
 }
 
 export const useEstateMiniFilter = defineStore('estateMiniFilter', () => {
@@ -43,6 +44,7 @@ export const useEstateMiniFilter = defineStore('estateMiniFilter', () => {
       room_factor_two_classic: null,
       room_factor_three_smart: null,
       room_factor_three_classic: null,
+      room_factor_four_smart: null,
     }
   };
 

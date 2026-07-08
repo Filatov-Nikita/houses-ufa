@@ -14,6 +14,7 @@ interface FlatParams {
   room_factor_two_classic: NumOrNull,
   room_factor_three_smart: NumOrNull,
   room_factor_three_classic: NumOrNull,
+  room_factor_four_smart: NumOrNull,
   price_max: NumOrNull,
   price_min: NumOrNull,
   price_type: 'mortgage_initial_fee' | 'mortgage_monthly_payment' | 'price_total';
@@ -79,6 +80,7 @@ export function useParams(globalParams: Params) {
       room_factor_two_classic: null,
       room_factor_three_smart: null,
       room_factor_three_classic: null,
+      room_factor_four_smart: null,
       price_max: null,
       price_min: null,
       price_type: 'price_total' as const

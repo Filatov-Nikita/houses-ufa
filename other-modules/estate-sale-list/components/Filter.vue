@@ -10,6 +10,7 @@
       v-model:room_factor_two_classic="filter.flatParams.room_factor_two_classic"
       v-model:room_factor_three_smart="filter.flatParams.room_factor_three_smart"
       v-model:room_factor_three_classic="filter.flatParams.room_factor_three_classic"
+      v-model:room_factor_four_smart="filter.flatParams.room_factor_four_smart"
     />
     <EstateSquareFilter
         v-else

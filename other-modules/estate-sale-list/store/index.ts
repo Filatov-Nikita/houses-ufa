@@ -14,7 +14,8 @@ export const useEstateSaleList = defineStore('estateSaleList', () => {
     room_factor_two_smart: null,
     room_factor_two_classic: null,
     room_factor_three_smart: null,
-    room_factor_three_classic: null
+    room_factor_three_classic: null,
+    room_factor_four_smart: null
   });
 
   const townParams: TownParams = reactive({
@@ -81,7 +82,8 @@ interface FlatParams {
   room_factor_two_smart: number| null,
   room_factor_two_classic: number| null,
   room_factor_three_smart: number| null,
-  room_factor_three_classic: number| null
+  room_factor_three_classic: number| null,
+  room_factor_four_smart: number| null,
 }
 
 interface TownParams {
