@@ -35,9 +35,10 @@ export const useNewsStore = defineStore('newsStore', () => {
             : currentCountMassMedia.value,
       },
     })
+    const _data = data.value as any;
     if (type === 'tiding') {
-      totalTiding.value = data.value.meta.total
-      tidingList.value = data.value.data as Article[]
+      totalTiding.value = _data.meta.total
+      tidingList.value = _data.data as Article[]
       const { countShow } = usePaginate(
         tidingList.value.length,
         totalTiding.value,
@@ -48,8 +49,8 @@ export const useNewsStore = defineStore('newsStore', () => {
     }
 
     if (type === 'mass_media') {
-      totalMassMedia.value = data.value.meta.total
-      massMediaList.value = data.value.data as Article[]
+      totalMassMedia.value = _data.meta.total
+      massMediaList.value = _data.data as Article[]
       const { countShow } = usePaginate(
         massMediaList.value.length,
         totalMassMedia.value,

@@ -10,7 +10,7 @@ export const useScreensStore = defineStore('useScreensStore', {
   getters: {},
   actions: {
     media(size: 'md' | 'lg' | 'xl' | '2xl') {
-      const objScreens = {
+      const objScreens: Record<string, string> = {
         md: '768px',
         lg: '1024px',
         xl: '1420px',
@@ -24,7 +24,7 @@ export const useScreensStore = defineStore('useScreensStore', {
           handleTabletChange.bind(this, e)(this, key)
         )
       }
-      function handleTabletChange(e: any, _this, screen) {
+      function handleTabletChange(e: any, _this: any, screen: any) {
         if (e.matches) {
           _this.screens[screen] = true
           return true
