@@ -1,5 +1,5 @@
 <template>
-  <div class="promo" :class="`promo-${items.length}`">
+  <div class="promo" :class="classes">
     <div class="list">
       <div
         class="item"
@@ -93,6 +93,9 @@ interface Props {
 const props = withDefaults(defineProps<Props>(), { hideAction: false })
 
 const emit = defineEmits<{ (event: 'action'): void }>()
+
+const AVAILABLE_VARIANTS = [ 8, 7, 6 ];
+
 const isOpenModal = ref(false)
 const openModal = (label: string) => {
   isOpenModal.value = true
@@ -109,6 +112,13 @@ const sliderProps = {
   effect: 'fade',
   fadeEffect: { crossFade: true },
 }
+
+const classes = computed(() => {
+  const count = AVAILABLE_VARIANTS.includes(props.items.length)
+    ? props.items.length
+    : AVAILABLE_VARIANTS[0];
+  return [ `promo-${count}` ];
+});
 
 function onAction() {
   emit('action')
