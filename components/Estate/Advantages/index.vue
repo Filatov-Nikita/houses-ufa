@@ -227,7 +227,7 @@ watch(
 
   &__text {
     color: #4f4f4f;
-
+    white-space: pre-wrap;
     @apply tw-text-base tw-text-text02;
   }
 

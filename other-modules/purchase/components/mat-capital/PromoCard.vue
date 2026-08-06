@@ -12,11 +12,14 @@
         Принимайте поздравления!
       </h2>
       <p class="promo-item__body">
-        Во-первых, дети – это счастье, а во-вторых, теперь вы можете использовать материнский капитал для приобретения квартиры от ГК «Жилой Квартал»!
+        Во-первых, дети&nbsp;– это&nbsp;счастье, а&nbsp;во-вторых, теперь вы&nbsp;можете использовать материнский капитал для&nbsp;приобретения недвижимости от&nbsp;ГК&nbsp;«Жилой&nbsp;Квартал»!
       </p>
-      <div class="purchase-promo-card__action">
-        <BaseButton to="/main-filter">
-          Выбрать недвижимость
+      <div class="purchase-promo-card__actions">
+        <BaseButton class="purchase-promo-card__action" :to="{ name: 'complexes' }">
+          Выбрать квартиру
+        </BaseButton>
+        <BaseButton class="purchase-promo-card__action" theme="white" :to="{ name: 'towns' }">
+          Выбрать дом
         </BaseButton>
       </div>
     </article>

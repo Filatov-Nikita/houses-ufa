@@ -5,7 +5,7 @@
       rules="required"
       name="fio1"
       label="Ваше имя (ФИО)"
-      placeholder="Иван Иванов Иванович"
+      placeholder="Иван Иванович Иванов"
       v-model="form.fio1"
     />
     <BaseInput
@@ -22,7 +22,7 @@
       rules="required"
       name="fio2"
       label="Имя рекомендуемого человека (ФИО)"
-      placeholder="Иван Иванов Иванович"
+      placeholder="Иван Иванович Иванов"
       v-model="form.fio2"
     />
     <BaseInput

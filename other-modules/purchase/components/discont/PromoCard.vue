@@ -5,7 +5,7 @@
         Зарабатывайте на <span class="purchase-promo-card__text-accent">рекомендациях</span>!
       </h2>
       <p class="promo-item__body tw-max-w-[546px]">
-        Рекомендуйте «Жилой Квартал» своим друзьям и, если они выбирают нас, получайте вознаграждение:
+        Рекомендуйте «Жилой&nbsp;Квартал» своим&nbsp;друзьям и&nbsp;получайте вознаграждение после заключения сделки:
       </p>
       <div class="profit-block promo-item__profit">
         <div class="profit-block__item">

@@ -41,13 +41,13 @@ export const data: DataRecord = {
         img: ImgMonument,
         name: 'Монумент Дружбы',
         len: '23 км',
-        time: '20 мин',
+        time: '25 мин',
       },
       {
         img: ImgMir,
         name: 'ТЦ "Мир"',
         len: '23 км',
-        time: '20 мин',
+        time: '25 мин',
       },
     ]
   },
@@ -80,13 +80,13 @@ export const data: DataRecord = {
         img: ImgMonument,
         name: 'Монумент Дружбы',
         len: '23 км',
-        time: '20 мин',
+        time: '25 мин',
       },
       {
         img: ImgMir,
         name: 'ТЦ "Мир"',
         len: '23 км',
-        time: '20 мин',
+        time: '25 мин',
       },
     ]
   }
